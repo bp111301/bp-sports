@@ -29,6 +29,8 @@ jobs:
         run: pytest -q tests/test_cfb_research.py
       - name: Run expanding-window baseline
         run: python research/cfb/backtest_baseline.py --first-test-season 2018
+      - name: Run CFB candidate tournament
+        run: python research/cfb/experiment_candidates.py
       - name: Commit research results
         run: |
           git config user.name "bp-sports-bot"
