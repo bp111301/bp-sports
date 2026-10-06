@@ -17,6 +17,17 @@ def main():
     actual=(games.home_score>games.away_score).astype(int)
     joined=games.merge(saved,on='game_id',suffixes=('_source','_saved'),validate='one_to_one')
     source_checks={'schedule_games':len(games),'schedule_duplicate_ids':int(games.game_id.duplicated().sum()),'tied_final_scores':int((games.home_score==games.away_score).sum()),'game_state_counts':games.game_state.value_counts().to_dict(),'team_stat_rows':len(stats),'team_stat_duplicate_keys':int(stats.duplicated(['gameId','teamId']).sum()),'home_team_stats_matched':int(z.stat_gameId.notna().sum()),'away_team_stats_matched':int(a.gameId.notna().sum()),'home_win_label_disagreements_vs_stats':int((actual!=z.stat_wins).sum()),'away_win_label_disagreements_vs_stats':int(((1-actual)!=a.wins).sum()),'noncomplementary_stats_winners':int(((z.stat_wins+a.wins)!=1).sum()),'saved_label_disagreements_vs_new_schedule':int((joined.home_win!=(joined.home_score>joined.away_score).astype(int)).sum()),'saved_home_team_disagreements':int((joined.home_team_source!=joined.home_team_saved).sum()),'saved_away_team_disagreements':int((joined.away_team_source!=joined.away_team_saved).sum()),'stat_home_road_values':stats.homeRoad.value_counts().to_dict(),'home_score_disagreements_vs_stats':int((games.home_score!=z.stat_goalsFor).sum()),'away_score_disagreements_vs_stats':int((games.away_score!=a.goalsFor).sum())}
+    # Schedule score awards one goal to the shootout winner; the statistical
+    # goals-for report may omit this administrative goal. Classify, don't assume.
+    hd=games.home_score-z.stat_goalsFor;ad=games.away_score-a.goalsFor
+    so=games.last_period_type.eq('SO')
+    source_checks['shootout_games']=int(so.sum())
+    source_checks['home_score_delta_counts']={str(int(k)):int(v) for k,v in hd.value_counts().items()}
+    source_checks['away_score_delta_counts']={str(int(k)):int(v) for k,v in ad.value_counts().items()}
+    source_checks['home_score_disagreements_explained_by_shootout_award']=int(((hd==1)&so&(actual==1)).sum())
+    source_checks['away_score_disagreements_explained_by_shootout_award']=int(((ad==1)&so&(actual==0)).sum())
+    source_checks['unexplained_home_score_disagreements']=int(((hd!=0)&~((hd==1)&so&(actual==1))).sum())
+    source_checks['unexplained_away_score_disagreements']=int(((ad!=0)&~((ad==1)&so&(actual==0))).sum())
     season_rows=[]
     for season,q in pd.concat([dev.rename(columns={'home_win_prob':'calibrated_prob'}),saved],ignore_index=True).groupby('season'):
         p=q.calibrated_prob;correct=(p>=.5)==q.home_win
