@@ -1,0 +1,19 @@
+{
+  "model": "BP Sports NFL V4 Candidate",
+  "freeze_date": "2026-10-05",
+  "core": "QB-aware ensemble over V3 efficiency/Elo/opponent-adjusted foundation",
+  "historical_reused_sample_2018_2025": {
+    "games": 1967,
+    "accuracy": 0.6502287748,
+    "correct": 1279,
+    "pristine_holdout": false
+  },
+  "confidence_layers": {
+    "explosive_last5": {"status": "active", "can_flip_pick": false},
+    "turnover_last5": {"status": "conservative_risk_flag", "can_flip_pick": false},
+    "early_down_success_last5": {"status": "conservative_risk_flag", "can_flip_pick": false}
+  },
+  "context_only": ["third_down_conversion", "red_zone_td_efficiency", "pressure_sack_proxy", "special_teams"],
+  "market_in_core_model": false,
+  "prospective_rule": "No algorithm changes based on Week 5 outcomes; timestamp pregame V3 and V4 predictions and grade after completion."
+}
