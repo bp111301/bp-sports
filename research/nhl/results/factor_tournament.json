@@ -1,0 +1,287 @@
+{
+  "selection_seasons": [
+    "20212022",
+    "20222023",
+    "20232024",
+    "20242025"
+  ],
+  "excluded_from_selection": [
+    "20252026"
+  ],
+  "ranking": [
+    {
+      "candidate": "advanced_all_w20",
+      "features": [
+        "elo_diff",
+        "home_field",
+        "win10_diff",
+        "gd10_diff",
+        "gf10_diff",
+        "ga10_diff",
+        "rest_diff",
+        "home_b2b",
+        "away_b2b",
+        "games_played_diff",
+        "shots_for_20_diff",
+        "shots_against_20_diff",
+        "shot_diff_20_diff",
+        "shoot_pct_20_diff",
+        "save_pct_20_diff",
+        "faceoff_pct_20_diff",
+        "pp_rate_20_diff",
+        "pk_rate_20_diff"
+      ],
+      "exploratory": false,
+      "games": 5248,
+      "accuracy": 0.6133765243902439,
+      "brier": 0.23162021873811148,
+      "log_loss": 0.6551475411952689,
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6463414634146342,
+          "brier": 0.22726614916452517,
+          "log_loss": 0.6469141071686888
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6112804878048781,
+          "brier": 0.2314314717318134,
+          "log_loss": 0.6544796406975509
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.5990853658536586,
+          "brier": 0.23416583979315944,
+          "log_loss": 0.6602705045088536
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.5967987804878049,
+          "brier": 0.23361741426294796,
+          "log_loss": 0.6589259124059822
+        }
+      ],
+      "seasons_with_brier_improvement": 0,
+      "eligible_for_promotion": false
+    },
+    {
+      "candidate": "opponent_adjusted",
+      "features": [
+        "elo_diff",
+        "home_field",
+        "win10_diff",
+        "gd10_diff",
+        "gf10_diff",
+        "ga10_diff",
+        "rest_diff",
+        "home_b2b",
+        "away_b2b",
+        "games_played_diff",
+        "shots_for_20_diff",
+        "shots_against_20_diff",
+        "shot_diff_20_diff",
+        "shoot_pct_20_diff",
+        "save_pct_20_diff",
+        "faceoff_pct_20_diff",
+        "pp_rate_20_diff",
+        "pk_rate_20_diff",
+        "opp_elo20_diff",
+        "adjusted_gf20_diff",
+        "adjusted_ga20_diff"
+      ],
+      "exploratory": false,
+      "games": 5248,
+      "accuracy": 0.6149009146341463,
+      "brier": 0.23175711377878164,
+      "log_loss": 0.6554936940267719,
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6516768292682927,
+          "brier": 0.22732573177735205,
+          "log_loss": 0.6471073049830739
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6036585365853658,
+          "brier": 0.23194871680095427,
+          "log_loss": 0.6556955541695708
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.6021341463414634,
+          "brier": 0.23379094953029453,
+          "log_loss": 0.6595162926666002
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.6021341463414634,
+          "brier": 0.23396305700652573,
+          "log_loss": 0.6596556242878426
+        }
+      ],
+      "seasons_with_brier_improvement": 1,
+      "eligible_for_promotion": false
+    },
+    {
+      "candidate": "schedule_travel",
+      "features": [
+        "elo_diff",
+        "home_field",
+        "win10_diff",
+        "gd10_diff",
+        "gf10_diff",
+        "ga10_diff",
+        "rest_diff",
+        "home_b2b",
+        "away_b2b",
+        "games_played_diff",
+        "shots_for_20_diff",
+        "shots_against_20_diff",
+        "shot_diff_20_diff",
+        "shoot_pct_20_diff",
+        "save_pct_20_diff",
+        "faceoff_pct_20_diff",
+        "pp_rate_20_diff",
+        "pk_rate_20_diff",
+        "travel_km_diff",
+        "games7_diff",
+        "games3_diff",
+        "away_streak_diff"
+      ],
+      "exploratory": false,
+      "games": 5248,
+      "accuracy": 0.6150914634146342,
+      "brier": 0.2317666060783883,
+      "log_loss": 0.6554614115981889,
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6402439024390244,
+          "brier": 0.22784553085338097,
+          "log_loss": 0.6481417872824845
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6120426829268293,
+          "brier": 0.23145597202141482,
+          "log_loss": 0.6545590967120989
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.6051829268292683,
+          "brier": 0.23430799126884733,
+          "log_loss": 0.6605386532242965
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.6028963414634146,
+          "brier": 0.23345693016991018,
+          "log_loss": 0.6586061091738761
+        }
+      ],
+      "seasons_with_brier_improvement": 1,
+      "eligible_for_promotion": false
+    },
+    {
+      "candidate": "opponent_plus_schedule",
+      "features": [
+        "elo_diff",
+        "home_field",
+        "win10_diff",
+        "gd10_diff",
+        "gf10_diff",
+        "ga10_diff",
+        "rest_diff",
+        "home_b2b",
+        "away_b2b",
+        "games_played_diff",
+        "shots_for_20_diff",
+        "shots_against_20_diff",
+        "shot_diff_20_diff",
+        "shoot_pct_20_diff",
+        "save_pct_20_diff",
+        "faceoff_pct_20_diff",
+        "pp_rate_20_diff",
+        "pk_rate_20_diff",
+        "opp_elo20_diff",
+        "adjusted_gf20_diff",
+        "adjusted_ga20_diff",
+        "travel_km_diff",
+        "games7_diff",
+        "games3_diff",
+        "away_streak_diff"
+      ],
+      "exploratory": false,
+      "games": 5248,
+      "accuracy": 0.6158536585365854,
+      "brier": 0.2318971257932195,
+      "log_loss": 0.6558003046118966,
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6486280487804879,
+          "brier": 0.22788645770052995,
+          "log_loss": 0.6483250172439436
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6059451219512195,
+          "brier": 0.23197107970802885,
+          "log_loss": 0.6557907659420489
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.6074695121951219,
+          "brier": 0.233954895457399,
+          "log_loss": 0.6598030359491079
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.6013719512195121,
+          "brier": 0.23377607030692021,
+          "log_loss": 0.6592823993124866
+        }
+      ],
+      "seasons_with_brier_improvement": 1,
+      "eligible_for_promotion": false
+    }
+  ],
+  "quality_source": {
+    "available": true,
+    "source": "MoneyPuck.com",
+    "url": "https://moneypuck.com/moneypuck/playerData/careers/gameByGame/all_teams.csv",
+    "historical_model_vintage_verified": false,
+    "rows": 16938,
+    "reason": "Insufficient team-game match coverage; shot-quality candidates not run"
+  },
+  "quality_team_game_coverage": 0.950938717676231,
+  "feature_coverage": {
+    "opp_elo20_diff": 0.9845655487804879,
+    "adjusted_gf20_diff": 0.9727515243902439,
+    "adjusted_ga20_diff": 0.9727515243902439,
+    "travel_km_diff": 0.9845655487804879,
+    "games7_diff": 1.0,
+    "games3_diff": 1.0,
+    "away_streak_diff": 1.0
+  },
+  "arena_distance_limitation": "approximate arena-to-arena straight-line travel, no itinerary or historic neutral-site adjustment",
+  "decision_rule": "improve both Brier/log loss, preserve accuracy, improve Brier in >=3/4 seasons; unverified retrospective xG ineligible"
+}
