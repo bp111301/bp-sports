@@ -6,6 +6,7 @@ on:
     paths:
       - "research/cfb/**"
       - "model/cfb/**"
+      - "app.py"
       - ".github/workflows/cfb_v1_research.yml"
       - "!research/cfb/results/**"
       - "!data/cfb/**"
@@ -35,6 +36,8 @@ jobs:
         run: python research/cfb/download_schedule.py 2026
       - name: Download game-level QB data
         run: python research/cfb/download_qb_data.py 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
+      - name: Compile dashboard
+        run: python -m py_compile app.py
       - name: Run guardrail tests
         run: pytest -q tests/test_cfb_research.py
       - name: Run historical research suite

@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 
 st.set_page_config(
-    page_title="B.P. Sports • NFL",
+    page_title="B.P. Sports",
     page_icon="🏈",
     layout="wide",
     initial_sidebar_state="collapsed",
@@ -178,226 +178,479 @@ def team_block(team, home=False):
     txt = f'<div><div class="team-abbr">{safe}</div><div class="team-name">{name}</div></div>'
     return f'<div class="team-box{" home" if home else ""}">{txt + dot if home else dot + txt}</div>'
 
-pred = load_csv("data/current/website_feed.csv")
-if pred.empty:
-    pred = load_csv("bp_week5_website_feed.csv")
-hist = load_csv("history.csv")
-metadata = load_json("data/current/prediction_metadata.json")
-tracking = load_json("data/ledger/summary.json")
+st.markdown('<div style="font-size:.64rem;color:#8d98a8;font-weight:900;letter-spacing:.11em;margin-bottom:4px">SPORT</div>', unsafe_allow_html=True)
+sport = st.radio("Sport", ["NFL", "CFB"], horizontal=True, label_visibility="collapsed", key="bp_sport")
 
-week_label = metadata.get("week", 5)
-captured = str(metadata.get("captured_at_utc", ""))
-fresh_text = "AUTOMATED V4"
-if captured:
-    try:
-        fresh_text = f"UPDATED {pd.to_datetime(captured).strftime('%b %d • %I:%M %p UTC').upper()}"
-    except Exception:
-        pass
-
-st.markdown(
-    f'''<div class="bp-nav">
-      <div class="bp-logo">
-        <div class="bp-mark">BP</div>
-        <div><div class="bp-wordmark">B.P. <span>SPORTS</span></div><div class="bp-kicker">INDEPENDENT NFL INTELLIGENCE</div></div>
-      </div>
-      <div class="live-pill"><span class="live-dot"></span>{html.escape(fresh_text)}</div>
-    </div>''',
-    unsafe_allow_html=True,
-)
-
-t1, t2, t3 = st.tabs(["PREDICTIONS", "MODEL RECORD", "THE MODEL"])
-
-with t1:
+if sport == "NFL":
+    pred = load_csv("data/current/website_feed.csv")
     if pred.empty:
-        st.error("The current prediction feed is unavailable.")
-    else:
-        pred = pred.copy()
-        for col in ["v4_adjusted_confidence", "v4_core_confidence", "v3_confidence"]:
-            pred[col] = pd.to_numeric(pred[col], errors="coerce")
-        pred = pred.dropna(subset=["v4_adjusted_confidence"]).sort_values("v4_adjusted_confidence", ascending=False).reset_index(drop=True)
-
-        provisional_mask = pred["prediction_status"].astype(str).str.startswith("PROVISIONAL")
-        locked = pred[~provisional_mask]
-        provisional = pred[provisional_mask]
-        avg_conf = pred["v4_adjusted_confidence"].mean() * 100
-        strong_count = int((pred["v4_adjusted_confidence"] >= .60).sum())
-        risk_count = sum(
-            is_true(r.get("turnover_risk_flag", False)) or
-            is_true(r.get("early_down_risk_flag", False))
-            for _, r in pred.iterrows()
-        )
-
-        st.markdown(
-            f'''<div class="hero">
-              <div class="eyebrow">2026 • NFL WEEK {week_label} • FORWARD TEST</div>
-              <div class="hero-title">The B.P. Sports Week {week_label} Board</div>
-              <div class="hero-copy">Frozen V4 ranks every matchup independently of betting markets. Quarterback context lives in the core model; explosive plays, turnovers and early-down efficiency can adjust confidence without changing the selected winner.</div>
-              <div class="stat-grid">
-                <div class="stat"><div class="stat-v">{len(pred)}</div><div class="stat-l">Games tracked</div></div>
-                <div class="stat"><div class="stat-v">{len(locked)}</div><div class="stat-l">Early locks</div></div>
-                <div class="stat"><div class="stat-v">{strong_count}</div><div class="stat-l">60%+ picks</div></div>
-                <div class="stat"><div class="stat-v">{avg_conf:.1f}%</div><div class="stat-l">Avg confidence</div></div>
-              </div>
-            </div>''',
-            unsafe_allow_html=True,
-        )
-
-        top = pred.iloc[0]
-        top_pick = str(top["v4_pick"])
-        top_away, top_home = str(top["away_team"]), str(top["home_team"])
-        top_prob = float(top["v4_adjusted_confidence"]) * 100
-        st.markdown(
-            f'''<div class="spotlight">
-              <div><div class="spot-title">B.P. TOP CONFIDENCE</div>
-              <div class="spot-match">{html.escape(top_away)} @ {html.escape(top_home)} → {html.escape(top_pick)}</div>
-              <div class="spot-note">{html.escape(TEAM_NAMES.get(top_pick, top_pick))} lead the current frozen V4 board.</div></div>
-              <div class="spot-prob">{top_prob:.1f}%<small>WIN CONFIDENCE</small></div>
-            </div>''',
-            unsafe_allow_html=True,
-        )
-
-        st.markdown(
-            f'''<div class="section-head"><div><div class="section-title">Full slate</div>
-            <div class="section-sub">Ordered by V4 adjusted confidence • {len(provisional)} provisional • {risk_count} active risk flags</div></div></div>''',
-            unsafe_allow_html=True,
-        )
-
-        filter_choice = st.radio(
-            "Board filter",
-            ["All games", "60%+ confidence", "Risk flags", "Provisional"],
-            horizontal=True,
-            label_visibility="collapsed",
-        )
-        board = pred
-        if filter_choice == "60%+ confidence":
-            board = pred[pred["v4_adjusted_confidence"] >= .60]
-        elif filter_choice == "Risk flags":
-            mask = pred.apply(
-                lambda r: is_true(r.get("turnover_risk_flag", False))
-                or is_true(r.get("early_down_risk_flag", False))
-                or is_true(r.get("explosive_extreme", False)),
-                axis=1,
-            )
-            board = pred[mask]
-        elif filter_choice == "Provisional":
-            board = pred[provisional_mask]
-
-        if board.empty:
-            st.info("No games match this filter.")
+        pred = load_csv("bp_week5_website_feed.csv")
+    hist = load_csv("history.csv")
+    metadata = load_json("data/current/prediction_metadata.json")
+    tracking = load_json("data/ledger/summary.json")
+    
+    week_label = metadata.get("week", 5)
+    captured = str(metadata.get("captured_at_utc", ""))
+    fresh_text = "AUTOMATED V4"
+    if captured:
+        try:
+            fresh_text = f"UPDATED {pd.to_datetime(captured).strftime('%b %d • %I:%M %p UTC').upper()}"
+        except Exception:
+            pass
+    
+    st.markdown(
+        f'''<div class="bp-nav">
+          <div class="bp-logo">
+            <div class="bp-mark">BP</div>
+            <div><div class="bp-wordmark">B.P. <span>SPORTS</span></div><div class="bp-kicker">INDEPENDENT NFL INTELLIGENCE</div></div>
+          </div>
+          <div class="live-pill"><span class="live-dot"></span>{html.escape(fresh_text)}</div>
+        </div>''',
+        unsafe_allow_html=True,
+    )
+    
+    t1, t2, t3 = st.tabs(["PREDICTIONS", "MODEL RECORD", "THE MODEL"])
+    
+    with t1:
+        if pred.empty:
+            st.error("The current prediction feed is unavailable.")
         else:
-            for rank, (_, r) in enumerate(board.iterrows(), start=1):
-                away, home, pick = str(r["away_team"]), str(r["home_team"]), str(r["v4_pick"])
-                v4, core, v3 = float(r["v4_adjusted_confidence"]), float(r["v4_core_confidence"]), float(r["v3_confidence"])
-                status = str(r.get("prediction_status", "EARLY_LOCK"))
-                provisional_flag = status.startswith("PROVISIONAL")
-                accent = TEAM_COLORS.get(pick, "#64748b")
-                tier, tier_class = confidence_tier(v4)
-                qb_note = r.get("qb_status_flag", "")
-
-                badges = []
-                badges.append('<span class="badge badge-prov">PROVISIONAL</span>' if provisional_flag else '<span class="badge badge-lock">LOCKED SNAPSHOT</span>')
-                if is_true(r.get("explosive_extreme", False)):
-                    badges.append('<span class="badge badge-warn">⚡ EXPLOSIVE SIGNAL</span>')
-                if is_true(r.get("turnover_risk_flag", False)):
-                    badges.append('<span class="badge badge-warn">↔ TURNOVER RISK</span>')
-                if is_true(r.get("early_down_risk_flag", False)):
-                    badges.append('<span class="badge badge-warn">⚠ EARLY-DOWN RISK</span>')
-                if pd.notna(qb_note) and str(qb_note).strip():
-                    badges.append('<span class="badge badge-warn">QB WATCH</span>')
-
-                core_delta = (v4 - core) * 100
-                layer_text = "Confidence layers: no adjustment" if abs(core_delta) < .05 else f"Confidence layers: {core_delta:+.1f} pts"
-                pick_name = TEAM_NAMES.get(pick, pick)
-
-                st.markdown(
-                    f'''<div class="card" style="border-left-color:{accent}">
-                      <div class="card-top"><div class="game-meta">#{rank} ON BOARD • {html.escape(str(r["game_id"]))}</div><div class="tier {tier_class}">{tier}</div></div>
-                      <div class="match-row">{team_block(away)}<div class="at">@</div>{team_block(home, True)}</div>
-                      <div class="pick-panel">
-                        <div><div class="pick-label">B.P. SPORTS V4 PICK</div><div class="pick-name">{html.escape(pick)} • {html.escape(pick_name)}</div></div>
-                        <div class="prob">{v4*100:.1f}%<span>ADJUSTED CONFIDENCE</span></div>
-                      </div>
-                      <div class="bar"><div class="fill" style="width:{v4*100:.1f}%"></div></div>
-                      <div class="badges">{''.join(badges)}</div>
-                      <div class="model-strip">
-                        <div class="model-cell"><div class="m">V3 BASE</div><div class="v">{html.escape(str(r["v3_pick"]))} {v3*100:.1f}%</div></div>
-                        <div class="model-cell"><div class="m">V4 CORE</div><div class="v">{core*100:.1f}%</div></div>
-                        <div class="model-cell"><div class="m">V4 FINAL</div><div class="v">{v4*100:.1f}%</div></div>
-                      </div>
-                      <div class="layer-note">{html.escape(layer_text)}</div>
-                    </div>''',
-                    unsafe_allow_html=True,
+            pred = pred.copy()
+            for col in ["v4_adjusted_confidence", "v4_core_confidence", "v3_confidence"]:
+                pred[col] = pd.to_numeric(pred[col], errors="coerce")
+            pred = pred.dropna(subset=["v4_adjusted_confidence"]).sort_values("v4_adjusted_confidence", ascending=False).reset_index(drop=True)
+    
+            provisional_mask = pred["prediction_status"].astype(str).str.startswith("PROVISIONAL")
+            locked = pred[~provisional_mask]
+            provisional = pred[provisional_mask]
+            avg_conf = pred["v4_adjusted_confidence"].mean() * 100
+            strong_count = int((pred["v4_adjusted_confidence"] >= .60).sum())
+            risk_count = sum(
+                is_true(r.get("turnover_risk_flag", False)) or
+                is_true(r.get("early_down_risk_flag", False))
+                for _, r in pred.iterrows()
+            )
+    
+            st.markdown(
+                f'''<div class="hero">
+                  <div class="eyebrow">2026 • NFL WEEK {week_label} • FORWARD TEST</div>
+                  <div class="hero-title">The B.P. Sports Week {week_label} Board</div>
+                  <div class="hero-copy">Frozen V4 ranks every matchup independently of betting markets. Quarterback context lives in the core model; explosive plays, turnovers and early-down efficiency can adjust confidence without changing the selected winner.</div>
+                  <div class="stat-grid">
+                    <div class="stat"><div class="stat-v">{len(pred)}</div><div class="stat-l">Games tracked</div></div>
+                    <div class="stat"><div class="stat-v">{len(locked)}</div><div class="stat-l">Early locks</div></div>
+                    <div class="stat"><div class="stat-v">{strong_count}</div><div class="stat-l">60%+ picks</div></div>
+                    <div class="stat"><div class="stat-v">{avg_conf:.1f}%</div><div class="stat-l">Avg confidence</div></div>
+                  </div>
+                </div>''',
+                unsafe_allow_html=True,
+            )
+    
+            top = pred.iloc[0]
+            top_pick = str(top["v4_pick"])
+            top_away, top_home = str(top["away_team"]), str(top["home_team"])
+            top_prob = float(top["v4_adjusted_confidence"]) * 100
+            st.markdown(
+                f'''<div class="spotlight">
+                  <div><div class="spot-title">B.P. TOP CONFIDENCE</div>
+                  <div class="spot-match">{html.escape(top_away)} @ {html.escape(top_home)} → {html.escape(top_pick)}</div>
+                  <div class="spot-note">{html.escape(TEAM_NAMES.get(top_pick, top_pick))} lead the current frozen V4 board.</div></div>
+                  <div class="spot-prob">{top_prob:.1f}%<small>WIN CONFIDENCE</small></div>
+                </div>''',
+                unsafe_allow_html=True,
+            )
+    
+            st.markdown(
+                f'''<div class="section-head"><div><div class="section-title">Full slate</div>
+                <div class="section-sub">Ordered by V4 adjusted confidence • {len(provisional)} provisional • {risk_count} active risk flags</div></div></div>''',
+                unsafe_allow_html=True,
+            )
+    
+            filter_choice = st.radio(
+                "Board filter",
+                ["All games", "60%+ confidence", "Risk flags", "Provisional"],
+                horizontal=True,
+                label_visibility="collapsed",
+            )
+            board = pred
+            if filter_choice == "60%+ confidence":
+                board = pred[pred["v4_adjusted_confidence"] >= .60]
+            elif filter_choice == "Risk flags":
+                mask = pred.apply(
+                    lambda r: is_true(r.get("turnover_risk_flag", False))
+                    or is_true(r.get("early_down_risk_flag", False))
+                    or is_true(r.get("explosive_extreme", False)),
+                    axis=1,
                 )
-
-                with st.expander(f"WHY V4 LIKES {pick} • {away} @ {home}"):
-                    c1, c2, c3 = st.columns(3)
-                    c1.metric("V3", f"{v3*100:.1f}%")
-                    c2.metric("V4 core", f"{core*100:.1f}%")
-                    c3.metric("V4 final", f"{v4*100:.1f}%", f"{(v4-v3)*100:+.1f} vs V3")
-
-                    notes = []
+                board = pred[mask]
+            elif filter_choice == "Provisional":
+                board = pred[provisional_mask]
+    
+            if board.empty:
+                st.info("No games match this filter.")
+            else:
+                for rank, (_, r) in enumerate(board.iterrows(), start=1):
+                    away, home, pick = str(r["away_team"]), str(r["home_team"]), str(r["v4_pick"])
+                    v4, core, v3 = float(r["v4_adjusted_confidence"]), float(r["v4_core_confidence"]), float(r["v3_confidence"])
+                    status = str(r.get("prediction_status", "EARLY_LOCK"))
+                    provisional_flag = status.startswith("PROVISIONAL")
+                    accent = TEAM_COLORS.get(pick, "#64748b")
+                    tier, tier_class = confidence_tier(v4)
+                    qb_note = r.get("qb_status_flag", "")
+    
+                    badges = []
+                    badges.append('<span class="badge badge-prov">PROVISIONAL</span>' if provisional_flag else '<span class="badge badge-lock">LOCKED SNAPSHOT</span>')
                     if is_true(r.get("explosive_extreme", False)):
-                        notes.append("Explosive-play matchup reached the frozen model's extreme-signal threshold.")
+                        badges.append('<span class="badge badge-warn">⚡ EXPLOSIVE SIGNAL</span>')
                     if is_true(r.get("turnover_risk_flag", False)):
-                        notes.append("Recent turnover matchup conflicts with the V4 side, so confidence is reduced instead of flipping the pick.")
+                        badges.append('<span class="badge badge-warn">↔ TURNOVER RISK</span>')
                     if is_true(r.get("early_down_risk_flag", False)):
-                        notes.append("Recent early-down efficiency is acting as a risk flag against the V4 side.")
-                    if not notes:
-                        notes.append("No secondary confidence layer materially changed the V4 core probability.")
-                    for note in notes:
-                        st.write("• " + note)
-
+                        badges.append('<span class="badge badge-warn">⚠ EARLY-DOWN RISK</span>')
                     if pd.notna(qb_note) and str(qb_note).strip():
-                        st.warning(str(qb_note))
-                    if provisional_flag:
-                        st.warning("Provisional: legitimate pregame information still needs to be refreshed before the official graded snapshot.")
-                    else:
-                        st.success("Pregame snapshot preserved. Once kickoff occurs, this prediction cannot be rewritten.")
+                        badges.append('<span class="badge badge-warn">QB WATCH</span>')
+    
+                    core_delta = (v4 - core) * 100
+                    layer_text = "Confidence layers: no adjustment" if abs(core_delta) < .05 else f"Confidence layers: {core_delta:+.1f} pts"
+                    pick_name = TEAM_NAMES.get(pick, pick)
+    
+                    st.markdown(
+                        f'''<div class="card" style="border-left-color:{accent}">
+                          <div class="card-top"><div class="game-meta">#{rank} ON BOARD • {html.escape(str(r["game_id"]))}</div><div class="tier {tier_class}">{tier}</div></div>
+                          <div class="match-row">{team_block(away)}<div class="at">@</div>{team_block(home, True)}</div>
+                          <div class="pick-panel">
+                            <div><div class="pick-label">B.P. SPORTS V4 PICK</div><div class="pick-name">{html.escape(pick)} • {html.escape(pick_name)}</div></div>
+                            <div class="prob">{v4*100:.1f}%<span>ADJUSTED CONFIDENCE</span></div>
+                          </div>
+                          <div class="bar"><div class="fill" style="width:{v4*100:.1f}%"></div></div>
+                          <div class="badges">{''.join(badges)}</div>
+                          <div class="model-strip">
+                            <div class="model-cell"><div class="m">V3 BASE</div><div class="v">{html.escape(str(r["v3_pick"]))} {v3*100:.1f}%</div></div>
+                            <div class="model-cell"><div class="m">V4 CORE</div><div class="v">{core*100:.1f}%</div></div>
+                            <div class="model-cell"><div class="m">V4 FINAL</div><div class="v">{v4*100:.1f}%</div></div>
+                          </div>
+                          <div class="layer-note">{html.escape(layer_text)}</div>
+                        </div>''',
+                        unsafe_allow_html=True,
+                    )
+    
+                    with st.expander(f"WHY V4 LIKES {pick} • {away} @ {home}"):
+                        c1, c2, c3 = st.columns(3)
+                        c1.metric("V3", f"{v3*100:.1f}%")
+                        c2.metric("V4 core", f"{core*100:.1f}%")
+                        c3.metric("V4 final", f"{v4*100:.1f}%", f"{(v4-v3)*100:+.1f} vs V3")
+    
+                        notes = []
+                        if is_true(r.get("explosive_extreme", False)):
+                            notes.append("Explosive-play matchup reached the frozen model's extreme-signal threshold.")
+                        if is_true(r.get("turnover_risk_flag", False)):
+                            notes.append("Recent turnover matchup conflicts with the V4 side, so confidence is reduced instead of flipping the pick.")
+                        if is_true(r.get("early_down_risk_flag", False)):
+                            notes.append("Recent early-down efficiency is acting as a risk flag against the V4 side.")
+                        if not notes:
+                            notes.append("No secondary confidence layer materially changed the V4 core probability.")
+                        for note in notes:
+                            st.write("• " + note)
+    
+                        if pd.notna(qb_note) and str(qb_note).strip():
+                            st.warning(str(qb_note))
+                        if provisional_flag:
+                            st.warning("Provisional: legitimate pregame information still needs to be refreshed before the official graded snapshot.")
+                        else:
+                            st.success("Pregame snapshot preserved. Once kickoff occurs, this prediction cannot be rewritten.")
+    
+            st.caption("B.P. Sports is a prediction model, not a guarantee. Market odds do not choose the model's winner.")
+    
+    with t2:
+        st.markdown('<div class="section-title">Model record</div><div class="section-sub">The forward ledger is the scoreboard that matters.</div>', unsafe_allow_html=True)
+        live = tracking.get("v4_adjusted", {})
+        games = int(live.get("games", 0) or 0)
+        if games:
+            wins = int(live.get("correct", 0) or 0)
+            losses = games - wins
+            st.markdown(
+                f'''<div class="record-hero"><div class="record-label">2026 FROZEN V4 FORWARD RECORD</div>
+                <div class="record-big">{wins}–{losses}</div><div class="section-sub">{live.get("accuracy",0)*100:.1f}% accuracy across {games} graded games</div></div>''',
+                unsafe_allow_html=True,
+            )
+            c1, c2, c3 = st.columns(3)
+            c1.metric("Accuracy", f"{live.get('accuracy',0)*100:.1f}%")
+            c2.metric("Brier score", f"{live.get('brier',0):.4f}")
+            c3.metric("Log loss", f"{live.get('log_loss',0):.4f}")
+            v3_live = tracking.get("v3", {})
+            if v3_live.get("games", 0):
+                v3_wins = int(v3_live.get("correct", 0) or 0)
+                v3_games = int(v3_live.get("games", 0) or 0)
+                st.markdown(f'<div class="about-card"><div class="about-num">CHAMPION / CHALLENGER</div><div class="about-title">V4 vs V3</div><div class="about-copy">V4: {wins}–{losses} • {live.get("accuracy",0)*100:.1f}% • Brier {live.get("brier",0):.4f}<br>V3: {v3_wins}–{v3_games-v3_wins} • {v3_live.get("accuracy",0)*100:.1f}% • Brier {v3_live.get("brier",0):.4f}</div></div>', unsafe_allow_html=True)
+        else:
+            st.markdown(
+                '''<div class="record-hero"><div class="record-label">2026 FROZEN V4 FORWARD RECORD</div>
+                <div class="record-big">0–0</div><div class="section-sub">Week 5 begins the prospective test. No games have been graded yet.</div></div>''',
+                unsafe_allow_html=True,
+            )
+    
+        st.markdown('<div class="section-title" style="margin-top:24px">Historical development</div>', unsafe_allow_html=True)
+        st.metric("Frozen V4 candidate", "65.02%", "1,279–688 • 2018–2025 reused sample")
+        st.caption("This is a development result, not a promised future hit rate. The 2026 forward ledger is intentionally kept separate.")
+    
+    with t3:
+        st.markdown('<div class="section-title">Inside V4</div><div class="section-sub">What the model uses — and what it deliberately ignores.</div>', unsafe_allow_html=True)
+        cards = [
+            ("01", "Efficiency foundation", "Opponent-adjusted EPA, success rate, recent form, Elo/team strength, rest and home-field context form the base of the prediction engine."),
+            ("02", "Quarterback layer", "V4 adds leakage-safe quarterback continuity, QB-change impact and prior quarterback quality without using post-kickoff information."),
+            ("03", "Confidence intelligence", "Explosive plays can raise or lower confidence. Turnovers and early-down efficiency act conservatively as risk flags. These layers cannot flip the core winner."),
+            ("04", "Market firewall", "Sportsbook and prediction-market prices do not choose the B.P. Sports winner. Market information belongs to a separate value-analysis layer."),
+            ("05", "Immutable grading", "Pregame snapshots are timestamped and preserved. Once a game starts, the graded prediction is never rewritten with hindsight."),
+        ]
+        for num, title, copy in cards:
+            st.markdown(f'<div class="about-card"><div class="about-num">{num}</div><div class="about-title">{html.escape(title)}</div><div class="about-copy">{html.escape(copy)}</div></div>', unsafe_allow_html=True)
+    
+        st.info("Pressure/sack proxies, third-down conversion rate, red-zone TD rate and special-teams proxies were tested but did not earn core V4 weight because they failed broader historical stability checks.")
+    
 
-        st.caption("B.P. Sports is a prediction model, not a guarantee. Market odds do not choose the model's winner.")
+else:
+    cfb_pred = load_csv("data/cfb/current/predictions.csv")
+    cfb_meta = load_json("data/cfb/current/metadata.json")
+    cfb_holdout = load_json("research/cfb/results/holdout_2026.json")
 
-with t2:
-    st.markdown('<div class="section-title">Model record</div><div class="section-sub">The forward ledger is the scoreboard that matters.</div>', unsafe_allow_html=True)
-    live = tracking.get("v4_adjusted", {})
-    games = int(live.get("games", 0) or 0)
-    if games:
-        wins = int(live.get("correct", 0) or 0)
-        losses = games - wins
+    def cfb_initials(name):
+        words = [w for w in str(name).replace("(", " ").replace(")", " ").split() if w]
+        if len(words) == 1:
+            return words[0][:3].upper()
+        return "".join(w[0] for w in words[:3]).upper()
+
+    def cfb_team_block(team, home=False):
+        safe = html.escape(str(team))
+        abbr = html.escape(cfb_initials(team))
+        dot = f'<div class="team-dot" style="background:#315f9f">{abbr}</div>'
+        txt = f'<div><div class="team-abbr">{abbr}</div><div class="team-name">{safe}</div></div>'
+        return f'<div class="team-box{" home" if home else ""}">{txt + dot if home else dot + txt}</div>'
+
+    def kickoff_ct(value):
+        try:
+            dt = pd.to_datetime(value, utc=True).tz_convert("America/Chicago")
+            return dt.strftime("%a %b %d • %I:%M %p CT").replace(" 0", " ")
+        except Exception:
+            return "Kickoff TBD"
+
+    generated = str(cfb_meta.get("generated_at_utc", ""))
+    cfb_fresh = "AUTOMATED CFB V1"
+    if generated:
+        try:
+            cfb_fresh = f"UPDATED {pd.to_datetime(generated).strftime('%b %d • %I:%M %p UTC').upper()}"
+        except Exception:
+            pass
+
+    st.markdown(
+        f'''<div class="bp-nav">
+          <div class="bp-logo">
+            <div class="bp-mark">BP</div>
+            <div><div class="bp-wordmark">B.P. <span>SPORTS</span></div><div class="bp-kicker">INDEPENDENT COLLEGE FOOTBALL INTELLIGENCE</div></div>
+          </div>
+          <div class="live-pill"><span class="live-dot"></span>{html.escape(cfb_fresh)}</div>
+        </div>''',
+        unsafe_allow_html=True,
+    )
+
+    c1, c2, c3 = st.tabs(["PREDICTIONS", "MODEL RECORD", "THE MODEL"])
+
+    with c1:
+        if cfb_pred.empty:
+            st.error("The current CFB prediction feed is unavailable.")
+        else:
+            board = cfb_pred.copy()
+            board["confidence"] = pd.to_numeric(board["confidence"], errors="coerce")
+            board["home_win_prob"] = pd.to_numeric(board["home_win_prob"], errors="coerce")
+            board["week"] = pd.to_numeric(board["week"], errors="coerce")
+            board = board.dropna(subset=["confidence"]).sort_values(
+                ["confidence", "kickoff_utc"], ascending=[False, True]
+            ).reset_index(drop=True)
+
+            weeks = sorted(board["week"].dropna().astype(int).unique().tolist())
+            if not weeks:
+                week_text = "CURRENT"
+            elif len(weeks) == 1:
+                week_text = str(weeks[0])
+            else:
+                week_text = f"{weeks[0]}–{weeks[-1]}"
+
+            avg_conf = board["confidence"].mean() * 100
+            strong_count = int((board["confidence"] >= .70).sum())
+            solid_count = int((board["confidence"] >= .60).sum())
+
+            st.markdown(
+                f'''<div class="hero">
+                  <div class="eyebrow">2026 • CFB WEEKS {week_text} • FROZEN V1</div>
+                  <div class="hero-title">The B.P. Sports College Football Board</div>
+                  <div class="hero-copy">CFB V1 ranks the upcoming slate with a market-free ensemble built from team efficiency, Elo, talent, returning production and a dynamic early-season prior. Every displayed pick is a timestamped pregame snapshot.</div>
+                  <div class="stat-grid">
+                    <div class="stat"><div class="stat-v">{len(board)}</div><div class="stat-l">Games tracked</div></div>
+                    <div class="stat"><div class="stat-v">{strong_count}</div><div class="stat-l">70%+ picks</div></div>
+                    <div class="stat"><div class="stat-v">{solid_count}</div><div class="stat-l">60%+ picks</div></div>
+                    <div class="stat"><div class="stat-v">{avg_conf:.1f}%</div><div class="stat-l">Avg confidence</div></div>
+                  </div>
+                </div>''',
+                unsafe_allow_html=True,
+            )
+
+            top = board.iloc[0]
+            top_pick = str(top["predicted_winner"])
+            top_prob = float(top["confidence"]) * 100
+            st.markdown(
+                f'''<div class="spotlight">
+                  <div><div class="spot-title">B.P. TOP CFB CONFIDENCE</div>
+                  <div class="spot-match">{html.escape(str(top["away_team"]))} @ {html.escape(str(top["home_team"]))} → {html.escape(top_pick)}</div>
+                  <div class="spot-note">Frozen CFB V1's highest-confidence game on the current board.</div></div>
+                  <div class="spot-prob">{top_prob:.1f}%<small>WIN CONFIDENCE</small></div>
+                </div>''',
+                unsafe_allow_html=True,
+            )
+
+            st.markdown(
+                '<div class="section-head"><div><div class="section-title">Full CFB slate</div>'
+                '<div class="section-sub">Search by team or filter by confidence without changing the frozen predictions.</div></div></div>',
+                unsafe_allow_html=True,
+            )
+            left, right = st.columns([2, 1])
+            query = left.text_input(
+                "Find a CFB team",
+                placeholder="Search Texas Tech, Alabama, Oregon…",
+                label_visibility="collapsed",
+            )
+            confidence_filter = right.selectbox(
+                "CFB confidence filter",
+                ["All games", "70%+", "60%+", "Close calls <55%"],
+                label_visibility="collapsed",
+            )
+
+            shown = board
+            if query.strip():
+                q = query.strip().lower()
+                shown = shown[
+                    shown.apply(
+                        lambda r: q in str(r["away_team"]).lower()
+                        or q in str(r["home_team"]).lower(),
+                        axis=1,
+                    )
+                ]
+            if confidence_filter == "70%+":
+                shown = shown[shown["confidence"] >= .70]
+            elif confidence_filter == "60%+":
+                shown = shown[shown["confidence"] >= .60]
+            elif confidence_filter == "Close calls <55%":
+                shown = shown[shown["confidence"] < .55]
+
+            if shown.empty:
+                st.info("No games match this filter.")
+            else:
+                for rank, (_, r) in enumerate(shown.iterrows(), start=1):
+                    away = str(r["away_team"])
+                    home = str(r["home_team"])
+                    pick = str(r["predicted_winner"])
+                    conf = float(r["confidence"])
+                    home_prob = float(r["home_win_prob"])
+                    away_prob = 1 - home_prob
+                    tier, tier_class = confidence_tier(conf)
+                    accent = "#44d17a" if conf >= .70 else "#6ea8fe" if conf >= .60 else "#f5c451" if conf >= .55 else "#ff6b7a"
+                    kickoff = kickoff_ct(r.get("kickoff_utc", ""))
+                    week = int(r["week"]) if pd.notna(r["week"]) else "—"
+
+                    st.markdown(
+                        f'''<div class="card" style="border-left-color:{accent}">
+                          <div class="card-top"><div class="game-meta">#{rank} ON BOARD • WEEK {week} • {html.escape(kickoff)}</div><div class="tier {tier_class}">{tier}</div></div>
+                          <div class="match-row">{cfb_team_block(away)}<div class="at">@</div>{cfb_team_block(home, True)}</div>
+                          <div class="pick-panel">
+                            <div><div class="pick-label">B.P. SPORTS CFB V1 PICK</div><div class="pick-name">{html.escape(pick)}</div></div>
+                            <div class="prob">{conf*100:.1f}%<span>WIN CONFIDENCE</span></div>
+                          </div>
+                          <div class="bar"><div class="fill" style="width:{conf*100:.1f}%"></div></div>
+                          <div class="badges"><span class="badge badge-lock">PREGAME SNAPSHOT</span><span class="badge">MARKET-FREE PICK</span></div>
+                          <div class="model-strip">
+                            <div class="model-cell"><div class="m">AWAY WIN</div><div class="v">{away_prob*100:.1f}%</div></div>
+                            <div class="model-cell"><div class="m">HOME WIN</div><div class="v">{home_prob*100:.1f}%</div></div>
+                            <div class="model-cell"><div class="m">MODEL</div><div class="v">CFB V1</div></div>
+                          </div>
+                          <div class="layer-note">Snapshot ID: {html.escape(str(r.get("prediction_id", "")))}</div>
+                        </div>''',
+                        unsafe_allow_html=True,
+                    )
+
+                    with st.expander(f"WHY CFB V1 LIKES {pick} • {away} @ {home}"):
+                        x1, x2, x3 = st.columns(3)
+                        x1.metric("Away win", f"{away_prob*100:.1f}%")
+                        x2.metric("Home win", f"{home_prob*100:.1f}%")
+                        x3.metric("B.P. pick", f"{conf*100:.1f}%")
+                        st.write(
+                            "CFB V1 blends a context model with a dynamic-prior model that gradually shifts "
+                            "from prior-season information toward current-season efficiency over the opening weeks."
+                        )
+                        st.success("Pregame snapshot preserved. This pick cannot be rewritten after kickoff.")
+
+            st.caption(
+                "B.P. Sports CFB V1 is a probability model, not a guarantee. "
+                "Betting-market prices do not choose the winner."
+            )
+
+    with c2:
         st.markdown(
-            f'''<div class="record-hero"><div class="record-label">2026 FROZEN V4 FORWARD RECORD</div>
-            <div class="record-big">{wins}–{losses}</div><div class="section-sub">{live.get("accuracy",0)*100:.1f}% accuracy across {games} graded games</div></div>''',
+            '<div class="section-title">CFB model record</div>'
+            '<div class="section-sub">Historical development, untouched 2026 diagnostic, and prospective tracking are kept separate.</div>',
             unsafe_allow_html=True,
         )
-        c1, c2, c3 = st.columns(3)
-        c1.metric("Accuracy", f"{live.get('accuracy',0)*100:.1f}%")
-        c2.metric("Brier score", f"{live.get('brier',0):.4f}")
-        c3.metric("Log loss", f"{live.get('log_loss',0):.4f}")
-        v3_live = tracking.get("v3", {})
-        if v3_live.get("games", 0):
-            v3_wins = int(v3_live.get("correct", 0) or 0)
-            v3_games = int(v3_live.get("games", 0) or 0)
-            st.markdown(f'<div class="about-card"><div class="about-num">CHAMPION / CHALLENGER</div><div class="about-title">V4 vs V3</div><div class="about-copy">V4: {wins}–{losses} • {live.get("accuracy",0)*100:.1f}% • Brier {live.get("brier",0):.4f}<br>V3: {v3_wins}–{v3_games-v3_wins} • {v3_live.get("accuracy",0)*100:.1f}% • Brier {v3_live.get("brier",0):.4f}</div></div>', unsafe_allow_html=True)
-    else:
+        hold = cfb_holdout.get("overall", {})
+        if hold:
+            st.markdown(
+                f'''<div class="record-hero">
+                  <div class="record-label">2026 UNTOUCHED DIAGNOSTIC • PRE-FREEZE GAMES</div>
+                  <div class="record-big">{hold.get("accuracy",0)*100:.2f}%</div>
+                  <div class="section-sub">{int(hold.get("games",0))} completed games • frozen before these results were opened</div>
+                </div>''',
+                unsafe_allow_html=True,
+            )
+            r1, r2, r3 = st.columns(3)
+            r1.metric("Accuracy", f'{hold.get("accuracy",0)*100:.2f}%')
+            r2.metric("Brier score", f'{hold.get("brier",0):.4f}')
+            r3.metric("Log loss", f'{hold.get("log_loss",0):.4f}')
+            st.caption(
+                "This is an untouched diagnostic, not a prospective record. "
+                "These completed games cannot be used to change CFB V1."
+            )
+
         st.markdown(
-            '''<div class="record-hero"><div class="record-label">2026 FROZEN V4 FORWARD RECORD</div>
-            <div class="record-big">0–0</div><div class="section-sub">Week 5 begins the prospective test. No games have been graded yet.</div></div>''',
+            '<div class="section-title" style="margin-top:24px">Historical development</div>',
+            unsafe_allow_html=True,
+        )
+        d1, d2, d3 = st.columns(3)
+        d1.metric("Walk-forward accuracy", "72.74%", "5,733 games")
+        d2.metric("Brier score", "0.1773")
+        d3.metric("Log loss", "0.5280")
+        st.markdown(
+            '''<div class="about-card"><div class="about-num">PROSPECTIVE LEDGER</div>
+            <div class="about-title">Started October 6, 2026</div>
+            <div class="about-copy">The live CFB board now writes immutable pregame snapshots. Those games become the clean forward record used to judge whether CFB V1 holds up in the real world.</div></div>''',
             unsafe_allow_html=True,
         )
 
-    st.markdown('<div class="section-title" style="margin-top:24px">Historical development</div>', unsafe_allow_html=True)
-    st.metric("Frozen V4 candidate", "65.02%", "1,279–688 • 2018–2025 reused sample")
-    st.caption("This is a development result, not a promised future hit rate. The 2026 forward ledger is intentionally kept separate.")
-
-with t3:
-    st.markdown('<div class="section-title">Inside V4</div><div class="section-sub">What the model uses — and what it deliberately ignores.</div>', unsafe_allow_html=True)
-    cards = [
-        ("01", "Efficiency foundation", "Opponent-adjusted EPA, success rate, recent form, Elo/team strength, rest and home-field context form the base of the prediction engine."),
-        ("02", "Quarterback layer", "V4 adds leakage-safe quarterback continuity, QB-change impact and prior quarterback quality without using post-kickoff information."),
-        ("03", "Confidence intelligence", "Explosive plays can raise or lower confidence. Turnovers and early-down efficiency act conservatively as risk flags. These layers cannot flip the core winner."),
-        ("04", "Market firewall", "Sportsbook and prediction-market prices do not choose the B.P. Sports winner. Market information belongs to a separate value-analysis layer."),
-        ("05", "Immutable grading", "Pregame snapshots are timestamped and preserved. Once a game starts, the graded prediction is never rewritten with hindsight."),
-    ]
-    for num, title, copy in cards:
-        st.markdown(f'<div class="about-card"><div class="about-num">{num}</div><div class="about-title">{html.escape(title)}</div><div class="about-copy">{html.escape(copy)}</div></div>', unsafe_allow_html=True)
-
-    st.info("Pressure/sack proxies, third-down conversion rate, red-zone TD rate and special-teams proxies were tested but did not earn core V4 weight because they failed broader historical stability checks.")
+    with c3:
+        st.markdown(
+            '<div class="section-title">Inside CFB V1</div>'
+            '<div class="section-sub">A separate college-football model — not an NFL model stretched onto college games.</div>',
+            unsafe_allow_html=True,
+        )
+        cfb_cards = [
+            ("01", "25% context model", "Elo, home field, conference-game status, efficiency, opponent strength, talent, returning production and coaching continuity."),
+            ("02", "75% dynamic-prior model", "A seven-week transition blends prior-season strength into current-season EPA and success-rate information, reducing early-season noise."),
+            ("03", "Walk-forward training", "Every historical test season is predicted using only earlier seasons. The 2018–2025 tournament covered 5,733 held-out games."),
+            ("04", "Market firewall", "Spreads, totals and prediction-market prices are excluded from winner selection. They can be compared later without contaminating the pick."),
+            ("05", "Frozen + immutable", "CFB V1 was frozen before the 2026 diagnostic was opened. Live pregame snapshots are preserved and model changes require CFB V2."),
+        ]
+        for num, title, copy in cfb_cards:
+            st.markdown(
+                f'<div class="about-card"><div class="about-num">{num}</div>'
+                f'<div class="about-title">{html.escape(title)}</div>'
+                f'<div class="about-copy">{html.escape(copy)}</div></div>',
+                unsafe_allow_html=True,
+            )
+        st.info(
+            "A tested QB layer was deferred from CFB V1 because it did not add meaningful historical "
+            "probability quality. It can be revisited in CFB V2 with better player-availability data."
+        )
