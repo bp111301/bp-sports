@@ -1,0 +1,210 @@
+{
+  "2026_touched": false,
+  "market_used": false,
+  "candidates": {
+    "v1": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.727367870225013,
+        "brier": 0.17733777180061297,
+        "log_loss": 0.5280438284465833,
+        "mean_confidence": 0.7452971073573846
+      },
+      "recent": {
+        "games": 2287,
+        "accuracy": 0.7210319195452558,
+        "brier": 0.18010468286336964,
+        "log_loss": 0.5337575371344266,
+        "mean_confidence": 0.7367781893177257
+      },
+      "weeks_1_3": {
+        "games": 1079,
+        "accuracy": 0.7479147358665431,
+        "brier": 0.16526209831709343,
+        "log_loss": 0.4946970097193912,
+        "mean_confidence": 0.7681363958217375
+      },
+      "delta_brier": 0.0
+    },
+    "oc_cont": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.727367870225013,
+        "brier": 0.1773137686777753,
+        "log_loss": 0.5279842786392891,
+        "mean_confidence": 0.7453842828642288
+      },
+      "recent": {
+        "games": 2287,
+        "accuracy": 0.7214691735898557,
+        "brier": 0.18021289352515796,
+        "log_loss": 0.5340225621216047,
+        "mean_confidence": 0.7368533988088768
+      },
+      "weeks_1_3": {
+        "games": 1079,
+        "accuracy": 0.7488415199258572,
+        "brier": 0.16508538428917974,
+        "log_loss": 0.49429799647867156,
+        "mean_confidence": 0.767911430421838
+      },
+      "delta_brier": -2.4003122837679136e-05
+    },
+    "dc_cont": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7268445839874411,
+        "brier": 0.17734551423681,
+        "log_loss": 0.528060885537158,
+        "mean_confidence": 0.7452570145002692
+      },
+      "recent": {
+        "games": 2287,
+        "accuracy": 0.7205946655006559,
+        "brier": 0.18010490058299158,
+        "log_loss": 0.5337937196727499,
+        "mean_confidence": 0.7367979441467505
+      },
+      "weeks_1_3": {
+        "games": 1079,
+        "accuracy": 0.7460611677479148,
+        "brier": 0.16516093458962516,
+        "log_loss": 0.49441023340342577,
+        "mean_confidence": 0.7677662019655349
+      },
+      "delta_brier": 7.742436197027969e-06
+    },
+    "both_cont": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7266701552415838,
+        "brier": 0.17733469500809504,
+        "log_loss": 0.5280277896955574,
+        "mean_confidence": 0.7453336785906642
+      },
+      "recent": {
+        "games": 2287,
+        "accuracy": 0.7205946655006559,
+        "brier": 0.1802047675147759,
+        "log_loss": 0.5340244038681988,
+        "mean_confidence": 0.7368505219852048
+      },
+      "weeks_1_3": {
+        "games": 1079,
+        "accuracy": 0.7460611677479148,
+        "brier": 0.165028828811129,
+        "log_loss": 0.49412069172886103,
+        "mean_confidence": 0.7676977047683634
+      },
+      "delta_brier": -3.0767925179309152e-06
+    }
+  },
+  "meta_walkforward": {
+    "folds": [
+      {
+        "season": 2021,
+        "chosen": "oc_cont",
+        "challenger": {
+          "games": 733,
+          "accuracy": 0.7148703956343793,
+          "brier": 0.18354307799163377,
+          "log_loss": 0.5503372317385359,
+          "mean_confidence": 0.7554538801616778
+        },
+        "v1": {
+          "games": 733,
+          "accuracy": 0.713506139154161,
+          "brier": 0.1837197294725052,
+          "log_loss": 0.5507966016538203,
+          "mean_confidence": 0.7555084158937533
+        }
+      },
+      {
+        "season": 2022,
+        "chosen": "oc_cont",
+        "challenger": {
+          "games": 735,
+          "accuracy": 0.6979591836734694,
+          "brier": 0.19131332307333357,
+          "log_loss": 0.562279343154932,
+          "mean_confidence": 0.7407375739370405
+        },
+        "v1": {
+          "games": 735,
+          "accuracy": 0.6993197278911565,
+          "brier": 0.19134615594185633,
+          "log_loss": 0.5622383071036507,
+          "mean_confidence": 0.7408310168115504
+        }
+      },
+      {
+        "season": 2023,
+        "chosen": "oc_cont",
+        "challenger": {
+          "games": 751,
+          "accuracy": 0.7443408788282291,
+          "brier": 0.17157924819780393,
+          "log_loss": 0.5138210937797466,
+          "mean_confidence": 0.7374354775972318
+        },
+        "v1": {
+          "games": 751,
+          "accuracy": 0.7496671105193076,
+          "brier": 0.1714380032958811,
+          "log_loss": 0.5135479672283995,
+          "mean_confidence": 0.7377680288220161
+        }
+      },
+      {
+        "season": 2024,
+        "chosen": "oc_cont",
+        "challenger": {
+          "games": 763,
+          "accuracy": 0.7011795543905636,
+          "brier": 0.18731393827408113,
+          "log_loss": 0.5508668734484307,
+          "mean_confidence": 0.7365196388915337
+        },
+        "v1": {
+          "games": 763,
+          "accuracy": 0.6972477064220184,
+          "brier": 0.1871907822169841,
+          "log_loss": 0.5504967262841916,
+          "mean_confidence": 0.7363725540082774
+        }
+      },
+      {
+        "season": 2025,
+        "chosen": "oc_cont",
+        "challenger": {
+          "games": 773,
+          "accuracy": 0.7192755498059509,
+          "brier": 0.18159163931741476,
+          "log_loss": 0.5370226826680049,
+          "mean_confidence": 0.7366173284943593
+        },
+        "v1": {
+          "games": 773,
+          "accuracy": 0.7166882276843467,
+          "brier": 0.1815302747758872,
+          "log_loss": 0.5368692909224678,
+          "mean_confidence": 0.7362169089469457
+        }
+      }
+    ],
+    "challenger": {
+      "games": 3755,
+      "accuracy": 0.7155792276964048,
+      "brier": 0.18303575395973473,
+      "log_loss": 0.5427382443822455,
+      "mean_confidence": 0.7412446162658152
+    },
+    "v1": {
+      "games": 3755,
+      "accuracy": 0.7153129161118509,
+      "brier": 0.18301075793052918,
+      "log_loss": 0.5426584692835864,
+      "mean_confidence": 0.741227745719374
+    }
+  }
+}
