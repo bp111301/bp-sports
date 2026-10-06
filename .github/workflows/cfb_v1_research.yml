@@ -37,6 +37,8 @@ jobs:
         run: python research/cfb/experiment_candidates.py
       - name: Run CFB calibration experiment
         run: python research/cfb/experiment_calibration.py
+      - name: Run CFB dynamic prior experiment
+        run: python research/cfb/experiment_priors.py
       - name: Commit research results
         run: |
           git config user.name "bp-sports-bot"
