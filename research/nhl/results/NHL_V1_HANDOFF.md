@@ -65,8 +65,9 @@ was already present; it does not establish the underlying cause of deterioration
 
 ## Next development step
 
-Audit source consistency, feature coverage and development-season stability
-before proposing another model version. Do not modify V1 or select another
+The source audit and bounded V2 comparisons are complete. See
+`research/nhl/v2/HANDOFF.md` for results and the separate locked experimental
+pregame watchlist. No alternative passed the development promotion gate. Do not modify V1 or select another
 candidate using 2025–26. A future version needs a newly documented development
 boundary and genuinely later/prospective validation; this failed season cannot
 serve repeatedly as independent confirmation. CFB V1 and Candidate B remain
