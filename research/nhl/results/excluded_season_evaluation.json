@@ -1,0 +1,151 @@
+{
+  "version": "NHL_V1",
+  "evaluation_season": "20252026",
+  "leader": {
+    "games": 1312,
+    "accuracy": 0.5342987804878049,
+    "brier": 0.24942146417973904,
+    "log_loss": 0.6920448564747071
+  },
+  "baseline": {
+    "games": 1312,
+    "accuracy": 0.5342987804878049,
+    "brier": 0.2485433128180474,
+    "log_loss": 0.690426581208789
+  },
+  "eligible_for_prospective_shadow": false,
+  "by_month": [
+    {
+      "month": "2025-10",
+      "games": 180,
+      "accuracy": 0.5333333333333333,
+      "brier": 0.2519309471848133,
+      "log_loss": 0.6960677261793324
+    },
+    {
+      "month": "2025-11",
+      "games": 225,
+      "accuracy": 0.5244444444444445,
+      "brier": 0.2530706840796047,
+      "log_loss": 0.6995987750851682
+    },
+    {
+      "month": "2025-12",
+      "games": 226,
+      "accuracy": 0.49557522123893805,
+      "brier": 0.2533195292461259,
+      "log_loss": 0.6998827078637749
+    },
+    {
+      "month": "2026-01",
+      "games": 240,
+      "accuracy": 0.5333333333333333,
+      "brier": 0.25228007691770316,
+      "log_loss": 0.6984096461123023
+    },
+    {
+      "month": "2026-02",
+      "games": 74,
+      "accuracy": 0.6621621621621622,
+      "brier": 0.22298739970814532,
+      "log_loss": 0.6380497002246612
+    },
+    {
+      "month": "2026-03",
+      "games": 242,
+      "accuracy": 0.5330578512396694,
+      "brier": 0.25239440749948827,
+      "log_loss": 0.6987562684222542
+    },
+    {
+      "month": "2026-04",
+      "games": 125,
+      "accuracy": 0.552,
+      "brier": 0.2365963226359043,
+      "log_loss": 0.6652354781551757
+    }
+  ],
+  "confidence_buckets": [
+    {
+      "bucket": "50%\u201355%",
+      "games": 440,
+      "wins": 221,
+      "mean_predicted": 0.5251506933872375,
+      "actual_win_rate": 0.5022727272727273,
+      "wilson_low": 0.4557364922700334,
+      "wilson_high": 0.5487696198204062
+    },
+    {
+      "bucket": "55%\u201360%",
+      "games": 374,
+      "wins": 187,
+      "mean_predicted": 0.5726908975261558,
+      "actual_win_rate": 0.5,
+      "wilson_low": 0.4495836744849232,
+      "wilson_high": 0.5504163255150768
+    },
+    {
+      "bucket": "60%\u201365%",
+      "games": 253,
+      "wins": 139,
+      "mean_predicted": 0.6230200709770961,
+      "actual_win_rate": 0.549407114624506,
+      "wilson_low": 0.487813345801114,
+      "wilson_high": 0.6095229112538181
+    },
+    {
+      "bucket": "65%\u201370%",
+      "games": 154,
+      "wins": 91,
+      "mean_predicted": 0.6706569058360201,
+      "actual_win_rate": 0.5909090909090909,
+      "wilson_low": 0.5119610397730553,
+      "wilson_high": 0.6654319922286477
+    },
+    {
+      "bucket": "70%\u201375%",
+      "games": 67,
+      "wins": 44,
+      "mean_predicted": 0.7225335978187056,
+      "actual_win_rate": 0.6567164179104478,
+      "wilson_low": 0.5373244120046358,
+      "wilson_high": 0.7591115804066028
+    },
+    {
+      "bucket": "75%\u201380%",
+      "games": 18,
+      "wins": 14,
+      "mean_predicted": 0.7719394065863435,
+      "actual_win_rate": 0.7777777777777778,
+      "wilson_low": 0.5478497354769452,
+      "wilson_high": 0.90999218086618
+    },
+    {
+      "bucket": "80%\u201390%",
+      "games": 5,
+      "wins": 4,
+      "mean_predicted": 0.8173160242667235,
+      "actual_win_rate": 0.8,
+      "wilson_low": 0.3755282641185388,
+      "wilson_high": 0.9637768390302125
+    },
+    {
+      "bucket": "90%\u2013100%",
+      "games": 1,
+      "wins": 1,
+      "mean_predicted": 0.9493895540470246,
+      "actual_win_rate": 1.0,
+      "wilson_low": 0.20654329147389294,
+      "wilson_high": 1.0
+    }
+  ],
+  "frozen_bundle_sha256": "7726657ebd9858749034d69f2d1fa078652d6d8c1d182a6fd51b20ded3c93005",
+  "config_sha256": "fb57358ffcbd7e17730991b5b59c1a285ddbbc44cc228dcf5e18a06677055136",
+  "evaluation_source_sha256": {
+    "runtime/nhl/excluded_evaluation_games/nhl_games_20252026.csv": "e925811af96934a9b4a84a3ae0cc3d769a6c1452f7ab59a61d583888a285d8ab",
+    "runtime/nhl/excluded_evaluation_team_stats/penaltykill_20252026.csv": "b8fafae92826032e0a6693b4d8ce43b40ab9aacf1f0b0ff1bf24294e6cc3441a",
+    "runtime/nhl/excluded_evaluation_team_stats/powerplay_20252026.csv": "f3f405d474eee1f9aca0750fb5e29cda5211402d9c0011ec0fafb7aa74545c30",
+    "runtime/nhl/excluded_evaluation_team_stats/summary_20252026.csv": "7dbb8fe039b838feab508bf7d680cb3392a949983cf6adb429149454a44e5047"
+  },
+  "interpretation": "Excluded from candidate selection; baseline-only results were previously viewed. No tuning, calibration refit or classifier refit on excluded-season labels. Prior completed evaluation games update rolling features only."
+}
