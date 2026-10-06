@@ -1,0 +1,118 @@
+{
+  "selection_window": "2018-2025",
+  "2026_touched": false,
+  "timing_status": "requires point-in-time audit before promotion",
+  "coverage": {
+    "roster_n": 1.0,
+    "transfers_in_n": 1.0,
+    "transfers_out_n": 1.0,
+    "portal_share": 1.0,
+    "transfer_talent_in": 1.0,
+    "transfer_talent_out": 1.0,
+    "net_transfer_talent": 1.0
+  },
+  "ranking": [
+    "portal_prior",
+    "portal_context",
+    "portal_both",
+    "v1"
+  ],
+  "candidates": {
+    "v1": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.727367870225013,
+        "brier": 0.17733777180061297,
+        "log_loss": 0.5280438284465833,
+        "mean_confidence": 0.7452971073573846
+      },
+      "recent_2023_2025": {
+        "games": 2287,
+        "accuracy": 0.7210319195452558,
+        "brier": 0.18010468286336964,
+        "log_loss": 0.5337575371344266,
+        "mean_confidence": 0.7367781893177257
+      },
+      "weeks_1_3": {
+        "games": 1079,
+        "accuracy": 0.7479147358665431,
+        "brier": 0.16526209831709343,
+        "log_loss": 0.4946970097193912,
+        "mean_confidence": 0.7681363958217375
+      },
+      "delta_brier": 0.0
+    },
+    "portal_context": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7282400139542997,
+        "brier": 0.17687888195122498,
+        "log_loss": 0.5267717966435581,
+        "mean_confidence": 0.7445953312273653
+      },
+      "recent_2023_2025": {
+        "games": 2287,
+        "accuracy": 0.7210319195452558,
+        "brier": 0.17966798978182447,
+        "log_loss": 0.5324455489183403,
+        "mean_confidence": 0.7354885651156665
+      },
+      "weeks_1_3": {
+        "games": 1079,
+        "accuracy": 0.7460611677479148,
+        "brier": 0.1638328346977301,
+        "log_loss": 0.49072959558616636,
+        "mean_confidence": 0.7682545709225513
+      },
+      "delta_brier": -0.0004588898493879945
+    },
+    "portal_prior": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7306820163963021,
+        "brier": 0.17669512700553902,
+        "log_loss": 0.5263252164235033,
+        "mean_confidence": 0.7445425406683376
+      },
+      "recent_2023_2025": {
+        "games": 2287,
+        "accuracy": 0.7236554438128553,
+        "brier": 0.17944841595388822,
+        "log_loss": 0.5318548871813222,
+        "mean_confidence": 0.7343893308256955
+      },
+      "weeks_1_3": {
+        "games": 1079,
+        "accuracy": 0.7506950880444856,
+        "brier": 0.16190201052778197,
+        "log_loss": 0.4858217975596637,
+        "mean_confidence": 0.7700483048421327
+      },
+      "delta_brier": -0.0006426447950739489
+    },
+    "portal_both": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7299843014128728,
+        "brier": 0.1770398999484569,
+        "log_loss": 0.5272192740439461,
+        "mean_confidence": 0.7452677002065572
+      },
+      "recent_2023_2025": {
+        "games": 2287,
+        "accuracy": 0.7223436816790555,
+        "brier": 0.17970092970335683,
+        "log_loss": 0.5325847171143383,
+        "mean_confidence": 0.7343317849921108
+      },
+      "weeks_1_3": {
+        "games": 1079,
+        "accuracy": 0.7506950880444856,
+        "brier": 0.1612423835587939,
+        "log_loss": 0.48431264451607015,
+        "mean_confidence": 0.7712184573719043
+      },
+      "delta_brier": -0.00029787185215607304
+    }
+  }
+}
