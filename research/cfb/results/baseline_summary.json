@@ -1,0 +1,230 @@
+{
+  "data": {
+    "seasons": [
+      2015,
+      2026
+    ],
+    "completed_games": 8186
+  },
+  "candidates": {
+    "elo_only": {
+      "features": [
+        "elo_diff",
+        "home_field"
+      ],
+      "overall": {
+        "games": 6004,
+        "accuracy": 0.7233510992671552,
+        "brier": 0.18231582133320112,
+        "log_loss": 0.5403647626913681,
+        "mean_confidence": 0.7250404064106581
+      },
+      "calibration": [
+        {
+          "bucket": "50%-55%",
+          "games": 708,
+          "mean_confidence": 0.5241577115774856,
+          "accuracy": 0.5522598870056498
+        },
+        {
+          "bucket": "55%-60%",
+          "games": 660,
+          "mean_confidence": 0.5756983817590305,
+          "accuracy": 0.5606060606060606
+        },
+        {
+          "bucket": "60%-65%",
+          "games": 686,
+          "mean_confidence": 0.6244468767311361,
+          "accuracy": 0.6034985422740525
+        },
+        {
+          "bucket": "65%-70%",
+          "games": 675,
+          "mean_confidence": 0.674907260784671,
+          "accuracy": 0.6666666666666666
+        },
+        {
+          "bucket": "70%-80%",
+          "games": 1305,
+          "mean_confidence": 0.7497820981378019,
+          "accuracy": 0.7448275862068966
+        },
+        {
+          "bucket": "80%-90%",
+          "games": 1210,
+          "mean_confidence": 0.8481257848029904,
+          "accuracy": 0.8578512396694215
+        },
+        {
+          "bucket": "90%-100%",
+          "games": 760,
+          "mean_confidence": 0.9387463318198807,
+          "accuracy": 0.9315789473684211
+        }
+      ]
+    },
+    "efficiency": {
+      "features": [
+        "elo_diff",
+        "home_field",
+        "conference_game",
+        "off_epa_diff",
+        "def_epa_diff",
+        "off_pass_epa_diff",
+        "def_pass_epa_diff",
+        "off_rush_epa_diff",
+        "def_rush_epa_diff",
+        "off_success_rate_diff",
+        "def_success_rate_diff",
+        "off_early_success_rate_diff",
+        "def_early_success_rate_diff",
+        "off_pass_success_rate_diff",
+        "def_pass_success_rate_diff",
+        "off_rush_success_rate_diff",
+        "def_rush_success_rate_diff",
+        "off_pts_per_scoring_opp_diff",
+        "def_pts_per_scoring_opp_diff",
+        "opp_elo_avg_diff",
+        "prev_off_epa_diff",
+        "prev_def_epa_diff",
+        "prev_off_success_rate_diff",
+        "prev_def_success_rate_diff"
+      ],
+      "overall": {
+        "games": 6004,
+        "accuracy": 0.7253497668221186,
+        "brier": 0.17993043854661783,
+        "log_loss": 0.5347332496455438,
+        "mean_confidence": 0.7346130219653646
+      },
+      "calibration": [
+        {
+          "bucket": "50%-55%",
+          "games": 642,
+          "mean_confidence": 0.524802281734064,
+          "accuracy": 0.5202492211838006
+        },
+        {
+          "bucket": "55%-60%",
+          "games": 645,
+          "mean_confidence": 0.5752370232286408,
+          "accuracy": 0.5596899224806201
+        },
+        {
+          "bucket": "60%-65%",
+          "games": 655,
+          "mean_confidence": 0.6258210548102998,
+          "accuracy": 0.6106870229007634
+        },
+        {
+          "bucket": "65%-70%",
+          "games": 649,
+          "mean_confidence": 0.6745034312743107,
+          "accuracy": 0.6702619414483821
+        },
+        {
+          "bucket": "70%-80%",
+          "games": 1287,
+          "mean_confidence": 0.7496204204715259,
+          "accuracy": 0.7358197358197358
+        },
+        {
+          "bucket": "80%-90%",
+          "games": 1232,
+          "mean_confidence": 0.8506752566135664,
+          "accuracy": 0.8409090909090909
+        },
+        {
+          "bucket": "90%-100%",
+          "games": 894,
+          "mean_confidence": 0.942065686724569,
+          "accuracy": 0.941834451901566
+        }
+      ]
+    },
+    "cfb_context": {
+      "features": [
+        "elo_diff",
+        "home_field",
+        "conference_game",
+        "off_epa_diff",
+        "def_epa_diff",
+        "off_pass_epa_diff",
+        "def_pass_epa_diff",
+        "off_rush_epa_diff",
+        "def_rush_epa_diff",
+        "off_success_rate_diff",
+        "def_success_rate_diff",
+        "off_early_success_rate_diff",
+        "def_early_success_rate_diff",
+        "off_pass_success_rate_diff",
+        "def_pass_success_rate_diff",
+        "off_rush_success_rate_diff",
+        "def_rush_success_rate_diff",
+        "off_pts_per_scoring_opp_diff",
+        "def_pts_per_scoring_opp_diff",
+        "opp_elo_avg_diff",
+        "prev_off_epa_diff",
+        "prev_def_epa_diff",
+        "prev_off_success_rate_diff",
+        "prev_def_success_rate_diff",
+        "talent_diff",
+        "weighted_talent_diff",
+        "returning_prod_diff",
+        "hc_tenure_diff"
+      ],
+      "overall": {
+        "games": 6004,
+        "accuracy": 0.7286808794137242,
+        "brier": 0.17701833147055474,
+        "log_loss": 0.527185765849676,
+        "mean_confidence": 0.7447013869815596
+      },
+      "calibration": [
+        {
+          "bucket": "50%-55%",
+          "games": 608,
+          "mean_confidence": 0.5246969145192373,
+          "accuracy": 0.49506578947368424
+        },
+        {
+          "bucket": "55%-60%",
+          "games": 631,
+          "mean_confidence": 0.5748550300044074,
+          "accuracy": 0.5705229793977813
+        },
+        {
+          "bucket": "60%-65%",
+          "games": 588,
+          "mean_confidence": 0.6252471520669748,
+          "accuracy": 0.6054421768707483
+        },
+        {
+          "bucket": "65%-70%",
+          "games": 610,
+          "mean_confidence": 0.6764186775953588,
+          "accuracy": 0.6491803278688525
+        },
+        {
+          "bucket": "70%-80%",
+          "games": 1297,
+          "mean_confidence": 0.7510343047735017,
+          "accuracy": 0.7324595219737856
+        },
+        {
+          "bucket": "80%-90%",
+          "games": 1178,
+          "mean_confidence": 0.8512841660164906,
+          "accuracy": 0.8370118845500849
+        },
+        {
+          "bucket": "90%-100%",
+          "games": 1092,
+          "mean_confidence": 0.945304871675456,
+          "accuracy": 0.9395604395604396
+        }
+      ]
+    }
+  }
+}

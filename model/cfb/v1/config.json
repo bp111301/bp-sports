@@ -1,0 +1,32 @@
+{
+  "sport": "cfb",
+  "version": "CFB_V1",
+  "frozen_at_utc": "2026-10-06T03:22:19Z",
+  "scope": "FBS-vs-FBS non-bowl",
+  "development_window": "2018-2025 expanding-window",
+  "ensemble": {
+    "context_weight": 0.25,
+    "dynamic_prior_weight": 0.75,
+    "prior_transition_weeks": 7
+  },
+  "estimator": {
+    "family": "logistic_regression",
+    "C": 0.5,
+    "imputer": "median_with_missing_indicator",
+    "scaler": "standard"
+  },
+  "market_used_for_pick": false,
+  "retrospective_qb_fields_used": false,
+  "development_metrics": {
+    "games": 5733,
+    "accuracy": 0.727367870225013,
+    "brier": 0.17733777180061377,
+    "log_loss": 0.5280438284465853
+  },
+  "rules": [
+    "2026 cannot change CFB V1",
+    "no post-kickoff ledger insertion",
+    "existing snapshots immutable",
+    "model changes require CFB V2"
+  ]
+}

@@ -1,0 +1,54 @@
+name: Update CFB predictions
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 13,14 * 1,8-12 *"
+
+concurrency:
+  group: cfb-production-update
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Gate scheduled run to 8 AM Central
+        if: github.event_name == 'schedule'
+        run: |
+          HOUR=$(TZ=America/Chicago date +%H)
+          if [ "$HOUR" != "08" ]; then
+            echo "Not 8 AM Central; exiting cleanly."
+            exit 0
+          fi
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas numpy scikit-learn joblib pytest
+      - name: Refresh current CFB sources
+        run: |
+          python research/cfb/download_matchup_lines.py 2026
+          python research/cfb/download_schedule.py 2026
+      - name: Validate frozen CFB guardrails
+        run: pytest -q tests/test_cfb_research.py
+      - name: Settle completed snapshots
+        run: python research/cfb/settle_predictions.py
+      - name: Build current frozen CFB V1 slate
+        run: python research/cfb/build_live_predictions.py
+      - name: Commit CFB feed and ledger
+        run: |
+          git config user.name "bp-sports-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/cfb/
+          if git diff --cached --quiet; then
+            echo "No CFB data changes"
+          else
+            git commit -m "Update frozen CFB V1 predictions"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi

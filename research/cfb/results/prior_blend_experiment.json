@@ -1,0 +1,97 @@
+{
+  "selection_window": "2018-2025",
+  "candidates": {
+    "context_raw": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7266701552415838,
+        "brier": 0.17796908753970025,
+        "log_loss": 0.5294069525452534,
+        "mean_confidence": 0.7442422990225938
+      }
+    },
+    "blend_add_k3": {
+      "k": 3.0,
+      "mode": "add",
+      "n_features": 36,
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.725100296528868,
+        "brier": 0.17812548301069037,
+        "log_loss": 0.5302145734778196,
+        "mean_confidence": 0.7478612672151992
+      }
+    },
+    "blend_replace_k3": {
+      "k": 3.0,
+      "mode": "replace",
+      "n_features": 24,
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7275422989708704,
+        "brier": 0.17763792256283795,
+        "log_loss": 0.5289388923204933,
+        "mean_confidence": 0.746262801963393
+      }
+    },
+    "blend_add_k5": {
+      "k": 5.0,
+      "mode": "add",
+      "n_features": 36,
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7252747252747253,
+        "brier": 0.1781693417208855,
+        "log_loss": 0.5302927886612088,
+        "mean_confidence": 0.747869780782027
+      }
+    },
+    "blend_replace_k5": {
+      "k": 5.0,
+      "mode": "replace",
+      "n_features": 24,
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7259724402581545,
+        "brier": 0.177519441577603,
+        "log_loss": 0.5285921658888565,
+        "mean_confidence": 0.7463317561456085
+      }
+    },
+    "blend_add_k7": {
+      "k": 7.0,
+      "mode": "add",
+      "n_features": 36,
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7254491540205826,
+        "brier": 0.1781372620559862,
+        "log_loss": 0.5303289046872425,
+        "mean_confidence": 0.747563572468622
+      }
+    },
+    "blend_replace_k7": {
+      "k": 7.0,
+      "mode": "replace",
+      "n_features": 24,
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7282400139542997,
+        "brier": 0.17746669339694357,
+        "log_loss": 0.5285509937555558,
+        "mean_confidence": 0.7461449072327291
+      }
+    }
+  },
+  "2026_touched": false,
+  "ranking": [
+    "blend_replace_k7",
+    "blend_replace_k5",
+    "blend_replace_k3",
+    "context_raw",
+    "blend_add_k3",
+    "blend_add_k7",
+    "blend_add_k5"
+  ],
+  "leader": "blend_replace_k7"
+}

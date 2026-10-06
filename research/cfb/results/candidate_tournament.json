@@ -1,0 +1,874 @@
+{
+  "selection_window": "2018-2025 expanding-window; train only on prior seasons",
+  "holdout_2026_touched": false,
+  "candidates": {
+    "linear_context_c050": {
+      "spec": {
+        "family": "logistic",
+        "C": 0.5
+      },
+      "n_features": 28,
+      "features": [
+        "elo_diff",
+        "home_field",
+        "conference_game",
+        "off_epa_diff",
+        "def_epa_diff",
+        "off_pass_epa_diff",
+        "def_pass_epa_diff",
+        "off_rush_epa_diff",
+        "def_rush_epa_diff",
+        "off_success_rate_diff",
+        "def_success_rate_diff",
+        "off_early_success_rate_diff",
+        "def_early_success_rate_diff",
+        "off_pass_success_rate_diff",
+        "def_pass_success_rate_diff",
+        "off_rush_success_rate_diff",
+        "def_rush_success_rate_diff",
+        "off_pts_per_scoring_opp_diff",
+        "def_pts_per_scoring_opp_diff",
+        "opp_elo_avg_diff",
+        "prev_off_epa_diff",
+        "prev_def_epa_diff",
+        "prev_off_success_rate_diff",
+        "prev_def_success_rate_diff",
+        "talent_diff",
+        "weighted_talent_diff",
+        "returning_prod_diff",
+        "hc_tenure_diff"
+      ],
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7266701552415838,
+        "brier": 0.17796908753970025,
+        "log_loss": 0.5294069525452534,
+        "mean_confidence": 0.7442422990225938
+      },
+      "calibration": [
+        {
+          "bucket": "50%-55%",
+          "games": 583,
+          "mean_confidence": 0.5246282713239618,
+          "accuracy": 0.4888507718696398
+        },
+        {
+          "bucket": "55%-60%",
+          "games": 595,
+          "mean_confidence": 0.5747435059618062,
+          "accuracy": 0.5747899159663865
+        },
+        {
+          "bucket": "60%-65%",
+          "games": 572,
+          "mean_confidence": 0.6251287063097014,
+          "accuracy": 0.6031468531468531
+        },
+        {
+          "bucket": "65%-70%",
+          "games": 584,
+          "mean_confidence": 0.6762695839395678,
+          "accuracy": 0.6472602739726028
+        },
+        {
+          "bucket": "70%-80%",
+          "games": 1245,
+          "mean_confidence": 0.7512983803603017,
+          "accuracy": 0.7301204819277108
+        },
+        {
+          "bucket": "80%-90%",
+          "games": 1118,
+          "mean_confidence": 0.8512231131992107,
+          "accuracy": 0.8354203935599285
+        },
+        {
+          "bucket": "90%-100%",
+          "games": 1036,
+          "mean_confidence": 0.9453295858419266,
+          "accuracy": 0.9391891891891891
+        }
+      ]
+    },
+    "linear_full_c005": {
+      "spec": {
+        "family": "logistic",
+        "C": 0.05
+      },
+      "n_features": 36,
+      "features": [
+        "elo_diff",
+        "home_field",
+        "conference_game",
+        "off_epa_diff",
+        "def_epa_diff",
+        "off_pass_epa_diff",
+        "def_pass_epa_diff",
+        "off_rush_epa_diff",
+        "def_rush_epa_diff",
+        "off_wepa_diff",
+        "def_wepa_diff",
+        "off_success_rate_diff",
+        "def_success_rate_diff",
+        "off_early_success_rate_diff",
+        "def_early_success_rate_diff",
+        "off_pass_success_rate_diff",
+        "def_pass_success_rate_diff",
+        "off_rush_success_rate_diff",
+        "def_rush_success_rate_diff",
+        "off_pts_per_scoring_opp_diff",
+        "def_pts_per_scoring_opp_diff",
+        "off_starting_fp_diff",
+        "def_starting_fp_diff",
+        "prev_off_epa_diff",
+        "prev_def_epa_diff",
+        "prev_off_pass_epa_diff",
+        "prev_def_pass_epa_diff",
+        "prev_off_rush_epa_diff",
+        "prev_def_rush_epa_diff",
+        "prev_off_success_rate_diff",
+        "prev_def_success_rate_diff",
+        "opp_elo_avg_diff",
+        "talent_diff",
+        "weighted_talent_diff",
+        "returning_prod_diff",
+        "hc_tenure_diff"
+      ],
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.728414442700157,
+        "brier": 0.17808519249287846,
+        "log_loss": 0.529441010253405,
+        "mean_confidence": 0.7404869754169386
+      },
+      "calibration": [
+        {
+          "bucket": "50%-55%",
+          "games": 601,
+          "mean_confidence": 0.5238799083189208,
+          "accuracy": 0.519134775374376
+        },
+        {
+          "bucket": "55%-60%",
+          "games": 597,
+          "mean_confidence": 0.5750769696281017,
+          "accuracy": 0.5628140703517588
+        },
+        {
+          "bucket": "60%-65%",
+          "games": 590,
+          "mean_confidence": 0.6255207184993422,
+          "accuracy": 0.5864406779661017
+        },
+        {
+          "bucket": "65%-70%",
+          "games": 601,
+          "mean_confidence": 0.6765241346887075,
+          "accuracy": 0.6638935108153078
+        },
+        {
+          "bucket": "70%-80%",
+          "games": 1255,
+          "mean_confidence": 0.7511259579074445,
+          "accuracy": 0.7450199203187251
+        },
+        {
+          "bucket": "80%-90%",
+          "games": 1102,
+          "mean_confidence": 0.8501755326211088,
+          "accuracy": 0.8357531760435571
+        },
+        {
+          "bucket": "90%-100%",
+          "games": 987,
+          "mean_confidence": 0.944107711563152,
+          "accuracy": 0.939209726443769
+        }
+      ]
+    },
+    "linear_full_c01": {
+      "spec": {
+        "family": "logistic",
+        "C": 0.1
+      },
+      "n_features": 36,
+      "features": [
+        "elo_diff",
+        "home_field",
+        "conference_game",
+        "off_epa_diff",
+        "def_epa_diff",
+        "off_pass_epa_diff",
+        "def_pass_epa_diff",
+        "off_rush_epa_diff",
+        "def_rush_epa_diff",
+        "off_wepa_diff",
+        "def_wepa_diff",
+        "off_success_rate_diff",
+        "def_success_rate_diff",
+        "off_early_success_rate_diff",
+        "def_early_success_rate_diff",
+        "off_pass_success_rate_diff",
+        "def_pass_success_rate_diff",
+        "off_rush_success_rate_diff",
+        "def_rush_success_rate_diff",
+        "off_pts_per_scoring_opp_diff",
+        "def_pts_per_scoring_opp_diff",
+        "off_starting_fp_diff",
+        "def_starting_fp_diff",
+        "prev_off_epa_diff",
+        "prev_def_epa_diff",
+        "prev_off_pass_epa_diff",
+        "prev_def_pass_epa_diff",
+        "prev_off_rush_epa_diff",
+        "prev_def_rush_epa_diff",
+        "prev_off_success_rate_diff",
+        "prev_def_success_rate_diff",
+        "opp_elo_avg_diff",
+        "talent_diff",
+        "weighted_talent_diff",
+        "returning_prod_diff",
+        "hc_tenure_diff"
+      ],
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7282400139542997,
+        "brier": 0.17822784234082548,
+        "log_loss": 0.529844438025054,
+        "mean_confidence": 0.7425429902799731
+      },
+      "calibration": [
+        {
+          "bucket": "50%-55%",
+          "games": 595,
+          "mean_confidence": 0.5241479592309187,
+          "accuracy": 0.5226890756302521
+        },
+        {
+          "bucket": "55%-60%",
+          "games": 583,
+          "mean_confidence": 0.5750083862303514,
+          "accuracy": 0.5540308747855918
+        },
+        {
+          "bucket": "60%-65%",
+          "games": 579,
+          "mean_confidence": 0.6251045061196173,
+          "accuracy": 0.5906735751295337
+        },
+        {
+          "bucket": "65%-70%",
+          "games": 587,
+          "mean_confidence": 0.675393982017557,
+          "accuracy": 0.6626916524701874
+        },
+        {
+          "bucket": "70%-80%",
+          "games": 1261,
+          "mean_confidence": 0.7505461090276808,
+          "accuracy": 0.739095955590801
+        },
+        {
+          "bucket": "80%-90%",
+          "games": 1114,
+          "mean_confidence": 0.8502312703307984,
+          "accuracy": 0.8330341113105925
+        },
+        {
+          "bucket": "90%-100%",
+          "games": 1014,
+          "mean_confidence": 0.9446873601976485,
+          "accuracy": 0.9368836291913215
+        }
+      ]
+    },
+    "linear_full_c025": {
+      "spec": {
+        "family": "logistic",
+        "C": 0.25
+      },
+      "n_features": 36,
+      "features": [
+        "elo_diff",
+        "home_field",
+        "conference_game",
+        "off_epa_diff",
+        "def_epa_diff",
+        "off_pass_epa_diff",
+        "def_pass_epa_diff",
+        "off_rush_epa_diff",
+        "def_rush_epa_diff",
+        "off_wepa_diff",
+        "def_wepa_diff",
+        "off_success_rate_diff",
+        "def_success_rate_diff",
+        "off_early_success_rate_diff",
+        "def_early_success_rate_diff",
+        "off_pass_success_rate_diff",
+        "def_pass_success_rate_diff",
+        "off_rush_success_rate_diff",
+        "def_rush_success_rate_diff",
+        "off_pts_per_scoring_opp_diff",
+        "def_pts_per_scoring_opp_diff",
+        "off_starting_fp_diff",
+        "def_starting_fp_diff",
+        "prev_off_epa_diff",
+        "prev_def_epa_diff",
+        "prev_off_pass_epa_diff",
+        "prev_def_pass_epa_diff",
+        "prev_off_rush_epa_diff",
+        "prev_def_rush_epa_diff",
+        "prev_off_success_rate_diff",
+        "prev_def_success_rate_diff",
+        "opp_elo_avg_diff",
+        "talent_diff",
+        "weighted_talent_diff",
+        "returning_prod_diff",
+        "hc_tenure_diff"
+      ],
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.728414442700157,
+        "brier": 0.178476003346844,
+        "log_loss": 0.5306400765279025,
+        "mean_confidence": 0.7441774614560919
+      },
+      "calibration": [
+        {
+          "bucket": "50%-55%",
+          "games": 595,
+          "mean_confidence": 0.5245732671344296,
+          "accuracy": 0.5310924369747899
+        },
+        {
+          "bucket": "55%-60%",
+          "games": 571,
+          "mean_confidence": 0.5749702472682654,
+          "accuracy": 0.5516637478108581
+        },
+        {
+          "bucket": "60%-65%",
+          "games": 578,
+          "mean_confidence": 0.6259352327657183,
+          "accuracy": 0.583044982698962
+        },
+        {
+          "bucket": "65%-70%",
+          "games": 583,
+          "mean_confidence": 0.6753339826717394,
+          "accuracy": 0.6689536878216124
+        },
+        {
+          "bucket": "70%-80%",
+          "games": 1244,
+          "mean_confidence": 0.7506965445860166,
+          "accuracy": 0.7323151125401929
+        },
+        {
+          "bucket": "80%-90%",
+          "games": 1127,
+          "mean_confidence": 0.8502806013948055,
+          "accuracy": 0.8367346938775511
+        },
+        {
+          "bucket": "90%-100%",
+          "games": 1035,
+          "mean_confidence": 0.9452147494873919,
+          "accuracy": 0.9314009661835749
+        }
+      ]
+    },
+    "linear_full_c05": {
+      "spec": {
+        "family": "logistic",
+        "C": 0.5
+      },
+      "n_features": 36,
+      "features": [
+        "elo_diff",
+        "home_field",
+        "conference_game",
+        "off_epa_diff",
+        "def_epa_diff",
+        "off_pass_epa_diff",
+        "def_pass_epa_diff",
+        "off_rush_epa_diff",
+        "def_rush_epa_diff",
+        "off_wepa_diff",
+        "def_wepa_diff",
+        "off_success_rate_diff",
+        "def_success_rate_diff",
+        "off_early_success_rate_diff",
+        "def_early_success_rate_diff",
+        "off_pass_success_rate_diff",
+        "def_pass_success_rate_diff",
+        "off_rush_success_rate_diff",
+        "def_rush_success_rate_diff",
+        "off_pts_per_scoring_opp_diff",
+        "def_pts_per_scoring_opp_diff",
+        "off_starting_fp_diff",
+        "def_starting_fp_diff",
+        "prev_off_epa_diff",
+        "prev_def_epa_diff",
+        "prev_off_pass_epa_diff",
+        "prev_def_pass_epa_diff",
+        "prev_off_rush_epa_diff",
+        "prev_def_rush_epa_diff",
+        "prev_off_success_rate_diff",
+        "prev_def_success_rate_diff",
+        "opp_elo_avg_diff",
+        "talent_diff",
+        "weighted_talent_diff",
+        "returning_prod_diff",
+        "hc_tenure_diff"
+      ],
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7280655852084423,
+        "brier": 0.17861591546666103,
+        "log_loss": 0.5311151395629997,
+        "mean_confidence": 0.7448436628198778
+      },
+      "calibration": [
+        {
+          "bucket": "50%-55%",
+          "games": 594,
+          "mean_confidence": 0.524578952998346,
+          "accuracy": 0.531986531986532
+        },
+        {
+          "bucket": "55%-60%",
+          "games": 568,
+          "mean_confidence": 0.5748665125995391,
+          "accuracy": 0.545774647887324
+        },
+        {
+          "bucket": "60%-65%",
+          "games": 574,
+          "mean_confidence": 0.6261928183496042,
+          "accuracy": 0.5871080139372822
+        },
+        {
+          "bucket": "65%-70%",
+          "games": 591,
+          "mean_confidence": 0.6755246486373399,
+          "accuracy": 0.6632825719120136
+        },
+        {
+          "bucket": "70%-80%",
+          "games": 1231,
+          "mean_confidence": 0.7511082854115331,
+          "accuracy": 0.7327376116978067
+        },
+        {
+          "bucket": "80%-90%",
+          "games": 1126,
+          "mean_confidence": 0.8501293021822451,
+          "accuracy": 0.8365896980461812
+        },
+        {
+          "bucket": "90%-100%",
+          "games": 1049,
+          "mean_confidence": 0.9452192593256985,
+          "accuracy": 0.9294566253574833
+        }
+      ]
+    },
+    "linear_full_c10": {
+      "spec": {
+        "family": "logistic",
+        "C": 1.0
+      },
+      "n_features": 36,
+      "features": [
+        "elo_diff",
+        "home_field",
+        "conference_game",
+        "off_epa_diff",
+        "def_epa_diff",
+        "off_pass_epa_diff",
+        "def_pass_epa_diff",
+        "off_rush_epa_diff",
+        "def_rush_epa_diff",
+        "off_wepa_diff",
+        "def_wepa_diff",
+        "off_success_rate_diff",
+        "def_success_rate_diff",
+        "off_early_success_rate_diff",
+        "def_early_success_rate_diff",
+        "off_pass_success_rate_diff",
+        "def_pass_success_rate_diff",
+        "off_rush_success_rate_diff",
+        "def_rush_success_rate_diff",
+        "off_pts_per_scoring_opp_diff",
+        "def_pts_per_scoring_opp_diff",
+        "off_starting_fp_diff",
+        "def_starting_fp_diff",
+        "prev_off_epa_diff",
+        "prev_def_epa_diff",
+        "prev_off_pass_epa_diff",
+        "prev_def_pass_epa_diff",
+        "prev_off_rush_epa_diff",
+        "prev_def_rush_epa_diff",
+        "prev_off_success_rate_diff",
+        "prev_def_success_rate_diff",
+        "opp_elo_avg_diff",
+        "talent_diff",
+        "weighted_talent_diff",
+        "returning_prod_diff",
+        "hc_tenure_diff"
+      ],
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7277167277167277,
+        "brier": 0.17871132011877292,
+        "log_loss": 0.5314427413674693,
+        "mean_confidence": 0.7451962532392822
+      },
+      "calibration": [
+        {
+          "bucket": "50%-55%",
+          "games": 600,
+          "mean_confidence": 0.524894621576169,
+          "accuracy": 0.5366666666666666
+        },
+        {
+          "bucket": "55%-60%",
+          "games": 564,
+          "mean_confidence": 0.5753348923055378,
+          "accuracy": 0.5372340425531915
+        },
+        {
+          "bucket": "60%-65%",
+          "games": 563,
+          "mean_confidence": 0.626218309628246,
+          "accuracy": 0.5879218472468917
+        },
+        {
+          "bucket": "65%-70%",
+          "games": 595,
+          "mean_confidence": 0.6752805234452749,
+          "accuracy": 0.6655462184873949
+        },
+        {
+          "bucket": "70%-80%",
+          "games": 1232,
+          "mean_confidence": 0.75120144946439,
+          "accuracy": 0.7305194805194806
+        },
+        {
+          "bucket": "80%-90%",
+          "games": 1126,
+          "mean_confidence": 0.850335748456023,
+          "accuracy": 0.8357015985790408
+        },
+        {
+          "bucket": "90%-100%",
+          "games": 1053,
+          "mean_confidence": 0.9453688597744807,
+          "accuracy": 0.929724596391263
+        }
+      ]
+    },
+    "histgb_full_l2_1": {
+      "spec": {
+        "family": "hist_gradient_boosting",
+        "l2": 1.0
+      },
+      "n_features": 36,
+      "features": [
+        "elo_diff",
+        "home_field",
+        "conference_game",
+        "off_epa_diff",
+        "def_epa_diff",
+        "off_pass_epa_diff",
+        "def_pass_epa_diff",
+        "off_rush_epa_diff",
+        "def_rush_epa_diff",
+        "off_wepa_diff",
+        "def_wepa_diff",
+        "off_success_rate_diff",
+        "def_success_rate_diff",
+        "off_early_success_rate_diff",
+        "def_early_success_rate_diff",
+        "off_pass_success_rate_diff",
+        "def_pass_success_rate_diff",
+        "off_rush_success_rate_diff",
+        "def_rush_success_rate_diff",
+        "off_pts_per_scoring_opp_diff",
+        "def_pts_per_scoring_opp_diff",
+        "off_starting_fp_diff",
+        "def_starting_fp_diff",
+        "prev_off_epa_diff",
+        "prev_def_epa_diff",
+        "prev_off_pass_epa_diff",
+        "prev_def_pass_epa_diff",
+        "prev_off_rush_epa_diff",
+        "prev_def_rush_epa_diff",
+        "prev_off_success_rate_diff",
+        "prev_def_success_rate_diff",
+        "opp_elo_avg_diff",
+        "talent_diff",
+        "weighted_talent_diff",
+        "returning_prod_diff",
+        "hc_tenure_diff"
+      ],
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7231815803244375,
+        "brier": 0.1815881785655588,
+        "log_loss": 0.5393959297560026,
+        "mean_confidence": 0.7558047242045172
+      },
+      "calibration": [
+        {
+          "bucket": "50%-55%",
+          "games": 537,
+          "mean_confidence": 0.524877743797063,
+          "accuracy": 0.5009310986964618
+        },
+        {
+          "bucket": "55%-60%",
+          "games": 509,
+          "mean_confidence": 0.5751380594786609,
+          "accuracy": 0.5520628683693517
+        },
+        {
+          "bucket": "60%-65%",
+          "games": 545,
+          "mean_confidence": 0.6248798003659772,
+          "accuracy": 0.5834862385321101
+        },
+        {
+          "bucket": "65%-70%",
+          "games": 531,
+          "mean_confidence": 0.6750250842983724,
+          "accuracy": 0.6610169491525424
+        },
+        {
+          "bucket": "70%-80%",
+          "games": 1212,
+          "mean_confidence": 0.7503177029855268,
+          "accuracy": 0.6988448844884488
+        },
+        {
+          "bucket": "80%-90%",
+          "games": 1255,
+          "mean_confidence": 0.8511696485667813,
+          "accuracy": 0.8183266932270916
+        },
+        {
+          "bucket": "90%-100%",
+          "games": 1144,
+          "mean_confidence": 0.9456495517824934,
+          "accuracy": 0.9204545454545454
+        }
+      ]
+    },
+    "histgb_full_l2_5": {
+      "spec": {
+        "family": "hist_gradient_boosting",
+        "l2": 5.0
+      },
+      "n_features": 36,
+      "features": [
+        "elo_diff",
+        "home_field",
+        "conference_game",
+        "off_epa_diff",
+        "def_epa_diff",
+        "off_pass_epa_diff",
+        "def_pass_epa_diff",
+        "off_rush_epa_diff",
+        "def_rush_epa_diff",
+        "off_wepa_diff",
+        "def_wepa_diff",
+        "off_success_rate_diff",
+        "def_success_rate_diff",
+        "off_early_success_rate_diff",
+        "def_early_success_rate_diff",
+        "off_pass_success_rate_diff",
+        "def_pass_success_rate_diff",
+        "off_rush_success_rate_diff",
+        "def_rush_success_rate_diff",
+        "off_pts_per_scoring_opp_diff",
+        "def_pts_per_scoring_opp_diff",
+        "off_starting_fp_diff",
+        "def_starting_fp_diff",
+        "prev_off_epa_diff",
+        "prev_def_epa_diff",
+        "prev_off_pass_epa_diff",
+        "prev_def_pass_epa_diff",
+        "prev_off_rush_epa_diff",
+        "prev_def_rush_epa_diff",
+        "prev_off_success_rate_diff",
+        "prev_def_success_rate_diff",
+        "opp_elo_avg_diff",
+        "talent_diff",
+        "weighted_talent_diff",
+        "returning_prod_diff",
+        "hc_tenure_diff"
+      ],
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7313797313797313,
+        "brier": 0.1810796963120021,
+        "log_loss": 0.5380362535653945,
+        "mean_confidence": 0.7561322610603093
+      },
+      "calibration": [
+        {
+          "bucket": "50%-55%",
+          "games": 488,
+          "mean_confidence": 0.5252307729463478,
+          "accuracy": 0.5266393442622951
+        },
+        {
+          "bucket": "55%-60%",
+          "games": 530,
+          "mean_confidence": 0.5752209854089402,
+          "accuracy": 0.6150943396226415
+        },
+        {
+          "bucket": "60%-65%",
+          "games": 570,
+          "mean_confidence": 0.6246435564832585,
+          "accuracy": 0.5789473684210527
+        },
+        {
+          "bucket": "65%-70%",
+          "games": 529,
+          "mean_confidence": 0.6756624901997207,
+          "accuracy": 0.6786389413988658
+        },
+        {
+          "bucket": "70%-80%",
+          "games": 1191,
+          "mean_confidence": 0.7506549127824055,
+          "accuracy": 0.691855583543241
+        },
+        {
+          "bucket": "80%-90%",
+          "games": 1309,
+          "mean_confidence": 0.8511233452684682,
+          "accuracy": 0.8158899923605806
+        },
+        {
+          "bucket": "90%-100%",
+          "games": 1116,
+          "mean_confidence": 0.9427453123681169,
+          "accuracy": 0.9220430107526881
+        }
+      ]
+    },
+    "histgb_full_l2_10": {
+      "spec": {
+        "family": "hist_gradient_boosting",
+        "l2": 10.0
+      },
+      "n_features": 36,
+      "features": [
+        "elo_diff",
+        "home_field",
+        "conference_game",
+        "off_epa_diff",
+        "def_epa_diff",
+        "off_pass_epa_diff",
+        "def_pass_epa_diff",
+        "off_rush_epa_diff",
+        "def_rush_epa_diff",
+        "off_wepa_diff",
+        "def_wepa_diff",
+        "off_success_rate_diff",
+        "def_success_rate_diff",
+        "off_early_success_rate_diff",
+        "def_early_success_rate_diff",
+        "off_pass_success_rate_diff",
+        "def_pass_success_rate_diff",
+        "off_rush_success_rate_diff",
+        "def_rush_success_rate_diff",
+        "off_pts_per_scoring_opp_diff",
+        "def_pts_per_scoring_opp_diff",
+        "off_starting_fp_diff",
+        "def_starting_fp_diff",
+        "prev_off_epa_diff",
+        "prev_def_epa_diff",
+        "prev_off_pass_epa_diff",
+        "prev_def_pass_epa_diff",
+        "prev_off_rush_epa_diff",
+        "prev_def_rush_epa_diff",
+        "prev_off_success_rate_diff",
+        "prev_def_success_rate_diff",
+        "opp_elo_avg_diff",
+        "talent_diff",
+        "weighted_talent_diff",
+        "returning_prod_diff",
+        "hc_tenure_diff"
+      ],
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7291121576835863,
+        "brier": 0.18099613672439935,
+        "log_loss": 0.5373997131432545,
+        "mean_confidence": 0.7564780973744974
+      },
+      "calibration": [
+        {
+          "bucket": "50%-55%",
+          "games": 478,
+          "mean_confidence": 0.5260378910846715,
+          "accuracy": 0.5230125523012552
+        },
+        {
+          "bucket": "55%-60%",
+          "games": 523,
+          "mean_confidence": 0.5745888988736604,
+          "accuracy": 0.5678776290630975
+        },
+        {
+          "bucket": "60%-65%",
+          "games": 563,
+          "mean_confidence": 0.6257274737640144,
+          "accuracy": 0.6252220248667851
+        },
+        {
+          "bucket": "65%-70%",
+          "games": 552,
+          "mean_confidence": 0.6754625764633356,
+          "accuracy": 0.6521739130434783
+        },
+        {
+          "bucket": "70%-80%",
+          "games": 1177,
+          "mean_confidence": 0.7510089114423696,
+          "accuracy": 0.6915887850467289
+        },
+        {
+          "bucket": "80%-90%",
+          "games": 1341,
+          "mean_confidence": 0.8517928913525968,
+          "accuracy": 0.8173005219985086
+        },
+        {
+          "bucket": "90%-100%",
+          "games": 1099,
+          "mean_confidence": 0.9404924114560455,
+          "accuracy": 0.9199272065514104
+        }
+      ]
+    }
+  },
+  "ranking": [
+    "linear_context_c050",
+    "linear_full_c005",
+    "linear_full_c01",
+    "linear_full_c025",
+    "linear_full_c05",
+    "linear_full_c10",
+    "histgb_full_l2_10",
+    "histgb_full_l2_5",
+    "histgb_full_l2_1"
+  ],
+  "leader": "linear_context_c050"
+}

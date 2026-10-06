@@ -1,0 +1,74 @@
+{
+  "selection_window": "2018-2025",
+  "method": "Platt calibration uses only prior-season OOF probabilities",
+  "candidates": {
+    "context_raw": {
+      "C": 0.5,
+      "calibration_window_seasons": 0,
+      "n_features": 28,
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7266701552415838,
+        "brier": 0.17796908753970025,
+        "log_loss": 0.5294069525452534,
+        "mean_confidence": 0.7442422990225938
+      }
+    },
+    "context_platt_1": {
+      "C": 0.5,
+      "calibration_window_seasons": 1,
+      "n_features": 28,
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7263212977498692,
+        "brier": 0.17788748961548673,
+        "log_loss": 0.5292864226767638,
+        "mean_confidence": 0.7313741854456406
+      }
+    },
+    "context_platt_3": {
+      "C": 0.5,
+      "calibration_window_seasons": 3,
+      "n_features": 28,
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.728414442700157,
+        "brier": 0.17811834537921392,
+        "log_loss": 0.5304249719433333,
+        "mean_confidence": 0.725690395416177
+      }
+    },
+    "full_c005_raw": {
+      "C": 0.05,
+      "calibration_window_seasons": 0,
+      "n_features": 36,
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.728414442700157,
+        "brier": 0.17808519249287846,
+        "log_loss": 0.529441010253405,
+        "mean_confidence": 0.7404869754169386
+      }
+    },
+    "full_c005_platt_3": {
+      "C": 0.05,
+      "calibration_window_seasons": 3,
+      "n_features": 36,
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.727367870225013,
+        "brier": 0.17825504492042676,
+        "log_loss": 0.5304040904749303,
+        "mean_confidence": 0.7290899483662511
+      }
+    }
+  },
+  "ranking": [
+    "context_platt_1",
+    "context_raw",
+    "full_c005_raw",
+    "context_platt_3",
+    "full_c005_platt_3"
+  ],
+  "leader": "context_platt_1"
+}
