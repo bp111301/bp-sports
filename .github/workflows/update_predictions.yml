@@ -92,4 +92,5 @@ jobs:
           git add bp_week5_website_feed.csv data/current/website_feed.csv data/current/prediction_metadata.json data/ledger/prediction_ledger.csv data/ledger/summary.json
           if git diff --cached --quiet; then echo "No generated changes."; exit 0; fi
           git commit -m "Update frozen V4 predictions"
-          git push
+          git pull --rebase origin main
+          git push origin HEAD:main
