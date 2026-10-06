@@ -26,5 +26,29 @@ class GoalieSafety(unittest.TestCase):
         result = weighted_features(self.d,self.g)
         self.assertTrue((result.iloc[1]==result.iloc[2]).all())
 
+    def test_team_usage_resets_but_player_history_survives_season(self):
+        d = self.d.iloc[[0, 1, 3]].copy()
+        d['season'] = ['20212022', '20222023', '20222023']
+        result = weighted_features(d, self.g)
+        self.assertEqual(result.iloc[1].weighted_goalie_probable_diff, 0.)
+        expected = (57 + PRIOR_SHOTS*PRIOR_SV)/(62+PRIOR_SHOTS)-PRIOR_SV
+        self.assertAlmostEqual(result.iloc[2].weighted_goalie_probable_diff, expected)
+
+    def test_expired_player_samples_revert_to_fixed_prior(self):
+        d = self.d.iloc[[0, 1]].copy()
+        d.loc[d.index[1], 'game_date'] = pd.Timestamp('2023-10-02')
+        result = weighted_features(d, self.g)
+        self.assertEqual(result.iloc[1].weighted_goalie_probable_diff, 0.)
+
+    def test_player_quality_follows_trade_only_after_prior_new_team_start(self):
+        d = self.d.iloc[[0, 1, 3]].copy()
+        d.loc[d.index[1:], 'home_team'] = 'C'
+        g = self.g.copy()
+        g.loc[g.gameId >= 2, 'teamAbbrev'] = 'C'
+        result = weighted_features(d, g)
+        self.assertEqual(result.iloc[1].weighted_goalie_probable_diff, 0.)
+        expected = (57 + PRIOR_SHOTS*PRIOR_SV)/(62+PRIOR_SHOTS)-PRIOR_SV
+        self.assertAlmostEqual(result.iloc[2].weighted_goalie_probable_diff, expected)
+
 if __name__ == '__main__':
     unittest.main()

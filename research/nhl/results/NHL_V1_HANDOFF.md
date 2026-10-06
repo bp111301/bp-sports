@@ -8,7 +8,7 @@ Research branch: `nhl-v1-research`. CFB V1 and Candidate B remain frozen and wer
 
 ## Goalie decision
 
-The initial inferred-starter goalie layer worsened aggregate accuracy and probability scores. A bounded follow-up used shot-weighted player histories, a fixed .905 save percentage / 300-shot prior, prior-start mixtures, and workload/rest. Outcomes update only after all games on a date receive features; player history carries across trades/seasons with a 365-day cutoff. Four synthetic safety tests passed locally and in CI.
+The initial inferred-starter goalie layer worsened aggregate accuracy and probability scores. A bounded follow-up used shot-weighted player histories, a fixed .905 save percentage / 300-shot prior, prior-start mixtures, and workload/rest. Outcomes update only after all games on a date receive features; player history carries across trades/seasons with a 365-day cutoff. Four synthetic safety tests passed locally and in CI. Three additional local tests passed for season resets with player-history retention, player-history expiration, and quality following trades only after a prior new-team start; seven local tests pass in total.
 
 Run: https://github.com/bp111301/bp-sports/actions/runs/37487405792 (success).
 
