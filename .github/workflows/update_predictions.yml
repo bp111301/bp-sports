@@ -1,0 +1,90 @@
+name: Update B.P. Sports predictions
+
+on:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      season:
+        description: NFL season
+        required: true
+        default: "2026"
+      week:
+        description: Optional week override
+        required: false
+        default: ""
+  schedule:
+    - cron: "0 13,14 * 1,2,9-12 0,4"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bp-sports-predictions-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Gate scheduled run to 8 AM Central
+        id: gate
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event_name }}" = "pull_request" ] || [ "$(TZ=America/Chicago date +%H)" = "08" ]; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.run == 'true'
+        with:
+          python-version: "3.11"
+          cache: pip
+      - name: Restore frozen V4 bundle
+        if: steps.gate.outputs.run == 'true'
+        run: cat model/v4/bundle.part.* | base64 -d > model/v4/frozen_bundle.joblib
+      - if: steps.gate.outputs.run == 'true'
+        run: pip install -r requirements.txt
+      - name: Resolve season
+        if: steps.gate.outputs.run == 'true'
+        id: vars
+        shell: bash
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "season=${{ inputs.season }}" >> "$GITHUB_OUTPUT"
+            echo "week=${{ inputs.week }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "season=$(TZ=America/Chicago date +%Y)" >> "$GITHUB_OUTPUT"
+            echo "week=" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Refresh nflverse inputs
+        if: steps.gate.outputs.run == 'true'
+        run: python pipeline/refresh_data.py --season "${{ steps.vars.outputs.season }}" --data-dir runtime
+      - name: Settle completed predictions
+        if: steps.gate.outputs.run == 'true'
+        run: python pipeline/settle_predictions.py --ledger data/ledger/prediction_ledger.csv --schedules runtime/schedules.csv
+      - name: Build frozen V4 pregame slate
+        if: steps.gate.outputs.run == 'true'
+        shell: bash
+        run: |
+          cp data/current/website_feed.csv runtime/website_feed.csv 2>/dev/null || true
+          ARGS=(--season "${{ steps.vars.outputs.season }}" --data-dir runtime --ledger data/ledger/prediction_ledger.csv)
+          if [ -n "${{ steps.vars.outputs.week }}" ]; then ARGS+=(--week "${{ steps.vars.outputs.week }}"); fi
+          python pipeline/build_predictions.py "${ARGS[@]}"
+          cp runtime/website_feed.csv data/current/website_feed.csv
+          cp runtime/website_feed.csv bp_week5_website_feed.csv
+          cp runtime/prediction_metadata.json data/current/prediction_metadata.json
+      - name: Verify frozen rules
+        if: steps.gate.outputs.run == 'true'
+        run: pytest -q
+      - name: Commit generated snapshots
+        if: steps.gate.outputs.run == 'true' && github.event_name != 'pull_request'
+        shell: bash
+        run: |
+          git config user.name "bp-sports-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add bp_week5_website_feed.csv data/current/website_feed.csv data/current/prediction_metadata.json data/ledger/prediction_ledger.csv data/ledger/summary.json
+          if git diff --cached --quiet; then echo "No generated changes."; exit 0; fi
+          git commit -m "Update frozen V4 predictions"
+          git push
