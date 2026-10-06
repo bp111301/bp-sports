@@ -1,0 +1,469 @@
+{
+  "selection_seasons": [
+    "20212022",
+    "20222023",
+    "20232024",
+    "20242025"
+  ],
+  "excluded_from_selection": [
+    "20252026",
+    "20262027"
+  ],
+  "ranking": [
+    {
+      "candidate": "decay2_logistic",
+      "games": 5248,
+      "accuracy": 0.6169969512195121,
+      "brier": 0.23158306158377126,
+      "log_loss": 0.6550706301458802,
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6509146341463414,
+          "brier": 0.2268636816847149,
+          "log_loss": 0.6460943263035374
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6097560975609756,
+          "brier": 0.23170513746700563,
+          "log_loss": 0.6550470938673325
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.6051829268292683,
+          "brier": 0.23442715418315438,
+          "log_loss": 0.6608342307903583
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.6021341463414634,
+          "brier": 0.23333627300021004,
+          "log_loss": 0.6583068696222928
+        }
+      ],
+      "seasons_with_brier_improvement": 2,
+      "eligible_as_research_candidate": false
+    },
+    {
+      "candidate": "v1_reference",
+      "games": 5248,
+      "accuracy": 0.6133765243902439,
+      "brier": 0.23162021873811148,
+      "log_loss": 0.6551475411952689,
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6463414634146342,
+          "brier": 0.22726614916452517,
+          "log_loss": 0.6469141071686888
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6112804878048781,
+          "brier": 0.2314314717318134,
+          "log_loss": 0.6544796406975509
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.5990853658536586,
+          "brier": 0.23416583979315944,
+          "log_loss": 0.6602705045088536
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.5967987804878049,
+          "brier": 0.23361741426294796,
+          "log_loss": 0.6589259124059822
+        }
+      ],
+      "seasons_with_brier_improvement": 0,
+      "eligible_as_research_candidate": false
+    },
+    {
+      "candidate": "linear_tree_blend",
+      "games": 5248,
+      "accuracy": 0.6147103658536586,
+      "brier": 0.2316426633483403,
+      "log_loss": 0.6551111925958357,
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6516768292682927,
+          "brier": 0.22745625923490148,
+          "log_loss": 0.6470808527181037
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6067073170731707,
+          "brier": 0.2315979695995158,
+          "log_loss": 0.654795316094595
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.600609756097561,
+          "brier": 0.23344141815199185,
+          "log_loss": 0.6586842255936013
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.5998475609756098,
+          "brier": 0.23407500640695206,
+          "log_loss": 0.6598843759770426
+        }
+      ],
+      "seasons_with_brier_improvement": 1,
+      "eligible_as_research_candidate": false
+    },
+    {
+      "candidate": "recent3_logistic",
+      "games": 5248,
+      "accuracy": 0.6154725609756098,
+      "brier": 0.2319620389369788,
+      "log_loss": 0.6558884773967594,
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6463414634146342,
+          "brier": 0.22726614916452517,
+          "log_loss": 0.6469141071686888
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6059451219512195,
+          "brier": 0.2317258915445236,
+          "log_loss": 0.6550906595619174
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.6059451219512195,
+          "brier": 0.2346981966654879,
+          "log_loss": 0.6615695225833611
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.6036585365853658,
+          "brier": 0.23415791837337846,
+          "log_loss": 0.6599796202730701
+        }
+      ],
+      "seasons_with_brier_improvement": 0,
+      "eligible_as_research_candidate": false
+    },
+    {
+      "candidate": "small_boosted_tree",
+      "games": 5248,
+      "accuracy": 0.6055640243902439,
+      "brier": 0.2343329658048203,
+      "log_loss": 0.6608953418103154,
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6272865853658537,
+          "brier": 0.23226582250215175,
+          "log_loss": 0.6572607712346087
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.5983231707317073,
+          "brier": 0.234576409364737,
+          "log_loss": 0.6612773878297579
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.6089939024390244,
+          "brier": 0.23333907833063247,
+          "log_loss": 0.6586995282184297
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.5876524390243902,
+          "brier": 0.23715055302176,
+          "log_loss": 0.6663436799584656
+        }
+      ],
+      "seasons_with_brier_improvement": 1,
+      "eligible_as_research_candidate": false
+    }
+  ],
+  "selected_research_candidate": "v1_reference",
+  "features": [
+    "elo_diff",
+    "home_field",
+    "win10_diff",
+    "gd10_diff",
+    "gf10_diff",
+    "ga10_diff",
+    "rest_diff",
+    "home_b2b",
+    "away_b2b",
+    "games_played_diff",
+    "shots_for_20_diff",
+    "shots_against_20_diff",
+    "shot_diff_20_diff",
+    "shoot_pct_20_diff",
+    "save_pct_20_diff",
+    "faceoff_pct_20_diff",
+    "pp_rate_20_diff",
+    "pk_rate_20_diff"
+  ],
+  "fold_audit": {
+    "v1_reference": [
+      {
+        "test_season": "20212022",
+        "training_seasons": [
+          "20182019",
+          "20192020",
+          "20202021"
+        ],
+        "training_games": 3221,
+        "test_games": 1312
+      },
+      {
+        "test_season": "20222023",
+        "training_seasons": [
+          "20182019",
+          "20192020",
+          "20202021",
+          "20212022"
+        ],
+        "training_games": 4533,
+        "test_games": 1312
+      },
+      {
+        "test_season": "20232024",
+        "training_seasons": [
+          "20182019",
+          "20192020",
+          "20202021",
+          "20212022",
+          "20222023"
+        ],
+        "training_games": 5845,
+        "test_games": 1312
+      },
+      {
+        "test_season": "20242025",
+        "training_seasons": [
+          "20182019",
+          "20192020",
+          "20202021",
+          "20212022",
+          "20222023",
+          "20232024"
+        ],
+        "training_games": 7157,
+        "test_games": 1312
+      }
+    ],
+    "recent3_logistic": [
+      {
+        "test_season": "20212022",
+        "training_seasons": [
+          "20182019",
+          "20192020",
+          "20202021"
+        ],
+        "training_games": 3221,
+        "test_games": 1312
+      },
+      {
+        "test_season": "20222023",
+        "training_seasons": [
+          "20192020",
+          "20202021",
+          "20212022"
+        ],
+        "training_games": 3262,
+        "test_games": 1312
+      },
+      {
+        "test_season": "20232024",
+        "training_seasons": [
+          "20202021",
+          "20212022",
+          "20222023"
+        ],
+        "training_games": 3492,
+        "test_games": 1312
+      },
+      {
+        "test_season": "20242025",
+        "training_seasons": [
+          "20212022",
+          "20222023",
+          "20232024"
+        ],
+        "training_games": 3936,
+        "test_games": 1312
+      }
+    ],
+    "decay2_logistic": [
+      {
+        "test_season": "20212022",
+        "training_seasons": [
+          "20182019",
+          "20192020",
+          "20202021"
+        ],
+        "training_games": 3221,
+        "test_games": 1312
+      },
+      {
+        "test_season": "20222023",
+        "training_seasons": [
+          "20182019",
+          "20192020",
+          "20202021",
+          "20212022"
+        ],
+        "training_games": 4533,
+        "test_games": 1312
+      },
+      {
+        "test_season": "20232024",
+        "training_seasons": [
+          "20182019",
+          "20192020",
+          "20202021",
+          "20212022",
+          "20222023"
+        ],
+        "training_games": 5845,
+        "test_games": 1312
+      },
+      {
+        "test_season": "20242025",
+        "training_seasons": [
+          "20182019",
+          "20192020",
+          "20202021",
+          "20212022",
+          "20222023",
+          "20232024"
+        ],
+        "training_games": 7157,
+        "test_games": 1312
+      }
+    ],
+    "small_boosted_tree": [
+      {
+        "test_season": "20212022",
+        "training_seasons": [
+          "20182019",
+          "20192020",
+          "20202021"
+        ],
+        "training_games": 3221,
+        "test_games": 1312
+      },
+      {
+        "test_season": "20222023",
+        "training_seasons": [
+          "20182019",
+          "20192020",
+          "20202021",
+          "20212022"
+        ],
+        "training_games": 4533,
+        "test_games": 1312
+      },
+      {
+        "test_season": "20232024",
+        "training_seasons": [
+          "20182019",
+          "20192020",
+          "20202021",
+          "20212022",
+          "20222023"
+        ],
+        "training_games": 5845,
+        "test_games": 1312
+      },
+      {
+        "test_season": "20242025",
+        "training_seasons": [
+          "20182019",
+          "20192020",
+          "20202021",
+          "20212022",
+          "20222023",
+          "20232024"
+        ],
+        "training_games": 7157,
+        "test_games": 1312
+      }
+    ],
+    "linear_tree_blend": [
+      {
+        "test_season": "20212022",
+        "training_seasons": [
+          "20182019",
+          "20192020",
+          "20202021"
+        ],
+        "training_games": 3221,
+        "test_games": 1312
+      },
+      {
+        "test_season": "20222023",
+        "training_seasons": [
+          "20182019",
+          "20192020",
+          "20202021",
+          "20212022"
+        ],
+        "training_games": 4533,
+        "test_games": 1312
+      },
+      {
+        "test_season": "20232024",
+        "training_seasons": [
+          "20182019",
+          "20192020",
+          "20202021",
+          "20212022",
+          "20222023"
+        ],
+        "training_games": 5845,
+        "test_games": 1312
+      },
+      {
+        "test_season": "20242025",
+        "training_seasons": [
+          "20182019",
+          "20192020",
+          "20202021",
+          "20212022",
+          "20222023",
+          "20232024"
+        ],
+        "training_games": 7157,
+        "test_games": 1312
+      }
+    ]
+  },
+  "status": "research only; not an independently validated replacement",
+  "validation_boundary": "2025-26 already viewed and cannot be reused as fresh confirmation. Later predictions must be timestamped before game starts.",
+  "decision_rule": "Improve aggregate Brier/log loss, preserve accuracy and improve Brier in >=3/4 development seasons."
+}

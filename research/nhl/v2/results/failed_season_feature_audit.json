@@ -1,0 +1,572 @@
+{
+  "scope": "read-only failed-season feature audit; no candidate scored or fitted on failed season",
+  "team_game_join_coverage": 1.0,
+  "features": [
+    {
+      "feature": "elo_diff",
+      "development_missing": 0.0,
+      "failed_season_missing": 0.0,
+      "development_mean": -0.25245157950289776,
+      "failed_season_mean": -0.797795527595352,
+      "mean_shift_in_development_sd": -0.005127957503127869,
+      "population_stability_index": 0.19780551845958927
+    },
+    {
+      "feature": "home_field",
+      "development_missing": 0.0,
+      "failed_season_missing": 0.0,
+      "development_mean": 1.0,
+      "failed_season_mean": 1.0,
+      "mean_shift_in_development_sd": null,
+      "population_stability_index": null
+    },
+    {
+      "feature": "win10_diff",
+      "development_missing": 0.015434451219512195,
+      "failed_season_missing": 0.01524390243902439,
+      "development_mean": -0.00376987966982161,
+      "failed_season_mean": -0.005430242272347535,
+      "mean_shift_in_development_sd": -0.005921783382202306,
+      "population_stability_index": 0.008395334934701904
+    },
+    {
+      "feature": "gd10_diff",
+      "development_missing": 0.015434451219512195,
+      "failed_season_missing": 0.01524390243902439,
+      "development_mean": -0.026064293855081546,
+      "failed_season_mean": -0.013383950071256577,
+      "mean_shift_in_development_sd": 0.008204286862720324,
+      "population_stability_index": 0.025586195803211233
+    },
+    {
+      "feature": "gf10_diff",
+      "development_missing": 0.015434451219512195,
+      "failed_season_missing": 0.01524390243902439,
+      "development_mean": -0.011130234301320043,
+      "failed_season_mean": -0.011738906088751286,
+      "mean_shift_in_development_sd": -0.0006303711716012049,
+      "population_stability_index": 0.01225914577318476
+    },
+    {
+      "feature": "ga10_diff",
+      "development_missing": 0.015434451219512195,
+      "failed_season_missing": 0.01524390243902439,
+      "development_mean": 0.014934059553761505,
+      "failed_season_mean": 0.001645043982505292,
+      "mean_shift_in_development_sd": -0.013331887300772722,
+      "population_stability_index": 0.011287531797778418
+    },
+    {
+      "feature": "rest_diff",
+      "development_missing": 0.015434451219512195,
+      "failed_season_missing": 0.01524390243902439,
+      "development_mean": 0.22817882717244048,
+      "failed_season_mean": 0.19891640866873064,
+      "mean_shift_in_development_sd": -0.019524682727422533,
+      "population_stability_index": 0.03825041234767032
+    },
+    {
+      "feature": "home_b2b",
+      "development_missing": 0.0,
+      "failed_season_missing": 0.0,
+      "development_mean": 0.0975609756097561,
+      "failed_season_mean": 0.12271341463414634,
+      "mean_shift_in_development_sd": 0.08476015120334021,
+      "population_stability_index": null
+    },
+    {
+      "feature": "away_b2b",
+      "development_missing": 0.0,
+      "failed_season_missing": 0.0,
+      "development_mean": 0.20750762195121952,
+      "failed_season_mean": 0.20503048780487804,
+      "mean_shift_in_development_sd": -0.006107923249069065,
+      "population_stability_index": null
+    },
+    {
+      "feature": "games_played_diff",
+      "development_missing": 0.0,
+      "failed_season_missing": 0.0,
+      "development_mean": -0.01638719512195122,
+      "failed_season_mean": -0.036585365853658534,
+      "mean_shift_in_development_sd": -0.01170702778251512,
+      "population_stability_index": 0.10427214651910521
+    },
+    {
+      "feature": "shots_for_20_diff",
+      "development_missing": 0.04134908536585366,
+      "failed_season_missing": 0.040396341463414635,
+      "development_mean": -0.042361537029218174,
+      "failed_season_mean": -0.02199355496012748,
+      "mean_shift_in_development_sd": 0.0051782816846246615,
+      "population_stability_index": 0.018813812764761666
+    },
+    {
+      "feature": "shots_against_20_diff",
+      "development_missing": 0.04134908536585366,
+      "failed_season_missing": 0.040396341463414635,
+      "development_mean": 0.011876718555588164,
+      "failed_season_mean": 0.032050139239306004,
+      "mean_shift_in_development_sd": 0.0054585763914591365,
+      "population_stability_index": 0.0033746260282098237
+    },
+    {
+      "feature": "shot_diff_20_diff",
+      "development_missing": 0.04134908536585366,
+      "failed_season_missing": 0.040396341463414635,
+      "development_mean": -0.054238255584806355,
+      "failed_season_mean": -0.05404369419943356,
+      "mean_shift_in_development_sd": 2.9693592616303135e-05,
+      "population_stability_index": 0.030946813184652384
+    },
+    {
+      "feature": "shoot_pct_20_diff",
+      "development_missing": 0.04134908536585366,
+      "failed_season_missing": 0.040396341463414635,
+      "development_mean": -0.0001427527321135917,
+      "failed_season_mean": -0.0004970496284291687,
+      "mean_shift_in_development_sd": -0.014962356694583881,
+      "population_stability_index": 0.007293719225164632
+    },
+    {
+      "feature": "save_pct_20_diff",
+      "development_missing": 0.04134908536585366,
+      "failed_season_missing": 0.040396341463414635,
+      "development_mean": -0.00026211000496965877,
+      "failed_season_mean": -0.00018750879588733493,
+      "mean_shift_in_development_sd": 0.0030291550839270367,
+      "population_stability_index": 0.020539673460776404
+    },
+    {
+      "feature": "faceoff_pct_20_diff",
+      "development_missing": 0.04134908536585366,
+      "failed_season_missing": 0.040396341463414635,
+      "development_mean": -0.00022663661277456606,
+      "failed_season_mean": 0.0006037955676444032,
+      "mean_shift_in_development_sd": 0.018209909802404205,
+      "population_stability_index": 0.010822917404729446
+    },
+    {
+      "feature": "pp_rate_20_diff",
+      "development_missing": 0.041539634146341466,
+      "failed_season_missing": 0.041158536585365856,
+      "development_mean": -0.0005168369491656607,
+      "failed_season_mean": -0.001566845392655322,
+      "mean_shift_in_development_sd": -0.010044534990559208,
+      "population_stability_index": 0.012018871518919038
+    },
+    {
+      "feature": "pk_rate_20_diff",
+      "development_missing": 0.04134908536585366,
+      "failed_season_missing": 0.040396341463414635,
+      "development_mean": 0.0002864759224874834,
+      "failed_season_mean": -0.0025578422626690786,
+      "mean_shift_in_development_sd": -0.02741437028605132,
+      "population_stability_index": 0.012376634690999349
+    }
+  ],
+  "raw_stat_domains": {
+    "20182019": {
+      "shots_for": {
+        "rows": 2542,
+        "missing": 0,
+        "negative": 0,
+        "over_one": null
+      },
+      "shots_against": {
+        "rows": 2542,
+        "missing": 0,
+        "negative": 0,
+        "over_one": null
+      },
+      "shot_diff": {
+        "rows": 2542,
+        "missing": 0,
+        "negative": 1234,
+        "over_one": null
+      },
+      "shoot_pct": {
+        "rows": 2542,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "save_pct": {
+        "rows": 2542,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "faceoff_pct": {
+        "rows": 2542,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "pp_rate": {
+        "rows": 2542,
+        "missing": 52,
+        "negative": 0,
+        "over_one": 0
+      },
+      "pk_rate": {
+        "rows": 2542,
+        "missing": 52,
+        "negative": 0,
+        "over_one": 0
+      }
+    },
+    "20192020": {
+      "shots_for": {
+        "rows": 2164,
+        "missing": 0,
+        "negative": 0,
+        "over_one": null
+      },
+      "shots_against": {
+        "rows": 2164,
+        "missing": 0,
+        "negative": 0,
+        "over_one": null
+      },
+      "shot_diff": {
+        "rows": 2164,
+        "missing": 0,
+        "negative": 1036,
+        "over_one": null
+      },
+      "shoot_pct": {
+        "rows": 2164,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "save_pct": {
+        "rows": 2164,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "faceoff_pct": {
+        "rows": 2164,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "pp_rate": {
+        "rows": 2164,
+        "missing": 49,
+        "negative": 0,
+        "over_one": 0
+      },
+      "pk_rate": {
+        "rows": 2164,
+        "missing": 49,
+        "negative": 0,
+        "over_one": 0
+      }
+    },
+    "20202021": {
+      "shots_for": {
+        "rows": 1736,
+        "missing": 0,
+        "negative": 0,
+        "over_one": null
+      },
+      "shots_against": {
+        "rows": 1736,
+        "missing": 0,
+        "negative": 0,
+        "over_one": null
+      },
+      "shot_diff": {
+        "rows": 1736,
+        "missing": 0,
+        "negative": 840,
+        "over_one": null
+      },
+      "shoot_pct": {
+        "rows": 1736,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "save_pct": {
+        "rows": 1736,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "faceoff_pct": {
+        "rows": 1736,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "pp_rate": {
+        "rows": 1736,
+        "missing": 33,
+        "negative": 0,
+        "over_one": 0
+      },
+      "pk_rate": {
+        "rows": 1736,
+        "missing": 33,
+        "negative": 0,
+        "over_one": 0
+      }
+    },
+    "20212022": {
+      "shots_for": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": null
+      },
+      "shots_against": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": null
+      },
+      "shot_diff": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 1269,
+        "over_one": null
+      },
+      "shoot_pct": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "save_pct": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "faceoff_pct": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "pp_rate": {
+        "rows": 2624,
+        "missing": 53,
+        "negative": 0,
+        "over_one": 0
+      },
+      "pk_rate": {
+        "rows": 2624,
+        "missing": 53,
+        "negative": 0,
+        "over_one": 0
+      }
+    },
+    "20222023": {
+      "shots_for": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": null
+      },
+      "shots_against": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": null
+      },
+      "shot_diff": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 1269,
+        "over_one": null
+      },
+      "shoot_pct": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "save_pct": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "faceoff_pct": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "pp_rate": {
+        "rows": 2624,
+        "missing": 32,
+        "negative": 0,
+        "over_one": 0
+      },
+      "pk_rate": {
+        "rows": 2624,
+        "missing": 32,
+        "negative": 0,
+        "over_one": 0
+      }
+    },
+    "20232024": {
+      "shots_for": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": null
+      },
+      "shots_against": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": null
+      },
+      "shot_diff": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 1267,
+        "over_one": null
+      },
+      "shoot_pct": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "save_pct": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "faceoff_pct": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "pp_rate": {
+        "rows": 2624,
+        "missing": 54,
+        "negative": 0,
+        "over_one": 0
+      },
+      "pk_rate": {
+        "rows": 2624,
+        "missing": 54,
+        "negative": 0,
+        "over_one": 0
+      }
+    },
+    "20242025": {
+      "shots_for": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": null
+      },
+      "shots_against": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": null
+      },
+      "shot_diff": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 1254,
+        "over_one": null
+      },
+      "shoot_pct": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "save_pct": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "faceoff_pct": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "pp_rate": {
+        "rows": 2624,
+        "missing": 68,
+        "negative": 0,
+        "over_one": 0
+      },
+      "pk_rate": {
+        "rows": 2624,
+        "missing": 68,
+        "negative": 0,
+        "over_one": 0
+      }
+    },
+    "20252026": {
+      "shots_for": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": null
+      },
+      "shots_against": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": null
+      },
+      "shot_diff": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 1261,
+        "over_one": null
+      },
+      "shoot_pct": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "save_pct": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "faceoff_pct": {
+        "rows": 2624,
+        "missing": 0,
+        "negative": 0,
+        "over_one": 0
+      },
+      "pp_rate": {
+        "rows": 2624,
+        "missing": 52,
+        "negative": 0,
+        "over_one": 0
+      },
+      "pk_rate": {
+        "rows": 2624,
+        "missing": 52,
+        "negative": 0,
+        "over_one": 0
+      }
+    }
+  },
+  "missingness_warnings": [],
+  "interpretation": "PSI and mean shifts are descriptive; no thresholds are tuned against 2025-26. Identical joins alone do not prove features are equally predictive."
+}
