@@ -52,7 +52,7 @@ These are historical development results, not prospective performance claims.
 - Histogram gradient boosting: worse Brier/log loss.
 - Expanded 36-feature linear set: no probability-quality improvement.
 - Platt calibration: did not beat the selected ensemble.
-- Prior-week QB layer: essentially no incremental historical improvement in the tested form; deferred rather than forced into V1.
+- Prior-week QB layer: the audit found zero usable feature coverage because the compact passing feed did not map into the matchup rows as intended. The apparent no-effect result is therefore invalid, not evidence that QB does not matter. QB features are excluded from frozen V1 and deferred to V2.
 - Market data: never part of winner selection.
 
 ## Guardrails
