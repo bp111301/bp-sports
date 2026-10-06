@@ -9,8 +9,8 @@ on:
       - "research/cfb/validate_margin_v2.py"
       - "research/cfb/market_benchmark_v2.py"
       - "research/cfb/market_incremental_v2.py"
-      - "research/cfb/download_portal_data.py"
-      - "research/cfb/experiment_portal_v2.py"
+      - "research/cfb/experiment_nonlinear_v2.py"
+      - "research/cfb/opening_market_disagreement.py"
       - "research/cfb/experiment_reliability_adjustments.py"
       - ".github/workflows/cfb_v2_research.yml"
       - "!research/cfb/v2_results/**"
@@ -31,21 +31,21 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - run: pip install pandas numpy scikit-learn pyarrow
+      - run: pip install pandas numpy scikit-learn
       - name: Download historical development data
         run: python research/cfb/download_matchup_lines.py 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
-      - name: Download transfer and roster-churn data
-        run: python research/cfb/download_portal_data.py 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
       - name: Run margin challenger
         run: python research/cfb/experiment_margin_v2.py
       - name: Meta walk-forward margin validation
         run: python research/cfb/validate_margin_v2.py
+      - name: Run nonlinear challenger
+        run: python research/cfb/experiment_nonlinear_v2.py
       - name: Run external market benchmark
         run: python research/cfb/market_benchmark_v2.py
       - name: Test incremental information beyond market
         run: python research/cfb/market_incremental_v2.py
-      - name: Test transfer and roster-churn features
-        run: python research/cfb/experiment_portal_v2.py
+      - name: Audit opening-market disagreement
+        run: python research/cfb/opening_market_disagreement.py
       - name: Run frozen V1 deep audit
         run: python research/cfb/deep_audit.py
       - name: Test reliability adjustments
