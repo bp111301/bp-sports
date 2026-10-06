@@ -1,0 +1,42 @@
+name: CFB V1 research baseline
+
+on:
+  push:
+    branches: [cfb-v1-research]
+    paths:
+      - "research/cfb/**"
+      - ".github/workflows/cfb_v1_research.yml"
+      - "!research/cfb/results/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cfb-v1-research
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas numpy scikit-learn pytest
+      - name: Download leakage-safe matchup lines
+        run: python research/cfb/download_matchup_lines.py 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
+      - name: Run guardrail tests
+        run: pytest -q tests/test_cfb_research.py
+      - name: Run expanding-window baseline
+        run: python research/cfb/backtest_baseline.py --first-test-season 2018
+      - name: Commit research results
+        run: |
+          git config user.name "bp-sports-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add research/cfb/results/
+          if git diff --cached --quiet; then
+            echo "No research result changes"
+          else
+            git commit -m "Update CFB V1 baseline results"
+            git push origin HEAD:cfb-v1-research
+          fi
