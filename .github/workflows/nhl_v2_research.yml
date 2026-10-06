@@ -1,0 +1,54 @@
+name: NHL V2 bounded model research
+on:
+  push:
+    branches: [nhl-v1-research]
+    paths:
+      - "research/nhl/v2/*.py"
+      - "research/nhl/v2/PROTOCOL.md"
+      - ".github/workflows/nhl_v2_research.yml"
+concurrency:
+  group: nhl-v2-research
+  cancel-in-progress: true
+permissions:
+  contents: write
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: nhl-v1-research
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas numpy scikit-learn requests
+      - name: Verify V2 chronological model safeguards
+        run: python research/nhl/v2/test_model_safety.py
+      - name: Download development training games only
+        run: python research/nhl/download_games.py 20182019 20192020 20202021 20212022 20222023 20232024 20242025 --out-dir runtime/nhl/v2/games
+      - name: Download development training team stats only
+        run: python research/nhl/download_team_game_stats.py 20182019 20192020 20202021 20212022 20222023 20232024 20242025 --out-dir runtime/nhl/v2/team_stats --schema-out runtime/nhl/v2/team_stats/schema.json
+      - name: Download failed-season source for read-only consistency audit
+        run: |
+          python research/nhl/download_games.py 20252026 --out-dir runtime/nhl/v2/audit_games
+          python research/nhl/download_team_game_stats.py 20252026 --out-dir runtime/nhl/v2/audit_team_stats --schema-out runtime/nhl/v2/audit_team_stats/schema.json
+      - name: Audit feature-source consistency without fitting
+        run: python research/nhl/v2/audit_feature_consistency.py
+      - name: Run bounded development model comparison
+        run: python research/nhl/v2/experiment_models.py
+      - name: Commit V2 research outputs
+        if: always()
+        run: |
+          git config user.name "bp-sports-bot"
+          git config user.email "actions@users.noreply.github.com"
+          if [ -d research/nhl/v2/results ]; then
+            git add research/nhl/v2/results/
+            if ! git diff --cached --quiet; then
+              git commit -m "Record bounded NHL V2 research and source audit [skip ci]"
+              git pull --rebase origin nhl-v1-research
+              git push origin HEAD:nhl-v1-research
+            fi
+          fi
