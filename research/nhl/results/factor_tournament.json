@@ -10,6 +10,69 @@
   ],
   "ranking": [
     {
+      "candidate": "shot_quality_exploratory",
+      "features": [
+        "elo_diff",
+        "home_field",
+        "win10_diff",
+        "gd10_diff",
+        "gf10_diff",
+        "ga10_diff",
+        "rest_diff",
+        "home_b2b",
+        "away_b2b",
+        "games_played_diff",
+        "shots_for_20_diff",
+        "shots_against_20_diff",
+        "shot_diff_20_diff",
+        "shoot_pct_20_diff",
+        "save_pct_20_diff",
+        "faceoff_pct_20_diff",
+        "pp_rate_20_diff",
+        "pk_rate_20_diff",
+        "xg_for20_diff",
+        "xg_against20_diff",
+        "xg_share20_diff"
+      ],
+      "exploratory": true,
+      "games": 5248,
+      "accuracy": 0.6133765243902439,
+      "brier": 0.2315859791348021,
+      "log_loss": 0.6550271840541073,
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6410060975609756,
+          "brier": 0.2266119114607836,
+          "log_loss": 0.6452691537189691
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6051829268292683,
+          "brier": 0.23210844854129736,
+          "log_loss": 0.6559415378716589
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.6028963414634146,
+          "brier": 0.23363796672708675,
+          "log_loss": 0.6591352688633239
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.604420731707317,
+          "brier": 0.2339855898100408,
+          "log_loss": 0.6597627757624775
+        }
+      ],
+      "seasons_with_brier_improvement": 2,
+      "eligible_for_promotion": false
+    },
+    {
       "candidate": "advanced_all_w20",
       "features": [
         "elo_diff",
@@ -34,36 +97,36 @@
       "exploratory": false,
       "games": 5248,
       "accuracy": 0.6133765243902439,
-      "brier": 0.23162021873804492,
-      "log_loss": 0.6551475411951188,
+      "brier": 0.23162021873811148,
+      "log_loss": 0.6551475411952689,
       "by_season": [
         {
           "season": "20212022",
           "games": 1312,
           "accuracy": 0.6463414634146342,
-          "brier": 0.2272661491645251,
-          "log_loss": 0.6469141071686887
+          "brier": 0.22726614916452517,
+          "log_loss": 0.6469141071686888
         },
         {
           "season": "20222023",
           "games": 1312,
           "accuracy": 0.6112804878048781,
-          "brier": 0.23143147173179296,
-          "log_loss": 0.6544796406975085
+          "brier": 0.2314314717318134,
+          "log_loss": 0.6544796406975509
         },
         {
           "season": "20232024",
           "games": 1312,
           "accuracy": 0.5990853658536586,
-          "brier": 0.23416583979291378,
-          "log_loss": 0.6602705045082958
+          "brier": 0.23416583979315944,
+          "log_loss": 0.6602705045088536
         },
         {
           "season": "20242025",
           "games": 1312,
           "accuracy": 0.5967987804878049,
-          "brier": 0.23361741426294788,
-          "log_loss": 0.6589259124059819
+          "brier": 0.23361741426294796,
+          "log_loss": 0.6589259124059822
         }
       ],
       "seasons_with_brier_improvement": 0,
@@ -97,36 +160,36 @@
       "exploratory": false,
       "games": 5248,
       "accuracy": 0.6149009146341463,
-      "brier": 0.23175711377900027,
-      "log_loss": 0.6554936940272243,
+      "brier": 0.23175711377878164,
+      "log_loss": 0.6554936940267719,
       "by_season": [
         {
           "season": "20212022",
           "games": 1312,
           "accuracy": 0.6516768292682927,
-          "brier": 0.22732573177735188,
-          "log_loss": 0.6471073049830737
+          "brier": 0.22732573177735205,
+          "log_loss": 0.6471073049830739
         },
         {
           "season": "20222023",
           "games": 1312,
           "accuracy": 0.6036585365853658,
-          "brier": 0.2319487168009528,
-          "log_loss": 0.6556955541695684
+          "brier": 0.23194871680095427,
+          "log_loss": 0.6556955541695708
         },
         {
           "season": "20232024",
           "games": 1312,
           "accuracy": 0.6021341463414634,
-          "brier": 0.233790949531172,
-          "log_loss": 0.6595162926684159
+          "brier": 0.23379094953029453,
+          "log_loss": 0.6595162926666002
         },
         {
           "season": "20242025",
           "games": 1312,
           "accuracy": 0.6021341463414634,
-          "brier": 0.2339630570065245,
-          "log_loss": 0.6596556242878395
+          "brier": 0.23396305700652573,
+          "log_loss": 0.6596556242878426
         }
       ],
       "seasons_with_brier_improvement": 1,
@@ -161,36 +224,106 @@
       "exploratory": false,
       "games": 5248,
       "accuracy": 0.6150914634146342,
-      "brier": 0.23176660607842026,
-      "log_loss": 0.6554614115982628,
+      "brier": 0.2317666060783883,
+      "log_loss": 0.6554614115981889,
       "by_season": [
         {
           "season": "20212022",
           "games": 1312,
           "accuracy": 0.6402439024390244,
-          "brier": 0.22784553085338036,
-          "log_loss": 0.6481417872824837
+          "brier": 0.22784553085338097,
+          "log_loss": 0.6481417872824845
         },
         {
           "season": "20222023",
           "games": 1312,
           "accuracy": 0.6120426829268293,
-          "brier": 0.2314559720215434,
-          "log_loss": 0.6545590967123959
+          "brier": 0.23145597202141482,
+          "log_loss": 0.6545590967120989
         },
         {
           "season": "20232024",
           "games": 1312,
           "accuracy": 0.6051829268292683,
-          "brier": 0.23430799126884708,
-          "log_loss": 0.6605386532242957
+          "brier": 0.23430799126884733,
+          "log_loss": 0.6605386532242965
         },
         {
           "season": "20242025",
           "games": 1312,
           "accuracy": 0.6028963414634146,
-          "brier": 0.2334569301699102,
-          "log_loss": 0.6586061091738762
+          "brier": 0.23345693016991018,
+          "log_loss": 0.6586061091738761
+        }
+      ],
+      "seasons_with_brier_improvement": 1,
+      "eligible_for_promotion": false
+    },
+    {
+      "candidate": "all_factors_exploratory",
+      "features": [
+        "elo_diff",
+        "home_field",
+        "win10_diff",
+        "gd10_diff",
+        "gf10_diff",
+        "ga10_diff",
+        "rest_diff",
+        "home_b2b",
+        "away_b2b",
+        "games_played_diff",
+        "shots_for_20_diff",
+        "shots_against_20_diff",
+        "shot_diff_20_diff",
+        "shoot_pct_20_diff",
+        "save_pct_20_diff",
+        "faceoff_pct_20_diff",
+        "pp_rate_20_diff",
+        "pk_rate_20_diff",
+        "opp_elo20_diff",
+        "adjusted_gf20_diff",
+        "adjusted_ga20_diff",
+        "travel_km_diff",
+        "games7_diff",
+        "games3_diff",
+        "away_streak_diff",
+        "xg_for20_diff",
+        "xg_against20_diff",
+        "xg_share20_diff"
+      ],
+      "exploratory": true,
+      "games": 5248,
+      "accuracy": 0.6118521341463414,
+      "brier": 0.23183245581709014,
+      "log_loss": 0.6555897594791061,
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6448170731707317,
+          "brier": 0.22728754253078812,
+          "log_loss": 0.6467366647756376
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.600609756097561,
+          "brier": 0.23257718006151576,
+          "log_loss": 0.6570784478647318
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.6021341463414634,
+          "brier": 0.2333843492651885,
+          "log_loss": 0.6585624849770868
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.5998475609756098,
+          "brier": 0.2340807514108682,
+          "log_loss": 0.6599814402989684
         }
       ],
       "seasons_with_brier_improvement": 1,
@@ -228,36 +361,36 @@
       "exploratory": false,
       "games": 5248,
       "accuracy": 0.6158536585365854,
-      "brier": 0.23189712579322352,
-      "log_loss": 0.6558003046119045,
+      "brier": 0.2318971257932195,
+      "log_loss": 0.6558003046118966,
       "by_season": [
         {
           "season": "20212022",
           "games": 1312,
           "accuracy": 0.6486280487804879,
-          "brier": 0.2278864577005312,
-          "log_loss": 0.6483250172439468
+          "brier": 0.22788645770052995,
+          "log_loss": 0.6483250172439436
         },
         {
           "season": "20222023",
           "games": 1312,
           "accuracy": 0.6059451219512195,
-          "brier": 0.2319710797080275,
-          "log_loss": 0.655790765942046
+          "brier": 0.23197107970802885,
+          "log_loss": 0.6557907659420489
         },
         {
           "season": "20232024",
           "games": 1312,
           "accuracy": 0.6074695121951219,
-          "brier": 0.23395489545740633,
-          "log_loss": 0.65980303594912
+          "brier": 0.233954895457399,
+          "log_loss": 0.6598030359491079
         },
         {
           "season": "20242025",
           "games": 1312,
           "accuracy": 0.6013719512195121,
-          "brier": 0.23377607030692915,
-          "log_loss": 0.6592823993125051
+          "brier": 0.23377607030692021,
+          "log_loss": 0.6592823993124866
         }
       ],
       "seasons_with_brier_improvement": 1,
@@ -270,27 +403,19 @@
     "url": "https://moneypuck.com/moneypuck/playerData/careers/gameByGame/all_teams.csv",
     "historical_model_vintage_verified": false,
     "rows": 16938,
+    "team_aliases_applied": {
+      "L.A": "LAK",
+      "N.J": "NJD",
+      "S.J": "SJS",
+      "T.B": "TBL"
+    },
     "date_offset_days": {
-      "0": 16107
+      "0": 16938
     },
-    "missing_by_season_team": {
-      "('20182019', 'LAK')": 82,
-      "('20182019', 'NJD')": 82,
-      "('20182019', 'SJS')": 82,
-      "('20182019', 'TBL')": 82,
-      "('20192020', 'LAK')": 70,
-      "('20192020', 'NJD')": 69,
-      "('20192020', 'SJS')": 70,
-      "('20192020', 'TBL')": 70,
-      "('20202021', 'LAK')": 56,
-      "('20202021', 'NJD')": 56,
-      "('20202021', 'SJS')": 56,
-      "('20202021', 'TBL')": 56
-    },
-    "date_rule": "NHL game ID and club define identity; NHL game_date defines post-game availability; vendor dates audited only",
-    "reason": "Insufficient team-game match coverage; shot-quality candidates not run"
+    "missing_by_season_team": {},
+    "date_rule": "NHL game ID and club define identity; NHL game_date defines post-game availability; vendor dates audited only"
   },
-  "quality_team_game_coverage": 0.950938717676231,
+  "quality_team_game_coverage": 1.0,
   "feature_coverage": {
     "opp_elo20_diff": 0.9845655487804879,
     "adjusted_gf20_diff": 0.9727515243902439,
