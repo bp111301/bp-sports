@@ -1,0 +1,54 @@
+{
+  "selection_window": "2018-2025",
+  "qb_rule": "prior-week games only; primary passer=max attempts",
+  "2026_touched": false,
+  "candidates": {
+    "context_raw": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7266701552415838,
+        "brier": 0.17796908753970025,
+        "log_loss": 0.5294069525452534,
+        "mean_confidence": 0.7442422990225938
+      },
+      "n_features": 28
+    },
+    "context_qb": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7266701552415838,
+        "brier": 0.17796908753969176,
+        "log_loss": 0.5294069525452326,
+        "mean_confidence": 0.7442422990225857
+      },
+      "n_features": 41
+    },
+    "blend_k3": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7275422989708704,
+        "brier": 0.17763792256283795,
+        "log_loss": 0.5289388923204933,
+        "mean_confidence": 0.746262801963393
+      },
+      "n_features": 24
+    },
+    "blend_k3_qb": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7275422989708704,
+        "brier": 0.1776379225628121,
+        "log_loss": 0.5289388923204285,
+        "mean_confidence": 0.7462628019634374
+      },
+      "n_features": 37
+    }
+  },
+  "ranking": [
+    "blend_k3_qb",
+    "blend_k3",
+    "context_qb",
+    "context_raw"
+  ],
+  "leader": "blend_k3_qb"
+}
