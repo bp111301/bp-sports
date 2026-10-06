@@ -1,0 +1,49 @@
+{
+  "classification": "untouched diagnostic; never model-selection data for CFB V1",
+  "overall": {
+    "games": 271,
+    "accuracy": 0.7675276752767528,
+    "mean_confidence": 0.7520000524711944,
+    "gap": -0.015527622805558416,
+    "brier": 0.15544144598460616,
+    "log_loss": 0.4782862678537907
+  },
+  "confidence_thresholds": [
+    {
+      "threshold": 0.6,
+      "games": 214,
+      "accuracy": 0.8317757009345794,
+      "mean_confidence": 0.8051077701906577,
+      "gap": -0.02666793074392171,
+      "brier": 0.1310356471855611,
+      "log_loss": 0.4226210830173237
+    },
+    {
+      "threshold": 0.7,
+      "games": 164,
+      "accuracy": 0.8780487804878049,
+      "mean_confidence": 0.8519621495799535,
+      "gap": -0.02608663090785135,
+      "brier": 0.10438124309891018,
+      "log_loss": 0.35978864888083695
+    },
+    {
+      "threshold": 0.8,
+      "games": 112,
+      "accuracy": 0.9196428571428571,
+      "mean_confidence": 0.8979541531947028,
+      "gap": -0.021688703948154253,
+      "brier": 0.07529163414043423,
+      "log_loss": 0.2869678064234535
+    },
+    {
+      "threshold": 0.9,
+      "games": 54,
+      "accuracy": 0.9444444444444444,
+      "mean_confidence": 0.9461199576541395,
+      "gap": 0.0016755132096950565,
+      "brier": 0.05416722206334234,
+      "log_loss": 0.2298089866538458
+    }
+  ]
+}
