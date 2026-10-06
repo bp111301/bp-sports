@@ -35,7 +35,20 @@ Read-only audit. No model fitting, tuning, release, or excluded-season rerun.
     "R": 1312
   },
   "home_score_disagreements_vs_stats": 56,
-  "away_score_disagreements_vs_stats": 63
+  "away_score_disagreements_vs_stats": 63,
+  "shootout_games": 119,
+  "home_score_delta_counts": {
+    "0": 1256,
+    "1": 56
+  },
+  "away_score_delta_counts": {
+    "0": 1249,
+    "1": 63
+  },
+  "home_score_disagreements_explained_by_shootout_award": 56,
+  "away_score_disagreements_explained_by_shootout_award": 63,
+  "unexplained_home_score_disagreements": 0,
+  "unexplained_away_score_disagreements": 0
 }
 ```
 
