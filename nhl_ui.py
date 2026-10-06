@@ -114,8 +114,8 @@ def render_nhl(now=None):
     if st.button('Refresh NHL data',key='nhl_refresh'):
         load_dashboard.clear()
     data,saved=load_dashboard()
-    st.markdown('''<style>.nhl-pill{background:#30281a;border-color:#584824;color:#efd17f}.nhl-goalies{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;font-size:.72rem;color:#aeb8c7}.nhl-goalies div:last-child{text-align:right}.nhl-goalies small{display:block;color:#8d98a8;font-size:.59rem;margin-bottom:3px}</style>
-    <div class="bp-nav"><div class="bp-logo"><div class="bp-mark">BP</div><div><div class="bp-wordmark">B.P. <span>SPORTS</span></div><div class="bp-kicker">INDEPENDENT HOCKEY RESEARCH</div></div></div><div class="live-pill nhl-pill">NHL • RESEARCH</div></div>''',unsafe_allow_html=True)
+    st.markdown('''<style>.nhl-pill{background:#30281a;border-color:#584824;color:#efd17f}.nhl-goalies{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;font-size:.72rem;color:#aeb8c7}.nhl-goalies div:last-child{text-align:right}.nhl-goalies small{display:block;color:#8d98a8;font-size:.59rem;margin-bottom:3px}[data-testid="stWidgetLabel"] p,[data-testid="stRadio"] label p{color:#d9e2ef!important}[data-testid="stAlert"] p{color:#e0e8f5!important}.st-key-nhl_refresh button{background:#172b46;color:#dbe9ff;border:1px solid #294b77}</style>
+<div class="bp-nav"><div class="bp-logo"><div class="bp-mark">BP</div><div><div class="bp-wordmark">B.P. <span>SPORTS</span></div><div class="bp-kicker">INDEPENDENT HOCKEY RESEARCH</div></div></div><div class="live-pill nhl-pill">NHL • RESEARCH</div></div>''',unsafe_allow_html=True)
     st.info('NHL is in prospective research. All three models are experimental; none has passed the release gate. Goalie reports are collected separately and do not change these predictions.')
     if not data:
         st.error('The NHL research feed is unavailable. Please try again later.');return

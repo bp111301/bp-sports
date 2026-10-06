@@ -28,6 +28,7 @@ def test_sport_navigation_models_and_search():
         at.radio(key='bp_sport').set_value('NHL').run()
         assert not at.exception
         assert len(at.expander)==12
+        assert not at.code
         assert 'NHL is in prospective research' in at.info[0].value
         for candidate in nhl_ui.MODEL_NAMES:
             at.selectbox(key='nhl_candidate').set_value(candidate).run()
