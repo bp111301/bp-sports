@@ -1,0 +1,32 @@
+name: CFB V2 Candidate A 2026 validation
+on:
+  push:
+    branches: [cfb-v2-research]
+    paths:
+      - "research/cfb/validate_candidate_a_2026.py"
+      - ".github/workflows/cfb_v2_candidate_a_2026.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cfb-v2-research
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install pandas numpy scikit-learn
+      - run: python research/cfb/download_matchup_lines.py 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026
+      - run: python research/cfb/validate_candidate_a_2026.py
+      - name: Commit one-shot result
+        run: |
+          git config user.name "bp-sports-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add research/cfb/v2_results/CANDIDATE_A_2026.md research/cfb/v2_results/candidate_a_2026.json research/cfb/v2_results/candidate_a_2026_predictions.csv
+          git commit -m "Record locked Candidate A 2026 diagnostic"
+          git pull --rebase origin cfb-v2-research
+          git push origin HEAD:cfb-v2-research
