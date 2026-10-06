@@ -1,0 +1,59 @@
+name: NHL confirmed goalie paired experiment
+on:
+  push:
+    branches: [nhl-v1-research]
+    paths:
+      - "research/nhl/goalie_experiment/**"
+      - "model/nhl/goalie_experiment/spec.json"
+      - ".github/workflows/nhl_goalie_experiment.yml"
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["NHL pregame goalie capture"]
+    types: [completed]
+concurrency:
+  group: nhl-confirmed-goalie-experiment
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  paired:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_repository.full_name == github.repository)
+    runs-on: ubuntu-latest
+    env:
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: nhl-v1-research
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: model/nhl/v2_research/requirements-frozen.txt
+      - run: pip install -r model/nhl/v2_research/requirements-frozen.txt
+      - name: Verify goalie pairing and source timing safety
+        run: |
+          python research/nhl/goalie_experiment/test_safety.py
+          python research/nhl/goalie_capture/test_capture.py
+      - name: Download fixed training inputs only for first freeze
+        run: |
+          if [ ! -f model/nhl/goalie_experiment/frozen_bundle.joblib ]; then
+            python research/nhl/download_games.py 20182019 20192020 20202021 20212022 20222023 20232024 20242025 20252026 --out-dir runtime/nhl/prospective/training_games
+            python research/nhl/download_team_game_stats.py 20182019 20192020 20202021 20212022 20222023 20232024 20242025 20252026 --out-dir runtime/nhl/prospective/training_team_stats --schema-out runtime/nhl/prospective/training_team_stats/schema.json
+            python research/nhl/download_goalie_game_stats.py 20182019 20192020 20202021 20212022 20222023 20232024 20242025 20252026 --out-dir runtime/nhl/goalie_experiment/training_goalies --schema-out runtime/nhl/goalie_experiment/training_goalies/schema.json
+          fi
+      - name: Refresh completed and upcoming current season games
+        run: python research/nhl/download_games.py 20262027 --out-dir runtime/nhl/prospective/current_games
+      - name: Freeze new goalie model, record eligible pairs and settle final games
+        run: python research/nhl/goalie_experiment/run.py
+      - name: Commit separate research model and paired ledger
+        run: |
+          git config user.name "bp-sports-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add model/nhl/goalie_experiment/ data/nhl/goalie_experiment/
+          if ! git diff --cached --quiet; then
+            git commit -m "Record confirmed-goalie paired research experiment [skip ci]"
+            git pull --rebase origin nhl-v1-research
+            git push origin HEAD:nhl-v1-research
+          fi
