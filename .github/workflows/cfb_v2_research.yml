@@ -5,9 +5,9 @@ on:
     paths:
       - "research/cfb/deep_audit.py"
       - "research/cfb/audit_2026_diagnostic.py"
-      - "research/cfb/qb_data_audit.py"
-      - "research/cfb/experiment_qb_v2.py"
       - "research/cfb/experiment_margin_v2.py"
+      - "research/cfb/validate_margin_v2.py"
+      - "research/cfb/market_benchmark_v2.py"
       - "research/cfb/experiment_reliability_adjustments.py"
       - ".github/workflows/cfb_v2_research.yml"
       - "!research/cfb/v2_results/**"
@@ -31,21 +31,19 @@ jobs:
       - run: pip install pandas numpy scikit-learn
       - name: Download historical development data
         run: python research/cfb/download_matchup_lines.py 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
-      - name: Download historical QB data
-        run: python research/cfb/download_qb_data.py 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
-      - name: Audit QB data mapping
-        run: python research/cfb/qb_data_audit.py
-      - name: Run corrected QB-room experiment
-        run: python research/cfb/experiment_qb_v2.py
       - name: Run margin challenger
         run: python research/cfb/experiment_margin_v2.py
+      - name: Meta walk-forward margin validation
+        run: python research/cfb/validate_margin_v2.py
+      - name: Run external market benchmark
+        run: python research/cfb/market_benchmark_v2.py
       - name: Run frozen V1 deep audit
         run: python research/cfb/deep_audit.py
       - name: Test reliability adjustments
         run: python research/cfb/experiment_reliability_adjustments.py
       - name: Audit untouched 2026 diagnostic
         run: python research/cfb/audit_2026_diagnostic.py
-      - name: Commit audit outputs
+      - name: Commit research outputs
         run: |
           git config user.name "bp-sports-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -53,7 +51,11 @@ jobs:
           if git diff --cached --quiet; then
             echo "No generated changes"
           else
-            git commit -m "Update CFB V1 deep audit"
+            git commit -m "Update CFB V2 research outputs"
             git pull --rebase origin cfb-v2-research
-            git push origin HEAD:cfb-v2-research
+            for attempt in 1 2 3; do
+              git push origin HEAD:cfb-v2-research && break
+              if [ "$attempt" = "3" ]; then exit 1; fi
+              sleep $((attempt * 5))
+            done
           fi
