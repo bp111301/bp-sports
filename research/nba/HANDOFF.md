@@ -32,8 +32,12 @@ Source: ESPN schedule/team boxes distributed by SportsDataverse, archived with h
 
 All 22 safety tests passed locally and in GitHub Actions. They cover date-batched feature updates, outcome isolation, season reset, order invariance, neutral context, prior-season model/scaler/calibration fitting, bounded candidates, selection checks, and refusal to retrieve holdout data without a frozen artifact. Repeat evaluation checks hashes and preserves the first result without rescoring.
 
-## Next step
+## Prospective collection enabled
 
-Start separately timestamped 2026–27 prospective NBA forecasts and a live ledger, then add the NBA research board to the UI. Preserve this artifact and first evaluation. Any deployment refit through 2025–26 must be a separately identified artifact with the same frozen specification and its own prospective record; it must not overwrite this historical evaluation. Player availability needs archived pregame information or a separate prospective experiment.
+NBA UI is published on main. `nba_prospective.yml` is registered on main and checks hourly at minute 17, explicitly checking out and writing `nba-v1-research`. Both initial production collection runs succeeded on October 6, 2026. `data/nba/prospective/dashboard.json` is the UI feed; `predictions.jsonl` and `results.jsonl` are separate append-only records created when eligible events exist. Seven prospective safety tests pass. No regular-season game was within the 36-hour forecast window at activation, so the official record is 0–0 with no predictions. Preseason remains excluded.
+
+The existing V1 bundle and first reserved-season result remain unchanged. There is no deployment refit. Earlier completed 2025–26 games and current regular-season games advance date-batched team state only. Missing validated current team boxes block new predictions until complete history is available. Finals for saved forecasts can still settle; missed games are never backfilled. Read `prospective/PROTOCOL.md` for timing, source receipts and settlement rules.
+
+Next: collect opening-day pregame forecasts, verify result settlement, and track live accuracy/Brier/log loss without tuning. Player availability needs archived pregame information or a separate prospective experiment. Any future refit must be a separately identified artifact and must preserve this historical evaluation.
 
 Authoritative outputs: `baseline_summary.json`, `tournament_summary.json`, `final_comparison_summary.json`, `excluded_season_evaluation.json`, and their matched prediction/season files. Frozen identity: `model/nba/v1/manifest.json`.
