@@ -35,6 +35,10 @@ jobs:
         run: python research/nhl/experiment_baselines.py
       - name: Run advanced team-stats tournament
         run: python research/nhl/experiment_team_stats.py
+      - name: Verify goalie leakage safeguards
+        run: python research/nhl/test_goalie_safety.py
+      - name: Run weighted goalie follow-up
+        run: python research/nhl/experiment_goalies_weighted.py
       - name: Run goalie tournament
         run: python research/nhl/experiment_goalies.py
       - name: Commit NHL research outputs
