@@ -27,6 +27,8 @@ jobs:
         run: python research/nhl/download_games.py 20182019 20192020 20202021 20212022 20222023 20232024 20242025 20252026
       - name: Download per-game NHL team stats
         run: python research/nhl/download_team_game_stats.py 20182019 20192020 20202021 20212022 20222023 20232024 20242025 20252026
+      - name: Download per-game goalie stats
+        run: python research/nhl/download_goalie_game_stats.py 20182019 20192020 20202021 20212022 20222023 20232024 20242025 20252026
       - name: Run chronological baseline
         run: python research/nhl/backtest_baseline.py
       - name: Run development tournament
