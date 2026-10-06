@@ -73,8 +73,10 @@ def contextual_features(d):
     return pd.DataFrame(rows).set_index('index').reindex(d.index)
 
 QUALITY=['xg_for20_diff','xg_against20_diff','xg_share20_diff']
+def normalize_team(value):
+    return {'L.A':'LAK','LA':'LAK','N.J':'NJD','NJ':'NJD','S.J':'SJS','SJ':'SJS','T.B':'TBL','TB':'TBL'}.get(str(value),str(value))
 def quality_features(d,q):
-    q=q.copy();q['gameDate']=pd.to_datetime(q.gameDate.astype(str),format='%Y%m%d')
+    q=q.copy();q['team']=q.team.map(normalize_team);q['gameDate']=pd.to_datetime(q.gameDate.astype(str),format='%Y%m%d')
     if q.duplicated(['gameId','team']).any():raise ValueError('Duplicate MoneyPuck team-game rows')
     history=defaultdict(lambda:deque(maxlen=20));rows=[];previous=None
     bygame={(int(r.gameId),str(r.team)):r for _,r in q.iterrows()}
@@ -114,6 +116,8 @@ def main():
     source=json.loads(Path('runtime/nhl/quality_status.json').read_text());coverage=None
     if source['available']:
         q=pd.read_csv('runtime/nhl/moneypuck_team_games.csv')
+        source['team_aliases_applied']={team:normalize_team(team) for team in sorted(q.team.unique()) if normalize_team(team)!=team}
+        q['team']=q.team.map(normalize_team)
         # Primary NHL game ID + club keys establish identity. Vendor dates are
         # audited separately, never used to decide when a result enters state.
         keys=pd.concat([d[['game_id','game_date','season','home_team']].rename(columns={'home_team':'team'}),d[['game_id','game_date','season','away_team']].rename(columns={'away_team':'team'})])

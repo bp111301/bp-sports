@@ -29,6 +29,12 @@ class FactorSafety(unittest.TestCase):
         expected,_=quality_features(self.d,self.q);actual,coverage=quality_features(self.d,q)
         pd.testing.assert_frame_equal(expected,actual);self.assertEqual(coverage,1.)
 
+    def test_known_historical_vendor_team_aliases(self):
+        for alias,primary in [('L.A','LAK'),('N.J','NJD'),('S.J','SJS'),('T.B','TBL')]:
+            d=self.d.copy();d['home_team']=primary
+            q=self.q.copy();q.loc[q.team=='A','team']=alias
+            _,coverage=quality_features(d,q);self.assertEqual(coverage,1.)
+
     def test_distance_and_congestion(self):
         self.assertEqual(distance((0,0),(0,0)),0.)
         self.assertAlmostEqual(distance((0,0),(0,1)),111.195,places=2)
