@@ -179,7 +179,7 @@ def team_block(team, home=False):
     return f'<div class="team-box{" home" if home else ""}">{txt + dot if home else dot + txt}</div>'
 
 st.markdown('<div style="font-size:.64rem;color:#8d98a8;font-weight:900;letter-spacing:.11em;margin-bottom:4px">SPORT</div>', unsafe_allow_html=True)
-sport = st.radio("Sport", ["NFL", "CFB", "NHL"], horizontal=True, label_visibility="collapsed", key="bp_sport")
+sport = st.radio("Sport", ["NFL", "CFB", "NHL", "NBA"], horizontal=True, label_visibility="collapsed", key="bp_sport")
 
 if sport == "NFL":
     pred = load_csv("data/current/website_feed.csv")
@@ -658,3 +658,7 @@ elif sport == "CFB":
 elif sport == "NHL":
     from nhl_ui import render_nhl
     render_nhl()
+
+elif sport == "NBA":
+    from nba_ui import render_nba
+    render_nba()

@@ -1,0 +1,510 @@
+{
+  "manifest": {
+    "status": "frozen_before_excluded_season",
+    "created_at": "2026-10-06T19:07:04.589214+00:00",
+    "selected": "baseline_control",
+    "features": [
+      "home_advantage",
+      "elo_diff",
+      "off_diff",
+      "def_diff",
+      "pace_diff",
+      "efg_diff",
+      "tov_diff",
+      "orb_diff",
+      "ftr_diff",
+      "win_diff",
+      "net5_diff",
+      "rest_diff",
+      "b2b_diff",
+      "history_diff"
+    ],
+    "training_games": 11976,
+    "training_seasons": [
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "training_last_date": "2025-04-13",
+    "excluded_season": 2026,
+    "bundle_sha256": "c57d804ab9062542e9e456a9585327bbb677732e5ad55b0186f91ddbdf5e079f",
+    "protocol_sha256": "07e00fd7cc1141bbdd0d3725877792d410760b9c19101daecda96c470ba3a9f4",
+    "compare_code_sha256": "d3cdf3fbde1bde5bda16b1b495982f97e96af01c6ef9d75253a4b5a10bc8e83f",
+    "baseline_code_sha256": "90844ab282321be63d62cdcca499400df3301be29bf84dfade1714da3347f56d",
+    "evaluation_code_sha256": "464d8fd7996036c94ff11f72e26081c2b24d1f3efc9b3f3f8d30ad827094eb30",
+    "source_hashes": {
+      "data/nba/source/box_2016.parquet": "a5bf9e3fab17f26fe34623b42688674f817df0a19a6026ee0728cae7e942917f",
+      "data/nba/source/box_2017.parquet": "c296120a0c98238ee23cc83d7ffe849e2ce87fcdd85a82721a24d3ca469783ea",
+      "data/nba/source/box_2018.parquet": "9e58866f324bb49c880db4b57e323d0bb5c3d94f9006f55e63d5337cbbcdd4ca",
+      "data/nba/source/box_2019.parquet": "3f3f15ccfd1f676e0aaf5bfbdb8fd5cd69f9a21a4961cd4f6337d857593c788a",
+      "data/nba/source/box_2020.parquet": "e96bec73056f08ce21bce63ca6d329fc1cf62d7229608d949bfce102df01b56a",
+      "data/nba/source/box_2021.parquet": "56e59fe9062942933c708ae4ba2172ec4dda055de9c6a3409f0816ac363fdd58",
+      "data/nba/source/box_2022.parquet": "f8185936836a81240d6f170ec7afeab47e3e736a718fe2c9f72999e681434b7f",
+      "data/nba/source/box_2023.parquet": "b86bb087fe57eeeacead4e27965a20d1e67fdb39a3ee2ca36294a0b7d014e9b6",
+      "data/nba/source/box_2024.parquet": "5e4d1b7a2ccc287f212f65888dcd674e370adec8a0e32d7ae0825eecacaaa8a9",
+      "data/nba/source/box_2025.parquet": "f735bf3b743618e50987f3e3e296734e1dba43c450a21af848d7c34f23bf2aee",
+      "data/nba/source/schedule_2016.parquet": "a6b85196e5b70c8234d4d9143cc35880c57e3fb09c67684fc1e100633941d010",
+      "data/nba/source/schedule_2017.parquet": "521a83601d18b7ea34dabba62e62cb9307aa7c6aca66e4a0e15ff7db55cf18a0",
+      "data/nba/source/schedule_2018.parquet": "aa4be95197178146409679e75c5d4bd4fbccbc3497ac7c2de3b14acb32a32199",
+      "data/nba/source/schedule_2019.parquet": "f00e6ac49c47ac34168f0b932fad74b0b17f03230b39e67eaf02424e3109eae3",
+      "data/nba/source/schedule_2020.parquet": "402485c4c3638838eade99aeba795bc0dda869c29089a5062baa28a34bd3b752",
+      "data/nba/source/schedule_2021.parquet": "0c2eab5b22cc956646ac0351ddf6110d9527e46f4ee4d9200bf2945051688392",
+      "data/nba/source/schedule_2022.parquet": "e3a764147f108c6fb3883eaa5617234ab41aa95e668dd7eb9506616c8a953d2f",
+      "data/nba/source/schedule_2023.parquet": "9532db81a254b2ea9982111fbea970bb61ea34b6aa3fc4607b2cad17ba55c60b",
+      "data/nba/source/schedule_2024.parquet": "2069783562b531b91ee9ad6a85358761ad6a611ce3291a60ed124bb978969b63",
+      "data/nba/source/schedule_2025.parquet": "239829fdcf99629ee682bca4d6d0a6709b3c095be39c39f425664754ae1a979e"
+    },
+    "runtime": {
+      "python": "3.12.14",
+      "sklearn": "1.8.0",
+      "numpy": "2.3.5",
+      "pandas": "2.2.3",
+      "joblib": "1.5.3"
+    },
+    "development_summary_sha256": "d4e405f091ed381efda971919d8800a0d55877897ce102db65e7b631e622da28"
+  },
+  "evaluation": {
+    "status": "eligible_for_prospective_collection",
+    "evaluated_at": "2026-10-06T19:07:53.130259+00:00",
+    "selected": "baseline_control",
+    "season": 2026,
+    "weights_retrained": false,
+    "automatic_production_promotion": false,
+    "gate_passed": true,
+    "gates": {
+      "minimum_games": true,
+      "coverage_99_percent": true,
+      "accuracy_60_percent": true,
+      "beats_elo_brier": true,
+      "beats_elo_log_loss": true,
+      "beats_home_brier": true,
+      "beats_home_log_loss": true
+    },
+    "metrics": {
+      "selected": {
+        "games": 1230,
+        "correct": 851,
+        "accuracy": 0.691869918699187,
+        "brier": 0.2055431456702506,
+        "log_loss": 0.5986056964350066
+      },
+      "elo": {
+        "games": 1230,
+        "correct": 834,
+        "accuracy": 0.6780487804878049,
+        "brier": 0.20974761166706377,
+        "log_loss": 0.608213764319606
+      },
+      "home_frequency": {
+        "games": 1230,
+        "correct": 682,
+        "accuracy": 0.5544715447154471,
+        "brier": 0.2471536906464683,
+        "log_loss": 0.6874465236465238
+      }
+    },
+    "coverage": 1.0,
+    "source_audit": {
+      "season": 2026,
+      "schedule_regular": 1239,
+      "included": 1230,
+      "excluded": {
+        "exhibition_non_nba_teams": 4,
+        "unfinished": 4,
+        "cup_championship": 1
+      },
+      "date_corrections": {}
+    },
+    "monthly": [
+      {
+        "month": "2025-10",
+        "games": 80,
+        "correct": 55,
+        "accuracy": 0.6875,
+        "brier": 0.2158352223521233,
+        "log_loss": 0.6210277467973011
+      },
+      {
+        "month": "2025-11",
+        "games": 219,
+        "correct": 156,
+        "accuracy": 0.7123287671232876,
+        "brier": 0.19323816996238255,
+        "log_loss": 0.5708855779362296
+      },
+      {
+        "month": "2025-12",
+        "games": 197,
+        "correct": 116,
+        "accuracy": 0.5888324873096447,
+        "brier": 0.24878991636758746,
+        "log_loss": 0.6942668027613382
+      },
+      {
+        "month": "2026-01",
+        "games": 233,
+        "correct": 140,
+        "accuracy": 0.6008583690987125,
+        "brier": 0.2337428360730006,
+        "log_loss": 0.6624642142006487
+      },
+      {
+        "month": "2026-02",
+        "games": 166,
+        "correct": 114,
+        "accuracy": 0.6867469879518072,
+        "brier": 0.21357013212424245,
+        "log_loss": 0.6190174353035419
+      },
+      {
+        "month": "2026-03",
+        "games": 239,
+        "correct": 188,
+        "accuracy": 0.7866108786610879,
+        "brier": 0.16606185002261273,
+        "log_loss": 0.5098159469204828
+      },
+      {
+        "month": "2026-04",
+        "games": 96,
+        "correct": 82,
+        "accuracy": 0.8541666666666666,
+        "brier": 0.15226014319816691,
+        "log_loss": 0.47761685079293414
+      }
+    ],
+    "calibration": [
+      {
+        "lower": 0.0,
+        "games": 4,
+        "mean_probability": 0.08530893737554165,
+        "home_win_rate": 0.0
+      },
+      {
+        "lower": 0.1,
+        "games": 36,
+        "mean_probability": 0.16523292157842484,
+        "home_win_rate": 0.1111111111111111
+      },
+      {
+        "lower": 0.2,
+        "games": 95,
+        "mean_probability": 0.25389489873007354,
+        "home_win_rate": 0.21052631578947367
+      },
+      {
+        "lower": 0.3,
+        "games": 125,
+        "mean_probability": 0.35323197058442524,
+        "home_win_rate": 0.376
+      },
+      {
+        "lower": 0.4,
+        "games": 211,
+        "mean_probability": 0.4519836670046201,
+        "home_win_rate": 0.3791469194312796
+      },
+      {
+        "lower": 0.5,
+        "games": 208,
+        "mean_probability": 0.5506838565908491,
+        "home_win_rate": 0.5961538461538461
+      },
+      {
+        "lower": 0.6,
+        "games": 214,
+        "mean_probability": 0.6486135740423661,
+        "home_win_rate": 0.6635514018691588
+      },
+      {
+        "lower": 0.7,
+        "games": 185,
+        "mean_probability": 0.7467026842080785,
+        "home_win_rate": 0.7621621621621621
+      },
+      {
+        "lower": 0.8,
+        "games": 127,
+        "mean_probability": 0.8429006778685153,
+        "home_win_rate": 0.8110236220472441
+      },
+      {
+        "lower": 0.9,
+        "games": 25,
+        "mean_probability": 0.9179831373897187,
+        "home_win_rate": 0.84
+      }
+    ],
+    "bundle_sha256": "c57d804ab9062542e9e456a9585327bbb677732e5ad55b0186f91ddbdf5e079f",
+    "frozen_at": "2026-10-06T19:07:04.589214+00:00",
+    "freeze_commit": "0e8a7399bafaa861b6bbbed71a7f53f1d2453063",
+    "source_files": [
+      {
+        "path": "data/nba/source/box_2026.parquet",
+        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_team_boxscores/team_box_2026.parquet",
+        "sha256": "db846dfb39b0f75eee50ad91b1b5b7a7a62dd31d3ec0bb066a0a3bb08e366f7e"
+      },
+      {
+        "path": "data/nba/source/schedule_2026.parquet",
+        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_schedules/nba_schedule_2026.parquet",
+        "sha256": "b3884aa4aa276d1fcafc71b69394675904a968902068bff634932e5d7afacae4"
+      }
+    ]
+  },
+  "development": {
+    "status": "development_only_not_promoted",
+    "development_seasons": [
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "excluded_holdout_season": 2026,
+    "holdout_evaluated": false,
+    "source_audit": [
+      {
+        "season": 2016,
+        "schedule_regular": 1231,
+        "included": 1230,
+        "excluded": {
+          "exhibition_non_nba_teams": 1
+        },
+        "date_corrections": {}
+      },
+      {
+        "season": 2017,
+        "schedule_regular": 1231,
+        "included": 1229,
+        "excluded": {
+          "exhibition_non_nba_teams": 1,
+          "missing_box_pair": 1
+        },
+        "date_corrections": {}
+      },
+      {
+        "season": 2018,
+        "schedule_regular": 1232,
+        "included": 1229,
+        "excluded": {
+          "exhibition_non_nba_teams": 2,
+          "missing_box_pair": 1
+        },
+        "date_corrections": {}
+      },
+      {
+        "season": 2019,
+        "schedule_regular": 1232,
+        "included": 1230,
+        "excluded": {
+          "exhibition_non_nba_teams": 2
+        },
+        "date_corrections": {}
+      },
+      {
+        "season": 2020,
+        "schedule_regular": 1064,
+        "included": 1059,
+        "excluded": {
+          "unfinished": 3,
+          "exhibition_non_nba_teams": 2
+        },
+        "date_corrections": {
+          "401161536": "2020-02-29"
+        }
+      },
+      {
+        "season": 2021,
+        "schedule_regular": 1113,
+        "included": 1080,
+        "excluded": {
+          "unfinished": 32,
+          "exhibition_non_nba_teams": 1
+        },
+        "date_corrections": {}
+      },
+      {
+        "season": 2022,
+        "schedule_regular": 1242,
+        "included": 1230,
+        "excluded": {
+          "exhibition_non_nba_teams": 1,
+          "unfinished": 11
+        },
+        "date_corrections": {}
+      },
+      {
+        "season": 2023,
+        "schedule_regular": 1232,
+        "included": 1230,
+        "excluded": {
+          "exhibition_non_nba_teams": 1,
+          "unfinished": 1
+        },
+        "date_corrections": {}
+      },
+      {
+        "season": 2024,
+        "schedule_regular": 1234,
+        "included": 1230,
+        "excluded": {
+          "exhibition_non_nba_teams": 1,
+          "unfinished": 2,
+          "cup_championship": 1
+        },
+        "date_corrections": {}
+      },
+      {
+        "season": 2025,
+        "schedule_regular": 1239,
+        "included": 1229,
+        "excluded": {
+          "exhibition_non_nba_teams": 3,
+          "unfinished": 5,
+          "cup_championship": 1,
+          "box_points_do_not_reconcile": 1
+        },
+        "date_corrections": {}
+      }
+    ],
+    "features": [
+      "home_advantage",
+      "elo_diff",
+      "off_diff",
+      "def_diff",
+      "pace_diff",
+      "efg_diff",
+      "tov_diff",
+      "orb_diff",
+      "ftr_diff",
+      "win_diff",
+      "net5_diff",
+      "rest_diff",
+      "b2b_diff",
+      "history_diff"
+    ],
+    "pooled": {
+      "team_logistic": {
+        "games": 8288,
+        "correct": 5414,
+        "accuracy": 0.6532335907335908,
+        "brier": 0.21739478110025767,
+        "log_loss": 0.6242995294718683
+      },
+      "elo": {
+        "games": 8288,
+        "correct": 5325,
+        "accuracy": 0.6424951737451737,
+        "brier": 0.22068684795272284,
+        "log_loss": 0.6312204891360662
+      },
+      "home_frequency": {
+        "games": 8288,
+        "correct": 4620,
+        "accuracy": 0.5574324324324325,
+        "brier": 0.24701113259271038,
+        "log_loss": 0.6871678337341237
+      }
+    },
+    "baseline_vs_elo_date_bootstrap": {
+      "brier": {
+        "delta": -0.003292066852465167,
+        "interval95": [
+          -0.004361403296015453,
+          -0.00219267179558213
+        ]
+      },
+      "log_loss": {
+        "delta": -0.006920959664197894,
+        "interval95": [
+          -0.009391226024439332,
+          -0.004490502306777611
+        ]
+      },
+      "accuracy": {
+        "delta": 0.010738416988416988,
+        "interval95": [
+          0.004306804867223886,
+          0.01694915254237288
+        ]
+      }
+    },
+    "calibration": [
+      {
+        "lower": 0.0,
+        "games": 10,
+        "mean_probability": 0.0801325386551025,
+        "home_win_rate": 0.1
+      },
+      {
+        "lower": 0.1,
+        "games": 137,
+        "mean_probability": 0.16617448177432778,
+        "home_win_rate": 0.19708029197080293
+      },
+      {
+        "lower": 0.2,
+        "games": 501,
+        "mean_probability": 0.257681575515132,
+        "home_win_rate": 0.249500998003992
+      },
+      {
+        "lower": 0.30000000000000004,
+        "games": 908,
+        "mean_probability": 0.35395880488640635,
+        "home_win_rate": 0.3601321585903084
+      },
+      {
+        "lower": 0.4,
+        "games": 1238,
+        "mean_probability": 0.4522758399432082,
+        "home_win_rate": 0.420032310177706
+      },
+      {
+        "lower": 0.5,
+        "games": 1678,
+        "mean_probability": 0.5528382158719688,
+        "home_win_rate": 0.534564958283671
+      },
+      {
+        "lower": 0.6000000000000001,
+        "games": 1629,
+        "mean_probability": 0.6504258724022621,
+        "home_win_rate": 0.625537139349294
+      },
+      {
+        "lower": 0.7000000000000001,
+        "games": 1326,
+        "mean_probability": 0.7483812564646563,
+        "home_win_rate": 0.755656108597285
+      },
+      {
+        "lower": 0.8,
+        "games": 766,
+        "mean_probability": 0.8397015227936786,
+        "home_win_rate": 0.8028720626631853
+      },
+      {
+        "lower": 0.9,
+        "games": 95,
+        "mean_probability": 0.918719099743503,
+        "home_win_rate": 0.9157894736842105
+      }
+    ],
+    "protocol_sha256": "6b1a99340ce51ec231e25f5b91a9957965058b03856458a7ab5f1366c1904667",
+    "code_sha256": "9e4e51f9e7b69ced29554d85d171fb2ffcf0cdac3eef0285acf4818510827dee"
+  },
+  "prospective": {
+    "feed_status": "not_enabled",
+    "predictions": []
+  }
+}
