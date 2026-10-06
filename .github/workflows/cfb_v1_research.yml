@@ -53,7 +53,7 @@ jobs:
         run: |
           git config user.name "bp-sports-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add research/cfb/results/ data/cfb/
+          git add research/cfb/results/ data/cfb/ model/cfb/v1/frozen_bundle.joblib model/cfb/v1/bundle_manifest.json
           if git diff --cached --quiet; then
             echo "No generated changes"
           else
