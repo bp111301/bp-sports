@@ -1,0 +1,213 @@
+{
+  "selection_seasons": [
+    "20212022",
+    "20222023",
+    "20232024",
+    "20242025"
+  ],
+  "excluded_from_selection": [
+    "20252026",
+    "20262027"
+  ],
+  "ranking": [
+    {
+      "candidate": "linear_regulation_blend",
+      "games": 5248,
+      "accuracy": 0.6131859756097561,
+      "brier": 0.2314700297999195,
+      "log_loss": 0.6547716443375248,
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.645579268292683,
+          "brier": 0.2271729895444028,
+          "log_loss": 0.6464634756603649
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6105182926829268,
+          "brier": 0.23084514083794755,
+          "log_loss": 0.6532892642533814
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.6013719512195121,
+          "brier": 0.2341004151242392,
+          "log_loss": 0.6600600262583938
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.5952743902439024,
+          "brier": 0.23376157369308861,
+          "log_loss": 0.659273811177959
+        }
+      ],
+      "seasons_with_brier_improvement": 3,
+      "eligible_as_research_candidate": false
+    },
+    {
+      "candidate": "v1_reference",
+      "games": 5248,
+      "accuracy": 0.6133765243902439,
+      "brier": 0.23162021873811148,
+      "log_loss": 0.6551475411952689,
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6463414634146342,
+          "brier": 0.22726614916452517,
+          "log_loss": 0.6469141071686888
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6112804878048781,
+          "brier": 0.2314314717318134,
+          "log_loss": 0.6544796406975509
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.5990853658536586,
+          "brier": 0.23416583979315944,
+          "log_loss": 0.6602705045088536
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.5967987804878049,
+          "brier": 0.23361741426294796,
+          "log_loss": 0.6589259124059822
+        }
+      ],
+      "seasons_with_brier_improvement": 0,
+      "eligible_as_research_candidate": false
+    },
+    {
+      "candidate": "regulation_form_logistic",
+      "games": 5248,
+      "accuracy": 0.612233231707317,
+      "brier": 0.23181846119316385,
+      "log_loss": 0.6555729001248118,
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6410060975609756,
+          "brier": 0.2272560768810412,
+          "log_loss": 0.646710000291021
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6120426829268293,
+          "brier": 0.23145810648406343,
+          "log_loss": 0.6548667089986532
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.5975609756097561,
+          "brier": 0.2347638252421704,
+          "log_loss": 0.6615172701247547
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.5983231707317073,
+          "brier": 0.2337958361653802,
+          "log_loss": 0.6591976210848186
+        }
+      ],
+      "seasons_with_brier_improvement": 1,
+      "eligible_as_research_candidate": false
+    },
+    {
+      "candidate": "regulation_threeway",
+      "games": 5248,
+      "accuracy": 0.6135670731707317,
+      "brier": 0.23182444546808806,
+      "log_loss": 0.6555214496581148,
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6402439024390244,
+          "brier": 0.2277012158386924,
+          "log_loss": 0.6474420807258908
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6097560975609756,
+          "brier": 0.230836187148689,
+          "log_loss": 0.6533981733465877
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.6021341463414634,
+          "brier": 0.23446058541082965,
+          "log_loss": 0.6607773723049516
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.6021341463414634,
+          "brier": 0.23429979347414123,
+          "log_loss": 0.660468172255029
+        }
+      ],
+      "seasons_with_brier_improvement": 1,
+      "eligible_as_research_candidate": false
+    },
+    {
+      "candidate": "regulation_poisson",
+      "games": 5248,
+      "accuracy": 0.6063262195121951,
+      "brier": 0.23339838248673217,
+      "log_loss": 0.6590231935601826,
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6371951219512195,
+          "brier": 0.23002025085304778,
+          "log_loss": 0.6523515297999013
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.59375,
+          "brier": 0.23290959722469806,
+          "log_loss": 0.6579524994224448
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.6074695121951219,
+          "brier": 0.2349246875023151,
+          "log_loss": 0.6619956342708355
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.586890243902439,
+          "brier": 0.23573899436686774,
+          "log_loss": 0.6637931107475487
+        }
+      ],
+      "seasons_with_brier_improvement": 0,
+      "eligible_as_research_candidate": false
+    }
+  ],
+  "selected_research_candidate": "v1_reference",
+  "extra_time_probability": 0.5,
+  "status": "exploratory development; prospective validation required",
+  "limitations": "Regulation score reconstructed by removing one winning overtime/shootout goal. Poisson assumes independent goal counts; extra-time win chance fixed at .5, not known outcome."
+}
