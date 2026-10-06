@@ -27,11 +27,13 @@ jobs:
           python-version: '3.12'
       - run: pip install pandas==2.2.3 numpy==2.3.5 scikit-learn==1.8.0 pyarrow==23.0.1 requests==2.32.5 pytest==8.4.2
       - name: Verify chronological safety
-        run: pytest -q research/nba/test_safety.py
+        run: pytest -q research/nba/test_safety.py research/nba/test_tournament_safety.py
       - name: Download only development seasons
         run: python research/nba/download_data.py
       - name: Run fixed expanding-season baseline
         run: python research/nba/baseline.py
+      - name: Run preregistered advanced team-stat tournament
+        run: python research/nba/tournament.py
       - name: Save audited research outputs
         run: |
           git config user.name 'bp-sports-bot'
