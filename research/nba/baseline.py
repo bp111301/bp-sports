@@ -21,9 +21,9 @@ DATE_OVERRIDES = {'401161536':'2020-02-29'}
 def truth(value):
     return str(value).lower() in ('true','1','1.0')
 
-def load_games():
+def load_games(seasons=range(2016,2026)):
     games, audit = [], []
-    for season in range(2016,2026):
+    for season in seasons:
         schedule = pd.read_parquet(ROOT/f'data/nba/source/schedule_{season}.parquet')
         box = pd.read_parquet(ROOT/f'data/nba/source/box_{season}.parquet')
         assert not schedule.game_id.duplicated().any(), f'duplicate schedule {season}'

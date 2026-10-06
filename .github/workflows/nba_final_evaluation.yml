@@ -1,0 +1,64 @@
+name: NBA V1 final comparison freeze and evaluation
+on:
+  push:
+    branches: [nba-v1-research]
+    paths:
+      - 'research/nba/final/**'
+      - '.github/workflows/nba_final_evaluation.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: nba-final-evaluation
+  cancel-in-progress: false
+env:
+  OMP_NUM_THREADS: '1'
+  OPENBLAS_NUM_THREADS: '1'
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: nba-v1-research
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pandas==2.2.3 numpy==2.3.5 scikit-learn==1.8.0 pyarrow==23.0.1 requests==2.32.5 pytest==8.4.2 joblib==1.5.3
+      - name: Verify final-stage safety
+        run: pytest -q research/nba/test_safety.py research/nba/test_tournament_safety.py research/nba/final/test_final_safety.py
+      - name: Compare on development games and freeze candidate
+        run: python research/nba/final/compare_freeze.py
+      - name: Commit frozen artifact before excluded-season retrieval
+        run: |
+          git config user.name 'bp-sports-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add model/nba/v1/ research/nba/results/final_comparison*
+          if ! git diff --cached --quiet; then
+            git commit -m 'Freeze NBA V1 candidate before excluded-season evaluation [skip ci]'
+            git pull --rebase origin nba-v1-research
+            git push origin HEAD:nba-v1-research
+          fi
+  evaluate:
+    needs: freeze
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: nba-v1-research
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pandas==2.2.3 numpy==2.3.5 scikit-learn==1.8.0 pyarrow==23.0.1 requests==2.32.5 joblib==1.5.3
+      - name: Verify committed freeze and evaluate selected candidate once
+        run: python research/nba/final/evaluate.py
+      - name: Preserve first excluded-season result
+        run: |
+          git config user.name 'bp-sports-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/nba/source/*2026.parquet research/nba/results/excluded_season*
+          if ! git diff --cached --quiet; then
+            git commit -m 'Preserve first NBA V1 excluded-season evaluation [skip ci]'
+            git pull --rebase origin nba-v1-research
+            git push origin HEAD:nba-v1-research
+          fi

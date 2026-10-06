@@ -6,6 +6,7 @@ on:
       - 'research/nba/**'
       - '.github/workflows/nba_v1_research.yml'
       - '!research/nba/results/**'
+      - '!research/nba/final/**'
   workflow_dispatch:
 permissions:
   contents: write
