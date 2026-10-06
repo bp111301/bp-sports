@@ -1,0 +1,20 @@
+{
+  "version": "NHL_CONFIRMED_GOALIE_EXPERIMENT_V1",
+  "status": "research_only_not_promoted",
+  "training_last_season": "20252026",
+  "prospective_season": "20262027",
+  "goalie_feature": "weighted_goalie_probable_diff",
+  "goalie_history_appearances": 20,
+  "goalie_history_max_days": 365,
+  "prior_save_pct": 0.905,
+  "prior_shots": 300,
+  "team_start_history": 10,
+  "logistic_C": 0.5,
+  "calibration": "raw",
+  "prediction_window_minutes": 60,
+  "require_both_confirmed": true,
+  "candidates": ["team_control", "inferred_goalie", "confirmed_goalie"],
+  "weights_refit_during_prospective_season": false,
+  "first_formal_review_paired_games": 500,
+  "automatic_promotion": false
+}
