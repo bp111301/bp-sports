@@ -1,0 +1,33 @@
+name: NHL pregame goalie capture
+on:
+  push:
+    branches: [nhl-v1-research]
+    paths:
+      - "research/nhl/goalie_capture/**"
+      - ".github/workflows/nhl_goalie_capture.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: nhl-v1-research
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests
+      - name: Inspect public source schema
+        run: python research/nhl/goalie_capture/probe_source.py
+      - name: Commit source schema
+        run: |
+          git config user.name "bp-sports-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add research/nhl/goalie_capture/source_schema.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Inspect public pregame goalie source schema [skip ci]"
+            git pull --rebase origin nhl-v1-research
+            git push origin HEAD:nhl-v1-research
+          fi
