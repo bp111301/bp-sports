@@ -10,7 +10,7 @@ Development only: 2021–22 to 2024–25. 2025–26 removed before features. Sam
 | opponent_plus_schedule | 61.59% | 0.231897 | 0.655800 | 1 | False |
 
 MoneyPuck.com is credited for exploratory expected-goals inputs. Historical model vintage is unverified; xG candidates cannot be promoted.
-Quality source status: {'available': True, 'source': 'MoneyPuck.com', 'url': 'https://moneypuck.com/moneypuck/playerData/careers/gameByGame/all_teams.csv', 'historical_model_vintage_verified': False, 'rows': 16938, 'reason': 'Insufficient team-game match coverage; shot-quality candidates not run'}; matched coverage: 0.950938717676231.
+Quality source status: {'available': True, 'source': 'MoneyPuck.com', 'url': 'https://moneypuck.com/moneypuck/playerData/careers/gameByGame/all_teams.csv', 'historical_model_vintage_verified': False, 'rows': 16938, 'date_offset_days': {'0': 16107}, 'missing_by_season_team': {"('20182019', 'LAK')": 82, "('20182019', 'NJD')": 82, "('20182019', 'SJS')": 82, "('20182019', 'TBL')": 82, "('20192020', 'LAK')": 70, "('20192020', 'NJD')": 69, "('20192020', 'SJS')": 70, "('20192020', 'TBL')": 70, "('20202021', 'LAK')": 56, "('20202021', 'NJD')": 56, "('20202021', 'SJS')": 56, "('20202021', 'TBL')": 56}, 'date_rule': 'NHL game ID and club define identity; NHL game_date defines post-game availability; vendor dates audited only', 'reason': 'Insufficient team-game match coverage; shot-quality candidates not run'}; matched coverage: 0.950938717676231.
 Travel uses approximate arena-to-arena distances; actual itineraries and neutral-site adjustments are unavailable.
 Opponent scoring residuals compare prior results with each opponent’s scoring/conceding record available before that prior game.
 
