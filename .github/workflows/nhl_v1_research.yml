@@ -27,7 +27,9 @@ jobs:
         run: python research/nhl/download_games.py 20182019 20192020 20202021 20212022 20222023 20232024 20242025 20252026
       - name: Run chronological baseline
         run: python research/nhl/backtest_baseline.py
-      - name: Run development tournament\n        run: python research/nhl/experiment_baselines.py\n      - name: Commit NHL research outputs
+      - name: Run development tournament
+        run: python research/nhl/experiment_baselines.py
+      - name: Commit NHL research outputs
         run: |
           git config user.name "bp-sports-bot"
           git config user.email "actions@users.noreply.github.com"
@@ -35,7 +37,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No generated changes"
           else
-            git commit -m "Update NHL V1 baseline results"
+            git commit -m "Update NHL V1 research results"
             git pull --rebase origin nhl-v1-research
             git push origin HEAD:nhl-v1-research
           fi
