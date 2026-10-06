@@ -1,6 +1,6 @@
 # CFB V2 Margin Challenger
 
-Ridge score-margin models were trained only on prior seasons. Predicted margins were converted to win probabilities using training residual variance. 2026 was excluded.
+Ridge score-margin models are trained only on prior seasons. Their predicted margins are converted to win probabilities using training residual variance. 2026 is excluded.
 
 | Candidate | Accuracy | Brier | Δ Brier | Recent Brier | Recent Δ | Seasons improved |
 |---|---:|---:|---:|---:|---:|---:|
@@ -17,11 +17,5 @@ Ridge score-margin models were trained only on prior seasons. Predicted margins 
 | blend_prior_a1_w50 | 72.65% | 0.176943 | -0.000395 | 0.179869 | -0.000236 | 5/8 |
 | blend_context_a10_w25 | 73.02% | 0.176947 | -0.000391 | 0.179762 | -0.000343 | 6/8 |
 | blend_context_a1_w25 | 72.98% | 0.176950 | -0.000387 | 0.179755 | -0.000350 | 6/8 |
-
-## Readout
-
-The margin signal is promising enough to continue. The strongest probability-quality candidate is the 50/50 blend of frozen V1 with the heavily regularized context margin model (alpha 100): Brier improves from 0.177338 to 0.176808 and improves in 6 of 8 seasons.
-
-The highest accuracy in the tested shortlist is 73.02%, reached by the context margin alpha 10/1 blends at 25-35% weight, while still improving Brier versus V1.
-
-This is CFB V2 research only. Frozen CFB V1 is unchanged. The workflow computation completed successfully; its generated-output push hit a transient GitHub HTTP 500, so this report preserves the completed run's scorecard.
+| blend_prior_a10_w35 | 72.82% | 0.176967 | -0.000371 | 0.179875 | -0.000230 | 6/8 |
+| blend_prior_a1_w35 | 72.82% | 0.176978 | -0.000360 | 0.179870 | -0.000234 | 6/8 |
