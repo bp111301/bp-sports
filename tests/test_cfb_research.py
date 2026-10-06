@@ -21,3 +21,11 @@ def test_home_field_zero_on_neutral():
     df=pd.DataFrame({"home_pregame_elo":[1,1],"away_pregame_elo":[1,1],"neutral_site":[True,False]})
     x=m.build_matrix(df)
     assert list(x.home_field)==[0.0,1.0]
+
+def test_frozen_cfb_bundle_integrity():
+    import hashlib, json
+    bundle=Path("model/cfb/v1/frozen_bundle.joblib")
+    manifest=json.loads(Path("model/cfb/v1/bundle_manifest.json").read_text())
+    assert bundle.exists()
+    assert hashlib.sha256(bundle.read_bytes()).hexdigest()==manifest["sha256"]
+    assert manifest["version"]=="CFB_V1"
