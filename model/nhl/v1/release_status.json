@@ -1,0 +1,23 @@
+{
+  "version": "NHL_V1",
+  "status": "research_only",
+  "eligible_for_prospective_shadow": false,
+  "reason": "Excluded-season release gate failed: accuracy matches baseline, Brier and log loss are worse. Do not tune or rerun V1 against this evaluation.",
+  "development_accuracy": 0.6133765243902439,
+  "excluded_season": "20252026",
+  "excluded_season_metrics": {
+    "games": 1312,
+    "accuracy": 0.5342987804878049,
+    "brier": 0.24942146417973904,
+    "log_loss": 0.6920448564747071
+  },
+  "baseline_metrics": {
+    "games": 1312,
+    "accuracy": 0.5342987804878049,
+    "brier": 0.2485433128180474,
+    "log_loss": 0.690426581208789
+  },
+  "frozen_bundle_sha256": "7726657ebd9858749034d69f2d1fa078652d6d8c1d182a6fd51b20ded3c93005",
+  "production_activated": false,
+  "cfb_modified": false
+}

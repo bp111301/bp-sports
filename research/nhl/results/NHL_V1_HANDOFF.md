@@ -39,8 +39,38 @@ Eight factor tests and seven goalie tests pass locally. All six sets of saved
 OOF predictions reproduce reported accuracy, Brier and log loss; 31,488 rows,
 unique by candidate/game ID, only development seasons. CFB remains unchanged.
 
+## Calibration, freeze and excluded-season evaluation completed
+
+Chronological calibration retained raw probabilities: on the same 3,936
+calibratable development games, raw Brier/log loss were .233072/.657892;
+temperature .233089/.657957; sigmoid .233077/.657928. Neither calibrated method
+passed the recorded promotion rule. The full development leader remains 61.34%.
+
+The exact specification was committed at 9fc848d before the evaluation workflow
+ran. Frozen weights were trained on 8,469 games from 2018–19 through 2024–25
+before downloading the excluded season. Bundle/config/feature-code checksums
+and dependency versions are recorded in model/nhl/v1/bundle_manifest.json.
+
+Run: https://github.com/bp111301/bp-sports/actions/runs/37493361746 (success).
+On 1,312 games in 2025–26, frozen V1 accuracy is 53.43%, Brier .249421, log loss
+.692045. Fixed baseline accuracy is also 53.43%, Brier .248543, log loss .690427.
+The release gate failed. V1 remains research-only and is not eligible for
+prospective shadow under this specification. No live NHL or UI deployment.
+
+Saved prediction integrity checks reproduce every metric. Baseline probabilities
+and outcomes match the earlier saved baseline run for all 1,312 games (maximum
+probability difference below 1e-12). Frozen checksums match. All 22 safety tests
+pass locally and in CI. This confirms the poor excluded-season baseline result
+was already present; it does not establish the underlying cause of deterioration.
+
 ## Next development step
 
-Persist candidate-specific chronological out-of-fold predictions and review calibration, confidence buckets, and season stability for the retained team-stat leader. Lock the exact candidate and calibration procedure before a one-time 2025–26 evaluation. Do not tune against that evaluation. No NHL production model or deployment freeze has yet been declared.
+Audit source consistency, feature coverage and development-season stability
+before proposing another model version. Do not modify V1 or select another
+candidate using 2025–26. A future version needs a newly documented development
+boundary and genuinely later/prospective validation; this failed season cannot
+serve repeatedly as independent confirmation. CFB V1 and Candidate B remain
+frozen and untouched.
 
-2025–26 is excluded from both goalie selection and team-stat selection; the weighted script explicitly truncates game inputs at 2024–25. Earlier baseline-only reports already include 2025–26, so describe it as excluded from candidate selection rather than claiming every historical result is unseen.
+2025–26 was excluded from candidate selection, but earlier baseline-only reports
+already viewed it. Do not describe it as a pristine unseen holdout.
