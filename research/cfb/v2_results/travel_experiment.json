@@ -1,0 +1,200 @@
+{
+  "2026_touched": false,
+  "market_used": false,
+  "neutral_travel_missing": true,
+  "candidates": {
+    "v1": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.727367870225013,
+        "brier": 0.17733777180061297,
+        "log_loss": 0.5280438284465833,
+        "mean_confidence": 0.7452971073573846
+      },
+      "recent": {
+        "games": 2287,
+        "accuracy": 0.7210319195452558,
+        "brier": 0.18010468286336964,
+        "log_loss": 0.5337575371344266,
+        "mean_confidence": 0.7367781893177257
+      },
+      "delta_brier": 0.0
+    },
+    "distance": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.727367870225013,
+        "brier": 0.17724805792657883,
+        "log_loss": 0.5278617465420988,
+        "mean_confidence": 0.7453422381551966
+      },
+      "recent": {
+        "games": 2287,
+        "accuracy": 0.7219064276344557,
+        "brier": 0.17999031823969017,
+        "log_loss": 0.5335126768012872,
+        "mean_confidence": 0.7369356115454568
+      },
+      "delta_brier": -8.971387403414188e-05
+    },
+    "timezone": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7271934414791558,
+        "brier": 0.17734840547092046,
+        "log_loss": 0.528083580861235,
+        "mean_confidence": 0.7453061870939174
+      },
+      "recent": {
+        "games": 2287,
+        "accuracy": 0.7205946655006559,
+        "brier": 0.18012797287580404,
+        "log_loss": 0.5338118566824278,
+        "mean_confidence": 0.7367826253489262
+      },
+      "delta_brier": 1.0633670307486076e-05
+    },
+    "elevation": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.727367870225013,
+        "brier": 0.17735680509198512,
+        "log_loss": 0.5280936170803358,
+        "mean_confidence": 0.7452535550716277
+      },
+      "recent": {
+        "games": 2287,
+        "accuracy": 0.7219064276344557,
+        "brier": 0.18012520448515631,
+        "log_loss": 0.5337847181922253,
+        "mean_confidence": 0.7367209201247904
+      },
+      "delta_brier": 1.9033291372150263e-05
+    },
+    "all_travel": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.727367870225013,
+        "brier": 0.1772723817452683,
+        "log_loss": 0.5279434004822153,
+        "mean_confidence": 0.7452995500581993
+      },
+      "recent": {
+        "games": 2287,
+        "accuracy": 0.7219064276344557,
+        "brier": 0.18003701911129755,
+        "log_loss": 0.5335991884686638,
+        "mean_confidence": 0.736862238096638
+      },
+      "delta_brier": -6.53900553446718e-05
+    }
+  },
+  "meta_walkforward": {
+    "folds": [
+      {
+        "season": 2021,
+        "chosen": "distance",
+        "challenger": {
+          "games": 733,
+          "accuracy": 0.713506139154161,
+          "brier": 0.18358953114684504,
+          "log_loss": 0.5504975855150385,
+          "mean_confidence": 0.7554604582458937
+        },
+        "v1": {
+          "games": 733,
+          "accuracy": 0.713506139154161,
+          "brier": 0.1837197294725052,
+          "log_loss": 0.5507966016538203,
+          "mean_confidence": 0.7555084158937533
+        }
+      },
+      {
+        "season": 2022,
+        "chosen": "distance",
+        "challenger": {
+          "games": 735,
+          "accuracy": 0.6952380952380952,
+          "brier": 0.19124531302057082,
+          "log_loss": 0.5619588687225416,
+          "mean_confidence": 0.7406885100945642
+        },
+        "v1": {
+          "games": 735,
+          "accuracy": 0.6993197278911565,
+          "brier": 0.19134615594185633,
+          "log_loss": 0.5622383071036507,
+          "mean_confidence": 0.7408310168115504
+        }
+      },
+      {
+        "season": 2023,
+        "chosen": "distance",
+        "challenger": {
+          "games": 751,
+          "accuracy": 0.7470039946737683,
+          "brier": 0.1713691484676957,
+          "log_loss": 0.5133871645652284,
+          "mean_confidence": 0.7379382647411641
+        },
+        "v1": {
+          "games": 751,
+          "accuracy": 0.7496671105193076,
+          "brier": 0.1714380032958811,
+          "log_loss": 0.5135479672283995,
+          "mean_confidence": 0.7377680288220161
+        }
+      },
+      {
+        "season": 2024,
+        "chosen": "distance",
+        "challenger": {
+          "games": 763,
+          "accuracy": 0.7011795543905636,
+          "brier": 0.18705427961571705,
+          "log_loss": 0.5502682500037497,
+          "mean_confidence": 0.7364188266407541
+        },
+        "v1": {
+          "games": 763,
+          "accuracy": 0.6972477064220184,
+          "brier": 0.1871907822169841,
+          "log_loss": 0.5504967262841916,
+          "mean_confidence": 0.7363725540082774
+        }
+      },
+      {
+        "season": 2025,
+        "chosen": "distance",
+        "challenger": {
+          "games": 773,
+          "accuracy": 0.7179818887451488,
+          "brier": 0.1813935471774126,
+          "log_loss": 0.5365265931477317,
+          "mean_confidence": 0.7364715938641013
+        },
+        "v1": {
+          "games": 773,
+          "accuracy": 0.7166882276843467,
+          "brier": 0.1815302747758872,
+          "log_loss": 0.5368692909224678,
+          "mean_confidence": 0.7362169089469457
+        }
+      }
+    ],
+    "challenger": {
+      "games": 3755,
+      "accuracy": 0.715046604527297,
+      "brier": 0.18289594919172525,
+      "log_loss": 0.5423962691180121,
+      "mean_confidence": 0.7412863686866058
+    },
+    "v1": {
+      "games": 3755,
+      "accuracy": 0.7153129161118509,
+      "brier": 0.18301075793052918,
+      "log_loss": 0.5426584692835864,
+      "mean_confidence": 0.741227745719374
+    }
+  }
+}
