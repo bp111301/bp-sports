@@ -1,0 +1,163 @@
+{
+  "protocol": "For each 2021-2025 season, candidate chosen by prior-season OOF Brier only",
+  "2026_touched": false,
+  "folds": [
+    {
+      "target_season": 2021,
+      "selection_seasons": "2018-2020",
+      "chosen": "blend_prior_a100_w35",
+      "selection_brier": 0.1663358098993027,
+      "challenger": {
+        "games": 733,
+        "accuracy": 0.7148703956343793,
+        "brier": 0.18268782382003826,
+        "log_loss": 0.5439685590840951,
+        "mean_confidence": 0.7465820142109785
+      },
+      "v1": {
+        "games": 733,
+        "accuracy": 0.713506139154161,
+        "brier": 0.1837197294725052,
+        "log_loss": 0.5507966016538202,
+        "mean_confidence": 0.7555084158937533
+      },
+      "delta_brier": -0.0010319056524669412
+    },
+    {
+      "target_season": 2022,
+      "selection_seasons": "2018-2021",
+      "chosen": "blend_prior_a100_w50",
+      "selection_brier": 0.17072283728340573,
+      "challenger": {
+        "games": 735,
+        "accuracy": 0.6993197278911565,
+        "brier": 0.18996700809818876,
+        "log_loss": 0.5581487756151444,
+        "mean_confidence": 0.7317602694972669
+      },
+      "v1": {
+        "games": 735,
+        "accuracy": 0.6993197278911565,
+        "brier": 0.19134615594185633,
+        "log_loss": 0.5622383071036507,
+        "mean_confidence": 0.7408310168115504
+      },
+      "delta_brier": -0.0013791478436675775
+    },
+    {
+      "target_season": 2023,
+      "selection_seasons": "2018-2022",
+      "chosen": "blend_prior_a100_w50",
+      "selection_brier": 0.1748274413312483,
+      "challenger": {
+        "games": 751,
+        "accuracy": 0.748335552596538,
+        "brier": 0.17163303071651478,
+        "log_loss": 0.5137873833051504,
+        "mean_confidence": 0.7293075735976191
+      },
+      "v1": {
+        "games": 751,
+        "accuracy": 0.7496671105193076,
+        "brier": 0.1714380032958811,
+        "log_loss": 0.5135479672283995,
+        "mean_confidence": 0.7377680288220161
+      },
+      "delta_brier": 0.00019502742063368106
+    },
+    {
+      "target_season": 2024,
+      "selection_seasons": "2018-2023",
+      "chosen": "blend_prior_a100_w50",
+      "selection_brier": 0.1742558420051428,
+      "challenger": {
+        "games": 763,
+        "accuracy": 0.7051114023591087,
+        "brier": 0.1867098636931912,
+        "log_loss": 0.5487062157046878,
+        "mean_confidence": 0.7274268494841464
+      },
+      "v1": {
+        "games": 763,
+        "accuracy": 0.6972477064220184,
+        "brier": 0.1871907822169841,
+        "log_loss": 0.5504967262841914,
+        "mean_confidence": 0.7363725540082774
+      },
+      "delta_brier": -0.0004809185237928948
+    },
+    {
+      "target_season": 2025,
+      "selection_seasons": "2018-2024",
+      "chosen": "blend_context_a100_w50",
+      "selection_brier": 0.17616169212717459,
+      "challenger": {
+        "games": 773,
+        "accuracy": 0.7166882276843467,
+        "brier": 0.18095505193996522,
+        "log_loss": 0.5350449104337968,
+        "mean_confidence": 0.726390857229279
+      },
+      "v1": {
+        "games": 773,
+        "accuracy": 0.7166882276843467,
+        "brier": 0.1815302747758872,
+        "log_loss": 0.5368692909224678,
+        "mean_confidence": 0.7362169089469458
+      },
+      "delta_brier": -0.0005752228359219846
+    }
+  ],
+  "aggregate": {
+    "challenger": {
+      "games": 3755,
+      "accuracy": 0.7169107856191744,
+      "brier": 0.1823622404867796,
+      "log_loss": 0.5398336050854707,
+      "mean_confidence": 0.7321771560755225
+    },
+    "v1": {
+      "games": 3755,
+      "accuracy": 0.7153129161118509,
+      "brier": 0.18301075793052918,
+      "log_loss": 0.5426584692835864,
+      "mean_confidence": 0.741227745719374
+    },
+    "delta_brier": -0.00064851744374958,
+    "delta_accuracy": 0.001597869507323546
+  },
+  "subgroups": {
+    "conference": {
+      "challenger": {
+        "games": 2690,
+        "accuracy": 0.7022304832713755,
+        "brier": 0.19163526303654002,
+        "log_loss": 0.5645017045617143,
+        "mean_confidence": 0.7168566459916147
+      },
+      "v1": {
+        "games": 2690,
+        "accuracy": 0.7007434944237918,
+        "brier": 0.1922838161353476,
+        "log_loss": 0.5672896222525061,
+        "mean_confidence": 0.7262814511547183
+      }
+    },
+    "weeks_7_9": {
+      "challenger": {
+        "games": 805,
+        "accuracy": 0.7043478260869566,
+        "brier": 0.18638725550821872,
+        "log_loss": 0.551598453835032,
+        "mean_confidence": 0.7141187618264996
+      },
+      "v1": {
+        "games": 805,
+        "accuracy": 0.7080745341614907,
+        "brier": 0.18628638515008047,
+        "log_loss": 0.5508619503076082,
+        "mean_confidence": 0.7237869035323593
+      }
+    }
+  }
+}

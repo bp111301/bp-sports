@@ -1,0 +1,45 @@
+{
+  "market_firewall": true,
+  "2026_touched": false,
+  "method": "spread-only logistic fit on prior seasons; benchmark only",
+  "benchmarks": {
+    "spread_open": {
+      "coverage_games": 3015,
+      "market": {
+        "games": 3015,
+        "accuracy": 0.7343283582089553,
+        "brier": 0.17725949842516225,
+        "log_loss": 0.5263093076556055,
+        "mean_confidence": 0.7248182117362881
+      },
+      "v1_same_games": {
+        "games": 3015,
+        "accuracy": 0.71575456053068,
+        "brier": 0.18286590248595508,
+        "log_loss": 0.5407291723639059,
+        "mean_confidence": 0.7376099013345749
+      },
+      "market_minus_v1_brier": -0.0056064040607928245,
+      "spread_favorite_accuracy_ex_pk": 0.7346666666666667
+    },
+    "spread": {
+      "coverage_games": 5733,
+      "market": {
+        "games": 5733,
+        "accuracy": 0.7362637362637363,
+        "brier": 0.1722946798670904,
+        "log_loss": 0.5137731320216186,
+        "mean_confidence": 0.7461528339178362
+      },
+      "v1_same_games": {
+        "games": 5733,
+        "accuracy": 0.727367870225013,
+        "brier": 0.17733777180061297,
+        "log_loss": 0.5280438284465833,
+        "mean_confidence": 0.7452971073573846
+      },
+      "market_minus_v1_brier": -0.005043091933522564,
+      "spread_favorite_accuracy_ex_pk": 0.7358128164833246
+    }
+  }
+}
