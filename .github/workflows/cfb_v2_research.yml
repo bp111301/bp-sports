@@ -10,6 +10,7 @@ on:
       - "research/cfb/market_benchmark_v2.py"
       - "research/cfb/market_incremental_v2.py"
       - "research/cfb/experiment_nonlinear_v2.py"
+      - "research/cfb/experiment_combined_v2.py"
       - "research/cfb/opening_market_disagreement.py"
       - "research/cfb/experiment_reliability_adjustments.py"
       - ".github/workflows/cfb_v2_research.yml"
@@ -40,6 +41,8 @@ jobs:
         run: python research/cfb/validate_margin_v2.py
       - name: Run nonlinear challenger
         run: python research/cfb/experiment_nonlinear_v2.py
+      - name: Run nested combined challenger
+        run: python research/cfb/experiment_combined_v2.py
       - name: Run external market benchmark
         run: python research/cfb/market_benchmark_v2.py
       - name: Test incremental information beyond market

@@ -33,7 +33,12 @@ def main():
  for target in range(2021,2026):
   prior=sa<target;test=sa==target;chosen=min(parts,key=lambda n:brier_score_loss(y[prior],cand[n][prior]));p=cand[chosen][test];yy=y[test];folds.append({"season":target,"chosen":chosen,"challenger":score(yy,p),"v1":score(yy,v1[test])});meta_p.append(p);meta_y.append(yy)
  my=np.concatenate(meta_y);mp=np.concatenate(meta_p);mv=v1[sa>=2021];payload={"selection_window":"2018-2025","2026_touched":False,"market_used":False,"ranking":ranked,"candidates":res,"meta_walkforward":{"folds":folds,"challenger":score(my,mp),"v1":score(my,mv)}}
- out=Path(a.out_dir);out.mkdir(parents=True,exist_ok=True);(out/"nonlinear_challenger.json").write_text(json.dumps(payload,indent=2)+"\n")
+ out=Path(a.out_dir);out.mkdir(parents=True,exist_ok=True)
+ meta=[c for c in ["game_id","season","week","conference_game","neutral_site","home_team","away_team"] if c in df.columns]
+ oof=df.loc[df.season.between(2018,2025),meta].reset_index(drop=True).copy();oof["home_win"]=y
+ for name,p in cand.items():oof[name]=p
+ oof.to_csv(out/"nonlinear_oof_candidates.csv",index=False)
+ (out/"nonlinear_challenger.json").write_text(json.dumps(payload,indent=2)+"\n")
  lines=["# CFB V2 Nonlinear Challenger","","Shallow histogram gradient boosting uses only the same leakage-safe, market-free feature families as V1. Every season is trained on prior seasons only; 2026 is excluded.","","| Candidate | Accuracy | Brier | Delta Brier | Recent Brier | Seasons improved |","|---|---:|---:|---:|---:|---:|"]
  for n in ranked[:10]:
   x=res[n];lines.append(f"| {n} | {x['overall']['accuracy']:.2%} | {x['overall']['brier']:.6f} | {x['delta_brier']:+.6f} | {x['recent_2023_2025']['brier']:.6f} | {x['seasons_improved']}/8 |")
