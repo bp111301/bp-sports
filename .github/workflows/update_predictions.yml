@@ -50,7 +50,7 @@ jobs:
         if: steps.gate.outputs.run == 'true'
         run: cat model/v4/bundle.part.* | base64 -d > model/v4/frozen_bundle.joblib
       - if: steps.gate.outputs.run == 'true'
-        run: pip install -r requirements.txt
+        run: pip install -r requirements.txt pandas==2.2.3 numpy==2.3.5 scikit-learn==1.8.0 joblib==1.5.3
       - name: Resolve season
         if: steps.gate.outputs.run == 'true'
         id: vars
@@ -82,7 +82,7 @@ jobs:
           cp runtime/prediction_metadata.json data/current/prediction_metadata.json
       - name: Verify frozen rules
         if: steps.gate.outputs.run == 'true'
-        run: pytest -q
+        run: python -m pytest -q tests/
       - name: Commit generated snapshots
         if: steps.gate.outputs.run == 'true' && github.event_name != 'pull_request'
         shell: bash

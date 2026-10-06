@@ -1,0 +1,42 @@
+name: NBA frozen regular-season forecasts and grading
+on:
+  push:
+    branches: [nba-v1-research, main]
+    paths:
+      - 'research/nba/prospective/**'
+      - '.github/workflows/nba_prospective.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+permissions:
+  contents: write
+concurrency:
+  group: nba-prospective-ledger
+  cancel-in-progress: false
+env:
+  OMP_NUM_THREADS: '1'
+  OPENBLAS_NUM_THREADS: '1'
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: nba-v1-research
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pandas==2.2.3 numpy==2.3.5 scikit-learn==1.8.0 pyarrow==23.0.1 requests==2.32.5 pytest==8.4.2 joblib==1.5.3
+      - name: Verify leakage and immutable record rules
+        run: python -m pytest -q research/nba/prospective/test_safety.py
+      - name: Capture regular-season predictions and grade finals
+        run: python research/nba/prospective/run.py
+      - name: Save prospective ledgers and dashboard
+        run: |
+          git config user.name 'bp-sports-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/nba/prospective/
+          if ! git diff --cached --quiet; then
+            git commit -m 'Collect frozen NBA regular-season forecasts and results [skip ci]'
+            git push origin HEAD:nba-v1-research
+          fi

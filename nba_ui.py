@@ -109,6 +109,9 @@ def render_nba(now=None):
             st.markdown(f'<div class="card nba-ready"><div class="nba-record-tag">READY FOR THE REGULAR SEASON</div><div class="about-title">{title}</div><div class="about-copy">{copy}</div><div class="nba-statuses"><span>✓ Model frozen</span><span>✓ Historical gate passed</span><span>{status}</span></div></div>',unsafe_allow_html=True)
             if feed.get('feed_status')=='unavailable':st.warning('The prospective feed is unavailable. Its live record cannot be confirmed.')
         else:
+            st.caption('Live feed active • Regular-season forecasts lock within 36 hours of tipoff • Final results checked hourly')
+            if feed.get('prediction_blocked_reason'):
+                st.warning('New forecasts are waiting for complete, verified results from previous games. Saved forecasts remain locked.')
             view=st.selectbox('Games',['Upcoming','Awaiting results','Completed','All tracked'],key='nba_view')
             search=st.text_input('Search NBA teams',placeholder='Team or abbreviation',key='nba_search').strip().lower()
             selected=board
@@ -116,7 +119,7 @@ def render_nba(now=None):
             elif view=='Awaiting results':selected=selected[(selected.status=='pending')&selected.start_time_utc.le(now)]
             elif view=='Completed':selected=selected[selected.status=='settled']
             if search:selected=selected[selected.apply(lambda r:search in ' '.join([str(r.home_team),str(r.away_team),TEAMS.get(r.home_team,''),TEAMS.get(r.away_team,'')]).lower(),axis=1)]
-            if selected.empty:st.info('No NBA forecasts match this view.')
+            if selected.empty:st.info('Collection is active. Picks will appear within 36 hours of the first regular-season games; preseason games are excluded.' if board.empty else 'No NBA forecasts match this view.')
             for r in selected.itertuples():
                 home=float(r.home_win_prob);pick=r.home_team if home>=.5 else r.away_team;prob=max(home,1-home)
                 time=r.start_time_utc.tz_convert('America/Chicago').strftime('%a %b %d • %I:%M %p CT')
