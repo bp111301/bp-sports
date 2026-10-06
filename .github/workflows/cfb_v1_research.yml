@@ -1,21 +1,19 @@
 name: CFB V1 research baseline
-
 on:
   push:
     branches: [cfb-v1-research]
     paths:
       - "research/cfb/**"
+      - "model/cfb/**"
       - ".github/workflows/cfb_v1_research.yml"
       - "!research/cfb/results/**"
+      - "!data/cfb/**"
   workflow_dispatch:
-
 concurrency:
   group: cfb-v1-research
   cancel-in-progress: true
-
 permissions:
   contents: write
-
 jobs:
   baseline:
     runs-on: ubuntu-latest
@@ -28,32 +26,32 @@ jobs:
           python-version: "3.12"
       - run: pip install pandas numpy scikit-learn pytest
       - name: Download leakage-safe matchup lines
-        run: python research/cfb/download_matchup_lines.py 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
+        run: python research/cfb/download_matchup_lines.py 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026
       - name: Download game-level QB data
         run: python research/cfb/download_qb_data.py 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
       - name: Run guardrail tests
         run: pytest -q tests/test_cfb_research.py
-      - name: Run expanding-window baseline
-        run: python research/cfb/backtest_baseline.py --first-test-season 2018
-      - name: Run CFB candidate tournament
-        run: python research/cfb/experiment_candidates.py
-      - name: Run CFB calibration experiment
-        run: python research/cfb/experiment_calibration.py
-      - name: Run CFB dynamic prior experiment
-        run: python research/cfb/experiment_priors.py
-      - name: Run CFB QB layer experiment
-        run: python research/cfb/experiment_qb.py
-      - name: Run CFB final development tournament
-        run: python research/cfb/final_development_tournament.py
-      - name: Commit research results
+      - name: Run historical research suite
+        run: |
+          python research/cfb/backtest_baseline.py --first-test-season 2018
+          python research/cfb/experiment_candidates.py
+          python research/cfb/experiment_calibration.py
+          python research/cfb/experiment_priors.py
+          python research/cfb/experiment_qb.py
+          python research/cfb/final_development_tournament.py
+      - name: Open frozen 2026 diagnostic
+        run: python research/cfb/evaluate_frozen_2026.py
+      - name: Build first prospective CFB slate
+        run: python research/cfb/build_live_predictions.py
+      - name: Commit research and frozen prediction outputs
         run: |
           git config user.name "bp-sports-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add research/cfb/results/
+          git add research/cfb/results/ data/cfb/
           if git diff --cached --quiet; then
-            echo "No research result changes"
+            echo "No generated changes"
           else
-            git commit -m "Update CFB V1 research results"
+            git commit -m "Update frozen CFB V1 outputs"
             git pull --rebase origin cfb-v1-research
             git push origin HEAD:cfb-v1-research
           fi
