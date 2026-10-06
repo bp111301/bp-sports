@@ -1,0 +1,59 @@
+{
+  "version": "NHL_V1_RESEARCH_BASELINE",
+  "market_used": false,
+  "features": [
+    "elo_diff",
+    "home_field",
+    "win10_diff",
+    "gd10_diff",
+    "gf10_diff",
+    "ga10_diff",
+    "rest_diff",
+    "home_b2b",
+    "away_b2b",
+    "games_played_diff"
+  ],
+  "overall": {
+    "games": 6560,
+    "accuracy": 0.5919207317073171,
+    "brier": 0.23682021887892737,
+    "log_loss": 0.6660745224577481
+  },
+  "by_season": [
+    {
+      "games": 1312,
+      "accuracy": 0.645579268292683,
+      "brier": 0.22924851127439283,
+      "log_loss": 0.6510857489273695,
+      "season": "20212022"
+    },
+    {
+      "games": 1312,
+      "accuracy": 0.5960365853658537,
+      "brier": 0.23380965749367508,
+      "log_loss": 0.6592685654650311,
+      "season": "20222023"
+    },
+    {
+      "games": 1312,
+      "accuracy": 0.5945121951219512,
+      "brier": 0.2356824713187238,
+      "log_loss": 0.6637666290216746,
+      "season": "20232024"
+    },
+    {
+      "games": 1312,
+      "accuracy": 0.5891768292682927,
+      "brier": 0.23681714148979785,
+      "log_loss": 0.6658250876658764,
+      "season": "20242025"
+    },
+    {
+      "games": 1312,
+      "accuracy": 0.5342987804878049,
+      "brier": 0.24854331281804737,
+      "log_loss": 0.690426581208789,
+      "season": "20252026"
+    }
+  ]
+}
