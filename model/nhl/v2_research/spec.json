@@ -1,0 +1,17 @@
+{
+  "version": "NHL_V2_EXPERIMENTAL_WATCHLIST",
+  "status": "research_only_not_promoted",
+  "training_last_season": "20252026",
+  "prospective_season": "20262027",
+  "candidates": ["reference_control", "decay2_logistic", "linear_regulation_blend"],
+  "features_source": "NHL V1 18-feature schema; regulation blend also uses regulation-form version",
+  "C": 0.5,
+  "recency_half_life_seasons": 2,
+  "regulation_blend_weight": 0.5,
+  "extra_time_home_win_probability": 0.5,
+  "calibration": "raw",
+  "weights_refit_during_prospective_season": false,
+  "historical_release_gate_passed": false,
+  "purpose": "Collect new timestamped evidence for unpromoted hypotheses. No betting advice or production activation.",
+  "selection_caveat": "Development seasons reused; 2025-26 observed failure and used for fitting only. No alternative 2025-26 evaluation or tuning."
+}
