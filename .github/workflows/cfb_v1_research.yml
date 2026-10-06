@@ -9,6 +9,10 @@ on:
       - "!research/cfb/results/**"
   workflow_dispatch:
 
+concurrency:
+  group: cfb-v1-research
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
