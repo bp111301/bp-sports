@@ -1,0 +1,157 @@
+{
+  "status": "development_only",
+  "candidate_count": 9,
+  "selected": "baseline_control",
+  "leaderboard": [
+    {
+      "candidate": "linear_temperature",
+      "games": 8288,
+      "correct": 5414,
+      "accuracy": 0.6532335907335908,
+      "brier": 0.2173005674960035,
+      "log_loss": 0.6239832554889664,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": true,
+        "accuracy_preserved": true,
+        "five_seasons_improve": true,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 5
+    },
+    {
+      "candidate": "linear_platt",
+      "games": 8288,
+      "correct": 5413,
+      "accuracy": 0.6531129343629344,
+      "brier": 0.21735164570074092,
+      "log_loss": 0.624088940283583,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": true,
+        "accuracy_preserved": false,
+        "five_seasons_improve": false,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 2
+    },
+    {
+      "candidate": "baseline_control",
+      "games": 8288,
+      "correct": 5414,
+      "accuracy": 0.6532335907335908,
+      "brier": 0.21739478110025767,
+      "log_loss": 0.6242995294718683,
+      "eligible": false,
+      "checks": {},
+      "brier_improved_seasons": 0
+    },
+    {
+      "candidate": "blend7",
+      "games": 8288,
+      "correct": 5400,
+      "accuracy": 0.6515444015444015,
+      "brier": 0.2178526919996928,
+      "log_loss": 0.6252410478137098,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": false,
+        "accuracy_preserved": false,
+        "five_seasons_improve": false,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 2
+    },
+    {
+      "candidate": "blend15",
+      "games": 8288,
+      "correct": 5361,
+      "accuracy": 0.646838803088803,
+      "brier": 0.2183453251532833,
+      "log_loss": 0.6264684693198713,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": false,
+        "accuracy_preserved": false,
+        "five_seasons_improve": false,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 1
+    },
+    {
+      "candidate": "tree7_platt",
+      "games": 8288,
+      "correct": 5352,
+      "accuracy": 0.6457528957528957,
+      "brier": 0.21932136852219486,
+      "log_loss": 0.6285070677691423,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": false,
+        "accuracy_preserved": false,
+        "five_seasons_improve": false,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 1
+    },
+    {
+      "candidate": "tree7",
+      "games": 8288,
+      "correct": 5376,
+      "accuracy": 0.6486486486486487,
+      "brier": 0.21938403070329537,
+      "log_loss": 0.6288288304893541,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": false,
+        "accuracy_preserved": false,
+        "five_seasons_improve": false,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 1
+    },
+    {
+      "candidate": "tree15_platt",
+      "games": 8288,
+      "correct": 5300,
+      "accuracy": 0.6394787644787645,
+      "brier": 0.2209236420999883,
+      "log_loss": 0.6321061644828649,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": false,
+        "accuracy_preserved": false,
+        "five_seasons_improve": false,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 0
+    },
+    {
+      "candidate": "tree15",
+      "games": 8288,
+      "correct": 5300,
+      "accuracy": 0.6394787644787645,
+      "brier": 0.2211628263099948,
+      "log_loss": 0.6332906030532144,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": false,
+        "accuracy_preserved": false,
+        "five_seasons_improve": false,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 0
+    }
+  ],
+  "holdout_evaluated": false,
+  "protocol_sha256": "07e00fd7cc1141bbdd0d3725877792d410760b9c19101daecda96c470ba3a9f4",
+  "code_sha256": "d3cdf3fbde1bde5bda16b1b495982f97e96af01c6ef9d75253a4b5a10bc8e83f"
+}
