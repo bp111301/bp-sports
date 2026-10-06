@@ -96,7 +96,8 @@ def main():
     blend=priors.matrix(df,3.0); blend_features=[c for c in context if c not in ({f"{f}_diff" for f in priors.BLEND_BASES}|{f"prev_{f}_diff" for f in priors.BLEND_BASES})]+[f"blend_{f}_diff" for f in priors.BLEND_BASES]
     raw=add_qb(df,raw,p); blend=add_qb(df,blend,p); qb=[c for c in raw if c.startswith("qb_") or c in ("home_qb_changed","away_qb_changed")]
     specs={"context_raw":(raw,context),"context_qb":(raw,context+qb),"blend_k3":(blend,blend_features),"blend_k3_qb":(blend,blend_features+qb)}
-    coverage={col:float(raw[col].notna().mean()) for col in qb}\n    result={"selection_window":"2018-2025","qb_rule":"prior-week games only; primary passer=max attempts","2026_touched":False,"qb_feature_coverage":coverage,"candidates":{}}; frames=[]
+    coverage={col:float(raw[col].notna().mean()) for col in qb}
+    result={"selection_window":"2018-2025","qb_rule":"prior-week games only; primary passer=max attempts","2026_touched":False,"qb_feature_coverage":coverage,"candidates":{}}; frames=[]
     for n,(x,f) in specs.items():
         overall,seasons=eval_model(df,x,f); result["candidates"][n]={"overall":overall,"n_features":len(f)}; seasons["candidate"]=n; frames.append(seasons)
     ranked=sorted(result["candidates"],key=lambda n:(result["candidates"][n]["overall"]["brier"],result["candidates"][n]["overall"]["log_loss"])); result["ranking"]=ranked; result["leader"]=ranked[0]
