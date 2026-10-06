@@ -5,6 +5,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 import numpy as np
 import pandas as pd
+import joblib
 HERE=Path(__file__).parent
 def mod(name,file):
     s=importlib.util.spec_from_file_location(name,HERE/file);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
@@ -15,7 +16,7 @@ def matrices(df):
     pf=[c for c in context if c not in rem]+[f"blend_{f}_diff" for f in pri.BLEND_BASES]
     return bx,context,px,pf
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument("--data-dir",default="runtime/cfb/matchup_line");ap.add_argument("--current-dir",default="data/cfb/current");ap.add_argument("--ledger",default="data/cfb/ledger/prediction_ledger.csv");ap.add_argument("--schedule",default="runtime/cfb/schedules/cfb_schedules_2026.csv.gz");ap.add_argument("--horizon-days",type=int,default=8);a=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument("--data-dir",default="runtime/cfb/matchup_line");ap.add_argument("--current-dir",default="data/cfb/current");ap.add_argument("--ledger",default="data/cfb/ledger/prediction_ledger.csv");ap.add_argument("--schedule",default="runtime/cfb/schedules/cfb_schedules_2026.csv.gz");ap.add_argument("--bundle",default="model/cfb/v1/frozen_bundle.joblib");ap.add_argument("--horizon-days",type=int,default=8);a=ap.parse_args()
     completed=base.load_data(Path(a.data_dir));train=completed[completed.season<=2025].copy().reset_index(drop=True)
     raw=pd.read_csv(Path(a.data_dir)/"cfb_matchup_line_2026.csv",low_memory=False);raw["season"]=pd.to_numeric(raw.season,errors="coerce");raw["week"]=pd.to_numeric(raw.week,errors="coerce")
     schedule=pd.read_csv(a.schedule,low_memory=False)
