@@ -1,6 +1,7 @@
 name: Update B.P. Sports predictions
 
 on:
+  pull_request:
   workflow_dispatch:
     inputs:
       season:
@@ -18,7 +19,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: bp-sports-predictions
+  group: bp-sports-predictions-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -30,7 +31,7 @@ jobs:
         id: gate
         shell: bash
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$(TZ=America/Chicago date +%H)" = "08" ]; then
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event_name }}" = "pull_request" ] || [ "$(TZ=America/Chicago date +%H)" = "08" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
@@ -78,7 +79,7 @@ jobs:
         if: steps.gate.outputs.run == 'true'
         run: pytest -q
       - name: Commit generated snapshots
-        if: steps.gate.outputs.run == 'true'
+        if: steps.gate.outputs.run == 'true' && github.event_name != 'pull_request'
         shell: bash
         run: |
           git config user.name "bp-sports-bot"
