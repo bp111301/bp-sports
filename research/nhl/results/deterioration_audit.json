@@ -1,0 +1,302 @@
+{
+  "scope": "read-only source and saved-prediction diagnosis; frozen weights/config unchanged",
+  "source_checks": {
+    "schedule_games": 1312,
+    "schedule_duplicate_ids": 0,
+    "tied_final_scores": 0,
+    "game_state_counts": {
+      "OFF": 1312
+    },
+    "team_stat_rows": 2624,
+    "team_stat_duplicate_keys": 0,
+    "home_team_stats_matched": 1312,
+    "away_team_stats_matched": 1312,
+    "home_win_label_disagreements_vs_stats": 0,
+    "away_win_label_disagreements_vs_stats": 0,
+    "noncomplementary_stats_winners": 0,
+    "saved_label_disagreements_vs_new_schedule": 0,
+    "saved_home_team_disagreements": 0,
+    "saved_away_team_disagreements": 0,
+    "stat_home_road_values": {
+      "H": 1312,
+      "R": 1312
+    },
+    "home_score_disagreements_vs_stats": 56,
+    "away_score_disagreements_vs_stats": 63
+  },
+  "by_season": [
+    {
+      "season": "20212022",
+      "games": 1312,
+      "accuracy": 0.6463414634146342,
+      "home_win_rate": 0.5365853658536586,
+      "home_pick_rate": 0.5823170731707317,
+      "mean_pick_confidence": 0.6197707424672924,
+      "probability_outcome_correlation": 0.29358339898920727
+    },
+    {
+      "season": "20222023",
+      "games": 1312,
+      "accuracy": 0.6112804878048781,
+      "home_win_rate": 0.5236280487804879,
+      "home_pick_rate": 0.5998475609756098,
+      "mean_pick_confidence": 0.6227094518833926,
+      "probability_outcome_correlation": 0.2701876584410826
+    },
+    {
+      "season": "20232024",
+      "games": 1312,
+      "accuracy": 0.5990853658536586,
+      "home_win_rate": 0.5411585365853658,
+      "home_pick_rate": 0.5929878048780488,
+      "mean_pick_confidence": 0.6144849295991149,
+      "probability_outcome_correlation": 0.24139549263335663
+    },
+    {
+      "season": "20242025",
+      "games": 1312,
+      "accuracy": 0.5967987804878049,
+      "home_win_rate": 0.5625,
+      "home_pick_rate": 0.5983231707317073,
+      "mean_pick_confidence": 0.6028272926486395,
+      "probability_outcome_correlation": 0.23246916610316404
+    },
+    {
+      "season": "20252026",
+      "games": 1312,
+      "accuracy": 0.5342987804878049,
+      "home_win_rate": 0.5221036585365854,
+      "home_pick_rate": 0.6463414634146342,
+      "mean_pick_confidence": 0.589556838619594,
+      "probability_outcome_correlation": 0.10777857408498179
+    }
+  ],
+  "home_team_accuracy": [
+    {
+      "home_team": "ANA",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.43902439024390244,
+      "development_home_games": 164,
+      "development_accuracy": 0.6646341463414634
+    },
+    {
+      "home_team": "BOS",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.5853658536585366,
+      "development_home_games": 164,
+      "development_accuracy": 0.6341463414634146
+    },
+    {
+      "home_team": "BUF",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.4634146341463415,
+      "development_home_games": 164,
+      "development_accuracy": 0.5792682926829268
+    },
+    {
+      "home_team": "CAR",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.7804878048780488,
+      "development_home_games": 164,
+      "development_accuracy": 0.676829268292683
+    },
+    {
+      "home_team": "CBJ",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.43902439024390244,
+      "development_home_games": 164,
+      "development_accuracy": 0.524390243902439
+    },
+    {
+      "home_team": "CGY",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.5365853658536586,
+      "development_home_games": 164,
+      "development_accuracy": 0.5670731707317073
+    },
+    {
+      "home_team": "CHI",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.6341463414634146,
+      "development_home_games": 164,
+      "development_accuracy": 0.6829268292682927
+    },
+    {
+      "home_team": "COL",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.6341463414634146,
+      "development_home_games": 164,
+      "development_accuracy": 0.6951219512195121
+    },
+    {
+      "home_team": "DAL",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.7317073170731707,
+      "development_home_games": 164,
+      "development_accuracy": 0.6463414634146342
+    },
+    {
+      "home_team": "DET",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.43902439024390244,
+      "development_home_games": 164,
+      "development_accuracy": 0.5853658536585366
+    },
+    {
+      "home_team": "EDM",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.6097560975609756,
+      "development_home_games": 164,
+      "development_accuracy": 0.676829268292683
+    },
+    {
+      "home_team": "FLA",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.4878048780487805,
+      "development_home_games": 164,
+      "development_accuracy": 0.6341463414634146
+    },
+    {
+      "home_team": "LAK",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.4878048780487805,
+      "development_home_games": 164,
+      "development_accuracy": 0.5670731707317073
+    },
+    {
+      "home_team": "MIN",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.34146341463414637,
+      "development_home_games": 164,
+      "development_accuracy": 0.6707317073170732
+    },
+    {
+      "home_team": "MTL",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.4634146341463415,
+      "development_home_games": 164,
+      "development_accuracy": 0.6402439024390244
+    },
+    {
+      "home_team": "NJD",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.4878048780487805,
+      "development_home_games": 164,
+      "development_accuracy": 0.5792682926829268
+    },
+    {
+      "home_team": "NSH",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.6341463414634146,
+      "development_home_games": 164,
+      "development_accuracy": 0.5365853658536586
+    },
+    {
+      "home_team": "NYI",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.43902439024390244,
+      "development_home_games": 164,
+      "development_accuracy": 0.5548780487804879
+    },
+    {
+      "home_team": "NYR",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.5365853658536586,
+      "development_home_games": 164,
+      "development_accuracy": 0.6097560975609756
+    },
+    {
+      "home_team": "OTT",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.4634146341463415,
+      "development_home_games": 164,
+      "development_accuracy": 0.6280487804878049
+    },
+    {
+      "home_team": "PHI",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.6829268292682927,
+      "development_home_games": 164,
+      "development_accuracy": 0.5975609756097561
+    },
+    {
+      "home_team": "PIT",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.5609756097560976,
+      "development_home_games": 164,
+      "development_accuracy": 0.5365853658536586
+    },
+    {
+      "home_team": "SEA",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.5121951219512195,
+      "development_home_games": 164,
+      "development_accuracy": 0.6280487804878049
+    },
+    {
+      "home_team": "SJS",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.4634146341463415,
+      "development_home_games": 164,
+      "development_accuracy": 0.7073170731707317
+    },
+    {
+      "home_team": "STL",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.3902439024390244,
+      "development_home_games": 164,
+      "development_accuracy": 0.5853658536585366
+    },
+    {
+      "home_team": "TBL",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.5121951219512195,
+      "development_home_games": 164,
+      "development_accuracy": 0.6524390243902439
+    },
+    {
+      "home_team": "TOR",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.6341463414634146,
+      "development_home_games": 164,
+      "development_accuracy": 0.6463414634146342
+    },
+    {
+      "home_team": "UTA",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.5365853658536586,
+      "development_home_games": 41,
+      "development_accuracy": 0.6341463414634146
+    },
+    {
+      "home_team": "VAN",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.6829268292682927,
+      "development_home_games": 164,
+      "development_accuracy": 0.5670731707317073
+    },
+    {
+      "home_team": "VGK",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.5121951219512195,
+      "development_home_games": 164,
+      "development_accuracy": 0.6280487804878049
+    },
+    {
+      "home_team": "WPG",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.4878048780487805,
+      "development_home_games": 164,
+      "development_accuracy": 0.6158536585365854
+    },
+    {
+      "home_team": "WSH",
+      "evaluation_games": 41,
+      "evaluation_accuracy": 0.4878048780487805,
+      "development_home_games": 164,
+      "development_accuracy": 0.5060975609756098
+    }
+  ],
+  "leader_baseline_pick_disagreements": 220,
+  "limitations": "Descriptive diagnostics cannot uniquely attribute deterioration to roster changes, injuries, parity, or model overfitting. No alternative candidate is scored on the excluded season."
+}
