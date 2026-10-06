@@ -35,6 +35,8 @@ jobs:
         run: python research/cfb/backtest_baseline.py --first-test-season 2018
       - name: Run CFB candidate tournament
         run: python research/cfb/experiment_candidates.py
+      - name: Run CFB calibration experiment
+        run: python research/cfb/experiment_calibration.py
       - name: Commit research results
         run: |
           git config user.name "bp-sports-bot"
