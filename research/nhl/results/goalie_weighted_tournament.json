@@ -1,0 +1,259 @@
+{
+  "selection_seasons": [
+    "20212022",
+    "20222023",
+    "20232024",
+    "20242025"
+  ],
+  "excluded_from_selection": [
+    "20252026"
+  ],
+  "prior_save_pct": 0.905,
+  "prior_shots": 300,
+  "ranking": [
+    {
+      "candidate": "advanced_weighted_probable",
+      "features": [
+        "elo_diff",
+        "home_field",
+        "win10_diff",
+        "gd10_diff",
+        "gf10_diff",
+        "ga10_diff",
+        "rest_diff",
+        "home_b2b",
+        "away_b2b",
+        "games_played_diff",
+        "shots_for_20_diff",
+        "shots_against_20_diff",
+        "shot_diff_20_diff",
+        "shoot_pct_20_diff",
+        "save_pct_20_diff",
+        "faceoff_pct_20_diff",
+        "pp_rate_20_diff",
+        "pk_rate_20_diff",
+        "weighted_goalie_probable_diff"
+      ],
+      "games": 5248,
+      "accuracy": 0.610327743902439,
+      "brier": 0.2314646469545052,
+      "log_loss": 0.6547632907882623,
+      "by_season": [
+        {
+          "games": 1312,
+          "accuracy": 0.6402439024390244,
+          "brier": 0.22695340147003562,
+          "log_loss": 0.6460890067517222,
+          "season": "20212022"
+        },
+        {
+          "games": 1312,
+          "accuracy": 0.6036585365853658,
+          "brier": 0.23049333004565276,
+          "log_loss": 0.6524498677748675,
+          "season": "20222023"
+        },
+        {
+          "games": 1312,
+          "accuracy": 0.5990853658536586,
+          "brier": 0.23502266570252794,
+          "log_loss": 0.6621025051426078,
+          "season": "20232024"
+        },
+        {
+          "games": 1312,
+          "accuracy": 0.5983231707317073,
+          "brier": 0.2333891905998045,
+          "log_loss": 0.6584117834838518,
+          "season": "20242025"
+        }
+      ],
+      "seasons_with_brier_improvement": 3,
+      "eligible_for_promotion": false
+    },
+    {
+      "candidate": "advanced_weighted_mixture",
+      "features": [
+        "elo_diff",
+        "home_field",
+        "win10_diff",
+        "gd10_diff",
+        "gf10_diff",
+        "ga10_diff",
+        "rest_diff",
+        "home_b2b",
+        "away_b2b",
+        "games_played_diff",
+        "shots_for_20_diff",
+        "shots_against_20_diff",
+        "shot_diff_20_diff",
+        "shoot_pct_20_diff",
+        "save_pct_20_diff",
+        "faceoff_pct_20_diff",
+        "pp_rate_20_diff",
+        "pk_rate_20_diff",
+        "weighted_goalie_mixture_diff"
+      ],
+      "games": 5248,
+      "accuracy": 0.609375,
+      "brier": 0.23158678420397505,
+      "log_loss": 0.6550811100904372,
+      "by_season": [
+        {
+          "games": 1312,
+          "accuracy": 0.6387195121951219,
+          "brier": 0.22720276043068155,
+          "log_loss": 0.6466500956617423,
+          "season": "20212022"
+        },
+        {
+          "games": 1312,
+          "accuracy": 0.604420731707317,
+          "brier": 0.2309397386451624,
+          "log_loss": 0.6534907674889565,
+          "season": "20222023"
+        },
+        {
+          "games": 1312,
+          "accuracy": 0.5960365853658537,
+          "brier": 0.23472155475191414,
+          "log_loss": 0.6615154395310463,
+          "season": "20232024"
+        },
+        {
+          "games": 1312,
+          "accuracy": 0.5983231707317073,
+          "brier": 0.23348308298814216,
+          "log_loss": 0.658668137680004,
+          "season": "20242025"
+        }
+      ],
+      "seasons_with_brier_improvement": 3,
+      "eligible_for_promotion": false
+    },
+    {
+      "candidate": "advanced_all_w20",
+      "features": [
+        "elo_diff",
+        "home_field",
+        "win10_diff",
+        "gd10_diff",
+        "gf10_diff",
+        "ga10_diff",
+        "rest_diff",
+        "home_b2b",
+        "away_b2b",
+        "games_played_diff",
+        "shots_for_20_diff",
+        "shots_against_20_diff",
+        "shot_diff_20_diff",
+        "shoot_pct_20_diff",
+        "save_pct_20_diff",
+        "faceoff_pct_20_diff",
+        "pp_rate_20_diff",
+        "pk_rate_20_diff"
+      ],
+      "games": 5248,
+      "accuracy": 0.6133765243902439,
+      "brier": 0.23162021873804492,
+      "log_loss": 0.6551475411951188,
+      "by_season": [
+        {
+          "games": 1312,
+          "accuracy": 0.6463414634146342,
+          "brier": 0.2272661491645251,
+          "log_loss": 0.6469141071686887,
+          "season": "20212022"
+        },
+        {
+          "games": 1312,
+          "accuracy": 0.6112804878048781,
+          "brier": 0.23143147173179296,
+          "log_loss": 0.6544796406975085,
+          "season": "20222023"
+        },
+        {
+          "games": 1312,
+          "accuracy": 0.5990853658536586,
+          "brier": 0.23416583979291378,
+          "log_loss": 0.6602705045082958,
+          "season": "20232024"
+        },
+        {
+          "games": 1312,
+          "accuracy": 0.5967987804878049,
+          "brier": 0.23361741426294788,
+          "log_loss": 0.6589259124059819,
+          "season": "20242025"
+        }
+      ],
+      "seasons_with_brier_improvement": 0,
+      "eligible_for_promotion": false
+    },
+    {
+      "candidate": "advanced_weighted_workload",
+      "features": [
+        "elo_diff",
+        "home_field",
+        "win10_diff",
+        "gd10_diff",
+        "gf10_diff",
+        "ga10_diff",
+        "rest_diff",
+        "home_b2b",
+        "away_b2b",
+        "games_played_diff",
+        "shots_for_20_diff",
+        "shots_against_20_diff",
+        "shot_diff_20_diff",
+        "shoot_pct_20_diff",
+        "save_pct_20_diff",
+        "faceoff_pct_20_diff",
+        "pp_rate_20_diff",
+        "pk_rate_20_diff",
+        "weighted_goalie_probable_diff",
+        "weighted_goalie_mixture_diff",
+        "weighted_goalie_rest_diff",
+        "weighted_goalie_workload_diff",
+        "weighted_goalie_share_diff"
+      ],
+      "games": 5248,
+      "accuracy": 0.6101371951219512,
+      "brier": 0.23187373405718936,
+      "log_loss": 0.65563751260634,
+      "by_season": [
+        {
+          "games": 1312,
+          "accuracy": 0.6379573170731707,
+          "brier": 0.2287633851874809,
+          "log_loss": 0.6499535906509085,
+          "season": "20212022"
+        },
+        {
+          "games": 1312,
+          "accuracy": 0.6067073170731707,
+          "brier": 0.23063799050240558,
+          "log_loss": 0.6527976345111146,
+          "season": "20222023"
+        },
+        {
+          "games": 1312,
+          "accuracy": 0.5983231707317073,
+          "brier": 0.23483013825532906,
+          "log_loss": 0.6617341138370426,
+          "season": "20232024"
+        },
+        {
+          "games": 1312,
+          "accuracy": 0.5975609756097561,
+          "brier": 0.23326342228354183,
+          "log_loss": 0.6580647114262943,
+          "season": "20242025"
+        }
+      ],
+      "seasons_with_brier_improvement": 2,
+      "eligible_for_promotion": false
+    }
+  ],
+  "decision": "keep team-stat leader unless a goalie candidate improves aggregate Brier/log loss, does not reduce accuracy, and improves Brier in at least 3 of 4 seasons"
+}
