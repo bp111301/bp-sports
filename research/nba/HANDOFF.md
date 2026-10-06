@@ -1,77 +1,39 @@
-# NBA V1 baseline handoff
+# NBA V1 handoff
 
-NBA research is isolated on `nba-v1-research`. Production UI, NFL, CFB, and NHL
-models and prospective ledgers were not changed.
+NBA V1 is frozen on `nba-v1-research` and passed its preregistered excluded-season gate. It is eligible for prospective collection, not automatically production-promoted. NFL, CFB, NHL and the production UI were unchanged.
 
-The fixed 14-feature logistic baseline uses team efficiency, recent form, Elo,
-home/neutral context, rest, and back-to-backs. Season histories reset; Elo is
-regressed toward average each offseason. Features use only earlier dates and
-model/scaler fitting uses earlier seasons. No player availability or markets.
+## Model and evaluation
 
-Development: 8,288 games from 2018–19 through 2024–25. Initial training starts
-in 2015–16. Weights are fit once before each test season, then held fixed.
+The original 14-feature logistic baseline remains selected. Team efficiency, recent form, Elo, home/neutral context, rest and back-to-backs use only earlier completed dates. Rolling histories reset each season; Elo carries with preseason regression. Scaler and weights were trained on 11,976 audited 2015–16 through 2024–25 games. No markets or retrospective player-availability features.
 
-| Model | Correct / games | Accuracy | Brier | Log loss |
-|---|---:|---:|---:|---:|
-| Team logistic | 5,414 / 8,288 | 65.32% | .217395 | .624300 |
-| Fixed Elo | 5,325 / 8,288 | 64.25% | .220687 | .631220 |
-| Training home frequency | 4,620 / 8,288 | 55.74% | .247011 | .687168 |
+| Evaluation | Model | Correct / games | Accuracy | Brier | Log loss |
+|---|---|---:|---:|---:|---:|
+| Chronological development | Selected baseline | 5,414 / 8,288 | 65.32% | .217395 | .624300 |
+| Chronological development | Fixed Elo | 5,325 / 8,288 | 64.25% | .220687 | .631220 |
+| Reserved 2025–26 | Frozen selected baseline | 851 / 1,230 | 69.19% | .205543 | .598606 |
+| Reserved 2025–26 | Fixed Elo | 834 / 1,230 | 67.80% | .209748 | .608214 |
+| Reserved 2025–26 | Training home frequency | 682 / 1,230 | 55.45% | .247154 | .687447 |
 
-The team baseline improves Brier and log loss in all seven development seasons,
-and accuracy in six of seven. Its accuracy ranges from 62.31% to 68.02% across
-seasons. Calendar-date paired bootstrap accuracy gain is +1.07 percentage
-points (95% interval +0.43 to +1.69); Brier delta −.003292 (−.004361 to −.002193).
-These conditional development intervals do not establish live performance.
+The frozen artifact was committed before 2025–26 data retrieval. Frozen at 2026-10-06T19:07:04.589214+00:00; evaluated at 2026-10-06T19:07:53.130259+00:00. Freeze commit: `0e8a7399bafaa861b6bbbed71a7f53f1d2453063`. Bundle SHA256: `c57d804ab9062542e9e456a9585327bbb677732e5ad55b0186f91ddbdf5e079f`. The evaluation used earlier completed 2025–26 games to update team state, while keeping weights/scaler fixed. All 1,230 eligible regular-season games were included; four exhibition entries, four unfinished entries and the Cup championship were excluded. No alternate candidate was selected from this season.
 
-Source audit excludes All-Star/Rising Stars, Cup championship, postponed/canceled
-entries, two missing box pairs in initial training seasons, and one inconsistent
-2024–25 shooting box (ESPN 401704652). Schedule/box teams and final scores match
-for included games. One 2020 archived date is corrected from an NBA scorer's
-report; details in PROTOCOL.md. Neutral 2020 bubble games have no home advantage.
+All seven release-gate checks passed: minimum 1,000 games, at least 99% coverage, at least 60% accuracy, and better Brier/log loss than both controls. This is a historical reserved-season result, not a prospective live record or promised hit rate. December was 58.88% and January 60.09%; March/April were much stronger. Probability calibration is still imperfect, including only 84% wins among the 25 home forecasts in the 90–100% bin. Report the full season and monthly results together.
 
-Eight safety checks cover outcome isolation, prior-date history/rest, neutral
-context, season reset, ordering, training-only fitting, schema, and same-date
-team conflicts. GitHub Actions reproduces the run and saves source hashes and
-outputs. `baseline_summary.json` and `baseline_by_season.csv` are authoritative.
+## Completed development comparisons
 
-2025–26 (ending year 2026) has not been downloaded or evaluated. Keep it closed
-while developing. The bounded advanced-stat tournament is complete (see below). Next: a small
-preregistered nonlinear-model/calibration comparison, then freeze the chosen
-specification before opening 2025–26 once. Player availability
-requires archived pregame data or a separately captured prospective experiment.
-The baseline remains research-only; it has not been promoted or added to the UI.
+The advanced-stat tournament tested baseline plus 11 challengers: windows, defensive/shooting factors, opponent adjustment, fatigue and recency. None passed preregistered replacement rules. The lowest-Brier challenger, advanced20, lost 21 correct picks (65.07%) with only .000093 Brier improvement and failed recent-season stability. Its descriptive intervals crossed zero.
 
+The final comparison tested nine entries: baseline, two shallow gradient-boosting trees, two equal blends, baseline Platt/temperature calibration, and calibrated trees. None qualified. Temperature calibration retained accuracy but its .000094 Brier improvement was too small and failed recent-season stability. Calibration used only earlier-season OOF predictions. The baseline remained selected at 65.32%.
 
-## Advanced team-stat tournament
+Selection rules in both tournaments required Brier gain >=.0005, lower log loss, preserved accuracy, better Brier in at least five of seven seasons and both latest seasons. All candidate predictions/season scores and decisions are retained. Development comparisons reused development data and were not independently validated; only the frozen selected candidate and preregistered controls were scored for the reserved-season release decision.
 
-The 12-entry tournament (baseline plus 11 challengers) retained baseline_control.
-No challenger passed the rules registered in TOURNAMENT_PROTOCOL.md. The original
-baseline predictions were reproduced to absolute tolerance 1e-12 on the identical
-8,288-game population. All 16 baseline/tournament safety tests passed.
+## Sources and safeguards
 
-| Candidate | Accuracy | Brier | Log loss | Seasons with lower Brier | Eligible |
-|---|---:|---:|---:|---:|---|
-| advanced20 | 65.07% | 0.217302 | 0.624042 | 5/7 | No |
-| baseline_control | 65.32% | 0.217395 | 0.624300 | 0/7 | Reference |
-| advanced30 | 64.97% | 0.217434 | 0.624212 | 3/7 | No |
-| windows30 | 65.12% | 0.217469 | 0.624358 | 3/7 | No |
-| fatigue20 | 65.20% | 0.217521 | 0.624540 | 3/7 | No |
-| advanced10 | 65.17% | 0.217575 | 0.624631 | 2/7 | No |
-| opponent_adjusted20 | 65.21% | 0.217594 | 0.624753 | 2/7 | No |
-| recency2 | 65.26% | 0.217617 | 0.624845 | 3/7 | No |
-| season_history | 64.72% | 0.217686 | 0.624687 | 3/7 | No |
-| opponent_adjusted30 | 65.01% | 0.217716 | 0.624936 | 2/7 | No |
-| advanced_season | 64.84% | 0.217839 | 0.624943 | 3/7 | No |
-| windows10 | 64.93% | 0.217846 | 0.625298 | 2/7 | No |
+Source: ESPN schedule/team boxes distributed by SportsDataverse, archived with hashes. Development excludes All-Star/Rising Stars, Cup championship, unfinished entries, two missing initial-training box pairs and one inconsistent 2024–25 shooting box. One 2020 archived date was corrected against an NBA official scorer's report. Neutral 2020 bubble games have no home advantage. Full protocols/source audit remain in the repository.
 
-The lowest-Brier challenger, advanced20, improved Brier by only .000093 and
-log loss by .000258, while losing 21 correct picks (65.07% versus 65.32%). It also
-failed the latest-two-season stability rule; its probability-score bootstrap
-intervals cross zero. This is insufficient evidence to replace the baseline.
-Window changes, fatigue features, opponent-adjusted residuals and recency weighting
-did not improve the pooled probability scores. No candidate was promoted.
+All 22 safety tests passed locally and in GitHub Actions. They cover date-batched feature updates, outcome isolation, season reset, order invariance, neutral context, prior-season model/scaler/calibration fitting, bounded candidates, selection checks, and refusal to retrieve holdout data without a frozen artifact. Repeat evaluation checks hashes and preserves the first result without rescoring.
 
-Matched predictions, season metrics, eligibility checks, descriptive bootstrap
-intervals and reproducibility hashes are saved in tournament_oof_predictions.csv,
-tournament_by_season.csv and tournament_summary.json. The bootstrap intervals do
-not correct for candidate selection. The 2025–26 evaluation season remains unopened.
+## Next step
+
+Start separately timestamped 2026–27 prospective NBA forecasts and a live ledger, then add the NBA research board to the UI. Preserve this artifact and first evaluation. Any deployment refit through 2025–26 must be a separately identified artifact with the same frozen specification and its own prospective record; it must not overwrite this historical evaluation. Player availability needs archived pregame information or a separate prospective experiment.
+
+Authoritative outputs: `baseline_summary.json`, `tournament_summary.json`, `final_comparison_summary.json`, `excluded_season_evaluation.json`, and their matched prediction/season files. Frozen identity: `model/nba/v1/manifest.json`.
