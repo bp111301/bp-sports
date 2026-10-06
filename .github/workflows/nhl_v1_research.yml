@@ -35,6 +35,8 @@ jobs:
         run: python research/nhl/experiment_baselines.py
       - name: Run advanced team-stats tournament
         run: python research/nhl/experiment_team_stats.py
+      - name: Run goalie tournament
+        run: python research/nhl/experiment_goalies.py
       - name: Commit NHL research outputs
         run: |
           git config user.name "bp-sports-bot"
