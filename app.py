@@ -179,7 +179,7 @@ def team_block(team, home=False):
     return f'<div class="team-box{" home" if home else ""}">{txt + dot if home else dot + txt}</div>'
 
 st.markdown('<div style="font-size:.64rem;color:#8d98a8;font-weight:900;letter-spacing:.11em;margin-bottom:4px">SPORT</div>', unsafe_allow_html=True)
-sport = st.radio("Sport", ["NFL", "CFB"], horizontal=True, label_visibility="collapsed", key="bp_sport")
+sport = st.radio("Sport", ["NFL", "CFB", "NHL"], horizontal=True, label_visibility="collapsed", key="bp_sport")
 
 if sport == "NFL":
     pred = load_csv("data/current/website_feed.csv")
@@ -407,7 +407,7 @@ if sport == "NFL":
         st.info("Pressure/sack proxies, third-down conversion rate, red-zone TD rate and special-teams proxies were tested but did not earn core V4 weight because they failed broader historical stability checks.")
     
 
-else:
+elif sport == "CFB":
     cfb_pred = load_csv("data/cfb/current/predictions.csv")
     cfb_meta = load_json("data/cfb/current/metadata.json")
     cfb_holdout = load_json("research/cfb/results/holdout_2026.json")
@@ -654,3 +654,7 @@ else:
             "A tested QB layer was deferred from CFB V1 because it did not add meaningful historical "
             "probability quality. It can be revisited in CFB V2 with better player-availability data."
         )
+
+elif sport == "NHL":
+    from nhl_ui import render_nhl
+    render_nhl()
