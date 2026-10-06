@@ -59,3 +59,7 @@ No market line is used to choose the winner. Market comparison can be evaluated 
 ## Freeze rule
 
 Once CFB V1 is frozen, 2026 forward predictions are immutable after kickoff. Results can grade the prediction but cannot rewrite it. A CFB V2 must be developed separately.
+
+## Frozen V1 status
+
+CFB V1 was frozen at 2026-10-06T03:22:19Z after historical selection on 2018-2025. The 2026 season is now diagnostic/prospective evidence only and cannot alter V1.
