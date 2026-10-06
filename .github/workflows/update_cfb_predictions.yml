@@ -1,6 +1,13 @@
 name: Update CFB predictions
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/update_cfb_predictions.yml"
+      - "research/cfb/**"
+      - "model/cfb/**"
+      - "!data/cfb/**"
   workflow_dispatch:
   schedule:
     - cron: "0 13,14 * 1,8-12 *"
