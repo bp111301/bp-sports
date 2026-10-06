@@ -1,0 +1,595 @@
+{
+  "status": "development_only_not_promoted",
+  "selected_development_candidate": "baseline_control",
+  "automatic_promotion": false,
+  "holdout_evaluated": false,
+  "excluded_holdout_season": 2026,
+  "matched_games": 8288,
+  "candidate_count": 12,
+  "leaderboard": [
+    {
+      "candidate": "advanced20",
+      "games": 8288,
+      "correct": 5393,
+      "accuracy": 0.650699806949807,
+      "brier": 0.21730151625925312,
+      "log_loss": 0.6240417903294506,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": true,
+        "accuracy_preserved": false,
+        "five_seasons_improve": true,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 5,
+      "date_bootstrap_vs_baseline": {
+        "brier": {
+          "delta": -9.326484100458888e-05,
+          "interval95": [
+            -0.000533701169737429,
+            0.0003583888049151844
+          ]
+        },
+        "log_loss": {
+          "delta": -0.0002577391424176209,
+          "interval95": [
+            -0.0012498252291085889,
+            0.000750047775553748
+          ]
+        },
+        "accuracy": {
+          "delta": -0.002533783783783784,
+          "interval95": [
+            -0.0062225061502343216,
+            0.0012018256446599221
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "baseline_control",
+      "games": 8288,
+      "correct": 5414,
+      "accuracy": 0.6532335907335908,
+      "brier": 0.21739478110025767,
+      "log_loss": 0.6242995294718683,
+      "eligible": false,
+      "checks": {},
+      "brier_improved_seasons": 0,
+      "date_bootstrap_vs_baseline": {
+        "brier": {
+          "delta": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ]
+        },
+        "log_loss": {
+          "delta": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ]
+        },
+        "accuracy": {
+          "delta": 0.0,
+          "interval95": [
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "advanced30",
+      "games": 8288,
+      "correct": 5385,
+      "accuracy": 0.649734555984556,
+      "brier": 0.21743382166638675,
+      "log_loss": 0.6242118199310724,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": true,
+        "accuracy_preserved": false,
+        "five_seasons_improve": false,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 3,
+      "date_bootstrap_vs_baseline": {
+        "brier": {
+          "delta": 3.904056612905156e-05,
+          "interval95": [
+            -0.000557738216715758,
+            0.000643374090272709
+          ]
+        },
+        "log_loss": {
+          "delta": -8.770954079572132e-05,
+          "interval95": [
+            -0.0013975306133128284,
+            0.0012566161719492791
+          ]
+        },
+        "accuracy": {
+          "delta": -0.003499034749034749,
+          "interval95": [
+            -0.008161259026226185,
+            0.0010952969183212126
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "windows30",
+      "games": 8288,
+      "correct": 5397,
+      "accuracy": 0.6511824324324325,
+      "brier": 0.21746943867021623,
+      "log_loss": 0.6243580867795869,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": false,
+        "accuracy_preserved": false,
+        "five_seasons_improve": false,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 3,
+      "date_bootstrap_vs_baseline": {
+        "brier": {
+          "delta": 7.465756995855756e-05,
+          "interval95": [
+            -0.0002789902133319837,
+            0.00045945470643557674
+          ]
+        },
+        "log_loss": {
+          "delta": 5.855730771864073e-05,
+          "interval95": [
+            -0.000764101613426568,
+            0.0009095677576908938
+          ]
+        },
+        "accuracy": {
+          "delta": -0.002051158301158301,
+          "interval95": [
+            -0.00569593489012529,
+            0.0016701413663518083
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "fatigue20",
+      "games": 8288,
+      "correct": 5404,
+      "accuracy": 0.652027027027027,
+      "brier": 0.2175214175104031,
+      "log_loss": 0.624540277303777,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": false,
+        "accuracy_preserved": false,
+        "five_seasons_improve": false,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 3,
+      "date_bootstrap_vs_baseline": {
+        "brier": {
+          "delta": 0.00012663641014540146,
+          "interval95": [
+            -0.00016492172947583293,
+            0.0004138073393942454
+          ]
+        },
+        "log_loss": {
+          "delta": 0.00024074783190871396,
+          "interval95": [
+            -0.0004241017872664988,
+            0.0008731983461915108
+          ]
+        },
+        "accuracy": {
+          "delta": -0.0012065637065637065,
+          "interval95": [
+            -0.004468964513562921,
+            0.0019771599707004857
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "advanced10",
+      "games": 8288,
+      "correct": 5401,
+      "accuracy": 0.6516650579150579,
+      "brier": 0.217575208301588,
+      "log_loss": 0.6246309690611863,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": false,
+        "accuracy_preserved": false,
+        "five_seasons_improve": false,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 2,
+      "date_bootstrap_vs_baseline": {
+        "brier": {
+          "delta": 0.00018042720133030165,
+          "interval95": [
+            -0.0004981804435648709,
+            0.0009143044654686696
+          ]
+        },
+        "log_loss": {
+          "delta": 0.0003314395893179534,
+          "interval95": [
+            -0.0011894986514300258,
+            0.0019784279819539934
+          ]
+        },
+        "accuracy": {
+          "delta": -0.0015685328185328184,
+          "interval95": [
+            -0.006345812841702546,
+            0.003038553443139401
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "opponent_adjusted20",
+      "games": 8288,
+      "correct": 5405,
+      "accuracy": 0.6521476833976834,
+      "brier": 0.2175938314569353,
+      "log_loss": 0.6247532821589258,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": false,
+        "accuracy_preserved": false,
+        "five_seasons_improve": false,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 2,
+      "date_bootstrap_vs_baseline": {
+        "brier": {
+          "delta": 0.00019905035667761283,
+          "interval95": [
+            -2.3458179946873962e-05,
+            0.0004130817044166747
+          ]
+        },
+        "log_loss": {
+          "delta": 0.0004537526870574843,
+          "interval95": [
+            -5.8142095949302235e-05,
+            0.0009391333109651777
+          ]
+        },
+        "accuracy": {
+          "delta": -0.001085907335907336,
+          "interval95": [
+            -0.0036520680040172202,
+            0.0014372943440516383
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "recency2",
+      "games": 8288,
+      "correct": 5409,
+      "accuracy": 0.6526303088803089,
+      "brier": 0.21761712224000646,
+      "log_loss": 0.6248450159356905,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": false,
+        "accuracy_preserved": false,
+        "five_seasons_improve": false,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 3,
+      "date_bootstrap_vs_baseline": {
+        "brier": {
+          "delta": 0.00022234113974877064,
+          "interval95": [
+            -0.00011041275901088417,
+            0.0005777956439384763
+          ]
+        },
+        "log_loss": {
+          "delta": 0.0005454864638222232,
+          "interval95": [
+            -0.00022247229876191447,
+            0.0013369014104237346
+          ]
+        },
+        "accuracy": {
+          "delta": -0.0006032818532818533,
+          "interval95": [
+            -0.0035797284497990794,
+            0.0025139772029790803
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "season_history",
+      "games": 8288,
+      "correct": 5364,
+      "accuracy": 0.6472007722007722,
+      "brier": 0.2176862800223328,
+      "log_loss": 0.6246867541433012,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": false,
+        "accuracy_preserved": false,
+        "five_seasons_improve": false,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 3,
+      "date_bootstrap_vs_baseline": {
+        "brier": {
+          "delta": 0.00029149892207511164,
+          "interval95": [
+            -0.00029715357403089246,
+            0.0008727695300231225
+          ]
+        },
+        "log_loss": {
+          "delta": 0.00038722467143294866,
+          "interval95": [
+            -0.0009454841416608257,
+            0.0017116629442024774
+          ]
+        },
+        "accuracy": {
+          "delta": -0.006032818532818533,
+          "interval95": [
+            -0.010533012397510106,
+            -0.0014535869446330233
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "opponent_adjusted30",
+      "games": 8288,
+      "correct": 5388,
+      "accuracy": 0.650096525096525,
+      "brier": 0.2177156408218594,
+      "log_loss": 0.6249361926317964,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": false,
+        "accuracy_preserved": false,
+        "five_seasons_improve": false,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 2,
+      "date_bootstrap_vs_baseline": {
+        "brier": {
+          "delta": 0.0003208597216016936,
+          "interval95": [
+            -9.800771855436885e-05,
+            0.0007430830743965049
+          ]
+        },
+        "log_loss": {
+          "delta": 0.0006366631599281224,
+          "interval95": [
+            -0.00029022470767054446,
+            0.0016289484005436842
+          ]
+        },
+        "accuracy": {
+          "delta": -0.003137065637065637,
+          "interval95": [
+            -0.007201352915664634,
+            0.0006145226569111958
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "advanced_season",
+      "games": 8288,
+      "correct": 5374,
+      "accuracy": 0.6484073359073359,
+      "brier": 0.2178393517748651,
+      "log_loss": 0.6249427305848559,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": false,
+        "accuracy_preserved": false,
+        "five_seasons_improve": false,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 3,
+      "date_bootstrap_vs_baseline": {
+        "brier": {
+          "delta": 0.0004445706746074157,
+          "interval95": [
+            -0.00023333780728170483,
+            0.0011478019335221315
+          ]
+        },
+        "log_loss": {
+          "delta": 0.0006432011129876395,
+          "interval95": [
+            -0.0009389249871909989,
+            0.0022143258746337956
+          ]
+        },
+        "accuracy": {
+          "delta": -0.004826254826254826,
+          "interval95": [
+            -0.009698010380960872,
+            -0.00012084592145015106
+          ]
+        }
+      }
+    },
+    {
+      "candidate": "windows10",
+      "games": 8288,
+      "correct": 5381,
+      "accuracy": 0.6492519305019305,
+      "brier": 0.2178460114091911,
+      "log_loss": 0.6252978042715769,
+      "eligible": false,
+      "checks": {
+        "brier_gain_at_least_0005": false,
+        "log_loss_improves": false,
+        "accuracy_preserved": false,
+        "five_seasons_improve": false,
+        "latest_two_improve": false
+      },
+      "brier_improved_seasons": 2,
+      "date_bootstrap_vs_baseline": {
+        "brier": {
+          "delta": 0.0004512303089334016,
+          "interval95": [
+            -0.00011609630472401491,
+            0.0010294499545174943
+          ]
+        },
+        "log_loss": {
+          "delta": 0.0009982747997085005,
+          "interval95": [
+            -0.00028749985584812726,
+            0.0023141557834513303
+          ]
+        },
+        "accuracy": {
+          "delta": -0.0039816602316602315,
+          "interval95": [
+            -0.008364126292868807,
+            0.00024057696094321055
+          ]
+        }
+      }
+    }
+  ],
+  "source_audit": [
+    {
+      "season": 2016,
+      "schedule_regular": 1231,
+      "included": 1230,
+      "excluded": {
+        "exhibition_non_nba_teams": 1
+      },
+      "date_corrections": {}
+    },
+    {
+      "season": 2017,
+      "schedule_regular": 1231,
+      "included": 1229,
+      "excluded": {
+        "exhibition_non_nba_teams": 1,
+        "missing_box_pair": 1
+      },
+      "date_corrections": {}
+    },
+    {
+      "season": 2018,
+      "schedule_regular": 1232,
+      "included": 1229,
+      "excluded": {
+        "exhibition_non_nba_teams": 2,
+        "missing_box_pair": 1
+      },
+      "date_corrections": {}
+    },
+    {
+      "season": 2019,
+      "schedule_regular": 1232,
+      "included": 1230,
+      "excluded": {
+        "exhibition_non_nba_teams": 2
+      },
+      "date_corrections": {}
+    },
+    {
+      "season": 2020,
+      "schedule_regular": 1064,
+      "included": 1059,
+      "excluded": {
+        "unfinished": 3,
+        "exhibition_non_nba_teams": 2
+      },
+      "date_corrections": {
+        "401161536": "2020-02-29"
+      }
+    },
+    {
+      "season": 2021,
+      "schedule_regular": 1113,
+      "included": 1080,
+      "excluded": {
+        "unfinished": 32,
+        "exhibition_non_nba_teams": 1
+      },
+      "date_corrections": {}
+    },
+    {
+      "season": 2022,
+      "schedule_regular": 1242,
+      "included": 1230,
+      "excluded": {
+        "exhibition_non_nba_teams": 1,
+        "unfinished": 11
+      },
+      "date_corrections": {}
+    },
+    {
+      "season": 2023,
+      "schedule_regular": 1232,
+      "included": 1230,
+      "excluded": {
+        "exhibition_non_nba_teams": 1,
+        "unfinished": 1
+      },
+      "date_corrections": {}
+    },
+    {
+      "season": 2024,
+      "schedule_regular": 1234,
+      "included": 1230,
+      "excluded": {
+        "exhibition_non_nba_teams": 1,
+        "unfinished": 2,
+        "cup_championship": 1
+      },
+      "date_corrections": {}
+    },
+    {
+      "season": 2025,
+      "schedule_regular": 1239,
+      "included": 1229,
+      "excluded": {
+        "exhibition_non_nba_teams": 3,
+        "unfinished": 5,
+        "cup_championship": 1,
+        "box_points_do_not_reconcile": 1
+      },
+      "date_corrections": {}
+    }
+  ],
+  "code_sha256": "a3b74ae3a4eb61ae2c374d4ecd845ae5a1dd69d375a1060f9dd7b44b75d8b121",
+  "baseline_code_sha256": "9e4e51f9e7b69ced29554d85d171fb2ffcf0cdac3eef0285acf4818510827dee",
+  "protocol_sha256": "d8d455f947751679024b52752713db5367dcbe00633c2b4838f6173102b6d12a",
+  "baseline_oof_sha256": "1bbb1fe3275d4d6887e87268bd78d16095e1a0cac627f6037a06198e40cc577d",
+  "source_manifest_sha256": "0bbcb7a1cb89963c37fd21332ae89fb6ff13d2804aeab49ea844d7a6390c1547"
+}
