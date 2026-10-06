@@ -43,6 +43,8 @@ jobs:
         run: python research/cfb/experiment_priors.py
       - name: Run CFB QB layer experiment
         run: python research/cfb/experiment_qb.py
+      - name: Run CFB final development tournament
+        run: python research/cfb/final_development_tournament.py
       - name: Commit research results
         run: |
           git config user.name "bp-sports-bot"
