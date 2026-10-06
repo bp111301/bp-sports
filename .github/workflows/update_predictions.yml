@@ -2,6 +2,11 @@ name: Update B.P. Sports predictions
 
 on:
   pull_request:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'data/**'
+      - 'bp_week5_website_feed.csv'
   workflow_dispatch:
     inputs:
       season:
@@ -31,7 +36,7 @@ jobs:
         id: gate
         shell: bash
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event_name }}" = "pull_request" ] || [ "$(TZ=America/Chicago date +%H)" = "08" ]; then
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event_name }}" = "pull_request" ] || [ "${{ github.event_name }}" = "push" ] || [ "$(TZ=America/Chicago date +%H)" = "08" ]; then
             echo "run=true" >> "$GITHUB_OUTPUT"
           else
             echo "run=false" >> "$GITHUB_OUTPUT"
