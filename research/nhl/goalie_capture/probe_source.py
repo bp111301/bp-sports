@@ -21,7 +21,7 @@ def page_data(html):
 
 def structure(value,depth=0):
     if depth>8:return type(value).__name__
-    if isinstance(value,dict):return {k:('text omitted' if any(s in k.lower() for s in ['description','content','body','excerpt','analysis','text','title','headline']) else structure(v,depth+1)) for k,v in value.items()}
+    if isinstance(value,dict):return {k:('text omitted' if any(s in k.lower() for s in ['description','content','body','excerpt','analysis','text','title','headline','details']) else structure(v,depth+1)) for k,v in value.items()}
     if isinstance(value,list):return {'length':len(value),'first':structure(value[0],depth+1) if value else None}
     if isinstance(value,str) and len(value)>100:return 'long string omitted'
     return value
