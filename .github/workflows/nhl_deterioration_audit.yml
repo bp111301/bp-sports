@@ -1,0 +1,34 @@
+name: NHL read-only deterioration audit
+on:
+  push:
+    branches: [nhl-v1-research]
+    paths:
+      - "research/nhl/audit_deterioration.py"
+      - ".github/workflows/nhl_deterioration_audit.yml"
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: nhl-v1-research
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas numpy requests
+      - name: Download source for agreement audit only
+        run: python research/nhl/download_games.py 20252026 --out-dir runtime/nhl/audit_games
+      - name: Audit saved predictions against independent NHL stats summaries
+        run: python research/nhl/audit_deterioration.py
+      - name: Commit diagnostic report only
+        run: |
+          git config user.name "bp-sports-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add research/nhl/results/DETERIORATION_AUDIT.md research/nhl/results/deterioration_audit.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Record NHL source-agreement and deterioration audit [skip ci]"
+            git pull --rebase origin nhl-v1-research
+            git push origin HEAD:nhl-v1-research
+          fi
