@@ -91,7 +91,7 @@ def quality_features(d,q):
         for _,r in day.iterrows():
             for team in [str(r.home_team),str(r.away_team)]:
                 z=bygame.get((int(r.game_id),team))
-                if z is not None and z.gameDate==date:
+                if z is not None:
                     vals=[float(z.xGoalsFor),float(z.xGoalsAgainst)]
                     if np.isfinite(vals).all() and min(vals)>=0:
                         matches+=1;history[team].append(vals)
@@ -113,7 +113,17 @@ def main():
     variants=[('advanced_all_w20',[],False),('opponent_adjusted',OPP,False),('schedule_travel',SCHEDULE,False),('opponent_plus_schedule',OPP+SCHEDULE,False)]
     source=json.loads(Path('runtime/nhl/quality_status.json').read_text());coverage=None
     if source['available']:
-        q=pd.read_csv('runtime/nhl/moneypuck_team_games.csv');qx,coverage=quality_features(d,q);x=x.join(qx)
+        q=pd.read_csv('runtime/nhl/moneypuck_team_games.csv')
+        # Primary NHL game ID + club keys establish identity. Vendor dates are
+        # audited separately, never used to decide when a result enters state.
+        keys=pd.concat([d[['game_id','game_date','season','home_team']].rename(columns={'home_team':'team'}),d[['game_id','game_date','season','away_team']].rename(columns={'away_team':'team'})])
+        audit=keys.merge(q[['gameId','gameDate','team']],left_on=['game_id','team'],right_on=['gameId','team'],how='left',validate='one_to_one')
+        vendor_dates=pd.to_datetime(audit.gameDate.astype('Int64').astype(str).replace('<NA>',pd.NA),format='%Y%m%d')
+        offsets=(vendor_dates-audit.game_date).dt.days
+        source['date_offset_days']={str(int(k)):int(v) for k,v in offsets.dropna().value_counts().items()}
+        source['missing_by_season_team']={str(k):int(v) for k,v in audit[audit.gameId.isna()].groupby(['season','team']).size().items()}
+        source['date_rule']='NHL game ID and club define identity; NHL game_date defines post-game availability; vendor dates audited only'
+        qx,coverage=quality_features(d,q);x=x.join(qx)
         if coverage>=.99:
             variants += [('shot_quality_exploratory',QUALITY,True),('all_factors_exploratory',OPP+SCHEDULE+QUALITY,True)]
         else: source['reason']='Insufficient team-game match coverage; shot-quality candidates not run'

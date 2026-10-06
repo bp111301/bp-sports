@@ -24,6 +24,11 @@ class FactorSafety(unittest.TestCase):
     def test_quality_coverage_and_duplicate_rejection(self):
         _,coverage=quality_features(self.d,self.q);self.assertEqual(coverage,1.)
         with self.assertRaises(ValueError):quality_features(self.d,pd.concat([self.q,self.q.iloc[:1]]))
+    def test_vendor_date_does_not_override_primary_game_identity(self):
+        q=self.q.copy();q['gameDate']='20211005'
+        expected,_=quality_features(self.d,self.q);actual,coverage=quality_features(self.d,q)
+        pd.testing.assert_frame_equal(expected,actual);self.assertEqual(coverage,1.)
+
     def test_distance_and_congestion(self):
         self.assertEqual(distance((0,0),(0,0)),0.)
         self.assertAlmostEqual(distance((0,0),(0,1)),111.195,places=2)
