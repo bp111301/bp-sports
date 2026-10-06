@@ -71,12 +71,25 @@ def load_csv(name):
     except Exception:
         return pd.DataFrame()
 
-pred = load_csv("bp_week5_website_feed.csv")
+pred = load_csv("data/current/website_feed.csv")
+if pred.empty:
+    pred = load_csv("bp_week5_website_feed.csv")
 hist = load_csv("history.csv")
+
+def load_json(name):
+    try:
+        import json
+        with open(name, "r") as handle:
+            return json.load(handle)
+    except Exception:
+        return {}
+
+metadata = load_json("data/current/prediction_metadata.json")
+tracking = load_json("data/ledger/summary.json")
 
 st.markdown(
     '<div class="brand">🏈 B.P. SPORTS</div>'
-    '<div class="sub">Independent NFL predictions • Frozen V4 forward test</div>',
+    '<div class="sub">Independent NFL predictions • Frozen V4 forward test • Automated pipeline</div>',
     unsafe_allow_html=True,
 )
 
@@ -103,7 +116,8 @@ with t1:
             unsafe_allow_html=True,
         )
 
-        st.header("NFL • WEEK 5")
+        week_label = metadata.get("week", 5)
+        st.header(f"NFL • WEEK {week_label}")
         st.caption("V4 picks are generated independently of betting markets. Risk layers can adjust confidence, but do not flip the winner.")
 
         for rank, (_, r) in enumerate(pred.iterrows(), start=1):
@@ -192,7 +206,20 @@ with t2:
     st.header("B.P. Model Record")
     st.metric("Frozen V4 historical candidate", "65.02%", "1,279–688 on reused 2018–2025 sample")
     st.caption("That historical sample was used during development, so the 2026 forward test is the evidence that matters now.")
-    if hist.empty or "correct" not in hist.columns or hist["correct"].dropna().empty:
+    live = tracking.get("v4_adjusted", {})
+    if live.get("games", 0):
+        c1, c2, c3 = st.columns(3)
+        wins = live.get("correct", 0)
+        games = live.get("games", 0)
+        c1.metric("2026 V4 record", f"{wins}–{games-wins}", f"{live.get('accuracy',0)*100:.1f}%")
+        c2.metric("Brier score", f"{live.get('brier',0):.4f}")
+        c3.metric("Log loss", f"{live.get('log_loss',0):.4f}")
+        v3_live = tracking.get("v3", {})
+        if v3_live.get("games", 0):
+            v3_wins = v3_live.get("correct", 0)
+            v3_games = v3_live.get("games", 0)
+            st.caption(f"V3 comparison: {v3_wins}–{v3_games-v3_wins} • {v3_live.get('accuracy',0)*100:.1f}% • Brier {v3_live.get('brier',0):.4f}")
+    elif hist.empty or "correct" not in hist.columns or hist["correct"].dropna().empty:
         st.info("2026 forward record: 0–0. Week 5 begins the frozen V4 live test.")
     else:
         st.dataframe(hist, use_container_width=True, hide_index=True)
