@@ -1,0 +1,40 @@
+name: CFB V2 coordinator research
+on:
+  push:
+    branches: [cfb-v2-research]
+    paths:
+      - "research/cfb/experiment_coordinator_v2.py"
+      - ".github/workflows/cfb_v2_coordinator.yml"
+      - "!research/cfb/v2_results/**"
+  workflow_dispatch:
+concurrency:
+  group: cfb-v2-coordinator
+  cancel-in-progress: true
+permissions:
+  contents: write
+jobs:
+  coordinator:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cfb-v2-research
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install pandas numpy scikit-learn
+      - run: python research/cfb/download_matchup_lines.py 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
+      - run: python research/cfb/experiment_coordinator_v2.py
+      - name: Commit outputs
+        run: |
+          git config user.name "bp-sports-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add research/cfb/v2_results/COORDINATOR_CONTINUITY.md research/cfb/v2_results/coordinator_continuity.json
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+          else
+            git commit -m "Update CFB V2 coordinator experiment"
+            git pull --rebase origin cfb-v2-research
+            git push origin HEAD:cfb-v2-research
+          fi
