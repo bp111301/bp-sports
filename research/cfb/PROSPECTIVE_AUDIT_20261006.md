@@ -1,0 +1,9 @@
+# Prospective operations audit — October 6, 2026
+
+Both CFB bundle hashes match their manifests; no model weights, features or hyperparameters changed. The current exact schedule has one October 6 game, Southern Miss at Troy. The first V1 ledger retained placeholder kickoff times for two October 7 CUSA games. Preserve those original snapshot fields; use the separate `schedule_kickoff_utc` metadata field and the current exact schedule for reporting dates and validating settlement.
+
+Grading now requires a completed final, matching home/away teams (with explicit ESPN aliases), non-tied nonnegative numeric scores, a known actual kickoff before the grading run, and a snapshot captured before that actual kickoff. In-progress numeric scores alone cannot settle Candidate B. Duplicate schedule/snapshot IDs fail rather than pick an arbitrary row. Probabilities, winners and capture times remain immutable.
+
+Candidate B's legacy 60-row batch was timestamped 14:03:50 UTC, before the saved artifact freeze at 14:09:17 UTC. Its exact bundle identity at capture cannot be proven. Preserve `prediction_ledger.csv` as a legacy archive and exclude it from the official shadow comparison. Capture fresh future-only predictions from the unchanged verified artifact into `verified_prediction_ledger.csv`, recording its SHA256 and freeze time. Keep the first verified pregame snapshot per game; never backfill a started game. Both settlement and reporting now use this verified ledger. All games were still future when this repair was prepared, including tonight's 00:00 UTC kickoff.
+
+CFB runtime is pinned to the saved estimators' sklearn version (1.9.1), with pandas 3.0.6, numpy 2.5.3 and joblib 1.6.0. Ten CFB tests cover feature leakage, neutral context, both bundle identities, and settlement/timing/provenance checks. The 4 AM America/Chicago schedule and its DST gate remain unchanged.

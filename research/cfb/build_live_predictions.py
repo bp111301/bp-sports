@@ -6,6 +6,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import joblib
+from settlement_guard import verify_bundle
 HERE=Path(__file__).parent
 def mod(name,file):
     s=importlib.util.spec_from_file_location(name,HERE/file);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
@@ -17,6 +18,7 @@ def matrices(df):
     return bx,context,px,pf
 def main():
     ap=argparse.ArgumentParser();ap.add_argument("--data-dir",default="runtime/cfb/matchup_line");ap.add_argument("--current-dir",default="data/cfb/current");ap.add_argument("--ledger",default="data/cfb/ledger/prediction_ledger.csv");ap.add_argument("--schedule",default="runtime/cfb/schedules/cfb_schedules_2026.csv.gz");ap.add_argument("--bundle",default="model/cfb/v1/frozen_bundle.joblib");ap.add_argument("--horizon-days",type=int,default=8);a=ap.parse_args()
+    verify_bundle(a.bundle,str(Path(a.bundle).parent/"bundle_manifest.json"))
     bundle=joblib.load(a.bundle)
     if bundle.get("version") != "CFB_V1":
         raise RuntimeError(f"Unexpected frozen bundle version: {bundle.get('version')}")

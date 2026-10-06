@@ -4,6 +4,7 @@ import argparse,importlib.util,json,math
 from datetime import datetime,timezone
 from pathlib import Path
 import joblib,numpy as np,pandas as pd
+from settlement_guard import verify_bundle
 HERE=Path(__file__).parent
 def mod(name,file):
  s=importlib.util.spec_from_file_location(name,HERE/file);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
@@ -12,6 +13,7 @@ def normcdf(x):
  x=np.asarray(x,float);return .5*(1+np.vectorize(math.erf)(x/np.sqrt(2)))
 def main():
  ap=argparse.ArgumentParser();ap.add_argument("--data-dir",default="runtime/cfb/matchup_line");ap.add_argument("--schedule",default="runtime/cfb/schedules/cfb_schedules_2026.csv.gz");ap.add_argument("--bundle",default="model/cfb/v2/candidate_b_bundle.joblib");ap.add_argument("--current",default="data/cfb/v2_shadow/current.csv");ap.add_argument("--ledger",default="data/cfb/v2_shadow/prediction_ledger.csv");ap.add_argument("--metadata",default="data/cfb/v2_shadow/metadata.json");ap.add_argument("--horizon-days",type=int,default=8);a=ap.parse_args()
+ manifest=verify_bundle(a.bundle,str(Path(a.bundle).parent/"candidate_b_manifest.json"))
  b=joblib.load(a.bundle)
  if b.get("version")!="CFB_V2_CANDIDATE_B" or b.get("status")!="PROSPECTIVE_SHADOW_ONLY":raise RuntimeError("Candidate B bundle identity/status mismatch")
  raw=pd.read_csv(Path(a.data_dir)/"cfb_matchup_line_2026.csv",low_memory=False);raw["season"]=pd.to_numeric(raw.season,errors="coerce");raw["week"]=pd.to_numeric(raw.week,errors="coerce");raw["game_id"]=pd.to_numeric(raw.game_id,errors="coerce")
@@ -26,5 +28,14 @@ def main():
  if led.exists():
   old=pd.read_csv(led);ids=set(old.prediction_id.astype(str));add=out[~out.prediction_id.astype(str).isin(ids)];combined=pd.concat([old,add],ignore_index=True)
  else:combined=out.copy()
- combined.to_csv(led,index=False);Path(a.metadata).write_text(json.dumps({"model_version":"CFB_V2_CANDIDATE_B","status":"PROSPECTIVE_SHADOW_ONLY","generated_at_utc":created,"games":int(len(out)),"ledger_rows":int(len(combined)),"market_used_for_pick":False},indent=2)+"\n");print(f"Candidate B current={len(out)} ledger={len(combined)}")
+ if not led.exists():combined.to_csv(led,index=False)
+ # Preserve the legacy first snapshots; the verified record starts after the committed freeze.
+ verified=led.parent/'verified_prediction_ledger.csv';locked=out.copy();locked['bundle_sha256']=manifest['sha256'];locked['bundle_frozen_at_utc']=manifest['created_utc']
+ locked=locked[pd.to_datetime(locked.snapshot_created_utc,utc=True).ge(pd.Timestamp(manifest['created_utc'])) & pd.to_datetime(locked.snapshot_created_utc,utc=True).lt(pd.to_datetime(locked.kickoff_utc,utc=True))]
+ if verified.exists():
+  old_verified=pd.read_csv(verified);known=set(old_verified.prediction_id.astype(str));locked=pd.concat([old_verified,locked[~locked.prediction_id.astype(str).isin(known)]],ignore_index=True)
+ for column,value in [('actual_winner',None),('correct',None),('settled',False)]:
+  if column not in locked:locked[column]=value
+ locked.to_csv(verified,index=False)
+ Path(a.metadata).write_text(json.dumps({"model_version":"CFB_V2_CANDIDATE_B","status":"PROSPECTIVE_SHADOW_ONLY","generated_at_utc":created,"games":int(len(out)),"ledger_rows":int(len(locked)),"ledger_source":"verified_prediction_ledger.csv","legacy_ledger_preserved":True,"market_used_for_pick":False},indent=2)+"\n");print(f"Candidate B current={len(out)} ledger={len(combined)}")
 if __name__=="__main__":main()

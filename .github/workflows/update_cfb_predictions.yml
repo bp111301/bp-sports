@@ -42,7 +42,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install pandas numpy scikit-learn joblib pytest
+      - run: pip install pandas==3.0.6 numpy==2.5.3 scikit-learn==1.9.1 joblib==1.6.0 pytest requests
       - name: Download fixed Candidate B training data if bundle is absent
         run: |
           if [ ! -f model/cfb/v2/candidate_b_bundle.joblib ]; then
@@ -53,7 +53,7 @@ jobs:
           python research/cfb/download_matchup_lines.py 2026
           python research/cfb/download_schedule.py 2026
       - name: Validate frozen CFB guardrails
-        run: pytest -q tests/test_cfb_research.py
+        run: python -m pytest -q tests/test_cfb_research.py tests/test_cfb_settlement.py
       - name: Freeze Candidate B artifact if absent
         run: |
           if [ ! -f model/cfb/v2/candidate_b_bundle.joblib ]; then
