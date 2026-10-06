@@ -1,0 +1,445 @@
+{
+  "candidate": "advanced_all_w20",
+  "selection_seasons": [
+    "20212022",
+    "20222023",
+    "20232024",
+    "20242025"
+  ],
+  "excluded_from_selection": [
+    "20252026"
+  ],
+  "warmup_season": "20212022",
+  "calibration_evaluation_seasons": [
+    "20222023",
+    "20232024",
+    "20242025"
+  ],
+  "ranking": [
+    {
+      "method": "raw",
+      "evaluation": {
+        "games": 3936,
+        "accuracy": 0.6023882113821138,
+        "brier": 0.23307157526264027,
+        "log_loss": 0.657892019204129
+      },
+      "all_development": {
+        "games": 5248,
+        "accuracy": 0.6133765243902439,
+        "brier": 0.23162021873811148,
+        "log_loss": 0.6551475411952689
+      },
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6463414634146342,
+          "brier": 0.22726614916452517,
+          "log_loss": 0.6469141071686888
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6112804878048781,
+          "brier": 0.2314314717318134,
+          "log_loss": 0.6544796406975509
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.5990853658536586,
+          "brier": 0.23416583979315944,
+          "log_loss": 0.6602705045088536
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.5967987804878049,
+          "brier": 0.23361741426294796,
+          "log_loss": 0.6589259124059821
+        }
+      ],
+      "seasons_with_brier_improvement": 0,
+      "eligible_for_promotion": false
+    },
+    {
+      "method": "temperature",
+      "evaluation": {
+        "games": 3936,
+        "accuracy": 0.6023882113821138,
+        "brier": 0.2330891231225631,
+        "log_loss": 0.6579566650739229
+      },
+      "all_development": {
+        "games": 5248,
+        "accuracy": 0.6133765243902439,
+        "brier": 0.23163337963305367,
+        "log_loss": 0.6551960255976144
+      },
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6463414634146342,
+          "brier": 0.22726614916452517,
+          "log_loss": 0.6469141071686888
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6112804878048781,
+          "brier": 0.23152735737274177,
+          "log_loss": 0.6546915969255264
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.5990853658536586,
+          "brier": 0.23407541615931077,
+          "log_loss": 0.6600761596746529
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.5967987804878049,
+          "brier": 0.23366459583563695,
+          "log_loss": 0.6591022386215895
+        }
+      ],
+      "seasons_with_brier_improvement": 1,
+      "eligible_for_promotion": false
+    },
+    {
+      "method": "sigmoid",
+      "evaluation": {
+        "games": 3936,
+        "accuracy": 0.603150406504065,
+        "brier": 0.2330773845257529,
+        "log_loss": 0.6579276589319619
+      },
+      "all_development": {
+        "games": 5248,
+        "accuracy": 0.6139481707317073,
+        "brier": 0.23162457568544595,
+        "log_loss": 0.6551742709911436
+      },
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6463414634146342,
+          "brier": 0.22726614916452517,
+          "log_loss": 0.6469141071686888
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6089939024390244,
+          "brier": 0.2315889478319749,
+          "log_loss": 0.654788914363882
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.6028963414634146,
+          "brier": 0.23412236074685613,
+          "log_loss": 0.6601839924810609
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.5975609756097561,
+          "brier": 0.23352084499842757,
+          "log_loss": 0.6588100699509426
+        }
+      ],
+      "seasons_with_brier_improvement": 2,
+      "eligible_for_promotion": false
+    }
+  ],
+  "selected_method": "raw",
+  "final_calibrator": {
+    "method": "raw"
+  },
+  "fit_audit": {
+    "raw": [
+      {
+        "season": "20212022",
+        "calibration_seasons": [],
+        "calibration_games": 0,
+        "spec": {
+          "method": "raw"
+        }
+      },
+      {
+        "season": "20222023",
+        "calibration_seasons": [
+          "20212022"
+        ],
+        "calibration_games": 1312,
+        "spec": {
+          "method": "raw"
+        }
+      },
+      {
+        "season": "20232024",
+        "calibration_seasons": [
+          "20212022",
+          "20222023"
+        ],
+        "calibration_games": 2624,
+        "spec": {
+          "method": "raw"
+        }
+      },
+      {
+        "season": "20242025",
+        "calibration_seasons": [
+          "20212022",
+          "20222023",
+          "20232024"
+        ],
+        "calibration_games": 3936,
+        "spec": {
+          "method": "raw"
+        }
+      }
+    ],
+    "temperature": [
+      {
+        "season": "20212022",
+        "calibration_seasons": [],
+        "calibration_games": 0,
+        "spec": {
+          "method": "raw"
+        }
+      },
+      {
+        "season": "20222023",
+        "calibration_seasons": [
+          "20212022"
+        ],
+        "calibration_games": 1312,
+        "spec": {
+          "method": "temperature",
+          "temperature": 0.9741218859167116
+        }
+      },
+      {
+        "season": "20232024",
+        "calibration_seasons": [
+          "20212022",
+          "20222023"
+        ],
+        "calibration_games": 2624,
+        "spec": {
+          "method": "temperature",
+          "temperature": 1.03122231831804
+        }
+      },
+      {
+        "season": "20242025",
+        "calibration_seasons": [
+          "20212022",
+          "20222023",
+          "20232024"
+        ],
+        "calibration_games": 3936,
+        "spec": {
+          "method": "temperature",
+          "temperature": 1.055832203265595
+        }
+      }
+    ],
+    "sigmoid": [
+      {
+        "season": "20212022",
+        "calibration_seasons": [],
+        "calibration_games": 0,
+        "spec": {
+          "method": "raw"
+        }
+      },
+      {
+        "season": "20222023",
+        "calibration_seasons": [
+          "20212022"
+        ],
+        "calibration_games": 1312,
+        "spec": {
+          "method": "sigmoid",
+          "slope": 1.010465170432919,
+          "intercept": 0.017767549647752005
+        }
+      },
+      {
+        "season": "20232024",
+        "calibration_seasons": [
+          "20212022",
+          "20222023"
+        ],
+        "calibration_games": 2624,
+        "spec": {
+          "method": "sigmoid",
+          "slope": 0.9686915465819816,
+          "intercept": -0.01004861480748031
+        }
+      },
+      {
+        "season": "20242025",
+        "calibration_seasons": [
+          "20212022",
+          "20222023",
+          "20232024"
+        ],
+        "calibration_games": 3936,
+        "spec": {
+          "method": "sigmoid",
+          "slope": 0.9398359190382738,
+          "intercept": 0.011500357818055093
+        }
+      }
+    ]
+  },
+  "selected_confidence_buckets": [
+    {
+      "bucket": "50%\u201355%",
+      "games": 1329,
+      "wins": 704,
+      "mean_predicted": 0.5252508363768835,
+      "actual_win_rate": 0.5297215951843491,
+      "wilson_low": 0.5028399044792287,
+      "wilson_high": 0.5564319549825409
+    },
+    {
+      "bucket": "55%\u201360%",
+      "games": 1278,
+      "wins": 746,
+      "mean_predicted": 0.5740360377082778,
+      "actual_win_rate": 0.5837245696400626,
+      "wilson_low": 0.5564868119606209,
+      "wilson_high": 0.6104604926049354
+    },
+    {
+      "bucket": "60%\u201365%",
+      "games": 1025,
+      "wins": 623,
+      "mean_predicted": 0.6245363958724697,
+      "actual_win_rate": 0.6078048780487805,
+      "wilson_low": 0.5775653878200094,
+      "wilson_high": 0.6372393012594367
+    },
+    {
+      "bucket": "65%\u201370%",
+      "games": 743,
+      "wins": 499,
+      "mean_predicted": 0.674411096968532,
+      "actual_win_rate": 0.6716016150740243,
+      "wilson_low": 0.637025342635141,
+      "wilson_high": 0.7044125204940689
+    },
+    {
+      "bucket": "70%\u201375%",
+      "games": 508,
+      "wins": 364,
+      "mean_predicted": 0.7221475026782175,
+      "actual_win_rate": 0.7165354330708661,
+      "wilson_low": 0.6758322304980285,
+      "wilson_high": 0.7539882452116441
+    },
+    {
+      "bucket": "75%\u201380%",
+      "games": 258,
+      "wins": 193,
+      "mean_predicted": 0.7719338995411975,
+      "actual_win_rate": 0.748062015503876,
+      "wilson_low": 0.6917129370805626,
+      "wilson_high": 0.7971322273241768
+    },
+    {
+      "bucket": "80%\u201390%",
+      "games": 107,
+      "wins": 90,
+      "mean_predicted": 0.825458921327396,
+      "actual_win_rate": 0.8411214953271028,
+      "wilson_low": 0.7602234207839839,
+      "wilson_high": 0.8983740732976605
+    },
+    {
+      "bucket": "90%\u2013100%",
+      "games": 0,
+      "wins": 0,
+      "mean_predicted": null,
+      "actual_win_rate": null,
+      "wilson_low": null,
+      "wilson_high": null
+    }
+  ],
+  "home_probability_reliability": [
+    {
+      "home_probability_bin": "0%\u201310%",
+      "games": 0,
+      "predicted": null,
+      "actual_home_win_rate": null
+    },
+    {
+      "home_probability_bin": "10%\u201320%",
+      "games": 25,
+      "predicted": 0.1789158861270263,
+      "actual_home_win_rate": 0.32
+    },
+    {
+      "home_probability_bin": "20%\u201330%",
+      "games": 225,
+      "predicted": 0.2641349906186636,
+      "actual_home_win_rate": 0.32
+    },
+    {
+      "home_probability_bin": "30%\u201340%",
+      "games": 657,
+      "predicted": 0.3557317236028629,
+      "actual_home_win_rate": 0.3637747336377473
+    },
+    {
+      "home_probability_bin": "40%\u201350%",
+      "games": 1227,
+      "predicted": 0.4522474531214255,
+      "actual_home_win_rate": 0.4547677261613692
+    },
+    {
+      "home_probability_bin": "50%\u201360%",
+      "games": 1380,
+      "predicted": 0.5504232193594537,
+      "actual_home_win_rate": 0.5659420289855073
+    },
+    {
+      "home_probability_bin": "60%\u201370%",
+      "games": 1111,
+      "predicted": 0.6462223161331968,
+      "actual_home_win_rate": 0.6336633663366337
+    },
+    {
+      "home_probability_bin": "70%\u201380%",
+      "games": 541,
+      "predicted": 0.7401853056032582,
+      "actual_home_win_rate": 0.7467652495378928
+    },
+    {
+      "home_probability_bin": "80%\u201390%",
+      "games": 82,
+      "predicted": 0.8267927040878905,
+      "actual_home_win_rate": 0.8902439024390244
+    },
+    {
+      "home_probability_bin": "90%\u2013100%",
+      "games": 0,
+      "predicted": null,
+      "actual_home_win_rate": null
+    }
+  ],
+  "ece_fixed_home_deciles": 0.013072610711112959,
+  "source_sha256": "4f2391432838352dbc6b87221d17c9dfed552991bc161d06020fdf08591cf3c4",
+  "decision_rule": "improve Brier/log loss, preserve accuracy, improve Brier in >=3/4 seasons (warmup is raw for all methods)",
+  "limitations": "Reused development seasons; binomial intervals are descriptive, not a guarantee of future performance or independence."
+}

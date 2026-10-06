@@ -1,0 +1,72 @@
+{
+  "version": "NHL_V1",
+  "candidate": "advanced_all_w20",
+  "training_seasons": [
+    "20182019",
+    "20192020",
+    "20202021",
+    "20212022",
+    "20222023",
+    "20232024",
+    "20242025"
+  ],
+  "development_seasons": [
+    "20212022",
+    "20222023",
+    "20232024",
+    "20242025"
+  ],
+  "excluded_evaluation_season": "20252026",
+  "features": [
+    "elo_diff",
+    "home_field",
+    "win10_diff",
+    "gd10_diff",
+    "gf10_diff",
+    "ga10_diff",
+    "rest_diff",
+    "home_b2b",
+    "away_b2b",
+    "games_played_diff",
+    "shots_for_20_diff",
+    "shots_against_20_diff",
+    "shot_diff_20_diff",
+    "shoot_pct_20_diff",
+    "save_pct_20_diff",
+    "faceoff_pct_20_diff",
+    "pp_rate_20_diff",
+    "pk_rate_20_diff"
+  ],
+  "classifier": {
+    "type": "LogisticRegression",
+    "C": 0.5,
+    "max_iter": 3000,
+    "solver": "lbfgs"
+  },
+  "preprocessing": {
+    "imputer": "training_median",
+    "missing_indicators": true,
+    "scaler": "training_standard_scaler"
+  },
+  "team_stats_window": 20,
+  "team_stats_min_history": 3,
+  "calibrator": {
+    "method": "raw"
+  },
+  "market_used": false,
+  "goalie_layer_used": false,
+  "shot_quality_layer_used": false,
+  "travel_layer_used": false,
+  "opponent_adjustment_used": false,
+  "freeze_date": "2026-10-06",
+  "promotion_rule_for_evaluation": "Both Brier and log loss improve versus fixed baseline on identical games, and accuracy does not decline; otherwise remain research only. No tuning against evaluation results.",
+  "baseline_state": {
+    "elo_initial": 1500,
+    "elo_K": 20,
+    "elo_home_advantage": 35,
+    "elo_scale": 400,
+    "elo_season_carryover": 0.75,
+    "form_window": 10,
+    "form_resets_each_season": true
+  }
+}

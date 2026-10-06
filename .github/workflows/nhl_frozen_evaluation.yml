@@ -1,0 +1,59 @@
+name: NHL frozen excluded-season evaluation
+on:
+  push:
+    branches: [nhl-v1-research]
+    paths:
+      - "research/nhl/freeze_leader.py"
+      - "research/nhl/evaluate_frozen.py"
+      - "research/nhl/test_frozen_safety.py"
+      - "model/nhl/v1/config.json"
+      - "model/nhl/v1/NHL_V1_FROZEN_SPEC.md"
+      - ".github/workflows/nhl_frozen_evaluation.yml"
+concurrency:
+  group: nhl-frozen-evaluation
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: nhl-v1-research
+      - name: Guard one-time excluded-season evaluation
+        run: test ! -f research/nhl/results/excluded_season_evaluation.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas numpy scikit-learn scipy joblib requests
+      - name: Verify all NHL leakage safeguards
+        run: |
+          python research/nhl/test_goalie_safety.py
+          python research/nhl/test_factor_safety.py
+          python research/nhl/test_calibration_safety.py
+          python research/nhl/test_frozen_safety.py
+      - name: Reproduce chronological calibration audit
+        run: python research/nhl/calibrate_leader.py
+      - name: Download training-only games
+        run: python research/nhl/download_games.py 20182019 20192020 20202021 20212022 20222023 20232024 20242025 --out-dir runtime/nhl/freeze_training_games
+      - name: Download training-only team statistics
+        run: python research/nhl/download_team_game_stats.py 20182019 20192020 20202021 20212022 20222023 20232024 20242025 --out-dir runtime/nhl/freeze_training_team_stats --schema-out runtime/nhl/freeze_training_team_stats/schema.json
+      - name: Fit frozen weights before reading excluded season
+        run: python research/nhl/freeze_leader.py
+      - name: Download excluded-season games
+        run: python research/nhl/download_games.py 20252026 --out-dir runtime/nhl/excluded_evaluation_games
+      - name: Download excluded-season team statistics
+        run: python research/nhl/download_team_game_stats.py 20252026 --out-dir runtime/nhl/excluded_evaluation_team_stats --schema-out runtime/nhl/excluded_evaluation_team_stats/schema.json
+      - name: Evaluate fixed model without tuning
+        run: python research/nhl/evaluate_frozen.py
+      - name: Commit frozen artifacts and evaluation outputs
+        run: |
+          git config user.name "bp-sports-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add model/nhl/v1/ research/nhl/results/
+          if ! git diff --cached --quiet; then
+            git commit -m "Record frozen NHL V1 excluded-season evaluation [skip ci]"
+            git pull --rebase origin nhl-v1-research
+            git push origin HEAD:nhl-v1-research
+          fi
