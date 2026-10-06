@@ -24,9 +24,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install pandas numpy scikit-learn requests
+      - run: pip install pandas numpy scikit-learn scipy requests
       - name: Verify V2 chronological model safeguards
         run: python research/nhl/v2/test_model_safety.py
+      - name: Verify regulation reconstruction safeguards
+        run: python research/nhl/v2/test_regulation_safety.py
       - name: Download development training games only
         run: python research/nhl/download_games.py 20182019 20192020 20202021 20212022 20222023 20232024 20242025 --out-dir runtime/nhl/v2/games
       - name: Download development training team stats only
@@ -39,6 +41,8 @@ jobs:
         run: python research/nhl/v2/audit_feature_consistency.py
       - name: Run bounded development model comparison
         run: python research/nhl/v2/experiment_models.py
+      - name: Run fixed regulation-strength comparison
+        run: python research/nhl/v2/experiment_regulation.py
       - name: Commit V2 research outputs
         if: always()
         run: |
