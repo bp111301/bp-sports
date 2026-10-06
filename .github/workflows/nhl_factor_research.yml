@@ -1,0 +1,54 @@
+name: NHL additional factor research
+on:
+  push:
+    branches: [nhl-v1-research]
+    paths:
+      - "research/nhl/experiment_factors.py"
+      - "research/nhl/download_shot_quality.py"
+      - "research/nhl/test_factor_safety.py"
+      - ".github/workflows/nhl_factor_research.yml"
+      - "!research/nhl/results/**"
+  workflow_dispatch:
+concurrency:
+  group: nhl-factor-research
+  cancel-in-progress: true
+permissions:
+  contents: write
+jobs:
+  factors:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: nhl-v1-research
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas numpy scikit-learn requests
+      - name: Download NHL development seasons
+        run: python research/nhl/download_games.py 20182019 20192020 20202021 20212022 20222023 20232024 20242025
+      - name: Download per-game NHL team stats
+        run: python research/nhl/download_team_game_stats.py 20182019 20192020 20202021 20212022 20222023 20232024 20242025
+      - name: Verify factor leakage safeguards
+        run: python research/nhl/test_factor_safety.py
+      - name: Download exploratory shot quality
+        run: python research/nhl/download_shot_quality.py
+      - name: Run bounded factor tournament
+        run: python research/nhl/experiment_factors.py
+      - name: Commit NHL research outputs
+        run: |
+          git config user.name "bp-sports-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add research/nhl/results/
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+          else
+            git commit -m "Update NHL V1 research results"
+            git pull --rebase origin nhl-v1-research
+            for attempt in 1 2 3; do
+              git push origin HEAD:nhl-v1-research && break
+              if [ "$attempt" = "3" ]; then exit 1; fi
+              sleep $((attempt * 5))
+              git pull --rebase origin nhl-v1-research
+            done
+          fi
