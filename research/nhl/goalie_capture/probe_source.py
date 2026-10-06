@@ -4,7 +4,6 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 from html.parser import HTMLParser
 from pathlib import Path
-import requests
 
 class NextData(HTMLParser):
     def __init__(self):super().__init__();self.active=False;self.parts=[]
@@ -28,6 +27,7 @@ def structure(value,depth=0):
     return value
 
 if __name__=='__main__':
+    import requests
     day=datetime.now(ZoneInfo('America/New_York')).date().isoformat()
     url=f'https://www.dailyfaceoff.com/starting-goalies/{day}'
     response=requests.get(url,timeout=45,headers={'User-Agent':'BP-Sports-Research/1.0'});response.raise_for_status()

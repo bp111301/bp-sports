@@ -6,6 +6,11 @@ on:
       - "research/nhl/goalie_capture/**"
       - ".github/workflows/nhl_goalie_capture.yml"
   workflow_dispatch:
+  schedule:
+    - cron: "7,37 * * * *"
+concurrency:
+  group: nhl-pregame-goalie-capture
+  cancel-in-progress: false
 permissions:
   contents: write
 jobs:
@@ -19,15 +24,19 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install requests
-      - name: Inspect public source schema
-        run: python research/nhl/goalie_capture/probe_source.py
-      - name: Commit source schema
+      - name: Verify capture safety
+        run: python research/nhl/goalie_capture/test_capture.py
+      - name: Capture pregame goalie observations
+        run: python research/nhl/goalie_capture/collect.py
+      - name: Commit observations and source health
+        if: always()
         run: |
           git config user.name "bp-sports-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add research/nhl/goalie_capture/source_schema.json
+          if [ ! -d data/nhl/goalie_capture ]; then exit 0; fi
+          git add data/nhl/goalie_capture/
           if ! git diff --cached --quiet; then
-            git commit -m "Inspect public pregame goalie source schema [skip ci]"
+            git commit -m "Capture NHL pregame goalie observations [skip ci]"
             git pull --rebase origin nhl-v1-research
             git push origin HEAD:nhl-v1-research
           fi
