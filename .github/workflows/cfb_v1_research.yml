@@ -27,7 +27,7 @@ jobs:
       - run: pip install pandas numpy scikit-learn pytest
       - name: Download leakage-safe matchup lines
         run: python research/cfb/download_matchup_lines.py 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026
-      - name: Download game-level QB data
+      - name: Download exact 2026 schedule\n        run: python research/cfb/download_schedule.py 2026\n      - name: Download game-level QB data
         run: python research/cfb/download_qb_data.py 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
       - name: Run guardrail tests
         run: pytest -q tests/test_cfb_research.py
