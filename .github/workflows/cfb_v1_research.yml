@@ -45,6 +45,8 @@ jobs:
           python research/cfb/experiment_priors.py
           python research/cfb/experiment_qb.py
           python research/cfb/final_development_tournament.py
+      - name: Build frozen CFB V1 bundle
+        run: python research/cfb/freeze_bundle.py
       - name: Open frozen 2026 diagnostic
         run: python research/cfb/evaluate_frozen_2026.py
       - name: Build first prospective CFB slate
