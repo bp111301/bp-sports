@@ -6,6 +6,7 @@ on:
       - "research/cfb/deep_audit.py"
       - "research/cfb/audit_2026_diagnostic.py"
       - "research/cfb/qb_data_audit.py"
+      - "research/cfb/experiment_qb_v2.py"
       - "research/cfb/experiment_reliability_adjustments.py"
       - ".github/workflows/cfb_v2_research.yml"
       - "!research/cfb/v2_results/**"
@@ -32,6 +33,8 @@ jobs:
         run: python research/cfb/download_qb_data.py 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
       - name: Audit QB data mapping
         run: python research/cfb/qb_data_audit.py
+      - name: Run corrected QB-room experiment
+        run: python research/cfb/experiment_qb_v2.py
       - name: Run frozen V1 deep audit
         run: python research/cfb/deep_audit.py
       - name: Test reliability adjustments
