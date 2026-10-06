@@ -1,0 +1,56 @@
+name: CFB V2 Candidate B shadow
+on:
+  push:
+    branches: [cfb-v2-research]
+    paths:
+      - "research/cfb/freeze_candidate_b.py"
+      - "research/cfb/build_candidate_b_shadow.py"
+      - "research/cfb/settle_candidate_b_shadow.py"
+      - "research/cfb/v2_results/CFB_V2_CANDIDATE_B_SPEC.md"
+      - ".github/workflows/cfb_v2_candidate_b_shadow.yml"
+      - "!data/cfb/v2_shadow/**"
+      - "!model/cfb/v2/**"
+  workflow_dispatch:
+  schedule:
+    - cron: "15 13,14 * 1,8-12 *"
+concurrency:
+  group: cfb-v2-candidate-b-shadow
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  shadow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cfb-v2-research
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas numpy scikit-learn joblib
+      - name: Download fixed training and current sources
+        run: |
+          python research/cfb/download_matchup_lines.py 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025 2026
+          python research/cfb/download_schedule.py 2026
+      - name: Freeze Candidate B bundle if absent
+        run: |
+          if [ ! -f model/cfb/v2/candidate_b_bundle.joblib ]; then
+            python research/cfb/freeze_candidate_b.py
+          fi
+      - name: Settle prior shadow snapshots
+        run: python research/cfb/settle_candidate_b_shadow.py
+      - name: Build prospective Candidate B shadow slate
+        run: python research/cfb/build_candidate_b_shadow.py
+      - name: Commit immutable shadow evidence
+        run: |
+          git config user.name "bp-sports-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add model/cfb/v2/ data/cfb/v2_shadow/
+          if git diff --cached --quiet; then
+            echo "No Candidate B changes"
+          else
+            git commit -m "Update frozen CFB V2 Candidate B shadow"
+            git pull --rebase origin cfb-v2-research
+            git push origin HEAD:cfb-v2-research
+          fi
