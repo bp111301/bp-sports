@@ -1,0 +1,97 @@
+{
+  "selection_window": "2018-2025",
+  "candidates": {
+    "context_raw": {
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7266701552415838,
+        "brier": 0.17796908753969767,
+        "log_loss": 0.5294069525452498,
+        "mean_confidence": 0.7442422990225925
+      }
+    },
+    "blend_add_k3": {
+      "k": 3.0,
+      "mode": "add",
+      "n_features": 36,
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.725100296528868,
+        "brier": 0.17812548301066067,
+        "log_loss": 0.5302145734806626,
+        "mean_confidence": 0.7478612671972283
+      }
+    },
+    "blend_replace_k3": {
+      "k": 3.0,
+      "mode": "replace",
+      "n_features": 24,
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7275422989708704,
+        "brier": 0.1776379225628314,
+        "log_loss": 0.5289388923204675,
+        "mean_confidence": 0.7462628019633751
+      }
+    },
+    "blend_add_k5": {
+      "k": 5.0,
+      "mode": "add",
+      "n_features": 36,
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7252747252747253,
+        "brier": 0.17816934175517504,
+        "log_loss": 0.5302927887621194,
+        "mean_confidence": 0.7478697807363915
+      }
+    },
+    "blend_replace_k5": {
+      "k": 5.0,
+      "mode": "replace",
+      "n_features": 24,
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7259724402581545,
+        "brier": 0.17751944157811245,
+        "log_loss": 0.5285921658903084,
+        "mean_confidence": 0.7463317561406364
+      }
+    },
+    "blend_add_k7": {
+      "k": 7.0,
+      "mode": "add",
+      "n_features": 36,
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7254491540205826,
+        "brier": 0.17813726205604696,
+        "log_loss": 0.5303289046874254,
+        "mean_confidence": 0.7475635724681496
+      }
+    },
+    "blend_replace_k7": {
+      "k": 7.0,
+      "mode": "replace",
+      "n_features": 24,
+      "overall": {
+        "games": 5733,
+        "accuracy": 0.7282400139542997,
+        "brier": 0.1774666933969421,
+        "log_loss": 0.5285509937555506,
+        "mean_confidence": 0.7461449072327085
+      }
+    }
+  },
+  "2026_touched": false,
+  "ranking": [
+    "blend_replace_k7",
+    "blend_replace_k5",
+    "blend_replace_k3",
+    "context_raw",
+    "blend_add_k3",
+    "blend_add_k7",
+    "blend_add_k5"
+  ],
+  "leader": "blend_replace_k7"
+}
