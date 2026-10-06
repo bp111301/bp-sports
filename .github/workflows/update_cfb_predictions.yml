@@ -10,7 +10,7 @@ on:
       - "!data/cfb/**"
   workflow_dispatch:
   schedule:
-    - cron: "0 13,14 * 1,8-12 *"
+    - cron: "0 9,10 * 1,8-12 *"
 
 concurrency:
   group: cfb-production-update
@@ -18,16 +18,27 @@ concurrency:
 permissions:
   contents: write
 jobs:
+  schedule_gate:
+    runs-on: ubuntu-latest
+    outputs:
+      should_run: ${{ steps.check.outputs.should_run }}
+    steps:
+      - name: Run scheduled updates at 4 AM Central
+        id: check
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          if [ "$EVENT_NAME" != "schedule" ] || [ "$(TZ=America/Chicago date +%H)" = "04" ]; then
+            echo "should_run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "should_run=false" >> "$GITHUB_OUTPUT"
+          fi
   update:
-    if: github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main'
+    needs: schedule_gate
+    if: needs.schedule_gate.outputs.should_run == 'true' && (github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Gate scheduled run to 8 AM Central
-        if: github.event_name == 'schedule'
-        run: |
-          HOUR=$(TZ=America/Chicago date +%H)
-          if [ "$HOUR" != "08" ]; then echo "Not 8 AM Central; exiting cleanly."; exit 0; fi
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
