@@ -43,6 +43,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No research result changes"
           else
-            git commit -m "Update CFB V1 baseline results"
+            git commit -m "Update CFB V1 research results"
+            git pull --rebase origin cfb-v1-research
             git push origin HEAD:cfb-v1-research
           fi
