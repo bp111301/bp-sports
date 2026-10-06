@@ -1,0 +1,44 @@
+name: CFB V2 research audit
+on:
+  push:
+    branches: [cfb-v2-research]
+    paths:
+      - "research/cfb/deep_audit.py"
+      - "research/cfb/audit_2026_diagnostic.py"
+      - ".github/workflows/cfb_v2_research.yml"
+      - "!research/cfb/v2_results/**"
+  workflow_dispatch:
+concurrency:
+  group: cfb-v2-research
+  cancel-in-progress: true
+permissions:
+  contents: write
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cfb-v2-research
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pandas numpy scikit-learn
+      - name: Download historical development data
+        run: python research/cfb/download_matchup_lines.py 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
+      - name: Run frozen V1 deep audit
+        run: python research/cfb/deep_audit.py
+      - name: Audit untouched 2026 diagnostic
+        run: python research/cfb/audit_2026_diagnostic.py
+      - name: Commit audit outputs
+        run: |
+          git config user.name "bp-sports-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add research/cfb/v2_results/
+          if git diff --cached --quiet; then
+            echo "No generated changes"
+          else
+            git commit -m "Update CFB V1 deep audit"
+            git pull --rebase origin cfb-v2-research
+            git push origin HEAD:cfb-v2-research
+          fi
