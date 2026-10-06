@@ -53,7 +53,12 @@ def main():
  for n,v in result.items():
   v["delta_brier"]=v["overall"]["brier"]-b;v["recent_delta_brier"]=v["recent_2023_2025"]["brier"]-br;v["seasons_improved"]=sum(a["brier"]<bb["brier"] for a,bb in zip(v["by_season"],result["v1"]["by_season"]))
  ranked=sorted(result,key=lambda n:(result[n]["overall"]["brier"],result[n]["recent_2023_2025"]["brier"]))
- payload={"selection_window":"2018-2025","2026_touched":False,"ranking":ranked,"candidates":result};out=Path(a.out_dir);out.mkdir(parents=True,exist_ok=True);(out/"margin_challenger.json").write_text(json.dumps(payload,indent=2)+"\n")
+ payload={"selection_window":"2018-2025","2026_touched":False,"ranking":ranked,"candidates":result};out=Path(a.out_dir);out.mkdir(parents=True,exist_ok=True)
+ meta_cols=[c for c in ["game_id","season","week","conference_game","neutral_site","home_team","away_team"] if c in df.columns]
+ oof=df.loc[df.season.between(2018,2025),meta_cols].reset_index(drop=True).copy();oof["home_win"]=y
+ for n,p in candidates.items():oof[n]=p
+ oof.to_csv(out/"margin_oof_candidates.csv",index=False)
+ (out/"margin_challenger.json").write_text(json.dumps(payload,indent=2)+"\n")
  lines=["# CFB V2 Margin Challenger","","Ridge score-margin models are trained only on prior seasons. Their predicted margins are converted to win probabilities using training residual variance. 2026 is excluded.","","| Candidate | Accuracy | Brier | Δ Brier | Recent Brier | Recent Δ | Seasons improved |","|---|---:|---:|---:|---:|---:|---:|"]
  for n in ranked[:15]:
   v=result[n];lines.append(f"| {n} | {v['overall']['accuracy']:.2%} | {v['overall']['brier']:.6f} | {v['delta_brier']:+.6f} | {v['recent_2023_2025']['brier']:.6f} | {v['recent_delta_brier']:+.6f} | {v['seasons_improved']}/8 |")
