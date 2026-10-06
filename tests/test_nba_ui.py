@@ -19,7 +19,7 @@ def test_nba_page_keeps_live_and_historical_scores_separate():
     with patch('nba_ui.load_dashboard',return_value=(fixture(),False)):
         at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_sport']='NBA';at.run()
         assert not at.exception and not at.code
-        assert at.radio(key='bp_sport').options==['NFL','CFB','NHL','NBA']
+        assert at.radio(key='bp_sport').options==['Overview','NFL','CFB','NHL','NBA']
         assert [t.label for t in at.tabs]==['PREDICTIONS','MODEL RECORD','THE MODEL']
         assert any('0–0' in m.value and 'PROSPECTIVE' in m.value for m in at.markdown)
         assert any('69.19%' in m.value and 'HISTORICAL ACCURACY' in m.value for m in at.markdown)

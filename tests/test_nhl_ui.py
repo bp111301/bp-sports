@@ -22,9 +22,9 @@ def fixture():
 
 def test_sport_navigation_models_and_search():
     with patch('nhl_ui.load_dashboard',return_value=(fixture(),False)):
-        at=AppTest.from_file(APP,default_timeout=15).run()
+        at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_sport']='NFL';at.run()
         assert not at.exception
-        assert at.radio(key='bp_sport').options==['NFL','CFB','NHL','NBA']
+        assert at.radio(key='bp_sport').options==['Overview','NFL','CFB','NHL','NBA']
         at.radio(key='bp_sport').set_value('NHL').run()
         assert not at.exception
         assert len(at.expander)==12
