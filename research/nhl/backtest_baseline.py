@@ -39,8 +39,8 @@ def score(y,p):
  return {"games":int(len(y)),"accuracy":float(accuracy_score(y,p>=.5)),"brier":float(brier_score_loss(y,p)),"log_loss":float(log_loss(y,p,labels=[0,1]))}
 
 def main():
- ap=argparse.ArgumentParser();ap.add_argument("--data-dir",default="runtime/nhl/games");ap.add_argument("--out-dir",default="research/nhl/results");ap.add_argument("--first-test","default",default="20212022");a=ap.parse_args()
- d=load(a.data_dir);x=build_features(d);seasons=sorted(d.season.unique());first="20212022";parts=[];rows=[]
+ ap=argparse.ArgumentParser();ap.add_argument("--data-dir",default="runtime/nhl/games");ap.add_argument("--out-dir",default="research/nhl/results");ap.add_argument("--first-test",default="20212022");a=ap.parse_args()
+ d=load(a.data_dir);x=build_features(d);seasons=sorted(d.season.unique());first=str(a.first_test);parts=[];rows=[]
  for s in seasons:
   if s<first:continue
   tr=d.index[d.season<s];te=d.index[d.season==s]
