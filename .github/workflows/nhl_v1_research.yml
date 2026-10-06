@@ -47,5 +47,10 @@ jobs:
           else
             git commit -m "Update NHL V1 research results"
             git pull --rebase origin nhl-v1-research
-            git push origin HEAD:nhl-v1-research
+            for attempt in 1 2 3; do
+              git push origin HEAD:nhl-v1-research && break
+              if [ "$attempt" = "3" ]; then exit 1; fi
+              sleep $((attempt * 5))
+              git pull --rebase origin nhl-v1-research
+            done
           fi
