@@ -23,9 +23,9 @@ def form_paragraph(name,p,sport):
     if not p or not p['games']:return f'{name} has no earlier-date regular-season finals in this preview’s source window. There is not yet a recent-results sample to summarize.'
     unit='goals' if sport=='NHL' else 'points'
     record=f"{p['wins']}–{p['losses']}"+(f"–{p['ties']}" if p['ties'] else '')
-    opening=f"{name} has won {p['wins']} of its {p['games']} games" if sport=='NHL' else f'{name} is {record}'
+    opening=f"{name} has won {p['wins']} of its {p['games']} games" if sport=='NHL' else f'{name} enters this matchup {record}'
     last=p['last'];outcome={'W':'win over','L':'loss to','T':'tie with'}[last['outcome']];high=max(last['for'],last['against']);low=min(last['for'],last['against'])
-    return f"{opening} in the regular-season results available before this forecast. Its latest result was a {high:g}–{low:g} {outcome} {last['opponent']}. Across those games, {name} averaged {p['scored_per_game']:.1f} {unit} scored and {p['allowed_per_game']:.1f} allowed."
+    return f"{opening} in the regular season. Its latest result was a {high:g}–{low:g} {outcome} {last['opponent']}. Across those games, {name} averaged {p['scored_per_game']:.1f} {unit} scored and {p['allowed_per_game']:.1f} allowed."
 
 def synopsis(sport,r,context=None,model_label=None):
     home,away=str(r['home_team']),str(r['away_team'])
@@ -35,7 +35,10 @@ def synopsis(sport,r,context=None,model_label=None):
     if not math.isfinite(prob) or not .5<=prob<=1:return []
     opponent=away if pick==home else home;venue=context.get('venue') if context else None
     matchup=f'{away} meets {home}' if context and context.get('neutral_site') else f'{away} visits {home}'
-    intro=f"{matchup}"+(f" at {venue}" if venue else '')+f". The saved {label} forecast favors {pick} at {prob*100:.1f}%, leaving {opponent} a {(1-prob)*100:.1f}% chance according to the model."
+    start=r.get('kickoff_utc',r.get('start_time_utc',context.get('start_time_utc') if context else None))
+    date=pd.to_datetime(start,utc=True,errors='coerce')
+    when=(' on '+date.tz_convert('America/Chicago').strftime('%A, %b %d, at %I:%M %p CT').replace(' 0',' ')) if pd.notna(date) and str(r.get('kickoff_time_tbd',False)).lower() not in ('true','1','1.0') else ''
+    intro=f"{matchup}"+(f" at {venue}" if venue else '')+when+f". The saved {label} forecast favors {pick} at {prob*100:.1f}%, leaving {opponent} a {(1-prob)*100:.1f}% chance according to the model."
     paragraphs=[intro]
     if context:paragraphs.extend(form_paragraph(name,context.get(side),sport) for name,side in [(away,'away_form'),(home,'home_form')])
     else:paragraphs.append('Recent-results context is not available for this saved forecast yet. The probability above comes from the preserved prediction.')
@@ -62,3 +65,4 @@ def render_preview(sport,r,model_label=None):
         cutoff=pd.to_datetime(context['cutoff_utc'],utc=True).tz_convert('America/Chicago').strftime('%b %d, %I:%M %p CT')
         st.caption(f'Recent results through the preview cutoff ({cutoff}). These describe team form; they are not individual feature contributions to the model probability.')
         if context.get('sources'):st.caption('Recent-results sources: '+' · '.join(f'[{s["name"]}]({s["url"]})' for s in context['sources']))
+
