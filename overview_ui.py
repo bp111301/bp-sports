@@ -5,6 +5,7 @@ import io,json,math,html
 import pandas as pd
 import streamlit as st
 from nhl_ui import audit_note
+from navigation_ui import open_board
 
 RAW='https://raw.githubusercontent.com/bp111301/bp-sports/'
 SOURCES={
@@ -129,8 +130,6 @@ def freshness(sport,stamp,now):
     if pd.isna(stamp) or stamp>now:return 'Update time unavailable','unknown'
     if now-stamp>pd.Timedelta(hours=LIMITS[sport]):return 'Update overdue','warning'
     return 'Feed verified','good'
-
-def open_board(sport):st.session_state['bp_sport']=sport
 
 def table(headers,rows):
     return '<div class="ov-table-wrap"><table class="ov-table"><thead><tr>'+''.join('<th>'+esc(x)+'</th>' for x in headers)+'</tr></thead><tbody>'+''.join('<tr>'+''.join('<td>'+esc(x)+'</td>' for x in r)+'</tr>' for r in rows)+'</tbody></table></div>'

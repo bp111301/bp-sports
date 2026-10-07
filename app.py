@@ -2,6 +2,8 @@ import json
 import html
 import streamlit as st
 import pandas as pd
+from navigation_ui import request_top, render_top_anchor, render_scroll_reset
+from matchup_preview_ui import render_preview
 
 st.set_page_config(
     page_title="B.P. Sports",
@@ -183,8 +185,9 @@ def team_block(team, home=False):
     txt = f'<div><div class="team-abbr">{safe}</div><div class="team-name">{name}</div></div>'
     return f'<div class="team-box{" home" if home else ""}">{txt + dot if home else dot + txt}</div>'
 
+render_top_anchor()
 st.markdown('<div style="font-size:.64rem;color:#8d98a8;font-weight:900;letter-spacing:.11em;margin-bottom:4px">SPORT</div>', unsafe_allow_html=True)
-sport = st.radio("Sport", ["Overview", "NFL", "CFB", "NHL", "NBA"], horizontal=True, label_visibility="collapsed", key="bp_sport")
+sport = st.radio("Sport", ["Overview", "NFL", "CFB", "NHL", "NBA"], horizontal=True, label_visibility="collapsed", key="bp_sport", on_change=request_top)
 
 if sport == "Overview":
     from overview_ui import render_overview
@@ -343,6 +346,7 @@ elif sport == "NFL":
                     )
     
                     with st.expander(f"WHY V4 LIKES {pick} • {away} @ {home}"):
+                        render_preview('NFL',r)
                         c1, c2, c3 = st.columns(3)
                         c1.metric("V3", f"{v3*100:.1f}%")
                         c2.metric("V4 core", f"{core*100:.1f}%")
@@ -585,14 +589,11 @@ elif sport == "CFB":
                     )
 
                     with st.expander(f"WHY CFB V1 LIKES {pick} • {away} @ {home}"):
+                        render_preview('CFB',r)
                         x1, x2, x3 = st.columns(3)
                         x1.metric("Away win", f"{away_prob*100:.1f}%")
                         x2.metric("Home win", f"{home_prob*100:.1f}%")
                         x3.metric("B.P. pick", f"{conf*100:.1f}%")
-                        st.write(
-                            "CFB V1 blends a context model with a dynamic-prior model that gradually shifts "
-                            "from prior-season information toward current-season efficiency over the opening weeks."
-                        )
                         st.success("Pregame snapshot preserved. This pick cannot be rewritten after kickoff.")
 
             st.caption(
@@ -679,3 +680,5 @@ elif sport == "NHL":
 elif sport == "NBA":
     from nba_ui import render_nba
     render_nba()
+
+render_scroll_reset()

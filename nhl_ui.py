@@ -11,6 +11,7 @@ from urllib.request import Request, urlopen
 
 import pandas as pd
 import streamlit as st
+from matchup_preview_ui import render_preview
 
 RESEARCH_URL = 'https://raw.githubusercontent.com/bp111301/bp-sports/nhl-v1-research/'
 SNAPSHOT = Path(__file__).parent / 'data/nhl/dashboard_snapshot.json'
@@ -170,6 +171,7 @@ def render_nhl(now=None):
             cells=''.join(f'<div class="model-cell"><div class="m">{escape(name)}</div><div class="v">{float(comparisons.loc[key,"home_win_prob"])*100:.1f}% {escape(home)}</div></div>' if key in comparisons.index else f'<div class="model-cell"><div class="m">{escape(name)}</div><div class="v">Not captured</div></div>' for key,name in MODEL_NAMES.items())
             st.markdown(f'''<div class="card" style="border-left-color:#6ea8fe"><div class="card-top"><div class="game-meta">{escape(ct(r.start_time_utc))}</div><div class="tier {result_class}">{escape(status.upper())}</div></div><div class="match-row">{team_block(away)}<div class="at">@</div>{team_block(home,True)}</div><div class="pick-panel"><div><div class="pick-label">{escape(MODEL_NAMES[candidate].upper())} • EXPERIMENTAL</div><div class="pick-name">{escape(r.favored_team)} favored</div></div><div class="prob">{r.favored_prob*100:.1f}%<span>MODEL WIN PROBABILITY</span></div></div><div class="bar"><div class="fill" style="width:{r.favored_prob*100:.1f}%"></div></div><div class="model-strip">{cells}</div><div class="nhl-goalies"><div><small>{escape(away)} GOALIE REPORT</small>{escape(goalie_text(reports.get((game_id,'away'))))}</div><div><small>{escape(home)} GOALIE REPORT</small>{escape(goalie_text(reports.get((game_id,'home'))))}</div></div><div class="layer-note">Prediction recorded {escape(ct(r.created_at_utc))}. Goalie reports are separate from these model probabilities.</div></div>''',unsafe_allow_html=True)
             with st.expander(f'Pregame details • {away} @ {home}'):
+                render_preview('NHL',r,MODEL_NAMES[candidate])
                 a,b=st.columns(2);a.metric(f'{away} win',f'{(1-p)*100:.1f}%');b.metric(f'{home} win',f'{p*100:.1f}%')
                 st.write(f'{MODEL_NAMES[candidate]} prediction recorded {ct(r.created_at_utc)}. Its probability is preserved after puck drop.')
                 for side,team in [('away',away),('home',home)]:

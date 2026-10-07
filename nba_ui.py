@@ -8,6 +8,7 @@ from urllib.error import HTTPError
 from urllib.request import Request,urlopen
 import pandas as pd
 import streamlit as st
+from matchup_preview_ui import render_preview
 
 RESEARCH_URL='https://raw.githubusercontent.com/bp111301/bp-sports/nba-v1-research/'
 SNAPSHOT=Path(__file__).parent/'data/nba/dashboard_snapshot.json'
@@ -109,7 +110,7 @@ def render_nba(now=None):
             st.markdown(f'<div class="card nba-ready"><div class="nba-record-tag">READY FOR THE REGULAR SEASON</div><div class="about-title">{title}</div><div class="about-copy">{copy}</div><div class="nba-statuses"><span>✓ Model frozen</span><span>✓ Historical gate passed</span><span>{status}</span></div></div>',unsafe_allow_html=True)
             if feed.get('feed_status')=='unavailable':st.warning('The prospective feed is unavailable. Its live record cannot be confirmed.')
         else:
-            st.caption('Live feed active • Regular-season forecasts lock within 36 hours of tipoff • Final results checked hourly')
+            st.caption('Live feed active • Regular-season forecasts lock within 36 hours of tipoff • Final results checked about every 15 minutes')
             if feed.get('prediction_blocked_reason'):
                 st.warning('New forecasts are waiting for complete, verified results from previous games. Saved forecasts remain locked.')
             view=st.selectbox('Games',['Upcoming','Awaiting results','Completed','All tracked'],key='nba_view')
@@ -126,6 +127,7 @@ def render_nba(now=None):
                 status='Awaiting final result' if r.status=='pending' and r.start_time_utc<=now else 'Pregame snapshot' if r.status=='pending' else 'Correct' if (home>=.5)==r.actual_home_win else 'Incorrect'
                 st.markdown(f'<div class="card nba-ready"><div class="game-meta">{escape(time)} • {escape(status)}</div><div class="spot-match">{escape(r.away_team)} @ {escape(r.home_team)}</div><div class="pick-panel"><div><div class="pick-label">NBA V1 PICK</div><div class="pick-name">{escape(pick)} • {escape(TEAMS.get(pick,pick))}</div></div><div class="prob">{prob*100:.1f}%<span>WIN PROBABILITY</span></div></div></div>',unsafe_allow_html=True)
                 with st.expander(f'Forecast details • {r.away_team} @ {r.home_team}'):
+                    render_preview('NBA',r._asdict())
                     st.write(f'Home win probability: {home*100:.2f}%')
                     st.caption(f'Saved before tipoff: {r.created_at_utc.tz_convert("America/Chicago").strftime("%b %d, %Y %I:%M %p CT")}')
         st.caption('Historical accuracy is evidence from past games, not a promised future hit rate.')
