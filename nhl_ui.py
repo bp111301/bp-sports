@@ -12,6 +12,8 @@ from urllib.request import Request, urlopen
 import pandas as pd
 import streamlit as st
 from matchup_preview_ui import render_preview
+from game_center_ui import filter_favorites,score_html,confidence_html,load_scores,context
+from game_status import display_state
 
 RESEARCH_URL = 'https://raw.githubusercontent.com/bp111301/bp-sports/nhl-v1-research/'
 SNAPSHOT = Path(__file__).parent / 'data/nhl/dashboard_snapshot.json'
@@ -121,7 +123,7 @@ def record_metrics(board):
 def render_nhl(now=None):
     now=pd.Timestamp.now(tz='UTC') if now is None else pd.to_datetime(now,utc=True)
     if st.button('Refresh NHL data',key='nhl_refresh'):
-        load_dashboard.clear()
+        load_dashboard.clear();load_scores.clear()
     data,saved=load_dashboard()
     st.markdown('''<style>.nhl-pill{background:#30281a;border-color:#584824;color:#efd17f}.nhl-goalies{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;font-size:.72rem;color:#aeb8c7}.nhl-goalies div:last-child{text-align:right}.nhl-goalies small{display:block;color:#8d98a8;font-size:.59rem;margin-bottom:3px}[data-testid="stWidgetLabel"] p,[data-testid="stRadio"] label p{color:#d9e2ef!important}[data-testid="stAlert"] p{color:#e0e8f5!important}.st-key-nhl_refresh button{background:#172b46;color:#dbe9ff;border:1px solid #294b77}</style>
 <div class="bp-nav"><div class="bp-logo"><div class="bp-mark">BP</div><div><div class="bp-wordmark">B.P. <span>SPORTS</span></div><div class="bp-kicker">INDEPENDENT HOCKEY RESEARCH</div></div></div><div class="live-pill nhl-pill">NHL • RESEARCH</div></div>''',unsafe_allow_html=True)
@@ -160,16 +162,18 @@ def render_nhl(now=None):
         if query.strip():
             q=query.strip().lower()
             shown=shown[shown.apply(lambda r:any(q in str(t).lower() or q in TEAMS.get(str(t),'').lower() for t in [r.home_team,r.away_team]),axis=1)]
+        shown=filter_favorites(shown,"NHL","nhl_my_teams")
         if shown.empty:st.info('No games match this view. New pregame predictions are collected daily.')
         for _,r in shown.iterrows():
             game_id=int(r.game_id);home=str(r.home_team);away=str(r.away_team);p=float(r.home_win_prob)
             status='Pregame' if r.start_time_utc>now and r.status=='pending' else 'Awaiting final' if r.status=='pending' else 'Win' if (p>=.5)==r.actual_home_win else 'Loss'
+            if r.status=='pending':status=display_state(context('NHL',game_id,home,away),False,r.start_time_utc,now)
             result_class='tier-strong' if status=='Win' else 'tier-toss' if status=='Loss' else 'tier-solid' if status=='Pregame' else 'tier-lean'
             note=audit_note(game_id,r.get('bundle_sha256'))
             if note:st.warning(note['message'])
             comparisons=board[board.game_id==game_id].set_index('candidate')
             cells=''.join(f'<div class="model-cell"><div class="m">{escape(name)}</div><div class="v">{float(comparisons.loc[key,"home_win_prob"])*100:.1f}% {escape(home)}</div></div>' if key in comparisons.index else f'<div class="model-cell"><div class="m">{escape(name)}</div><div class="v">Not captured</div></div>' for key,name in MODEL_NAMES.items())
-            st.markdown(f'''<div class="card" style="border-left-color:#6ea8fe"><div class="card-top"><div class="game-meta">{escape(ct(r.start_time_utc))}</div><div class="tier {result_class}">{escape(status.upper())}</div></div><div class="match-row">{team_block(away)}<div class="at">@</div>{team_block(home,True)}</div><div class="pick-panel"><div><div class="pick-label">{escape(MODEL_NAMES[candidate].upper())} • EXPERIMENTAL</div><div class="pick-name">{escape(r.favored_team)} favored</div></div><div class="prob">{r.favored_prob*100:.1f}%<span>MODEL WIN PROBABILITY</span></div></div><div class="bar"><div class="fill" style="width:{r.favored_prob*100:.1f}%"></div></div><div class="model-strip">{cells}</div><div class="nhl-goalies"><div><small>{escape(away)} GOALIE REPORT</small>{escape(goalie_text(reports.get((game_id,'away'))))}</div><div><small>{escape(home)} GOALIE REPORT</small>{escape(goalie_text(reports.get((game_id,'home'))))}</div></div><div class="layer-note">Prediction recorded {escape(ct(r.created_at_utc))}. Goalie reports are separate from these model probabilities.</div></div>''',unsafe_allow_html=True)
+            st.markdown(f'''<div class="card" style="border-left-color:#6ea8fe"><div class="card-top"><div class="game-meta">{escape(ct(r.start_time_utc))}</div><div class="tier {result_class}">{escape(status.upper())}</div></div>{score_html("NHL",game_id,home,away,r.status=="settled",r.start_time_utc,now)}<div class="match-row">{team_block(away)}<div class="at">@</div>{team_block(home,True)}</div><div class="pick-panel"><div><div class="pick-label">{escape(MODEL_NAMES[candidate].upper())} • EXPERIMENTAL</div><div class="pick-name">{escape(r.favored_team)} favored</div></div><div class="prob">{r.favored_prob*100:.1f}%<span>MODEL WIN PROBABILITY</span></div></div>{confidence_html(r.favored_prob,"NHL",bool(note))}<div class="bar"><div class="fill" style="width:{r.favored_prob*100:.1f}%"></div></div><div class="model-strip">{cells}</div><div class="nhl-goalies"><div><small>{escape(away)} GOALIE REPORT</small>{escape(goalie_text(reports.get((game_id,'away'))))}</div><div><small>{escape(home)} GOALIE REPORT</small>{escape(goalie_text(reports.get((game_id,'home'))))}</div></div><div class="layer-note">Prediction recorded {escape(ct(r.created_at_utc))}. Goalie reports are separate from these model probabilities.</div></div>''',unsafe_allow_html=True)
             with st.expander(f'Pregame details • {away} @ {home}'):
                 render_preview('NHL',r,MODEL_NAMES[candidate])
                 a,b=st.columns(2);a.metric(f'{away} win',f'{(1-p)*100:.1f}%');b.metric(f'{home} win',f'{p*100:.1f}%')

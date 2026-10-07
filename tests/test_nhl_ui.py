@@ -21,20 +21,20 @@ def fixture():
     return data
 
 def test_sport_navigation_models_and_search():
-    with patch('nhl_ui.load_dashboard',return_value=(fixture(),False)):
+    with patch('nhl_ui.load_dashboard',return_value=(fixture(),False)),patch('game_center_ui.load_scores',return_value={}):
         at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_sport']='NFL';at.run()
         assert not at.exception
         assert at.radio(key='bp_sport').options==['Overview','NFL','CFB','NHL','NBA']
         at.radio(key='bp_sport').set_value('NHL').run()
         assert not at.exception
-        assert len(at.expander)==12
+        assert len([e for e in at.expander if e.label.startswith("Pregame details")])==12
         assert not at.code
         assert 'NHL is in prospective research' in at.info[0].value
         for candidate in nhl_ui.MODEL_NAMES:
             at.selectbox(key='nhl_candidate').set_value(candidate).run()
-            assert not at.exception and len(at.expander)==12
+            assert not at.exception and len([e for e in at.expander if e.label.startswith("Pregame details")])==12
         at.text_input(key='nhl_search').set_value('Red Wings').run()
-        assert not at.exception and len(at.expander)==1
+        assert not at.exception and len([e for e in at.expander if e.label.startswith("Pregame details")])==1
         at.radio(key='bp_sport').set_value('CFB').run()
         assert not at.exception
         assert any(t.label=='PREDICTIONS' for t in at.tabs)
@@ -47,15 +47,15 @@ def test_records_not_backtests_and_started_pending_not_upcoming():
         r['start_time_utc']=(now-pd.Timedelta(minutes=10)).isoformat()
     board=nhl_ui.prepare_predictions(data['predictions'])
     assert set(nhl_ui.record_metrics(board).Accuracy)=={'—'}
-    with patch('nhl_ui.load_dashboard',return_value=(data,False)):
+    with patch('nhl_ui.load_dashboard',return_value=(data,False)),patch('game_center_ui.load_scores',return_value={}):
         at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_sport']='NHL';at.run()
-        assert not at.exception and len(at.expander)==12
+        assert not at.exception and len([e for e in at.expander if e.label.startswith("Pregame details")])==12
         assert at.selectbox(key='nhl_view').value=='Today + upcoming'
         at.selectbox(key='nhl_view').set_value('Upcoming').run()
-        assert len(at.expander)==0
+        assert len([e for e in at.expander if e.label.startswith("Pregame details")])==0
         at.selectbox(key='nhl_view').set_value('Awaiting results').run()
-        assert len(at.expander)==12
-        assert any('AWAITING FINAL' in m.value for m in at.markdown)
+        assert len([e for e in at.expander if e.label.startswith("Pregame details")])==12
+        assert any('STATUS UNAVAILABLE' in m.value for m in at.markdown)
 
 def test_invalid_pregame_rows_and_unverified_confirmations():
     data=fixture();bad=copy.deepcopy(data['predictions'][0]);bad['created_at_utc']=bad['start_time_utc']
@@ -80,9 +80,9 @@ def test_default_keeps_todays_started_and_graded_games_in_central_time():
         r['created_at_utc']='2026-10-05T12:00:00Z'
         if r['game_id']==ids[1]:
             r['status']='settled';r['actual_home_win']=1
-    with patch('nhl_ui.load_dashboard',return_value=(data,False)):
+    with patch('nhl_ui.load_dashboard',return_value=(data,False)),patch('game_center_ui.load_scores',return_value={}):
         at=AppTest.from_string("import nhl_ui\nnhl_ui.render_nhl(now='2026-10-07T01:00:00Z')",default_timeout=15).run()
-        assert not at.exception and len(at.expander)==2
-        assert any('AWAITING FINAL' in m.value for m in at.markdown)
+        assert not at.exception and len([e for e in at.expander if e.label.startswith("Pregame details")])==2
+        assert any('STATUS UNAVAILABLE' in m.value for m in at.markdown)
         at.selectbox(key='nhl_view').set_value('Upcoming').run()
-        assert not at.exception and len(at.expander)==0
+        assert not at.exception and len([e for e in at.expander if e.label.startswith("Pregame details")])==0

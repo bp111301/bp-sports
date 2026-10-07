@@ -6,6 +6,8 @@ import pandas as pd
 import streamlit as st
 from nhl_ui import audit_note
 from navigation_ui import open_board
+from game_center_ui import filter_favorites,score_html,confidence_html,context,load_scores
+from game_status import display_state
 
 RAW='https://raw.githubusercontent.com/bp111301/bp-sports/'
 SOURCES={
@@ -156,19 +158,24 @@ def select_games(board,view,sport,query,now):
 def game_cards(board,now):
     cards=[]
     for r in board.itertuples():
-        state,cls=game_state(r,now);pick=r.home if r.p>=.5 else r.away
+        state,cls=game_state(r,now)
+        if not r.settled:state=display_state(context(r.sport,r.game_id,r.home,r.away),False,r.start,now)
+        pick=r.home if r.p>=.5 else r.away
         winner=r.home if r.y==1 else r.away
         detail='Final winner: '+str(winner) if r.settled else 'Result pending · excluded from record' if cls=='waiting' else 'Saved before game time'
         time=ct(r.start) if pd.notna(r.start) else 'Kickoff time on NFL board'
         note=audit_note(r.game_id,FROZEN_NHL) if r.sport=='NHL' else None
         audit=f'<div class="desk-detail" style="color:#f1d28f">Input concern · missing power-play feature. <a href="{esc(note["report_url"])}" target="_blank" rel="noopener noreferrer">View audit</a></div>' if note else ''
-        cards.append(f'<article class="desk-game" style="--accent:{COLORS[r.sport]}"><div class="desk-top"><span class="desk-sport">{esc(r.sport)}</span><span class="desk-state {cls}">{state}</span></div><div class="desk-time">{esc(time)}</div><div class="desk-match">{esc(r.away)} <span>@</span> {esc(r.home)}</div><div class="desk-pick"><div><small>SAVED PICK</small><strong>{esc(pick)}</strong></div><div class="desk-prob">{r.confidence*100:.1f}%<small>MODEL PROBABILITY</small></div></div><div class="desk-detail">{esc(detail)}</div>{audit}</article>')
+        cards.append(f'<article class="desk-game" style="--accent:{COLORS[r.sport]}"><div class="desk-top"><span class="desk-sport">{esc(r.sport)}</span><span class="desk-state {cls}">{state}</span></div><div class="desk-time">{esc(time)}</div>{score_html(r.sport,r.game_id,r.home,r.away,r.settled,r.start,now)}<div class="desk-match">{esc(r.away)} <span>@</span> {esc(r.home)}</div><div class="desk-pick"><div><small>SAVED PICK</small><strong>{esc(pick)}</strong></div><div class="desk-prob">{r.confidence*100:.1f}%<small>MODEL PROBABILITY</small></div></div><div class="desk-detail">{esc(detail)}</div>{confidence_html(r.confidence,r.sport,bool(note))}{audit}</article>')
     return '<div class="desk-grid">'+''.join(cards)+'</div>'
 
 def render_overview(now=None):
     now=pd.Timestamp.now(tz='UTC') if now is None else ts(now)
-    if st.button('Refresh all sports',key='overview_refresh'):load_overview.clear()
+    if st.button('Refresh all sports',key='overview_refresh'):load_overview.clear();load_scores.clear()
     board,available,updates=prepare(load_overview(),now)
+    for i,r in board.iterrows():
+        status=context(r.sport,r.game_id,r.home,r.away)
+        if status:board.loc[i,'start']=ts(status['start_time_utc'])
     primary=board[board.apply(lambda r:PRIMARY[r.sport]==r.group,axis=1)] if len(board) else board
     total_graded=int(primary.settled.sum());saved=len(primary)
     st.markdown('''<style>
@@ -197,18 +204,19 @@ def render_overview(now=None):
         view=f1.selectbox('Show games',['Today','Results','Upcoming','Awaiting finals','All tracked'],key='desk_view')
         sport=f2.selectbox('Filter sport',['All sports',*PRIMARY],key='desk_sport')
         query=st.text_input('Find a matchup',placeholder='Search Troy, SEA, DET…',key='desk_search')
-        shown=select_games(primary,view,sport,query,now)
+        personal=filter_favorites(primary,None,"overview_my_teams",home="home",away="away")
+        shown=select_games(personal,view,sport,query,now)
         if shown.empty:st.info('No saved games match this view. Use Results for completed games or Upcoming for future picks.')
         else:
             st.markdown(game_cards(shown.head(24),now),unsafe_allow_html=True)
             if len(shown)>24:
                 with st.expander(f'Show the remaining {len(shown)-24} games'):st.markdown(game_cards(shown.iloc[24:],now),unsafe_allow_html=True)
         if view=='Today' and not query.strip():
-            recent=select_games(primary,'Results',sport,'',now).head(6)
+            recent=select_games(personal,'Results',sport,'',now).head(6)
             if len(recent):
                 st.markdown('<div class="section-title">Latest settled results</div>',unsafe_allow_html=True)
                 st.markdown(game_cards(recent,now),unsafe_allow_html=True)
-        st.caption('Win / Loss grades the saved pick. Awaiting final means the game has started; a confirmed final has not been graded yet. Result checks run about every 15 minutes; source and workflow delays can take longer. NBA excludes preseason.')
+        st.caption('Win / Loss grades the saved pick. The game-state label comes from the score source; Win / Loss comes from the grading ledger. A final score can appear before grading. Result checks run about every 15 minutes; source and workflow delays can take longer. NBA excludes preseason.')
     with tabs[1]:
         st.markdown('<div class="section-title">Does confidence hold up?</div><div class="ov-note">Compare the confidence saved before each game with actual wins after grading. Empty bands stay unscored until results arrive.</div>',unsafe_allow_html=True)
         sport=st.selectbox('Sport to review',list(PRIMARY),key='overview_confidence_sport');group=PRIMARY[sport];b=board[board.group==group]

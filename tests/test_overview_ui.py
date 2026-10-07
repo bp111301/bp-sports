@@ -57,7 +57,7 @@ def test_game_center_separates_today_results_and_pending_at_central_midnight():
     assert list(ov.select_games(board,'Upcoming','NHL','det',now).game_id)==['c']
     html=ov.game_cards(board,now)
     assert 'desk-state loss' in html and 'Final winner: VGK' in html
-    assert 'Awaiting final' in html and 'Result pending · excluded from record' in html
+    assert 'Status unavailable' in html and 'Result pending · excluded from record' in html
 
 def test_game_cards_escape_teams_and_show_audit_without_changing_probability():
     now=pd.Timestamp('2026-10-07T14:00:00Z')

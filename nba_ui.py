@@ -9,6 +9,8 @@ from urllib.request import Request,urlopen
 import pandas as pd
 import streamlit as st
 from matchup_preview_ui import render_preview
+from game_center_ui import filter_favorites,score_html,confidence_html,load_scores,context
+from game_status import display_state
 
 RESEARCH_URL='https://raw.githubusercontent.com/bp111301/bp-sports/nba-v1-research/'
 SNAPSHOT=Path(__file__).parent/'data/nba/dashboard_snapshot.json'
@@ -82,7 +84,7 @@ def live_record(board):
 
 def render_nba(now=None):
     now=pd.Timestamp.now(tz='UTC') if now is None else pd.to_datetime(now,utc=True)
-    if st.button('Refresh NBA data',key='nba_refresh'):load_dashboard.clear()
+    if st.button('Refresh NBA data',key='nba_refresh'):load_dashboard.clear();load_scores.clear()
     data,saved=load_dashboard()
     st.markdown('''<style>
 .nba-pill{background:#302117;border-color:#805330;color:#ffc68e}.nba-hero{background:radial-gradient(ellipse at 100% 0,rgba(212,124,44,.19),transparent 60%),linear-gradient(135deg,#1d202a,#10151e)}.nba-hero .eyebrow{color:#f7ad68}.nba-ready{border-left-color:#edaa65}.nba-ready .about-num{color:#f7ad68}.nba-statuses{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 2px}.nba-statuses span{padding:7px 11px;background:#17202c;border:1px solid #354252;border-radius:8px;color:#c5d3e4;font-size:.72rem}.nba-statuses span:last-child{background:#30241a;border-color:#6b4b2e;color:#efbd8c}.nba-record-tag{font-size:.68rem;color:#f7ad68;font-weight:900;letter-spacing:.12em}.st-key-nba_refresh button{background:#30241a;color:#ffd2aa;border:1px solid #765030}[data-testid="stWidgetLabel"] p,[data-testid="stRadio"] label p{color:#d9e2ef!important}[data-testid="stAlert"] p{color:#e0e8f5!important}
@@ -120,12 +122,14 @@ def render_nba(now=None):
             elif view=='Awaiting results':selected=selected[(selected.status=='pending')&selected.start_time_utc.le(now)]
             elif view=='Completed':selected=selected[selected.status=='settled']
             if search:selected=selected[selected.apply(lambda r:search in ' '.join([str(r.home_team),str(r.away_team),TEAMS.get(r.home_team,''),TEAMS.get(r.away_team,'')]).lower(),axis=1)]
+            selected=filter_favorites(selected,"NBA","nba_my_teams")
             if selected.empty:st.info('Collection is active. Picks will appear within 36 hours of the first regular-season games; preseason games are excluded.' if board.empty else 'No NBA forecasts match this view.')
             for r in selected.itertuples():
                 home=float(r.home_win_prob);pick=r.home_team if home>=.5 else r.away_team;prob=max(home,1-home)
                 time=r.start_time_utc.tz_convert('America/Chicago').strftime('%a %b %d • %I:%M %p CT')
                 status='Awaiting final result' if r.status=='pending' and r.start_time_utc<=now else 'Pregame snapshot' if r.status=='pending' else 'Correct' if (home>=.5)==r.actual_home_win else 'Incorrect'
-                st.markdown(f'<div class="card nba-ready"><div class="game-meta">{escape(time)} • {escape(status)}</div><div class="spot-match">{escape(r.away_team)} @ {escape(r.home_team)}</div><div class="pick-panel"><div><div class="pick-label">NBA V1 PICK</div><div class="pick-name">{escape(pick)} • {escape(TEAMS.get(pick,pick))}</div></div><div class="prob">{prob*100:.1f}%<span>WIN PROBABILITY</span></div></div></div>',unsafe_allow_html=True)
+                if r.status=='pending':status=display_state(context('NBA',r.game_id,r.home_team,r.away_team),False,r.start_time_utc,now)
+                st.markdown(f'<div class="card nba-ready"><div class="game-meta">{escape(time)} • {escape(status)}</div>{score_html("NBA",r.game_id,r.home_team,r.away_team,r.status=="settled",r.start_time_utc,now)}<div class="spot-match">{escape(r.away_team)} @ {escape(r.home_team)}</div><div class="pick-panel"><div><div class="pick-label">NBA V1 PICK</div><div class="pick-name">{escape(pick)} • {escape(TEAMS.get(pick,pick))}</div></div><div class="prob">{prob*100:.1f}%<span>WIN PROBABILITY</span></div></div>{confidence_html(prob,"NBA")}</div>',unsafe_allow_html=True)
                 with st.expander(f'Forecast details • {r.away_team} @ {r.home_team}'):
                     render_preview('NBA',r._asdict())
                     st.write(f'Home win probability: {home*100:.2f}%')

@@ -43,8 +43,8 @@ def test_completed_results_and_started_pending_views():
         at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_sport']='NBA';at.run()
         assert not at.exception
         at.selectbox(key='nba_view').set_value('Awaiting results').run()
-        assert any('Awaiting final result' in m.value for m in at.markdown)
-        at.text_input(key='nba_search').set_value('Pistons').run();assert not at.exception and len(at.expander)==3
+        assert any('Status unavailable' in m.value for m in at.markdown)
+        at.text_input(key='nba_search').set_value('Pistons').run();assert not at.exception and len([e for e in at.expander if e.label.startswith("Forecast details")])==1
     r['status']='settled';r['actual_home_win']=1
     assert nba_ui.live_record(nba_ui.prepare_predictions([r],now))==(1,1,0)
 

@@ -4,6 +4,7 @@ import streamlit as st
 import pandas as pd
 from navigation_ui import request_top, render_top_anchor, render_scroll_reset
 from matchup_preview_ui import render_preview
+from game_center_ui import render_preferences, filter_favorites, score_html, confidence_html, render_score_refresh
 
 st.set_page_config(
     page_title="B.P. Sports",
@@ -189,6 +190,9 @@ render_top_anchor()
 st.markdown('<div style="font-size:.64rem;color:#8d98a8;font-weight:900;letter-spacing:.11em;margin-bottom:4px">SPORT</div>', unsafe_allow_html=True)
 sport = st.radio("Sport", ["Overview", "NFL", "CFB", "NHL", "NBA"], horizontal=True, label_visibility="collapsed", key="bp_sport", on_change=request_top)
 
+render_preferences(TEAM_NAMES)
+render_score_refresh()
+
 if sport == "Overview":
     from overview_ui import render_overview
     render_overview()
@@ -298,6 +302,9 @@ elif sport == "NFL":
             elif filter_choice == "Provisional":
                 board = pred[provisional_mask]
     
+            nfl_ledger = load_csv("data/ledger/prediction_ledger.csv")
+            nfl_settled = set(nfl_ledger.loc[nfl_ledger.settlement_status.isin(["final","tie"]),"game_id"]) if "settlement_status" in nfl_ledger else set()
+            board = filter_favorites(board, "NFL", "nfl_my_teams")
             if board.empty:
                 st.info("No games match this filter.")
             else:
@@ -328,6 +335,7 @@ elif sport == "NFL":
                     st.markdown(
                         f'''<div class="card" style="border-left-color:{accent}">
                           <div class="card-top"><div class="game-meta">#{rank} ON BOARD • {html.escape(str(r["game_id"]))}</div><div class="tier {tier_class}">{tier}</div></div>
+                          {score_html("NFL",r["game_id"],home,away,r["game_id"] in nfl_settled)}
                           <div class="match-row">{team_block(away)}<div class="at">@</div>{team_block(home, True)}</div>
                           <div class="pick-panel">
                             <div><div class="pick-label">B.P. SPORTS V4 PICK</div><div class="pick-name">{html.escape(pick)} • {html.escape(pick_name)}</div></div>
@@ -340,6 +348,7 @@ elif sport == "NFL":
                             <div class="model-cell"><div class="m">V4 CORE</div><div class="v">{core*100:.1f}%</div></div>
                             <div class="model-cell"><div class="m">V4 FINAL</div><div class="v">{v4*100:.1f}%</div></div>
                           </div>
+                          {confidence_html(v4,"NFL")}
                           <div class="layer-note">{html.escape(layer_text)}</div>
                         </div>''',
                         unsafe_allow_html=True,
@@ -471,7 +480,12 @@ elif sport == "CFB":
         if cfb_pred.empty:
             st.error("The current CFB prediction feed is unavailable.")
         else:
-            board = cfb_pred.copy()
+            ledger = load_csv("data/cfb/ledger/prediction_ledger.csv")
+            board = pd.concat([cfb_pred,ledger],ignore_index=True).drop_duplicates("game_id")
+            if "correct" in ledger:
+                results=ledger.drop_duplicates("game_id").set_index("game_id")["correct"]
+                board["correct"]=board["game_id"].map(results)
+            board["_settled"] = board.get("correct",pd.Series(index=board.index,dtype=float)).notna()
             board["confidence"] = pd.to_numeric(board["confidence"], errors="coerce")
             board["home_win_prob"] = pd.to_numeric(board["home_win_prob"], errors="coerce")
             board["week"] = pd.to_numeric(board["week"], errors="coerce")
@@ -536,7 +550,9 @@ elif sport == "CFB":
                 label_visibility="collapsed",
             )
 
-            shown = board
+            game_view = st.selectbox("CFB games",["Current slate", "Completed", "All tracked"],key="cfb_games_view")
+            shown = board if game_view=="All tracked" else board[board._settled] if game_view=="Completed" else board[~board._settled]
+            shown = filter_favorites(shown,"CFB","cfb_my_teams")
             if query.strip():
                 q = query.strip().lower()
                 shown = shown[
@@ -571,6 +587,7 @@ elif sport == "CFB":
                     st.markdown(
                         f'''<div class="card" style="border-left-color:{accent}">
                           <div class="card-top"><div class="game-meta">#{rank} ON BOARD • WEEK {week} • {html.escape(kickoff)}</div><div class="tier {tier_class}">{tier}</div></div>
+                          {score_html("CFB",r["game_id"],home,away,bool(r["_settled"]),r.get("schedule_kickoff_utc",r.get("kickoff_utc")))}
                           <div class="match-row">{cfb_team_block(away)}<div class="at">@</div>{cfb_team_block(home, True)}</div>
                           <div class="pick-panel">
                             <div><div class="pick-label">B.P. SPORTS CFB V1 PICK</div><div class="pick-name">{html.escape(pick)}</div></div>
@@ -583,6 +600,7 @@ elif sport == "CFB":
                             <div class="model-cell"><div class="m">HOME WIN</div><div class="v">{home_prob*100:.1f}%</div></div>
                             <div class="model-cell"><div class="m">MODEL</div><div class="v">CFB V1</div></div>
                           </div>
+                          {confidence_html(conf,"CFB")}
                           <div class="layer-note">Snapshot ID: {html.escape(str(r.get("prediction_id", "")))}</div>
                         </div>''',
                         unsafe_allow_html=True,
@@ -594,6 +612,8 @@ elif sport == "CFB":
                         x1.metric("Away win", f"{away_prob*100:.1f}%")
                         x2.metric("Home win", f"{home_prob*100:.1f}%")
                         x3.metric("B.P. pick", f"{conf*100:.1f}%")
+                        if r["_settled"]:
+                            st.write("Saved pick result: "+("Win" if float(r["correct"])==1 else "Loss"))
                         st.success("Pregame snapshot preserved. This pick cannot be rewritten after kickoff.")
 
             st.caption(
