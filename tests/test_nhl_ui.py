@@ -49,7 +49,10 @@ def test_records_not_backtests_and_started_pending_not_upcoming():
     assert set(nhl_ui.record_metrics(board).Accuracy)=={'—'}
     with patch('nhl_ui.load_dashboard',return_value=(data,False)):
         at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_sport']='NHL';at.run()
-        assert not at.exception and len(at.expander)==0
+        assert not at.exception and len(at.expander)==12
+        assert at.selectbox(key='nhl_view').value=='Today + upcoming'
+        at.selectbox(key='nhl_view').set_value('Upcoming').run()
+        assert len(at.expander)==0
         at.selectbox(key='nhl_view').set_value('Awaiting results').run()
         assert len(at.expander)==12
         assert any('AWAITING FINAL RESULT' in m.value for m in at.markdown)
@@ -67,3 +70,19 @@ def test_saved_snapshot_is_labeled():
         at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_sport']='NHL';at.run()
         assert not at.exception
         assert any('saved snapshot' in x.value.lower() for x in at.warning)
+
+def test_default_keeps_todays_started_and_graded_games_in_central_time():
+    data=fixture()
+    ids=list(dict.fromkeys(r['game_id'] for r in data['predictions']))
+    for r in data['predictions']:
+        # UTC is already Oct 7; the Central date is still Oct 6.
+        r['start_time_utc']='2026-10-06T23:00:00Z' if r['game_id'] in ids[:2] else '2026-10-05T23:00:00Z'
+        r['created_at_utc']='2026-10-05T12:00:00Z'
+        if r['game_id']==ids[1]:
+            r['status']='settled';r['actual_home_win']=1
+    with patch('nhl_ui.load_dashboard',return_value=(data,False)):
+        at=AppTest.from_string("import nhl_ui\nnhl_ui.render_nhl(now='2026-10-07T01:00:00Z')",default_timeout=15).run()
+        assert not at.exception and len(at.expander)==2
+        assert any('AWAITING FINAL RESULT' in m.value for m in at.markdown)
+        at.selectbox(key='nhl_view').set_value('Upcoming').run()
+        assert not at.exception and len(at.expander)==0

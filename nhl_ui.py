@@ -134,13 +134,17 @@ def render_nhl(now=None):
     with n1:
         left,right=st.columns([2,1])
         candidate=left.selectbox('Research model',list(MODEL_NAMES),format_func=MODEL_NAMES.get,key='nhl_candidate')
-        view=right.selectbox('Games',['Upcoming','Awaiting results','Completed','All tracked'],key='nhl_view')
+        view=right.selectbox('Games',['Today + upcoming','Upcoming','Awaiting results','Completed','All tracked'],key='nhl_view')
         selected=board[board.candidate==candidate].copy()
         upcoming=selected[(selected.status=='pending') & selected.start_time_utc.gt(now)]
         confirmed=sum(bool(reports.get((int(g),'home'),{}).get('confirmed_eligible')) and bool(reports.get((int(g),'away'),{}).get('confirmed_eligible')) for g in upcoming.game_id)
         st.markdown(f'''<div class="hero"><div class="eyebrow">2026–27 • PROSPECTIVE RESEARCH</div><div class="hero-title">The B.P. Sports NHL Board</div><div class="hero-copy">Follow the three fixed models on games predicted before puck drop. Compare their probabilities and track new results as they arrive.</div><div class="stat-grid"><div class="stat"><div class="stat-v">{len(upcoming)}</div><div class="stat-l">Upcoming games</div></div><div class="stat"><div class="stat-v">3</div><div class="stat-l">Models tracked</div></div><div class="stat"><div class="stat-v">{confirmed}</div><div class="stat-l">Both goalies confirmed</div></div><div class="stat"><div class="stat-v">{int((selected.status=='settled').sum())}</div><div class="stat-l">Graded games</div></div></div></div>''',unsafe_allow_html=True)
         query=st.text_input('Find an NHL team',placeholder='Search Red Wings, Maple Leafs, TOR…',key='nhl_search')
-        if view=='Upcoming':shown=upcoming
+        if view=='Today + upcoming':
+            today=now.tz_convert('America/Chicago').date()
+            shown=selected[selected.start_time_utc.dt.tz_convert('America/Chicago').dt.date.eq(today) | ((selected.status=='pending') & selected.start_time_utc.gt(now))]
+            st.caption('Today’s games stay visible after puck drop and after grading. Future games appear once a pregame prediction is saved. Times are Central.')
+        elif view=='Upcoming':shown=upcoming
         elif view=='Awaiting results':shown=selected[(selected.status=='pending') & selected.start_time_utc.le(now)]
         elif view=='Completed':shown=selected[selected.status=='settled']
         else:shown=selected
