@@ -53,7 +53,7 @@ def test_preferences_bookmark_roundtrip_and_cfb_completed_scores():
   at.multiselect(key='bp_favorites').set_value(['NFL:DET','CFB:Texas Tech']).run();assert 'NFL:DET' in str(at.query_params['teams'])
   at.toggle(key='overview_my_teams').set_value(True).run();assert not at.exception
   at.button(key='open_CFB').click().run();assert not at.exception
-  at.selectbox(key='cfb_games_view').select('Completed').run();assert not at.exception
+  at.selectbox(key='cfb_games_view').select('2026-10-06').run();assert not at.exception
   assert any('Troy' in m.value and 'bp-score' in m.value for m in at.markdown)
   at.toggle(key='cfb_my_teams').set_value(True).run();assert not at.exception
   assert any('No games match' in x.value for x in at.info)

@@ -6,6 +6,7 @@ import pandas as pd
 from navigation_ui import request_top, render_top_anchor, render_scroll_reset
 from matchup_preview_ui import render_preview
 from matchup_details_ui import details_button
+from cfb_board_ui import dated_board, date_choices, games_on_date, date_label
 import game_center_ui
 if getattr(game_center_ui,"UI_REVISION",None)!="mobile-layout-20261007":importlib.reload(game_center_ui)
 from game_center_ui import render_preferences, filter_favorites, score_html, confidence_html, render_score_refresh, render_header, render_host_chrome
@@ -505,8 +506,8 @@ elif sport == "CFB":
             )
 
             st.markdown(
-                '<div class="section-head"><div><div class="section-title">Full CFB slate</div>'
-                '<div class="section-sub">Search by team or filter by confidence without changing the frozen predictions.</div></div></div>',
+                '<div class="section-head"><div><div class="section-title">CFB games by date</div>'
+                '<div class="section-sub">Choose a date. Games are ordered by kickoff time in Central time.</div></div></div>',
                 unsafe_allow_html=True,
             )
             left, right = st.columns([2, 1])
@@ -521,8 +522,12 @@ elif sport == "CFB":
                 label_visibility="collapsed",
             )
 
-            game_view = st.selectbox("CFB games",["Current slate", "Completed", "All tracked"],key="cfb_games_view")
-            shown = board if game_view=="All tracked" else board[board._settled] if game_view=="Completed" else board[~board._settled]
+            dated = dated_board(board, game_center_ui.load_scores())
+            dates, default_date = date_choices(dated)
+            if st.session_state.get('cfb_games_view', default_date) not in dates:
+                st.session_state['cfb_games_view'] = default_date
+            game_date = st.selectbox("CFB game date (Central time)", dates, index=dates.index(default_date), format_func=date_label, key="cfb_games_view")
+            shown = games_on_date(dated, game_date)
             shown = filter_favorites(shown,"CFB","cfb_my_teams")
             if query.strip():
                 q = query.strip().lower()
@@ -543,7 +548,12 @@ elif sport == "CFB":
             if shown.empty:
                 st.info("No games match this filter.")
             else:
+                last_date = None
                 for rank, (_, r) in enumerate(shown.iterrows(), start=1):
+                    day = r['_game_date'] if pd.notna(r['_game_date']) else 'Kickoff TBD'
+                    if day != last_date:
+                        st.markdown('### '+date_label(day))
+                        last_date = day
                     away = str(r["away_team"])
                     home = str(r["home_team"])
                     pick = str(r["predicted_winner"])
@@ -552,13 +562,13 @@ elif sport == "CFB":
                     away_prob = 1 - home_prob
                     tier, tier_class = confidence_tier(conf)
                     accent = "#44d17a" if conf >= .70 else "#6ea8fe" if conf >= .60 else "#f5c451" if conf >= .55 else "#ff6b7a"
-                    kickoff = kickoff_ct(r.get("kickoff_utc", ""))
+                    kickoff = kickoff_ct(r['_display_kickoff']) if pd.notna(r['_display_kickoff']) else 'Kickoff TBD'
                     week = int(r["week"]) if pd.notna(r["week"]) else "—"
 
                     st.markdown(
                         f'''<div class="card" style="border-left-color:{accent}">
-                          <div class="card-top"><div class="game-meta">#{rank} ON BOARD • WEEK {week} • {html.escape(kickoff)}</div><div class="tier {tier_class}">{tier}</div></div>
-                          {score_html("CFB",r["game_id"],home,away,bool(r["_settled"]),r.get("schedule_kickoff_utc",r.get("kickoff_utc")))}
+                          <div class="card-top"><div class="game-meta">WEEK {week} • {html.escape(kickoff)}</div><div class="tier {tier_class}">{tier}</div></div>
+                          {score_html("CFB",r["game_id"],home,away,bool(r["_settled"]),r['_display_kickoff'])}
                           <div class="match-row">{cfb_team_block(away)}<div class="at">@</div>{cfb_team_block(home, True)}</div>
                           <div class="pick-panel">
                             <div><div class="pick-label">B.P. SPORTS CFB V1 PICK</div><div class="pick-name">{html.escape(pick)}</div></div>

@@ -47,7 +47,7 @@ def test_cfb_completed_board_opens_same_detail_view():
  from tests.test_overview_ui import fixture
  with patch('overview_ui.load_overview',return_value=fixture()):
   at=AppTest.from_file(Path(__file__).resolve().parents[1]/'app.py',default_timeout=20).run()
-  at.button(key='open_CFB').click().run();at.selectbox(key='cfb_games_view').select('Completed').run();assert not at.exception
+  at.button(key='open_CFB').click().run();at.selectbox(key='cfb_games_view').select('2026-10-06').run();assert not at.exception
   buttons=[b for b in at.button if b.label.startswith('Game details')];assert len(buttons)==1
   buttons[0].click().run();assert not at.exception
   assert any('Saved pick result: Win' in x.value for x in at.success)
