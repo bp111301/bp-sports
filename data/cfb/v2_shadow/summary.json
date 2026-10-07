@@ -1,6 +1,22 @@
 {
   "model_version": "CFB_V2_CANDIDATE_B",
   "status": "PROSPECTIVE_SHADOW_ONLY",
-  "settled_games": 0,
-  "promotion_status": "INSUFFICIENT_PROSPECTIVE_EVIDENCE"
+  "settled_games": 1,
+  "candidate_b": {
+    "games": 1,
+    "accuracy": 1.0,
+    "brier": 0.08231571296747209,
+    "log_loss": 0.3381436432444282
+  },
+  "frozen_v1": {
+    "games": 1,
+    "accuracy": 1.0,
+    "brier": 0.08051609721323467,
+    "log_loss": 0.33373101672504435
+  },
+  "delta_accuracy": 0.0,
+  "delta_brier": 0.001799615754237413,
+  "delta_log_loss": 0.004412626519383844,
+  "winner_disagreements": 0,
+  "promotion_status": "SHADOW_TEST_CONTINUES"
 }
