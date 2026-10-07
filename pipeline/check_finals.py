@@ -37,13 +37,16 @@ def espn_events(sport,dates):
             events[str(e['id'])]=e
     return events.values()
 
+def pending_dates(values,now):
+    starts=pd.to_datetime(values,utc=True,format='mixed',errors='coerce').dropna()
+    return {d for d in starts.dt.tz_convert('America/New_York').dt.date if d<=now.tz_convert('America/New_York').date()}
+
 def cfb(now):
     paths=[Path('data/cfb/ledger/prediction_ledger.csv'),Path('data/cfb/v2_shadow/verified_prediction_ledger.csv')]
     frames=[pd.read_csv(p) for p in paths if p.exists()]
     combined=pd.concat(frames,ignore_index=True)
     pending=combined[combined.correct.isna()]
-    dates=set(pd.to_datetime(pending.schedule_kickoff_utc.fillna(pending.kickoff_utc),utc=True).dt.tz_convert('America/New_York').dt.date)
-    dates={d for d in dates if d<=now.tz_convert('America/New_York').date()}
+    dates=pending_dates(pending.schedule_kickoff_utc.fillna(pending.kickoff_utc),now)
     # Overlay live ESPN states onto the full schedule so future kickoff metadata remains intact.
     schedule_url='https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_schedules/cfb_schedules_2026.csv.gz'
     response=requests.get(schedule_url,timeout=90);response.raise_for_status()

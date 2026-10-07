@@ -24,6 +24,10 @@ def test_metrics_use_preserved_probabilities():
     assert abs(r['brier']-.2)<1e-12
     assert m.metrics([])['accuracy'] is None
 
+def test_pending_dates_accept_both_ledger_timestamp_formats():
+    dates=m.pending_dates(pd.Series(['2026-10-07T00:00:00.000Z','2026-10-07 00:00:00+00:00','2026-10-08T00:00:00Z',None]),NOW)
+    assert dates=={pd.Timestamp('2026-10-06').date()}
+
 def test_nhl_grades_once_and_preserves_saved_predictions(tmp_path,monkeypatch):
     monkeypatch.chdir(tmp_path)
     for folder in ['model/nhl/v2_research','model/nhl/goalie_experiment','data/nhl/v2_research','data/nhl/goalie_experiment']:
