@@ -7,8 +7,8 @@ from navigation_ui import request_top, render_top_anchor, render_scroll_reset
 from matchup_preview_ui import render_preview
 from matchup_details_ui import details_button
 import game_center_ui
-if getattr(game_center_ui,"UI_REVISION",None)!="matchup-details-20261007":importlib.reload(game_center_ui)
-from game_center_ui import render_preferences, filter_favorites, score_html, confidence_html, render_score_refresh
+if getattr(game_center_ui,"UI_REVISION",None)!="mobile-layout-20261007":importlib.reload(game_center_ui)
+from game_center_ui import render_preferences, filter_favorites, score_html, confidence_html, render_score_refresh, render_header, render_host_chrome
 
 st.set_page_config(
     page_title="B.P. Sports",
@@ -38,9 +38,9 @@ html,body,[class*="css"]{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacS
   linear-gradient(180deg,#0a0d13 0%,#080b10 100%);
   color:var(--bp-text)}
 #MainMenu,footer{visibility:hidden}
-header[data-testid="stHeader"]{background:rgba(8,11,16,.86);backdrop-filter:blur(14px)}
-.block-container{max-width:1160px;padding-top:2.4rem;padding-bottom:5rem}
-.st-key-bp_sport{position:sticky;top:3.6rem;z-index:20;background:#0b1019;padding:8px 0;border-bottom:1px solid #27364c}
+header[data-testid="stHeader"]{display:none}
+.block-container{max-width:1160px;padding-top:1rem;padding-bottom:5rem}
+.st-key-bp_sport{position:sticky;top:0;z-index:20;background:#0b1019;padding:8px 0;border-bottom:1px solid #27364c}
 .st-key-bp_sport [role="radiogroup"]{gap:6px;flex-wrap:wrap}
 .st-key-bp_sport label{border:1px solid #30425c;border-radius:10px;padding:8px 12px;background:#101c2d}
 .st-key-bp_sport label:has(input:checked){background:#234673;border-color:#75a9f3}
@@ -115,7 +115,7 @@ div[data-baseweb="tab-list"]{gap:5px;background:#0d1219;border:1px solid #242d39
 button[data-baseweb="tab"]{border-radius:9px;padding:8px 14px!important;font-weight:800!important}
 div[data-testid="stExpander"]{border:1px solid #252f3b!important;border-radius:13px!important;background:#0e131a!important;margin-top:-5px!important;margin-bottom:11px!important}
 @media(max-width:760px){
- .block-container{padding:1.6rem 12px 4rem}
+ .block-container{padding:1rem 12px 4rem}
  .bp-nav{margin-bottom:15px}.bp-kicker{display:none}.bp-wordmark{font-size:1.2rem}.bp-mark{width:36px;height:36px}
  .live-pill{font-size:.58rem;padding:6px 8px}
  .hero{padding:20px 17px;border-radius:18px}.hero-title{font-size:1.62rem}.hero-copy{font-size:.8rem}
@@ -191,16 +191,20 @@ def team_block(team, home=False):
     return f'<div class="team-box{" home" if home else ""}">{txt + dot if home else dot + txt}</div>'
 
 render_top_anchor()
+render_host_chrome()
+render_header()
 st.markdown('<div style="font-size:.64rem;color:#8d98a8;font-weight:900;letter-spacing:.11em;margin-bottom:4px">SPORT</div>', unsafe_allow_html=True)
 sport = st.radio("Sport", ["Overview", "NFL", "CFB", "NHL", "NBA"], horizontal=True, label_visibility="collapsed", key="bp_sport", on_change=request_top)
 
 def current_ui(module):
     # Streamlit can retain imported modules during a deployment rerun. Reload once per UI revision.
-    if getattr(module,"UI_REVISION",None)!="matchup-details-20261007":module=importlib.reload(module)
+    if getattr(module,"UI_REVISION",None)!="mobile-layout-20261007":module=importlib.reload(module)
     return module
 
-render_preferences(TEAM_NAMES)
-render_score_refresh()
+with st.container(key='bp_toolbar'):
+    refresh,options=st.columns([1,1],gap='small')
+    with refresh:render_score_refresh()
+    with options:render_preferences(TEAM_NAMES)
 
 if sport == "Overview":
     import overview_ui
@@ -223,16 +227,6 @@ elif sport == "NFL":
         except Exception:
             pass
     
-    st.markdown(
-        f'''<div class="bp-nav">
-          <div class="bp-logo">
-            <div class="bp-mark">BP</div>
-            <div><div class="bp-wordmark">B.P. <span>SPORTS</span></div><div class="bp-kicker">INDEPENDENT NFL INTELLIGENCE</div></div>
-          </div>
-          <div class="live-pill"><span class="live-dot"></span>{html.escape(fresh_text)}</div>
-        </div>''',
-        unsafe_allow_html=True,
-    )
     
     t1, t2, t3 = st.tabs(["PREDICTIONS", "MODEL RECORD", "THE MODEL"])
     
@@ -450,16 +444,6 @@ elif sport == "CFB":
         except Exception:
             pass
 
-    st.markdown(
-        f'''<div class="bp-nav">
-          <div class="bp-logo">
-            <div class="bp-mark">BP</div>
-            <div><div class="bp-wordmark">B.P. <span>SPORTS</span></div><div class="bp-kicker">INDEPENDENT COLLEGE FOOTBALL INTELLIGENCE</div></div>
-          </div>
-          <div class="live-pill"><span class="live-dot"></span>{html.escape(cfb_fresh)}</div>
-        </div>''',
-        unsafe_allow_html=True,
-    )
 
     c1, c2, c3 = st.tabs(["PREDICTIONS", "MODEL RECORD", "THE MODEL"])
 

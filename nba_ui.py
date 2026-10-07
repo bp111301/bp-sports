@@ -1,5 +1,5 @@
 """Read-only NBA presentation; historical scores never enter the live record."""
-UI_REVISION="matchup-details-20261007"
+UI_REVISION="mobile-layout-20261007"
 from concurrent.futures import ThreadPoolExecutor
 import html
 import json
@@ -86,13 +86,12 @@ def live_record(board):
 
 def render_nba(now=None):
     now=pd.Timestamp.now(tz='UTC') if now is None else pd.to_datetime(now,utc=True)
-    if st.button('Refresh NBA data',key='nba_refresh'):load_dashboard.clear();load_scores.clear()
     data,saved=load_dashboard()
     st.markdown('''<style>
 .nba-pill{background:#302117;border-color:#805330;color:#ffc68e}.nba-hero{background:radial-gradient(ellipse at 100% 0,rgba(212,124,44,.19),transparent 60%),linear-gradient(135deg,#1d202a,#10151e)}.nba-hero .eyebrow{color:#f7ad68}.nba-ready{border-left-color:#edaa65}.nba-ready .about-num{color:#f7ad68}.nba-statuses{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 2px}.nba-statuses span{padding:7px 11px;background:#17202c;border:1px solid #354252;border-radius:8px;color:#c5d3e4;font-size:.72rem}.nba-statuses span:last-child{background:#30241a;border-color:#6b4b2e;color:#efbd8c}.nba-record-tag{font-size:.68rem;color:#f7ad68;font-weight:900;letter-spacing:.12em}.st-key-nba_refresh button{background:#30241a;color:#ffd2aa;border:1px solid #765030}[data-testid="stWidgetLabel"] p,[data-testid="stRadio"] label p{color:#d9e2ef!important}[data-testid="stAlert"] p{color:#e0e8f5!important}
 [data-testid="stTabs"] [role="tab"] p{color:#b8c5d8!important}[data-testid="stTabs"] [role="tab"][aria-selected="true"] p{color:#ffc68e!important}.nba-table-wrap{overflow-x:auto;border:1px solid #2c3747;border-radius:14px;margin:12px 0}.nba-table{width:100%;border-collapse:collapse;font-size:.78rem;background:#111823;color:#dce5f2}.nba-table th{text-align:left;padding:13px 15px;color:#a3b1c6;background:#172131;font-size:.66rem;letter-spacing:.06em}.nba-table td{padding:13px 15px;border-top:1px solid #27303d;white-space:nowrap}.nba-table tbody tr:first-child{color:#ffd2aa;background:#201e1d}
 </style>
-<div class="bp-nav"><div class="bp-logo"><div class="bp-mark">BP</div><div><div class="bp-wordmark">B.P. <span>SPORTS</span></div><div class="bp-kicker">INDEPENDENT BASKETBALL INTELLIGENCE</div></div></div><div class="live-pill nba-pill">NBA V1 • FROZEN</div></div>''',unsafe_allow_html=True)
+''' ,unsafe_allow_html=True)
     if not data:st.error('The NBA model record is unavailable. Please try again later.');return
     if saved:st.warning('Live NBA data is unavailable. Showing a saved historical snapshot; the live record is unavailable.')
     manifest=data['manifest'];evaluation=data['evaluation'];history=evaluation['metrics']['selected'];development=data['development']['pooled']['team_logistic']

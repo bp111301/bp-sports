@@ -1,5 +1,5 @@
 """Shared scores, preferences and probability guidance for the web UI."""
-UI_REVISION="matchup-details-20261007"
+UI_REVISION="mobile-layout-20261007"
 import html,json
 from pathlib import Path
 from urllib.request import Request,urlopen
@@ -77,22 +77,57 @@ def render_preferences(nfl):
                 for side in ('home_team','away_team'):options[favorite_key('CFB',r[side])]='CFB · '+r[side]
     except (OSError,ValueError,KeyError):pass
     if 'bp_favorites' not in st.session_state:st.session_state['bp_favorites']=[k for k in st.query_params.get('teams','').split('|') if k in options]
-    with st.expander('My teams · personalize your board',expanded=False):
+    with st.popover('Board options',use_container_width=True):
+        st.markdown('**My teams**')
         st.multiselect('Choose favorite teams',sorted(options,key=options.get),format_func=options.get,key='bp_favorites',on_change=save_favorites)
         st.caption('Your teams are saved in this page’s link. Bookmark it to keep your selection. Use My teams only on any board; records still include all tracked picks.')
-    with st.expander('What confidence means'):
+        st.markdown('**What confidence means**')
         st.write('70% is the model’s estimated chance of winning: it still gives the opponent 30%. Across many well-calibrated 70% predictions, about 7 in 10 should win. A single game can go either way.')
         st.write('These models are collecting prospective evidence. High estimates are not locks; the confidence table on Overview compares saved probabilities with actual win rates. NHL remains experimental.')
+        st.markdown('**Score updates**')
+        st.caption('This page checks every minute. The source feed refreshes about every 15 minutes; source or workflow delays can take longer. Confirmed finals may await grading. Refresh reloads saved feeds for all four sports.')
     st.markdown('''<style>
 .bp-score{background:#0b1420;border:1px solid #2a394c;border-radius:12px;padding:12px 14px;margin:12px 0}.bp-score-top{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.7rem;color:#abbdd1}.bp-game-state{display:inline-block;font-weight:850;border-radius:30px;padding:4px 9px;background:#1d2c40;color:#bed6fa}.bp-game-state.live{background:#123e2d;color:#88f0bc}.bp-game-state.final{background:#25354d;color:#d4e3fb}.bp-score-value{font-size:1rem;color:#eef5ff;margin-top:8px;overflow-wrap:anywhere}.bp-score-value b{font-size:1.3rem}.bp-score-value span{color:#91a6c3}.bp-score-source{font-size:.65rem;color:#9bb0ca;margin-top:5px}.bp-score-source a{margin-left:8px;color:#93c1ff}.bp-confidence{display:flex;flex-direction:column;gap:4px;font-size:.72rem;color:#aabbd0;margin:10px 0 0;line-height:1.45}.bp-confidence b{font-weight:650;color:#c7d9ef}.bp-confidence.concern{border-left:3px solid #e4bc62;padding-left:10px;color:#ecd29c}
-@media(max-width:640px){.st-key-bp_sport [role="radiogroup"]{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;gap:4px;padding-bottom:4px}.st-key-bp_sport label{flex:0 0 auto;min-height:42px;padding:8px!important}.card-top{align-items:flex-start;gap:6px}.game-meta{letter-spacing:.03em;line-height:1.5}.team-box{gap:6px}.team-name{overflow-wrap:anywhere}.prob{white-space:nowrap}.model-strip{grid-template-columns:1fr!important}.model-cell{display:flex;justify-content:space-between;align-items:center;gap:10px}.model-cell .m,.model-cell .v{margin:0}.nhl-goalies{grid-template-columns:1fr!important}.nhl-goalies div:last-child{text-align:left!important}.bp-score{padding:10px}.bp-score-top{flex-wrap:wrap}.bp-score-value{font-size:.88rem}.bp-confidence{font-size:.73rem}.spotlight{grid-template-columns:1fr!important;gap:12px}.spot-prob{text-align:left}.hero-copy{line-height:1.6}.st-key-open_NFL button,.st-key-open_CFB button,.st-key-open_NHL button,.st-key-open_NBA button{min-height:44px} [data-testid="stTabs"] [role="tab"]{min-height:44px} [data-testid="stExpander"] summary{min-height:44px}}
+@media(max-width:640px){.st-key-bp_sport [role="radiogroup"]{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;gap:4px;padding-bottom:4px}.st-key-bp_sport label{flex:0 0 auto!important;width:max-content!important;min-width:max-content!important;min-height:44px;padding:8px!important}.card-top{align-items:flex-start;gap:6px}.game-meta{letter-spacing:.03em;line-height:1.5}.team-box{gap:6px}.team-name{overflow-wrap:anywhere}.prob{white-space:nowrap}.model-strip{grid-template-columns:1fr!important}.model-cell{display:flex;justify-content:space-between;align-items:center;gap:10px}.model-cell .m,.model-cell .v{margin:0}.nhl-goalies{grid-template-columns:1fr!important}.nhl-goalies div:last-child{text-align:left!important}.bp-score{padding:10px}.bp-score-top{flex-wrap:wrap}.bp-score-value{font-size:.88rem}.bp-confidence{font-size:.73rem}.spotlight{grid-template-columns:1fr!important;gap:12px}.spot-prob{text-align:left}.hero-copy{line-height:1.6}.st-key-open_NFL button,.st-key-open_CFB button,.st-key-open_NHL button,.st-key-open_NBA button{min-height:44px} [data-testid="stTabs"] [role="tab"]{min-height:44px} [data-testid="stExpander"] summary{min-height:44px}}
+.st-key-bp_sport [role="radiogroup"]{flex-wrap:nowrap!important;overflow-x:auto;max-width:100%;padding-bottom:4px}
+.st-key-bp_sport [data-testid="stRadioOption"]{flex:0 0 auto!important;width:max-content!important;min-width:max-content!important;white-space:nowrap!important;min-height:44px}
+.st-key-bp_sport [data-testid="stRadioOption"]>div{flex:0 0 auto!important;width:auto!important;min-width:max-content!important}
+.st-key-bp_sport [data-testid="stRadioOption"]>div>div:first-child:not([data-testid="stMarkdownContainer"]){display:none}
+.st-key-bp_sport [data-testid="stMarkdownContainer"],.st-key-bp_sport label p{white-space:nowrap!important;word-break:normal!important;overflow-wrap:normal!important;width:auto!important;max-width:none!important}
+.st-key-bp_toolbar [data-testid="stHorizontalBlock"]{flex-wrap:nowrap!important;gap:8px!important}
+.st-key-bp_toolbar [data-testid="stColumn"]{min-width:0!important;flex:1 1 0!important;width:calc(50% - 4px)!important}
+.st-key-bp_toolbar button{min-height:44px;white-space:nowrap}
+.st-key-bp_toolbar [data-testid="stCaptionContainer"] p{font-size:.7rem;line-height:1.35}
 </style>''',unsafe_allow_html=True)
 
 @st.fragment(run_every='60s')
 def render_score_refresh():
     feed=load_scores();stamp_value=feed.get('updated_at_utc');old=st.session_state.get('bp_score_version');st.session_state['bp_score_version']=stamp_value
-    if old and stamp_value and old!=stamp_value:st.rerun()
-    if st.button('Refresh scores',key='bp_refresh_scores'):load_scores.clear();st.rerun()
+    if old and stamp_value and old!=stamp_value:
+        st.cache_data.clear();st.rerun()
+    if st.button('Refresh',key='bp_refresh_scores',use_container_width=True):
+        st.cache_data.clear();st.rerun()
     when=stamp(stamp_value)
-    label=when.tz_convert('America/Chicago').strftime('%b %d, %-I:%M %p CT') if pd.notna(when) else 'unavailable'
-    st.caption('Score feed checked: '+label+'. The page checks for new scores every minute; the score feed refreshes about every 15 minutes. Source or workflow delays can take longer; confirmed finals may await grading.')
+    label=when.tz_convert('America/Chicago').strftime('%b %-d · %-I:%M %p CT') if pd.notna(when) else 'unavailable'
+    delayed=pd.notna(when) and pd.Timestamp.now(tz='UTC')-when>pd.Timedelta(minutes=30)
+    st.caption('Updated '+label+(' · delayed' if delayed else ''))
+
+
+def render_header():
+    st.markdown('''<div class="bp-nav"><div class="bp-logo"><div class="bp-mark">BP</div><div><div class="bp-wordmark">B.P. <span>SPORTS</span></div><div class="bp-kicker">YOUR SPORTS DESK</div></div></div><div class="live-pill"><span class="live-dot"></span> FROZEN</div></div>''',unsafe_allow_html=True)
+
+
+def render_host_chrome():
+    # Same-origin Community Cloud wrapper. Only its two floating badges are hidden.
+    # Keep this optional so embedding the app elsewhere still works normally.
+    st.html('''<script>(() => {
+      try {
+        const host = window.parent.document;
+        if (!host.getElementById('bp-host-chrome')) {
+          const style = host.createElement('style');
+          style.id = 'bp-host-chrome';
+          style.textContent = 'a[href="https://streamlit.io/cloud"], a:has(>img[data-testid="appCreatorAvatar"]){display:none!important}';
+          host.head.appendChild(style);
+        }
+      } catch (_) {}
+    })();</script>''',unsafe_allow_javascript=True)
