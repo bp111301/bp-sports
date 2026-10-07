@@ -415,6 +415,7 @@ elif sport == "CFB":
     cfb_pred = load_csv("data/cfb/current/predictions.csv")
     cfb_meta = load_json("data/cfb/current/metadata.json")
     cfb_holdout = load_json("research/cfb/results/holdout_2026.json")
+    cfb_live_record = load_json("data/cfb/ledger/summary.json")
 
     def cfb_initials(name):
         words = [w for w in str(name).replace("(", " ").replace(")", " ").split() if w]
@@ -600,6 +601,13 @@ elif sport == "CFB":
             '<div class="section-sub">Historical development, untouched 2026 diagnostic, and prospective tracking are kept separate.</div>',
             unsafe_allow_html=True,
         )
+        if cfb_live_record:
+            graded = int(cfb_live_record.get("settled_games", 0))
+            wins = int(cfb_live_record.get("wins", 0))
+            st.markdown(f'<div class="record-hero"><div class="record-label">CFB V1 • OFFICIAL PROSPECTIVE RECORD</div><div class="record-big">{wins}–{graded-wins}</div><div class="section-sub">{graded} graded games • {int(cfb_live_record.get("pending_games", 0))} pending snapshots</div></div>', unsafe_allow_html=True)
+            st.caption("Confirmed finals are checked every 15 minutes. Pending games never count as wins or losses; original pregame picks stay fixed.")
+        else:
+            st.info("The CFB prospective record is unavailable. Historical results below are separate.")
         hold = cfb_holdout.get("overall", {})
         if hold:
             st.markdown(

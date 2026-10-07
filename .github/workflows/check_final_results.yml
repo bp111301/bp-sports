@@ -1,0 +1,71 @@
+name: Check confirmed final results
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/check_final_results.yml'
+      - 'pipeline/check_finals.py'
+  workflow_dispatch:
+  schedule:
+    - cron: '4,19,34,49 * * * *'
+permissions:
+  contents: write
+jobs:
+  grade:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - sport: nfl
+            branch: main
+            group: bp-sports-predictions-refs/heads/main
+          - sport: cfb
+            branch: main
+            group: cfb-production-update
+          - sport: nhl
+            branch: nhl-v1-research
+            group: nhl-confirmed-goalie-experiment
+    concurrency:
+      group: ${{ matrix.group }}
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.branch }}
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: result-runner
+          sparse-checkout: |
+            pipeline/check_finals.py
+            tests/test_final_checks.py
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pandas==2.2.3 numpy==2.3.5 requests==2.32.5 scikit-learn==1.8.0 joblib==1.5.3 pytest==8.4.2
+      - name: Verify final-only grading rules
+        run: python -m pytest -q result-runner/tests/test_final_checks.py
+      - name: Grade saved snapshots from confirmed finals
+        run: python result-runner/pipeline/check_finals.py ${{ matrix.sport }}
+      - name: Save results without changing predictions or model artifacts
+        env:
+          SPORT: ${{ matrix.sport }}
+          TARGET_BRANCH: ${{ matrix.branch }}
+        run: |
+          git config user.name 'bp-sports-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          case "$SPORT" in
+            nfl) git add data/ledger/ data/current/result_check.json ;;
+            cfb) git add data/cfb/ledger/ data/cfb/v2_shadow/verified_prediction_ledger.csv data/cfb/v2_shadow/summary.json data/cfb/result_check.json ;;
+            nhl) git add data/nhl/v2_research/ data/nhl/goalie_experiment/ data/nhl/result_check.json ;;
+          esac
+          if ! git diff --cached --quiet; then
+            git commit -m "Grade confirmed $SPORT final results [skip ci]"
+            for attempt in 1 2 3; do
+              git pull --rebase origin "$TARGET_BRANCH"
+              git push origin "HEAD:$TARGET_BRANCH" && break
+              if [ "$attempt" = '3' ]; then exit 1; fi
+            done
+          fi
