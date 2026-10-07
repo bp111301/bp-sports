@@ -1,5 +1,5 @@
 """Read-only cross-sport prospective dashboard. Parallel experiments stay separate."""
-UI_REVISION="game-center-20261007-v2"
+UI_REVISION="matchup-details-20261007"
 from concurrent.futures import ThreadPoolExecutor
 from urllib.request import Request,urlopen
 import io,json,math,html
@@ -9,6 +9,7 @@ from nhl_ui import audit_note
 from navigation_ui import open_board
 from game_center_ui import filter_favorites,score_html,confidence_html,context,load_scores
 from game_status import display_state
+from matchup_details_ui import details_button
 
 RAW='https://raw.githubusercontent.com/bp111301/bp-sports/'
 SOURCES={
@@ -25,7 +26,7 @@ LIMITS={'NFL':108,'CFB':30,'NHL':30,'NBA':3}
 FROZEN_NBA='c57d804ab9062542e9e456a9585327bbb677732e5ad55b0186f91ddbdf5e079f'
 FROZEN_NHL='d60b32b93d795cc0905f626489720640eeb4691002b40aa6b2b38440953d5cbe'
 FROZEN_SHADOW='43363558b09e708bd7e9131c87250dc65a67faf770bdcb3627e9b4ac8a9dd1c6'
-COLUMNS=['game_id','sport','group','home','away','p','created','start','settled','y']
+COLUMNS=['game_id','sport','group','home','away','p','created','start','settled','y','details']
 
 def esc(value):return html.escape(str(value),quote=True)
 def flag(value):return str(value).lower() in ('true','1','1.0','yes')
@@ -48,8 +49,8 @@ def fetch_source(item):
 def load_overview():
     with ThreadPoolExecutor(max_workers=8) as pool:return dict(pool.map(fetch_source,SOURCES.items()))
 
-def row(game_id,sport,group,home,away,p,created,start,settled=False,y=None):
-    return dict(game_id=str(game_id),sport=sport,group=group,home=home,away=away,p=float(p),created=ts(created),start=ts(start),settled=bool(settled),y=y)
+def row(game_id,sport,group,home,away,p,created,start,settled=False,y=None,details=None):
+    return dict(game_id=str(game_id),sport=sport,group=group,home=home,away=away,p=float(p),created=ts(created),start=ts(start),settled=bool(settled),y=y,details=details or {})
 
 def normalize(key,data,now):
     rows=[]
@@ -64,7 +65,7 @@ def normalize(key,data,now):
             confidence=float(r['v4_adjusted_confidence']);p=confidence if r['v4_pick']==r['home_team'] else 1-confidence
             final=r.get('settlement_status')=='final';h=pd.to_numeric(r.get('actual_home_score'),errors='coerce');a=pd.to_numeric(r.get('actual_away_score'),errors='coerce')
             if final and not (pd.notna(h) and pd.notna(a) and h!=a):continue
-            rows.append(row(r['game_id'],'NFL','nfl',r['home_team'],r['away_team'],p,r['captured_at_utc'],None,final,int(h>a) if final else None))
+            rows.append(row(r['game_id'],'NFL','nfl',r['home_team'],r['away_team'],p,r['captured_at_utc'],None,final,int(h>a) if final else None,details=r))
     elif key in ('cfb','shadow'):
         for r in data:
             start=r.get('schedule_kickoff_utc')
@@ -75,25 +76,25 @@ def normalize(key,data,now):
                 frozen=ts(r.get('bundle_frozen_at_utc'))
                 if pd.isna(frozen) or ts(r['snapshot_created_utc'])<frozen:continue
             winner=r.get('actual_winner');y=int(winner==r['home_team']) if final and winner in (r['home_team'],r['away_team']) else None
-            rows.append(row(r['game_id'],'CFB',key,r['home_team'],r['away_team'],r['home_win_prob'],r['snapshot_created_utc'],start,final,y))
+            rows.append(row(r['game_id'],'CFB',key,r['home_team'],r['away_team'],r['home_win_prob'],r['snapshot_created_utc'],start,final,y,details=r))
     elif key=='nhl':
         for r in data:
             if r.get('bundle_sha256')!=FROZEN_NHL:raise ValueError('NHL model identity mismatch')
             if r['candidate'] not in ('reference_control','decay2_logistic','linear_regulation_blend') or r['status'] not in ('pending','settled'):continue
-            rows.append(row(r['game_id'],'NHL',r['candidate'],r['home_team'],r['away_team'],r['home_win_prob'],r['created_at_utc'],r['start_time_utc'],r['status']=='settled',pd.to_numeric(r.get('actual_home_win'),errors='coerce')))
+            rows.append(row(r['game_id'],'NHL',r['candidate'],r['home_team'],r['away_team'],r['home_win_prob'],r['created_at_utc'],r['start_time_utc'],r['status']=='settled',pd.to_numeric(r.get('actual_home_win'),errors='coerce'),details=r))
     elif key=='goalie':
         for r in data:
             if r.get('status') not in ('pending','settled'):continue
             probabilities=r['probabilities']
             if set(probabilities)!={'team_control','inferred_goalie','confirmed_goalie'}:raise ValueError('Incomplete goalie comparison')
-            for name,p in probabilities.items():rows.append(row(r['game_id'],'NHL','goalie_'+name,r['home_team'],r['away_team'],p,r['created_at_utc'],r['start_time_utc'],r['status']=='settled',r.get('actual_home_win')))
+            for name,p in probabilities.items():rows.append(row(r['game_id'],'NHL','goalie_'+name,r['home_team'],r['away_team'],p,r['created_at_utc'],r['start_time_utc'],r['status']=='settled',r.get('actual_home_win'),details=r))
     elif key=='nba':
         if data.get('feed_status')!='enabled':raise ValueError('NBA feed unavailable')
         if data.get('bundle_sha256')!=FROZEN_NBA:raise ValueError('NBA model identity mismatch')
         for r in data.get('predictions',[]):
             if r.get('season')!=2027 or r.get('season_type')!=2 or r.get('status') not in ('pending','settled'):continue
             if r.get('bundle_sha256')!=data.get('bundle_sha256'):raise ValueError('NBA model identity mismatch')
-            rows.append(row(r['game_id'],'NBA','nba',r['home_team'],r['away_team'],r['home_win_prob'],r['created_at_utc'],r['start_time_utc'],r['status']=='settled',r.get('actual_home_win')))
+            rows.append(row(r['game_id'],'NBA','nba',r['home_team'],r['away_team'],r['home_win_prob'],r['created_at_utc'],r['start_time_utc'],r['status']=='settled',r.get('actual_home_win'),details=r))
     valid=[]
     for r in rows:
         if not math.isfinite(r['p']) or not 0<=r['p']<=1 or pd.isna(r['created']) or r['created']>now:continue
@@ -170,6 +171,46 @@ def game_cards(board,now):
         cards.append(f'<article class="desk-game" style="--accent:{COLORS[r.sport]}"><div class="desk-top"><span class="desk-sport">{esc(r.sport)}</span><span class="desk-state {cls}">{state}</span></div><div class="desk-time">{esc(time)}</div>{score_html(r.sport,r.game_id,r.home,r.away,r.settled,r.start,now)}<div class="desk-match">{esc(r.away)} <span>@</span> {esc(r.home)}</div><div class="desk-pick"><div><small>SAVED PICK</small><strong>{esc(pick)}</strong></div><div class="desk-prob">{r.confidence*100:.1f}%<small>MODEL PROBABILITY</small></div></div><div class="desk-detail">{esc(detail)}</div>{confidence_html(r.confidence,r.sport,bool(note))}{audit}</article>')
     return '<div class="desk-grid">'+''.join(cards)+'</div>'
 
+def select_day(board,day,sport='All sports'):
+    shown=board[board.apply(lambda r:PRIMARY.get(r.sport)==r.group,axis=1).astype(bool)].copy()
+    if sport!='All sports':shown=shown[shown.sport==sport]
+    shown=shown[shown.start.map(lambda t:pd.notna(t) and ts(t).tz_convert('America/Chicago').date()==day)]
+    return shown.drop_duplicates(['sport','game_id']).sort_values(['start','sport'])
+
+def render_game_cards(board,now,key):
+    for offset in range(0,len(board),3):
+        columns=st.columns(3)
+        for column,(_,r) in zip(columns,board.iloc[offset:offset+3].iterrows()):
+            with column:
+                st.markdown(game_cards(pd.DataFrame([r]),now).replace('class="desk-grid"','class="desk-single"'),unsafe_allow_html=True)
+                details_button(r.sport,r,key+'_'+r.sport+'_'+str(r.game_id),LABELS[r.group],now=now)
+
+def render_daily_results(primary,available,now):
+    st.markdown('<div class="section-title">Results by date</div><div class="section-sub">Review a game night · dates and times are Central</div>',unsafe_allow_html=True)
+    dated=primary[primary.start.notna()]
+    if dated.empty:st.info('No saved games have a verified game date yet.');return
+    dates=sorted({ts(t).tz_convert('America/Chicago').date() for t in dated.start})
+    finals=dated[dated.settled]
+    default=max(ts(t).tz_convert('America/Chicago').date() for t in finals.start) if len(finals) else min(dates,key=lambda d:abs((d-now.tz_convert('America/Chicago').date()).days))
+    left,right=st.columns([2,1])
+    day=left.date_input('Game date (Central)',value=default,min_value=min(dates),max_value=max(dates),key='daily_date')
+    sport=right.selectbox('Results sport',['All sports',*PRIMARY],key='daily_sport')
+    personal=filter_favorites(primary,None,'daily_my_teams',home='home',away='away')
+    shown=select_day(personal,day,sport);m=metrics(shown)
+    a,b,c=st.columns(3);a.metric('Slate record',f"{m['wins']}–{m['losses']}");b.metric('Awaiting grading',len(shown)-m['games']);c.metric('Graded accuracy',f"{m['accuracy']*100:.1f}%" if m['games'] else '—')
+    st.caption(f"{day:%B %d, %Y} · {len(shown)} saved matchups · {m['games']} graded. One primary forecast per game; pending games stay out of accuracy. NHL uses the experimental reference control. Filters affect this slate only.")
+    missing=[s for s,k in [('NFL','nfl'),('CFB','cfb'),('NHL','nhl'),('NBA','nba')] if (sport=='All sports' or sport==s) and not available.get(k)]
+    if missing:st.warning('This slate is incomplete: '+', '.join(missing)+' grading feeds are unavailable.')
+    if shown.empty:st.info('No saved matchups match this date and filter.');return
+    rows=[]
+    for s in PRIMARY:
+        section=shown[shown.sport==s]
+        if section.empty:continue
+        sm=metrics(section);rows.append([s,f"{sm['wins']}–{sm['losses']}",sm['games'],len(section)-sm['games'],f"{sm['accuracy']*100:.1f}%" if sm['games'] else '—'])
+    st.markdown(table(['SPORT','RECORD','GRADED','PENDING','ACCURACY'],rows),unsafe_allow_html=True)
+    render_game_cards(shown,now,'daily_details')
+    if primary.start.isna().any():st.caption('Saved games with unavailable start times are excluded from date grouping until their dates can be verified.')
+
 def render_overview(now=None):
     now=pd.Timestamp.now(tz='UTC') if now is None else ts(now)
     if st.button('Refresh all sports',key='overview_refresh'):load_overview.clear();load_scores.clear()
@@ -186,7 +227,7 @@ def render_overview(now=None):
     missing=[name for name,key in [('NFL','nfl'),('CFB','cfb'),('NHL','nhl'),('NBA','nba')] if not available[key]]
     st.markdown(f'''<div class="hero"><div class="eyebrow">NFL · CFB · NHL · NBA</div><div class="hero-title">Your sports desk.</div><div class="hero-copy">Today’s matchups, saved predictions and settled results. Follow each sport’s live record and see how its probabilities hold up.</div><div class="stat-grid"><div class="stat"><div class="stat-v">{4-len(missing)} / 4</div><div class="stat-l">Feeds verified</div></div><div class="stat"><div class="stat-v">{saved}</div><div class="stat-l">Saved matchups</div></div><div class="stat"><div class="stat-v">{total_graded}</div><div class="stat-l">Finals graded</div></div><div class="stat"><div class="stat-v">Prospective</div><div class="stat-l">Live results only</div></div></div></div>''',unsafe_allow_html=True)
     if missing:st.warning('Live data unavailable for '+', '.join(missing)+'. Those records show — until they can be verified.')
-    tabs=st.tabs(['LIVE RECORDS','CONFIDENCE','RESEARCH'])
+    tabs=st.tabs(['LIVE RECORDS','DAILY RESULTS','CONFIDENCE','RESEARCH'])
     with tabs[0]:
         cards=[]
         for sport,group in PRIMARY.items():
@@ -209,16 +250,18 @@ def render_overview(now=None):
         shown=select_games(personal,view,sport,query,now)
         if shown.empty:st.info('No saved games match this view. Use Results for completed games or Upcoming for future picks.')
         else:
-            st.markdown(game_cards(shown.head(24),now),unsafe_allow_html=True)
+            render_game_cards(shown.head(24),now,'desk_details')
             if len(shown)>24:
-                with st.expander(f'Show the remaining {len(shown)-24} games'):st.markdown(game_cards(shown.iloc[24:],now),unsafe_allow_html=True)
+                with st.expander(f'Show the remaining {len(shown)-24} games'):render_game_cards(shown.iloc[24:],now,'remaining_details')
         if view=='Today' and not query.strip():
             recent=select_games(personal,'Results',sport,'',now).head(6)
             if len(recent):
                 st.markdown('<div class="section-title">Latest settled results</div>',unsafe_allow_html=True)
-                st.markdown(game_cards(recent,now),unsafe_allow_html=True)
+                render_game_cards(recent,now,'recent_details')
         st.caption('Win / Loss grades the saved pick. The game-state label comes from the score source; Win / Loss comes from the grading ledger. A final score can appear before grading. Result checks run about every 15 minutes; source and workflow delays can take longer. NBA excludes preseason.')
     with tabs[1]:
+        render_daily_results(primary,available,now)
+    with tabs[2]:
         st.markdown('<div class="section-title">Does confidence hold up?</div><div class="ov-note">Compare the confidence saved before each game with actual wins after grading. Empty bands stay unscored until results arrive.</div>',unsafe_allow_html=True)
         sport=st.selectbox('Sport to review',list(PRIMARY),key='overview_confidence_sport');group=PRIMARY[sport];b=board[board.group==group]
         if not available['nhl' if sport=='NHL' else sport.lower()]:st.warning('This sport’s live confidence data is unavailable.')
@@ -230,7 +273,7 @@ def render_overview(now=None):
             st.markdown(table(['CONFIDENCE','PENDING','GRADED','RECORD','AVG SAVED CONFIDENCE','ACTUAL WIN RATE'],rows),unsafe_allow_html=True)
             m=metrics(b);cols=st.columns(2);cols[0].metric('Brier score',f"{m['brier']:.4f}" if m['games'] else '—');cols[1].metric('Log loss',f"{m['log_loss']:.4f}" if m['games'] else '—')
             st.caption('Lower Brier score and log loss mean better probability accuracy. A few games are too small a sample to justify changing weights.')
-    with tabs[2]:
+    with tabs[3]:
         st.markdown('<div class="section-title">Frozen challengers</div><div class="ov-note">These experiments have their own records. Parallel predictions for the same game never inflate the totals above.</div>',unsafe_allow_html=True)
         groups=['shadow','reference_control','decay2_logistic','linear_regulation_blend'];rows=[]
         for group in groups:

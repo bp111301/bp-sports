@@ -1,5 +1,5 @@
 """Shared scores, preferences and probability guidance for the web UI."""
-UI_REVISION="game-center-20261007-v2"
+UI_REVISION="matchup-details-20261007"
 import html,json
 from pathlib import Path
 from urllib.request import Request,urlopen

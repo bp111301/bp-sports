@@ -5,8 +5,9 @@ import streamlit as st
 import pandas as pd
 from navigation_ui import request_top, render_top_anchor, render_scroll_reset
 from matchup_preview_ui import render_preview
+from matchup_details_ui import details_button
 import game_center_ui
-if getattr(game_center_ui,"UI_REVISION",None)!="game-center-20261007-v2":importlib.reload(game_center_ui)
+if getattr(game_center_ui,"UI_REVISION",None)!="matchup-details-20261007":importlib.reload(game_center_ui)
 from game_center_ui import render_preferences, filter_favorites, score_html, confidence_html, render_score_refresh
 
 st.set_page_config(
@@ -195,7 +196,7 @@ sport = st.radio("Sport", ["Overview", "NFL", "CFB", "NHL", "NBA"], horizontal=T
 
 def current_ui(module):
     # Streamlit can retain imported modules during a deployment rerun. Reload once per UI revision.
-    if getattr(module,"UI_REVISION",None)!="game-center-20261007-v2":module=importlib.reload(module)
+    if getattr(module,"UI_REVISION",None)!="matchup-details-20261007":module=importlib.reload(module)
     return module
 
 render_preferences(TEAM_NAMES)
@@ -362,34 +363,12 @@ elif sport == "NFL":
                         unsafe_allow_html=True,
                     )
     
-                    with st.expander(f"WHY V4 LIKES {pick} • {away} @ {home}"):
-                        render_preview('NFL',r)
-                        c1, c2, c3 = st.columns(3)
-                        c1.metric("V3", f"{v3*100:.1f}%")
-                        c2.metric("V4 core", f"{core*100:.1f}%")
-                        c3.metric("V4 final", f"{v4*100:.1f}%", f"{(v4-v3)*100:+.1f} vs V3")
-    
-                        notes = []
-                        if is_true(r.get("explosive_extreme", False)):
-                            notes.append("Explosive-play matchup reached the frozen model's extreme-signal threshold.")
-                        if is_true(r.get("turnover_risk_flag", False)):
-                            notes.append("Recent turnover matchup conflicts with the V4 side, so confidence is reduced instead of flipping the pick.")
-                        if is_true(r.get("early_down_risk_flag", False)):
-                            notes.append("Recent early-down efficiency is acting as a risk flag against the V4 side.")
-                        if not notes:
-                            notes.append("No secondary confidence layer materially changed the V4 core probability.")
-                        for note in notes:
-                            st.write("• " + note)
-    
-                        if pd.notna(qb_note) and str(qb_note).strip():
-                            st.warning(str(qb_note))
-                        if provisional_flag:
-                            st.warning("Provisional: legitimate pregame information still needs to be refreshed before the official graded snapshot.")
-                        else:
-                            st.success("Pregame snapshot preserved. Once kickoff occurs, this prediction cannot be rewritten.")
-    
-            st.caption("B.P. Sports is a prediction model, not a guarantee. Market odds do not choose the model's winner.")
-    
+                    detail_row=r.to_dict()
+                    if r['game_id'] in nfl_settled:
+                        result_row=nfl_ledger[nfl_ledger.game_id.eq(r['game_id'])].iloc[0]
+                        detail_row.update(actual_home_score=result_row.actual_home_score,actual_away_score=result_row.actual_away_score)
+                    details_button('NFL',detail_row,'details_nfl_'+str(r['game_id']),settled=r['game_id'] in nfl_settled)
+
     with t2:
         st.markdown('<div class="section-title">Model record</div><div class="section-sub">The forward ledger is the scoreboard that matters.</div>', unsafe_allow_html=True)
         live = tracking.get("v4_adjusted", {})
@@ -614,15 +593,7 @@ elif sport == "CFB":
                         unsafe_allow_html=True,
                     )
 
-                    with st.expander(f"WHY CFB V1 LIKES {pick} • {away} @ {home}"):
-                        render_preview('CFB',r)
-                        x1, x2, x3 = st.columns(3)
-                        x1.metric("Away win", f"{away_prob*100:.1f}%")
-                        x2.metric("Home win", f"{home_prob*100:.1f}%")
-                        x3.metric("B.P. pick", f"{conf*100:.1f}%")
-                        if r["_settled"]:
-                            st.write("Saved pick result: "+("Win" if float(r["correct"])==1 else "Loss"))
-                        st.success("Pregame snapshot preserved. This pick cannot be rewritten after kickoff.")
+                    details_button('CFB',r,'details_cfb_'+str(r['game_id']),settled=bool(r['_settled']))
 
             st.caption(
                 "B.P. Sports CFB V1 is a probability model, not a guarantee. "

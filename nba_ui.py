@@ -1,5 +1,5 @@
 """Read-only NBA presentation; historical scores never enter the live record."""
-UI_REVISION="game-center-20261007-v2"
+UI_REVISION="matchup-details-20261007"
 from concurrent.futures import ThreadPoolExecutor
 import html
 import json
@@ -10,6 +10,7 @@ from urllib.request import Request,urlopen
 import pandas as pd
 import streamlit as st
 from matchup_preview_ui import render_preview
+from matchup_details_ui import details_button
 from game_center_ui import filter_favorites,score_html,confidence_html,load_scores,context
 from game_status import display_state
 
@@ -131,10 +132,7 @@ def render_nba(now=None):
                 status='Awaiting final result' if r.status=='pending' and r.start_time_utc<=now else 'Pregame snapshot' if r.status=='pending' else 'Correct' if (home>=.5)==r.actual_home_win else 'Incorrect'
                 if r.status=='pending':status=display_state(context('NBA',r.game_id,r.home_team,r.away_team),False,r.start_time_utc,now)
                 st.markdown(f'<div class="card nba-ready"><div class="game-meta">{escape(time)} • {escape(status)}</div>{score_html("NBA",r.game_id,r.home_team,r.away_team,r.status=="settled",r.start_time_utc,now)}<div class="spot-match">{escape(r.away_team)} @ {escape(r.home_team)}</div><div class="pick-panel"><div><div class="pick-label">NBA V1 PICK</div><div class="pick-name">{escape(pick)} • {escape(TEAMS.get(pick,pick))}</div></div><div class="prob">{prob*100:.1f}%<span>WIN PROBABILITY</span></div></div>{confidence_html(prob,"NBA")}</div>',unsafe_allow_html=True)
-                with st.expander(f'Forecast details • {r.away_team} @ {r.home_team}'):
-                    render_preview('NBA',r._asdict())
-                    st.write(f'Home win probability: {home*100:.2f}%')
-                    st.caption(f'Saved before tipoff: {r.created_at_utc.tz_convert("America/Chicago").strftime("%b %d, %Y %I:%M %p CT")}')
+                details_button('NBA',r._asdict(),'details_nba_'+str(r.game_id),now=now)
         st.caption('Historical accuracy is evidence from past games, not a promised future hit rate.')
     with tabs[1]:
         st.markdown('<div class="section-title">Official live record</div><div class="section-sub">2026–27 regular season • forecasts saved before tipoff only</div>',unsafe_allow_html=True)

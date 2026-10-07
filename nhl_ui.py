@@ -1,5 +1,5 @@
 """Read-only presentation of the separate NHL research ledgers."""
-UI_REVISION="game-center-20261007-v2"
+UI_REVISION="matchup-details-20261007"
 from concurrent.futures import ThreadPoolExecutor
 import csv
 import html
@@ -13,6 +13,7 @@ from urllib.request import Request, urlopen
 import pandas as pd
 import streamlit as st
 from matchup_preview_ui import render_preview
+from matchup_details_ui import details_button
 from game_center_ui import filter_favorites,score_html,confidence_html,load_scores,context
 from game_status import display_state
 
@@ -175,18 +176,8 @@ def render_nhl(now=None):
             comparisons=board[board.game_id==game_id].set_index('candidate')
             cells=''.join(f'<div class="model-cell"><div class="m">{escape(name)}</div><div class="v">{float(comparisons.loc[key,"home_win_prob"])*100:.1f}% {escape(home)}</div></div>' if key in comparisons.index else f'<div class="model-cell"><div class="m">{escape(name)}</div><div class="v">Not captured</div></div>' for key,name in MODEL_NAMES.items())
             st.markdown(f'''<div class="card" style="border-left-color:#6ea8fe"><div class="card-top"><div class="game-meta">{escape(ct(r.start_time_utc))}</div><div class="tier {result_class}">{escape(status.upper())}</div></div>{score_html("NHL",game_id,home,away,r.status=="settled",r.start_time_utc,now)}<div class="match-row">{team_block(away)}<div class="at">@</div>{team_block(home,True)}</div><div class="pick-panel"><div><div class="pick-label">{escape(MODEL_NAMES[candidate].upper())} • EXPERIMENTAL</div><div class="pick-name">{escape(r.favored_team)} favored</div></div><div class="prob">{r.favored_prob*100:.1f}%<span>MODEL WIN PROBABILITY</span></div></div>{confidence_html(r.favored_prob,"NHL",bool(note))}<div class="bar"><div class="fill" style="width:{r.favored_prob*100:.1f}%"></div></div><div class="model-strip">{cells}</div><div class="nhl-goalies"><div><small>{escape(away)} GOALIE REPORT</small>{escape(goalie_text(reports.get((game_id,'away'))))}</div><div><small>{escape(home)} GOALIE REPORT</small>{escape(goalie_text(reports.get((game_id,'home'))))}</div></div><div class="layer-note">Prediction recorded {escape(ct(r.created_at_utc))}. Goalie reports are separate from these model probabilities.</div></div>''',unsafe_allow_html=True)
-            with st.expander(f'Pregame details • {away} @ {home}'):
-                render_preview('NHL',r,MODEL_NAMES[candidate])
-                a,b=st.columns(2);a.metric(f'{away} win',f'{(1-p)*100:.1f}%');b.metric(f'{home} win',f'{p*100:.1f}%')
-                st.write(f'{MODEL_NAMES[candidate]} prediction recorded {ct(r.created_at_utc)}. Its probability is preserved after puck drop.')
-                for side,team in [('away',away),('home',home)]:
-                    report=reports.get((game_id,side))
-                    if not report:continue
-                    st.write(f'{team}: {goalie_text(report)}. Captured {ct(report["captured_at_utc"])}.')
-                    url=str(report.get('report_source_url') or '')
-                    if urlparse(url).scheme in ['http','https']:
-                        st.markdown(f'<a href="{escape(url)}" target="_blank" rel="noopener noreferrer">{escape(team)} report source</a>',unsafe_allow_html=True)
-                if r.status=='settled':st.write(f'Recorded winner: {home if r.actual_home_win==1 else away}.')
+            extras={'goalies':{side:reports.get((game_id,side)) for side in ['home','away']}}
+            details_button('NHL',r,'details_nhl_'+candidate+'_'+str(game_id),MODEL_NAMES[candidate],extras=extras,now=now)
         st.caption('Win / Loss grades the saved pick. Results are checked about every 15 minutes after games begin. NHL probabilities remain experimental; the first pregame prediction stays saved.')
     with n2:
         st.markdown('<div class="section-title">Prospective NHL record</div><div class="section-sub">Only valid predictions captured before puck drop are graded here.</div>',unsafe_allow_html=True)
