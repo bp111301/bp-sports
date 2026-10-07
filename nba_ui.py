@@ -1,4 +1,5 @@
 """Read-only NBA presentation; historical scores never enter the live record."""
+UI_REVISION="game-center-20261007-v2"
 from concurrent.futures import ThreadPoolExecutor
 import html
 import json

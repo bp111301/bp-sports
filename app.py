@@ -1,9 +1,12 @@
+import importlib
 import json
 import html
 import streamlit as st
 import pandas as pd
 from navigation_ui import request_top, render_top_anchor, render_scroll_reset
 from matchup_preview_ui import render_preview
+import game_center_ui
+if getattr(game_center_ui,"UI_REVISION",None)!="game-center-20261007-v2":importlib.reload(game_center_ui)
 from game_center_ui import render_preferences, filter_favorites, score_html, confidence_html, render_score_refresh
 
 st.set_page_config(
@@ -190,12 +193,17 @@ render_top_anchor()
 st.markdown('<div style="font-size:.64rem;color:#8d98a8;font-weight:900;letter-spacing:.11em;margin-bottom:4px">SPORT</div>', unsafe_allow_html=True)
 sport = st.radio("Sport", ["Overview", "NFL", "CFB", "NHL", "NBA"], horizontal=True, label_visibility="collapsed", key="bp_sport", on_change=request_top)
 
+def current_ui(module):
+    # Streamlit can retain imported modules during a deployment rerun. Reload once per UI revision.
+    if getattr(module,"UI_REVISION",None)!="game-center-20261007-v2":module=importlib.reload(module)
+    return module
+
 render_preferences(TEAM_NAMES)
 render_score_refresh()
 
 if sport == "Overview":
-    from overview_ui import render_overview
-    render_overview()
+    import overview_ui
+    current_ui(overview_ui).render_overview()
 
 elif sport == "NFL":
     pred = load_csv("data/current/website_feed.csv")
@@ -694,11 +702,11 @@ elif sport == "CFB":
         )
 
 elif sport == "NHL":
-    from nhl_ui import render_nhl
-    render_nhl()
+    import nhl_ui
+    current_ui(nhl_ui).render_nhl()
 
 elif sport == "NBA":
-    from nba_ui import render_nba
-    render_nba()
+    import nba_ui
+    current_ui(nba_ui).render_nba()
 
 render_scroll_reset()

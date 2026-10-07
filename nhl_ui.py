@@ -1,4 +1,5 @@
 """Read-only presentation of the separate NHL research ledgers."""
+UI_REVISION="game-center-20261007-v2"
 from concurrent.futures import ThreadPoolExecutor
 import csv
 import html

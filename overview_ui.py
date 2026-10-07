@@ -1,4 +1,5 @@
 """Read-only cross-sport prospective dashboard. Parallel experiments stay separate."""
+UI_REVISION="game-center-20261007-v2"
 from concurrent.futures import ThreadPoolExecutor
 from urllib.request import Request,urlopen
 import io,json,math,html

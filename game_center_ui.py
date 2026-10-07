@@ -1,4 +1,5 @@
 """Shared scores, preferences and probability guidance for the web UI."""
+UI_REVISION="game-center-20261007-v2"
 import html,json
 from pathlib import Path
 from urllib.request import Request,urlopen
@@ -28,7 +29,8 @@ def score_html(sport,gid,home,away,settled=False,start=None,now=None,feed=None):
     cls='final' if r and r['state']=='final' or settled else 'live' if r and r['state']=='live' else 'scheduled'
     h,a=(score(r.get('home_score')),score(r.get('away_score'))) if r else (None,None)
     value=f'{esc(away)} <b>{a}</b> <span>–</span> <b>{h}</b> {esc(home)}' if h is not None and a is not None else 'Score unavailable' if settled else 'Scores appear when verified'
-    detail=r.get('detail','') if r and r['state']!='final' else ''
+    detail=r.get('detail','') if r and r['state']=='live' else ''
+    if r and r['state']=='scheduled' and pd.notna(stamp(r.get('start_time_utc'))):detail=stamp(r['start_time_utc']).tz_convert('America/Chicago').strftime('%a %b %d · %-I:%M %p CT')
     checked=stamp(r.get('checked_at_utc')) if r else pd.NaT
     stale=pd.notna(checked) and (stamp(now) if now is not None else pd.Timestamp.now(tz='UTC'))-checked>pd.Timedelta(minutes=30) and r['state']!='final'
     age=' · update delayed' if stale else ''
