@@ -4,6 +4,7 @@ from urllib.request import Request,urlopen
 import io,json,math,html
 import pandas as pd
 import streamlit as st
+from nhl_ui import audit_note
 
 RAW='https://raw.githubusercontent.com/bp111301/bp-sports/'
 SOURCES={
@@ -134,6 +135,37 @@ def open_board(sport):st.session_state['bp_sport']=sport
 def table(headers,rows):
     return '<div class="ov-table-wrap"><table class="ov-table"><thead><tr>'+''.join('<th>'+esc(x)+'</th>' for x in headers)+'</tr></thead><tbody>'+''.join('<tr>'+''.join('<td>'+esc(x)+'</td>' for x in r)+'</tr>' for r in rows)+'</tbody></table></div>'
 
+def game_state(r,now):
+    if r.settled:return ('Win','win') if (r.p>=.5)==r.y else ('Loss','loss')
+    if pd.notna(r.start) and r.start<=now:return 'Awaiting final','waiting'
+    return 'Pregame','pregame'
+
+def select_games(board,view,sport,query,now):
+    shown=board.copy()
+    if sport!='All sports':shown=shown[shown.sport==sport]
+    if view=='Today':
+        today=now.tz_convert('America/Chicago').date()
+        shown=shown[shown.start.map(lambda t:pd.notna(t) and t.tz_convert('America/Chicago').date()==today)]
+    elif view=='Upcoming':shown=shown[(~shown.settled)&shown.start.gt(now)]
+    elif view=='Awaiting finals':shown=shown[(~shown.settled)&shown.start.le(now)]
+    elif view=='Results':shown=shown[shown.settled]
+    if query.strip():
+        q=query.strip().casefold()
+        shown=shown[shown.apply(lambda r:q in (str(r.home)+' '+str(r.away)).casefold(),axis=1)]
+    return shown.sort_values(['start','created'],ascending=view!='Results',na_position='last')
+
+def game_cards(board,now):
+    cards=[]
+    for r in board.itertuples():
+        state,cls=game_state(r,now);pick=r.home if r.p>=.5 else r.away
+        winner=r.home if r.y==1 else r.away
+        detail='Final winner: '+str(winner) if r.settled else 'Result pending · excluded from record' if cls=='waiting' else 'Saved before game time'
+        time=ct(r.start) if pd.notna(r.start) else 'Kickoff time on NFL board'
+        note=audit_note(r.game_id,FROZEN_NHL) if r.sport=='NHL' else None
+        audit=f'<div class="desk-detail" style="color:#f1d28f">Input concern · missing power-play feature. <a href="{esc(note["report_url"])}" target="_blank" rel="noopener noreferrer">View audit</a></div>' if note else ''
+        cards.append(f'<article class="desk-game" style="--accent:{COLORS[r.sport]}"><div class="desk-top"><span class="desk-sport">{esc(r.sport)}</span><span class="desk-state {cls}">{state}</span></div><div class="desk-time">{esc(time)}</div><div class="desk-match">{esc(r.away)} <span>@</span> {esc(r.home)}</div><div class="desk-pick"><div><small>SAVED PICK</small><strong>{esc(pick)}</strong></div><div class="desk-prob">{r.confidence*100:.1f}%<small>MODEL PROBABILITY</small></div></div><div class="desk-detail">{esc(detail)}</div>{audit}</article>')
+    return '<div class="desk-grid">'+''.join(cards)+'</div>'
+
 def render_overview(now=None):
     now=pd.Timestamp.now(tz='UTC') if now is None else ts(now)
     if st.button('Refresh all sports',key='overview_refresh'):load_overview.clear()
@@ -141,10 +173,11 @@ def render_overview(now=None):
     primary=board[board.apply(lambda r:PRIMARY[r.sport]==r.group,axis=1)] if len(board) else board
     total_graded=int(primary.settled.sum());saved=len(primary)
     st.markdown('''<style>
+.desk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:16px 0 24px}.desk-game{background:#111a26;border:1px solid #2b384b;border-radius:17px;padding:18px;min-width:0}.desk-top{display:flex;align-items:center;justify-content:space-between}.desk-sport{color:var(--accent);font-size:.72rem;font-weight:900;letter-spacing:.1em}.desk-state{font-size:.65rem;padding:4px 9px;border-radius:99px;background:#1d2a3b;color:#bcd3f2;font-weight:800}.desk-state.win{background:#123224;color:#8ce4b3}.desk-state.loss{background:#39212a;color:#ffb4c2}.desk-state.waiting{background:#372e1d;color:#f1d28f}.desk-time{font-size:.7rem;color:#a4b3c8;margin:12px 0 8px}.desk-match{font-size:1.15rem;font-weight:850;overflow-wrap:anywhere}.desk-match span{font-size:.8rem;color:#73869f}.desk-pick{display:flex;justify-content:space-between;align-items:end;gap:12px;border-top:1px solid #2a3649;margin-top:15px;padding-top:13px}.desk-pick small{display:block;font-size:.56rem;color:#9badc5;letter-spacing:.06em}.desk-pick strong{font-size:1.15rem;overflow-wrap:anywhere}.desk-prob{text-align:right;font-size:1.5rem;font-weight:850}.desk-detail{font-size:.7rem;color:#b9c6d8;margin-top:13px}@media(max-width:1000px){.desk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:640px){.desk-grid{grid-template-columns:1fr}.desk-game{padding:16px}.st-key-bp_sport label{padding:7px 9px}.st-key-bp_sport [role="radiogroup"]{gap:4px}}
 .ov-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:18px 0}.ov-sport{background:linear-gradient(140deg,#151e2b,#10151e);border:1px solid #2b3748;border-radius:20px;padding:22px;position:relative;overflow:hidden}.ov-sport:before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:var(--accent)}.ov-top{display:flex;justify-content:space-between;gap:10px;align-items:center}.ov-name{font-size:1.35rem;font-weight:950;letter-spacing:-.04em;color:var(--accent)}.ov-tag{font-size:.61rem;font-weight:850;letter-spacing:.08em;border:1px solid #354155;border-radius:99px;padding:5px 9px;color:#c2cfe1;background:#192230}.ov-score{font-size:2.5rem;font-weight:1000;letter-spacing:-.06em;line-height:1.2;margin-top:16px;color:#f4f7fc}.ov-caption{font-size:.7rem;color:#aab9cd;margin-top:2px}.ov-details{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}.ov-detail{background:#0d141e;border:1px solid #253143;border-radius:10px;padding:10px}.ov-detail b{font-size:1rem;color:#e2eaf6;display:block}.ov-detail span{font-size:.6rem;color:#91a2b9;text-transform:uppercase;letter-spacing:.04em}.ov-update{border-top:1px solid #283346;padding-top:12px;font-size:.72rem;color:#a4b4ca;display:flex;justify-content:space-between;gap:10px}.ov-status{color:#8bdab1}.ov-status.warning{color:#f4cc7b}.ov-status.unknown{color:#f0a8b1}.ov-table-wrap{border:1px solid #2c394e;border-radius:14px;overflow-x:auto;margin:14px 0}.ov-table{width:100%;border-collapse:collapse;font-size:.8rem;background:#101822;color:#e1e9f4}.ov-table th{text-align:left;padding:12px 14px;background:#182334;color:#a8bad2;font-size:.65rem;font-weight:900;letter-spacing:.06em;white-space:nowrap}.ov-table td{padding:13px 14px;border-top:1px solid #273448;white-space:nowrap}.ov-note{color:#a7b6cc;font-size:.8rem;line-height:1.5;margin:10px 0}.ov-table tbody tr:hover{background:#172230}.ov-meta{color:#93a5bc;font-size:.7rem}.st-key-overview_refresh button{color:#d5e5ff;background:#182841;border:1px solid #39557b}[data-testid="stWidgetLabel"] p,[data-testid="stRadio"] label p{color:#d9e2ef!important}[data-testid="stTabs"] [role="tab"] p{color:#bccbe0!important}[data-testid="stTabs"] [role="tab"][aria-selected="true"] p{color:#91bcff!important}[data-testid="stAlert"] p{color:#dce7f6!important}@media(max-width:1000px){.ov-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:640px){.ov-grid{grid-template-columns:1fr;gap:12px}.ov-sport{padding:18px}.ov-update{flex-wrap:wrap}.ov-score{font-size:2.1rem}}
 </style><div class="bp-nav"><div class="bp-logo"><div class="bp-mark">BP</div><div><div class="bp-wordmark">B.P. <span>SPORTS</span></div><div class="bp-kicker">THE LIVE PERFORMANCE BOARD</div></div></div><div class="live-pill"><span class="live-dot"></span> WEIGHTS FROZEN</div></div>''',unsafe_allow_html=True)
     missing=[name for name,key in [('NFL','nfl'),('CFB','cfb'),('NHL','nhl'),('NBA','nba')] if not available[key]]
-    st.markdown(f'''<div class="hero"><div class="eyebrow">NFL · CFB · NHL · NBA</div><div class="hero-title">Every model. One board.</div><div class="hero-copy">Follow the picks saved before kickoff, the results that come after, and the confidence behind each forecast. Live records start here. Historical backtests stay on each sport’s model page.</div><div class="stat-grid"><div class="stat"><div class="stat-v">{4-len(missing)} / 4</div><div class="stat-l">Feeds verified</div></div><div class="stat"><div class="stat-v">{saved}</div><div class="stat-l">Saved matchups</div></div><div class="stat"><div class="stat-v">{total_graded}</div><div class="stat-l">Finals graded</div></div><div class="stat"><div class="stat-v">Prospective</div><div class="stat-l">Live results only</div></div></div></div>''',unsafe_allow_html=True)
+    st.markdown(f'''<div class="hero"><div class="eyebrow">NFL · CFB · NHL · NBA</div><div class="hero-title">Your sports desk.</div><div class="hero-copy">Today’s matchups, saved predictions and settled results. Follow each sport’s live record and see how its probabilities hold up.</div><div class="stat-grid"><div class="stat"><div class="stat-v">{4-len(missing)} / 4</div><div class="stat-l">Feeds verified</div></div><div class="stat"><div class="stat-v">{saved}</div><div class="stat-l">Saved matchups</div></div><div class="stat"><div class="stat-v">{total_graded}</div><div class="stat-l">Finals graded</div></div><div class="stat"><div class="stat-v">Prospective</div><div class="stat-l">Live results only</div></div></div></div>''',unsafe_allow_html=True)
     if missing:st.warning('Live data unavailable for '+', '.join(missing)+'. Those records show — until they can be verified.')
     tabs=st.tabs(['LIVE RECORDS','CONFIDENCE','RESEARCH'])
     with tabs[0]:
@@ -160,16 +193,23 @@ def render_overview(now=None):
         columns=st.columns(4)
         for column,sport in zip(columns,PRIMARY):column.button('Open '+sport+' board',key='open_'+sport,on_click=open_board,args=(sport,),width='stretch')
         st.caption('Saved and graded totals count one primary forecast per matchup. NHL uses the research reference control; challengers are tracked separately.')
-        st.markdown('<div class="section-title">Tonight’s tracked games</div><div class="section-sub">America/Chicago · results appear after final settlement</div>',unsafe_allow_html=True)
-        today=now.tz_convert('America/Chicago').date();night=primary[primary.start.map(lambda x:pd.notna(x) and x.tz_convert('America/Chicago').date()==today)].sort_values('start') if len(primary) else primary
-        if night.empty:st.info('No games with verified start times are tracked for tonight.')
+        st.markdown('<div class="section-title">Game center</div><div class="section-sub">Saved picks, clear results, all four sports · Central time</div>',unsafe_allow_html=True)
+        f1,f2=st.columns([2,1])
+        view=f1.selectbox('Show games',['Today','Results','Upcoming','Awaiting finals','All tracked'],key='desk_view')
+        sport=f2.selectbox('Filter sport',['All sports',*PRIMARY],key='desk_sport')
+        query=st.text_input('Find a matchup',placeholder='Search Troy, SEA, DET…',key='desk_search')
+        shown=select_games(primary,view,sport,query,now)
+        if shown.empty:st.info('No saved games match this view. Use Results for completed games or Upcoming for future picks.')
         else:
-            rows=[]
-            for r in night.itertuples():
-                pick=r.home if r.p>=.5 else r.away;status=('Correct' if (r.p>=.5)==r.y else 'Incorrect') if r.settled else 'Awaiting final' if r.start<=now else 'Pregame snapshot'
-                rows.append([r.sport,r.away+' @ '+r.home,r.start.tz_convert('America/Chicago').strftime('%I:%M %p CT'),pick,f'{r.confidence*100:.1f}%',status])
-            st.markdown(table(['SPORT','MATCHUP','START','SAVED PICK','CONFIDENCE','STATUS'],rows),unsafe_allow_html=True)
-        st.caption('NFL kickoff times remain on its sport board. Pending games never count as wins or losses. NBA collection excludes preseason.')
+            st.markdown(game_cards(shown.head(24),now),unsafe_allow_html=True)
+            if len(shown)>24:
+                with st.expander(f'Show the remaining {len(shown)-24} games'):st.markdown(game_cards(shown.iloc[24:],now),unsafe_allow_html=True)
+        if view=='Today' and not query.strip():
+            recent=select_games(primary,'Results',sport,'',now).head(6)
+            if len(recent):
+                st.markdown('<div class="section-title">Latest settled results</div>',unsafe_allow_html=True)
+                st.markdown(game_cards(recent,now),unsafe_allow_html=True)
+        st.caption('Win / Loss grades the saved pick. Awaiting final means the game has started; a confirmed final has not been graded yet. Result checks run about every 15 minutes; source and workflow delays can take longer. NBA excludes preseason.')
     with tabs[1]:
         st.markdown('<div class="section-title">Does confidence hold up?</div><div class="ov-note">Compare the confidence saved before each game with actual wins after grading. Empty bands stay unscored until results arrive.</div>',unsafe_allow_html=True)
         sport=st.selectbox('Sport to review',list(PRIMARY),key='overview_confidence_sport');group=PRIMARY[sport];b=board[board.group==group]

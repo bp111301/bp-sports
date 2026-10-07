@@ -46,3 +46,24 @@ def test_unavailable_sport_remains_unknown_and_navigation_works():
 def test_tonight_uses_verified_cfb_schedule_instead_of_original_placeholder():
  data=fixture();r=data['cfb']['data'][0];r.update(correct=None,actual_winner=None,kickoff_utc=(NOW-pd.Timedelta(days=1)).isoformat(),schedule_kickoff_utc=(NOW+pd.Timedelta(hours=1)).isoformat())
  board,_,_=ov.prepare(data,NOW);assert board[board.group=='cfb'].iloc[0].start==NOW+pd.Timedelta(hours=1)
+
+def test_game_center_separates_today_results_and_pending_at_central_midnight():
+    now=pd.Timestamp('2026-10-07T04:30:00Z')
+    rows=[ov.row('a','NHL','reference_control','SEA','VGK',.92,now-pd.Timedelta(days=1),now-pd.Timedelta(hours=2),True,0),ov.row('b','CFB','cfb','Troy','SM',.7,now-pd.Timedelta(days=1),now-pd.Timedelta(minutes=5)),ov.row('c','NHL','reference_control','DET','OTT',.6,now-pd.Timedelta(days=1),now+pd.Timedelta(hours=2))]
+    board=pd.DataFrame(rows);board['confidence']=board.p.where(board.p.ge(.5),1-board.p)
+    assert list(ov.select_games(board,'Today','All sports','',now).game_id)==['a','b']
+    assert list(ov.select_games(board,'Results','All sports','',now).game_id)==['a']
+    assert list(ov.select_games(board,'Awaiting finals','All sports','',now).game_id)==['b']
+    assert list(ov.select_games(board,'Upcoming','NHL','det',now).game_id)==['c']
+    html=ov.game_cards(board,now)
+    assert 'desk-state loss' in html and 'Final winner: VGK' in html
+    assert 'Awaiting final' in html and 'Result pending · excluded from record' in html
+
+def test_game_cards_escape_teams_and_show_audit_without_changing_probability():
+    now=pd.Timestamp('2026-10-07T14:00:00Z')
+    r=ov.row('2026020051','NHL','reference_control','SEA','<script>',.923646349229591,now-pd.Timedelta(days=1),now-pd.Timedelta(hours=12),True,0)
+    board=pd.DataFrame([r]);board['confidence']=board.p
+    html=ov.game_cards(board,now)
+    assert '&lt;script&gt;' in html and '<script>' not in html
+    assert '92.4%' in html and 'missing power-play feature' in html and 'desk-state loss' in html
+    assert board.iloc[0].p==.923646349229591

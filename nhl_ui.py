@@ -14,6 +14,7 @@ import streamlit as st
 
 RESEARCH_URL = 'https://raw.githubusercontent.com/bp111301/bp-sports/nhl-v1-research/'
 SNAPSHOT = Path(__file__).parent / 'data/nhl/dashboard_snapshot.json'
+AUDIT = Path(__file__).parent / 'data/nhl/forecast_audit.json'
 MODEL_NAMES = {
     'reference_control': 'Reference control',
     'decay2_logistic': 'Recency weighting',
@@ -26,6 +27,13 @@ COLORS = {'TOR':'#2656a1','DET':'#be2633','NSH':'#8e721a','BUF':'#244782','MIN':
 
 def escape(value):
     return html.escape(str(value), quote=True)
+
+def audit_note(game_id,bundle):
+    try:
+        audit=json.loads(AUDIT.read_text())
+        if audit['bundle_sha256']!=bundle:return None
+        return audit.get('games',{}).get(str(int(game_id)))
+    except (OSError,ValueError,KeyError,TypeError):return None
 
 def ct(value):
     try:
@@ -40,7 +48,7 @@ def get_text(path):
         if len(data)>16*1024*1024:raise ValueError('Research feed too large')
         return data.decode('utf-8')
 
-@st.cache_data(ttl=300)
+@st.cache_data(ttl=120)
 def load_dashboard():
     paths=['data/nhl/v2_research/prediction_ledger.csv','data/nhl/v2_research/summary.json','data/nhl/goalie_capture/observations.jsonl','data/nhl/goalie_capture/summary.json']
     try:
@@ -154,10 +162,13 @@ def render_nhl(now=None):
         if shown.empty:st.info('No games match this view. New pregame predictions are collected daily.')
         for _,r in shown.iterrows():
             game_id=int(r.game_id);home=str(r.home_team);away=str(r.away_team);p=float(r.home_win_prob)
-            status='Pregame snapshot' if r.start_time_utc>now and r.status=='pending' else 'Awaiting final result' if r.status=='pending' else 'Correct' if (p>=.5)==r.actual_home_win else 'Incorrect'
+            status='Pregame' if r.start_time_utc>now and r.status=='pending' else 'Awaiting final' if r.status=='pending' else 'Win' if (p>=.5)==r.actual_home_win else 'Loss'
+            result_class='tier-strong' if status=='Win' else 'tier-toss' if status=='Loss' else 'tier-solid' if status=='Pregame' else 'tier-lean'
+            note=audit_note(game_id,r.get('bundle_sha256'))
+            if note:st.warning(note['message'])
             comparisons=board[board.game_id==game_id].set_index('candidate')
             cells=''.join(f'<div class="model-cell"><div class="m">{escape(name)}</div><div class="v">{float(comparisons.loc[key,"home_win_prob"])*100:.1f}% {escape(home)}</div></div>' if key in comparisons.index else f'<div class="model-cell"><div class="m">{escape(name)}</div><div class="v">Not captured</div></div>' for key,name in MODEL_NAMES.items())
-            st.markdown(f'''<div class="card" style="border-left-color:#6ea8fe"><div class="card-top"><div class="game-meta">{escape(ct(r.start_time_utc))}</div><div class="tier tier-lean">{escape(status.upper())}</div></div><div class="match-row">{team_block(away)}<div class="at">@</div>{team_block(home,True)}</div><div class="pick-panel"><div><div class="pick-label">{escape(MODEL_NAMES[candidate].upper())} • EXPERIMENTAL</div><div class="pick-name">{escape(r.favored_team)} favored</div></div><div class="prob">{r.favored_prob*100:.1f}%<span>MODEL WIN PROBABILITY</span></div></div><div class="bar"><div class="fill" style="width:{r.favored_prob*100:.1f}%"></div></div><div class="model-strip">{cells}</div><div class="nhl-goalies"><div><small>{escape(away)} GOALIE REPORT</small>{escape(goalie_text(reports.get((game_id,'away'))))}</div><div><small>{escape(home)} GOALIE REPORT</small>{escape(goalie_text(reports.get((game_id,'home'))))}</div></div><div class="layer-note">Prediction recorded {escape(ct(r.created_at_utc))}. Goalie reports are separate from these model probabilities.</div></div>''',unsafe_allow_html=True)
+            st.markdown(f'''<div class="card" style="border-left-color:#6ea8fe"><div class="card-top"><div class="game-meta">{escape(ct(r.start_time_utc))}</div><div class="tier {result_class}">{escape(status.upper())}</div></div><div class="match-row">{team_block(away)}<div class="at">@</div>{team_block(home,True)}</div><div class="pick-panel"><div><div class="pick-label">{escape(MODEL_NAMES[candidate].upper())} • EXPERIMENTAL</div><div class="pick-name">{escape(r.favored_team)} favored</div></div><div class="prob">{r.favored_prob*100:.1f}%<span>MODEL WIN PROBABILITY</span></div></div><div class="bar"><div class="fill" style="width:{r.favored_prob*100:.1f}%"></div></div><div class="model-strip">{cells}</div><div class="nhl-goalies"><div><small>{escape(away)} GOALIE REPORT</small>{escape(goalie_text(reports.get((game_id,'away'))))}</div><div><small>{escape(home)} GOALIE REPORT</small>{escape(goalie_text(reports.get((game_id,'home'))))}</div></div><div class="layer-note">Prediction recorded {escape(ct(r.created_at_utc))}. Goalie reports are separate from these model probabilities.</div></div>''',unsafe_allow_html=True)
             with st.expander(f'Pregame details • {away} @ {home}'):
                 a,b=st.columns(2);a.metric(f'{away} win',f'{(1-p)*100:.1f}%');b.metric(f'{home} win',f'{p*100:.1f}%')
                 st.write(f'{MODEL_NAMES[candidate]} prediction recorded {ct(r.created_at_utc)}. Its probability is preserved after puck drop.')
@@ -169,7 +180,7 @@ def render_nhl(now=None):
                     if urlparse(url).scheme in ['http','https']:
                         st.markdown(f'<a href="{escape(url)}" target="_blank" rel="noopener noreferrer">{escape(team)} report source</a>',unsafe_allow_html=True)
                 if r.status=='settled':st.write(f'Recorded winner: {home if r.actual_home_win==1 else away}.')
-        st.caption('These are unvalidated research probabilities. A high model probability does not establish a reliable betting edge.')
+        st.caption('Win / Loss grades the saved pick. Results are checked about every 15 minutes after games begin. NHL probabilities remain experimental; the first pregame prediction stays saved.')
     with n2:
         st.markdown('<div class="section-title">Prospective NHL record</div><div class="section-sub">Only valid predictions captured before puck drop are graded here.</div>',unsafe_allow_html=True)
         metrics=record_metrics(board);st.dataframe(metrics,hide_index=True,use_container_width=True)
@@ -181,6 +192,6 @@ def render_nhl(now=None):
         st.warning('Original frozen NHL V1 reached 53.43% on the excluded 2025–26 season (1,312 games) and failed its release gate. That season is now training data for the new watchlist; it is not another independent test.')
     with n3:
         st.markdown('<div class="section-title">Inside NHL research</div>',unsafe_allow_html=True)
-        cards=[('01','Reference control','Elo, recent results, scoring, rest and shifted 20-game team statistics provide the common reference.'),('02','Recency weighting','The same logistic model gives newer training seasons more weight, with a fixed two-season half-life.'),('03','Regulation blend','A fixed 50/50 blend combines the reference with regulation win/tie/loss probabilities. Extra-time ties use a fixed 50% home-win chance.'),('04','Pregame record','Model weights stay fixed. Each game’s first prediction is preserved; final results only grade recorded predictions.'),('05','Starting-goalie collection','Confirmed, likely and unconfirmed reports are archived before games. They are collected for a future goalie experiment and are not inputs to the displayed predictions.')]
+        cards=[('01','Reference control','Elo, recent results, scoring, rest and shifted 20-game team statistics provide the common reference.'),('02','Recency weighting','The same logistic model gives newer training seasons more weight, with a fixed two-season half-life.'),('03','Regulation blend','A fixed 50/50 blend combines the reference with regulation win/tie/loss probabilities. Extra-time ties use a fixed 50% home-win chance.'),('04','Pregame record','Model weights stay fixed. Each game’s first prediction is preserved; final results only grade recorded predictions.'),('05','Starting-goalie experiment','Confirmed starter reports are archived before games. A separate paired experiment compares team-only, inferred-starter and confirmed-starter probabilities on the same games. Its results are on the Overview research tab; these board probabilities remain unchanged.')]
         for num,title,copy in cards:
             st.markdown(f'<div class="about-card"><div class="about-num">{num}</div><div class="about-title">{escape(title)}</div><div class="about-copy">{escape(copy)}</div></div>',unsafe_allow_html=True)

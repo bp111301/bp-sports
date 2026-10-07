@@ -33,6 +33,11 @@ html,body,[class*="css"]{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacS
 #MainMenu,footer{visibility:hidden}
 header[data-testid="stHeader"]{background:rgba(8,11,16,.86);backdrop-filter:blur(14px)}
 .block-container{max-width:1160px;padding-top:2.4rem;padding-bottom:5rem}
+.st-key-bp_sport{position:sticky;top:3.6rem;z-index:20;background:#0b1019;padding:8px 0;border-bottom:1px solid #27364c}
+.st-key-bp_sport [role="radiogroup"]{gap:6px;flex-wrap:wrap}
+.st-key-bp_sport label{border:1px solid #30425c;border-radius:10px;padding:8px 12px;background:#101c2d}
+.st-key-bp_sport label:has(input:checked){background:#234673;border-color:#75a9f3}
+.st-key-bp_sport label p{font-weight:800!important;color:#d9e2ef!important}
 .bp-nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:7px 0 18px;border-bottom:1px solid var(--bp-border);margin-bottom:22px}
 .bp-logo{display:flex;align-items:center;gap:11px}
 .bp-mark{width:40px;height:40px;border-radius:11px;background:linear-gradient(145deg,#8cb9ff,#386fc6);display:flex;align-items:center;justify-content:center;color:#07101f;font-weight:1000;font-size:1rem;box-shadow:0 8px 24px rgba(71,126,211,.25)}
