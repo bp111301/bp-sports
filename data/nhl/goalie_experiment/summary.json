@@ -1,36 +1,33 @@
 {
-  "as_of_utc": "2026-10-08T02:12:04.173748+00:00",
+  "as_of_utc": "2026-10-08T02:24:42.453054+00:00",
   "status": "research_only_not_promoted",
   "weights_frozen": true,
   "paired_games": 12,
-  "settled_paired_games": 9,
-  "pending_paired_games": 3,
+  "settled_paired_games": 11,
+  "pending_paired_games": 1,
   "invalid_timing": 0,
   "coverage": [],
   "metrics": [
     {
       "candidate": "team_control",
-      "games": 9,
-      "correct": 5,
-      "accuracy": 0.5555555555555556,
-      "brier": 0.30849840528640515,
-      "log_loss": 0.8848030610271089
+      "games": 11,
+      "accuracy": 0.5454545454545454,
+      "brier": 0.30140480778848794,
+      "log_loss": 0.8571946694892921
     },
     {
       "candidate": "inferred_goalie",
-      "games": 9,
-      "correct": 5,
-      "accuracy": 0.5555555555555556,
-      "brier": 0.3064818085553139,
-      "log_loss": 0.8557001512685667
+      "games": 11,
+      "accuracy": 0.5454545454545454,
+      "brier": 0.3012768592238647,
+      "log_loss": 0.8364962414815317
     },
     {
       "candidate": "confirmed_goalie",
-      "games": 9,
-      "correct": 5,
-      "accuracy": 0.5555555555555556,
-      "brier": 0.30453998146710676,
-      "log_loss": 0.851930846997809
+      "games": 11,
+      "accuracy": 0.5454545454545454,
+      "brier": 0.29723241182773996,
+      "log_loss": 0.8284053442832705
     }
   ],
   "first_formal_review_paired_games": 500,
@@ -38,15 +35,15 @@
   "confirmed_minus_control": {
     "team_control": {
       "accuracy": 0.0,
-      "brier": -0.003958423819298396,
-      "log_loss": -0.03287221402929996
+      "brier": -0.004172395960747977,
+      "log_loss": -0.02878932520602162
     },
     "inferred_goalie": {
       "accuracy": 0.0,
-      "brier": -0.0019418270882071154,
-      "log_loss": -0.003769304270757723
+      "brier": -0.004044447396124751,
+      "log_loss": -0.008090897198261171
     }
   },
-  "games_in_current_prediction_window": 1,
+  "games_in_current_prediction_window": 0,
   "newly_eligible_games": 0
 }
