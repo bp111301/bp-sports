@@ -1,5 +1,5 @@
 {
-  "updated_at_utc": "2026-10-08T10:42:27.918091+00:00",
+  "updated_at_utc": "2026-10-08T11:41:16.992046+00:00",
   "purpose": "Presentation-only recent results; forecasts and weights unchanged",
   "games": {
     "NFL:2026_05_TB_DAL": {
@@ -6530,6 +6530,425 @@
         {
           "name": "SportsDataverse schedule",
           "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_schedules/cfb_schedules_2026.csv.gz"
+        }
+      ]
+    },
+    "NHL:2026020063": {
+      "sport": "NHL",
+      "game_id": "2026020063",
+      "home_team": "STL",
+      "away_team": "SJS",
+      "cutoff_utc": "2026-10-08T11:34:13.985479+00:00",
+      "start_time_utc": "2026-10-09T00:00:00+00:00",
+      "venue": null,
+      "neutral_site": false,
+      "home_form": {
+        "games": 3,
+        "wins": 1,
+        "losses": 2,
+        "ties": 0,
+        "recent": [
+          "W",
+          "L",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026020050",
+          "home": "CHI",
+          "away": "STL",
+          "start": "2026-10-07T00:00:00+00:00",
+          "home_score": 4.0,
+          "away_score": 2.0,
+          "for": 2.0,
+          "against": 4.0,
+          "opponent": "CHI",
+          "outcome": "L"
+        },
+        "scored_per_game": 2.3333333333333335,
+        "allowed_per_game": 3.3333333333333335
+      },
+      "away_form": {
+        "games": 3,
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "recent": [
+          "W",
+          "W",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026020043",
+          "home": "DAL",
+          "away": "SJS",
+          "start": "2026-10-06T00:00:00+00:00",
+          "home_score": 5.0,
+          "away_score": 0.0,
+          "for": 0.0,
+          "against": 5.0,
+          "opponent": "DAL",
+          "outcome": "L"
+        },
+        "scored_per_game": 3.0,
+        "allowed_per_game": 4.0
+      },
+      "sources": [
+        {
+          "name": "STL schedule",
+          "url": "https://api-web.nhle.com/v1/club-schedule-season/STL/20262027"
+        },
+        {
+          "name": "SJS schedule",
+          "url": "https://api-web.nhle.com/v1/club-schedule-season/SJS/20262027"
+        }
+      ]
+    },
+    "NHL:2026020064": {
+      "sport": "NHL",
+      "game_id": "2026020064",
+      "home_team": "CGY",
+      "away_team": "COL",
+      "cutoff_utc": "2026-10-08T11:34:21.690472+00:00",
+      "start_time_utc": "2026-10-09T01:00:00+00:00",
+      "venue": null,
+      "neutral_site": false,
+      "home_form": {
+        "games": 3,
+        "wins": 0,
+        "losses": 3,
+        "ties": 0,
+        "recent": [
+          "L",
+          "L",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026020038",
+          "home": "SEA",
+          "away": "CGY",
+          "start": "2026-10-05T00:00:00+00:00",
+          "home_score": 6.0,
+          "away_score": 1.0,
+          "for": 1.0,
+          "against": 6.0,
+          "opponent": "SEA",
+          "outcome": "L"
+        },
+        "scored_per_game": 1.0,
+        "allowed_per_game": 5.333333333333333
+      },
+      "away_form": {
+        "games": 3,
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "recent": [
+          "W",
+          "W",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026020054",
+          "home": "WPG",
+          "away": "COL",
+          "start": "2026-10-07T23:30:00+00:00",
+          "home_score": 3.0,
+          "away_score": 2.0,
+          "for": 2.0,
+          "against": 3.0,
+          "opponent": "WPG",
+          "outcome": "L"
+        },
+        "scored_per_game": 5.333333333333333,
+        "allowed_per_game": 2.6666666666666665
+      },
+      "sources": [
+        {
+          "name": "CGY schedule",
+          "url": "https://api-web.nhle.com/v1/club-schedule-season/CGY/20262027"
+        },
+        {
+          "name": "COL schedule",
+          "url": "https://api-web.nhle.com/v1/club-schedule-season/COL/20262027"
+        }
+      ]
+    },
+    "NHL:2026020065": {
+      "sport": "NHL",
+      "game_id": "2026020065",
+      "home_team": "VGK",
+      "away_team": "TOR",
+      "cutoff_utc": "2026-10-08T11:34:29.416977+00:00",
+      "start_time_utc": "2026-10-09T02:00:00+00:00",
+      "venue": null,
+      "neutral_site": false,
+      "home_form": {
+        "games": 4,
+        "wins": 3,
+        "losses": 1,
+        "ties": 0,
+        "recent": [
+          "L",
+          "W",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026020051",
+          "home": "SEA",
+          "away": "VGK",
+          "start": "2026-10-07T01:40:00+00:00",
+          "home_score": 2.0,
+          "away_score": 6.0,
+          "for": 6.0,
+          "against": 2.0,
+          "opponent": "SEA",
+          "outcome": "W"
+        },
+        "scored_per_game": 4.25,
+        "allowed_per_game": 2.5
+      },
+      "away_form": {
+        "games": 4,
+        "wins": 2,
+        "losses": 2,
+        "ties": 0,
+        "recent": [
+          "W",
+          "L",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026020044",
+          "home": "TOR",
+          "away": "NSH",
+          "start": "2026-10-06T23:00:00+00:00",
+          "home_score": 5.0,
+          "away_score": 4.0,
+          "for": 5.0,
+          "against": 4.0,
+          "opponent": "NSH",
+          "outcome": "W"
+        },
+        "scored_per_game": 2.75,
+        "allowed_per_game": 2.75
+      },
+      "sources": [
+        {
+          "name": "VGK schedule",
+          "url": "https://api-web.nhle.com/v1/club-schedule-season/VGK/20262027"
+        },
+        {
+          "name": "TOR schedule",
+          "url": "https://api-web.nhle.com/v1/club-schedule-season/TOR/20262027"
+        }
+      ]
+    },
+    "NHL:2026020066": {
+      "sport": "NHL",
+      "game_id": "2026020066",
+      "home_team": "DET",
+      "away_team": "SEA",
+      "cutoff_utc": "2026-10-08T11:34:37.152256+00:00",
+      "start_time_utc": "2026-10-09T23:00:00+00:00",
+      "venue": null,
+      "neutral_site": false,
+      "home_form": {
+        "games": 3,
+        "wins": 1,
+        "losses": 2,
+        "ties": 0,
+        "recent": [
+          "L",
+          "L",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026020046",
+          "home": "DET",
+          "away": "OTT",
+          "start": "2026-10-06T23:00:00+00:00",
+          "home_score": 5.0,
+          "away_score": 3.0,
+          "for": 5.0,
+          "against": 3.0,
+          "opponent": "OTT",
+          "outcome": "W"
+        },
+        "scored_per_game": 2.3333333333333335,
+        "allowed_per_game": 2.6666666666666665
+      },
+      "away_form": {
+        "games": 4,
+        "wins": 2,
+        "losses": 2,
+        "ties": 0,
+        "recent": [
+          "L",
+          "W",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026020051",
+          "home": "SEA",
+          "away": "VGK",
+          "start": "2026-10-07T01:40:00+00:00",
+          "home_score": 2.0,
+          "away_score": 6.0,
+          "for": 2.0,
+          "against": 6.0,
+          "opponent": "VGK",
+          "outcome": "L"
+        },
+        "scored_per_game": 3.75,
+        "allowed_per_game": 2.75
+      },
+      "sources": [
+        {
+          "name": "DET schedule",
+          "url": "https://api-web.nhle.com/v1/club-schedule-season/DET/20262027"
+        },
+        {
+          "name": "SEA schedule",
+          "url": "https://api-web.nhle.com/v1/club-schedule-season/SEA/20262027"
+        }
+      ]
+    },
+    "NHL:2026020067": {
+      "sport": "NHL",
+      "game_id": "2026020067",
+      "home_team": "WSH",
+      "away_team": "NYR",
+      "cutoff_utc": "2026-10-08T11:34:44.854557+00:00",
+      "start_time_utc": "2026-10-09T23:00:00+00:00",
+      "venue": null,
+      "neutral_site": false,
+      "home_form": {
+        "games": 3,
+        "wins": 2,
+        "losses": 1,
+        "ties": 0,
+        "recent": [
+          "W",
+          "L",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026020053",
+          "home": "WSH",
+          "away": "PIT",
+          "start": "2026-10-07T23:30:00+00:00",
+          "home_score": 5.0,
+          "away_score": 3.0,
+          "for": 5.0,
+          "against": 3.0,
+          "opponent": "PIT",
+          "outcome": "W"
+        },
+        "scored_per_game": 3.6666666666666665,
+        "allowed_per_game": 2.6666666666666665
+      },
+      "away_form": {
+        "games": 5,
+        "wins": 4,
+        "losses": 1,
+        "ties": 0,
+        "recent": [
+          "W",
+          "W",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026020048",
+          "home": "NYR",
+          "away": "NYI",
+          "start": "2026-10-06T23:30:00+00:00",
+          "home_score": 5.0,
+          "away_score": 2.0,
+          "for": 5.0,
+          "against": 2.0,
+          "opponent": "NYI",
+          "outcome": "W"
+        },
+        "scored_per_game": 3.2,
+        "allowed_per_game": 1.6
+      },
+      "sources": [
+        {
+          "name": "WSH schedule",
+          "url": "https://api-web.nhle.com/v1/club-schedule-season/WSH/20262027"
+        },
+        {
+          "name": "NYR schedule",
+          "url": "https://api-web.nhle.com/v1/club-schedule-season/NYR/20262027"
+        }
+      ]
+    },
+    "NHL:2026020068": {
+      "sport": "NHL",
+      "game_id": "2026020068",
+      "home_team": "CBJ",
+      "away_team": "PIT",
+      "cutoff_utc": "2026-10-08T11:34:52.555351+00:00",
+      "start_time_utc": "2026-10-09T23:00:00+00:00",
+      "venue": null,
+      "neutral_site": false,
+      "home_form": {
+        "games": 2,
+        "wins": 1,
+        "losses": 1,
+        "ties": 0,
+        "recent": [
+          "W",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026020027",
+          "home": "CBJ",
+          "away": "UTA",
+          "start": "2026-10-03T23:00:00+00:00",
+          "home_score": 1.0,
+          "away_score": 4.0,
+          "for": 1.0,
+          "against": 4.0,
+          "opponent": "UTA",
+          "outcome": "L"
+        },
+        "scored_per_game": 3.5,
+        "allowed_per_game": 3.5
+      },
+      "away_form": {
+        "games": 4,
+        "wins": 2,
+        "losses": 2,
+        "ties": 0,
+        "recent": [
+          "W",
+          "L",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026020053",
+          "home": "WSH",
+          "away": "PIT",
+          "start": "2026-10-07T23:30:00+00:00",
+          "home_score": 5.0,
+          "away_score": 3.0,
+          "for": 3.0,
+          "against": 5.0,
+          "opponent": "WSH",
+          "outcome": "L"
+        },
+        "scored_per_game": 4.5,
+        "allowed_per_game": 3.25
+      },
+      "sources": [
+        {
+          "name": "CBJ schedule",
+          "url": "https://api-web.nhle.com/v1/club-schedule-season/CBJ/20262027"
+        },
+        {
+          "name": "PIT schedule",
+          "url": "https://api-web.nhle.com/v1/club-schedule-season/PIT/20262027"
         }
       ]
     }
