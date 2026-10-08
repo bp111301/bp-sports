@@ -1,50 +1,50 @@
 {
-  "as_of_utc": "2026-10-08T04:31:49.469375+00:00",
+  "as_of_utc": "2026-10-08T04:49:03.652322+00:00",
   "status": "research_only_not_promoted",
   "weights_frozen": true,
   "paired_games": 12,
-  "settled_paired_games": 11,
-  "pending_paired_games": 1,
+  "settled_paired_games": 12,
+  "pending_paired_games": 0,
   "invalid_timing": 0,
   "coverage": [],
   "metrics": [
     {
       "candidate": "team_control",
-      "games": 11,
+      "games": 12,
       "correct": 6,
-      "accuracy": 0.5454545454545454,
-      "brier": 0.30140480778848794,
-      "log_loss": 0.8571946694892921
+      "accuracy": 0.5,
+      "brier": 0.29841549318940597,
+      "log_loss": 0.8461136986441741
     },
     {
       "candidate": "inferred_goalie",
-      "games": 11,
-      "correct": 6,
-      "accuracy": 0.5454545454545454,
-      "brier": 0.30127685922386477,
-      "log_loss": 0.8364962414815317
+      "games": 12,
+      "correct": 7,
+      "accuracy": 0.5833333333333334,
+      "brier": 0.29687046584100507,
+      "log_loss": 0.824283841930809
     },
     {
       "candidate": "confirmed_goalie",
-      "games": 11,
-      "correct": 6,
-      "accuracy": 0.5454545454545454,
-      "brier": 0.29723241182773996,
-      "log_loss": 0.8284053442832705
+      "games": 12,
+      "correct": 7,
+      "accuracy": 0.5833333333333334,
+      "brier": 0.29316305572789064,
+      "log_loss": 0.8168671861657363
     }
   ],
   "first_formal_review_paired_games": 500,
   "automatic_promotion": false,
   "confirmed_minus_control": {
     "team_control": {
-      "accuracy": 0.0,
-      "brier": -0.004172395960747977,
-      "log_loss": -0.02878932520602162
+      "accuracy": 0.08333333333333337,
+      "brier": -0.005252437461515325,
+      "log_loss": -0.02924651247843779
     },
     "inferred_goalie": {
       "accuracy": 0.0,
-      "brier": -0.004044447396124806,
-      "log_loss": -0.008090897198261171
+      "brier": -0.003707410113114429,
+      "log_loss": -0.007416655765072666
     }
   },
   "games_in_current_prediction_window": 0,
