@@ -1,6 +1,8 @@
 import importlib
 import json
 import html
+import io
+from urllib.request import Request, urlopen
 import streamlit as st
 import pandas as pd
 from navigation_ui import request_top, render_top_anchor, render_scroll_reset
@@ -153,8 +155,26 @@ TEAM_NAMES = {
     "TB":"Buccaneers","TEN":"Titans","WAS":"Commanders",
 }
 
+def current_feed_text(name):
+    # Data-only bot commits can leave Community Cloud's checkout behind.
+    # Read changing CFB feeds from the same source as the live Overview.
+    with urlopen(Request(
+        "https://raw.githubusercontent.com/bp111301/bp-sports/main/" + name,
+        headers={"User-Agent": "BP-Sports-CFB-Board/1.0"},
+    ), timeout=8) as response:
+        raw = response.read(8 * 1024 * 1024 + 1)
+    if len(raw) > 8 * 1024 * 1024:
+        raise ValueError("Feed too large")
+    return raw.decode("utf-8")
+
+
 @st.cache_data(ttl=60)
 def load_csv(name):
+    if name.startswith("data/cfb/"):
+        try:
+            return pd.read_csv(io.StringIO(current_feed_text(name)))
+        except Exception:
+            pass
     try:
         return pd.read_csv(name)
     except Exception:
@@ -162,6 +182,11 @@ def load_csv(name):
 
 @st.cache_data(ttl=60)
 def load_json(name):
+    if name.startswith("data/cfb/"):
+        try:
+            return json.loads(current_feed_text(name))
+        except Exception:
+            pass
     try:
         with open(name, "r") as handle:
             return json.load(handle)
