@@ -1,50 +1,47 @@
 {
-  "as_of_utc": "2026-10-10T01:47:29.005832+00:00",
+  "as_of_utc": "2026-10-10T01:53:29.871828+00:00",
   "status": "research_only_not_promoted",
   "weights_frozen": true,
   "paired_games": 24,
-  "settled_paired_games": 23,
-  "pending_paired_games": 1,
+  "settled_paired_games": 24,
+  "pending_paired_games": 0,
   "invalid_timing": 0,
   "coverage": [],
   "metrics": [
     {
       "candidate": "team_control",
-      "games": 23,
-      "correct": 12,
-      "accuracy": 0.5217391304347826,
-      "brier": 0.26802983239694794,
-      "log_loss": 0.7559709428006685
+      "games": 24,
+      "accuracy": 0.5416666666666666,
+      "brier": 0.26699675486671365,
+      "log_loss": 0.7527895822703415
     },
     {
       "candidate": "inferred_goalie",
-      "games": 23,
-      "correct": 13,
-      "accuracy": 0.5652173913043478,
-      "brier": 0.2710900052426006,
-      "log_loss": 0.7527036254580629
+      "games": 24,
+      "accuracy": 0.5833333333333334,
+      "brier": 0.26925881723745765,
+      "log_loss": 0.7483158547507681
     },
     {
       "candidate": "confirmed_goalie",
-      "games": 23,
-      "correct": 13,
-      "accuracy": 0.5652173913043478,
-      "brier": 0.26779921532746354,
-      "log_loss": 0.7455095780077056
+      "games": 24,
+      "accuracy": 0.5416666666666666,
+      "brier": 0.2674978581848821,
+      "log_loss": 0.7442084941949436
     }
   ],
   "first_formal_review_paired_games": 500,
   "automatic_promotion": false,
   "confirmed_minus_control": {
     "team_control": {
-      "accuracy": 0.04347826086956519,
-      "brier": -0.00023061706948440674,
-      "log_loss": -0.01046136479296289
+      "accuracy": 0.0,
+      "brier": 0.0005011033181684388,
+      "log_loss": -0.008581088075397925
     },
     "inferred_goalie": {
-      "accuracy": 0.0,
-      "brier": -0.003290789915137038,
-      "log_loss": -0.007194047450357344
+      "accuracy": -0.04166666666666674,
+      "brier": -0.0017609590525755614,
+      "log_loss": -0.004107360555824502
     }
   },
   "games_in_current_prediction_window": 0,
