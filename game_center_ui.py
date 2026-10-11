@@ -1,5 +1,5 @@
 """Shared scores, preferences and probability guidance for the web UI."""
-UI_REVISION="mobile-layout-20261007"
+UI_REVISION="menu-20261011"
 import html,json
 from pathlib import Path
 from urllib.request import Request,urlopen
@@ -55,13 +55,58 @@ def favorites_mask(frame,sport,home='home_team',away='away_team',selected=None):
 def filter_favorites(frame,sport,key,home='home_team',away='away_team'):
     only=st.toggle('My teams only',key=key)
     if not only:return frame
-    if not st.session_state.get('bp_favorites'):st.info('Choose teams in My teams above to use this filter.')
+    if not st.session_state.get('bp_favorites'):st.info('Choose favorites in ☰ Menu → My teams to use this filter.')
     return frame[favorites_mask(frame,sport,home,away)]
 
 def save_favorites():
     picks=st.session_state.get('bp_favorites',[])
     if picks:st.query_params['teams']='|'.join(picks)
     elif 'teams' in st.query_params:del st.query_params['teams']
+
+
+def menu_route(page, sport=None):
+    from navigation_ui import request_top
+    st.session_state['bp_page']=page
+    if sport is not None:st.session_state['bp_sport']=sport
+    request_top()
+
+
+def board_route():
+    from navigation_ui import request_top
+    st.session_state['bp_page']='Board'
+    request_top()
+
+
+def render_information(page):
+    st.button('← Back to games',key='bp_back_to_board',on_click=board_route)
+    if page=='About B.P. Sports':
+        st.title('Sports, with a clearer picture.')
+        st.write('B.P. Sports brings NFL, college football, NHL and NBA matchups, saved predictions and results into one sports desk. Follow your teams, understand each forecast and see how the models perform when the games are played.')
+        st.subheader('Built on evidence')
+        st.write('We publish probabilities before games and preserve those snapshots. Confirmed results build the live record. A model’s historical testing is shown separately so you can see the difference between development results and real prospective performance.')
+        st.subheader('Still growing')
+        st.write('B.P. Sports is an independent project in active development. The models are gathering prospective evidence, the NHL board remains research, and a mobile app is our longer-term goal.')
+        st.info('A probability is an estimate, never a guarantee. Even a strong favorite can lose.')
+        return
+    st.title('Our models & data')
+    st.write('Each sport has its own model. Inputs use information available before the game; future scores do not belong in a pregame forecast.')
+    models=[
+        ('NFL · Frozen V4','NFL play-by-play and schedules from nflverse.','Team efficiency, opponent strength, Elo, recent form, rest and quarterback quality or changes. EPA measures how much a play improves a team’s expected scoring position. Explosive plays, turnovers and early-down efficiency can adjust confidence without flipping the core winner.','Starter inputs can be refreshed before kickoff. This is a new timestamped forecast, not a change to the frozen model weights.','main/model/v4/BP_V4_FROZEN_SPEC.md'),
+        ('CFB · Frozen V1','College football matchup data built from cfbfastR, plus team context such as talent and returning production.','A 25% context and 75% dynamic-prior ensemble combines efficiency, Elo, home field, conference context, talent and coaching continuity. A seven-week transition gradually shifts emphasis from last season to this season.','CFB V1 excludes quarterback features. Frozen Candidate B is a separate challenger collecting results; it has not replaced V1.','main/model/cfb/v1/CFB_V1_FROZEN_SPEC.md'),
+        ('NHL · Prospective research','Prior NHL results and team statistics; separately archived pregame goalie reports.','The watchlist compares a reference control, recency weighting and a regulation-probability blend. Team inputs include Elo, scoring, recent results, rest and statistics shifted to exclude the current game.','The original NHL V1 failed its release gate. Watchlist models and the confirmed-goalie paired experiment remain research; goalie experiments do not automatically change the board’s team-only picks.','nhl-v1-research/research/nhl/v2/HANDOFF.md'),
+        ('NBA · Frozen V1','Historical NBA box-score and schedule data.','Fourteen prior-game features cover Elo, home context, offense and defense, pace, effective shooting, turnovers, offensive rebounding, free throws, recent form, rest and back-to-backs.','Regular-season prospective forecasts only. NBA V1 does not adjust for injuries or confirmed starters, and preseason games are excluded.','nba-v1-research/research/nba/HANDOFF.md')]
+    for title,source,inputs,limits,path in models:
+        with st.expander(title):
+            st.markdown('**Data**')
+            st.write(source)
+            st.markdown('**What goes into the prediction**')
+            st.write(inputs)
+            st.markdown('**Current status & limits**')
+            st.write(limits)
+            st.link_button('Read the model report','https://github.com/bp111301/bp-sports/blob/'+path)
+    st.subheader('How we keep score')
+    st.write('Frozen means the algorithm and weights stay fixed while we collect new results. Pregame information can update, but saved forecasts stay preserved. Any future model change receives its own version and evaluation.')
+    st.write('Accuracy measures correct winners. Brier score and log loss measure probability quality: lower is better. Pending games do not count as wins or losses. Betting-market prices do not choose our winners.')
 
 def render_preferences(nfl):
     from nhl_ui import TEAMS as hockey
@@ -77,16 +122,26 @@ def render_preferences(nfl):
                 for side in ('home_team','away_team'):options[favorite_key('CFB',r[side])]='CFB · '+r[side]
     except (OSError,ValueError,KeyError):pass
     if 'bp_favorites' not in st.session_state:st.session_state['bp_favorites']=[k for k in st.query_params.get('teams','').split('|') if k in options]
-    with st.popover('Board options',use_container_width=True):
+    with st.popover('☰ Menu',use_container_width=True):
+        st.markdown('### Your sports desk')
+        st.caption('Jump to a board or explore B.P. Sports.')
+        left,right=st.columns(2)
+        for index,name in enumerate(['Overview','NFL','CFB','NHL','NBA']):
+            (left if index%2==0 else right).button(name,key='bp_menu_'+name,use_container_width=True,on_click=menu_route,args=('Board',name))
+        st.divider()
+        st.button('About B.P. Sports',key='bp_menu_about',use_container_width=True,on_click=menu_route,args=('About B.P. Sports',None))
+        st.button('Our models & data',key='bp_menu_models',use_container_width=True,on_click=menu_route,args=('Our models & data',None))
+        st.divider()
         st.markdown('**My teams**')
         st.multiselect('Choose favorite teams',sorted(options,key=options.get),format_func=options.get,key='bp_favorites',on_change=save_favorites)
         st.caption('Your teams are saved in this page’s link. Bookmark it to keep your selection. Use My teams only on any board; records still include all tracked picks.')
-        st.markdown('**What confidence means**')
-        st.write('70% is the model’s estimated chance of winning: it still gives the opponent 30%. Across many well-calibrated 70% predictions, about 7 in 10 should win. A single game can go either way.')
-        st.write('These models are collecting prospective evidence. High estimates are not locks; the confidence table on Overview compares saved probabilities with actual win rates. NHL remains experimental.')
-        st.markdown('**Score updates**')
-        st.caption('This page checks every minute. The source feed refreshes about every 15 minutes; source or workflow delays can take longer. Confirmed finals may await grading. Refresh reloads saved feeds for all four sports.')
+        with st.expander('Understanding predictions'):
+            st.write('70% is the model’s estimated chance of winning: it still gives the opponent 30%. Across many well-calibrated 70% predictions, about 7 in 10 should win. A single game can go either way.')
+            st.write('These models are collecting prospective evidence. High estimates are not locks; the confidence table on Overview compares saved probabilities with actual win rates. NHL remains experimental.')
+        with st.expander('Score updates'):
+            st.caption('This page checks every minute. The source feed refreshes about every 15 minutes; source or workflow delays can take longer. Confirmed finals may await grading. Refresh reloads saved feeds for all four sports.')
     st.markdown('''<style>
+[data-testid="stPopoverBody"]{max-height:75vh;max-height:75dvh;overflow-y:auto;max-width:calc(100vw - 24px)}
 .bp-score{background:#0b1420;border:1px solid #2a394c;border-radius:12px;padding:12px 14px;margin:12px 0}.bp-score-top{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.7rem;color:#abbdd1}.bp-game-state{display:inline-block;font-weight:850;border-radius:30px;padding:4px 9px;background:#1d2c40;color:#bed6fa}.bp-game-state.live{background:#123e2d;color:#88f0bc}.bp-game-state.final{background:#25354d;color:#d4e3fb}.bp-score-value{font-size:1rem;color:#eef5ff;margin-top:8px;overflow-wrap:anywhere}.bp-score-value b{font-size:1.3rem}.bp-score-value span{color:#91a6c3}.bp-score-source{font-size:.65rem;color:#9bb0ca;margin-top:5px}.bp-score-source a{margin-left:8px;color:#93c1ff}.bp-confidence{display:flex;flex-direction:column;gap:4px;font-size:.72rem;color:#aabbd0;margin:10px 0 0;line-height:1.45}.bp-confidence b{font-weight:650;color:#c7d9ef}.bp-confidence.concern{border-left:3px solid #e4bc62;padding-left:10px;color:#ecd29c}
 @media(max-width:640px){.st-key-bp_sport [role="radiogroup"]{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;gap:4px;padding-bottom:4px}.st-key-bp_sport label{flex:0 0 auto!important;width:max-content!important;min-width:max-content!important;min-height:44px;padding:8px!important}.card-top{align-items:flex-start;gap:6px}.game-meta{letter-spacing:.03em;line-height:1.5}.team-box{gap:6px}.team-name{overflow-wrap:anywhere}.prob{white-space:nowrap}.model-strip{grid-template-columns:1fr!important}.model-cell{display:flex;justify-content:space-between;align-items:center;gap:10px}.model-cell .m,.model-cell .v{margin:0}.nhl-goalies{grid-template-columns:1fr!important}.nhl-goalies div:last-child{text-align:left!important}.bp-score{padding:10px}.bp-score-top{flex-wrap:wrap}.bp-score-value{font-size:.88rem}.bp-confidence{font-size:.73rem}.spotlight{grid-template-columns:1fr!important;gap:12px}.spot-prob{text-align:left}.hero-copy{line-height:1.6}.st-key-open_NFL button,.st-key-open_CFB button,.st-key-open_NHL button,.st-key-open_NBA button{min-height:44px} [data-testid="stTabs"] [role="tab"]{min-height:44px} [data-testid="stExpander"] summary{min-height:44px}}
 .st-key-bp_sport [role="radiogroup"]{flex-wrap:nowrap!important;overflow-x:auto;max-width:100%;padding-bottom:4px}
