@@ -1,5 +1,5 @@
 {
-  "updated_at_utc": "2026-10-11T10:40:52.433194+00:00",
+  "updated_at_utc": "2026-10-11T11:39:44.221616+00:00",
   "purpose": "Presentation-only recent results; forecasts and weights unchanged",
   "games": {
     "NFL:2026_05_TB_DAL": {
@@ -11574,6 +11574,146 @@
         {
           "name": "CAR schedule",
           "url": "https://api-web.nhle.com/v1/club-schedule-season/CAR/20262027"
+        }
+      ]
+    },
+    "NHL:2026020087": {
+      "sport": "NHL",
+      "game_id": "2026020087",
+      "home_team": "BUF",
+      "away_team": "FLA",
+      "cutoff_utc": "2026-10-11T11:31:21.027212+00:00",
+      "start_time_utc": "2026-10-12T17:00:00+00:00",
+      "venue": null,
+      "neutral_site": false,
+      "home_form": {
+        "games": 5,
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "recent": [
+          "W",
+          "L",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026020074",
+          "home": "BUF",
+          "away": "UTA",
+          "start": "2026-10-10T23:00:00+00:00",
+          "home_score": 1.0,
+          "away_score": 4.0,
+          "for": 1.0,
+          "against": 4.0,
+          "opponent": "UTA",
+          "outcome": "L"
+        },
+        "scored_per_game": 2.2,
+        "allowed_per_game": 3.8
+      },
+      "away_form": {
+        "games": 5,
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "recent": [
+          "L",
+          "W",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026020073",
+          "home": "FLA",
+          "away": "MIN",
+          "start": "2026-10-10T22:00:00+00:00",
+          "home_score": 1.0,
+          "away_score": 4.0,
+          "for": 1.0,
+          "against": 4.0,
+          "opponent": "MIN",
+          "outcome": "L"
+        },
+        "scored_per_game": 1.8,
+        "allowed_per_game": 2.4
+      },
+      "sources": [
+        {
+          "name": "BUF schedule",
+          "url": "https://api-web.nhle.com/v1/club-schedule-season/BUF/20262027"
+        },
+        {
+          "name": "FLA schedule",
+          "url": "https://api-web.nhle.com/v1/club-schedule-season/FLA/20262027"
+        }
+      ]
+    },
+    "NHL:2026020088": {
+      "sport": "NHL",
+      "game_id": "2026020088",
+      "home_team": "NJD",
+      "away_team": "OTT",
+      "cutoff_utc": "2026-10-11T11:31:25.630431+00:00",
+      "start_time_utc": "2026-10-12T23:00:00+00:00",
+      "venue": null,
+      "neutral_site": false,
+      "home_form": {
+        "games": 4,
+        "wins": 2,
+        "losses": 2,
+        "ties": 0,
+        "recent": [
+          "L",
+          "L",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026020071",
+          "home": "NJD",
+          "away": "VAN",
+          "start": "2026-10-10T19:30:00+00:00",
+          "home_score": 4.0,
+          "away_score": 1.0,
+          "for": 4.0,
+          "against": 1.0,
+          "opponent": "VAN",
+          "outcome": "W"
+        },
+        "scored_per_game": 2.5,
+        "allowed_per_game": 3.5
+      },
+      "away_form": {
+        "games": 5,
+        "wins": 4,
+        "losses": 1,
+        "ties": 0,
+        "recent": [
+          "L",
+          "W",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026020076",
+          "home": "OTT",
+          "away": "NSH",
+          "start": "2026-10-10T23:00:00+00:00",
+          "home_score": 3.0,
+          "away_score": 2.0,
+          "for": 3.0,
+          "against": 2.0,
+          "opponent": "NSH",
+          "outcome": "W"
+        },
+        "scored_per_game": 3.0,
+        "allowed_per_game": 2.2
+      },
+      "sources": [
+        {
+          "name": "NJD schedule",
+          "url": "https://api-web.nhle.com/v1/club-schedule-season/NJD/20262027"
+        },
+        {
+          "name": "OTT schedule",
+          "url": "https://api-web.nhle.com/v1/club-schedule-season/OTT/20262027"
         }
       ]
     }
