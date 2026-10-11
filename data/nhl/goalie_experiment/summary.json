@@ -1,5 +1,5 @@
 {
-  "as_of_utc": "2026-10-11T01:01:56.919944+00:00",
+  "as_of_utc": "2026-10-11T01:03:06.959183+00:00",
   "status": "research_only_not_promoted",
   "weights_frozen": true,
   "paired_games": 35,
@@ -20,22 +20,25 @@
     {
       "candidate": "team_control",
       "games": 28,
+      "correct": 17,
       "accuracy": 0.6071428571428571,
       "brier": 0.25172064621689627,
-      "log_loss": 0.7176663996557779
+      "log_loss": 0.717666399655778
     },
     {
       "candidate": "inferred_goalie",
       "games": 28,
+      "correct": 18,
       "accuracy": 0.6428571428571429,
       "brier": 0.2512915384117594,
-      "log_loss": 0.7087433821724074
+      "log_loss": 0.7087433821724075
     },
     {
       "candidate": "confirmed_goalie",
       "games": 28,
+      "correct": 17,
       "accuracy": 0.6071428571428571,
-      "brier": 0.2509552046721987,
+      "brier": 0.25095520467219873,
       "log_loss": 0.7078015675893499
     }
   ],
@@ -44,13 +47,13 @@
   "confirmed_minus_control": {
     "team_control": {
       "accuracy": 0.0,
-      "brier": -0.0007654415446975982,
-      "log_loss": -0.009864832066428075
+      "brier": -0.0007654415446975427,
+      "log_loss": -0.009864832066428186
     },
     "inferred_goalie": {
       "accuracy": -0.03571428571428581,
-      "brier": -0.00033633373956071244,
-      "log_loss": -0.000941814583057532
+      "brier": -0.00033633373956065693,
+      "log_loss": -0.000941814583057643
     }
   },
   "games_in_current_prediction_window": 2,
