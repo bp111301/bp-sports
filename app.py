@@ -10,8 +10,8 @@ from matchup_preview_ui import render_preview
 from matchup_details_ui import details_button
 from cfb_board_ui import dated_board, date_choices, games_on_date, date_label
 import game_center_ui
-if getattr(game_center_ui,"UI_REVISION",None)!="mobile-layout-20261007":importlib.reload(game_center_ui)
-from game_center_ui import render_preferences, filter_favorites, score_html, confidence_html, render_score_refresh, render_header, render_host_chrome
+if getattr(game_center_ui,"UI_REVISION",None)!="menu-20261011":importlib.reload(game_center_ui)
+from game_center_ui import render_preferences, filter_favorites, score_html, confidence_html, render_score_refresh, render_header, render_host_chrome, board_route, render_information
 
 st.set_page_config(
     page_title="B.P. Sports",
@@ -220,7 +220,7 @@ render_top_anchor()
 render_host_chrome()
 render_header()
 st.markdown('<div style="font-size:.64rem;color:#8d98a8;font-weight:900;letter-spacing:.11em;margin-bottom:4px">SPORT</div>', unsafe_allow_html=True)
-sport = st.radio("Sport", ["Overview", "NFL", "CFB", "NHL", "NBA"], horizontal=True, label_visibility="collapsed", key="bp_sport", on_change=request_top)
+sport = st.radio("Sport", ["Overview", "NFL", "CFB", "NHL", "NBA"], horizontal=True, label_visibility="collapsed", key="bp_sport", on_change=board_route)
 
 def current_ui(module):
     # Streamlit can retain imported modules during a deployment rerun. Reload once per UI revision.
@@ -232,7 +232,10 @@ with st.container(key='bp_toolbar'):
     with refresh:render_score_refresh()
     with options:render_preferences(TEAM_NAMES)
 
-if sport == "Overview":
+if st.session_state.get("bp_page", "Board") != "Board":
+    render_information(st.session_state["bp_page"])
+
+elif sport == "Overview":
     import overview_ui
     current_ui(overview_ui).render_overview()
 
