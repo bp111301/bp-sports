@@ -1,36 +1,36 @@
 {
-  "as_of_utc": "2026-10-11T23:28:57.912566+00:00",
+  "as_of_utc": "2026-10-11T23:43:04.135294+00:00",
   "status": "research_only_not_promoted",
   "weights_frozen": true,
   "paired_games": 40,
-  "settled_paired_games": 37,
-  "pending_paired_games": 3,
+  "settled_paired_games": 38,
+  "pending_paired_games": 2,
   "invalid_timing": 0,
   "coverage": [],
   "metrics": [
     {
       "candidate": "team_control",
-      "games": 37,
+      "games": 38,
       "correct": 22,
-      "accuracy": 0.5945945945945946,
-      "brier": 0.2541403115531079,
-      "log_loss": 0.7173245475694981
+      "accuracy": 0.5789473684210527,
+      "brier": 0.25676623613182126,
+      "log_loss": 0.7222281556004144
     },
     {
       "candidate": "inferred_goalie",
-      "games": 37,
+      "games": 38,
       "correct": 23,
-      "accuracy": 0.6216216216216216,
-      "brier": 0.2556959234851597,
-      "log_loss": 0.7147679896318188
+      "accuracy": 0.6052631578947368,
+      "brier": 0.2583431362048722,
+      "log_loss": 0.719868080259924
     },
     {
       "candidate": "confirmed_goalie",
-      "games": 37,
+      "games": 38,
       "correct": 22,
-      "accuracy": 0.5945945945945946,
-      "brier": 0.256381765817386,
-      "log_loss": 0.7159934070305897
+      "accuracy": 0.5789473684210527,
+      "brier": 0.2590109300546715,
+      "log_loss": 0.7210612498324114
     }
   ],
   "first_formal_review_paired_games": 500,
@@ -38,13 +38,13 @@
   "confirmed_minus_control": {
     "team_control": {
       "accuracy": 0.0,
-      "brier": 0.0022414542642780755,
-      "log_loss": -0.0013311405389084818
+      "brier": 0.0022446939228502605,
+      "log_loss": -0.001166905768003046
     },
     "inferred_goalie": {
-      "accuracy": -0.027027027027026973,
-      "brier": 0.0006858423322262941,
-      "log_loss": 0.0012254173987709116
+      "accuracy": -0.02631578947368418,
+      "brier": 0.0006677938497993141,
+      "log_loss": 0.0011931695724873848
     }
   },
   "games_in_current_prediction_window": 0,
