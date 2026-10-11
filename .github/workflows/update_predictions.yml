@@ -32,6 +32,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Queued refreshes must include grades saved since the run was triggered.
+          # Keep pull-request validation pinned to its original merge commit.
+          ref: ${{ github.event_name == 'pull_request' && github.sha || github.ref }}
       - name: Gate scheduled run to 8 AM Central
         id: gate
         shell: bash
