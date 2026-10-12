@@ -1,36 +1,33 @@
 {
-  "as_of_utc": "2026-10-12T00:19:25.708090+00:00",
+  "as_of_utc": "2026-10-12T00:38:04.934312+00:00",
   "status": "research_only_not_promoted",
   "weights_frozen": true,
   "paired_games": 40,
-  "settled_paired_games": 38,
-  "pending_paired_games": 2,
+  "settled_paired_games": 39,
+  "pending_paired_games": 1,
   "invalid_timing": 0,
   "coverage": [],
   "metrics": [
     {
       "candidate": "team_control",
-      "games": 38,
-      "correct": 22,
-      "accuracy": 0.5789473684210527,
-      "brier": 0.25676623613182126,
-      "log_loss": 0.7222281556004144
+      "games": 39,
+      "accuracy": 0.5897435897435898,
+      "brier": 0.25223554217662025,
+      "log_loss": 0.7122384741079489
     },
     {
       "candidate": "inferred_goalie",
-      "games": 38,
-      "correct": 23,
-      "accuracy": 0.6052631578947368,
-      "brier": 0.2583431362048722,
-      "log_loss": 0.719868080259924
+      "games": 39,
+      "accuracy": 0.6153846153846154,
+      "brier": 0.25361996809408505,
+      "log_loss": 0.7095598461078237
     },
     {
       "candidate": "confirmed_goalie",
-      "games": 38,
-      "correct": 22,
-      "accuracy": 0.5789473684210527,
-      "brier": 0.2590109300546715,
-      "log_loss": 0.7210612498324114
+      "games": 39,
+      "accuracy": 0.5897435897435898,
+      "brier": 0.25411858105306867,
+      "log_loss": 0.7103336859722703
     }
   ],
   "first_formal_review_paired_games": 500,
@@ -38,13 +35,13 @@
   "confirmed_minus_control": {
     "team_control": {
       "accuracy": 0.0,
-      "brier": 0.0022446939228502605,
-      "log_loss": -0.001166905768003046
+      "brier": 0.0018830388764484174,
+      "log_loss": -0.0019047881356786256
     },
     "inferred_goalie": {
-      "accuracy": -0.02631578947368418,
-      "brier": 0.0006677938497993141,
-      "log_loss": 0.0011931695724873848
+      "accuracy": -0.02564102564102566,
+      "brier": 0.0004986129589836241,
+      "log_loss": 0.0007738398644465683
     }
   },
   "games_in_current_prediction_window": 0,
