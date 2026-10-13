@@ -79,6 +79,10 @@ def board_route():
 
 def render_information(page):
     st.button('← Back to games',key='bp_back_to_board',on_click=board_route)
+    if page=='Weekly results':
+        from overview_ui import render_weekly_results
+        render_weekly_results()
+        return
     if page=='About B.P. Sports':
         st.title('Sports, with a clearer picture.')
         st.write('B.P. Sports brings NFL, college football, NHL and NBA matchups, saved predictions and results into one sports desk. Follow your teams, understand each forecast and see how the models perform when the games are played.')
@@ -129,6 +133,7 @@ def render_preferences(nfl):
         for index,name in enumerate(['Overview','NFL','CFB','NHL','NBA']):
             (left if index%2==0 else right).button(name,key='bp_menu_'+name,use_container_width=True,on_click=menu_route,args=('Board',name))
         st.divider()
+        st.button('Weekly results',key='bp_menu_weekly',use_container_width=True,on_click=menu_route,args=('Weekly results',None))
         st.button('About B.P. Sports',key='bp_menu_about',use_container_width=True,on_click=menu_route,args=('About B.P. Sports',None))
         st.button('Our models & data',key='bp_menu_models',use_container_width=True,on_click=menu_route,args=('Our models & data',None))
         st.divider()
