@@ -211,6 +211,137 @@ def render_daily_results(primary,available,now):
     render_game_cards(shown,now,'daily_details')
     if primary.start.isna().any():st.caption('Saved games with unavailable start times are excluded from date grouping until their dates can be verified.')
 
+def weekly_board(payload, sport, now, latest=False):
+    """Read-only results, with one snapshot per game and ties kept out of accuracy."""
+    board, available, _ = prepare(payload, now)
+    section = board[(board.sport == sport) & (board.group == PRIMARY[sport])].copy()
+    section['tie'] = False
+    if sport == 'NFL' and available.get('nfl'):
+        data = pd.DataFrame(payload['nfl']['data'])
+        if not data.empty:
+            data['captured_at_utc'] = pd.to_datetime(data.captured_at_utc, utc=True, errors='coerce')
+            data = data[data.captured_at_utc.le(now)].sort_values('captured_at_utc', kind='stable')
+            # A verified kickoff, when present, must also precede no selected snapshot.
+            valid = []
+            for item in data.to_dict('records'):
+                status = context('NFL', item['game_id'], item['home_team'], item['away_team'])
+                start = ts(status.get('start_time_utc')) if status else pd.NaT
+                if pd.notna(start) and item['captured_at_utc'] >= start:continue
+                valid.append(item)
+            data = pd.DataFrame(valid)
+            records = []
+            if not data.empty:
+                for item in data.drop_duplicates('game_id', keep='last' if latest else 'first').to_dict('records'):
+                    h = pd.to_numeric(item.get('actual_home_score'), errors='coerce')
+                    a = pd.to_numeric(item.get('actual_away_score'), errors='coerce')
+                    tie = item.get('settlement_status') == 'tie' and pd.notna(h) and h == a
+                    final = item.get('settlement_status') == 'final' and pd.notna(h) and pd.notna(a) and h != a
+                    confidence = float(item['v4_adjusted_confidence'])
+                    if not math.isfinite(confidence) or not .5 <= confidence <= 1:continue
+                    p = confidence if item['v4_pick'] == item['home_team'] else 1-confidence
+                    r = row(item['game_id'], 'NFL', 'nfl', item['home_team'], item['away_team'], p, item['captured_at_utc'], None, final, int(h > a) if final else None, item)
+                    r.update(tie=tie, confidence=confidence)
+                    records.append(r)
+            section = pd.DataFrame(records, columns=COLUMNS+['tie','confidence'])
+    periods = []
+    for index, item in section.iterrows():
+        status = context(sport, item.game_id, item.home, item.away)
+        if status:section.loc[index, 'start'] = ts(status.get('start_time_utc'))
+        details = item.details
+        if sport == 'NFL':
+            bits = str(item.game_id).split('_')
+            period = f'{bits[0]} · Week {int(bits[1])}' if len(bits) >= 2 and bits[1].isdigit() else 'Week unavailable'
+        elif sport == 'CFB':period = f"{details.get('season', 'Unknown')} · Week {details.get('week', 'Unknown')}"
+        else:
+            start = ts(section.loc[index, 'start'])
+            if pd.isna(start):period = 'Date unavailable'
+            else:
+                day = start.tz_convert('America/Chicago').normalize()
+                monday = day-pd.Timedelta(days=day.weekday())
+                period = monday.strftime('Week of %Y-%m-%d')
+        periods.append(period)
+    section['period'] = periods
+    return section, available.get('nhl' if sport == 'NHL' else sport.lower(), False)
+
+
+def weekly_metrics(section):
+    m = metrics(section[~section.tie.astype(bool)])
+    m['ties'] = int(section.tie.sum())
+    m['pending'] = len(section)-m['games']-m['ties']
+    return m
+
+
+def weekly_game_table(section):
+    rows = []
+    for r in section.sort_values(['start','created'], na_position='last').itertuples():
+        d = r.details
+        h = d.get('actual_home_score', d.get('home_points_final', d.get('home_score')))
+        a = d.get('actual_away_score', d.get('away_points_final', d.get('away_score')))
+        # Score feeds can publish a final before the grading ledger settles it.
+        if (r.settled or r.tie) and (pd.isna(h) or pd.isna(a)):
+            status = context(r.sport, r.game_id, r.home, r.away)
+            if status:h, a = status.get('home_score'), status.get('away_score')
+        score = f'{int(float(a))}–{int(float(h))}' if (r.settled or r.tie) and pd.notna(a) and pd.notna(h) else '—'
+        result = 'Tie · excluded' if r.tie else ('Win' if (r.p >= .5) == r.y else 'Loss') if r.settled else 'Pending'
+        rows.append({'Game':f'{r.away} @ {r.home}', 'Saved pick':r.home if r.p >= .5 else r.away,
+                     'Confidence':f'{r.confidence*100:.1f}%', 'Final (away–home)':score, 'Result':result,
+                     'Game time (CT)':ct(r.start), 'Snapshot (CT)':ct(r.created)})
+    return pd.DataFrame(rows)
+
+
+def render_weekly_results(now=None):
+    now = pd.Timestamp.now(tz='UTC') if now is None else ts(now)
+    st.title('Weekly results')
+    st.write('Every saved pick, every verified result. Follow weekly progress and how confidence holds up.')
+    sport = st.selectbox('Sport', list(PRIMARY), key='weekly_sport')
+    mode = st.radio('Forecast to review', ['Original picks · official record','Latest saved pregame picks'], horizontal=True, key='weekly_mode') if sport == 'NFL' else 'Original picks · official record'
+    latest = mode == 'Latest saved pregame picks'
+    section, ok = weekly_board(load_overview(), sport, now, latest)
+    if not ok:st.warning('The grading feed is unavailable. Results cannot be verified right now.');return
+    if sport == 'NHL':st.caption('NHL uses the experimental reference control. Challenger and goalie experiments remain separate.')
+    st.caption('The official record uses the first saved forecast per game. Latest NFL snapshots are a separate comparison. Ties and pending games are excluded from accuracy. NHL and NBA weeks run Monday–Sunday in Central time.')
+    if section.empty:st.info('No prospective games are saved yet. Results will appear after regular-season forecasts and verified finals.');return
+    overall = weekly_metrics(section)
+    overall_accuracy = f"{overall['accuracy']*100:.1f}% accuracy" if overall['games'] else 'Accuracy pending'
+    st.caption(f"Overall in this view: {overall['wins']}–{overall['losses']} · {overall_accuracy} · {overall['ties']} ties · {overall['pending']} pending.")
+    def period_key(label):
+        if ' · Week ' in label:
+            year, week = label.split(' · Week ')
+            return (int(year), int(week)) if year.isdigit() and week.isdigit() else (0,0)
+        return (label,)
+    periods = sorted(section.period.unique(), key=period_key, reverse=True)
+    completed = section[section.settled | section.tie.astype(bool)]
+    default = periods.index(sorted(completed.period.unique(), key=period_key, reverse=True)[0]) if len(completed) else 0
+    period = st.selectbox('Week', periods, index=default, key='weekly_period_'+sport)
+    shown = section[section.period == period]
+    m = weekly_metrics(shown)
+    a,b,c,d = st.columns(4)
+    a.metric('Record', f"{m['wins']}–{m['losses']}")
+    b.metric('Accuracy', f"{m['accuracy']*100:.1f}%" if m['games'] else '—')
+    c.metric('Ties', m['ties']);d.metric('Pending', m['pending'])
+    x,y = st.columns(2)
+    x.metric('Brier score', f"{m['brier']:.4f}" if m['games'] else '—')
+    y.metric('Log loss', f"{m['log_loss']:.4f}" if m['games'] else '—')
+    st.caption('Lower Brier score and log loss mean better probability quality. A single week is a small sample.')
+    st.subheader('Confidence breakdown')
+    bands = []
+    for lo,hi,label in [(.5,.6,'50–59.9%'),(.6,.7,'60–69.9%'),(.7,.8,'70–79.9%'),(.8,.9,'80–89.9%'),(.9,1.01,'90–100%')]:
+        group = shown[shown.confidence.ge(lo) & shown.confidence.lt(hi)]
+        bm = weekly_metrics(group);graded = group[group.settled]
+        bands.append({'Confidence':label,'Record':f"{bm['wins']}–{bm['losses']}", 'Graded':bm['games'],
+                      'Average estimate':f'{graded.confidence.mean()*100:.1f}%' if len(graded) else '—',
+                      'Actual accuracy':f"{bm['accuracy']*100:.1f}%" if bm['games'] else '—'})
+    st.dataframe(pd.DataFrame(bands), hide_index=True, use_container_width=True)
+    st.subheader('Biggest confidence misses')
+    misses = shown[shown.settled & (shown.p.ge(.5) != shown.y)].sort_values('confidence', ascending=False).head(5)
+    if misses.empty:st.info('No graded losses in this week yet.')
+    else:st.dataframe(weekly_game_table(misses), hide_index=True, use_container_width=True)
+    st.subheader('All saved picks & final scores')
+    games = weekly_game_table(shown)
+    st.dataframe(games, hide_index=True, use_container_width=True)
+    st.download_button('Download this week', games.to_csv(index=False), file_name=sport.lower()+'-weekly-results.csv', mime='text/csv')
+
+
 def render_overview(now=None):
     now=pd.Timestamp.now(tz='UTC') if now is None else ts(now)
     board,available,updates=prepare(load_overview(),now)
