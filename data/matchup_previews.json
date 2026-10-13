@@ -1,5 +1,5 @@
 {
-  "updated_at_utc": "2026-10-13T14:48:02.233528+00:00",
+  "updated_at_utc": "2026-10-13T15:46:14.920038+00:00",
   "purpose": "Presentation-only recent results; forecasts and weights unchanged",
   "games": {
     "NFL:2026_05_TB_DAL": {
@@ -13172,6 +13172,930 @@
         {
           "name": "MTL schedule",
           "url": "https://api-web.nhle.com/v1/club-schedule-season/MTL/20262027"
+        }
+      ]
+    },
+    "NFL:2026_06_SEA_DEN": {
+      "sport": "NFL",
+      "game_id": "2026_06_SEA_DEN",
+      "home_team": "DEN",
+      "away_team": "SEA",
+      "cutoff_utc": "2026-10-13T14:56:56.621421+00:00",
+      "start_time_utc": "2026-10-16T00:15:00+00:00",
+      "venue": "Empower Field at Mile High",
+      "neutral_site": false,
+      "home_form": {
+        "games": 5,
+        "wins": 3,
+        "losses": 2,
+        "ties": 0,
+        "recent": [
+          "W",
+          "L",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026_05_DEN_LAC",
+          "home": "LAC",
+          "away": "DEN",
+          "start": "2026-10-11T20:05:00+00:00",
+          "home_score": 17.0,
+          "away_score": 23.0,
+          "for": 23.0,
+          "against": 17.0,
+          "opponent": "LAC",
+          "outcome": "W"
+        },
+        "scored_per_game": 19.4,
+        "allowed_per_game": 22.2
+      },
+      "away_form": {
+        "games": 5,
+        "wins": 3,
+        "losses": 2,
+        "ties": 0,
+        "recent": [
+          "L",
+          "W",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026_05_SF_SEA",
+          "home": "SEA",
+          "away": "SF",
+          "start": "2026-10-11T20:25:00+00:00",
+          "home_score": 29.0,
+          "away_score": 32.0,
+          "for": 29.0,
+          "against": 32.0,
+          "opponent": "SF",
+          "outcome": "L"
+        },
+        "scored_per_game": 26.8,
+        "allowed_per_game": 21.0
+      },
+      "sources": [
+        {
+          "name": "nflverse schedule",
+          "url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"
+        }
+      ]
+    },
+    "NFL:2026_06_HOU_JAX": {
+      "sport": "NFL",
+      "game_id": "2026_06_HOU_JAX",
+      "home_team": "JAX",
+      "away_team": "HOU",
+      "cutoff_utc": "2026-10-13T14:56:56.621421+00:00",
+      "start_time_utc": "2026-10-18T13:30:00+00:00",
+      "venue": "Wembley Stadium",
+      "neutral_site": true,
+      "home_form": {
+        "games": 5,
+        "wins": 4,
+        "losses": 1,
+        "ties": 0,
+        "recent": [
+          "W",
+          "W",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026_05_PHI_JAX",
+          "home": "JAX",
+          "away": "PHI",
+          "start": "2026-10-11T13:30:00+00:00",
+          "home_score": 19.0,
+          "away_score": 17.0,
+          "for": 19.0,
+          "against": 17.0,
+          "opponent": "PHI",
+          "outcome": "W"
+        },
+        "scored_per_game": 24.6,
+        "allowed_per_game": 14.0
+      },
+      "away_form": {
+        "games": 5,
+        "wins": 1,
+        "losses": 4,
+        "ties": 0,
+        "recent": [
+          "L",
+          "L",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026_05_HOU_TEN",
+          "home": "TEN",
+          "away": "HOU",
+          "start": "2026-10-11T17:00:00+00:00",
+          "home_score": 3.0,
+          "away_score": 26.0,
+          "for": 26.0,
+          "against": 3.0,
+          "opponent": "TEN",
+          "outcome": "W"
+        },
+        "scored_per_game": 22.0,
+        "allowed_per_game": 22.4
+      },
+      "sources": [
+        {
+          "name": "nflverse schedule",
+          "url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"
+        }
+      ]
+    },
+    "NFL:2026_06_BAL_CLE": {
+      "sport": "NFL",
+      "game_id": "2026_06_BAL_CLE",
+      "home_team": "CLE",
+      "away_team": "BAL",
+      "cutoff_utc": "2026-10-13T14:56:56.621421+00:00",
+      "start_time_utc": "2026-10-18T17:00:00+00:00",
+      "venue": "Huntington Bank Field",
+      "neutral_site": false,
+      "home_form": {
+        "games": 5,
+        "wins": 3,
+        "losses": 2,
+        "ties": 0,
+        "recent": [
+          "W",
+          "W",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026_05_CLE_NYJ",
+          "home": "NYJ",
+          "away": "CLE",
+          "start": "2026-10-11T17:00:00+00:00",
+          "home_score": 17.0,
+          "away_score": 12.0,
+          "for": 12.0,
+          "against": 17.0,
+          "opponent": "NYJ",
+          "outcome": "L"
+        },
+        "scored_per_game": 18.6,
+        "allowed_per_game": 22.4
+      },
+      "away_form": {
+        "games": 5,
+        "wins": 4,
+        "losses": 1,
+        "ties": 0,
+        "recent": [
+          "W",
+          "W",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026_05_BAL_ATL",
+          "home": "ATL",
+          "away": "BAL",
+          "start": "2026-10-12T00:20:00+00:00",
+          "home_score": 23.0,
+          "away_score": 30.0,
+          "for": 30.0,
+          "against": 23.0,
+          "opponent": "ATL",
+          "outcome": "W"
+        },
+        "scored_per_game": 29.2,
+        "allowed_per_game": 23.8
+      },
+      "sources": [
+        {
+          "name": "nflverse schedule",
+          "url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"
+        }
+      ]
+    },
+    "NFL:2026_06_CAR_PHI": {
+      "sport": "NFL",
+      "game_id": "2026_06_CAR_PHI",
+      "home_team": "PHI",
+      "away_team": "CAR",
+      "cutoff_utc": "2026-10-13T14:56:56.621421+00:00",
+      "start_time_utc": "2026-10-18T17:00:00+00:00",
+      "venue": "Lincoln Financial Field",
+      "neutral_site": false,
+      "home_form": {
+        "games": 5,
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "recent": [
+          "L",
+          "L",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026_05_PHI_JAX",
+          "home": "JAX",
+          "away": "PHI",
+          "start": "2026-10-11T13:30:00+00:00",
+          "home_score": 19.0,
+          "away_score": 17.0,
+          "for": 17.0,
+          "against": 19.0,
+          "opponent": "JAX",
+          "outcome": "L"
+        },
+        "scored_per_game": 18.4,
+        "allowed_per_game": 22.4
+      },
+      "away_form": {
+        "games": 4,
+        "wins": 2,
+        "losses": 2,
+        "ties": 0,
+        "recent": [
+          "W",
+          "L",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026_04_DET_CAR",
+          "home": "CAR",
+          "away": "DET",
+          "start": "2026-10-05T00:20:00+00:00",
+          "home_score": 32.0,
+          "away_score": 26.0,
+          "for": 32.0,
+          "against": 26.0,
+          "opponent": "DET",
+          "outcome": "W"
+        },
+        "scored_per_game": 30.25,
+        "allowed_per_game": 27.25
+      },
+      "sources": [
+        {
+          "name": "nflverse schedule",
+          "url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"
+        }
+      ]
+    },
+    "NFL:2026_06_CHI_ATL": {
+      "sport": "NFL",
+      "game_id": "2026_06_CHI_ATL",
+      "home_team": "ATL",
+      "away_team": "CHI",
+      "cutoff_utc": "2026-10-13T14:56:56.621421+00:00",
+      "start_time_utc": "2026-10-18T17:00:00+00:00",
+      "venue": "Mercedes-Benz Stadium",
+      "neutral_site": false,
+      "home_form": {
+        "games": 5,
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "recent": [
+          "W",
+          "W",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026_05_BAL_ATL",
+          "home": "ATL",
+          "away": "BAL",
+          "start": "2026-10-12T00:20:00+00:00",
+          "home_score": 23.0,
+          "away_score": 30.0,
+          "for": 23.0,
+          "against": 30.0,
+          "opponent": "BAL",
+          "outcome": "L"
+        },
+        "scored_per_game": 23.8,
+        "allowed_per_game": 24.4
+      },
+      "away_form": {
+        "games": 5,
+        "wins": 3,
+        "losses": 2,
+        "ties": 0,
+        "recent": [
+          "W",
+          "W",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026_05_CHI_GB",
+          "home": "GB",
+          "away": "CHI",
+          "start": "2026-10-11T17:00:00+00:00",
+          "home_score": 31.0,
+          "away_score": 7.0,
+          "for": 7.0,
+          "against": 31.0,
+          "opponent": "GB",
+          "outcome": "L"
+        },
+        "scored_per_game": 23.8,
+        "allowed_per_game": 19.2
+      },
+      "sources": [
+        {
+          "name": "nflverse schedule",
+          "url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"
+        }
+      ]
+    },
+    "NFL:2026_06_NO_NYG": {
+      "sport": "NFL",
+      "game_id": "2026_06_NO_NYG",
+      "home_team": "NYG",
+      "away_team": "NO",
+      "cutoff_utc": "2026-10-13T14:56:56.621421+00:00",
+      "start_time_utc": "2026-10-18T17:00:00+00:00",
+      "venue": "MetLife Stadium",
+      "neutral_site": false,
+      "home_form": {
+        "games": 5,
+        "wins": 3,
+        "losses": 1,
+        "ties": 1,
+        "recent": [
+          "W",
+          "W",
+          "T"
+        ],
+        "last": {
+          "game_id": "2026_05_NYG_WAS",
+          "home": "WAS",
+          "away": "NYG",
+          "start": "2026-10-11T17:00:00+00:00",
+          "home_score": 27.0,
+          "away_score": 27.0,
+          "for": 27.0,
+          "against": 27.0,
+          "opponent": "WAS",
+          "outcome": "T"
+        },
+        "scored_per_game": 21.8,
+        "allowed_per_game": 21.2
+      },
+      "away_form": {
+        "games": 5,
+        "wins": 1,
+        "losses": 4,
+        "ties": 0,
+        "recent": [
+          "L",
+          "L",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026_05_MIN_NO",
+          "home": "NO",
+          "away": "MIN",
+          "start": "2026-10-11T17:00:00+00:00",
+          "home_score": 13.0,
+          "away_score": 23.0,
+          "for": 13.0,
+          "against": 23.0,
+          "opponent": "MIN",
+          "outcome": "L"
+        },
+        "scored_per_game": 23.6,
+        "allowed_per_game": 30.2
+      },
+      "sources": [
+        {
+          "name": "nflverse schedule",
+          "url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"
+        }
+      ]
+    },
+    "NFL:2026_06_NYJ_NE": {
+      "sport": "NFL",
+      "game_id": "2026_06_NYJ_NE",
+      "home_team": "NE",
+      "away_team": "NYJ",
+      "cutoff_utc": "2026-10-13T14:56:56.621421+00:00",
+      "start_time_utc": "2026-10-18T17:00:00+00:00",
+      "venue": "Gillette Stadium",
+      "neutral_site": false,
+      "home_form": {
+        "games": 5,
+        "wins": 3,
+        "losses": 2,
+        "ties": 0,
+        "recent": [
+          "L",
+          "W",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026_05_LV_NE",
+          "home": "NE",
+          "away": "LV",
+          "start": "2026-10-11T17:00:00+00:00",
+          "home_score": 45.0,
+          "away_score": 17.0,
+          "for": 45.0,
+          "against": 17.0,
+          "opponent": "LV",
+          "outcome": "W"
+        },
+        "scored_per_game": 22.0,
+        "allowed_per_game": 18.8
+      },
+      "away_form": {
+        "games": 5,
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "recent": [
+          "L",
+          "L",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026_05_CLE_NYJ",
+          "home": "NYJ",
+          "away": "CLE",
+          "start": "2026-10-11T17:00:00+00:00",
+          "home_score": 17.0,
+          "away_score": 12.0,
+          "for": 17.0,
+          "against": 12.0,
+          "opponent": "CLE",
+          "outcome": "W"
+        },
+        "scored_per_game": 18.6,
+        "allowed_per_game": 19.2
+      },
+      "sources": [
+        {
+          "name": "nflverse schedule",
+          "url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"
+        }
+      ]
+    },
+    "NFL:2026_06_PIT_TB": {
+      "sport": "NFL",
+      "game_id": "2026_06_PIT_TB",
+      "home_team": "TB",
+      "away_team": "PIT",
+      "cutoff_utc": "2026-10-13T14:56:56.621421+00:00",
+      "start_time_utc": "2026-10-18T17:00:00+00:00",
+      "venue": "Raymond James Stadium",
+      "neutral_site": false,
+      "home_form": {
+        "games": 5,
+        "wins": 1,
+        "losses": 4,
+        "ties": 0,
+        "recent": [
+          "L",
+          "L",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026_05_TB_DAL",
+          "home": "DAL",
+          "away": "TB",
+          "start": "2026-10-09T00:15:00+00:00",
+          "home_score": 16.0,
+          "away_score": 24.0,
+          "for": 24.0,
+          "against": 16.0,
+          "opponent": "DAL",
+          "outcome": "W"
+        },
+        "scored_per_game": 20.0,
+        "allowed_per_game": 22.4
+      },
+      "away_form": {
+        "games": 5,
+        "wins": 3,
+        "losses": 2,
+        "ties": 0,
+        "recent": [
+          "W",
+          "L",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026_05_IND_PIT",
+          "home": "PIT",
+          "away": "IND",
+          "start": "2026-10-11T17:00:00+00:00",
+          "home_score": 34.0,
+          "away_score": 22.0,
+          "for": 34.0,
+          "against": 22.0,
+          "opponent": "IND",
+          "outcome": "W"
+        },
+        "scored_per_game": 22.2,
+        "allowed_per_game": 21.8
+      },
+      "sources": [
+        {
+          "name": "nflverse schedule",
+          "url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"
+        }
+      ]
+    },
+    "NFL:2026_06_TEN_IND": {
+      "sport": "NFL",
+      "game_id": "2026_06_TEN_IND",
+      "home_team": "IND",
+      "away_team": "TEN",
+      "cutoff_utc": "2026-10-13T14:56:56.621421+00:00",
+      "start_time_utc": "2026-10-18T17:00:00+00:00",
+      "venue": "Lucas Oil Stadium",
+      "neutral_site": false,
+      "home_form": {
+        "games": 5,
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "recent": [
+          "W",
+          "W",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026_05_IND_PIT",
+          "home": "PIT",
+          "away": "IND",
+          "start": "2026-10-11T17:00:00+00:00",
+          "home_score": 34.0,
+          "away_score": 22.0,
+          "for": 22.0,
+          "against": 34.0,
+          "opponent": "PIT",
+          "outcome": "L"
+        },
+        "scored_per_game": 24.8,
+        "allowed_per_game": 27.6
+      },
+      "away_form": {
+        "games": 5,
+        "wins": 0,
+        "losses": 5,
+        "ties": 0,
+        "recent": [
+          "L",
+          "L",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026_05_HOU_TEN",
+          "home": "TEN",
+          "away": "HOU",
+          "start": "2026-10-11T17:00:00+00:00",
+          "home_score": 3.0,
+          "away_score": 26.0,
+          "for": 3.0,
+          "against": 26.0,
+          "opponent": "HOU",
+          "outcome": "L"
+        },
+        "scored_per_game": 11.6,
+        "allowed_per_game": 21.8
+      },
+      "sources": [
+        {
+          "name": "nflverse schedule",
+          "url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"
+        }
+      ]
+    },
+    "NFL:2026_06_ARI_LA": {
+      "sport": "NFL",
+      "game_id": "2026_06_ARI_LA",
+      "home_team": "LA",
+      "away_team": "ARI",
+      "cutoff_utc": "2026-10-13T14:56:56.621421+00:00",
+      "start_time_utc": "2026-10-18T20:05:00+00:00",
+      "venue": "SoFi Stadium",
+      "neutral_site": false,
+      "home_form": {
+        "games": 5,
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "recent": [
+          "L",
+          "W",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026_05_BUF_LA",
+          "home": "LA",
+          "away": "BUF",
+          "start": "2026-10-13T00:15:00+00:00",
+          "home_score": 34.0,
+          "away_score": 37.0,
+          "for": 34.0,
+          "against": 37.0,
+          "opponent": "BUF",
+          "outcome": "L"
+        },
+        "scored_per_game": 23.8,
+        "allowed_per_game": 24.0
+      },
+      "away_form": {
+        "games": 5,
+        "wins": 1,
+        "losses": 4,
+        "ties": 0,
+        "recent": [
+          "L",
+          "L",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026_05_DET_ARI",
+          "home": "ARI",
+          "away": "DET",
+          "start": "2026-10-11T20:25:00+00:00",
+          "home_score": 21.0,
+          "away_score": 45.0,
+          "for": 21.0,
+          "against": 45.0,
+          "opponent": "DET",
+          "outcome": "L"
+        },
+        "scored_per_game": 21.6,
+        "allowed_per_game": 32.4
+      },
+      "sources": [
+        {
+          "name": "nflverse schedule",
+          "url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"
+        }
+      ]
+    },
+    "NFL:2026_06_BUF_LV": {
+      "sport": "NFL",
+      "game_id": "2026_06_BUF_LV",
+      "home_team": "LV",
+      "away_team": "BUF",
+      "cutoff_utc": "2026-10-13T14:56:56.621421+00:00",
+      "start_time_utc": "2026-10-18T20:25:00+00:00",
+      "venue": "Allegiant Stadium",
+      "neutral_site": false,
+      "home_form": {
+        "games": 5,
+        "wins": 3,
+        "losses": 2,
+        "ties": 0,
+        "recent": [
+          "W",
+          "L",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026_05_LV_NE",
+          "home": "NE",
+          "away": "LV",
+          "start": "2026-10-11T17:00:00+00:00",
+          "home_score": 45.0,
+          "away_score": 17.0,
+          "for": 17.0,
+          "against": 45.0,
+          "opponent": "NE",
+          "outcome": "L"
+        },
+        "scored_per_game": 26.4,
+        "allowed_per_game": 25.8
+      },
+      "away_form": {
+        "games": 5,
+        "wins": 4,
+        "losses": 1,
+        "ties": 0,
+        "recent": [
+          "W",
+          "L",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026_05_BUF_LA",
+          "home": "LA",
+          "away": "BUF",
+          "start": "2026-10-13T00:15:00+00:00",
+          "home_score": 34.0,
+          "away_score": 37.0,
+          "for": 37.0,
+          "against": 34.0,
+          "opponent": "LA",
+          "outcome": "W"
+        },
+        "scored_per_game": 32.8,
+        "allowed_per_game": 28.2
+      },
+      "sources": [
+        {
+          "name": "nflverse schedule",
+          "url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"
+        }
+      ]
+    },
+    "NFL:2026_06_LAC_KC": {
+      "sport": "NFL",
+      "game_id": "2026_06_LAC_KC",
+      "home_team": "KC",
+      "away_team": "LAC",
+      "cutoff_utc": "2026-10-13T14:56:56.621421+00:00",
+      "start_time_utc": "2026-10-18T20:25:00+00:00",
+      "venue": "GEHA Field at Arrowhead Stadium",
+      "neutral_site": false,
+      "home_form": {
+        "games": 4,
+        "wins": 4,
+        "losses": 0,
+        "ties": 0,
+        "recent": [
+          "W",
+          "W",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026_04_KC_LV",
+          "home": "LV",
+          "away": "KC",
+          "start": "2026-10-04T20:25:00+00:00",
+          "home_score": 27.0,
+          "away_score": 30.0,
+          "for": 30.0,
+          "against": 27.0,
+          "opponent": "LV",
+          "outcome": "W"
+        },
+        "scored_per_game": 29.5,
+        "allowed_per_game": 19.25
+      },
+      "away_form": {
+        "games": 5,
+        "wins": 0,
+        "losses": 5,
+        "ties": 0,
+        "recent": [
+          "L",
+          "L",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026_05_DEN_LAC",
+          "home": "LAC",
+          "away": "DEN",
+          "start": "2026-10-11T20:05:00+00:00",
+          "home_score": 17.0,
+          "away_score": 23.0,
+          "for": 17.0,
+          "against": 23.0,
+          "opponent": "DEN",
+          "outcome": "L"
+        },
+        "scored_per_game": 16.8,
+        "allowed_per_game": 25.8
+      },
+      "sources": [
+        {
+          "name": "nflverse schedule",
+          "url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"
+        }
+      ]
+    },
+    "NFL:2026_06_DAL_GB": {
+      "sport": "NFL",
+      "game_id": "2026_06_DAL_GB",
+      "home_team": "GB",
+      "away_team": "DAL",
+      "cutoff_utc": "2026-10-13T14:56:56.621421+00:00",
+      "start_time_utc": "2026-10-19T00:20:00+00:00",
+      "venue": "Lambeau Field",
+      "neutral_site": false,
+      "home_form": {
+        "games": 5,
+        "wins": 3,
+        "losses": 2,
+        "ties": 0,
+        "recent": [
+          "L",
+          "W",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026_05_CHI_GB",
+          "home": "GB",
+          "away": "CHI",
+          "start": "2026-10-11T17:00:00+00:00",
+          "home_score": 31.0,
+          "away_score": 7.0,
+          "for": 31.0,
+          "against": 7.0,
+          "opponent": "CHI",
+          "outcome": "W"
+        },
+        "scored_per_game": 20.8,
+        "allowed_per_game": 22.4
+      },
+      "away_form": {
+        "games": 5,
+        "wins": 2,
+        "losses": 3,
+        "ties": 0,
+        "recent": [
+          "L",
+          "W",
+          "L"
+        ],
+        "last": {
+          "game_id": "2026_05_TB_DAL",
+          "home": "DAL",
+          "away": "TB",
+          "start": "2026-10-09T00:15:00+00:00",
+          "home_score": 16.0,
+          "away_score": 24.0,
+          "for": 16.0,
+          "against": 24.0,
+          "opponent": "TB",
+          "outcome": "L"
+        },
+        "scored_per_game": 27.6,
+        "allowed_per_game": 27.2
+      },
+      "sources": [
+        {
+          "name": "nflverse schedule",
+          "url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"
+        }
+      ]
+    },
+    "NFL:2026_06_WAS_SF": {
+      "sport": "NFL",
+      "game_id": "2026_06_WAS_SF",
+      "home_team": "SF",
+      "away_team": "WAS",
+      "cutoff_utc": "2026-10-13T14:56:56.621421+00:00",
+      "start_time_utc": "2026-10-20T00:15:00+00:00",
+      "venue": "Levi's Stadium",
+      "neutral_site": false,
+      "home_form": {
+        "games": 5,
+        "wins": 5,
+        "losses": 0,
+        "ties": 0,
+        "recent": [
+          "W",
+          "W",
+          "W"
+        ],
+        "last": {
+          "game_id": "2026_05_SF_SEA",
+          "home": "SEA",
+          "away": "SF",
+          "start": "2026-10-11T20:25:00+00:00",
+          "home_score": 29.0,
+          "away_score": 32.0,
+          "for": 32.0,
+          "against": 29.0,
+          "opponent": "SEA",
+          "outcome": "W"
+        },
+        "scored_per_game": 30.8,
+        "allowed_per_game": 18.6
+      },
+      "away_form": {
+        "games": 5,
+        "wins": 1,
+        "losses": 3,
+        "ties": 1,
+        "recent": [
+          "W",
+          "L",
+          "T"
+        ],
+        "last": {
+          "game_id": "2026_05_NYG_WAS",
+          "home": "WAS",
+          "away": "NYG",
+          "start": "2026-10-11T17:00:00+00:00",
+          "home_score": 27.0,
+          "away_score": 27.0,
+          "for": 27.0,
+          "against": 27.0,
+          "opponent": "NYG",
+          "outcome": "T"
+        },
+        "scored_per_game": 23.0,
+        "allowed_per_game": 29.8
+      },
+      "sources": [
+        {
+          "name": "nflverse schedule",
+          "url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv"
         }
       ]
     }
