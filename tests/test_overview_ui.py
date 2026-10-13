@@ -20,6 +20,29 @@ def test_repeated_nfl_updates_and_parallel_nhl_models_do_not_inflate_primary_rec
  assert board[board.group=='nfl'].iloc[0].p==.6
  primary=board[board.apply(lambda r:ov.PRIMARY[r.sport]==r.group,axis=1)];assert len(primary)==3 and ov.metrics(primary)['games']==2
 
+def test_weekly_original_latest_ties_and_late_snapshots():
+ data=fixture();base=data['nfl']['data'][0]
+ first={**base,'game_id':'2026_05_CHI_DET','v4_pick':'CHI'}
+ last={**first,'v4_pick':'DET','captured_at_utc':(NOW-pd.Timedelta(hours=2)).isoformat()}
+ late={**first,'captured_at_utc':NOW.isoformat()}
+ tie={**base,'game_id':'2026_05_NYG_WAS','actual_home_score':27,'actual_away_score':27,'settlement_status':'tie'}
+ data['nfl']['data']=[first,last,late,tie]
+ with patch('overview_ui.context',return_value={'start_time_utc':(NOW-pd.Timedelta(hours=1)).isoformat()}):
+  original,ok=ov.weekly_board(data,'NFL',NOW)
+  latest,_=ov.weekly_board(data,'NFL',NOW,True)
+ assert ok and ov.weekly_metrics(original)['losses']==1
+ assert ov.weekly_metrics(latest)['wins']==1
+ assert ov.weekly_metrics(latest)['ties']==1 and ov.weekly_metrics(latest)['pending']==0
+ assert set(latest.period)=={'2026 · Week 5'}
+ assert 'Tie · excluded' in ov.weekly_game_table(latest).Result.values
+
+def test_weekly_page_renders_and_menu_opens_it():
+ with patch('overview_ui.load_overview',return_value=fixture()):
+  at=AppTest.from_file(Path(__file__).resolve().parents[1]/'app.py',default_timeout=20).run()
+  at.button(key='bp_menu_weekly').click().run()
+  assert not at.exception and any(t.value=='Weekly results' for t in at.title)
+  assert any(m.label=='Record' for m in at.metric)
+
 def test_late_snapshots_and_future_settlements_excluded():
  data=fixture()['nhl']['data'];late=copy.deepcopy(data[0]);late['created_at_utc']=late['start_time_utc'];assert ov.normalize('nhl',[late],NOW)==[]
  future=copy.deepcopy(data[0]);future.update(status='settled',actual_home_win=1);assert ov.normalize('nhl',[future],NOW)==[]
