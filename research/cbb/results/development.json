@@ -1,0 +1,841 @@
+{
+  "status": "development_only_not_frozen",
+  "train_seasons": [
+    2020,
+    2021,
+    2022,
+    2023
+  ],
+  "calibration_season": 2024,
+  "development_season": 2025,
+  "untouched_holdout_season": 2026,
+  "scope": "regular season; both teams have conference identifiers; explicit non-DI excluded",
+  "safety": "full intervening UTC-day embargo; previous-season priors; no market or final-season ratings",
+  "models": {
+    "elo": {
+      "games": 5636,
+      "correct": 4021,
+      "accuracy": 0.7134492547906317,
+      "brier": 0.19354679900951302,
+      "log_loss": 0.571116592365172
+    },
+    "elo_logistic": {
+      "games": 5636,
+      "correct": 4029,
+      "accuracy": 0.7148687012065295,
+      "brier": 0.18847973193307088,
+      "log_loss": 0.5558069971322814,
+      "features": [
+        "elo_diff",
+        "home_advantage"
+      ],
+      "neutral": {
+        "games": 643,
+        "correct": 404,
+        "accuracy": 0.6283048211508554,
+        "brier": 0.21959236613516067,
+        "log_loss": 0.6277954522860594
+      },
+      "non_neutral": {
+        "games": 4993,
+        "correct": 3625,
+        "accuracy": 0.726016422992189,
+        "brier": 0.1844730378028999,
+        "log_loss": 0.5465363028274788
+      },
+      "confidence_bands": [
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "games": 1416,
+          "correct": 811,
+          "accuracy": 0.5727401129943502,
+          "brier": 0.24437842756906206,
+          "log_loss": 0.6818465951015914
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "games": 1423,
+          "correct": 911,
+          "accuracy": 0.640196767392832,
+          "brier": 0.22992248383466868,
+          "log_loss": 0.6524084087479034
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "games": 1248,
+          "correct": 944,
+          "accuracy": 0.7564102564102564,
+          "brier": 0.18399481372225715,
+          "log_loss": 0.5544939633143674
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "games": 1134,
+          "correct": 971,
+          "accuracy": 0.8562610229276896,
+          "brier": 0.12180623018647475,
+          "log_loss": 0.4066407555853955
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.01,
+          "games": 415,
+          "correct": 392,
+          "accuracy": 0.944578313253012,
+          "brier": 0.051321514899813944,
+          "log_loss": 0.20606556259096143
+        }
+      ]
+    },
+    "team_stats": {
+      "games": 5636,
+      "correct": 4048,
+      "accuracy": 0.7182398864442867,
+      "brier": 0.18318144929774416,
+      "log_loss": 0.5405846222473054,
+      "features": [
+        "elo_diff",
+        "home_advantage",
+        "off_eff_diff",
+        "def_eff_diff",
+        "efg_diff",
+        "tov_rate_diff",
+        "orb_rate_diff",
+        "ft_rate_diff",
+        "pace_diff",
+        "rest_diff",
+        "experience_diff"
+      ],
+      "neutral": {
+        "games": 643,
+        "correct": 418,
+        "accuracy": 0.6500777604976672,
+        "brier": 0.2145620420943529,
+        "log_loss": 0.6184927104136709
+      },
+      "non_neutral": {
+        "games": 4993,
+        "correct": 3630,
+        "accuracy": 0.7270178249549369,
+        "brier": 0.17914024738141748,
+        "log_loss": 0.5305515958721857
+      },
+      "confidence_bands": [
+        {
+          "lower": 0.5,
+          "upper": 0.6,
+          "games": 1364,
+          "correct": 749,
+          "accuracy": 0.5491202346041055,
+          "brier": 0.2472089606753576,
+          "log_loss": 0.6875532452636369
+        },
+        {
+          "lower": 0.6,
+          "upper": 0.7,
+          "games": 1367,
+          "correct": 894,
+          "accuracy": 0.653986832479883,
+          "brier": 0.22416912247946905,
+          "log_loss": 0.6402711597350609
+        },
+        {
+          "lower": 0.7,
+          "upper": 0.8,
+          "games": 1237,
+          "correct": 914,
+          "accuracy": 0.7388843977364592,
+          "brier": 0.19191034809531765,
+          "log_loss": 0.571590694477898
+        },
+        {
+          "lower": 0.8,
+          "upper": 0.9,
+          "games": 1079,
+          "correct": 921,
+          "accuracy": 0.8535681186283596,
+          "brier": 0.12292865530032387,
+          "log_loss": 0.40826581403224976
+        },
+        {
+          "lower": 0.9,
+          "upper": 1.01,
+          "games": 589,
+          "correct": 570,
+          "accuracy": 0.967741935483871,
+          "brier": 0.03182566347794058,
+          "log_loss": 0.14615471422483275
+        }
+      ]
+    }
+  },
+  "home_pick_baseline_accuracy": 0.6428317955997161,
+  "chronological_development_folds": {
+    "2023": {
+      "train_seasons": [
+        2020,
+        2021
+      ],
+      "calibration_season": 2022,
+      "development_season": 2023,
+      "models": {
+        "elo": {
+          "games": 5601,
+          "correct": 3946,
+          "accuracy": 0.7045170505266917,
+          "brier": 0.19618426277353695,
+          "log_loss": 0.5770946767156497
+        },
+        "elo_logistic": {
+          "games": 5601,
+          "correct": 3952,
+          "accuracy": 0.705588287805749,
+          "brier": 0.19291228569858593,
+          "log_loss": 0.5665645485026896,
+          "features": [
+            "elo_diff",
+            "home_advantage"
+          ],
+          "neutral": {
+            "games": 678,
+            "correct": 446,
+            "accuracy": 0.6578171091445427,
+            "brier": 0.217837696410742,
+            "log_loss": 0.6222398875103295
+          },
+          "non_neutral": {
+            "games": 4923,
+            "correct": 3506,
+            "accuracy": 0.7121673776152753,
+            "brier": 0.18947953565535178,
+            "log_loss": 0.5588968906015763
+          },
+          "confidence_bands": [
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "games": 1344,
+              "correct": 750,
+              "accuracy": 0.5580357142857143,
+              "brier": 0.24638876896691922,
+              "log_loss": 0.6858965577055057
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "games": 1255,
+              "correct": 786,
+              "accuracy": 0.6262948207171315,
+              "brier": 0.23584323784540995,
+              "log_loss": 0.6648804689561967
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "games": 1256,
+              "correct": 908,
+              "accuracy": 0.7229299363057324,
+              "brier": 0.20099275247166543,
+              "log_loss": 0.5920609729332845
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "games": 1164,
+              "correct": 969,
+              "accuracy": 0.8324742268041238,
+              "brier": 0.13870561444834023,
+              "log_loss": 0.4491582197139708
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.01,
+              "games": 582,
+              "correct": 539,
+              "accuracy": 0.9261168384879725,
+              "brier": 0.06782080908586116,
+              "log_loss": 0.2587789077595707
+            }
+          ]
+        },
+        "team_stats": {
+          "games": 5601,
+          "correct": 3961,
+          "accuracy": 0.7071951437243349,
+          "brier": 0.18848115848510125,
+          "log_loss": 0.5554850121735286,
+          "features": [
+            "elo_diff",
+            "home_advantage",
+            "off_eff_diff",
+            "def_eff_diff",
+            "efg_diff",
+            "tov_rate_diff",
+            "orb_rate_diff",
+            "ft_rate_diff",
+            "pace_diff",
+            "rest_diff",
+            "experience_diff"
+          ],
+          "neutral": {
+            "games": 678,
+            "correct": 448,
+            "accuracy": 0.6607669616519174,
+            "brier": 0.21236687161298773,
+            "log_loss": 0.6118757093027872
+          },
+          "non_neutral": {
+            "games": 4923,
+            "correct": 3513,
+            "accuracy": 0.7135892748324193,
+            "brier": 0.1851915965308646,
+            "log_loss": 0.5477188345067325
+          },
+          "confidence_bands": [
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "games": 1449,
+              "correct": 762,
+              "accuracy": 0.525879917184265,
+              "brier": 0.2492021946363625,
+              "log_loss": 0.6915640922515038
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "games": 1353,
+              "correct": 914,
+              "accuracy": 0.6755358462675536,
+              "brier": 0.21866604156528882,
+              "log_loss": 0.6289893187861846
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "games": 1303,
+              "correct": 962,
+              "accuracy": 0.7382962394474291,
+              "brier": 0.19190576033751502,
+              "log_loss": 0.5713817337158233
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "games": 1022,
+              "correct": 877,
+              "accuracy": 0.8581213307240705,
+              "brier": 0.12013167609143363,
+              "log_loss": 0.40208042928674503
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.01,
+              "games": 474,
+              "correct": 446,
+              "accuracy": 0.9409282700421941,
+              "brier": 0.054654125999788424,
+              "log_loss": 0.21674269500216403
+            }
+          ]
+        }
+      }
+    },
+    "2024": {
+      "train_seasons": [
+        2020,
+        2021,
+        2022
+      ],
+      "calibration_season": 2023,
+      "development_season": 2024,
+      "models": {
+        "elo": {
+          "games": 5603,
+          "correct": 3950,
+          "accuracy": 0.7049794752810994,
+          "brier": 0.19624138294451873,
+          "log_loss": 0.5772907599483713
+        },
+        "elo_logistic": {
+          "games": 5603,
+          "correct": 3932,
+          "accuracy": 0.701766910583616,
+          "brier": 0.19209002186334562,
+          "log_loss": 0.564976478303118,
+          "features": [
+            "elo_diff",
+            "home_advantage"
+          ],
+          "neutral": {
+            "games": 654,
+            "correct": 405,
+            "accuracy": 0.6192660550458715,
+            "brier": 0.23118550753564515,
+            "log_loss": 0.654317890549886
+          },
+          "non_neutral": {
+            "games": 4949,
+            "correct": 3527,
+            "accuracy": 0.7126692261062841,
+            "brier": 0.18692363519337515,
+            "log_loss": 0.5531701975172246
+          },
+          "confidence_bands": [
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "games": 1384,
+              "correct": 752,
+              "accuracy": 0.5433526011560693,
+              "brier": 0.246387782103933,
+              "log_loss": 0.685880326773198
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "games": 1368,
+              "correct": 872,
+              "accuracy": 0.6374269005847953,
+              "brier": 0.23008452233882057,
+              "log_loss": 0.6526352104017241
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "games": 1325,
+              "correct": 968,
+              "accuracy": 0.730566037735849,
+              "brier": 0.19579888617432226,
+              "log_loss": 0.5800051761448369
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "games": 1088,
+              "correct": 939,
+              "accuracy": 0.8630514705882353,
+              "brier": 0.11696032012654657,
+              "log_loss": 0.39415619558342907
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.01,
+              "games": 438,
+              "correct": 401,
+              "accuracy": 0.9155251141552512,
+              "brier": 0.07725507541168047,
+              "log_loss": 0.2880161384977763
+            }
+          ]
+        },
+        "team_stats": {
+          "games": 5603,
+          "correct": 3992,
+          "accuracy": 0.7124754595752275,
+          "brier": 0.18810057560583607,
+          "log_loss": 0.5536101915514228,
+          "features": [
+            "elo_diff",
+            "home_advantage",
+            "off_eff_diff",
+            "def_eff_diff",
+            "efg_diff",
+            "tov_rate_diff",
+            "orb_rate_diff",
+            "ft_rate_diff",
+            "pace_diff",
+            "rest_diff",
+            "experience_diff"
+          ],
+          "neutral": {
+            "games": 654,
+            "correct": 422,
+            "accuracy": 0.6452599388379205,
+            "brier": 0.22440895398054012,
+            "log_loss": 0.6390538497553909
+          },
+          "non_neutral": {
+            "games": 4949,
+            "correct": 3570,
+            "accuracy": 0.7213578500707214,
+            "brier": 0.1833024993364773,
+            "log_loss": 0.5423189908107892
+          },
+          "confidence_bands": [
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "games": 1331,
+              "correct": 758,
+              "accuracy": 0.569496619083396,
+              "brier": 0.24342066066726717,
+              "log_loss": 0.6798930884648546
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "games": 1340,
+              "correct": 847,
+              "accuracy": 0.6320895522388059,
+              "brier": 0.23288638371744327,
+              "log_loss": 0.6586411648104087
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "games": 1274,
+              "correct": 911,
+              "accuracy": 0.7150706436420722,
+              "brier": 0.20373489580512066,
+              "log_loss": 0.5977124537407392
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "games": 1075,
+              "correct": 929,
+              "accuracy": 0.8641860465116279,
+              "brier": 0.11618211995649663,
+              "log_loss": 0.3922799152921033
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.01,
+              "games": 583,
+              "correct": 547,
+              "accuracy": 0.9382504288164666,
+              "brier": 0.05731189602235887,
+              "log_loss": 0.22499908518909062
+            }
+          ]
+        }
+      }
+    },
+    "2025": {
+      "train_seasons": [
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "calibration_season": 2024,
+      "development_season": 2025,
+      "models": {
+        "elo": {
+          "games": 5636,
+          "correct": 4021,
+          "accuracy": 0.7134492547906317,
+          "brier": 0.19354679900951302,
+          "log_loss": 0.571116592365172
+        },
+        "elo_logistic": {
+          "games": 5636,
+          "correct": 4029,
+          "accuracy": 0.7148687012065295,
+          "brier": 0.18847973193307088,
+          "log_loss": 0.5558069971322814,
+          "features": [
+            "elo_diff",
+            "home_advantage"
+          ],
+          "neutral": {
+            "games": 643,
+            "correct": 404,
+            "accuracy": 0.6283048211508554,
+            "brier": 0.21959236613516067,
+            "log_loss": 0.6277954522860594
+          },
+          "non_neutral": {
+            "games": 4993,
+            "correct": 3625,
+            "accuracy": 0.726016422992189,
+            "brier": 0.1844730378028999,
+            "log_loss": 0.5465363028274788
+          },
+          "confidence_bands": [
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "games": 1416,
+              "correct": 811,
+              "accuracy": 0.5727401129943502,
+              "brier": 0.24437842756906206,
+              "log_loss": 0.6818465951015914
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "games": 1423,
+              "correct": 911,
+              "accuracy": 0.640196767392832,
+              "brier": 0.22992248383466868,
+              "log_loss": 0.6524084087479034
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "games": 1248,
+              "correct": 944,
+              "accuracy": 0.7564102564102564,
+              "brier": 0.18399481372225715,
+              "log_loss": 0.5544939633143674
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "games": 1134,
+              "correct": 971,
+              "accuracy": 0.8562610229276896,
+              "brier": 0.12180623018647475,
+              "log_loss": 0.4066407555853955
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.01,
+              "games": 415,
+              "correct": 392,
+              "accuracy": 0.944578313253012,
+              "brier": 0.051321514899813944,
+              "log_loss": 0.20606556259096143
+            }
+          ]
+        },
+        "team_stats": {
+          "games": 5636,
+          "correct": 4048,
+          "accuracy": 0.7182398864442867,
+          "brier": 0.18318144929774416,
+          "log_loss": 0.5405846222473054,
+          "features": [
+            "elo_diff",
+            "home_advantage",
+            "off_eff_diff",
+            "def_eff_diff",
+            "efg_diff",
+            "tov_rate_diff",
+            "orb_rate_diff",
+            "ft_rate_diff",
+            "pace_diff",
+            "rest_diff",
+            "experience_diff"
+          ],
+          "neutral": {
+            "games": 643,
+            "correct": 418,
+            "accuracy": 0.6500777604976672,
+            "brier": 0.2145620420943529,
+            "log_loss": 0.6184927104136709
+          },
+          "non_neutral": {
+            "games": 4993,
+            "correct": 3630,
+            "accuracy": 0.7270178249549369,
+            "brier": 0.17914024738141748,
+            "log_loss": 0.5305515958721857
+          },
+          "confidence_bands": [
+            {
+              "lower": 0.5,
+              "upper": 0.6,
+              "games": 1364,
+              "correct": 749,
+              "accuracy": 0.5491202346041055,
+              "brier": 0.2472089606753576,
+              "log_loss": 0.6875532452636369
+            },
+            {
+              "lower": 0.6,
+              "upper": 0.7,
+              "games": 1367,
+              "correct": 894,
+              "accuracy": 0.653986832479883,
+              "brier": 0.22416912247946905,
+              "log_loss": 0.6402711597350609
+            },
+            {
+              "lower": 0.7,
+              "upper": 0.8,
+              "games": 1237,
+              "correct": 914,
+              "accuracy": 0.7388843977364592,
+              "brier": 0.19191034809531765,
+              "log_loss": 0.571590694477898
+            },
+            {
+              "lower": 0.8,
+              "upper": 0.9,
+              "games": 1079,
+              "correct": 921,
+              "accuracy": 0.8535681186283596,
+              "brier": 0.12292865530032387,
+              "log_loss": 0.40826581403224976
+            },
+            {
+              "lower": 0.9,
+              "upper": 1.01,
+              "games": 589,
+              "correct": 570,
+              "accuracy": 0.967741935483871,
+              "brier": 0.03182566347794058,
+              "log_loss": 0.14615471422483275
+            }
+          ]
+        }
+      }
+    }
+  },
+  "data_audit": [
+    {
+      "season": 2020,
+      "schedule_rows": 5767,
+      "box_rows": 11514,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2020.parquet",
+          "sha256": "f87d7a04d905c95221b1201a4fd43bdf9bad3bfae7b3f880800e9eb8ae1cfa3a",
+          "bytes": 598411
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2020.parquet",
+          "sha256": "e0691635680d2acc2002b9a5092e9f6065c7da46a9d44f433831b0332a628126",
+          "bytes": 706896
+        }
+      ],
+      "exclusions": {
+        "missing_or_unpaired_box": 4,
+        "division_or_conference_unknown": 437
+      },
+      "eligible_games": 5326,
+      "neutral_games": 453
+    },
+    {
+      "season": 2021,
+      "schedule_rows": 4285,
+      "box_rows": 8566,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2021.parquet",
+          "sha256": "26b26e9fd035a567ca66e65fadd8a3df9482e25e4a1c63ff40466e0d99c9cc76",
+          "bytes": 465503
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2021.parquet",
+          "sha256": "61dd52ed579a1ed628bf30f79b38580e559d7a9e8160a8a03204f6415ef6f4a4",
+          "bytes": 525456
+        }
+      ],
+      "exclusions": {
+        "not_regular_season": 89,
+        "division_or_conference_unknown": 338,
+        "missing_or_unpaired_box": 1
+      },
+      "eligible_games": 3857,
+      "neutral_games": 399
+    },
+    {
+      "season": 2022,
+      "schedule_rows": 5976,
+      "box_rows": 11930,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2022.parquet",
+          "sha256": "75a702d5c8db85bfd7ad30bc046a801742b88ac3f7a900d7e05450a6a4c10276",
+          "bytes": 621024
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2022.parquet",
+          "sha256": "2ddae04a435686e16c2bbc5bbe133fa8706eadd69dd860344fb5c2cd216c2fb6",
+          "bytes": 733561
+        }
+      ],
+      "exclusions": {
+        "not_regular_season": 130,
+        "division_or_conference_unknown": 491,
+        "not_confirmed_final": 10
+      },
+      "eligible_games": 5345,
+      "neutral_games": 603
+    },
+    {
+      "season": 2023,
+      "schedule_rows": 6261,
+      "box_rows": 12440,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2023.parquet",
+          "sha256": "1a75500bd669a2e0f01b39623a1aa28d8d4cc1b8658f8adbabfc5319c73c496c",
+          "bytes": 1039184
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2023.parquet",
+          "sha256": "2dc03013ed57653e7063134bfc6af0cd96866cb25c11268288828ff42757a84c",
+          "bytes": 762833
+        }
+      ],
+      "exclusions": {
+        "not_regular_season": 113,
+        "not_confirmed_final": 39,
+        "division_or_conference_unknown": 507,
+        "missing_or_unpaired_box": 1
+      },
+      "eligible_games": 5601,
+      "neutral_games": 678
+    },
+    {
+      "season": 2024,
+      "schedule_rows": 6249,
+      "box_rows": 12480,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2024.parquet",
+          "sha256": "27889ecf392a9a6281e7898dc39d51a2f4a4576f689533dda0d67c4d57d52602",
+          "bytes": 1024630
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2024.parquet",
+          "sha256": "b9137f1cb2b8bc94836c63842de8c587df197bf7bd7746727593e1301a819b2d",
+          "bytes": 798459
+        }
+      ],
+      "exclusions": {
+        "not_regular_season": 120,
+        "missing_or_unpaired_box": 3,
+        "division_or_conference_unknown": 517,
+        "not_confirmed_final": 6
+      },
+      "eligible_games": 5603,
+      "neutral_games": 654
+    },
+    {
+      "season": 2025,
+      "schedule_rows": 6299,
+      "box_rows": 12572,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2025.parquet",
+          "sha256": "e01bf54b51c8d71b00cd8144e9a022ed170af2c2e57787b1cef672340891c45b",
+          "bytes": 1433410
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2025.parquet",
+          "sha256": "571f7ab5c4dd5c4332544f27a0e9d32d131f6f20c4527884a7e180084ae887c9",
+          "bytes": 711263
+        }
+      ],
+      "exclusions": {
+        "not_regular_season": 123,
+        "not_confirmed_final": 7,
+        "missing_or_unpaired_box": 5,
+        "division_or_conference_unknown": 524,
+        "non_division_i": 4
+      },
+      "eligible_games": 5636,
+      "neutral_games": 643
+    }
+  ]
+}
