@@ -1,5 +1,5 @@
 """Shared scores, preferences and probability guidance for the web UI."""
-UI_REVISION="cbb-preview-20261013"
+UI_REVISION="clean-nav-20261013"
 import html,json
 from pathlib import Path
 from urllib.request import Request,urlopen
@@ -194,7 +194,7 @@ def render_host_chrome():
         if (!host.getElementById('bp-host-chrome')) {
           const style = host.createElement('style');
           style.id = 'bp-host-chrome';
-          style.textContent = 'a[href="https://streamlit.io/cloud"], a:has(>img[data-testid="appCreatorAvatar"]){display:none!important}';
+          style.textContent = '[data-testid="manage-app-button"], a[href="https://streamlit.io/cloud"], a:has(>img[data-testid="appCreatorAvatar"]){display:none!important}';
           host.head.appendChild(style);
         }
       } catch (_) {}
