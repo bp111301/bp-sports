@@ -109,6 +109,10 @@ def render_information(page):
             st.markdown('**Current status & limits**')
             st.write(limits)
             st.link_button('Read the model report','https://github.com/bp111301/bp-sports/blob/'+path)
+    with st.expander('CBB · Research candidate'):
+        st.write('Men’s Division I regular-season schedules and team box scores from the SportsDataverse ESPN data archive. Inputs include Elo, venue, prior-game offense and defense, shooting, turnovers, rebounding, free throws, pace, rest and experience.')
+        st.write('The candidate passed its locked historical gate and is gathering prospective evidence. Early forecasts use prior-season team history with no current roster, transfer or injury inputs. Schedule coverage is incomplete; unconfirmed times and unknown eligibility are excluded. Historical testing stays separate from the prospective record.')
+        st.link_button('Read the CBB research report','https://github.com/bp111301/bp-sports/blob/cbb-v1-research/research/cbb/HANDOFF.md')
     st.subheader('How we keep score')
     st.write('Frozen means the algorithm and weights stay fixed while we collect new results. Pregame information can update, but saved forecasts stay preserved. Any future model change receives its own version and evaluation.')
     st.write('Accuracy measures correct winners. Brier score and log loss measure probability quality: lower is better. Pending games do not count as wins or losses. Betting-market prices do not choose our winners.')
