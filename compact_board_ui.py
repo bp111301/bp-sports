@@ -84,9 +84,11 @@ def compact_html(r, feed, now):
     d = r.details
     h = score(status.get('home_score')) if status else None
     a = score(status.get('away_score')) if status else None
-    if r.settled and (h is None or a is None):
-        h = score(d.get('actual_home_score',d.get('home_score')))
-        a = score(d.get('actual_away_score',d.get('away_score')))
+    if r.settled:
+        final_h = score(d.get('actual_home_score',d.get('home_score')))
+        final_a = score(d.get('actual_away_score',d.get('away_score')))
+        if final_h is not None and final_a is not None: h,a = final_h,final_a
+        state = 'Final' if h is not None and a is not None else 'Final · score unavailable'
     pick = r.home if r.p >= .5 else r.away
     grade = ('WIN' if (r.p>=.5)==r.y else 'LOSS') if r.settled else 'PENDING'
     if d.get('settlement_status') == 'tie':
@@ -94,7 +96,7 @@ def compact_html(r, feed, now):
         state = 'Final · tie'
         h,a = score(d.get('actual_home_score')),score(d.get('actual_away_score'))
     time = r.start.tz_convert('America/Chicago').strftime('%-I:%M %p CT') if pd.notna(r.start) else 'Time TBD'
-    detail = status.get('detail','') if status and status.get('state')=='live' else time
+    detail = status.get('detail','') if status and status.get('state')=='live' and not r.settled else time
     return f'''<div class="bp-mini">
       <div class="bp-mini-top"><span>{esc(r.sport)} · {esc(state)}</span><span>{esc(detail)}</span></div>
       <div class="bp-mini-team"><span class="bp-mini-badge">{esc(short_name(r.away))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.away))}</span><strong>{a if a is not None else '—'}</strong></div>
