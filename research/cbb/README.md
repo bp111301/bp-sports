@@ -61,3 +61,28 @@ Evaluation fits through ending-year 2024, calibrates on 2025, then evaluates
 historical predictions. Bundle inference is checked against the fitted model.
 Passing this historical gate only permits prospective pipeline validation;
 it does not automatically publish CBB forecasts or promote the model.
+
+## Prospective research feed
+
+```bash
+python -m pytest -q research/cbb/test_develop.py research/cbb/test_holdout.py research/cbb/test_prospective.py
+python research/cbb/prospective.py
+```
+
+The fixed candidate bundle is read without retraining. A 30-day schedule window
+is checked for regular-season eligibility, known venue context and confirmed
+tipoff times. Source gaps and unknown times are counted explicitly. The first
+forecast per game/model is immutable; final grading checks stable team IDs,
+season, verified tipoff after capture and integer, non-tied final scores.
+Current and upcoming games cannot update state before the locked result embargo.
+
+The isolated outputs are `data/cbb/prospective/prediction_ledger.json`,
+`dashboard.json` and `summary.json` on `cbb-v1-research`. The main branch's
+`cbb_prospective.yml` workflow refreshes this research branch every six hours;
+source update and GitHub Actions delays may be longer. The research-branch
+validation workflow runs tests and the feed after code changes. Both use the
+same concurrency group to avoid overlapping writers.
+
+This is a research preview with early prior-based forecasts, not the public
+CBB board. Source coverage is partial and unknown conference/time games remain
+excluded. Historical test results never enter the prospective record.
