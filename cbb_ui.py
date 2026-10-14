@@ -9,8 +9,8 @@ FEED_URL = 'https://raw.githubusercontent.com/bp111301/bp-sports/cbb-v1-research
 UI_REVISION = 'cbb-board-20261013'
 
 def team_block(name, home=False):
-    words = str(name).replace('–', ' ').split()
-    initials = ''.join(word[0] for word in words[:3]).upper()
+    from college_team_ui import college_abbreviation
+    initials = college_abbreviation('CBB',name)
     badge = f'<div class="team-dot" style="background:#315d96">{html.escape(initials)}</div>'
     text = f'<div><div class="team-abbr">{html.escape(initials)}</div><div class="team-name">{html.escape(str(name))}</div></div>'
     return f'<div class="team-box{" home" if home else ""}">{text+badge if home else badge+text}</div>'
