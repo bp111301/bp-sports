@@ -24,11 +24,11 @@ FEATURES = BASE + [x+'_diff' for x in STATS] + ['rest_diff', 'experience_diff']
 PRIOR = dict(off_eff=103., def_eff=103., efg=.5, tov_rate=.18, orb_rate=.28, ft_rate=.30, pace=69.)
 
 
-def fetch(season, kind, cache):
+def fetch(season, kind, cache, refresh=False):
     family, prefix = ('schedules', 'mbb_schedule') if kind == 'schedule' else ('team_boxscores', 'team_box')
     url = ROOT+'espn_mens_college_basketball_'+family+'/'+prefix+f'_{season}.parquet'
     path = cache/f'{kind}_{season}.parquet'
-    if not path.exists():
+    if refresh or not path.exists():
         with urlopen(Request(url, headers={'User-Agent':'BP-Sports-CBB-Research/1.0'}), timeout=60) as response:
             raw = response.read(30*1024*1024+1)
         if len(raw)>30*1024*1024:raise ValueError('Source too large')
@@ -129,10 +129,10 @@ def build_features(games):
                 item['experience_diff'] = math.log1p(counts[h])-math.log1p(counts[a])
                 item['elo_probability'] = 1/(1+10**(-(item['elo_diff']+65*item['home_advantage'])/400))
                 rows.append(item)
-            pending.append((day,day_frame.to_dict('records')))
+            pending.append((day,[g for g in day_frame.to_dict('records') if g.get('forecast',False)!=True]))
         # The season has ended before any following season's forecasts are built.
         for _,batch in pending:update(batch)
-        prior = {team:{k:sums[team][k]/counts[team] for k in STATS} for team in counts}
+        prior = {team:{k:sums[team][k]/counts[team] for k in STATS} for team in counts if counts[team]>0}
     return pd.DataFrame(rows)
 
 
