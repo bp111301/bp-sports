@@ -46,3 +46,37 @@ immutable pregame captures and grading for the 2026–27 season.
 
 Existing B.P. Sports frozen models, historical evaluations and prospective
 ledgers have not been modified by this research work.
+
+## Locked holdout result — October 13, 2026
+
+The earlier development-stage note above describes the state before the final
+evaluation. Ending-year 2026 has now been evaluated once using the previously
+committed `EVALUATION_LOCK.json`. Do not reuse this season as an untouched test.
+
+All eight precommitted historical gate checks passed. On 5,647 eligible games:
+
+| Model | Correct | Accuracy | Brier | Log loss |
+|---|---:|---:|---:|---:|
+| Fixed Elo | 3,991 | 70.67% | 0.19495 | 0.57400 |
+| Calibrated Elo logistic | 3,997 | 70.78% | 0.19133 | 0.56253 |
+| Locked statistical candidate | 4,052 | 71.75% | 0.18545 | 0.54597 |
+
+The candidate got 61 more winners correct than fixed Elo. November accuracy was
+77.19% over 1,245 games, with Brier 0.15675 versus calibrated Elo's 0.16445.
+Neutral-site accuracy was 63.72% over 623 games, with Brier 0.22030 versus
+calibrated Elo's 0.22541. Non-neutral accuracy was 72.75% over 5,024 games.
+
+Exact metrics, source hashes, eligibility exclusions, confidence bands and a
+descriptive paired bootstrap are in `results/holdout_2026.json`. All 5,647
+historical forecasts are archived in `results/holdout_2026_predictions.csv`.
+Portable coefficients are in `results/candidate_bundle.json`; inference was
+checked against the fitted model. Six tests pass. Neither training nor
+calibration used 2026 outcomes.
+
+Status: passed historical gate, pending live pipeline validation. This is not
+prospective evidence and does not authorize automatic publication. Next validate
+2026–27 schedule eligibility and coverage, pregame timestamps, same-source team
+identity, the result embargo, immutable forecast capture and final grading.
+No roster/transfer/injury adjustment is supported yet. Unknown-conference games
+remain excluded; historical membership and overtime-adjusted pace are documented
+limitations of this scoped first candidate.
