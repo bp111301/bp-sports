@@ -1,0 +1,168 @@
+"""Compact read-only boards using preserved primary pregame forecasts."""
+import html
+import pandas as pd
+import streamlit as st
+from overview_ui import load_overview, prepare, PRIMARY, COLUMNS, row, ts
+from game_center_ui import load_scores, context, filter_favorites
+from game_status import display_state, score
+from matchup_details_ui import details_button
+
+UI_REVISION = 'compact-board-20261013'
+def esc(value): return html.escape(str(value), quote=True)
+
+def prepare_compact(sport, payload, score_feed, now, cbb=None):
+    board, available, _ = prepare(payload, now)
+    board = board[(board.sport == sport) & (board.group == PRIMARY.get(sport))].copy()
+    if sport == 'NFL':
+        ties = []
+        for r in payload.get('nfl',{}).get('data',[]) or []:
+            if r.get('settlement_status') != 'tie': continue
+            created = ts(r.get('captured_at_utc'))
+            p = pd.to_numeric(r.get('v4_adjusted_confidence'),errors='coerce')
+            if pd.isna(created) or created > now or not 0<=p<=1: continue
+            p = p if r.get('v4_pick') == r['home_team'] else 1-p
+            ties.append(row(r['game_id'],'NFL','nfl',r['home_team'],r['away_team'],p,created,None,False,None,r))
+        if ties:
+            tie_frame=pd.DataFrame(ties,columns=COLUMNS).sort_values('created').drop_duplicates('game_id')
+            board=pd.concat([board,tie_frame],ignore_index=True)
+    if sport == 'CBB':
+        records = []
+        for r in (cbb or {}).get('predictions', []):
+            if r.get('season') != 2027 or r.get('season_type') != 2: continue
+            p = pd.to_numeric(r.get('home_win_prob'), errors='coerce')
+            start, created = ts(r.get('start_time_utc')), ts(r.get('created_at_utc'))
+            if pd.isna(start) or pd.isna(created) or not created < start or created > now or not 0 <= p <= 1: continue
+            if r.get('bundle_sha256') != (cbb or {}).get('bundle_sha256'): continue
+            settled = r.get('status') == 'settled'
+            if r.get('status') not in ('pending', 'settled'): continue
+            y = r.get('actual_home_win')
+            if settled and (y not in (0,1) or start > now): continue
+            records.append(row(r['game_id'],sport,'cbb',r['home_team'],r['away_team'],p,created,start,settled,y,r))
+        board = pd.DataFrame(records,columns=COLUMNS)
+    for index, r in board.iterrows():
+        status = context(sport,r.game_id,r.home,r.away,score_feed)
+        start = ts(status.get('start_time_utc')) if status else r.start
+        if pd.isna(start):
+            d = r.details
+            start = ts(d.get('kickoff_utc',d.get('start_time_utc')))
+        board.at[index,'start'] = start
+    board['confidence'] = board.p.where(board.p.ge(.5),1-board.p)
+    board['date'] = board.start.map(lambda value:value.tz_convert('America/Chicago').strftime('%Y-%m-%d') if pd.notna(value) else 'Time TBD')
+    return board.sort_values(['start','game_id'],na_position='last'), available
+
+def date_options(board, now):
+    dates = sorted(d for d in board.date.unique() if d != 'Time TBD')
+    today = now.tz_convert('America/Chicago').strftime('%Y-%m-%d')
+    if today not in dates: dates.append(today); dates.sort()
+    if 'Time TBD' in set(board.date): dates.append('Time TBD')
+    default = today if today in set(board.date) else next((d for d in dates if d > today and d in set(board.date) and d != 'Time TBD'),today)
+    return dates, default
+
+def date_label(value):
+    if value == 'Time TBD': return value
+    return pd.Timestamp(value).strftime('%a · %b %-d')
+
+def team_label(sport, value):
+    if sport == 'NFL':
+        teams = {'ARI':'Cardinals','ATL':'Falcons','BAL':'Ravens','BUF':'Bills','CAR':'Panthers','CHI':'Bears','CIN':'Bengals','CLE':'Browns','DAL':'Cowboys','DEN':'Broncos','DET':'Lions','GB':'Packers','HOU':'Texans','IND':'Colts','JAX':'Jaguars','KC':'Chiefs','LA':'Rams','LAR':'Rams','LAC':'Chargers','LV':'Raiders','MIA':'Dolphins','MIN':'Vikings','NE':'Patriots','NO':'Saints','NYG':'Giants','NYJ':'Jets','PHI':'Eagles','PIT':'Steelers','SEA':'Seahawks','SF':'49ers','TB':'Buccaneers','TEN':'Titans','WAS':'Commanders'}
+        return teams.get(value,value)
+    if sport == 'NHL':
+        from nhl_ui import TEAMS
+        return TEAMS.get(value,value)
+    if sport == 'NBA':
+        from nba_ui import TEAMS
+        return TEAMS.get(value,value)
+    return value
+
+def short_name(value):
+    if len(value) <= 4: return value
+    return ''.join(w[0] for w in str(value).split()[:3]).upper()
+
+def compact_html(r, feed, now):
+    status = context(r.sport,r.game_id,r.home,r.away,feed)
+    state = display_state(status,r.settled,r.start,now)
+    d = r.details
+    h = score(status.get('home_score')) if status else None
+    a = score(status.get('away_score')) if status else None
+    if r.settled and (h is None or a is None):
+        h = score(d.get('actual_home_score',d.get('home_score')))
+        a = score(d.get('actual_away_score',d.get('away_score')))
+    pick = r.home if r.p >= .5 else r.away
+    grade = ('WIN' if (r.p>=.5)==r.y else 'LOSS') if r.settled else 'PENDING'
+    if d.get('settlement_status') == 'tie':
+        grade = 'TIE'
+        state = 'Final · tie'
+        h,a = score(d.get('actual_home_score')),score(d.get('actual_away_score'))
+    time = r.start.tz_convert('America/Chicago').strftime('%-I:%M %p CT') if pd.notna(r.start) else 'Time TBD'
+    detail = status.get('detail','') if status and status.get('state')=='live' else time
+    return f'''<div class="bp-mini">
+      <div class="bp-mini-top"><span>{esc(r.sport)} · {esc(state)}</span><span>{esc(detail)}</span></div>
+      <div class="bp-mini-team"><span class="bp-mini-badge">{esc(short_name(r.away))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.away))}</span><strong>{a if a is not None else '—'}</strong></div>
+      <div class="bp-mini-team"><span class="bp-mini-badge">{esc(short_name(r.home))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.home))}</span><strong>{h if h is not None else '—'}</strong></div>
+      <div class="bp-mini-pick"><span>BP PICK <b>{esc(pick)}</b></span><span><b>{r.confidence:.1%}</b> <small class="{grade.lower()}">{grade}</small></span></div>
+    </div>'''
+
+def render_compact(sport):
+    now = pd.Timestamp.now(tz='UTC')
+    feed = load_scores()
+    cbb = None
+    if sport == 'CBB':
+        from cbb_ui import load_feed
+        cbb = load_feed()
+        payload = {}
+    else:
+        payload = load_overview()
+    board, available = prepare_compact(sport,payload,feed,now,cbb)
+    key = {'NFL':'nfl','CFB':'cfb','NHL':'nhl','NBA':'nba'}.get(sport)
+    if (sport == 'CBB' and cbb is None) or (key and not available.get(key)):
+        st.warning(sport+' saved forecast feed is unavailable. Try Refresh shortly.')
+        return
+    st.caption('Saved picks · verified scores · Central time')
+    if sport in ('NHL','CBB'): st.caption(sport+' is collecting prospective evidence as a candidate. Saved probabilities are experimental.')
+    dates, default = date_options(board,now)
+    selected_key = 'compact_date_'+sport
+    if st.session_state.get(selected_key) not in dates: st.session_state[selected_key] = default
+    date = st.radio('Game date',dates,format_func=date_label,horizontal=True,label_visibility='collapsed',key=selected_key)
+    shown = board[board.date == date]
+    with st.expander('Find a team or filter your board'):
+        query = st.text_input('Search teams',key='compact_search_'+sport)
+        if query: shown = shown[shown.apply(lambda r:query.casefold() in (str(r.home)+' '+str(r.away)+' '+str(team_label(sport,r.home))+' '+str(team_label(sport,r.away))).casefold(),axis=1)]
+        shown = filter_favorites(shown,sport,'compact_favorites_'+sport,home='home',away='away')
+    st.subheader('Games')
+    st.caption(str(len(shown))+' saved matchups · '+date_label(date))
+    if shown.empty:
+        st.info('No saved forecasts for this date. Choose another date or open the detailed board.')
+    for offset in range(0,len(shown),2):
+        columns = st.columns(2,gap='small')
+        for column, (_,r) in zip(columns,shown.iloc[offset:offset+2].iterrows()):
+            with column:
+                st.markdown(compact_html(r,feed,now),unsafe_allow_html=True)
+                if sport == 'CBB':
+                    with st.expander('Game details · '+r.away+' vs '+r.home):
+                        from cbb_ui import card_html
+                        st.markdown(card_html({**r.details,'prob':r.p,'confidence':r.confidence,'start':r.start}),unsafe_allow_html=True)
+                        st.caption('Prior-season team history · no current roster, transfer or injury inputs.')
+                else:
+                    details_button(sport,r.to_dict(),'compact_detail_'+sport+'_'+r.game_id,now=now)
+    if sport == 'CBB':
+        with st.expander('Schedule coverage'):
+            excluded = (cbb or {}).get('excluded',{})
+            st.write(f"Partial schedule: {excluded.get('tipoff_time_unconfirmed',0)} source games await confirmed tipoff times; {excluded.get('division_or_conference_unknown',0)} have unknown eligibility.")
+    st.caption('Scores use the existing periodic feed. A source final may appear before grading; saved probabilities stay unchanged.')
+
+def render_compact_styles():
+    st.markdown('''<style>
+.st-key-bp_sport [data-testid="stRadioOption"],.st-key-bp_sport label{border:0!important;border-radius:0!important;background:transparent!important;padding:10px 12px!important}
+.st-key-bp_sport label:has(input:checked){border-bottom:3px solid #6ea8fe!important;background:transparent!important}
+.st-key-bp_sport label:has(input:checked) p{color:#83b6ff!important}
+[class*="st-key-compact_date_"] [role="radiogroup"]{flex-wrap:nowrap!important;overflow-x:auto;gap:6px;padding:5px 0 10px}
+[class*="st-key-compact_date_"] label{flex:0 0 auto;white-space:nowrap;border:1px solid #29384e;border-radius:10px;padding:9px 12px;background:#111b29}
+[class*="st-key-compact_date_"] label:has(input:checked){background:#1e3d64;border-color:#6ea8fe}
+[class*="st-key-compact_date_"] [data-testid="stRadioOption"]>div>div:first-child:not([data-testid="stMarkdownContainer"]){display:none}
+.bp-mini{background:linear-gradient(135deg,#131e2e,#0e1723);border:1px solid #2a3c54;border-radius:15px;padding:13px 15px;margin-top:6px;min-width:0}
+.bp-mini-top{display:flex;justify-content:space-between;gap:8px;font-size:.67rem;color:#a0b3ce;margin-bottom:10px}
+.bp-mini-team{display:flex;gap:9px;align-items:center;margin:7px 0}.bp-mini-badge{width:31px;height:31px;flex:0 0 31px;display:flex;align-items:center;justify-content:center;background:#254970;border-radius:9px;font-size:.6rem;font-weight:850;color:#d8e9ff}
+.bp-mini-name{flex:1;min-width:0;font-size:.9rem;font-weight:750;overflow-wrap:anywhere}.bp-mini-team strong{font-size:1.2rem}
+.bp-mini-pick{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #29394e;padding-top:10px;margin-top:11px;font-size:.7rem;color:#91a9c8}.bp-mini-pick b{color:#deebff}.bp-mini-pick small{font-size:.55rem;margin-left:5px}.bp-mini-pick .win{color:#82e9ad}.bp-mini-pick .loss{color:#ff9aa6}
+@media(max-width:640px){.bp-mini{padding:11px 12px}.bp-mini-name{font-size:.86rem}.st-key-bp_sport label{padding:10px 9px!important}}
+</style>''',unsafe_allow_html=True)
