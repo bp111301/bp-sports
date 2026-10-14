@@ -4,6 +4,14 @@ from compact_board_ui import prepare_compact, date_options, compact_html
 from overview_ui import FROZEN_NHL
 
 class CompactBoardTests(unittest.TestCase):
+    def test_nfl_dropdown_does_not_invent_an_off_day(self):
+        now=pd.Timestamp('2026-10-14T13:00Z')
+        board=pd.DataFrame({'date':['2026-10-11','2026-10-15','2026-10-18']})
+        dates,default=date_options(board,now,'NFL')
+        self.assertNotIn('2026-10-14',dates)
+        self.assertEqual(default,'2026-10-15')
+        actual_wednesday=pd.DataFrame({'date':['2026-10-14']})
+        self.assertEqual(date_options(actual_wednesday,now,'NFL')[0],['2026-10-14'])
     def test_saved_probability_is_preserved_when_live_scores_change(self):
         now=pd.Timestamp('2026-10-14T02:00Z')
         record=dict(game_id='g',bundle_sha256=FROZEN_NHL,candidate='reference_control',status='pending',home_team='DET',away_team='NJD',home_win_prob=.6,created_at_utc='2026-10-12T12:00Z',start_time_utc='2026-10-14T00:00Z')
