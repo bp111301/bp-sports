@@ -10,7 +10,7 @@ from matchup_preview_ui import render_preview
 from matchup_details_ui import details_button
 from cfb_board_ui import dated_board, date_choices, games_on_date, date_label
 import game_center_ui
-if getattr(game_center_ui,"UI_REVISION",None)!="cbb-preview-20261013":importlib.reload(game_center_ui)
+if getattr(game_center_ui,"UI_REVISION",None)!="clean-nav-20261013":importlib.reload(game_center_ui)
 from game_center_ui import render_preferences, filter_favorites, score_html, confidence_html, render_score_refresh, render_header, render_host_chrome, board_route, render_information
 
 st.set_page_config(
