@@ -50,12 +50,12 @@ def prepare_compact(sport, payload, score_feed, now, cbb=None):
     board['date'] = board.start.map(lambda value:value.tz_convert('America/Chicago').strftime('%Y-%m-%d') if pd.notna(value) else 'Time TBD')
     return board.sort_values(['start','game_id'],na_position='last'), available
 
-def date_options(board, now):
+def date_options(board, now, sport=None):
     dates = sorted(d for d in board.date.unique() if d != 'Time TBD')
     today = now.tz_convert('America/Chicago').strftime('%Y-%m-%d')
-    if today not in dates: dates.append(today); dates.sort()
+    if sport != 'NFL' and today not in dates: dates.append(today); dates.sort()
     if 'Time TBD' in set(board.date): dates.append('Time TBD')
-    default = today if today in set(board.date) else next((d for d in dates if d > today and d in set(board.date) and d != 'Time TBD'),today)
+    default = today if today in set(board.date) else next((d for d in dates if d > today and d in set(board.date) and d != 'Time TBD'),dates[-1] if dates else None)
     return dates, default
 
 def date_label(value):
@@ -82,6 +82,7 @@ def short_name(value,sport=None,team_id=None):
     return ''.join(w[0] for w in str(value).split()[:3]).upper()
 
 def compact_html(r, feed, now):
+    from team_theme_ui import team_color,text_color,accent_color
     status = context(r.sport,r.game_id,r.home,r.away,feed)
     state = display_state(status,r.settled,r.start,now)
     d = r.details
@@ -101,10 +102,13 @@ def compact_html(r, feed, now):
         h,a = score(d.get('actual_home_score')),score(d.get('actual_away_score'))
     time = r.start.tz_convert('America/Chicago').strftime('%-I:%M %p CT') if pd.notna(r.start) else 'Time TBD'
     detail = status.get('detail','') if status and status.get('state')=='live' and not r.settled else time
-    return f'''<div class="bp-mini">
+    away_color=team_color(r.sport,r.away,d.get('away_team_id'))
+    home_color=team_color(r.sport,r.home,d.get('home_team_id'))
+    pick_color=home_color if r.p>=.5 else away_color
+    return f'''<div class="bp-mini" style="--bp-away:{away_color};--bp-home:{home_color};--bp-pick:{accent_color(pick_color)};--bp-away-tint:{away_color}38;--bp-home-tint:{home_color}38">
       <div class="bp-mini-top"><span>{esc(r.sport)} · {esc(state)}</span><span>{esc(detail)}</span></div>
-      <div class="bp-mini-team"><span class="bp-mini-badge">{esc(short_name(r.away,r.sport,d.get('away_team_id')))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.away))}</span><strong>{a if a is not None else '—'}</strong></div>
-      <div class="bp-mini-team"><span class="bp-mini-badge">{esc(short_name(r.home,r.sport,d.get('home_team_id')))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.home))}</span><strong>{h if h is not None else '—'}</strong></div>
+      <div class="bp-mini-team"><span class="bp-mini-badge" style="background:{away_color};color:{text_color(away_color)}">{esc(short_name(r.away,r.sport,d.get('away_team_id')))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.away))}</span><strong>{a if a is not None else '—'}</strong></div>
+      <div class="bp-mini-team"><span class="bp-mini-badge" style="background:{home_color};color:{text_color(home_color)}">{esc(short_name(r.home,r.sport,d.get('home_team_id')))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.home))}</span><strong>{h if h is not None else '—'}</strong></div>
       <div class="bp-mini-pick"><span class="bp-mini-selected">BP PICK <b>{esc(pick)}</b><small class="{grade.lower()}">{grade}</small></span><span class="bp-mini-confidence"><b>{r.confidence:.1%}</b><small>WIN CONFIDENCE</small></span></div>
       <div class="bp-mini-bar"><div style="width:{r.confidence*100:.1f}%"></div></div>
     </div>'''
@@ -126,7 +130,10 @@ def render_compact(sport):
         return
     st.caption('Saved picks · verified scores · Central time')
     if sport in ('NHL','CBB'): st.caption(sport+' is collecting prospective evidence as a candidate. Saved probabilities are experimental.')
-    dates, default = date_options(board,now)
+    dates, default = date_options(board,now,sport)
+    if not dates:
+        st.info('No saved game dates are available yet. Open the detailed board for model information.')
+        return
     selected_key = 'compact_date_'+sport
     if st.session_state.get(selected_key) not in dates: st.session_state[selected_key] = default
     date = st.selectbox('Game date · Central time',dates,format_func=date_label,key=selected_key)
@@ -179,6 +186,8 @@ html,body,.stApp,[data-testid="stAppViewContainer"],[data-testid="stMain"]{max-w
 .bp-mini-selected{flex:1;min-width:0;overflow-wrap:anywhere}.bp-mini-selected b,.bp-mini-selected small{display:block;margin:3px 0 0}
 .bp-mini-confidence{flex:0 0 100px;text-align:right}.bp-mini-confidence b{font-size:1.3rem;font-weight:900}.bp-mini-confidence small{display:block;white-space:nowrap;margin:3px 0 0;letter-spacing:.05em}
 .bp-mini-bar{height:7px;background:#26364c;border-radius:99px;overflow:hidden;margin-top:11px}.bp-mini-bar>div{height:100%;border-radius:99px;background:linear-gradient(90deg,#6ea8fe,#c1d7ff)}
+.bp-mini{background:radial-gradient(ellipse at 0 0,var(--bp-away-tint),transparent 65%),radial-gradient(ellipse at 100% 100%,var(--bp-home-tint),transparent 65%),#101925;border-left:4px solid var(--bp-pick)}
+.bp-mini-badge{box-shadow:inset 0 0 0 1px #ffffff30}.bp-mini-confidence b{color:var(--bp-pick)}.bp-mini-bar>div{background:linear-gradient(90deg,var(--bp-pick),#d4e6ff)}
 [data-testid="stButton"] button p{white-space:normal;overflow-wrap:anywhere}
 @media(max-width:640px){.bp-mini{padding:11px 12px}.bp-mini-name{font-size:.86rem}.st-key-bp_sport label{padding:10px 9px!important}}
 </style>''',unsafe_allow_html=True)
