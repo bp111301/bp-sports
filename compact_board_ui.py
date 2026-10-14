@@ -126,7 +126,7 @@ def render_compact(sport):
     dates, default = date_options(board,now)
     selected_key = 'compact_date_'+sport
     if st.session_state.get(selected_key) not in dates: st.session_state[selected_key] = default
-    date = st.radio('Game date',dates,format_func=date_label,horizontal=True,label_visibility='collapsed',key=selected_key)
+    date = st.selectbox('Game date · Central time',dates,format_func=date_label,key=selected_key)
     shown = board[board.date == date]
     with st.expander('Find a team or filter your board'):
         query = st.text_input('Search teams',key='compact_search_'+sport)
