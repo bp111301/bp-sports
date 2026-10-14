@@ -1,0 +1,33 @@
+{
+  "version": "CBB_V1_CANDIDATE_20261013",
+  "locked_before_holdout_evaluation": true,
+  "candidate": "team_stats",
+  "training_seasons": [2020, 2021, 2022, 2023, 2024],
+  "calibration_season": 2025,
+  "holdout_season": 2026,
+  "regular_season_only": true,
+  "scope": "Both teams with source conference IDs; explicit non-Division-I and unknown conference games excluded",
+  "features": ["elo_diff", "home_advantage", "off_eff_diff", "def_eff_diff", "efg_diff", "tov_rate_diff", "orb_rate_diff", "ft_rate_diff", "pace_diff", "rest_diff", "experience_diff"],
+  "stat_prior_games": 8,
+  "elo_k": 24,
+  "elo_home_points": 65,
+  "elo_offseason_carry": 0.65,
+  "logistic_C": 1.0,
+  "calibrator_C": 100.0,
+  "embargo": "A full intervening UTC calendar day before outcomes update forecast state",
+  "comparators": ["elo", "elo_logistic"],
+  "historical_gate": {
+    "minimum_games": 5000,
+    "accuracy_at_least_fixed_elo": true,
+    "brier_no_worse_than_calibrated_elo": true,
+    "log_loss_no_worse_than_calibrated_elo": true,
+    "neutral_brier_max_excess_over_calibrated_elo": 0.01,
+    "early_season_brier_max_excess_over_calibrated_elo": 0.01,
+    "minimum_neutral_games": 300,
+    "minimum_early_season_games": 500
+  },
+  "early_season": "November game dates in America/Chicago",
+  "decision": "Passing permits prospective pipeline validation, not automatic live publication",
+  "limitations": ["No roster, transfer or injury adjustments", "Estimated pace is not overtime-adjusted", "Historical membership is inferred conservatively from source conference IDs", "Historical sources may have been corrected after publication"],
+  "no_holdout_tuning": true
+}
