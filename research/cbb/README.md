@@ -43,3 +43,21 @@ for collecting immutable live pregame snapshots.
 Next: assess chronological development stability, audit membership and overtime
 context, lock choices, evaluate 2026 once, then validate the prospective pipeline.
 Existing B.P. Sports models, weights, ledgers and UI remain unchanged.
+
+## Locked holdout evaluation
+
+`EVALUATION_LOCK.json` was committed before opening the ending-year 2026
+evaluation season. It fixes the candidate, fit/calibration seasons, features,
+hyperparameters and historical pass/fail criteria. The runner refuses to
+overwrite an existing holdout report:
+
+```bash
+python -m pytest -q research/cbb/test_develop.py research/cbb/test_holdout.py
+python research/cbb/evaluate_holdout.py
+```
+
+Evaluation fits through ending-year 2024, calibrates on 2025, then evaluates
+2026. It writes the report, a portable JSON candidate bundle, and per-game
+historical predictions. Bundle inference is checked against the fitted model.
+Passing this historical gate only permits prospective pipeline validation;
+it does not automatically publish CBB forecasts or promote the model.
