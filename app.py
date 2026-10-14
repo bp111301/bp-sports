@@ -705,6 +705,7 @@ elif sport == "NBA":
 
 elif sport == "CBB":
     import cbb_ui
+    if getattr(cbb_ui,"UI_REVISION",None)!="cbb-board-20261013":importlib.reload(cbb_ui)
     cbb_ui.render_cbb()
 
 render_scroll_reset()
