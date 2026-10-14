@@ -1,5 +1,5 @@
 """Shared scores, preferences and probability guidance for the web UI."""
-UI_REVISION="weekly-results-20261013"
+UI_REVISION="cbb-preview-20261013"
 import html,json
 from pathlib import Path
 from urllib.request import Request,urlopen
@@ -126,12 +126,15 @@ def render_preferences(nfl):
             if r['sport']=='CFB':
                 for side in ('home_team','away_team'):options[favorite_key('CFB',r[side])]='CFB · '+r[side]
     except (OSError,ValueError,KeyError):pass
+    from cbb_ui import load_feed
+    for r in (load_feed() or {}).get('predictions',[]):
+        for side in ('home_team','away_team'):options[favorite_key('CBB',r[side])]='CBB · '+r[side]
     if 'bp_favorites' not in st.session_state:st.session_state['bp_favorites']=[k for k in st.query_params.get('teams','').split('|') if k in options]
     with st.popover('☰ Menu',use_container_width=True):
         st.markdown('### Your sports desk')
         st.caption('Jump to a board or explore B.P. Sports.')
         left,right=st.columns(2)
-        for index,name in enumerate(['Overview','NFL','CFB','NHL','NBA']):
+        for index,name in enumerate(['Overview','NFL','CFB','NHL','NBA','CBB']):
             (left if index%2==0 else right).button(name,key='bp_menu_'+name,use_container_width=True,on_click=menu_route,args=('Board',name))
         st.divider()
         st.button('Weekly results',key='bp_menu_weekly',use_container_width=True,on_click=menu_route,args=('Weekly results',None))
@@ -192,3 +195,4 @@ def render_host_chrome():
         }
       } catch (_) {}
     })();</script>''',unsafe_allow_javascript=True)
+
