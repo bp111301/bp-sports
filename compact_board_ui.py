@@ -102,7 +102,8 @@ def compact_html(r, feed, now):
       <div class="bp-mini-top"><span>{esc(r.sport)} · {esc(state)}</span><span>{esc(detail)}</span></div>
       <div class="bp-mini-team"><span class="bp-mini-badge">{esc(short_name(r.away))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.away))}</span><strong>{a if a is not None else '—'}</strong></div>
       <div class="bp-mini-team"><span class="bp-mini-badge">{esc(short_name(r.home))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.home))}</span><strong>{h if h is not None else '—'}</strong></div>
-      <div class="bp-mini-pick"><span>BP PICK <b>{esc(pick)}</b></span><span><b>{r.confidence:.1%}</b> <small class="{grade.lower()}">{grade}</small></span></div>
+      <div class="bp-mini-pick"><span class="bp-mini-selected">BP PICK <b>{esc(pick)}</b><small class="{grade.lower()}">{grade}</small></span><span class="bp-mini-confidence"><b>{r.confidence:.1%}</b><small>WIN CONFIDENCE</small></span></div>
+      <div class="bp-mini-bar"><div style="width:{r.confidence*100:.1f}%"></div></div>
     </div>'''
 
 def render_compact(sport):
@@ -155,10 +156,15 @@ def render_compact(sport):
 
 def render_compact_styles():
     st.markdown('''<style>
+html,body,.stApp,[data-testid="stAppViewContainer"],[data-testid="stMain"]{max-width:100%;overflow-x:hidden}
+.block-container{box-sizing:border-box;min-width:0;width:100%}
+[data-testid="stElementContainer"],[data-testid="stVerticalBlock"],[data-testid="stHorizontalBlock"],[data-testid="stColumn"]{min-width:0}
+.st-key-bp_sport [role="radiogroup"]{flex-wrap:wrap!important;overflow-x:visible!important;max-width:100%}
 .st-key-bp_sport [data-testid="stRadioOption"],.st-key-bp_sport label{border:0!important;border-radius:0!important;background:transparent!important;padding:10px 12px!important}
 .st-key-bp_sport label:has(input:checked){border-bottom:3px solid #6ea8fe!important;background:transparent!important}
 .st-key-bp_sport label:has(input:checked) p{color:#83b6ff!important}
-[class*="st-key-compact_date_"] [role="radiogroup"]{flex-wrap:nowrap!important;overflow-x:auto;gap:6px;padding:5px 0 10px}
+[class*="st-key-compact_date_"]{min-width:0;max-width:100%}
+[class*="st-key-compact_date_"] [role="radiogroup"]{flex-wrap:wrap!important;overflow-x:visible;gap:6px;padding:5px 0 10px;min-width:0;max-width:100%}
 [class*="st-key-compact_date_"] label{flex:0 0 auto;white-space:nowrap;border:1px solid #29384e;border-radius:10px;padding:9px 12px;background:#111b29}
 [class*="st-key-compact_date_"] label:has(input:checked){background:#1e3d64;border-color:#6ea8fe}
 [class*="st-key-compact_date_"] [data-testid="stRadioOption"]>div>div:first-child:not([data-testid="stMarkdownContainer"]){display:none}
@@ -167,5 +173,9 @@ def render_compact_styles():
 .bp-mini-team{display:flex;gap:9px;align-items:center;margin:7px 0}.bp-mini-badge{width:31px;height:31px;flex:0 0 31px;display:flex;align-items:center;justify-content:center;background:#254970;border-radius:9px;font-size:.6rem;font-weight:850;color:#d8e9ff}
 .bp-mini-name{flex:1;min-width:0;font-size:.9rem;font-weight:750;overflow-wrap:anywhere}.bp-mini-team strong{font-size:1.2rem}
 .bp-mini-pick{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #29394e;padding-top:10px;margin-top:11px;font-size:.7rem;color:#91a9c8}.bp-mini-pick b{color:#deebff}.bp-mini-pick small{font-size:.55rem;margin-left:5px}.bp-mini-pick .win{color:#82e9ad}.bp-mini-pick .loss{color:#ff9aa6}
+.bp-mini-selected{flex:1;min-width:0;overflow-wrap:anywhere}.bp-mini-selected b,.bp-mini-selected small{display:block;margin:3px 0 0}
+.bp-mini-confidence{flex:0 0 100px;text-align:right}.bp-mini-confidence b{font-size:1.3rem;font-weight:900}.bp-mini-confidence small{display:block;white-space:nowrap;margin:3px 0 0;letter-spacing:.05em}
+.bp-mini-bar{height:7px;background:#26364c;border-radius:99px;overflow:hidden;margin-top:11px}.bp-mini-bar>div{height:100%;border-radius:99px;background:linear-gradient(90deg,#6ea8fe,#c1d7ff)}
+[data-testid="stButton"] button p{white-space:normal;overflow-wrap:anywhere}
 @media(max-width:640px){.bp-mini{padding:11px 12px}.bp-mini-name{font-size:.86rem}.st-key-bp_sport label{padding:10px 9px!important}}
 </style>''',unsafe_allow_html=True)
