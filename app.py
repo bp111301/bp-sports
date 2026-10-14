@@ -234,12 +234,21 @@ with st.container(key='bp_toolbar'):
     with refresh:render_score_refresh()
     with options:render_preferences(TEAM_NAMES)
 
+from compact_board_ui import render_compact, render_compact_styles
+render_compact_styles()
+board_view = "Detailed"
+if st.session_state.get("bp_page", "Board") == "Board" and sport != "Overview":
+    board_view = st.radio("Board view", ["Compact", "Detailed"], horizontal=True, key="bp_board_view")
+
 if st.session_state.get("bp_page", "Board") != "Board":
     render_information(st.session_state["bp_page"])
 
 elif sport == "Overview":
     import overview_ui
     current_ui(overview_ui).render_overview()
+
+elif sport != "Overview" and board_view == "Compact":
+    render_compact(sport)
 
 elif sport == "NFL":
     pred = load_csv("data/current/website_feed.csv")
@@ -710,4 +719,3 @@ elif sport == "CBB":
     cbb_ui.render_cbb()
 
 render_scroll_reset()
-
