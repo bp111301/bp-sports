@@ -1,10 +1,10 @@
 {
-  "as_of_utc": "2026-10-14T00:47:41.480187+00:00",
+  "as_of_utc": "2026-10-14T01:17:44.887349+00:00",
   "status": "research_only_not_promoted",
   "weights_frozen": true,
   "paired_games": 53,
-  "settled_paired_games": 44,
-  "pending_paired_games": 9,
+  "settled_paired_games": 45,
+  "pending_paired_games": 8,
   "invalid_timing": 0,
   "coverage": [
     {
@@ -19,24 +19,27 @@
   "metrics": [
     {
       "candidate": "team_control",
-      "games": 44,
-      "accuracy": 0.5909090909090909,
-      "brier": 0.24963662507184392,
-      "log_loss": 0.7048457746192168
+      "games": 45,
+      "correct": 26,
+      "accuracy": 0.5777777777777777,
+      "brier": 0.25218492478626914,
+      "log_loss": 0.7097443958846479
     },
     {
       "candidate": "inferred_goalie",
-      "games": 44,
-      "accuracy": 0.6136363636363636,
-      "brier": 0.24998986206557658,
-      "log_loss": 0.7006409777799572
+      "games": 45,
+      "correct": 27,
+      "accuracy": 0.6,
+      "brier": 0.25302212791216583,
+      "log_loss": 0.7066694210127399
     },
     {
       "candidate": "confirmed_goalie",
-      "games": 44,
-      "accuracy": 0.5909090909090909,
-      "brier": 0.25017035250058545,
-      "log_loss": 0.700662875230596
+      "games": 45,
+      "correct": 26,
+      "accuracy": 0.5777777777777777,
+      "brier": 0.2530222893101674,
+      "log_loss": 0.7063172244047238
     }
   ],
   "first_formal_review_paired_games": 500,
@@ -44,13 +47,13 @@
   "confirmed_minus_control": {
     "team_control": {
       "accuracy": 0.0,
-      "brier": 0.0005337274287415261,
-      "log_loss": -0.00418289938862082
+      "brier": 0.0008373645238982652,
+      "log_loss": -0.003427171479924107
     },
     "inferred_goalie": {
-      "accuracy": -0.022727272727272707,
-      "brier": 0.00018049043500886763,
-      "log_loss": 2.189745063885251e-05
+      "accuracy": -0.022222222222222254,
+      "brier": 1.613980015746641e-07,
+      "log_loss": -0.00035219660801610875
     }
   },
   "games_in_current_prediction_window": 2,
