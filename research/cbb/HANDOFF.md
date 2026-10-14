@@ -80,3 +80,27 @@ identity, the result embargo, immutable forecast capture and final grading.
 No roster/transfer/injury adjustment is supported yet. Unknown-conference games
 remain excluded; historical membership and overtime-adjusted pace are documented
 limitations of this scoped first candidate.
+
+## Prospective pipeline validation — October 13, 2026
+
+Capture/grading pipeline is implemented, with ten tests passing. It reads the
+same portable candidate coefficients without retraining, matches historical
+feature replay, preserves the first forecast and rejects invalid finals,
+identity mismatches and post-tipoff captures. Forecast-only rows never update
+ratings or priors. Existing historical feature behavior is unchanged.
+
+Initial source window: 147 scheduled rows over 30 days; 128 excluded for
+unconfirmed tipoff times and three for unknown conference eligibility. Sixteen
+real future regular-season forecasts were archived, including eight games on
+November 2 in Central time. All are pending; no preseason games were tested.
+Full opening-day coverage is not yet verified. The source's full-season feed
+currently has only 1,629 rows, mostly with unconfirmed times.
+
+The four-times-daily workflow lives on main and writes only the CBB research
+branch. It refreshes coverage as source times are confirmed, adds new immutable
+captures, and grades verified finals. Six-hour checks are not live score updates.
+Outputs retain source hashes, candidate identity, exact capture timestamps,
+feature values and coverage/grading concerns. The public UI is unchanged.
+
+Next: resolve remaining schedule coverage before public board release and
+review early-prior probability behavior once actual prospective results arrive.
