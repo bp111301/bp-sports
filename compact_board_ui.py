@@ -88,6 +88,7 @@ def compact_html(r, feed, now):
         final_h = score(d.get('actual_home_score',d.get('home_score')))
         final_a = score(d.get('actual_away_score',d.get('away_score')))
         if final_h is not None and final_a is not None: h,a = final_h,final_a
+        elif not status or status.get('state') != 'final': h=a=None
         state = 'Final' if h is not None and a is not None else 'Final · score unavailable'
     pick = r.home if r.p >= .5 else r.away
     grade = ('WIN' if (r.p>=.5)==r.y else 'LOSS') if r.settled else 'PENDING'
