@@ -1,50 +1,50 @@
 {
-  "as_of_utc": "2026-10-14T05:12:21.335453+00:00",
+  "as_of_utc": "2026-10-14T05:42:42.972290+00:00",
   "status": "research_only_not_promoted",
   "weights_frozen": true,
   "paired_games": 56,
-  "settled_paired_games": 54,
-  "pending_paired_games": 2,
+  "settled_paired_games": 55,
+  "pending_paired_games": 1,
   "invalid_timing": 0,
   "coverage": [],
   "metrics": [
     {
       "candidate": "team_control",
-      "games": 54,
+      "games": 55,
       "correct": 31,
-      "accuracy": 0.5740740740740741,
-      "brier": 0.24650199739575174,
-      "log_loss": 0.6955691882927343
+      "accuracy": 0.5636363636363636,
+      "brier": 0.247248561261629,
+      "log_loss": 0.6968935221233415
     },
     {
       "candidate": "inferred_goalie",
-      "games": 54,
+      "games": 55,
       "correct": 33,
-      "accuracy": 0.6111111111111112,
-      "brier": 0.24628969027930855,
-      "log_loss": 0.6911880245142742
+      "accuracy": 0.6,
+      "brier": 0.24657215032875857,
+      "log_loss": 0.6916537240847385
     },
     {
       "candidate": "confirmed_goalie",
-      "games": 54,
+      "games": 55,
       "correct": 33,
-      "accuracy": 0.6111111111111112,
-      "brier": 0.24584438030963746,
-      "log_loss": 0.6900417939281309
+      "accuracy": 0.6,
+      "brier": 0.24613493690399055,
+      "log_loss": 0.6905283340547068
     }
   ],
   "first_formal_review_paired_games": 500,
   "automatic_promotion": false,
   "confirmed_minus_control": {
     "team_control": {
-      "accuracy": 0.03703703703703709,
-      "brier": -0.0006576170861142816,
-      "log_loss": -0.005527394364603366
+      "accuracy": 0.036363636363636376,
+      "brier": -0.0011136243576384541,
+      "log_loss": -0.006365188068634731
     },
     "inferred_goalie": {
       "accuracy": 0.0,
-      "brier": -0.00044530996967109826,
-      "log_loss": -0.0011462305861432709
+      "brier": -0.00043721342476801817,
+      "log_loss": -0.0011253900300316477
     }
   },
   "games_in_current_prediction_window": 0,
