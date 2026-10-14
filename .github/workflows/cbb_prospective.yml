@@ -1,0 +1,38 @@
+name: CBB prospective research forecasts and grading
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
+permissions:
+  contents: write
+concurrency:
+  group: cbb-research-feed
+  cancel-in-progress: false
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cbb-v1-research
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r research/cbb/requirements.txt
+      - name: Verify leakage, capture and grading rules
+        run: python -m pytest -q research/cbb/test_develop.py research/cbb/test_holdout.py research/cbb/test_prospective.py
+      - uses: actions/cache@v4
+        with:
+          path: runtime/cbb
+          key: cbb-history-2020-2026-v1
+      - name: Refresh archived forecasts and confirmed finals
+        run: python research/cbb/prospective.py
+      - name: Save isolated CBB research feed
+        run: |
+          git config user.name 'bp-sports-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/cbb/prospective
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Refresh CBB prospective research feed [skip ci]'
+          git pull --rebase origin cbb-v1-research
+          git push origin HEAD:cbb-v1-research
