@@ -35,4 +35,14 @@ class CompactBoardTests(unittest.TestCase):
         self.assertIn('PENDING',output)
         self.assertNotIn('>WIN<',output)
 
+    def test_settled_ledger_final_overrides_stale_live_score(self):
+        now=pd.Timestamp('2026-10-14T02:00Z')
+        record=dict(game_id='g',bundle_sha256=FROZEN_NHL,candidate='reference_control',status='settled',home_team='DET',away_team='NJD',home_win_prob=.6,created_at_utc='2026-10-12T12:00Z',start_time_utc='2026-10-14T00:00Z',home_score=4,away_score=5,actual_home_win=0)
+        stale={'games':{'NHL:g':dict(sport='NHL',home_team='DET',away_team='NJD',state='live',home_score=1,away_score=2,start_time_utc='2026-10-14T00:00Z',detail='3rd')}}
+        board,_=prepare_compact('NHL',{'nhl':{'ok':True,'data':[record]}},stale,now)
+        output=compact_html(board.iloc[0],stale,now)
+        self.assertIn('NHL · Final',output)
+        self.assertIn('<strong>5</strong>',output)
+        self.assertNotIn('3rd',output)
+
 if __name__=='__main__':unittest.main()
