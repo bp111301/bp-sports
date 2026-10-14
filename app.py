@@ -457,10 +457,8 @@ elif sport == "CFB":
     cfb_live_record = load_json("data/cfb/ledger/summary.json")
 
     def cfb_initials(name):
-        words = [w for w in str(name).replace("(", " ").replace(")", " ").split() if w]
-        if len(words) == 1:
-            return words[0][:3].upper()
-        return "".join(w[0] for w in words[:3]).upper()
+        from college_team_ui import college_abbreviation
+        return college_abbreviation('CFB',name)
 
     def cfb_team_block(team, home=False):
         safe = html.escape(str(team))
