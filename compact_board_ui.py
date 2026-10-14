@@ -74,7 +74,10 @@ def team_label(sport, value):
         return TEAMS.get(value,value)
     return value
 
-def short_name(value):
+def short_name(value,sport=None,team_id=None):
+    if sport in ('CFB','CBB'):
+        from college_team_ui import college_abbreviation
+        return college_abbreviation(sport,value,team_id)
     if len(value) <= 4: return value
     return ''.join(w[0] for w in str(value).split()[:3]).upper()
 
@@ -100,8 +103,8 @@ def compact_html(r, feed, now):
     detail = status.get('detail','') if status and status.get('state')=='live' and not r.settled else time
     return f'''<div class="bp-mini">
       <div class="bp-mini-top"><span>{esc(r.sport)} · {esc(state)}</span><span>{esc(detail)}</span></div>
-      <div class="bp-mini-team"><span class="bp-mini-badge">{esc(short_name(r.away))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.away))}</span><strong>{a if a is not None else '—'}</strong></div>
-      <div class="bp-mini-team"><span class="bp-mini-badge">{esc(short_name(r.home))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.home))}</span><strong>{h if h is not None else '—'}</strong></div>
+      <div class="bp-mini-team"><span class="bp-mini-badge">{esc(short_name(r.away,r.sport,d.get('away_team_id')))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.away))}</span><strong>{a if a is not None else '—'}</strong></div>
+      <div class="bp-mini-team"><span class="bp-mini-badge">{esc(short_name(r.home,r.sport,d.get('home_team_id')))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.home))}</span><strong>{h if h is not None else '—'}</strong></div>
       <div class="bp-mini-pick"><span class="bp-mini-selected">BP PICK <b>{esc(pick)}</b><small class="{grade.lower()}">{grade}</small></span><span class="bp-mini-confidence"><b>{r.confidence:.1%}</b><small>WIN CONFIDENCE</small></span></div>
       <div class="bp-mini-bar"><div style="width:{r.confidence*100:.1f}%"></div></div>
     </div>'''
