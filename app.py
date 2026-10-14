@@ -41,10 +41,10 @@ html,body,[class*="css"]{font-family:Inter,ui-sans-serif,-apple-system,BlinkMacS
   linear-gradient(180deg,#0a0d13 0%,#080b10 100%);
   color:var(--bp-text)}
 footer{visibility:hidden}
-header[data-testid="stHeader"]{display:flex}
-#MainMenu{visibility:visible}
-.block-container{max-width:1160px;padding-top:4rem;padding-bottom:5rem}
-.st-key-bp_sport{position:sticky;top:3.75rem;z-index:20;background:#0b1019;padding:8px 0;border-bottom:1px solid #27364c}
+header[data-testid="stHeader"]{display:none}
+#MainMenu{visibility:hidden}
+.block-container{max-width:1160px;padding-top:1rem;padding-bottom:5rem}
+.st-key-bp_sport{position:static;background:transparent;padding:8px 0;border:0;box-shadow:none}
 .st-key-bp_sport [role="radiogroup"]{gap:6px;flex-wrap:wrap}
 .st-key-bp_sport label{border:1px solid #30425c;border-radius:10px;padding:8px 12px;background:#101c2d}
 .st-key-bp_sport label:has(input:checked){background:#234673;border-color:#75a9f3}
@@ -218,6 +218,7 @@ def team_block(team, home=False):
     return f'<div class="team-box{" home" if home else ""}">{txt + dot if home else dot + txt}</div>'
 
 render_top_anchor()
+render_host_chrome()
 render_header()
 st.markdown('<div style="font-size:.64rem;color:#8d98a8;font-weight:900;letter-spacing:.11em;margin-bottom:4px">SPORT</div>', unsafe_allow_html=True)
 sport = st.radio("Sport", ["Overview", "NFL", "CFB", "NHL", "NBA", "CBB"], horizontal=True, label_visibility="collapsed", key="bp_sport", on_change=board_route)
