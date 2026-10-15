@@ -162,13 +162,15 @@ def game_cards(board,now):
     for r in board.itertuples():
         state,cls=game_state(r,now)
         if not r.settled:state=display_state(context(r.sport,r.game_id,r.home,r.away),False,r.start,now)
+        status=context(r.sport,r.game_id,r.home,r.away)
+        scores=score_html(r.sport,r.game_id,r.home,r.away,r.settled,r.start,now) if r.settled or status and status.get('state') in ('live','final') else ''
         pick=r.home if r.p>=.5 else r.away
         winner=r.home if r.y==1 else r.away
         detail='Final winner: '+str(winner) if r.settled else 'Result pending · excluded from record' if cls=='waiting' else 'Saved before game time'
         time=ct(r.start) if pd.notna(r.start) else 'Kickoff time on NFL board'
         note=audit_note(r.game_id,FROZEN_NHL) if r.sport=='NHL' else None
         audit=f'<div class="desk-detail" style="color:#f1d28f">Input concern · missing power-play feature. <a href="{esc(note["report_url"])}" target="_blank" rel="noopener noreferrer">View audit</a></div>' if note else ''
-        cards.append(f'<article class="desk-game" style="--accent:{COLORS[r.sport]}"><div class="desk-top"><span class="desk-sport">{esc(r.sport)}</span><span class="desk-state {cls}">{state}</span></div><div class="desk-time">{esc(time)}</div>{score_html(r.sport,r.game_id,r.home,r.away,r.settled,r.start,now)}<div class="desk-match">{esc(r.away)} <span>@</span> {esc(r.home)}</div><div class="desk-pick"><div><small>SAVED PICK</small><strong>{esc(pick)}</strong></div><div class="desk-prob">{r.confidence*100:.1f}%<small>MODEL PROBABILITY</small></div></div><div class="desk-detail">{esc(detail)}</div>{confidence_html(r.confidence,r.sport,bool(note))}{audit}</article>')
+        cards.append(f'<article class="desk-game" style="--accent:{COLORS[r.sport]}"><div class="desk-top"><span class="desk-sport">{esc(r.sport)}</span><span class="desk-state {cls}">{state}</span></div><div class="desk-time">{esc(time)}</div>{scores}<div class="desk-match">{esc(r.away)} <span>@</span> {esc(r.home)}</div><div class="desk-pick"><div><small>SAVED PICK</small><strong>{esc(pick)}</strong></div><div class="desk-prob">{r.confidence*100:.1f}%<small>MODEL PROBABILITY</small></div></div><div class="desk-bar" aria-label="Win confidence {r.confidence*100:.1f}%"><div style="width:{r.confidence*100:.1f}%"></div></div><div class="desk-detail">{esc(detail)}</div>{confidence_html(r.confidence,r.sport,bool(note))}{audit}</article>')
     return '<div class="desk-grid">'+''.join(cards)+'</div>'
 
 def select_day(board,day,sport='All sports'):
@@ -179,11 +181,12 @@ def select_day(board,day,sport='All sports'):
 
 def render_game_cards(board,now,key):
     for offset in range(0,len(board),3):
-        columns=st.columns(3)
-        for column,(_,r) in zip(columns,board.iloc[offset:offset+3].iterrows()):
-            with column:
-                st.markdown(game_cards(pd.DataFrame([r]),now).replace('class="desk-grid"','class="desk-single"'),unsafe_allow_html=True)
-                details_button(r.sport,r,key+'_'+r.sport+'_'+str(r.game_id),LABELS[r.group],now=now)
+        with st.container(key=key+'_row_'+str(offset)):
+            columns=st.columns(3)
+            for column,(_,r) in zip(columns,board.iloc[offset:offset+3].iterrows()):
+                with column:
+                    st.markdown(game_cards(pd.DataFrame([r]),now).replace('class="desk-grid"','class="desk-single"'),unsafe_allow_html=True)
+                    details_button(r.sport,r,key+'_'+r.sport+'_'+str(r.game_id),LABELS[r.group],now=now)
 
 def render_daily_results(primary,available,now):
     st.markdown('<div class="section-title">Results by date</div><div class="section-sub">Review a game night · dates and times are Central</div>',unsafe_allow_html=True)
@@ -353,6 +356,16 @@ def render_overview(now=None):
     st.markdown('''<style>
 .desk-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:16px 0 24px}.desk-game{background:#111a26;border:1px solid #2b384b;border-radius:17px;padding:18px;min-width:0}.desk-top{display:flex;align-items:center;justify-content:space-between}.desk-sport{color:var(--accent);font-size:.72rem;font-weight:900;letter-spacing:.1em}.desk-state{font-size:.65rem;padding:4px 9px;border-radius:99px;background:#1d2a3b;color:#bcd3f2;font-weight:800}.desk-state.win{background:#123224;color:#8ce4b3}.desk-state.loss{background:#39212a;color:#ffb4c2}.desk-state.waiting{background:#372e1d;color:#f1d28f}.desk-time{font-size:.7rem;color:#a4b3c8;margin:12px 0 8px}.desk-match{font-size:1.15rem;font-weight:850;overflow-wrap:anywhere}.desk-match span{font-size:.8rem;color:#73869f}.desk-pick{display:flex;justify-content:space-between;align-items:end;gap:12px;border-top:1px solid #2a3649;margin-top:15px;padding-top:13px}.desk-pick small{display:block;font-size:.56rem;color:#9badc5;letter-spacing:.06em}.desk-pick strong{font-size:1.15rem;overflow-wrap:anywhere}.desk-prob{text-align:right;font-size:1.5rem;font-weight:850}.desk-detail{font-size:.7rem;color:#b9c6d8;margin-top:13px}@media(max-width:1000px){.desk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:640px){.desk-grid{grid-template-columns:1fr}.desk-game{padding:16px}.st-key-bp_sport label{padding:7px 9px}.st-key-bp_sport [role="radiogroup"]{gap:4px}}
 .ov-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:18px 0}.ov-sport{background:linear-gradient(140deg,#151e2b,#10151e);border:1px solid #2b3748;border-radius:20px;padding:22px;position:relative;overflow:hidden}.ov-sport:before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:var(--accent)}.ov-top{display:flex;justify-content:space-between;gap:10px;align-items:center}.ov-name{font-size:1.35rem;font-weight:950;letter-spacing:-.04em;color:var(--accent)}.ov-tag{font-size:.61rem;font-weight:850;letter-spacing:.08em;border:1px solid #354155;border-radius:99px;padding:5px 9px;color:#c2cfe1;background:#192230}.ov-score{font-size:2.5rem;font-weight:1000;letter-spacing:-.06em;line-height:1.2;margin-top:16px;color:#f4f7fc}.ov-caption{font-size:.7rem;color:#aab9cd;margin-top:2px}.ov-details{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0}.ov-detail{background:#0d141e;border:1px solid #253143;border-radius:10px;padding:10px}.ov-detail b{font-size:1rem;color:#e2eaf6;display:block}.ov-detail span{font-size:.6rem;color:#91a2b9;text-transform:uppercase;letter-spacing:.04em}.ov-update{border-top:1px solid #283346;padding-top:12px;font-size:.72rem;color:#a4b4ca;display:flex;justify-content:space-between;gap:10px}.ov-status{color:#8bdab1}.ov-status.warning{color:#f4cc7b}.ov-status.unknown{color:#f0a8b1}.ov-table-wrap{border:1px solid #2c394e;border-radius:14px;overflow-x:auto;margin:14px 0}.ov-table{width:100%;border-collapse:collapse;font-size:.8rem;background:#101822;color:#e1e9f4}.ov-table th{text-align:left;padding:12px 14px;background:#182334;color:#a8bad2;font-size:.65rem;font-weight:900;letter-spacing:.06em;white-space:nowrap}.ov-table td{padding:13px 14px;border-top:1px solid #273448;white-space:nowrap}.ov-note{color:#a7b6cc;font-size:.8rem;line-height:1.5;margin:10px 0}.ov-table tbody tr:hover{background:#172230}.ov-meta{color:#93a5bc;font-size:.7rem}.st-key-overview_refresh button{color:#d5e5ff;background:#182841;border:1px solid #39557b}[data-testid="stWidgetLabel"] p,[data-testid="stRadio"] label p{color:#d9e2ef!important}[data-testid="stTabs"] [role="tab"] p{color:#bccbe0!important}[data-testid="stTabs"] [role="tab"][aria-selected="true"] p{color:#91bcff!important}[data-testid="stAlert"] p{color:#dce7f6!important}@media(max-width:1000px){.ov-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:640px){.ov-grid{grid-template-columns:1fr;gap:12px}.ov-sport{padding:18px}.ov-update{flex-wrap:wrap}.ov-score{font-size:2.1rem}}
+
+/* Scope native Streamlit columns as well as the HTML cards. */
+[class*="st-key-desk_details_row_"],[class*="st-key-remaining_details_row_"],[class*="st-key-recent_details_row_"],[class*="st-key-daily_details_row_"]{min-width:0;max-width:100%}
+.desk-single,.desk-game{width:100%;box-sizing:border-box;max-width:100%}
+.desk-top{gap:10px;flex-wrap:wrap}.desk-pick>div:first-child{min-width:0;flex:1}.desk-prob{flex-shrink:0;white-space:nowrap}.desk-prob small{white-space:normal}.desk-match{overflow-wrap:normal;word-break:normal}.desk-pick strong{overflow-wrap:normal;word-break:normal}.desk-bar{height:7px;border-radius:99px;background:#26354a;overflow:hidden;margin-top:13px}.desk-bar>div{height:100%;background:var(--accent);border-radius:inherit}.desk-game .bp-score{margin:10px 0;padding:12px}.desk-game .bp-confidence{font-size:.72rem;line-height:1.5}.desk-game .bp-confidence span{display:block;margin-top:5px}
+@media(max-width:760px){
+:is([class*="st-key-desk_details_row_"],[class*="st-key-remaining_details_row_"],[class*="st-key-recent_details_row_"],[class*="st-key-daily_details_row_"]) [data-testid="stHorizontalBlock"]{flex-direction:column!important;gap:16px!important}
+:is([class*="st-key-desk_details_row_"],[class*="st-key-remaining_details_row_"],[class*="st-key-recent_details_row_"],[class*="st-key-daily_details_row_"]) [data-testid="stColumn"]{width:100%!important;min-width:100%!important;flex:1 1 100%!important}
+.desk-game{padding:18px}.desk-pick strong{font-size:1.2rem}.desk-prob{font-size:1.6rem}
+}
 </style>''' ,unsafe_allow_html=True)
     missing=[name for name,key in [('NFL','nfl'),('CFB','cfb'),('NHL','nhl'),('NBA','nba')] if not available[key]]
     st.markdown(f'''<div class="hero"><div class="eyebrow">NFL · CFB · NHL · NBA</div><div class="hero-title">Your sports desk.</div><div class="hero-copy">Today’s matchups, saved predictions and settled results. Follow each sport’s live record and see how its probabilities hold up.</div><div class="stat-grid"><div class="stat"><div class="stat-v">{4-len(missing)} / 4</div><div class="stat-l">Feeds verified</div></div><div class="stat"><div class="stat-v">{saved}</div><div class="stat-l">Saved matchups</div></div><div class="stat"><div class="stat-v">{total_graded}</div><div class="stat-l">Finals graded</div></div><div class="stat"><div class="stat-v">Prospective</div><div class="stat-l">Live results only</div></div></div></div>''',unsafe_allow_html=True)
