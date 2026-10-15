@@ -5,7 +5,7 @@ import streamlit as st
 from overview_ui import load_overview, prepare, PRIMARY, COLUMNS, row, ts
 from game_center_ui import load_scores, context, filter_favorites
 from game_status import display_state, score
-from matchup_details_ui import details_button
+from matchup_details_ui import details_button, game_tile
 
 UI_REVISION = 'compact-board-20261013'
 def esc(value): return html.escape(str(value), quote=True)
@@ -113,6 +113,12 @@ def compact_html(r, feed, now):
       <div class="bp-mini-bar"><div style="width:{r.confidence*100:.1f}%"></div></div>
     </div>'''
 
+@st.dialog('Game details',width='large')
+def open_cbb_details(r):
+    from cbb_ui import card_html
+    st.markdown(card_html({**r.details,'prob':r.p,'confidence':r.confidence,'start':r.start}),unsafe_allow_html=True)
+    st.caption('Prior-season team history · no current roster, transfer or injury inputs.')
+
 def render_compact(sport):
     now = pd.Timestamp.now(tz='UTC')
     feed = load_scores()
@@ -150,14 +156,9 @@ def render_compact(sport):
         columns = st.columns(2,gap='small')
         for column, (_,r) in zip(columns,shown.iloc[offset:offset+2].iterrows()):
             with column:
-                st.markdown(compact_html(r,feed,now),unsafe_allow_html=True)
-                if sport == 'CBB':
-                    with st.expander('Game details · '+r.away+' vs '+r.home):
-                        from cbb_ui import card_html
-                        st.markdown(card_html({**r.details,'prob':r.p,'confidence':r.confidence,'start':r.start}),unsafe_allow_html=True)
-                        st.caption('Prior-season team history · no current roster, transfer or injury inputs.')
-                else:
-                    details_button(sport,r.to_dict(),'compact_detail_'+sport+'_'+r.game_id,now=now)
+                game_tile(sport,r.to_dict(),'compact_detail_'+sport+'_'+r.game_id,
+                          compact_html(r,feed,now),now=now,
+                          on_open=(lambda r=r:open_cbb_details(r)) if sport=='CBB' else None)
     if sport == 'CBB':
         with st.expander('Schedule coverage'):
             excluded = (cbb or {}).get('excluded',{})
@@ -197,4 +198,13 @@ html,body,.stApp,[data-testid="stAppViewContainer"],[data-testid="stMain"]{max-w
 .bp-mini-confidence b{white-space:nowrap}
 }
 @media(max-width:640px){.bp-mini{padding:11px 12px}.bp-mini-name{font-size:.86rem}.st-key-bp_sport label{padding:10px 9px!important}}
+
+/* A native, keyboard-accessible button covers the full card. */
+[class*="st-key-bp_game_tile_"]{position:relative;gap:0!important;isolation:isolate}
+[class*="st-key-bp_game_tile_"] > [data-testid="stElementContainer"]:has([data-testid="stButton"]){position:absolute!important;inset:0!important;width:100%!important;height:100%!important;z-index:2;margin:0!important}
+[class*="st-key-bp_game_tile_"] [data-testid="stButton"]{height:100%!important}
+[class*="st-key-bp_game_tile_"] [data-testid="stButton"] button{height:100%!important;width:100%!important;min-height:100%!important;background:transparent!important;border:0!important;border-radius:15px!important;box-shadow:none!important;cursor:pointer}
+[class*="st-key-bp_game_tile_"] [data-testid="stButton"] button p{opacity:0}
+[class*="st-key-bp_game_tile_"] [data-testid="stButton"] button:hover{background:#ffffff06!important}
+[class*="st-key-bp_game_tile_"] [data-testid="stButton"] button:focus-visible{outline:3px solid #8bbdff!important;outline-offset:2px}
 </style>''',unsafe_allow_html=True)
