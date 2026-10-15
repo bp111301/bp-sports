@@ -5,6 +5,17 @@ import pandas as pd
 import streamlit as st
 from preview_data import game_id
 
+def valid_latest_context(context,sport,r,now=None):
+    if not context:return None
+    try:
+        saved=pd.to_datetime(r.get('snapshot_created_utc',r.get('created_at_utc',r.get('captured_at_utc'))),utc=True)
+        cutoff=pd.to_datetime(context['cutoff_utc'],utc=True);start=pd.to_datetime(context['start_time_utc'],utc=True)
+        now=pd.Timestamp.now(tz='UTC') if now is None else pd.to_datetime(now,utc=True)
+        if context['sport']!=sport or (context['home_team'],context['away_team'])!=(str(r['home_team']),str(r['away_team'])):return None
+        if str(context.get('game_id'))!=game_id(r['game_id']) or not saved<=cutoff<start or cutoff>now:return None
+        return context
+    except (ValueError,TypeError,KeyError):return None
+
 @st.cache_data(ttl=120)
 def load_previews():
     try:return json.loads((Path(__file__).parent/'data/matchup_previews.json').read_text()).get('games',{})
@@ -25,23 +36,31 @@ def form_paragraph(name,p,sport):
     record=f"{p['wins']}–{p['losses']}"+(f"–{p['ties']}" if p['ties'] else '')
     opening=f"{name} has won {p['wins']} of its {p['games']} games" if sport=='NHL' else f'{name} enters this matchup {record}'
     last=p['last'];outcome={'W':'win over','L':'loss to','T':'tie with'}[last['outcome']];high=max(last['for'],last['against']);low=min(last['for'],last['against'])
-    return f"{opening} in the regular season. Its latest result was a {high:g}–{low:g} {outcome} {last['opponent']}. Across those games, {name} averaged {p['scored_per_game']:.1f} {unit} scored and {p['allowed_per_game']:.1f} allowed."
+    recent=p.get('recent',[]);form=(' Its last '+str(len(recent))+' results: '+', '.join(recent)+'.') if len(recent)>1 else ''
+    return f"{opening} in the regular season. Its latest result was a {high:g}–{low:g} {outcome} {last['opponent']}. Across those games, {name} averaged {p['scored_per_game']:.1f} {unit} scored and {p['allowed_per_game']:.1f} allowed."+form
 
 def synopsis(sport,r,context=None,model_label=None):
     home,away=str(r['home_team']),str(r['away_team'])
     if sport=='NFL':pick=str(r['v4_pick']);prob=float(r['v4_adjusted_confidence']);label='NFL V4'
     else:
-        p=float(r['home_win_prob']);pick=home if p>=.5 else away;prob=max(p,1-p);label=model_label or {'CFB':'CFB V1','NHL':'NHL reference','NBA':'NBA V1'}[sport]
+        p=float(r['home_win_prob']);pick=home if p>=.5 else away;prob=max(p,1-p);label=model_label or {'CFB':'CFB V1','NHL':'NHL reference','NBA':'NBA V1','CBB':'CBB V1 candidate'}[sport]
     if not math.isfinite(prob) or not .5<=prob<=1:return []
     opponent=away if pick==home else home;venue=context.get('venue') if context else None
     matchup=f'{away} meets {home}' if context and context.get('neutral_site') else f'{away} visits {home}'
     start=r.get('kickoff_utc',r.get('start_time_utc',context.get('start_time_utc') if context else None))
     date=pd.to_datetime(start,utc=True,errors='coerce')
+    if pd.isna(date) and context:date=pd.to_datetime(context.get('start_time_utc'),utc=True,errors='coerce')
     when=(' on '+date.tz_convert('America/Chicago').strftime('%A, %b %d, at %I:%M %p CT').replace(' 0',' ')) if pd.notna(date) and str(r.get('kickoff_time_tbd',False)).lower() not in ('true','1','1.0') else ''
     intro=f"{matchup}"+(f" at {venue}" if venue else '')+when+f". The saved {label} forecast favors {pick} at {prob*100:.1f}%, leaving {opponent} a {(1-prob)*100:.1f}% chance according to the model."
     paragraphs=[intro]
     if context:paragraphs.extend(form_paragraph(name,context.get(side),sport) for name,side in [(away,'away_form'),(home,'home_form')])
     else:paragraphs.append('Recent-results context is not available for this saved forecast yet. The probability above comes from the preserved prediction.')
+    if context:
+        hf,af=context.get('home_form') or {},context.get('away_form') or {}
+        if hf.get('games') and af.get('games'):
+            unit='goals' if sport=='NHL' else 'points'
+            hm=hf['scored_per_game']-hf['allowed_per_game'];am=af['scored_per_game']-af['allowed_per_game']
+            paragraphs.append(f"The scoring comparison: {away} carries an average differential of {am:+.1f} {unit} per game, versus {hm:+.1f} for {home}. These are raw season averages across different opponents, not an opponent-adjusted rating or a new prediction.")
     if sport=='NFL':
         notes=[]
         if str(r.get('explosive_extreme')).lower() in ('true','1','1.0'):notes.append('The saved explosive-play matchup reached the model’s extreme-signal threshold.')
@@ -50,6 +69,7 @@ def synopsis(sport,r,context=None,model_label=None):
         takeaway=' '.join(notes) or 'The saved confidence flags show no secondary adjustment to the core forecast.'
     elif sport=='CFB':takeaway='CFB V1 combines efficiency, team strength and college-football context, balancing current-season information with prior-season performance.'
     elif sport=='NHL':takeaway='This frozen research forecast combines team strength, recent results, scoring, rest and team statistics. Starting-goalie reports belong to a separate paired experiment.'
+    elif sport=='CBB':takeaway='The CBB candidate uses prior-season team efficiency, shooting, rebounding, rest and home-court context. Current rosters, transfers and injuries are not included.'
     else:takeaway='NBA V1 weighs team efficiency, recent form, rest and home-court context for regular-season games.'
     if prob<.55:takeaway+=' The probability is close to even, so the model sees only a small edge.'
     elif prob<.65:takeaway+=' The opponent still has a substantial chance to win.'
@@ -58,11 +78,13 @@ def synopsis(sport,r,context=None,model_label=None):
     return paragraphs
 
 def render_preview(sport,r,model_label=None):
-    context=valid_context(load_previews().get(sport+':'+game_id(r['game_id'])),sport,r)
+    saved=load_previews().get(sport+':'+game_id(r['game_id']))
+    latest=valid_latest_context((saved or {}).get('latest_context'),sport,r)
+    context=latest or valid_context(saved,sport,r)
     st.markdown('#### Matchup synopsis')
     for paragraph in synopsis(sport,r,context,model_label):st.write(paragraph)
     if context:
         cutoff=pd.to_datetime(context['cutoff_utc'],utc=True).tz_convert('America/Chicago').strftime('%b %d, %I:%M %p CT')
-        st.caption(f'Recent results through the preview cutoff ({cutoff}). These describe team form; they are not individual feature contributions to the model probability.')
+        st.caption(f'Team context checked {cutoff}. '+('Updated separately from the original prediction. ' if latest else '')+'Only earlier-date regular-season finals are included. These describe team form; they are not individual feature contributions to the saved model probability.')
         if context.get('sources'):st.caption('Recent-results sources: '+' · '.join(f'[{s["name"]}]({s["url"]})' for s in context['sources']))
 
