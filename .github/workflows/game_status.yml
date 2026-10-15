@@ -5,7 +5,7 @@ on:
     paths: ['.github/workflows/game_status.yml', 'pipeline/build_game_status.py', 'game_status.py', 'tests/test_game_center.py']
   workflow_dispatch:
   schedule:
-    - cron: '7,22,37,52 * * * *'
+    - cron: '2-57/5 * * * *'
 permissions:
   contents: write
 concurrency:
