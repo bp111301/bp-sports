@@ -55,14 +55,16 @@ def espn_recap(sport, payload, expected, checked):
             if not rows:continue
             _,player,values=max(rows,key=lambda x:x[0]);athlete=player.get('athlete',{}).get('displayName')
             if not athlete:continue
-            unit='points' if sport=='NBA' else kind+' yards'
-            text=f"{athlete} ({name}) recorded {values[primary]} {unit}"
+            if sport=='NBA':text=f"{athlete} ({name}) scored {values[primary]} points"
+            elif kind=='passing':text=f"{athlete} ({name}) threw for {values[primary]} yards"
+            elif kind=='rushing':text=f"{athlete} ({name}) ran for {values[primary]} yards"
+            else:text=f"{athlete} ({name}) had "+(f"{values['receptions']} catches for " if 'receptions' in values else '')+f"{values[primary]} receiving yards"
             td={'passing':'passingTouchdowns','rushing':'rushingTouchdowns','receiving':'receivingTouchdowns'}.get(kind)
-            if td in values:text+=f" and {values[td]} touchdowns"
+            if td in values and score(values[td]):text+=f" and {values[td]} "+('touchdown' if score(values[td])==1 else 'touchdowns')
             leaders.append(text+'.')
     return {**expected,'checked_at_utc':checked,'flow':flow,'facts':facts,'leaders':leaders[:6],
             'finish':str(c.get('status',{}).get('type',{}).get('shortDetail','Final')),
-            'sources':[{'name':'ESPN box score','url':expected['source_url']}], 'detailed':bool(facts or leaders)}
+            'sources':[{'name':'ESPN box score','url':expected['source_url']}], 'detailed':bool(facts or leaders),'version':2}
 
 def nhl_recap(payload, expected, checked, landing=None):
     actual=nhl_game(payload,checked)
@@ -87,14 +89,15 @@ def nhl_recap(payload, expected, checked, landing=None):
             best=max(skaters,key=lambda p:(score(p.get('points')) or 0,score(p.get('goals')) or 0))
             n=best.get('name',{});n=n.get('default') if isinstance(n,dict) else n
             if n and all(score(best.get(k)) is not None for k in ('goals','assists')):
-                leaders.append(f"{n} ({name}) finished with {best['goals']} goals and {best['assists']} assists.")
+                goals,assists=score(best['goals']),score(best['assists'])
+                leaders.append(f"{n} ({name}) finished with {goals} "+('goal' if goals==1 else 'goals')+f" and {assists} "+('assist' if assists==1 else 'assists')+'.')
         for goalie in players.get('goalies',[]):
             n=goalie.get('name',{});n=n.get('default') if isinstance(n,dict) else n
             saves=score(goalie.get('saves'));faced=score(goalie.get('shotsAgainst'))
             if n and saves is not None and faced and saves<=faced:leaders.append(f'{n} ({name}) stopped {saves} of {faced} shots.')
     finish={'OT':'Final/OT','SO':'Final/SO'}.get(payload.get('periodDescriptor',{}).get('periodType'),'Final')
     return {**expected,'checked_at_utc':checked,'flow':flow,'facts':facts,'leaders':leaders,
-            'finish':finish,'sources':[{'name':'NHL game center','url':expected['source_url']}],'detailed':bool(facts or leaders)}
+            'finish':finish,'sources':[{'name':'NHL game center','url':expected['source_url']}],'detailed':bool(facts or leaders),'version':2}
 
 def recap_paragraphs(recap):
     h,a=recap['home_score'],recap['away_score'];home,away=recap['home_team'],recap['away_team']
