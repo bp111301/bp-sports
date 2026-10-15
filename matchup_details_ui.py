@@ -52,7 +52,12 @@ def render_details(payload,extras=None,now=None):
     st.markdown(confidence_html(d['prob'],sport,bool(audit)),unsafe_allow_html=True)
     if audit:
         st.warning(audit['message']);st.link_button('View input audit',audit['report_url'])
-    st.divider();render_preview(sport,d['preview'],d['label'])
+    from game_recap_ui import render_recap
+    st.divider()
+    if render_recap(d,now):
+        with st.expander('Pregame matchup synopsis'):
+            render_preview(sport,d['preview'],d['label'])
+    else:render_preview(sport,d['preview'],d['label'])
     if extras and extras.get('goalies'):
         from nhl_ui import goalie_text
         st.markdown('#### Saved goalie reports')
