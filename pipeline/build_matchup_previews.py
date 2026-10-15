@@ -65,20 +65,25 @@ def build():
                 url=f'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/teams/{lookup[name]}/schedule?season=2027&seasontype=2'
                 nba[name]=(nba_games(get(url).json()),url)
         except Exception as e:errors.append('NBA recent results unavailable: '+type(e).__name__)
+    now=pd.Timestamp.now(tz='UTC')
     for r in targets:
         key=r['sport']+':'+r['game_id'];sport=r['sport'];old_record=saved.get(key)
-        if old_record and old_record['cutoff_utc']==r['cutoff_utc']:continue
+        existing=old_record if old_record and old_record['cutoff_utc']==r['cutoff_utc'] else None
         details=meta.get(key,{})
         if details and any(team(sport,details[side])!=team(sport,r[side]) for side in ['home_team','away_team']):errors.append(key+' team identity mismatch');continue
         if sport=='NFL':r['start_time_utc']=details.get('start_time_utc')
         start=stamp(r['start_time_utc']);cutoff=stamp(r['cutoff_utc'])
         if pd.isna(start) or pd.isna(cutoff) or cutoff>=start:continue
+        if existing and start<=now:continue
         try:
             if sport in ('NFL','CFB'):games=hist[sport];refs=sources[sport]
             else:
                 lookup=nhl if sport=='NHL' else nba
                 home=lookup[team(sport,r['home_team'])];away=lookup[team(sport,r['away_team'])];games=home[0]+away[0];refs=[dict(name=r[side]+' schedule',url=lookup[team(sport,r[side])][1]) for side in ['home_team','away_team']]
-            saved[key]={**r,'start_time_utc':start.isoformat(),'venue':details.get('venue'),'neutral_site':details.get('neutral_site',False),'home_form':profile(games,sport,r['home_team'],cutoff,start),'away_form':profile(games,sport,r['away_team'],cutoff,start),'sources':refs}
+            original=existing or {**r,'start_time_utc':start.isoformat(),'venue':details.get('venue'),'neutral_site':details.get('neutral_site',False),'home_form':profile(games,sport,r['home_team'],cutoff,start),'away_form':profile(games,sport,r['away_team'],cutoff,start),'sources':refs}
+            if now<start:
+                original={**original,'latest_context':{**r,'cutoff_utc':now.isoformat(),'start_time_utc':start.isoformat(),'venue':details.get('venue'),'neutral_site':details.get('neutral_site',False),'home_form':profile(games,sport,r['home_team'],now,start),'away_form':profile(games,sport,r['away_team'],now,start),'sources':refs}}
+            saved[key]=original
             counts[sport]=counts.get(sport,0)+1
         except (KeyError,ValueError,TypeError) as e:errors.append(key+' preview unavailable: '+type(e).__name__)
     result=dict(updated_at_utc=datetime.now(timezone.utc).isoformat(),purpose='Presentation-only recent results; forecasts and weights unchanged',games=saved,errors=errors)
