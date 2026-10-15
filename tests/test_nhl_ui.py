@@ -22,9 +22,9 @@ def fixture():
 
 def test_sport_navigation_models_and_search():
     with patch('nhl_ui.load_dashboard',return_value=(fixture(),False)),patch('game_center_ui.load_scores',return_value={}):
-        at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_sport']='NFL';at.run()
+        at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_board_view']='Detailed';at.session_state['bp_sport']='NFL';at.run()
         assert not at.exception
-        assert at.radio(key='bp_sport').options==['Overview','NFL','CFB','NHL','NBA']
+        assert at.radio(key='bp_sport').options==['Overview','NFL','CFB','NHL','NBA','CBB']
         at.radio(key='bp_sport').set_value('NHL').run()
         assert not at.exception
         assert len([e for e in at.button if e.label.startswith("Game details")])==12
@@ -48,7 +48,7 @@ def test_records_not_backtests_and_started_pending_not_upcoming():
     board=nhl_ui.prepare_predictions(data['predictions'])
     assert set(nhl_ui.record_metrics(board).Accuracy)=={'—'}
     with patch('nhl_ui.load_dashboard',return_value=(data,False)),patch('game_center_ui.load_scores',return_value={}):
-        at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_sport']='NHL';at.run()
+        at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_board_view']='Detailed';at.session_state['bp_sport']='NHL';at.run()
         assert not at.exception and len([e for e in at.button if e.label.startswith("Game details")])==12
         assert at.selectbox(key='nhl_view').value=='Today + upcoming'
         at.selectbox(key='nhl_view').set_value('Upcoming').run()
@@ -67,7 +67,7 @@ def test_invalid_pregame_rows_and_unverified_confirmations():
 
 def test_saved_snapshot_is_labeled():
     with patch('nhl_ui.load_dashboard',return_value=(fixture(),True)):
-        at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_sport']='NHL';at.run()
+        at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_board_view']='Detailed';at.session_state['bp_sport']='NHL';at.run()
         assert not at.exception
         assert any('saved snapshot' in x.value.lower() for x in at.warning)
 
