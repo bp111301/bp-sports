@@ -7,9 +7,12 @@ on:
       - 'pipeline/build_matchup_previews.py'
       - 'preview_data.py'
       - 'matchup_preview_ui.py'
+      - 'pipeline/build_game_recaps.py'
+      - 'recap_data.py'
+      - 'tests/test_recaps.py'
   workflow_dispatch:
   schedule:
-    - cron: '32 * * * *'
+    - cron: '17,47 * * * *'
 permissions:
   contents: write
 concurrency:
@@ -25,14 +28,16 @@ jobs:
           python-version: '3.12'
       - run: pip install -r requirements.txt requests
       - name: Verify pregame context and synopsis safeguards
-        run: python -m pytest -q tests/test_matchup_previews.py
+        run: python -m pytest -q tests/test_matchup_previews.py tests/test_recaps.py
       - name: Build presentation-only previews
         run: python pipeline/build_matchup_previews.py
-      - name: Commit only preview context
+      - name: Build verified final-game recaps
+        run: python pipeline/build_game_recaps.py
+      - name: Commit only preview and recap context
         run: |
           git config user.name 'bp-sports-bot'
           git config user.email 'actions@users.noreply.github.com'
-          git add data/matchup_previews.json
+          git add data/matchup_previews.json data/game_recaps.json
           if git diff --cached --quiet; then exit 0; fi
           git commit -m 'Refresh presentation-only matchup previews [skip ci]'
           for attempt in 1 2 3; do
