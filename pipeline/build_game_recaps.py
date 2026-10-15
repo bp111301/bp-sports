@@ -18,7 +18,7 @@ def build():
     for key,r in scores.items():
         if r.get('state')!='final' or r.get('sport') not in ('NFL','CFB','NHL','NBA'):continue
         prior=saved.get(key)
-        if prior and prior.get('detailed') and all(prior.get(k)==r.get(k) for k in ('home_score','away_score','home_team','away_team')):continue
+        if prior and prior.get('version')==2 and prior.get('detailed') and all(prior.get(k)==r.get(k) for k in ('home_score','away_score','home_team','away_team')):continue
         work.append((key,r))
     def fetch(item):
         key,r=item;sport=r['sport'];error=None
