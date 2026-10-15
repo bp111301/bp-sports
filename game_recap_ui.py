@@ -11,7 +11,8 @@ from preview_data import game_id
 @st.cache_data(ttl=120)
 def load_recaps():
     try:
-        req=Request('https://raw.githubusercontent.com/bp111301/bp-sports/main/data/game_recaps.json',headers={'User-Agent':'BP-Sports-Recap-UI/1.0'})
+        bucket=str(int(pd.Timestamp.now(tz='UTC').timestamp())//120)
+        req=Request('https://raw.githubusercontent.com/bp111301/bp-sports/main/data/game_recaps.json?v='+bucket,headers={'User-Agent':'BP-Sports-Recap-UI/1.0'})
         with urlopen(req,timeout=5) as response:return json.loads(response.read(6*1024*1024)).get('games',{})
     except (OSError,ValueError):
         try:return json.loads((Path(__file__).parent/'data/game_recaps.json').read_text()).get('games',{})
