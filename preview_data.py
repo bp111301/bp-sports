@@ -2,7 +2,7 @@
 import math
 import pandas as pd
 
-ALIASES={'CFB':{'Southern Mississippi':'Southern Miss','UT San Antonio':'UTSA','Connecticut':'UConn','UMass':'Massachusetts','Sam Houston State':'Sam Houston'},'NFL':{'WSH':'WAS','LAR':'LA','STL':'LA'},'NBA':{'GS':'GSW','BRK':'BKN','NO':'NOP','NY':'NYK','SA':'SAS','UTAH':'UTA','WSH':'WAS'}}
+ALIASES={'CFB':{'Southern Mississippi':'Southern Miss','UT San Antonio':'UTSA','Connecticut':'UConn','UMass':'Massachusetts','Sam Houston State':'Sam Houston','Louisiana Monroe':'UL Monroe'},'NFL':{'WSH':'WAS','LAR':'LA','STL':'LA'},'NBA':{'GS':'GSW','BRK':'BKN','NO':'NOP','NY':'NYK','SA':'SAS','UTAH':'UTA','WSH':'WAS'}}
 def team(sport,name):return ALIASES.get(sport,{}).get(str(name),str(name))
 def stamp(v):return pd.to_datetime(v,utc=True,errors='coerce')
 def flag(v):return str(v).lower() in ('true','1','1.0','yes')
