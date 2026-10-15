@@ -9,7 +9,7 @@ from nhl_ui import audit_note
 from navigation_ui import open_board
 from game_center_ui import filter_favorites,score_html,confidence_html,context,load_scores
 from game_status import display_state
-from matchup_details_ui import details_button
+from matchup_details_ui import game_tile, details_button
 
 RAW='https://raw.githubusercontent.com/bp111301/bp-sports/'
 SOURCES={
@@ -185,8 +185,9 @@ def render_game_cards(board,now,key):
             columns=st.columns(3)
             for column,(_,r) in zip(columns,board.iloc[offset:offset+3].iterrows()):
                 with column:
-                    st.markdown(game_cards(pd.DataFrame([r]),now).replace('class="desk-grid"','class="desk-single"'),unsafe_allow_html=True)
-                    details_button(r.sport,r,key+'_'+r.sport+'_'+str(r.game_id),LABELS[r.group],now=now)
+                    game_tile(r.sport,r,key+'_'+r.sport+'_'+str(r.game_id),
+                              game_cards(pd.DataFrame([r]),now).replace('class="desk-grid"','class="desk-single"'),
+                              LABELS[r.group],now=now)
 
 def render_daily_results(primary,available,now):
     st.markdown('<div class="section-title">Results by date</div><div class="section-sub">Review a game night · dates and times are Central</div>',unsafe_allow_html=True)
