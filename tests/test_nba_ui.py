@@ -17,9 +17,9 @@ def prediction():
 
 def test_nba_page_keeps_live_and_historical_scores_separate():
     with patch('nba_ui.load_dashboard',return_value=(fixture(),False)):
-        at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_sport']='NBA';at.run()
+        at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_board_view']='Detailed';at.session_state['bp_sport']='NBA';at.run()
         assert not at.exception and not at.code
-        assert at.radio(key='bp_sport').options==['Overview','NFL','CFB','NHL','NBA']
+        assert at.radio(key='bp_sport').options==['Overview','NFL','CFB','NHL','NBA','CBB']
         assert [t.label for t in at.tabs]==['PREDICTIONS','MODEL RECORD','THE MODEL']
         assert any('0–0' in m.value and 'PROSPECTIVE' in m.value for m in at.markdown)
         assert any('69.19%' in m.value and 'HISTORICAL ACCURACY' in m.value for m in at.markdown)
@@ -40,7 +40,7 @@ def test_completed_results_and_started_pending_views():
     data['prospective']={'feed_status':'enabled','predictions':[r]}
     board=nba_ui.prepare_predictions([r],now);assert nba_ui.live_record(board)==(0,0,0)
     with patch('nba_ui.load_dashboard',return_value=(data,False)):
-        at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_sport']='NBA';at.run()
+        at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_board_view']='Detailed';at.session_state['bp_sport']='NBA';at.run()
         assert not at.exception
         at.selectbox(key='nba_view').set_value('Awaiting results').run()
         assert any('Status unavailable' in m.value for m in at.markdown)
@@ -57,7 +57,7 @@ def test_invalid_identity_and_duplicate_forecasts_are_rejected():
 def test_saved_history_does_not_claim_zero_live_record():
     data=fixture();data['prospective']={'feed_status':'unavailable','predictions':[]}
     with patch('nba_ui.load_dashboard',return_value=(data,True)):
-        at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_sport']='NBA';at.run()
+        at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_board_view']='Detailed';at.session_state['bp_sport']='NBA';at.run()
         assert not at.exception
         assert any('saved historical snapshot' in w.value for w in at.warning)
         assert not any('0–0' in m.value for m in at.markdown)
