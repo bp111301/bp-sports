@@ -69,7 +69,9 @@ def espn_recap(sport, payload, expected, checked):
 def nhl_recap(payload, expected, checked, landing=None):
     actual=nhl_game(payload,checked)
     if not verified_final(actual,expected):return None
-    facts=[];leaders=[];landing=landing or {};periods=landing.get('summary',{}).get('scoring',[])
+    facts=[];leaders=[];landing=landing or {}
+    if str(landing.get('id'))!=str(payload.get('id')):landing={}
+    periods=landing.get('summary',{}).get('scoring',[])
     # Scoring groups describe one period each. Never infer flow from a partial group.
     flow=None
     if periods:
