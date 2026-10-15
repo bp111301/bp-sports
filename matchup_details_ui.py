@@ -72,3 +72,14 @@ def details_button(sport,row,key,model_label=None,settled=None,extras=None,now=N
     home=row.get('home',row.get('home_team'));away=row.get('away',row.get('away_team'))
     if st.button(f'Game details · {away} @ {home}',key=key,width='stretch'):
         open_details(detail_payload(sport,row,model_label,settled),extras,now)
+
+def game_tile(sport,row,key,card,model_label=None,settled=None,extras=None,now=None,on_open=None):
+    """One accessible native button covers the visual card."""
+    with st.container(key='bp_game_tile_'+key):
+        st.markdown(card,unsafe_allow_html=True)
+        if on_open is None:
+            details_button(sport,row,key,model_label,settled,extras,now)
+        else:
+            home=row.get('home',row.get('home_team'));away=row.get('away',row.get('away_team'))
+            if st.button(f'Game details · {away} @ {home}',key=key,width='stretch'):
+                on_open()
