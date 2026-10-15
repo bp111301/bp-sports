@@ -200,6 +200,7 @@ html,body,.stApp,[data-testid="stAppViewContainer"],[data-testid="stMain"]{max-w
 @media(max-width:640px){.bp-mini{padding:11px 12px}.bp-mini-name{font-size:.86rem}.st-key-bp_sport label{padding:10px 9px!important}}
 
 /* A native, keyboard-accessible button covers the full card. */
+[class*="st-key-bp_game_tile_"] [data-testid="stMarkdownContainer"]{margin-bottom:0!important}
 [class*="st-key-bp_game_tile_"]{position:relative;gap:0!important;isolation:isolate}
 [class*="st-key-bp_game_tile_"] > [data-testid="stElementContainer"]:has([data-testid="stButton"]){position:absolute!important;inset:0!important;width:100%!important;height:100%!important;z-index:2;margin:0!important}
 [class*="st-key-bp_game_tile_"] [data-testid="stButton"]{height:100%!important}
