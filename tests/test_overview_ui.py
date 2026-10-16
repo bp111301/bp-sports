@@ -90,3 +90,24 @@ def test_game_cards_escape_teams_and_show_audit_without_changing_probability():
     assert '&lt;script&gt;' in html and '<script>' not in html
     assert '92.4%' in html and 'missing power-play feature' in html and 'desk-state loss' in html
     assert board.iloc[0].p==.923646349229591
+
+
+def test_yesterday_recap_central_date_original_picks_ties_and_parallel_models():
+ now=pd.Timestamp('2026-10-16T06:00:00Z');data=fixture();capture='2026-10-14T12:00:00Z';start='2026-10-16T02:00:00Z'
+ base=data['nfl']['data'][0]
+ first={**base,'captured_at_utc':capture,'v4_pick':'CHI'}
+ later={**first,'captured_at_utc':'2026-10-15T12:00:00Z','v4_pick':'DET'}
+ tie={**first,'game_id':'tie','settlement_status':'tie','actual_home_score':17,'actual_away_score':17}
+ data['nfl']['data']=[first,later,tie]
+ data['cfb']['data'][0].update(snapshot_created_utc=capture,kickoff_utc=start,schedule_kickoff_utc=start,correct=None,actual_winner=None)
+ for r in data['nhl']['data']:r.update(created_at_utc=capture,start_time_utc=start,status='settled',actual_home_win=1)
+ before=copy.deepcopy(data)
+ with patch('overview_ui.context',return_value={'start_time_utc':start}):
+  day,shown,_=ov.yesterday_recap(data,now)
+ assert str(day)=='2026-10-15' and len(shown)==4
+ m=ov.weekly_metrics(shown)
+ assert (m['wins'],m['losses'],m['ties'],m['pending'])==(1,1,1,1)
+ assert data==before
+ with patch('overview_ui.context',return_value=None):
+  _,empty,available=ov.yesterday_recap({},now)
+ assert empty.empty and not any(available.values())
