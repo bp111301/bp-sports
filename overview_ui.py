@@ -188,14 +188,17 @@ def select_day(board,day,sport='All sports'):
     return shown.drop_duplicates(['sport','game_id']).sort_values(['start','sport'])
 
 def render_game_cards(board,now,key):
-    for offset in range(0,len(board),3):
+    # Share the sport-board tile so dimensions and content stay consistent.
+    from compact_board_ui import compact_html
+    from game_center_ui import load_scores
+    feed=load_scores()
+    for offset in range(0,len(board),2):
         with st.container(key=key+'_row_'+str(offset)):
-            columns=st.columns(3)
-            for column,(_,r) in zip(columns,board.iloc[offset:offset+3].iterrows()):
+            columns=st.columns(2,gap='small')
+            for column,(_,r) in zip(columns,board.iloc[offset:offset+2].iterrows()):
                 with column:
                     game_tile(r.sport,r,key+'_'+r.sport+'_'+str(r.game_id),
-                              game_cards(pd.DataFrame([r]),now).replace('class="desk-grid"','class="desk-single"'),
-                              LABELS[r.group],now=now)
+                              compact_html(r,feed,now),LABELS[r.group],now=now)
 
 def render_daily_results(primary,available,now):
     st.markdown('<div class="section-title">Results by date</div><div class="section-sub">Review a game night · dates and times are Central</div>',unsafe_allow_html=True)
@@ -422,11 +425,7 @@ def render_overview(now=None):
 [class*="st-key-desk_details_row_"],[class*="st-key-remaining_details_row_"],[class*="st-key-recent_details_row_"],[class*="st-key-daily_details_row_"]{min-width:0;max-width:100%}
 .desk-single,.desk-game{width:100%;box-sizing:border-box;max-width:100%}
 .desk-top{gap:10px;flex-wrap:wrap}.desk-pick>div:first-child{min-width:0;flex:1}.desk-prob{flex-shrink:0;white-space:nowrap}.desk-prob small{white-space:normal}.desk-match{overflow-wrap:normal;word-break:normal}.desk-pick strong{overflow-wrap:normal;word-break:normal}.desk-bar{height:7px;border-radius:99px;background:#26354a;overflow:hidden;margin-top:13px}.desk-bar>div{height:100%;background:var(--accent);border-radius:inherit}.desk-game .bp-score{margin:10px 0;padding:12px}.desk-game .bp-confidence{font-size:.72rem;line-height:1.5}.desk-game .bp-confidence span{display:block;margin-top:5px}
-@media(max-width:760px){
-:is([class*="st-key-desk_details_row_"],[class*="st-key-remaining_details_row_"],[class*="st-key-recent_details_row_"],[class*="st-key-daily_details_row_"]) [data-testid="stHorizontalBlock"]{flex-direction:column!important;gap:16px!important}
-:is([class*="st-key-desk_details_row_"],[class*="st-key-remaining_details_row_"],[class*="st-key-recent_details_row_"],[class*="st-key-daily_details_row_"]) [data-testid="stColumn"]{width:100%!important;min-width:100%!important;flex:1 1 100%!important}
-.desk-game{padding:18px}.desk-pick strong{font-size:1.2rem}.desk-prob{font-size:1.6rem}
-}
+
 
 .ov-compact-hero{padding:18px 22px;margin:4px 0 16px;border-radius:18px;box-shadow:none}
 .ov-compact-hero .hero-title{font-size:1.65rem;margin:0 0 6px;line-height:1.15}
