@@ -158,6 +158,8 @@ def select_games(board,view,sport,query,now):
     return shown.sort_values(['start','created'],ascending=view!='Results',na_position='last')
 
 def game_cards(board,now):
+    from team_theme_ui import team_color,text_color,accent_color
+    from college_team_ui import college_abbreviation
     cards=[]
     for r in board.itertuples():
         state,cls=game_state(r,now)
@@ -165,12 +167,18 @@ def game_cards(board,now):
         status=context(r.sport,r.game_id,r.home,r.away)
         scores=score_html(r.sport,r.game_id,r.home,r.away,r.settled,r.start,now) if r.settled or status and status.get('state') in ('live','final') else ''
         pick=r.home if r.p>=.5 else r.away
+        away_color=team_color(r.sport,r.away,r.details.get('away_team_id'))
+        home_color=team_color(r.sport,r.home,r.details.get('home_team_id'))
+        accent=accent_color(home_color if pick==r.home else away_color)
+        away_short=college_abbreviation(r.sport,r.away,r.details.get('away_team_id')) if r.sport in ('CFB','CBB') else r.away
+        home_short=college_abbreviation(r.sport,r.home,r.details.get('home_team_id')) if r.sport in ('CFB','CBB') else r.home
+        matchup=f'<span class="desk-team-chip" title="{esc(r.away)}" aria-label="Away: {esc(r.away)}" style="background:{away_color};color:{text_color(away_color)}">{esc(away_short)}</span><span class="desk-at">@</span><span class="desk-team-chip" title="{esc(r.home)}" aria-label="Home: {esc(r.home)}" style="background:{home_color};color:{text_color(home_color)}">{esc(home_short)}</span>'
         winner=r.home if r.y==1 else r.away
         detail='Final winner: '+str(winner) if r.settled else 'Result pending · excluded from record' if cls=='waiting' else 'Saved before game time'
         time=ct(r.start) if pd.notna(r.start) else 'Kickoff time on NFL board'
         note=audit_note(r.game_id,FROZEN_NHL) if r.sport=='NHL' else None
         audit=f'<div class="desk-detail" style="color:#f1d28f">Input concern · missing power-play feature. <a href="{esc(note["report_url"])}" target="_blank" rel="noopener noreferrer">View audit</a></div>' if note else ''
-        cards.append(f'<article class="desk-game" style="--accent:{COLORS[r.sport]}"><div class="desk-top"><span class="desk-sport">{esc(r.sport)}</span><span class="desk-state {cls}">{state}</span></div><div class="desk-time">{esc(time)}</div>{scores}<div class="desk-match">{esc(r.away)} <span>@</span> {esc(r.home)}</div><div class="desk-pick"><div><small>SAVED PICK</small><strong>{esc(pick)}</strong></div><div class="desk-prob">{r.confidence*100:.1f}%<small>MODEL PROBABILITY</small></div></div><div class="desk-bar" aria-label="Win confidence {r.confidence*100:.1f}%"><div style="width:{r.confidence*100:.1f}%"></div></div><div class="desk-detail">{esc(detail)}</div>{confidence_html(r.confidence,r.sport,bool(note))}{audit}</article>')
+        cards.append(f'<article class="desk-game" style="--accent:{accent};--away-tint:{away_color}24;--home-tint:{home_color}24"><div class="desk-top"><span class="desk-sport">{esc(r.sport)}</span><span class="desk-state {cls}">{state}</span></div><div class="desk-time">{esc(time)}</div>{scores}<div class="desk-match">{matchup}</div><div class="desk-pick"><div><small>SAVED PICK</small><strong>{esc(pick)}</strong></div><div class="desk-prob">{r.confidence*100:.1f}%<small>MODEL PROBABILITY</small></div></div><div class="desk-bar" aria-label="Win confidence {r.confidence*100:.1f}%"><div style="width:{r.confidence*100:.1f}%"></div></div><div class="desk-detail">{esc(detail)}</div>{confidence_html(r.confidence,r.sport,bool(note))}{audit}</article>')
     return '<div class="desk-grid">'+''.join(cards)+'</div>'
 
 def select_day(board,day,sport='All sports'):
@@ -419,9 +427,22 @@ def render_overview(now=None):
 :is([class*="st-key-desk_details_row_"],[class*="st-key-remaining_details_row_"],[class*="st-key-recent_details_row_"],[class*="st-key-daily_details_row_"]) [data-testid="stColumn"]{width:100%!important;min-width:100%!important;flex:1 1 100%!important}
 .desk-game{padding:18px}.desk-pick strong{font-size:1.2rem}.desk-prob{font-size:1.6rem}
 }
+
+.ov-compact-hero{padding:18px 22px;margin:4px 0 16px;border-radius:18px;box-shadow:none}
+.ov-compact-hero .hero-title{font-size:1.65rem;margin:0 0 6px;line-height:1.15}
+.ov-compact-hero .hero-copy{font-size:.83rem;line-height:1.4}
+.ov-compact-hero .stat-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 0}
+.ov-compact-hero .stat{padding:10px 12px;min-width:0}
+.ov-compact-hero .stat-v{font-size:1.4rem;line-height:1.1}
+.ov-compact-hero .stat-l{font-size:.57rem;line-height:1.4;margin-top:4px;overflow-wrap:normal}
+.desk-game{border-left:3px solid var(--accent);background:linear-gradient(125deg,var(--away-tint),transparent 55%),linear-gradient(305deg,var(--home-tint),#101925 65%)}
+.desk-match{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin-top:10px}
+.desk-match .desk-team-chip{display:inline-flex;align-items:center;padding:7px 11px;border-radius:9px;font-size:.85rem;font-weight:900;letter-spacing:.02em;white-space:nowrap}
+.desk-match .desk-at{color:#94a7bf;font-size:.85rem}
+@media(max-width:640px){.ov-compact-hero{padding:14px 15px;border-radius:14px;margin-bottom:12px}.ov-compact-hero .hero-title{font-size:1.3rem}.ov-compact-hero .hero-copy{font-size:.76rem}.ov-compact-hero .stat{padding:9px 7px}.ov-compact-hero .stat-v{font-size:1.2rem}.ov-compact-hero .stat-l{font-size:.53rem;letter-spacing:.02em}}
 </style>''' ,unsafe_allow_html=True)
     missing=[name for name,key in [('NFL','nfl'),('CFB','cfb'),('NHL','nhl'),('NBA','nba')] if not available[key]]
-    st.markdown(f'''<div class="hero"><div class="eyebrow">NFL · CFB · NHL · NBA</div><div class="hero-title">Your sports desk.</div><div class="hero-copy">Today’s matchups, saved predictions and settled results. Follow each sport’s live record and see how its probabilities hold up.</div><div class="stat-grid"><div class="stat"><div class="stat-v">{4-len(missing)} / 4</div><div class="stat-l">Feeds verified</div></div><div class="stat"><div class="stat-v">{saved}</div><div class="stat-l">Saved matchups</div></div><div class="stat"><div class="stat-v">{total_graded}</div><div class="stat-l">Finals graded</div></div><div class="stat"><div class="stat-v">Prospective</div><div class="stat-l">Live results only</div></div></div></div>''',unsafe_allow_html=True)
+    st.markdown(f'''<div class="hero ov-compact-hero"><div class="hero-title">Your sports desk.</div><div class="hero-copy">Saved picks and verified results, all in one place.</div><div class="stat-grid"><div class="stat"><div class="stat-v">{4-len(missing)} / 4</div><div class="stat-l">Feeds verified</div></div><div class="stat"><div class="stat-v">{saved}</div><div class="stat-l">Saved matchups</div></div><div class="stat"><div class="stat-v">{total_graded}</div><div class="stat-l">Finals graded</div></div></div></div>''',unsafe_allow_html=True)
     if missing:st.warning('Live data unavailable for '+', '.join(missing)+'. Those records show — until they can be verified.')
     tabs=st.tabs(['LIVE RECORDS','DAILY RESULTS','CONFIDENCE','RESEARCH'])
     with tabs[0]:
