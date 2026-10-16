@@ -38,7 +38,13 @@ def detail_payload(sport,row,model_label=None,settled=None):
 
 def render_details(payload,extras=None,now=None):
     d=payload;sport=d['sport']
-    st.markdown(f'### {esc(d["away"])} @ {esc(d["home"])}')
+    from team_theme_ui import team_color,text_color,accent_color
+    away_color=team_color(sport,d['away'],d['preview'].get('away_team_id'))
+    home_color=team_color(sport,d['home'],d['preview'].get('home_team_id'))
+    accent=accent_color(home_color if d['pick']==d['home'] else away_color)
+    st.markdown(f'''<div style="background:linear-gradient(120deg,{away_color}2b,{home_color}2b);border:1px solid #314158;border-left:3px solid {accent};border-radius:12px;padding:13px 15px;margin:0 0 10px">
+<h3 style="display:flex;align-items:center;flex-wrap:wrap;gap:9px;font-size:1.15rem;line-height:1.4;margin:0;padding:0">
+<span style="background:{away_color};color:{text_color(away_color)};padding:5px 10px;border-radius:8px;overflow-wrap:anywhere">{esc(d['away'])}</span><span style="color:#a5b7d0;font-size:.9rem">@</span><span style="background:{home_color};color:{text_color(home_color)};padding:5px 10px;border-radius:8px;overflow-wrap:anywhere">{esc(d['home'])}</span></h3></div>''',unsafe_allow_html=True)
     st.caption(sport+' · '+d['label']+(' · experimental' if sport=='NHL' else ' · frozen model'))
     st.markdown(score_html(sport,d['game_id'],d['home'],d['away'],d['settled'],d['start'],now),unsafe_allow_html=True)
     a,b=st.columns([2,1]);a.metric('Saved pick',d['pick']);b.metric('Saved confidence',f'{d["prob"]*100:.1f}%')
