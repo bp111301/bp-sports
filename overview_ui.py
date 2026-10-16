@@ -427,6 +427,16 @@ def render_overview(now=None):
 .desk-top{gap:10px;flex-wrap:wrap}.desk-pick>div:first-child{min-width:0;flex:1}.desk-prob{flex-shrink:0;white-space:nowrap}.desk-prob small{white-space:normal}.desk-match{overflow-wrap:normal;word-break:normal}.desk-pick strong{overflow-wrap:normal;word-break:normal}.desk-bar{height:7px;border-radius:99px;background:#26354a;overflow:hidden;margin-top:13px}.desk-bar>div{height:100%;background:var(--accent);border-radius:inherit}.desk-game .bp-score{margin:10px 0;padding:12px}.desk-game .bp-confidence{font-size:.72rem;line-height:1.5}.desk-game .bp-confidence span{display:block;margin-top:5px}
 
 
+
+/* Live record tiles share the two-column sport-board footprint. */
+.ov-sport{border-radius:15px;padding:13px 15px;margin-top:6px}
+.ov-name{font-size:1rem}.ov-tag{font-size:.55rem;padding:4px 7px}
+.ov-score{font-size:1.8rem;margin-top:10px}.ov-caption{font-size:.67rem}
+.ov-details{gap:7px;margin:10px 0}.ov-detail{padding:7px 9px;border-radius:9px}
+.ov-detail b{font-size:.9rem}.ov-detail span{font-size:.55rem}
+.ov-update{font-size:.65rem;padding-top:9px;flex-wrap:wrap;gap:4px}
+@media(max-width:640px){.ov-sport{padding:11px 12px}.ov-top{flex-wrap:wrap;gap:5px}.ov-score{font-size:1.6rem}.ov-details{gap:4px}.ov-detail{padding:6px 4px}.ov-detail b{font-size:.8rem}.ov-detail span{font-size:.5rem}}
+
 .ov-compact-hero{padding:18px 22px;margin:4px 0 16px;border-radius:18px;box-shadow:none}
 .ov-compact-hero .hero-title{font-size:1.65rem;margin:0 0 6px;line-height:1.15}
 .ov-compact-hero .hero-copy{font-size:.83rem;line-height:1.4}
@@ -453,9 +463,13 @@ def render_overview(now=None):
             tag='FROZEN · RESEARCH' if sport=='NHL' else 'FROZEN V4' if sport=='NFL' else 'FROZEN V1'
             sub='Reference control · prospective research' if sport=='NHL' else 'Official prospective record'
             cards.append(f'<div class="ov-sport" style="--accent:{COLORS[sport]}"><div class="ov-top"><div class="ov-name">{sport}</div><div class="ov-tag">{tag}</div></div><div class="ov-score">{record}</div><div class="ov-caption">{sub}</div><div class="ov-details"><div class="ov-detail"><b>{m["games"] if ok else "—"}</b><span>Graded</span></div><div class="ov-detail"><b>{pending if ok else "—"}</b><span>Pending</span></div><div class="ov-detail"><b>{accuracy}</b><span>Accuracy</span></div></div><div class="ov-update"><span>{esc(ct(updates[sport]))}</span><span class="ov-status {cls}">{state}</span></div></div>')
-        st.markdown('<div class="ov-grid">'+''.join(cards)+'</div>',unsafe_allow_html=True)
-        columns=st.columns(4)
-        for column,sport in zip(columns,PRIMARY):column.button('Open '+sport+' board',key='open_'+sport,on_click=open_board,args=(sport,),width='stretch')
+        sports=list(PRIMARY)
+        for offset in range(0,len(cards),2):
+            columns=st.columns(2,gap='small')
+            for column,sport,card in zip(columns,sports[offset:offset+2],cards[offset:offset+2]):
+                with column:
+                    st.markdown(card,unsafe_allow_html=True)
+                    st.button('Open '+sport+' board',key='open_'+sport,on_click=open_board,args=(sport,),width='stretch')
         st.caption('Saved and graded totals count one primary forecast per matchup. NHL uses the research reference control; challengers are tracked separately.')
         st.markdown('<div class="section-title">Game center</div><div class="section-sub">Saved picks, clear results, all four sports · Central time</div>',unsafe_allow_html=True)
         f1,f2=st.columns([2,1])
