@@ -1,0 +1,28 @@
+{
+  "version": "CBB_SHADOW_COMBINED_20261016",
+  "created": "2026-10-16",
+  "status": "shadow_only_no_public_promotion",
+  "training_seasons": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "calibration_season": 2025,
+  "model_features": "V1 FEATURES + ADJUSTED + ROTATION from challenger/run.py",
+  "logistic_C": 1,
+  "calibrator_C": 100,
+  "prior_games": 8,
+  "embargo": "Full intervening UTC day; no current-game player appearances",
+  "forecast_season": 2027,
+  "regular_season_only": true,
+  "control": "Frozen V1 candidate coefficients, recomputed on identical as-of base features and captured at the same timestamp as challenger, in a separate paired ledger; public V1 forecasts unchanged",
+  "history_2026": "Allowed only for forward forecast state. Not evaluated, calibrated, fitted or used to choose a candidate.",
+  "capture": "First verified pregame capture immutable, both model identities and features archived, never backfill after tipoff",
+  "grading": "Same confirmed final identity and start; only pairs with both outcomes verified enter paired metrics",
+  "roster_fallback": "Unknown until an earlier accepted rotation clears embargo; no preseason roster, transfer or injury inference",
+  "promotion": "No automatic promotion. Review prospective paired evidence including accuracy, Brier, log loss, sample size and calibration; no fixed significance claim.",
+  "output_path": "data/cbb/shadow",
+  "workflow": "Six-hour research refresh; no change to public board"
+}
