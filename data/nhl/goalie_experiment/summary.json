@@ -1,10 +1,10 @@
 {
-  "as_of_utc": "2026-10-16T01:36:27.583743+00:00",
+  "as_of_utc": "2026-10-16T01:41:40.447383+00:00",
   "status": "research_only_not_promoted",
   "weights_frozen": true,
   "paired_games": 67,
-  "settled_paired_games": 57,
-  "pending_paired_games": 10,
+  "settled_paired_games": 58,
+  "pending_paired_games": 9,
   "invalid_timing": 0,
   "coverage": [
     {
@@ -15,38 +15,41 @@
   "metrics": [
     {
       "candidate": "team_control",
-      "games": 57,
-      "accuracy": 0.5614035087719298,
-      "brier": 0.24748782892300863,
-      "log_loss": 0.6970489642969436
+      "games": 58,
+      "correct": 33,
+      "accuracy": 0.5689655172413793,
+      "brier": 0.24534811395132622,
+      "log_loss": 0.6924916537900438
     },
     {
       "candidate": "inferred_goalie",
-      "games": 57,
-      "accuracy": 0.5964912280701754,
-      "brier": 0.24677148072314453,
-      "log_loss": 0.6918646926482248
+      "games": 58,
+      "correct": 35,
+      "accuracy": 0.603448275862069,
+      "brier": 0.24459003239909066,
+      "log_loss": 0.6872777440848465
     },
     {
       "candidate": "confirmed_goalie",
-      "games": 57,
-      "accuracy": 0.5964912280701754,
-      "brier": 0.24680739125476486,
-      "log_loss": 0.6917129558027367
+      "games": 58,
+      "correct": 35,
+      "accuracy": 0.603448275862069,
+      "brier": 0.2448093727770499,
+      "log_loss": 0.6875308969334629
     }
   ],
   "first_formal_review_paired_games": 500,
   "automatic_promotion": false,
   "confirmed_minus_control": {
     "team_control": {
-      "accuracy": 0.03508771929824561,
-      "brier": -0.0006804376682437718,
-      "log_loss": -0.005336008494206901
+      "accuracy": 0.03448275862068961,
+      "brier": -0.0005387411742763248,
+      "log_loss": -0.004960756856580928
     },
     "inferred_goalie": {
       "accuracy": 0.0,
-      "brier": 3.59105316203312e-05,
-      "log_loss": -0.00015173684548808186
+      "brier": 0.00021934037795923178,
+      "log_loss": 0.0002531528486163781
     }
   },
   "games_in_current_prediction_window": 1,
