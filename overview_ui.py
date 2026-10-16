@@ -346,9 +346,59 @@ def render_weekly_results(now=None):
     st.download_button('Download this week', games.to_csv(index=False), file_name=sport.lower()+'-weekly-results.csv', mime='text/csv')
 
 
+def yesterday_recap(payload,now):
+    """One original primary forecast per game, grouped by Central game date."""
+    board,available,_=prepare(payload,now)
+    other=board.loc[(board.sport!='NFL') & board.apply(lambda r:PRIMARY.get(r.sport)==r.group,axis=1).astype(bool)].copy() if len(board) else board.copy()
+    other['tie']=False
+    nfl,_=weekly_board(payload,'NFL',now)
+    shown=pd.concat([other,nfl],ignore_index=True)
+    for i,r in shown.iterrows():
+        status=context(r.sport,r.game_id,r.home,r.away)
+        if status:shown.at[i,'start']=ts(status.get('start_time_utc'))
+    yesterday=(now.tz_convert('America/Chicago').normalize()-pd.DateOffset(days=1)).date()
+    shown=shown.loc[shown.start.map(lambda t:pd.notna(t) and ts(t).tz_convert('America/Chicago').date()==yesterday).astype(bool)].copy()
+    shown=shown.sort_values(['created','game_id']).drop_duplicates(['sport','game_id']).sort_values(['start','sport'])
+    return yesterday,shown,available
+
+def render_yesterday_recap(payload,now):
+    day,shown,available=yesterday_recap(payload,now)
+    missing=[sport for sport,key in PRIMARY.items() if not available.get('nhl' if sport=='NHL' else key)]
+    m=weekly_metrics(shown);accuracy=f"{m['accuracy']:.1%}" if m['games'] else '—'
+    chips=[]
+    for sport in PRIMARY:
+        section=shown[shown.sport==sport]
+        if section.empty:continue
+        sm=weekly_metrics(section)
+        record=f"{sm['wins']}–{sm['losses']}"+(f" · {sm['ties']} tie" if sm['ties'] else '')
+        chips.append(f'<span style="font-size:.78rem;color:{COLORS[sport]}">{sport} <b>{record}</b></span>')
+    headline='Results incomplete' if missing else f"{m['wins']}–{m['losses']} · {accuracy}" if m['games'] else 'Awaiting grading' if len(shown) else 'No tracked games'
+    note=f"{m['games']} graded · {m['pending']} awaiting grading"+(f" · {m['ties']} ties excluded" if m['ties'] else '')
+    st.markdown(f'''<section aria-label="Yesterday's recap" style="background:#101a27;border:1px solid #293a50;border-left:3px solid #7baeff;border-radius:14px;padding:15px 18px;margin:0 0 10px">
+<div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px"><span style="color:#a7b9d0;font-size:.8rem">Yesterday · {day.strftime('%a, %b %-d')}</span><strong style="font-size:1.1rem;color:#eef4ff">{headline}</strong></div>
+<div style="display:flex;flex-wrap:wrap;gap:8px 20px;margin:8px 0">{''.join(chips)}</div><div style="font-size:.72rem;color:#a7b9d0">{note}</div></section>''',unsafe_allow_html=True)
+    if missing:st.caption('Missing grading feeds: '+', '.join(missing)+'. Totals are incomplete.')
+    if shown.empty:return
+    with st.expander('Yesterday’s final scores & game recaps'):
+        st.caption('Original saved picks only. NHL uses the experimental reference control; pending games and ties stay out of accuracy.')
+        table_rows=weekly_game_table(shown)
+        from game_status import score
+        for index,r in enumerate(shown.sort_values(['start','created'],na_position='last').itertuples()):
+            source=context(r.sport,r.game_id,r.home,r.away)
+            if source and source.get('state')=='final':
+                h,a=score(source.get('home_score')),score(source.get('away_score'))
+                if h is not None and a is not None:table_rows.loc[index,'Final (away–home)']=f'{a}–{h}'
+        st.dataframe(table_rows[['Game','Final (away–home)','Saved pick','Result']],hide_index=True,use_container_width=True,height=min(400,38+35*len(table_rows)))
+        choices=list(shown.index)
+        if st.session_state.get('yesterday_recap_game') not in choices:st.session_state['yesterday_recap_game']=choices[0]
+        selected=st.selectbox('Read a game recap',choices,format_func=lambda i:f'{shown.loc[i,"sport"]} · {shown.loc[i,"away"]} @ {shown.loc[i,"home"]}',key='yesterday_recap_game')
+        r=shown.loc[selected]
+        details_button(r.sport,{**r.details,**r.to_dict()},'yesterday_recap_details',LABELS[r.group],settled=bool(r.settled or r.tie),now=now)
+
 def render_overview(now=None):
     now=pd.Timestamp.now(tz='UTC') if now is None else ts(now)
-    board,available,updates=prepare(load_overview(),now)
+    payload=load_overview()
+    board,available,updates=prepare(payload,now)
     for i,r in board.iterrows():
         status=context(r.sport,r.game_id,r.home,r.away)
         if status:board.loc[i,'start']=ts(status['start_time_utc'])
@@ -371,6 +421,7 @@ def render_overview(now=None):
     missing=[name for name,key in [('NFL','nfl'),('CFB','cfb'),('NHL','nhl'),('NBA','nba')] if not available[key]]
     st.markdown(f'''<div class="hero"><div class="eyebrow">NFL · CFB · NHL · NBA</div><div class="hero-title">Your sports desk.</div><div class="hero-copy">Today’s matchups, saved predictions and settled results. Follow each sport’s live record and see how its probabilities hold up.</div><div class="stat-grid"><div class="stat"><div class="stat-v">{4-len(missing)} / 4</div><div class="stat-l">Feeds verified</div></div><div class="stat"><div class="stat-v">{saved}</div><div class="stat-l">Saved matchups</div></div><div class="stat"><div class="stat-v">{total_graded}</div><div class="stat-l">Finals graded</div></div><div class="stat"><div class="stat-v">Prospective</div><div class="stat-l">Live results only</div></div></div></div>''',unsafe_allow_html=True)
     if missing:st.warning('Live data unavailable for '+', '.join(missing)+'. Those records show — until they can be verified.')
+    render_yesterday_recap(payload,now)
     tabs=st.tabs(['LIVE RECORDS','DAILY RESULTS','CONFIDENCE','RESEARCH'])
     with tabs[0]:
         cards=[]
