@@ -3,6 +3,7 @@ import argparse
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 import hashlib
+import gzip
 from importlib.metadata import version
 import json
 import math
@@ -212,6 +213,10 @@ def main():
     cache.mkdir(parents=True, exist_ok=True)
     with ThreadPoolExecutor(max_workers=4) as pool:
         seasons = list(pool.map(lambda y: v1.season_games(y, cache), range(2020, 2026)))
+    original_audit = json.loads((Path(v1.__file__).parent/'results/development.json').read_text())['data_audit']
+    expected = {a['season']:[s['sha256'] for s in a['sources']] for a in original_audit}
+    if any([s['sha256'] for s in audit['sources']] != expected[audit['season']] for _, audit in seasons):
+        raise ValueError('Historical source hashes changed since V1; audit before comparison')
     games = [g for batch, _ in seasons for g in batch]
     development_only(games)
     players, player_audits = {}, []
@@ -228,6 +233,9 @@ def main():
                   features=VARIANTS, team_source_audit=[audit for _, audit in seasons],
                   player_source_audit=player_audits,
                   runtime={name:version(name) for name in ['pandas','numpy','scikit-learn','pyarrow']},
+                  historical_source_hashes_match_v1=True,
+                  v1_replay_parity='all three folds match original develop() within 1e-12',
+                  experiment_lock_sha256=hashlib.sha256((Path(__file__).parent/'EXPERIMENT_LOCK.json').read_bytes()).hexdigest(),
                   v1_source_sha256=hashlib.sha256(Path(v1.__file__).read_bytes()).hexdigest(),
                   safety='Full intervening UTC-day embargo; no forecast-game player appearances; no 2026 input.',
                   limitations=['Development seasons previously inspected; these are exploratory comparisons, not new untouched tests.',
@@ -237,6 +245,9 @@ def main():
     prediction_path = output/'predictions.csv'
     predictions.to_csv(prediction_path, index=False)
     result['predictions_sha256'] = hashlib.sha256(prediction_path.read_bytes()).hexdigest()
+    archive_path = output/'predictions.csv.gz'
+    archive_path.write_bytes(gzip.compress(prediction_path.read_bytes(), mtime=0))
+    result['predictions_archive_sha256'] = hashlib.sha256(archive_path.read_bytes()).hexdigest()
     (output/'comparison.json').write_text(json.dumps(result, indent=2)+'\n')
     print(json.dumps({k: result[k] for k in ['pooled', 'decisions', 'player_source_audit']}, indent=2))
 

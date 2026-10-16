@@ -1,0 +1,632 @@
+{
+  "folds": {
+    "2023": {
+      "v1_replay": {
+        "games": 5601,
+        "correct": 3961,
+        "accuracy": 0.7071951437243349,
+        "brier": 0.18848115848510125,
+        "log_loss": 0.5554850121735286,
+        "november": {
+          "games": 1124,
+          "correct": 807,
+          "accuracy": 0.7179715302491103,
+          "brier": 0.17526130821372532,
+          "log_loss": 0.5193750120464955
+        },
+        "neutral": {
+          "games": 678,
+          "correct": 448,
+          "accuracy": 0.6607669616519174,
+          "brier": 0.21236687161298773,
+          "log_loss": 0.6118757093027872
+        }
+      },
+      "opponent_adjusted": {
+        "games": 5601,
+        "correct": 3999,
+        "accuracy": 0.7139796464916979,
+        "brier": 0.18631173243131235,
+        "log_loss": 0.5498326451583776,
+        "november": {
+          "games": 1124,
+          "correct": 830,
+          "accuracy": 0.7384341637010676,
+          "brier": 0.17012933104141204,
+          "log_loss": 0.5056592087631288
+        },
+        "neutral": {
+          "games": 678,
+          "correct": 444,
+          "accuracy": 0.6548672566371682,
+          "brier": 0.21452247081403475,
+          "log_loss": 0.6196526977746436
+        }
+      },
+      "observed_continuity": {
+        "games": 5601,
+        "correct": 3985,
+        "accuracy": 0.7114800928405642,
+        "brier": 0.18762711935559415,
+        "log_loss": 0.5533880532167716,
+        "november": {
+          "games": 1124,
+          "correct": 814,
+          "accuracy": 0.7241992882562278,
+          "brier": 0.17404481613336553,
+          "log_loss": 0.5166274992881511
+        },
+        "neutral": {
+          "games": 678,
+          "correct": 455,
+          "accuracy": 0.6710914454277286,
+          "brier": 0.21127546484423437,
+          "log_loss": 0.6095702862202381
+        }
+      },
+      "combined": {
+        "games": 5601,
+        "correct": 4015,
+        "accuracy": 0.7168362792358507,
+        "brier": 0.18549686115092262,
+        "log_loss": 0.5476473694890103,
+        "november": {
+          "games": 1124,
+          "correct": 833,
+          "accuracy": 0.7411032028469751,
+          "brier": 0.16910196829047805,
+          "log_loss": 0.5025281186366353
+        },
+        "neutral": {
+          "games": 678,
+          "correct": 451,
+          "accuracy": 0.6651917404129793,
+          "brier": 0.21343006232928496,
+          "log_loss": 0.616957356847579
+        }
+      }
+    },
+    "2024": {
+      "v1_replay": {
+        "games": 5603,
+        "correct": 3992,
+        "accuracy": 0.7124754595752275,
+        "brier": 0.18810057560583607,
+        "log_loss": 0.5536101915514228,
+        "november": {
+          "games": 1120,
+          "correct": 838,
+          "accuracy": 0.7482142857142857,
+          "brier": 0.17430040018421736,
+          "log_loss": 0.5206902725796191
+        },
+        "neutral": {
+          "games": 654,
+          "correct": 422,
+          "accuracy": 0.6452599388379205,
+          "brier": 0.22440895398054012,
+          "log_loss": 0.6390538497553909
+        }
+      },
+      "opponent_adjusted": {
+        "games": 5603,
+        "correct": 4016,
+        "accuracy": 0.7167588791718722,
+        "brier": 0.18396229960953467,
+        "log_loss": 0.5435720988212502,
+        "november": {
+          "games": 1120,
+          "correct": 844,
+          "accuracy": 0.7535714285714286,
+          "brier": 0.16430722493138802,
+          "log_loss": 0.4957525139639415
+        },
+        "neutral": {
+          "games": 654,
+          "correct": 422,
+          "accuracy": 0.6452599388379205,
+          "brier": 0.2204440451114464,
+          "log_loss": 0.6304062648602529
+        }
+      },
+      "observed_continuity": {
+        "games": 5603,
+        "correct": 3985,
+        "accuracy": 0.7112261288595395,
+        "brier": 0.18693725440632455,
+        "log_loss": 0.550657008819772,
+        "november": {
+          "games": 1120,
+          "correct": 837,
+          "accuracy": 0.7473214285714286,
+          "brier": 0.1723183220705617,
+          "log_loss": 0.5155737539156041
+        },
+        "neutral": {
+          "games": 654,
+          "correct": 421,
+          "accuracy": 0.6437308868501529,
+          "brier": 0.22212900894006363,
+          "log_loss": 0.6336680509605267
+        }
+      },
+      "combined": {
+        "games": 5603,
+        "correct": 4030,
+        "accuracy": 0.7192575406032483,
+        "brier": 0.18339078493076036,
+        "log_loss": 0.5420813816617401,
+        "november": {
+          "games": 1120,
+          "correct": 848,
+          "accuracy": 0.7571428571428571,
+          "brier": 0.16336823131977884,
+          "log_loss": 0.4932380753568984
+        },
+        "neutral": {
+          "games": 654,
+          "correct": 420,
+          "accuracy": 0.6422018348623854,
+          "brier": 0.21867274275038734,
+          "log_loss": 0.6263664390538822
+        }
+      }
+    },
+    "2025": {
+      "v1_replay": {
+        "games": 5636,
+        "correct": 4048,
+        "accuracy": 0.7182398864442867,
+        "brier": 0.18318144929774416,
+        "log_loss": 0.5405846222473054,
+        "november": {
+          "games": 1210,
+          "correct": 890,
+          "accuracy": 0.7355371900826446,
+          "brier": 0.171853917657791,
+          "log_loss": 0.5110141371143737
+        },
+        "neutral": {
+          "games": 643,
+          "correct": 418,
+          "accuracy": 0.6500777604976672,
+          "brier": 0.2145620420943529,
+          "log_loss": 0.6184927104136709
+        }
+      },
+      "opponent_adjusted": {
+        "games": 5636,
+        "correct": 4045,
+        "accuracy": 0.7177075940383251,
+        "brier": 0.17962290342374812,
+        "log_loss": 0.5300531620648978,
+        "november": {
+          "games": 1210,
+          "correct": 908,
+          "accuracy": 0.7504132231404959,
+          "brier": 0.1619091126553895,
+          "log_loss": 0.4815839704688296
+        },
+        "neutral": {
+          "games": 643,
+          "correct": 423,
+          "accuracy": 0.6578538102643857,
+          "brier": 0.21150467885036536,
+          "log_loss": 0.6095173751514064
+        }
+      },
+      "observed_continuity": {
+        "games": 5636,
+        "correct": 4052,
+        "accuracy": 0.7189496096522356,
+        "brier": 0.18220588406833627,
+        "log_loss": 0.5377310879847415,
+        "november": {
+          "games": 1210,
+          "correct": 893,
+          "accuracy": 0.7380165289256199,
+          "brier": 0.1692518101395414,
+          "log_loss": 0.5040317684525916
+        },
+        "neutral": {
+          "games": 643,
+          "correct": 421,
+          "accuracy": 0.6547433903576982,
+          "brier": 0.21345523156398907,
+          "log_loss": 0.6161937441991973
+        }
+      },
+      "combined": {
+        "games": 5636,
+        "correct": 4055,
+        "accuracy": 0.7194819020581973,
+        "brier": 0.17892873335202159,
+        "log_loss": 0.5281029169917594,
+        "november": {
+          "games": 1210,
+          "correct": 903,
+          "accuracy": 0.7462809917355372,
+          "brier": 0.16015676076760482,
+          "log_loss": 0.4769841800631337
+        },
+        "neutral": {
+          "games": 643,
+          "correct": 417,
+          "accuracy": 0.6485225505443235,
+          "brier": 0.2107172359044757,
+          "log_loss": 0.6081370206242956
+        }
+      }
+    }
+  },
+  "pooled": {
+    "v1_replay": {
+      "games": 16840,
+      "correct": 12001,
+      "accuracy": 0.7126484560570071,
+      "brier": 0.18658082791191435,
+      "log_loss": 0.5498743698000219
+    },
+    "opponent_adjusted": {
+      "games": 16840,
+      "correct": 12060,
+      "accuracy": 0.7161520190023754,
+      "brier": 0.1832914169688983,
+      "log_loss": 0.5411298537188421
+    },
+    "observed_continuity": {
+      "games": 16840,
+      "correct": 12022,
+      "accuracy": 0.713895486935867,
+      "brier": 0.18558321226594196,
+      "log_loss": 0.5472393181927746
+    },
+    "combined": {
+      "games": 16840,
+      "correct": 12100,
+      "accuracy": 0.7185273159144893,
+      "brier": 0.1825979114278718,
+      "log_loss": 0.5392543312425316
+    }
+  },
+  "decisions": {
+    "opponent_adjusted": {
+      "development_shortlist": true,
+      "brier_folds_improved": 3,
+      "additional_correct": 59,
+      "accuracy_delta": 0.0035035629453682438,
+      "brier_delta": -0.0032894109430160468,
+      "log_loss_delta": -0.008744516081179765
+    },
+    "observed_continuity": {
+      "development_shortlist": true,
+      "brier_folds_improved": 3,
+      "additional_correct": 21,
+      "accuracy_delta": 0.0012470308788599116,
+      "brier_delta": -0.000997615645972394,
+      "log_loss_delta": -0.0026350516072473074
+    },
+    "combined": {
+      "development_shortlist": true,
+      "brier_folds_improved": 3,
+      "additional_correct": 99,
+      "accuracy_delta": 0.005878859857482155,
+      "brier_delta": -0.003982916484042559,
+      "log_loss_delta": -0.010620038557490274
+    }
+  },
+  "status": "development_only_not_promoted",
+  "seasons_loaded": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "evaluated_seasons": [
+    2023,
+    2024,
+    2025
+  ],
+  "excluded_seasons": [
+    2026,
+    2027
+  ],
+  "features": {
+    "v1_replay": [
+      "elo_diff",
+      "home_advantage",
+      "off_eff_diff",
+      "def_eff_diff",
+      "efg_diff",
+      "tov_rate_diff",
+      "orb_rate_diff",
+      "ft_rate_diff",
+      "pace_diff",
+      "rest_diff",
+      "experience_diff"
+    ],
+    "opponent_adjusted": [
+      "elo_diff",
+      "home_advantage",
+      "off_eff_diff",
+      "def_eff_diff",
+      "efg_diff",
+      "tov_rate_diff",
+      "orb_rate_diff",
+      "ft_rate_diff",
+      "pace_diff",
+      "rest_diff",
+      "experience_diff",
+      "adjusted_off_diff",
+      "adjusted_def_diff"
+    ],
+    "observed_continuity": [
+      "elo_diff",
+      "home_advantage",
+      "off_eff_diff",
+      "def_eff_diff",
+      "efg_diff",
+      "tov_rate_diff",
+      "orb_rate_diff",
+      "ft_rate_diff",
+      "pace_diff",
+      "rest_diff",
+      "experience_diff",
+      "returning_share_diff",
+      "transfer_share_diff",
+      "prior_minutes_experience_diff",
+      "rotation_known_diff"
+    ],
+    "combined": [
+      "elo_diff",
+      "home_advantage",
+      "off_eff_diff",
+      "def_eff_diff",
+      "efg_diff",
+      "tov_rate_diff",
+      "orb_rate_diff",
+      "ft_rate_diff",
+      "pace_diff",
+      "rest_diff",
+      "experience_diff",
+      "adjusted_off_diff",
+      "adjusted_def_diff",
+      "returning_share_diff",
+      "transfer_share_diff",
+      "prior_minutes_experience_diff",
+      "rotation_known_diff"
+    ]
+  },
+  "team_source_audit": [
+    {
+      "season": 2020,
+      "schedule_rows": 5767,
+      "box_rows": 11514,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2020.parquet",
+          "sha256": "f87d7a04d905c95221b1201a4fd43bdf9bad3bfae7b3f880800e9eb8ae1cfa3a",
+          "bytes": 598411
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2020.parquet",
+          "sha256": "e0691635680d2acc2002b9a5092e9f6065c7da46a9d44f433831b0332a628126",
+          "bytes": 706896
+        }
+      ],
+      "exclusions": {
+        "missing_or_unpaired_box": 4,
+        "division_or_conference_unknown": 437
+      },
+      "eligible_games": 5326,
+      "neutral_games": 453
+    },
+    {
+      "season": 2021,
+      "schedule_rows": 4285,
+      "box_rows": 8566,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2021.parquet",
+          "sha256": "26b26e9fd035a567ca66e65fadd8a3df9482e25e4a1c63ff40466e0d99c9cc76",
+          "bytes": 465503
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2021.parquet",
+          "sha256": "61dd52ed579a1ed628bf30f79b38580e559d7a9e8160a8a03204f6415ef6f4a4",
+          "bytes": 525456
+        }
+      ],
+      "exclusions": {
+        "not_regular_season": 89,
+        "division_or_conference_unknown": 338,
+        "missing_or_unpaired_box": 1
+      },
+      "eligible_games": 3857,
+      "neutral_games": 399
+    },
+    {
+      "season": 2022,
+      "schedule_rows": 5976,
+      "box_rows": 11930,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2022.parquet",
+          "sha256": "75a702d5c8db85bfd7ad30bc046a801742b88ac3f7a900d7e05450a6a4c10276",
+          "bytes": 621024
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2022.parquet",
+          "sha256": "2ddae04a435686e16c2bbc5bbe133fa8706eadd69dd860344fb5c2cd216c2fb6",
+          "bytes": 733561
+        }
+      ],
+      "exclusions": {
+        "not_regular_season": 130,
+        "division_or_conference_unknown": 491,
+        "not_confirmed_final": 10
+      },
+      "eligible_games": 5345,
+      "neutral_games": 603
+    },
+    {
+      "season": 2023,
+      "schedule_rows": 6261,
+      "box_rows": 12440,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2023.parquet",
+          "sha256": "1a75500bd669a2e0f01b39623a1aa28d8d4cc1b8658f8adbabfc5319c73c496c",
+          "bytes": 1039184
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2023.parquet",
+          "sha256": "2dc03013ed57653e7063134bfc6af0cd96866cb25c11268288828ff42757a84c",
+          "bytes": 762833
+        }
+      ],
+      "exclusions": {
+        "not_regular_season": 113,
+        "not_confirmed_final": 39,
+        "division_or_conference_unknown": 507,
+        "missing_or_unpaired_box": 1
+      },
+      "eligible_games": 5601,
+      "neutral_games": 678
+    },
+    {
+      "season": 2024,
+      "schedule_rows": 6249,
+      "box_rows": 12480,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2024.parquet",
+          "sha256": "27889ecf392a9a6281e7898dc39d51a2f4a4576f689533dda0d67c4d57d52602",
+          "bytes": 1024630
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2024.parquet",
+          "sha256": "b9137f1cb2b8bc94836c63842de8c587df197bf7bd7746727593e1301a819b2d",
+          "bytes": 798459
+        }
+      ],
+      "exclusions": {
+        "not_regular_season": 120,
+        "missing_or_unpaired_box": 3,
+        "division_or_conference_unknown": 517,
+        "not_confirmed_final": 6
+      },
+      "eligible_games": 5603,
+      "neutral_games": 654
+    },
+    {
+      "season": 2025,
+      "schedule_rows": 6299,
+      "box_rows": 12572,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2025.parquet",
+          "sha256": "e01bf54b51c8d71b00cd8144e9a022ed170af2c2e57787b1cef672340891c45b",
+          "bytes": 1433410
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2025.parquet",
+          "sha256": "571f7ab5c4dd5c4332544f27a0e9d32d131f6f20c4527884a7e180084ae887c9",
+          "bytes": 711263
+        }
+      ],
+      "exclusions": {
+        "not_regular_season": 123,
+        "not_confirmed_final": 7,
+        "missing_or_unpaired_box": 5,
+        "division_or_conference_unknown": 524,
+        "non_division_i": 4
+      },
+      "eligible_games": 5636,
+      "neutral_games": 643
+    }
+  ],
+  "player_source_audit": [
+    {
+      "season": 2020,
+      "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2020.parquet",
+      "sha256": "ca3b70ea2108731f0cf29376c5ffdbff83e51cc94f842cd3192656e0a6291e91",
+      "bytes": 3187477,
+      "eligible_team_games": 10652,
+      "complete_player_team_games": 10650,
+      "exclusions": {
+        "invalid_minute_total": 2
+      }
+    },
+    {
+      "season": 2021,
+      "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2021.parquet",
+      "sha256": "5fab65cc7be24e8c6b07672c8f661bbf14fe5a93f256d2ca4a1a9a7b63bb006f",
+      "bytes": 2332195,
+      "eligible_team_games": 7714,
+      "complete_player_team_games": 7711,
+      "exclusions": {
+        "invalid_minute_total": 3
+      }
+    },
+    {
+      "season": 2022,
+      "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2022.parquet",
+      "sha256": "86e3b24159222f27e150085aa91935de549ff4f45b3f5823d130595cf83a3ff4",
+      "bytes": 3259472,
+      "eligible_team_games": 10690,
+      "complete_player_team_games": 10688,
+      "exclusions": {
+        "invalid_minute_total": 2
+      }
+    },
+    {
+      "season": 2023,
+      "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2023.parquet",
+      "sha256": "5ab4586a8bcb7822a5cff94de3b97355d1d77a727d0320b44904a846b2474e05",
+      "bytes": 4300755,
+      "eligible_team_games": 11202,
+      "complete_player_team_games": 11202,
+      "exclusions": {}
+    },
+    {
+      "season": 2024,
+      "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2024.parquet",
+      "sha256": "5a0953a8199af746873f9a5cb48d31d327f489e220e65f9c6878830bf550de2a",
+      "bytes": 4293818,
+      "eligible_team_games": 11206,
+      "complete_player_team_games": 11204,
+      "exclusions": {}
+    },
+    {
+      "season": 2025,
+      "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2025.parquet",
+      "sha256": "68c59c2367ea17d08112d294b9974cec060e24d086bc25d3136edf8aaaf8fad3",
+      "bytes": 3497463,
+      "eligible_team_games": 11272,
+      "complete_player_team_games": 11270,
+      "exclusions": {}
+    }
+  ],
+  "v1_source_sha256": "1bb32f26a9eabc3b58904b99e79baa0f74521bd49d4dd74f817554f841f93fa8",
+  "safety": "Full intervening UTC-day embargo; no forecast-game player appearances; no 2026 input.",
+  "limitations": [
+    "Development seasons previously inspected; these are exploratory comparisons, not new untouched tests.",
+    "Continuity is observed rotation only; unavailable before first eligible current-season boxes.",
+    "No injuries, preseason transfers or full roster adjustment; inherited DI and overtime limits."
+  ],
+  "predictions_sha256": "3d0d76a4a8ca05a0abc27e176c8430ae479303a0b3a53d40ab18beefe9b6ef42",
+  "runtime": {
+    "pandas": "3.0.6",
+    "numpy": "2.3.5",
+    "scikit-learn": "1.8.0",
+    "pyarrow": "26.0.0"
+  },
+  "experiment_lock_sha256": "2b5b8c0765069ddae4fa845d6bd70a411dd8a959c47a0854090966b28560f740",
+  "historical_source_hashes_match_v1": true,
+  "v1_replay_parity": "all three folds match original develop() within 1e-12",
+  "tests": "18 passed: original CBB plus challenger safety and data identity tests",
+  "predictions_archive_sha256": "7df41e033890623f560d79e13266f6ad6b0cdbd691c24fac193f6b3ad6a292ef"
+}
