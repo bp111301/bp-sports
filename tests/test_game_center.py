@@ -58,3 +58,13 @@ def test_preferences_bookmark_roundtrip_and_cfb_completed_scores():
   assert any('Troy' in m.value and 'bp-score' in m.value for m in at.markdown)
   at.toggle(key='cfb_my_teams').set_value(True).run();assert not at.exception
   assert any('No games match' in x.value for x in at.info)
+
+
+def test_score_freshness_relative_age_delay_partial_and_invalid_time():
+ from game_center_ui import score_freshness
+ now=pd.Timestamp('2026-10-16T20:00:00Z')
+ assert score_freshness({'updated_at_utc':'2026-10-16T19:48:00Z'},now)[:2]==('Scores checked 12 minutes ago','current')
+ assert score_freshness({'updated_at_utc':'2026-10-16T19:20:00Z'},now)[1]=='delayed'
+ assert score_freshness({'updated_at_utc':'2026-10-16T19:59:00Z','errors':['source failed']},now)[1]=='partial'
+ assert score_freshness({'updated_at_utc':'2026-10-16T20:01:00Z'},now)[1]=='unknown'
+ assert score_freshness({},now)[1]=='unknown'
