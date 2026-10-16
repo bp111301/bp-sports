@@ -1,7 +1,7 @@
 {
   "version": "NHL_V2_EXPERIMENTAL_WATCHLIST",
-  "as_of_utc": "2026-10-16T11:46:30.970350+00:00",
-  "new_prediction_rows": 36,
+  "as_of_utc": "2026-10-16T12:09:55.788113+00:00",
+  "new_prediction_rows": 0,
   "total_prediction_rows": 261,
   "pending": 36,
   "settled": 225,
@@ -11,22 +11,28 @@
   "weights_frozen": true,
   "metrics": [
     {
-      "candidate": "reference_control",
-      "games": 75,
-      "accuracy": 0.5733333333333334,
-      "brier": 0.24201689425916362
-    },
-    {
       "candidate": "decay2_logistic",
       "games": 75,
+      "correct": 49,
       "accuracy": 0.6533333333333333,
-      "brier": 0.23401967298694298
+      "brier": 0.23401967298694298,
+      "log_loss": 0.6661421979838785
     },
     {
       "candidate": "linear_regulation_blend",
       "games": 75,
+      "correct": 44,
       "accuracy": 0.5866666666666667,
-      "brier": 0.2378888635299802
+      "brier": 0.23788886352998015,
+      "log_loss": 0.671884687002679
+    },
+    {
+      "candidate": "reference_control",
+      "games": 75,
+      "correct": 43,
+      "accuracy": 0.5733333333333334,
+      "brier": 0.24201689425916365,
+      "log_loss": 0.6870309863003411
     }
   ]
 }
