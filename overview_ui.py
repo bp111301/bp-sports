@@ -247,6 +247,7 @@ def weekly_board(payload, sport, now, latest=False):
                     r.update(tie=tie, confidence=confidence)
                     records.append(r)
             section = pd.DataFrame(records, columns=COLUMNS+['tie','confidence'])
+    section['start']=pd.to_datetime(section['start'],utc=True)
     periods = []
     for index, item in section.iterrows():
         status = context(sport, item.game_id, item.home, item.away)
@@ -353,6 +354,7 @@ def yesterday_recap(payload,now):
     other['tie']=False
     nfl,_=weekly_board(payload,'NFL',now)
     shown=pd.concat([other,nfl],ignore_index=True)
+    shown['start']=pd.to_datetime(shown['start'],utc=True)
     for i,r in shown.iterrows():
         status=context(r.sport,r.game_id,r.home,r.away)
         if status:shown.at[i,'start']=ts(status.get('start_time_utc'))
