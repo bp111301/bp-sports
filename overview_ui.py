@@ -423,7 +423,6 @@ def render_overview(now=None):
     missing=[name for name,key in [('NFL','nfl'),('CFB','cfb'),('NHL','nhl'),('NBA','nba')] if not available[key]]
     st.markdown(f'''<div class="hero"><div class="eyebrow">NFL · CFB · NHL · NBA</div><div class="hero-title">Your sports desk.</div><div class="hero-copy">Today’s matchups, saved predictions and settled results. Follow each sport’s live record and see how its probabilities hold up.</div><div class="stat-grid"><div class="stat"><div class="stat-v">{4-len(missing)} / 4</div><div class="stat-l">Feeds verified</div></div><div class="stat"><div class="stat-v">{saved}</div><div class="stat-l">Saved matchups</div></div><div class="stat"><div class="stat-v">{total_graded}</div><div class="stat-l">Finals graded</div></div><div class="stat"><div class="stat-v">Prospective</div><div class="stat-l">Live results only</div></div></div></div>''',unsafe_allow_html=True)
     if missing:st.warning('Live data unavailable for '+', '.join(missing)+'. Those records show — until they can be verified.')
-    render_yesterday_recap(payload,now)
     tabs=st.tabs(['LIVE RECORDS','DAILY RESULTS','CONFIDENCE','RESEARCH'])
     with tabs[0]:
         cards=[]
