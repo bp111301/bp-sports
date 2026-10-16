@@ -1,0 +1,324 @@
+{
+  "version": "CBB_SHADOW_COMBINED_20261016",
+  "status": "shadow_only_no_public_promotion",
+  "features": [
+    "elo_diff",
+    "home_advantage",
+    "off_eff_diff",
+    "def_eff_diff",
+    "efg_diff",
+    "tov_rate_diff",
+    "orb_rate_diff",
+    "ft_rate_diff",
+    "pace_diff",
+    "rest_diff",
+    "experience_diff",
+    "adjusted_off_diff",
+    "adjusted_def_diff",
+    "returning_share_diff",
+    "transfer_share_diff",
+    "prior_minutes_experience_diff",
+    "rotation_known_diff"
+  ],
+  "training_seasons": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "calibration_season": 2025,
+  "imputer": [
+    14.378153647127078,
+    1.0,
+    0.7649135446108346,
+    -0.6613359670199728,
+    0.002581360198255417,
+    -0.0013766613680732953,
+    0.0025910378106214493,
+    0.0007078500349465278,
+    -0.018787731519381623,
+    0.0,
+    0.0,
+    1.0434118241129653,
+    -0.9684163147138563,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "mean": [
+    14.917194686202269,
+    0.8916912793408985,
+    0.9064733189424857,
+    -0.8523157423378276,
+    0.0031861300344047288,
+    -0.0018004659852961858,
+    0.0029461315183211432,
+    0.001214497412700994,
+    -0.05140875728049312,
+    -0.11141769003575315,
+    0.012547768897276716,
+    1.3959682885729545,
+    -1.346067622692237,
+    0.003777405663739003,
+    0.006620242607566016,
+    0.09052309527001831,
+    0.00310896937665164
+  ],
+  "scale": [
+    105.22922988079047,
+    0.31076991760511546,
+    7.2622404298177985,
+    6.542258715388475,
+    0.03536849651022182,
+    0.023933118212227638,
+    0.048808253863111946,
+    0.05658162350792298,
+    3.2948730604796563,
+    2.9776198055336174,
+    0.2292492913904953,
+    7.88046420987612,
+    7.199549918371331,
+    0.2470569095257623,
+    0.19666225044900884,
+    1.430914806776018,
+    0.1261895493484096
+  ],
+  "coefficients": [
+    0.07812262589955525,
+    0.15689903354840584,
+    -0.11624112162297531,
+    -0.04692997360234732,
+    0.03227760716465348,
+    -0.06045061907065983,
+    0.09556306159050981,
+    0.02264593052242422,
+    -0.005489664418523478,
+    0.010244670532222775,
+    0.0902906051336986,
+    0.7328243880117279,
+    -0.5458679843665967,
+    -0.4178200852532072,
+    -0.31599401689061624,
+    0.4700949449873346,
+    -0.15673694693517973
+  ],
+  "intercept": 0.7356890678776712,
+  "calibration_coefficient": 0.9537036144691876,
+  "calibration_intercept": 0.034512634760065,
+  "shadow_lock_sha256": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3",
+  "source_audits": [
+    {
+      "season": 2020,
+      "schedule_rows": 5767,
+      "box_rows": 11514,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2020.parquet",
+          "sha256": "f87d7a04d905c95221b1201a4fd43bdf9bad3bfae7b3f880800e9eb8ae1cfa3a",
+          "bytes": 598411
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2020.parquet",
+          "sha256": "e0691635680d2acc2002b9a5092e9f6065c7da46a9d44f433831b0332a628126",
+          "bytes": 706896
+        }
+      ],
+      "exclusions": {
+        "missing_or_unpaired_box": 4,
+        "division_or_conference_unknown": 437
+      },
+      "eligible_games": 5326,
+      "neutral_games": 453,
+      "players": {
+        "season": 2020,
+        "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2020.parquet",
+        "sha256": "ca3b70ea2108731f0cf29376c5ffdbff83e51cc94f842cd3192656e0a6291e91",
+        "bytes": 3187477,
+        "eligible_team_games": 10652,
+        "complete_player_team_games": 10650,
+        "exclusions": {
+          "invalid_minute_total": 2
+        }
+      }
+    },
+    {
+      "season": 2021,
+      "schedule_rows": 4285,
+      "box_rows": 8566,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2021.parquet",
+          "sha256": "26b26e9fd035a567ca66e65fadd8a3df9482e25e4a1c63ff40466e0d99c9cc76",
+          "bytes": 465503
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2021.parquet",
+          "sha256": "61dd52ed579a1ed628bf30f79b38580e559d7a9e8160a8a03204f6415ef6f4a4",
+          "bytes": 525456
+        }
+      ],
+      "exclusions": {
+        "not_regular_season": 89,
+        "division_or_conference_unknown": 338,
+        "missing_or_unpaired_box": 1
+      },
+      "eligible_games": 3857,
+      "neutral_games": 399,
+      "players": {
+        "season": 2021,
+        "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2021.parquet",
+        "sha256": "5fab65cc7be24e8c6b07672c8f661bbf14fe5a93f256d2ca4a1a9a7b63bb006f",
+        "bytes": 2332195,
+        "eligible_team_games": 7714,
+        "complete_player_team_games": 7711,
+        "exclusions": {
+          "invalid_minute_total": 3
+        }
+      }
+    },
+    {
+      "season": 2022,
+      "schedule_rows": 5976,
+      "box_rows": 11930,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2022.parquet",
+          "sha256": "75a702d5c8db85bfd7ad30bc046a801742b88ac3f7a900d7e05450a6a4c10276",
+          "bytes": 621024
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2022.parquet",
+          "sha256": "2ddae04a435686e16c2bbc5bbe133fa8706eadd69dd860344fb5c2cd216c2fb6",
+          "bytes": 733561
+        }
+      ],
+      "exclusions": {
+        "not_regular_season": 130,
+        "division_or_conference_unknown": 491,
+        "not_confirmed_final": 10
+      },
+      "eligible_games": 5345,
+      "neutral_games": 603,
+      "players": {
+        "season": 2022,
+        "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2022.parquet",
+        "sha256": "86e3b24159222f27e150085aa91935de549ff4f45b3f5823d130595cf83a3ff4",
+        "bytes": 3259472,
+        "eligible_team_games": 10690,
+        "complete_player_team_games": 10688,
+        "exclusions": {
+          "invalid_minute_total": 2
+        }
+      }
+    },
+    {
+      "season": 2023,
+      "schedule_rows": 6261,
+      "box_rows": 12440,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2023.parquet",
+          "sha256": "1a75500bd669a2e0f01b39623a1aa28d8d4cc1b8658f8adbabfc5319c73c496c",
+          "bytes": 1039184
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2023.parquet",
+          "sha256": "2dc03013ed57653e7063134bfc6af0cd96866cb25c11268288828ff42757a84c",
+          "bytes": 762833
+        }
+      ],
+      "exclusions": {
+        "not_regular_season": 113,
+        "not_confirmed_final": 39,
+        "division_or_conference_unknown": 507,
+        "missing_or_unpaired_box": 1
+      },
+      "eligible_games": 5601,
+      "neutral_games": 678,
+      "players": {
+        "season": 2023,
+        "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2023.parquet",
+        "sha256": "5ab4586a8bcb7822a5cff94de3b97355d1d77a727d0320b44904a846b2474e05",
+        "bytes": 4300755,
+        "eligible_team_games": 11202,
+        "complete_player_team_games": 11202,
+        "exclusions": {}
+      }
+    },
+    {
+      "season": 2024,
+      "schedule_rows": 6249,
+      "box_rows": 12480,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2024.parquet",
+          "sha256": "27889ecf392a9a6281e7898dc39d51a2f4a4576f689533dda0d67c4d57d52602",
+          "bytes": 1024630
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2024.parquet",
+          "sha256": "b9137f1cb2b8bc94836c63842de8c587df197bf7bd7746727593e1301a819b2d",
+          "bytes": 798459
+        }
+      ],
+      "exclusions": {
+        "not_regular_season": 120,
+        "missing_or_unpaired_box": 3,
+        "division_or_conference_unknown": 517,
+        "not_confirmed_final": 6
+      },
+      "eligible_games": 5603,
+      "neutral_games": 654,
+      "players": {
+        "season": 2024,
+        "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2024.parquet",
+        "sha256": "5a0953a8199af746873f9a5cb48d31d327f489e220e65f9c6878830bf550de2a",
+        "bytes": 4293818,
+        "eligible_team_games": 11206,
+        "complete_player_team_games": 11204,
+        "exclusions": {}
+      }
+    },
+    {
+      "season": 2025,
+      "schedule_rows": 6299,
+      "box_rows": 12572,
+      "sources": [
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2025.parquet",
+          "sha256": "e01bf54b51c8d71b00cd8144e9a022ed170af2c2e57787b1cef672340891c45b",
+          "bytes": 1433410
+        },
+        {
+          "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2025.parquet",
+          "sha256": "571f7ab5c4dd5c4332544f27a0e9d32d131f6f20c4527884a7e180084ae887c9",
+          "bytes": 711263
+        }
+      ],
+      "exclusions": {
+        "not_regular_season": 123,
+        "not_confirmed_final": 7,
+        "missing_or_unpaired_box": 5,
+        "division_or_conference_unknown": 524,
+        "non_division_i": 4
+      },
+      "eligible_games": 5636,
+      "neutral_games": 643,
+      "players": {
+        "season": 2025,
+        "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2025.parquet",
+        "sha256": "68c59c2367ea17d08112d294b9974cec060e24d086bc25d3136edf8aaaf8fad3",
+        "bytes": 3497463,
+        "eligible_team_games": 11272,
+        "complete_player_team_games": 11270,
+        "exclusions": {}
+      }
+    }
+  ],
+  "fit_rows": 25732,
+  "calibration_rows": 5636,
+  "portable_inference_verified": true,
+  "control_bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163"
+}

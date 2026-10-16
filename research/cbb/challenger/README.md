@@ -4,6 +4,11 @@ This is an isolated development experiment, not a production model or a replacem
 for CBB V1. The protocol was committed before evaluation in `EXPERIMENT_LOCK.json`.
 See `REPORT.md` and `results/comparison.json` for the comparison and decision.
 
+The subsequent paired shadow-testing setup is documented in `SHADOW.md`, with
+its separate `SHADOW_LOCK.json`, frozen `results/shadow_bundle.json` and
+`data/cbb/shadow` ledger. Read that document for current prospective operations;
+the development comparison below is preserved as a separate historical experiment.
+
 ## Scope
 
 Only ending-year seasons 2020–2025 are loaded. Evaluate 2023, 2024 and 2025

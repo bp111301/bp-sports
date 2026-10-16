@@ -35,11 +35,11 @@ def development_only(games):
         raise ValueError('Only locked development seasons 2020–2025 are permitted')
 
 
-def player_games(season, cache, games):
+def player_games(season, cache, games, refresh=False):
     """Join only accepted regular-season team games; audit missing player coverage."""
     path = cache / f'player_box_{season}.parquet'
     url = v1.ROOT + f'espn_mens_college_basketball_player_boxscores/player_box_{season}.parquet'
-    if not path.exists():
+    if refresh or not path.exists():
         with urlopen(Request(url, headers={'User-Agent':'BP-Sports-CBB-Challenger/1.0'}), timeout=60) as response:
             raw = response.read(40*1024*1024+1)
         if len(raw) > 40*1024*1024:
@@ -85,6 +85,20 @@ def player_games(season, cache, games):
 def extra_features(games, players):
     """Opponent ratings and observed rotations obey V1's full UTC-day embargo."""
     development_only(games)
+    return _extra_features(games, players)
+
+
+def prospective_extra_features(history, upcoming, players, now):
+    """Allow 2026 only as past forecast state, never through development evaluation."""
+    if any(g['season'] != 2027 or not g.get('forecast') or g['start'] <= now for g in upcoming):
+        raise ValueError('Only future 2027 forecast targets are allowed')
+    history = [g for g in history if g['start'] < now and not g.get('forecast')]
+    if any(g['season'] not in range(2020, 2028) for g in history):
+        raise ValueError('Unexpected history season')
+    return _extra_features(history + upcoming, players)
+
+
+def _extra_features(games, players):
     prior_ratings, previous_players, previous_totals = {}, {}, {}
     rows = []
     frame = pd.DataFrame(games).sort_values(['start', 'game_id'])
@@ -135,10 +149,13 @@ def extra_features(games, players):
                 h, a = g['home_id'], g['away_id']
                 rh, ra = continuity(h), continuity(a)
                 item = dict(game_id=g['game_id'], adjusted_off_diff=rating(h, 'off')-rating(a, 'off'),
-                            adjusted_def_diff=rating(h, 'def')-rating(a, 'def'))
+                            adjusted_def_diff=rating(h, 'def')-rating(a, 'def'),
+                            home_rotation_known=bool(rh['rotation_known']),
+                            away_rotation_known=bool(ra['rotation_known']))
                 item.update({k+'_diff': rh[k]-ra[k] for k in rh})
                 rows.append(item)
-            pending.append((day, batch))
+            # Mixed historical/forecast frames fill absent flags with NaN.
+            pending.append((day, [g for g in batch if g.get('forecast', False) != True]))
         for _, batch in pending:
             update(batch)
         prior_ratings = {t: {kind: sums[t][kind]/count[t] for kind in ['off', 'def']}
