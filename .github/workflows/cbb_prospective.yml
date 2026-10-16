@@ -1,6 +1,9 @@
 name: CBB prospective research forecasts and grading
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/cbb_prospective.yml']
   schedule:
     - cron: '17 */6 * * *'
 permissions:
@@ -36,3 +39,40 @@ jobs:
           git commit -m 'Refresh CBB prospective research feed [skip ci]'
           git pull --rebase origin cbb-v1-research
           git push origin HEAD:cbb-v1-research
+
+  shadow:
+    needs: refresh
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: cbb-v2-challenger
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r research/cbb/challenger/requirements.txt
+      - name: Verify paired capture, frozen inference and leakage rules
+        run: python -m pytest -q research/cbb/test_develop.py research/cbb/test_holdout.py research/cbb/test_prospective.py research/cbb/challenger/test_challenger.py research/cbb/challenger/test_shadow.py
+      - uses: actions/cache/restore@v4
+        id: shadow-cache
+        with:
+          path: runtime/cbb
+          key: cbb-shadow-state-v1-${{ hashFiles('research/cbb/challenger/run.py', 'research/cbb/challenger/shadow_data.py') }}
+          restore-keys: cbb-shadow-state-v1-
+      - name: Capture and grade fixed shadow pairs without retraining
+        run: python research/cbb/challenger/shadow.py
+      - uses: actions/cache/save@v4
+        if: steps.shadow-cache.outputs.cache-hit != 'true' && hashFiles('runtime/cbb/shadow_state_2026.json.gz') != ''
+        with:
+          path: runtime/cbb
+          key: ${{ steps.shadow-cache.outputs.cache-primary-key }}
+      - name: Save isolated paired ledger
+        run: |
+          git config user.name 'bp-sports-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/cbb/shadow
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Refresh paired CBB shadow forecasts and grading [skip ci]'
+          git pull --rebase origin cbb-v2-challenger
+          git push origin HEAD:cbb-v2-challenger
