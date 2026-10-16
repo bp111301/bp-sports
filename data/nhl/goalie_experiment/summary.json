@@ -1,22 +1,14 @@
 {
-  "as_of_utc": "2026-10-16T00:26:18.666921+00:00",
+  "as_of_utc": "2026-10-16T00:47:10.083713+00:00",
   "status": "research_only_not_promoted",
   "weights_frozen": true,
-  "paired_games": 65,
+  "paired_games": 66,
   "settled_paired_games": 57,
-  "pending_paired_games": 8,
+  "pending_paired_games": 9,
   "invalid_timing": 0,
   "coverage": [
     {
-      "game_id": 2026020114,
-      "status": "paired_prediction_recorded"
-    },
-    {
-      "game_id": 2026020115,
-      "status": "paired_prediction_recorded"
-    },
-    {
-      "game_id": 2026020116,
+      "game_id": 2026020117,
       "status": "paired_prediction_recorded"
     }
   ],
@@ -24,15 +16,13 @@
     {
       "candidate": "team_control",
       "games": 57,
-      "correct": 32,
       "accuracy": 0.5614035087719298,
-      "brier": 0.2474878289230087,
-      "log_loss": 0.6970489642969435
+      "brier": 0.24748782892300863,
+      "log_loss": 0.6970489642969436
     },
     {
       "candidate": "inferred_goalie",
       "games": 57,
-      "correct": 34,
       "accuracy": 0.5964912280701754,
       "brier": 0.24677148072314453,
       "log_loss": 0.6918646926482248
@@ -40,10 +30,9 @@
     {
       "candidate": "confirmed_goalie",
       "games": 57,
-      "correct": 34,
       "accuracy": 0.5964912280701754,
       "brier": 0.24680739125476486,
-      "log_loss": 0.6917129558027368
+      "log_loss": 0.6917129558027367
     }
   ],
   "first_formal_review_paired_games": 500,
@@ -51,15 +40,15 @@
   "confirmed_minus_control": {
     "team_control": {
       "accuracy": 0.03508771929824561,
-      "brier": -0.0006804376682438273,
-      "log_loss": -0.005336008494206679
+      "brier": -0.0006804376682437718,
+      "log_loss": -0.005336008494206901
     },
     "inferred_goalie": {
       "accuracy": 0.0,
       "brier": 3.59105316203312e-05,
-      "log_loss": -0.00015173684548797084
+      "log_loss": -0.00015173684548808186
     }
   },
-  "games_in_current_prediction_window": 3,
-  "newly_eligible_games": 3
+  "games_in_current_prediction_window": 1,
+  "newly_eligible_games": 1
 }
