@@ -1,0 +1,111 @@
+{
+  "status": "shadow_only_not_public",
+  "updated_at_utc": "2026-10-16T21:36:54.048399+00:00",
+  "identities": {
+    "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+    "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+    "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+  },
+  "capture_window_hours": 24,
+  "eligible_future_games": 21,
+  "within_capture_window": 0,
+  "summary": {
+    "saved_pairs": 0,
+    "settled_pairs": 0,
+    "pending_pairs": 0,
+    "control": {
+      "wins": 0,
+      "losses": 0,
+      "accuracy": null,
+      "brier": null,
+      "log_loss": null
+    },
+    "challenger": {
+      "wins": 0,
+      "losses": 0,
+      "accuracy": null,
+      "brier": null,
+      "log_loss": null
+    },
+    "challenger_minus_control": {
+      "accuracy": null,
+      "brier": null,
+      "log_loss": null
+    },
+    "pick_disagreements": 0,
+    "roster_unknown_pairs": 0
+  },
+  "coverage": {
+    "source_games_in_horizon": 188
+  },
+  "excluded": {
+    "tipoff_time_unconfirmed": 164,
+    "division_or_conference_unknown": 3
+  },
+  "coverage_by_day": {
+    "2026-11-15": {
+      "source_games": 1,
+      "eligible": 1,
+      "unconfirmed_tipoff": 0
+    },
+    "Unconfirmed source date/time": {
+      "source_games": 164,
+      "eligible": 0,
+      "unconfirmed_tipoff": 164
+    },
+    "2026-11-14": {
+      "source_games": 3,
+      "eligible": 3,
+      "unconfirmed_tipoff": 0
+    },
+    "2026-11-12": {
+      "source_games": 2,
+      "eligible": 2,
+      "unconfirmed_tipoff": 0
+    },
+    "2026-11-11": {
+      "source_games": 2,
+      "eligible": 2,
+      "unconfirmed_tipoff": 0
+    },
+    "2026-11-08": {
+      "source_games": 2,
+      "eligible": 2,
+      "unconfirmed_tipoff": 0
+    },
+    "2026-11-07": {
+      "source_games": 1,
+      "eligible": 1,
+      "unconfirmed_tipoff": 0
+    },
+    "2026-11-06": {
+      "source_games": 2,
+      "eligible": 2,
+      "unconfirmed_tipoff": 0
+    },
+    "2026-11-05": {
+      "source_games": 3,
+      "eligible": 0,
+      "unconfirmed_tipoff": 0
+    },
+    "2026-11-02": {
+      "source_games": 8,
+      "eligible": 8,
+      "unconfirmed_tipoff": 0
+    }
+  },
+  "source": {
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
+    "sha256": "bddafb0c3661a72f0603bee8e170ec19653cd7f4c2640d1f6f4a9b28fe4aaa15",
+    "bytes": 133247
+  },
+  "history_sources": [],
+  "grading_issues": [],
+  "limitations": [
+    "Source schedule coverage is partial; unconfirmed tipoffs are excluded",
+    "Continuity uses observed earlier appearances; opening-night roster and injury availability unknown",
+    "Paired V1 control is separate from original public V1 snapshots",
+    "No automatic promotion; historical 2026 evaluation unchanged"
+  ],
+  "predictions": []
+}
