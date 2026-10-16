@@ -168,6 +168,15 @@ def render_preferences(nfl):
 .st-key-bp_toolbar [data-testid="stCaptionContainer"] p{font-size:.7rem;line-height:1.35}
 </style>''',unsafe_allow_html=True)
 
+def score_freshness(feed,now=None):
+    now=stamp(now) if now is not None else pd.Timestamp.now(tz='UTC')
+    when=stamp(feed.get('updated_at_utc'))
+    if pd.isna(when) or when>now:return 'Score check time unavailable','unknown',''
+    minutes=int((now-when).total_seconds()//60)
+    age='just now' if minutes==0 else f'{minutes} minute'+('' if minutes==1 else 's')+' ago' if minutes<60 else f'{minutes//60} hour'+('' if minutes//60==1 else 's')+f' {minutes%60} min ago'
+    state='delayed' if minutes>30 else 'partial' if feed.get('errors') else 'current'
+    return 'Scores checked '+age,state,when.tz_convert('America/Chicago').strftime('%b %-d · %-I:%M %p CT')
+
 @st.fragment(run_every='60s')
 def render_score_refresh():
     feed=load_scores();stamp_value=feed.get('updated_at_utc');old=st.session_state.get('bp_score_version');st.session_state['bp_score_version']=stamp_value
@@ -175,10 +184,11 @@ def render_score_refresh():
         st.cache_data.clear();st.rerun()
     if st.button('Refresh',key='bp_refresh_scores',use_container_width=True):
         st.cache_data.clear();st.rerun()
-    when=stamp(stamp_value)
-    label=when.tz_convert('America/Chicago').strftime('%b %-d · %-I:%M %p CT') if pd.notna(when) else 'unavailable'
-    delayed=pd.notna(when) and pd.Timestamp.now(tz='UTC')-when>pd.Timedelta(minutes=30)
-    st.caption('Updated '+label+(' · delayed' if delayed else ''))
+    label,state,at=score_freshness(feed)
+    badge={'delayed':'Scores delayed','partial':'Some sources unavailable','unknown':'Check unavailable','current':''}[state]
+    color='#efc678' if state!='current' else '#a9b9ce'
+    status=f'<span style="display:inline-block;padding:3px 8px;border:1px solid #755f36;border-radius:20px;color:#efc678;font-size:.7rem">{esc(badge)}</span>' if badge else ''
+    st.markdown(f'<div style="display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;color:{color};font-size:.78rem;margin:4px 0" title="{esc(at)}">{esc(label)} {status}</div>',unsafe_allow_html=True)
 
 
 def render_header():
@@ -199,4 +209,3 @@ def render_host_chrome():
         }
       } catch (_) {}
     })();</script>''',unsafe_allow_javascript=True)
-
