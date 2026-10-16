@@ -1,0 +1,43 @@
+{
+  "created": "2026-10-16",
+  "status": "development_only_no_promotion",
+  "seasons": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "evaluation_folds": [
+    2023,
+    2024,
+    2025
+  ],
+  "excluded_seasons": [
+    2026,
+    2027
+  ],
+  "split": "For evaluation ending year Y, fit through Y-2 and calibrate on Y-1.",
+  "embargo": "Only games from UTC days strictly before forecast day minus one day update features.",
+  "variants": {
+    "v1_replay": "Unchanged develop.FEATURES and estimator recipe",
+    "opponent_adjusted": "V1 plus online opponent-adjusted offensive and defensive efficiency differences",
+    "observed_continuity": "V1 plus prior-team returning minute share, incoming-transfer minute share, prior player minutes experience and known-rotation coverage differences",
+    "combined": "V1 plus both additions"
+  },
+  "parameters": {
+    "prior_games": 8,
+    "logistic_C": 1,
+    "calibrator_C": 100,
+    "random_state": 0
+  },
+  "decision_rule": "Development shortlist only: lower pooled Brier and log loss, lower Brier in at least 2 of 3 folds, and pooled accuracy no more than 0.2 percentage points below V1 replay. No tuning or automatic promotion.",
+  "limitations": [
+    "Player appearances establish observed in-season rotation, not preseason roster availability.",
+    "No current-game appearances, final-season rosters, injuries or inferred opening-day transfers.",
+    "Previously inspected 2026 historical season is not reopened.",
+    "Historical Division I and overtime-pace limitations inherited from V1."
+  ],
+  "production_policy": "No edits to V1 bundle, historical evaluation, live UI, prospective snapshots or grading."
+}
