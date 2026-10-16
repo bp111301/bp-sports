@@ -2,9 +2,9 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-10-16T13:01:07.712355+00:00",
+  "updated_at_utc": "2026-10-16T18:54:52.518011+00:00",
   "coverage": {
-    "source_games_in_horizon": 187
+    "source_games_in_horizon": 188
   },
   "excluded": {
     "tipoff_time_unconfirmed": 164,
@@ -12,9 +12,9 @@
   },
   "grading_issues": [],
   "summary": {
-    "saved_games": 20,
+    "saved_games": 21,
     "settled_games": 0,
-    "pending_games": 20,
+    "pending_games": 21,
     "wins": 0,
     "losses": 0,
     "accuracy": null,
@@ -698,6 +698,40 @@
         "orb_rate_diff": 0.061006827297816535,
         "ft_rate_diff": 0.009633231361405536,
         "pace_diff": -2.0453124999999943,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0
+      }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401912210",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401912210",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "44",
+      "away_team_id": "108",
+      "home_team": "American University Eagles",
+      "away_team": "Harvard Crimson",
+      "neutral_site": false,
+      "start_time_utc": "2026-11-15T18:00:00+00:00",
+      "created_at_utc": "2026-10-16T18:54:52.518011+00:00",
+      "home_win_prob": 0.5370664157161048,
+      "predicted_winner": "American University Eagles",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "bddafb0c3661a72f0603bee8e170ec19653cd7f4c2640d1f6f4a9b28fe4aaa15",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": -61.97236715535041,
+        "home_advantage": 1.0,
+        "off_eff_diff": 0.25339977176317063,
+        "def_eff_diff": 5.0436678899392575,
+        "efg_diff": -0.016623968559486668,
+        "tov_rate_diff": -0.01832213243993433,
+        "orb_rate_diff": 0.0031606141315256298,
+        "ft_rate_diff": 0.018234340267408666,
+        "pace_diff": 1.932440476190493,
         "rest_diff": 0.0,
         "experience_diff": 0.0
       }
