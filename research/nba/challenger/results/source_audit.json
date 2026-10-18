@@ -1,0 +1,32 @@
+{
+  "status": "blocked_by_report_access_and_incomplete_coverage",
+  "candidate_outcomes_evaluated": false,
+  "report_receipts": 1633,
+  "report_status_counts": {
+    "unavailable": 48,
+    "parsed": 959,
+    "not_retrieved": 626
+  },
+  "reports_with_parse_issues": 0,
+  "interruption": "Network policy blocked ak-static.cms.nba.com during final evaluation-season retrieval; remaining selections audited offline",
+  "verified_team_files": 20,
+  "verified_player_files": 6,
+  "eligible_games": 11976,
+  "tests": "21 passed: original V1 safety plus availability parser, chronology, exact fallback and offline behavior",
+  "runtime": {
+    "pandas": "2.2.3",
+    "numpy": "2.3.5",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.17.0",
+    "pyarrow": "26.0.0",
+    "requests": "2.32.5",
+    "pypdf": "6.10.0",
+    "pytest": "9.1.1"
+  },
+  "artifact_sha256": {
+    "report_receipts.json.gz": "222715c0b135a855c4d268a5366c14300c30e418a33bdda27e9887993bc3d228",
+    "comparison.json": "bd38c981c1d62a8047d875a3d2d60b16eb958298736c7b520a3e534e9dd8a1c7",
+    "player_audit.json": "3877392a2df2babea00ace8c2ee87d65e40cb50c3e23476281da05982e65cea0",
+    "availability_inputs.json.gz": "30264c4ecf4dfd2e64becf0e093b120d5e38a5e6e2944235b74efd4eab948d1e"
+  }
+}
