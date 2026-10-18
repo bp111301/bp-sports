@@ -9,7 +9,11 @@ from preview_data import stamp,game_id
 LABELS={'NFL':'NFL V4','CFB':'CFB V1','NHL':'NHL reference','NBA':'NBA V1'}
 
 def detail_payload(sport,row,model_label=None,settled=None):
-    r=dict(row);source=dict(r.get('details') or r)
+    r=dict(row)
+    if sport=='NFL':
+        from nfl_availability_ui import project_row
+        r=project_row(r)
+    source=dict(r.get('details') or r)
     home=str(r.get('home',r.get('home_team')));away=str(r.get('away',r.get('away_team')))
     if sport=='NFL':
         pick=str(source.get('v4_pick',home if float(r.get('p',.5))>=.5 else away))
@@ -46,6 +50,10 @@ def render_details(payload,extras=None,now=None):
 <h3 style="display:flex;align-items:center;flex-wrap:wrap;gap:9px;font-size:1.15rem;line-height:1.4;margin:0;padding:0">
 <span style="background:{away_color};color:{text_color(away_color)};padding:5px 10px;border-radius:8px;overflow-wrap:anywhere">{esc(d['away'])}</span><span style="color:#a5b7d0;font-size:.9rem">@</span><span style="background:{home_color};color:{text_color(home_color)};padding:5px 10px;border-radius:8px;overflow-wrap:anywhere">{esc(d['home'])}</span></h3></div>''',unsafe_allow_html=True)
     st.caption(sport+' · '+d['label']+(' · experimental' if sport=='NHL' else ' · frozen model'))
+    if sport=='NFL':
+        from nfl_availability_ui import render_availability
+        render_availability(d['game_id'])
+        if d['preview'].get('display_uses_latest_pregame'):st.caption('Latest refreshed pregame forecast. The model record continues to use the original first saved snapshot.')
     st.markdown(score_html(sport,d['game_id'],d['home'],d['away'],d['settled'],d['start'],now),unsafe_allow_html=True)
     a,b=st.columns([2,1]);a.metric('Saved pick',d['pick']);b.metric('Saved confidence',f'{d["prob"]*100:.1f}%')
     if d['result']=='Win':st.success('Saved pick result: Win')

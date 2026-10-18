@@ -82,6 +82,9 @@ def short_name(value,sport=None,team_id=None):
     return ''.join(w[0] for w in str(value).split()[:3]).upper()
 
 def compact_html(r, feed, now):
+    if r.sport=='NFL':
+        from nfl_availability_ui import project_row
+        r=pd.Series(project_row(r.to_dict(),now=now))
     from team_theme_ui import team_color,text_color,accent_color
     status = context(r.sport,r.game_id,r.home,r.away,feed)
     state = display_state(status,r.settled,r.start,now)
@@ -105,12 +108,22 @@ def compact_html(r, feed, now):
     away_color=team_color(r.sport,r.away,d.get('away_team_id'))
     home_color=team_color(r.sport,r.home,d.get('home_team_id'))
     pick_color=home_color if r.p>=.5 else away_color
+    availability_note=''
+    probability_text=f'{r.confidence:.1%}'
+    bar_style=''
+    if r.sport=='NFL':
+        from nfl_availability_ui import card_note,context_for
+        availability_note=card_note(r.game_id,now)
+        if not r.settled and context_for(r.game_id).get('qb_review_required'):
+            probability_text='Review';bar_style='display:none'
+        if d.get('display_uses_latest_pregame'):availability_note+='<div style="font-size:.60rem;color:#91bfff;margin-top:4px">Updated pregame pick</div>'
     return f'''<div class="bp-mini" style="--bp-away:{away_color};--bp-home:{home_color};--bp-pick:{accent_color(pick_color)};--bp-away-tint:{away_color}38;--bp-home-tint:{home_color}38">
       <div class="bp-mini-top"><span>{esc(r.sport)} · {esc(state)}</span><span>{esc(detail)}</span></div>
       <div class="bp-mini-team"><span class="bp-mini-badge" style="background:{away_color};color:{text_color(away_color)}">{esc(short_name(r.away,r.sport,d.get('away_team_id')))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.away))}</span><strong>{a if a is not None else '—'}</strong></div>
       <div class="bp-mini-team"><span class="bp-mini-badge" style="background:{home_color};color:{text_color(home_color)}">{esc(short_name(r.home,r.sport,d.get('home_team_id')))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.home))}</span><strong>{h if h is not None else '—'}</strong></div>
-      <div class="bp-mini-pick"><span class="bp-mini-selected">BP PICK <b>{esc(pick)}</b><small class="{grade.lower()}">{grade}</small></span><span class="bp-mini-confidence"><b>{r.confidence:.1%}</b><small>WIN CONFIDENCE</small></span></div>
-      <div class="bp-mini-bar"><div style="width:{r.confidence*100:.1f}%"></div></div>
+      <div class="bp-mini-pick"><span class="bp-mini-selected">BP PICK <b>{esc(pick)}</b><small class="{grade.lower()}">{grade}</small></span><span class="bp-mini-confidence"><b>{probability_text}</b><small>WIN CONFIDENCE</small></span></div>
+      <div class="bp-mini-bar" style="{bar_style}"><div style="width:{r.confidence*100:.1f}%"></div></div>
+      {availability_note}
     </div>'''
 
 @st.dialog('Game details',width='large')
@@ -135,6 +148,7 @@ def render_compact(sport):
         st.warning(sport+' saved forecast feed is unavailable. Try Refresh shortly.')
         return
     st.caption('Saved picks · verified scores · Central time')
+    if sport=='NFL':st.caption('Pregame cards show the latest valid refresh. The model record retains the first saved snapshot; settled cards show that record snapshot.')
     if sport in ('NHL','CBB'): st.caption(sport+' is collecting prospective evidence as a candidate. Saved probabilities are experimental.')
     dates, default = date_options(board,now,sport)
     if not dates:

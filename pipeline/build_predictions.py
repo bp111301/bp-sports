@@ -69,7 +69,7 @@ def qb_features(b,q,targets,over):
   for side in ['home','away']:
    team=getattr(r,f'{side}_team');pid=getattr(r,f'{side}_qb_id');name=getattr(r,f'{side}_qb_name');ov=cfg.get(side,{})
    if ov.get('team') in (None,team):pid=ov.get('qb_id',pid);name=ov.get('qb_name',name)
-   st=qb_state(b,q,pid,r.gameday);prev=prev_qb(b,q,team,r.gameday);ps=qb_state(b,q,prev,r.gameday);chg=float(pd.notna(pid) and pd.notna(prev) and pid!=prev);x[f'{side}_qb_name_assumed']=name;x[f'{side}_qb_changed']=chg
+   st=qb_state(b,q,pid,r.gameday);prev=prev_qb(b,q,team,r.gameday);ps=qb_state(b,q,prev,r.gameday);chg=float(pd.notna(pid) and pd.notna(prev) and pid!=prev);x[f'{side}_qb_name_assumed']=name;x[f'{side}_qb_id_assumed']=pid;x[f'{side}_qb_changed']=chg
    for k,v in st.items():x[f'{side}_{k}']=v
    x[f'{side}_qb_shock_epa']=0. if not chg else st['qb_career_epa']-ps['qb_career_epa'];x[f'{side}_qb_shock_recent']=0. if not chg else st['qb_recent5_epa']-ps['qb_recent5_epa']
   for c in ['qb_career_epa','qb_career_cpoe','qb_recent5_epa','qb_shock_epa','qb_shock_recent']:x[f'{c}_diff']=x[f'home_{c}']-x[f'away_{c}']
@@ -88,6 +88,11 @@ def append_ledger(path,feed,at):
  if path.exists():
   old=pd.read_csv(path);x=x[~x.prediction_id.isin(old.get('prediction_id',pd.Series(dtype=str)))];x=pd.concat([old,x],ignore_index=True)
  x.to_csv(path,index=False)
+def eligible_snapshots(frame,now):
+ if frame.empty:return frame.copy()
+ start=pd.to_datetime(frame.kickoff_utc,utc=True,errors='coerce')
+ capture=pd.to_datetime(frame.captured_at_utc,utc=True,errors='coerce')
+ return frame[(~frame.qb_input_review_required)&start.gt(now)&capture.le(now)&capture.lt(start)].copy()
 def main():
  p=argparse.ArgumentParser();p.add_argument('--season',type=int,required=True);p.add_argument('--week',type=int);p.add_argument('--as-of');p.add_argument('--data-dir',default='data/current');p.add_argument('--bundle',default='model/v4/frozen_bundle.joblib');p.add_argument('--overrides',default='config/qb_overrides.json');p.add_argument('--ledger',default='data/ledger/prediction_ledger.csv');a=p.parse_args();root=Path(a.data_dir);b=joblib.load(a.bundle);over=json.loads(Path(a.overrides).read_text()) if Path(a.overrides).exists() else {};at=pd.Timestamp(a.as_of) if a.as_of else pd.Timestamp.now(tz='UTC');at=at.tz_localize('UTC') if at.tzinfo is None else at.tz_convert('UTC');sched,pbp=load_inputs(root,a.season);done,tg=team_games(pbp,sched,at);cur=sched[sched.game_type.eq('REG')].copy();future=cur[(cur.kickoff_utc>at)&cur.home_score.isna()&cur.away_score.isna()];week=a.week or int(future.week.min());targets=future[future.week.eq(week)].copy().sort_values(['gameday','gametime','game_id'])
  if targets.empty:raise ValueError('No unstarted target games')
@@ -101,9 +106,39 @@ def main():
   for s in ['home','away']:
    if cfg.get(s,{}).get('status_note'):note=cfg[s]['status_note']
   notes.append(note)
- f['qb_status_flag']=notes;f['captured_at_utc']=at.isoformat();assert np.all((v4>=.5)==(adj>=.5)) and b['market_used_for_pick'] is False;display=f.copy();oldp=root/'website_feed.csv'
+ f['qb_status_flag']=notes
+ for side in ['home','away']:
+  f[side+'_qb_name_assumed']=x[side+'_qb_name_assumed']
+  f[side+'_qb_id_assumed']=x[side+'_qb_id_assumed']
+ f['kickoff_utc']=targets.set_index('game_id').loc[f.game_id,'kickoff_utc'].to_numpy()
+ finished=pd.Timestamp.now(tz='UTC')
+ f=f[pd.to_datetime(f.kickoff_utc,utc=True)>finished].copy()
+ f['captured_at_utc']=finished.isoformat()
+ availability_path=Path('data/current/nfl_availability.json')
+ availability=json.loads(availability_path.read_text()) if availability_path.exists() else {}
+ blocked=[]
+ for index,r in f.iterrows():
+  report=availability.get('games',{}).get(r.game_id,{})
+  review=bool(report.get('qb_review_required'))
+  blocked.append(review)
+  if review:
+   f.at[index,'prediction_status']='QB_INPUT_REVIEW_REQUIRED'
+   f.at[index,'qb_status_flag']='QB INPUT REVIEW: assumed starter is confirmed out/inactive'
+  f.at[index,'availability_checked_at_utc']=report.get('checked_at_utc','')
+ f['qb_input_review_required']=pd.Series(blocked,index=f.index,dtype=bool)
+ assert np.all((v4>=.5)==(adj>=.5)) and b['market_used_for_pick'] is False
+ display=f.copy();oldp=root/'website_feed.csv'
  if oldp.exists():
   old=pd.read_csv(oldp);started=set(cur[cur.week.eq(week)].game_id)-set(f.game_id);keep=old[old.game_id.isin(started)] if 'game_id' in old else pd.DataFrame()
   if len(keep):display=pd.concat([keep,f],ignore_index=True).drop_duplicates('game_id',keep='last')
- display.to_csv(root/'website_feed.csv',index=False);append_ledger(Path(a.ledger),f,at);meta={'season':a.season,'week':week,'captured_at_utc':at.isoformat(),'completed_games_used':len(done),'target_games':len(f),'display_games':len(display),'bundle_version':b['bundle_version'],'market_used_for_pick':False,'pending_earlier_games':pending.game_id.tolist()};(root/'prediction_metadata.json').write_text(json.dumps(meta,indent=2)+'\n');print(display.to_string(index=False))
+ eligible=eligible_snapshots(f,pd.Timestamp.now(tz='UTC'))
+ display.to_csv(root/'website_feed.csv',index=False);append_ledger(Path(a.ledger),eligible,finished)
+ for record in eligible.to_dict('records'):
+  context=availability.get('games',{}).get(record['game_id'])
+  if context and pd.Timestamp.now(tz='UTC')<pd.Timestamp(record['kickoff_utc']):
+   context['latest_forecast']={**json.loads(pd.DataFrame([record]).to_json(orient='records',date_format='iso',double_precision=15))[0],'bundle_version':b['bundle_version']}
+ if availability:
+  availability_path.write_text(json.dumps(availability,indent=2,allow_nan=False)+'\n')
+ meta={'season':a.season,'week':week,'captured_at_utc':finished.isoformat(),'completed_games_used':len(done),'target_games':len(f),'display_games':len(display),'bundle_version':b['bundle_version'],'market_used_for_pick':False,'pending_earlier_games':pending.game_id.tolist(),'qb_review_games':f.loc[f.qb_input_review_required,'game_id'].tolist()}
+ (root/'prediction_metadata.json').write_text(json.dumps(meta,indent=2)+'\n');print(display.to_string(index=False))
 if __name__=='__main__':main()

@@ -19,6 +19,7 @@ on:
         default: ""
   schedule:
     - cron: "0 13,14 * 1,2,9-12 0,4"
+    - cron: "7,22,37,52 * * 1,2,9-12 *"
 
 permissions:
   contents: write
@@ -36,14 +37,14 @@ jobs:
           # Queued refreshes must include grades saved since the run was triggered.
           # Keep pull-request validation pinned to its original merge commit.
           ref: ${{ github.event_name == 'pull_request' && github.sha || github.ref }}
-      - name: Gate scheduled run to 8 AM Central
+      - name: Gate to morning refresh or actual pregame windows
         id: gate
         shell: bash
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event_name }}" = "pull_request" ] || [ "${{ github.event_name }}" = "push" ] || [ "$(TZ=America/Chicago date +%H)" = "08" ]; then
-            echo "run=true" >> "$GITHUB_OUTPUT"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event_name }}" = "pull_request" ] || [ "${{ github.event_name }}" = "push" ]; then
+            python pipeline/nfl_pregame_gate.py --force >> "$GITHUB_OUTPUT"
           else
-            echo "run=false" >> "$GITHUB_OUTPUT"
+            python pipeline/nfl_pregame_gate.py >> "$GITHUB_OUTPUT"
           fi
       - uses: actions/setup-python@v5
         if: steps.gate.outputs.run == 'true'
@@ -64,12 +65,15 @@ jobs:
             echo "season=${{ inputs.season }}" >> "$GITHUB_OUTPUT"
             echo "week=${{ inputs.week }}" >> "$GITHUB_OUTPUT"
           else
-            echo "season=$(TZ=America/Chicago date +%Y)" >> "$GITHUB_OUTPUT"
+            echo "season=${{ steps.gate.outputs.season }}" >> "$GITHUB_OUTPUT"
             echo "week=" >> "$GITHUB_OUTPUT"
           fi
       - name: Refresh nflverse inputs
         if: steps.gate.outputs.run == 'true'
         run: python pipeline/refresh_data.py --season "${{ steps.vars.outputs.season }}" --data-dir runtime
+      - name: Check official injuries, inactives and quarterback context
+        if: steps.gate.outputs.run == 'true'
+        run: python pipeline/nfl_availability.py --season "${{ steps.vars.outputs.season }}" --data-dir runtime
       - name: Settle completed predictions
         if: steps.gate.outputs.run == 'true'
         run: python pipeline/settle_predictions.py --ledger data/ledger/prediction_ledger.csv --schedules runtime/schedules.csv
@@ -78,7 +82,7 @@ jobs:
         shell: bash
         run: |
           cp data/current/website_feed.csv runtime/website_feed.csv 2>/dev/null || true
-          ARGS=(--season "${{ steps.vars.outputs.season }}" --data-dir runtime --ledger data/ledger/prediction_ledger.csv)
+          ARGS=(--season "${{ steps.vars.outputs.season }}" --data-dir runtime --ledger data/ledger/prediction_ledger.csv --overrides runtime/qb_overrides_effective.json)
           if [ -n "${{ steps.vars.outputs.week }}" ]; then ARGS+=(--week "${{ steps.vars.outputs.week }}"); fi
           python pipeline/build_predictions.py "${ARGS[@]}"
           cp runtime/website_feed.csv data/current/website_feed.csv
@@ -93,7 +97,7 @@ jobs:
         run: |
           git config user.name "bp-sports-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add bp_week5_website_feed.csv data/current/website_feed.csv data/current/prediction_metadata.json data/ledger/prediction_ledger.csv data/ledger/summary.json
+          git add bp_week5_website_feed.csv data/current/website_feed.csv data/current/prediction_metadata.json data/current/nfl_availability.json data/ledger/prediction_ledger.csv data/ledger/summary.json
           if git diff --cached --quiet; then echo "No generated changes."; exit 0; fi
           git commit -m "Update frozen V4 predictions"
           git pull --rebase origin main
