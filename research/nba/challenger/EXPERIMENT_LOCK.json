@@ -1,0 +1,54 @@
+{
+  "created": "2026-10-18",
+  "status": "development_only_no_automatic_promotion",
+  "scope": "NBA regular season only; no 2026 data or forecasts evaluated",
+  "team_data_seasons": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "player_data_seasons": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "injury_report_seasons": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "evaluation_seasons": [
+    2023,
+    2024,
+    2025
+  ],
+  "source": "Official NBA injury-report PDFs; require embedded report timestamp AND PDF creation timestamp before cutoff",
+  "cutoff": "Earlier of tipoff minus 60 minutes and 18:00 America/New_York on game date; request report filename hour one hour before floored cutoff, then at most two earlier hours",
+  "missing": "If either team is not explicitly submitted, document invalid/missing, or matchup/date not matched, use original V1 probability exactly",
+  "importance": "Mean minutes and points from up to 20 earlier eligible appearances; canonical athlete identities learned only from earlier dates; no current-game participation used",
+  "variants": {
+    "v1_replay": "Unchanged chronological 14-feature V1 baseline",
+    "coverage_control": "V1 logit offset plus intercept learned on earlier both-submitted report cohort",
+    "status_counts": "V1 logit offset plus separate Out/Doubtful/Questionable/Probable counts",
+    "minutes_weighted": "V1 logit offset plus separate prior-minute loads and Out prior-point load",
+    "combined": "Both count and prior-minute/point features"
+  },
+  "residual_fit": "Expanding earlier-season true OOF V1 predictions, restricted to both-submitted reports from 2021 onward; standardized added features fit on training only; fixed V1 logit coefficient=1, unpenalized intercept, L2 coefficient penalty=0.5*sum(beta^2), L-BFGS-B maxiter=1000; no tuning",
+  "minimum_training_rows": 500,
+  "source_quality_gate": "At least 70% both-submitted eligible evaluation games in every season; all document timestamps verified; report malformed/unknown contexts never assumed healthy",
+  "selection_gate": "Candidate must improve pooled Brier by >=0.0005 and log loss over V1, preserve V1 correct count, improve Brier in >=2/3 seasons and both 2024/2025, and improve pooled Brier/log loss over coverage-only control. Development shortlist only, never promotion.",
+  "reporting": "Report full identical evaluation cohort, both-submitted secondary cohort, missingness, name/impact match coverage, all candidates and date-cluster descriptive bootstrap; development seasons already inspected are not fresh holdouts",
+  "preserve": "No edits to V1 weights, reserved 69.19% result, prospective ledgers, public UI or other sports"
+}
