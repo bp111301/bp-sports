@@ -1,72 +1,49 @@
-# NBA availability challenger: source audit checkpoint
+# NBA availability challenger: completed development comparison
 
-**Decision, October 18, 2026: comparison not completed; no model promoted.**
+**October 18, 2026: minutes-weighted availability shortlisted and frozen for separate prospective shadow testing. NBA V1 remains the public model.**
 
-The implementation and source checks are saved, but the runtime blocked access to
-the official NBA PDF host before the last evaluation season finished downloading.
-The source-quality gate correctly stopped the experiment before candidate outcome
-evaluation. There is no measured availability accuracy improvement to report.
+The original blocked checkpoint was resumed after official report access returned. The unchanged source gate passed, the original V1 development predictions replayed across 8,288 games (maximum error 1.11e-16), and all three locked availability variants were evaluated. No variant or threshold was added after viewing results.
 
-NBA V1 remains the public model. Its reserved 2025–26 historical result remains
-**851/1,230 (69.19%)**. That season was not downloaded, reopened or used to select
-this challenger. No production workflow, public snapshot, grading record, frozen
-weight or other-sport file was changed.
+## Same-game development comparison
 
-## Source coverage
+The following results cover the identical 3,689 eligible regular-season games in seasons ending 2023–25. Unknown contexts retain the exact V1 probability. Lower Brier and log loss are better.
 
-Season labels are ending years. These are eligible V1 regular-season games,
-not preseason or postseason. A game is both-known only when both teams explicitly
-submitted a valid report before the locked cutoff.
+| Variant | Correct | Accuracy | Brier | Log loss | Shortlisted |
+|---|---:|---:|---:|---:|---|
+| v1_replay | 2,430/3,689 | 65.87% | 0.214343 | 0.617067 | Control |
+| coverage_control | 2,408/3,689 | 65.28% | 0.214947 | 0.618281 | Control |
+| status_counts | 2,435/3,689 | 66.01% | 0.213491 | 0.615067 | Yes |
+| minutes_weighted | 2,451/3,689 | 66.44% | 0.211297 | 0.609931 | Yes |
+| combined | 2,436/3,689 | 66.03% | 0.211816 | 0.611152 | Yes |
 
-| Season | Role | Eligible games | Both-known games | Both-known coverage |
-|---|---|---:|---:|---:|
-| 2020–21 | Earlier residual training | 1,080 | 985 | 91.20% |
-| 2021–22 | Earlier residual training | 1,230 | 1,209 | 98.29% |
-| 2022–23 | Development evaluation | 1,230 | 1,208 | 98.21% |
-| 2023–24 | Development evaluation | 1,230 | 1,198 | 97.40% |
-| 2024–25 | Development evaluation | 1,229 | 205 | 16.68% |
+The strongest candidate is minutes_weighted: **21 additional correct picks (+0.57 percentage points)**, Brier improvement 0.003046 and log-loss improvement 0.007136. It beats the coverage-only control and passes all locked development checks. Its Brier/log-loss results improve in 2024 and 2025, while 2023 is slightly worse. Counts and the combined variant also pass, but have weaker pooled Brier scores; they are not additional live variants.
 
-The locked rule requires at least 70% coverage in **every** evaluation season.
-The final season fails because retrieval is incomplete; this does not establish
-that the underlying official archive lacks those reports. The preceding seasons
-were not evaluated on their own after encountering this failure.
+| Ending season | V1 accuracy | Minutes-weighted accuracy | V1 Brier | Minutes-weighted Brier |
+|---|---:|---:|---:|---:|
+| 2023 | 62.93% | 63.50% | 0.225964 | 0.226120 |
+| 2024 | 66.67% | 67.24% | 0.209977 | 0.206020 |
+| 2025 | 68.02% | 68.59% | 0.207083 | 0.201744 |
 
-The offline audit records 1,633 requested report selections: 959 parsed receipts,
-48 unavailable receipts and 626 not retrieved. Those document counts include the
-locked earlier-hour fallbacks and may cover more than one game's context. None
-of the parsed receipts had a parser issue. A parsed document can still be rejected
-by its timestamps or omit a particular game's team. Missing, malformed or not-yet-
-submitted contexts cannot become healthy teams or adjusted predictions.
+## Coverage and limits
 
-## Work completed
+| Ending season | Eligible games | Both teams known | Coverage |
+|---|---:|---:|---:|
+| 2021 | 1,080 | 992 | 91.85% |
+| 2022 | 1,230 | 1,209 | 98.29% |
+| 2023 | 1,230 | 1,208 | 98.21% |
+| 2024 | 1,230 | 1,198 | 97.40% |
+| 2025 | 1,229 | 1,217 | 99.02% |
 
-* Locked the protocol in commit `883279e20206a8390fffea2ee87791b9c651f446` before
-  evaluating any challenger.
-* Verified all 20 original team-source hashes and six recorded player-source hashes.
-* Reconciled 149,529 positive-minute player-game rows with accepted V1 game, team,
-  opponent and score identities. Only earlier appearances can define importance.
-* Implemented physical-column PDF parsing for both historical layouts, including
-  wrapped team labels, headerless page continuations and suffix-preserving names.
-* Checked embedded publication and PDF creation timestamps, exact game date and
-  matchup, local-time cutoffs including daylight-saving transition dates, and
-  explicit unknown-report handling.
-* Implemented the locked chronological offset comparison, coverage-only control,
-  probability-quality metrics and development shortlist checks. These performance
-  calculations have **not** run on the historical evaluation cohort.
-* Passed 21 tests covering original V1 safety and new availability behavior,
-  including exact V1 fallback for every candidate when reports are unknown.
-* Saved compressed report receipts and selected contexts, source hashes and the
-  machine-readable blocked decision. No fitted challenger or performance claim
-  is included.
+All evaluation seasons exceed the locked 70% requirement. There are 66 fallback games in the full comparison. Of 35,853 listed impact-player entries, 33,555 matched a unique identity with earlier player history (93.59%). The player source audit reconciled 149,529 positive-minute player-game rows. All 20 frozen V1 team-source hashes and six recorded player-source hashes match. Compressed source receipts, contexts and paired predictions accompany the machine-readable comparison.
 
-## Resume
+The minutes-weighted descriptive date-cluster bootstrap gives an accuracy-change interval of approximately **−0.44 to +1.61 percentage points**. Accuracy improvement is therefore uncertain. Brier-change interval: −0.005021 to −0.000971; log-loss-change interval: −0.011711 to −0.002298. These are exploratory development intervals, not an independent holdout or proof of future gain, and are not adjusted for comparing multiple variants.
 
-When official PDF access is available, follow `README.md`. Re-fetch the missing
-files and explicitly retry transient proxy/network-error receipts, retaining
-their audit history. Rebuild the full source audit. The same locked 70% rule must
-pass before the unchanged three candidate variants may be evaluated. Do not loosen
-coverage, drop the last season or add/tune variants to force a result.
+The earlier development cohort is different from the reserved V1 2025–26 result of **851/1,230 (69.19%)**. That historical evaluation was not reopened or used for challenger selection. No 2026 injury or player input was used in the comparison or residual fit. No preseason games were tested. Reports are earlier snapshots rather than guaranteed final active lists, and prior minutes/points are a simple importance proxy.
 
-The immediate next step is completing report retrieval, then exact V1 replay and
-the original locked comparison. A candidate that passes development checks would
-still need separate prospective testing; it would not replace V1 automatically.
+## Frozen shadow follow-through
+
+The final minutes-weighted residual fits 5,824 earlier OOF rows from 2021–25 with both reports known. Its coefficients and scaling are frozen in `model/nba/availability-shadow/frozen.json`. Its paired prospective protocol is `shadow/PROTOCOL.md`. It recomputes the frozen V1 control at the same pregame capture time, records both forecasts separately, and grades confirmed finals without altering public V1 snapshots.
+
+Prior 2025–26 player/team records may be used only as operational forward state for future games; no 2026 outcomes are scored for this challenger or fitted into its coefficients. Missing/invalid reports, missing player state or low player-identity coverage produce an explicit exact-V1 fallback. Records are append-only. First live reports will be checked as the regular season begins.
+
+No public model, CFB V1/Candidate B weights, NBA V1 weights, historical evaluation, saved pregame prediction or other-sport model was changed. This is readiness for prospective observation, not production promotion. See `README.md` for reproduction and `results/comparison.json` for every metric and fold parameter.

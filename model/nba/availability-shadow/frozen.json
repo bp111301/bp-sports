@@ -1,0 +1,53 @@
+{
+  "status": "frozen_prospective_shadow_only",
+  "created_at_utc": "2026-10-18T12:53:32.578012+00:00",
+  "selected": "minutes_weighted",
+  "fit": {
+    "training_rows": 5824,
+    "last_training_season": 2025,
+    "features": [
+      "minutes_Out_diff",
+      "minutes_Doubtful_diff",
+      "minutes_Questionable_diff",
+      "minutes_Probable_diff",
+      "out_points_diff"
+    ],
+    "mean": [
+      -2.8329075092805374,
+      -0.05395563798912516,
+      0.5262418340238075,
+      0.8057763907356669,
+      -1.3865006309607741
+    ],
+    "scale": [
+      61.065735159088625,
+      13.026820979978345,
+      35.33643397773923,
+      24.858093984752585,
+      31.634420531962796
+    ],
+    "coefficients": [
+      -0.07471448251762648,
+      0.13216320363173514,
+      -0.00969561404160696,
+      -0.10740738107725789,
+      0.016464867134074353,
+      -0.43138439825095115
+    ]
+  },
+  "training_seasons": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "training_last_date": "2025-04-13",
+  "v1_bundle_sha256": "c57d804ab9062542e9e456a9585327bbb677732e5ad55b0186f91ddbdf5e079f",
+  "experiment_lock_sha256": "96f5f0482a23bdf108db317684626c04b1e0d92cd1c8b063a473a75200d7343f",
+  "comparison_sha256": "4675aa84589fe8851cbf1920304d0162d4b83ec75c096cc796cac74a1739ff4c",
+  "prospective_protocol_sha256": "6eb770ead0235eec2ae86bbbd14d3942a6c9a101639c182a7886bff65a5854a7",
+  "season": 2027,
+  "weights_retrained_automatically": false,
+  "reserved_season_2026_used_for_fit_or_selection": false
+}

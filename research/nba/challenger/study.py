@@ -1,5 +1,5 @@
 """Chronological NBA availability residuals. V1 and 2026 evaluation are untouched."""
-from collections import defaultdict,deque
+from collections import defaultdict,deque,Counter
 from importlib.metadata import version
 from pathlib import Path
 import gzip
@@ -137,12 +137,28 @@ def main():
     (output/'report_receipts.json.gz').write_bytes(gzip.compress(json.dumps(receipts,indent=2).encode(),mtime=0))
     (output/'availability_inputs.json.gz').write_bytes(gzip.compress(json.dumps(contexts).encode(),mtime=0))
     source_gate=all(coverage[str(s)]['both_known']/coverage[str(s)]['games']>=.7 for s in [2023,2024,2025])
+    audit=dict(status='source_passed_pending_evaluation' if source_gate else 'blocked_source_coverage',
+               candidate_outcomes_evaluated=False,source_quality_gate=source_gate,
+               report_receipts=len(receipts),report_status_counts=dict(Counter(r['status'] for r in receipts)),
+               reports_with_parse_issues=sum(bool(r.get('parse_issues')) for r in receipts),
+               coverage=coverage,verified_team_files=20,verified_player_files=6,eligible_games=len(games),
+               runtime={n:version(n) for n in ['pandas','numpy','scikit-learn','scipy','pyarrow','requests','pypdf','pytest']})
+    def save_audit():
+        audit['artifact_sha256']={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in output.iterdir()
+                                 if p.is_file() and p.name!='source_audit.json'}
+        (output/'source_audit.json').write_text(json.dumps(audit,indent=2)+'\n')
+    save_audit()
     if not source_gate:
         (output/'comparison.json').write_text(json.dumps(dict(status='blocked_source_coverage',coverage=coverage,
             source_quality_gate=False,evaluated_seasons=[],excluded_season=2026,
             experiment_lock_sha256=hashlib.sha256((root/'EXPERIMENT_LOCK.json').read_bytes()).hexdigest()),indent=2)+'\n')
         raise SystemExit('Source quality gate failed; no candidate outcomes evaluated')
     players,player_audits=player_records(games,v1.ROOT/'runtime/nba')
+    expected=json.loads((root/'PLAYER_SOURCES.json').read_text())
+    if {r['season']:r['sha256'] for r in player_audits}!={r['season']:r['sha256'] for r in expected}:
+        raise ValueError('Player-source hashes changed')
+    (output/'player_audit.json').write_text(json.dumps(dict(accepted_positive_minute_player_rows=sum(r['rows'] for r in player_audits),
+                                                          sources=player_audits),indent=2)+'\n')
     added=availability_features(games,contexts,players)
     # Verify the exact original baseline recipe on all archived OOF games first.
     replay=v1.evaluate(v1.build_features(games))
@@ -165,6 +181,8 @@ def main():
     result['predictions_sha256']=hashlib.sha256(prediction_bytes).hexdigest()
     (output/'predictions.csv.gz').write_bytes(gzip.compress(prediction_bytes,mtime=0))
     (output/'comparison.json').write_text(json.dumps(result,indent=2,allow_nan=False)+'\n')
+    audit.update(status='comparison_completed',candidate_outcomes_evaluated=True,v1_replay_verified_games=len(replay))
+    save_audit()
     print(json.dumps({k:result[k] for k in ['pooled','coverage','impact_name_match','decisions']},indent=2))
 
 

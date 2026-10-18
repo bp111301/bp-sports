@@ -2,7 +2,7 @@
 
 This is isolated development research. The public NBA V1 bundle, prospective
 predictions, reserved 2025–26 historical evaluation and other sports are unchanged.
-See [REPORT.md](REPORT.md) for the source-audit checkpoint and blocked decision.
+See [REPORT.md](REPORT.md) for the completed comparison and frozen shadow decision.
 
 The experiment was committed in `EXPERIMENT_LOCK.json` before candidate outcomes
 were evaluated. Season numbers are ending years: 2023 means 2022–23. Only regular
@@ -78,6 +78,9 @@ the audit; never substitute a later report into an earlier cutoff.
 preserve report URL/hash/timestamps, selected availability contexts and paired
 predictions when the source gate passes. Archived PDF hashes must be checked if
 rerunning later: source files can be revised at the original URL. Reports are
-afternoon snapshots and do not guarantee final active lineups. There is no live
-feed, frozen challenger bundle, automatic promotion or production workflow change
-in this experiment.
+afternoon snapshots and do not guarantee final active lineups. Historical
+shortlisting does not automatically promote a model. The frozen prospective collector and
+protocol are in `shadow/`; its weights live in `model/nba/availability-shadow/`
+and its append-only data live in `data/nba/availability-shadow/`. The existing NBA
+workflow runs that collector after V1 on the same scheduled cadence. It never
+rewrites the public V1 snapshots.

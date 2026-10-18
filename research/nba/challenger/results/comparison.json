@@ -1,10 +1,675 @@
 {
-  "status": "blocked_source_coverage",
+  "pooled": {
+    "v1_replay": {
+      "games": 3689,
+      "correct": 2430,
+      "accuracy": 0.6587150989428029,
+      "brier": 0.21434332758666091,
+      "log_loss": 0.6170669299478947
+    },
+    "coverage_control": {
+      "games": 3689,
+      "correct": 2408,
+      "accuracy": 0.6527514231499051,
+      "brier": 0.2149466616146539,
+      "log_loss": 0.6182814935836655
+    },
+    "status_counts": {
+      "games": 3689,
+      "correct": 2435,
+      "accuracy": 0.6600704798048251,
+      "brier": 0.2134914608362847,
+      "log_loss": 0.6150665274685602
+    },
+    "minutes_weighted": {
+      "games": 3689,
+      "correct": 2451,
+      "accuracy": 0.6644076985632963,
+      "brier": 0.21129731225422474,
+      "log_loss": 0.609930797395588
+    },
+    "combined": {
+      "games": 3689,
+      "correct": 2436,
+      "accuracy": 0.6603415559772297,
+      "brier": 0.21181569398864578,
+      "log_loss": 0.6111524360954943
+    }
+  },
+  "folds": {
+    "2023": {
+      "v1_replay": {
+        "games": 1230,
+        "correct": 774,
+        "accuracy": 0.6292682926829268,
+        "brier": 0.22596427131586894,
+        "log_loss": 0.643665949880751
+      },
+      "coverage_control": {
+        "games": 1230,
+        "correct": 760,
+        "accuracy": 0.6178861788617886,
+        "brier": 0.22844524007407527,
+        "log_loss": 0.6487297231815244
+      },
+      "status_counts": {
+        "games": 1230,
+        "correct": 775,
+        "accuracy": 0.6300813008130082,
+        "brier": 0.22799961064555918,
+        "log_loss": 0.6484007993391271
+      },
+      "minutes_weighted": {
+        "games": 1230,
+        "correct": 781,
+        "accuracy": 0.634959349593496,
+        "brier": 0.2261201087307107,
+        "log_loss": 0.6439510942473345
+      },
+      "combined": {
+        "games": 1230,
+        "correct": 775,
+        "accuracy": 0.6300813008130082,
+        "brier": 0.22656706091398945,
+        "log_loss": 0.6451663368846404
+      }
+    },
+    "2024": {
+      "v1_replay": {
+        "games": 1230,
+        "correct": 820,
+        "accuracy": 0.6666666666666666,
+        "brier": 0.2099766865993527,
+        "log_loss": 0.6072302143801044
+      },
+      "coverage_control": {
+        "games": 1230,
+        "correct": 810,
+        "accuracy": 0.6585365853658537,
+        "brier": 0.2096056289181059,
+        "log_loss": 0.6065424776431488
+      },
+      "status_counts": {
+        "games": 1230,
+        "correct": 826,
+        "accuracy": 0.6715447154471544,
+        "brier": 0.20741349088813327,
+        "log_loss": 0.6017413403888929
+      },
+      "minutes_weighted": {
+        "games": 1230,
+        "correct": 827,
+        "accuracy": 0.6723577235772358,
+        "brier": 0.2060201757941585,
+        "log_loss": 0.5985546820806633
+      },
+      "combined": {
+        "games": 1230,
+        "correct": 822,
+        "accuracy": 0.6682926829268293,
+        "brier": 0.20641356946268566,
+        "log_loss": 0.5993186117476608
+      }
+    },
+    "2025": {
+      "v1_replay": {
+        "games": 1229,
+        "correct": 836,
+        "accuracy": 0.6802278275020341,
+        "brier": 0.2070831222387872,
+        "log_loss": 0.600290986604501
+      },
+      "coverage_control": {
+        "games": 1229,
+        "correct": 838,
+        "accuracy": 0.6818551668022783,
+        "brier": 0.2067824783043737,
+        "log_loss": 0.5995570568069927
+      },
+      "status_counts": {
+        "games": 1229,
+        "correct": 834,
+        "accuracy": 0.6786004882017901,
+        "brier": 0.20505442159366352,
+        "log_loss": 0.5950411618926394
+      },
+      "minutes_weighted": {
+        "games": 1229,
+        "correct": 843,
+        "accuracy": 0.6859235150528885,
+        "brier": 0.20174388522395936,
+        "log_loss": 0.5872681909754981
+      },
+      "combined": {
+        "games": 1229,
+        "correct": 839,
+        "accuracy": 0.6826688364524003,
+        "brier": 0.20245884439447012,
+        "log_loss": 0.5889543123991439
+      }
+    }
+  },
+  "both_submitted_secondary": {
+    "v1_replay": {
+      "games": 3623,
+      "correct": 2388,
+      "accuracy": 0.6591222743582666,
+      "brier": 0.2144455323710338,
+      "log_loss": 0.617303717079564
+    },
+    "coverage_control": {
+      "games": 3623,
+      "correct": 2366,
+      "accuracy": 0.6530499585978471,
+      "brier": 0.21505985730320767,
+      "log_loss": 0.6185404063570573
+    },
+    "status_counts": {
+      "games": 3623,
+      "correct": 2393,
+      "accuracy": 0.6605023461219983,
+      "brier": 0.2135781472089753,
+      "log_loss": 0.6152668733737222
+    },
+    "minutes_weighted": {
+      "games": 3623,
+      "correct": 2409,
+      "accuracy": 0.6649185757659398,
+      "brier": 0.21134402793786872,
+      "log_loss": 0.6100375859767598
+    },
+    "combined": {
+      "games": 3623,
+      "correct": 2394,
+      "accuracy": 0.6607783604747447,
+      "brier": 0.21187185300501724,
+      "log_loss": 0.611281479204459
+    }
+  },
+  "decisions": {
+    "status_counts": {
+      "development_shortlist": true,
+      "checks": {
+        "brier_gain": true,
+        "log_loss": true,
+        "accuracy": true,
+        "two_seasons": true,
+        "latest_two": true,
+        "beats_coverage_control": true
+      },
+      "additional_correct": 5,
+      "date_bootstrap": {
+        "brier": {
+          "delta": -0.0008518667503762232,
+          "interval95": [
+            -0.002448080806452938,
+            0.0007970746359293189
+          ]
+        },
+        "log_loss": {
+          "delta": -0.002000402479334577,
+          "interval95": [
+            -0.005596485212163747,
+            0.0016368891010674835
+          ]
+        },
+        "accuracy": {
+          "delta": 0.0013553808620222283,
+          "interval95": [
+            -0.00855689584173304,
+            0.011016553988602422
+          ]
+        }
+      }
+    },
+    "minutes_weighted": {
+      "development_shortlist": true,
+      "checks": {
+        "brier_gain": true,
+        "log_loss": true,
+        "accuracy": true,
+        "two_seasons": true,
+        "latest_two": true,
+        "beats_coverage_control": true
+      },
+      "additional_correct": 21,
+      "date_bootstrap": {
+        "brier": {
+          "delta": -0.003046015332436154,
+          "interval95": [
+            -0.005020501961266942,
+            -0.0009710249953905272
+          ]
+        },
+        "log_loss": {
+          "delta": -0.007136132552306658,
+          "interval95": [
+            -0.011711021468710132,
+            -0.0022976912934753162
+          ]
+        },
+        "accuracy": {
+          "delta": 0.0056925996204933585,
+          "interval95": [
+            -0.004406426239464082,
+            0.016055581403925323
+          ]
+        }
+      }
+    },
+    "combined": {
+      "development_shortlist": true,
+      "checks": {
+        "brier_gain": true,
+        "log_loss": true,
+        "accuracy": true,
+        "two_seasons": true,
+        "latest_two": true,
+        "beats_coverage_control": true
+      },
+      "additional_correct": 6,
+      "date_bootstrap": {
+        "brier": {
+          "delta": -0.0025276335980151665,
+          "interval95": [
+            -0.004614857973191854,
+            -0.00035677159807622107
+          ]
+        },
+        "log_loss": {
+          "delta": -0.005914493852400523,
+          "interval95": [
+            -0.010780142153462511,
+            -0.0009286207999015743
+          ]
+        },
+        "accuracy": {
+          "delta": 0.001626457034426674,
+          "interval95": [
+            -0.008593007655816508,
+            0.011812651193522126
+          ]
+        }
+      }
+    }
+  },
+  "fold_parameters": {
+    "2023:coverage_control": {
+      "training_rows": 2201,
+      "last_training_season": 2022,
+      "features": [],
+      "mean": [],
+      "scale": [],
+      "coefficients": [
+        -0.1634351524781109
+      ]
+    },
+    "2023:status_counts": {
+      "training_rows": 2201,
+      "last_training_season": 2022,
+      "features": [
+        "count_Out_diff",
+        "count_Doubtful_diff",
+        "count_Questionable_diff",
+        "count_Probable_diff"
+      ],
+      "mean": [
+        -0.25806451612903225,
+        -0.009541117673784643,
+        0.004543389368468878,
+        0.030895047705588367
+      ],
+      "scale": [
+        2.5492352466872523,
+        0.4864355591142197,
+        1.3049297655104592,
+        0.8014920028312588
+      ],
+      "coefficients": [
+        -0.15969132393850308,
+        -0.21867165767336827,
+        -0.0004600525573351005,
+        -0.11800160534423683,
+        -0.059075223247083336
+      ]
+    },
+    "2023:minutes_weighted": {
+      "training_rows": 2201,
+      "last_training_season": 2022,
+      "features": [
+        "minutes_Out_diff",
+        "minutes_Doubtful_diff",
+        "minutes_Questionable_diff",
+        "minutes_Probable_diff",
+        "out_points_diff"
+      ],
+      "mean": [
+        -3.7836268012639254,
+        -0.17644396134274778,
+        -0.24014853447573317,
+        0.8269415988642614,
+        -1.7932719121708993
+      ],
+      "scale": [
+        62.99577662031778,
+        12.615185693332212,
+        32.99795373748784,
+        20.815248279231863,
+        31.285886569851975
+      ],
+      "coefficients": [
+        -0.15777263145966086,
+        -0.018385107163691725,
+        -0.024908312301545877,
+        -0.11267467071919321,
+        -0.037267065493719435,
+        -0.2846731747382749
+      ]
+    },
+    "2023:combined": {
+      "training_rows": 2201,
+      "last_training_season": 2022,
+      "features": [
+        "count_Out_diff",
+        "count_Doubtful_diff",
+        "count_Questionable_diff",
+        "count_Probable_diff",
+        "minutes_Out_diff",
+        "minutes_Doubtful_diff",
+        "minutes_Questionable_diff",
+        "minutes_Probable_diff",
+        "out_points_diff"
+      ],
+      "mean": [
+        -0.25806451612903225,
+        -0.009541117673784643,
+        0.004543389368468878,
+        0.030895047705588367,
+        -3.7836268012639254,
+        -0.17644396134274778,
+        -0.24014853447573317,
+        0.8269415988642614,
+        -1.7932719121708993
+      ],
+      "scale": [
+        2.5492352466872523,
+        0.4864355591142197,
+        1.3049297655104592,
+        0.8014920028312588,
+        62.99577662031778,
+        12.615185693332212,
+        32.99795373748784,
+        20.815248279231863,
+        31.285886569851975
+      ],
+      "coefficients": [
+        -0.15761664152577337,
+        0.05724409972844001,
+        0.1794296047949577,
+        -0.05503297638727267,
+        -0.26015110496600186,
+        -0.08920444680838338,
+        -0.1959992023629931,
+        -0.05476192931275302,
+        0.21521495403220764,
+        -0.26330546327573157
+      ]
+    },
+    "2024:coverage_control": {
+      "training_rows": 3409,
+      "last_training_season": 2023,
+      "features": [],
+      "mean": [],
+      "scale": [],
+      "coefficients": [
+        -0.08309125605776464
+      ]
+    },
+    "2024:status_counts": {
+      "training_rows": 3409,
+      "last_training_season": 2023,
+      "features": [
+        "count_Out_diff",
+        "count_Doubtful_diff",
+        "count_Questionable_diff",
+        "count_Probable_diff"
+      ],
+      "mean": [
+        -0.23173951305368143,
+        -0.0026400704018773834,
+        0.004106776180698152,
+        0.031974185978292755
+      ],
+      "scale": [
+        2.393089554023847,
+        0.4937200932393626,
+        1.3461964175781864,
+        0.8487069891635626
+      ],
+      "coefficients": [
+        -0.0777421433712851,
+        -0.20883813719386302,
+        -0.03206612040999181,
+        -0.09665492473359642,
+        0.018537835712823362
+      ]
+    },
+    "2024:minutes_weighted": {
+      "training_rows": 3409,
+      "last_training_season": 2023,
+      "features": [
+        "minutes_Out_diff",
+        "minutes_Doubtful_diff",
+        "minutes_Questionable_diff",
+        "minutes_Probable_diff",
+        "out_points_diff"
+      ],
+      "mean": [
+        -3.428245850198394,
+        -0.05858893343118313,
+        -0.23167495881343175,
+        0.7852405512428337,
+        -1.7021849925982768
+      ],
+      "scale": [
+        60.03675233945588,
+        12.82683267000309,
+        33.99645173008468,
+        22.3601480836873,
+        30.75250075302927
+      ],
+      "coefficients": [
+        -0.07564473315494798,
+        0.08091374285591138,
+        -0.03862477418236795,
+        -0.09487869586903436,
+        0.035124142089173624,
+        -0.3625053040278883
+      ]
+    },
+    "2024:combined": {
+      "training_rows": 3409,
+      "last_training_season": 2023,
+      "features": [
+        "count_Out_diff",
+        "count_Doubtful_diff",
+        "count_Questionable_diff",
+        "count_Probable_diff",
+        "minutes_Out_diff",
+        "minutes_Doubtful_diff",
+        "minutes_Questionable_diff",
+        "minutes_Probable_diff",
+        "out_points_diff"
+      ],
+      "mean": [
+        -0.23173951305368143,
+        -0.0026400704018773834,
+        0.004106776180698152,
+        0.031974185978292755,
+        -3.428245850198394,
+        -0.05858893343118313,
+        -0.23167495881343175,
+        0.7852405512428337,
+        -1.7021849925982768
+      ],
+      "scale": [
+        2.393089554023847,
+        0.4937200932393626,
+        1.3461964175781864,
+        0.8487069891635626,
+        60.03675233945588,
+        12.82683267000309,
+        33.99645173008468,
+        22.3601480836873,
+        30.75250075302927
+      ],
+      "coefficients": [
+        -0.07552880958865922,
+        -0.019056141410546987,
+        0.0656269000087643,
+        -0.02256232267524588,
+        -0.22900615754768378,
+        0.11047268890937245,
+        -0.10158494180603997,
+        -0.07412884072694591,
+        0.2553328502392468,
+        -0.37724361083564556
+      ]
+    },
+    "2025:coverage_control": {
+      "training_rows": 4607,
+      "last_training_season": 2024,
+      "features": [],
+      "mean": [],
+      "scale": [],
+      "coefficients": [
+        -0.08271651996584858
+      ]
+    },
+    "2025:status_counts": {
+      "training_rows": 4607,
+      "last_training_season": 2024,
+      "features": [
+        "count_Out_diff",
+        "count_Doubtful_diff",
+        "count_Questionable_diff",
+        "count_Probable_diff"
+      ],
+      "mean": [
+        -0.24983720425439548,
+        -0.003038853917950944,
+        0.007814195789016714,
+        0.03711742999782939
+      ],
+      "scale": [
+        2.453183849652538,
+        0.4917282916795665,
+        1.45742849807182,
+        0.8811083011705534
+      ],
+      "coefficients": [
+        -0.0771972676099438,
+        -0.21056110299107617,
+        -0.04413488501366017,
+        -0.1035096290419139,
+        0.024966242010693748
+      ]
+    },
+    "2025:minutes_weighted": {
+      "training_rows": 4607,
+      "last_training_season": 2024,
+      "features": [
+        "minutes_Out_diff",
+        "minutes_Doubtful_diff",
+        "minutes_Questionable_diff",
+        "minutes_Probable_diff",
+        "out_points_diff"
+      ],
+      "mean": [
+        -2.899894328316491,
+        -0.07838319477481108,
+        -0.01723422820903857,
+        0.9536616229123542,
+        -1.461335900564652
+      ],
+      "scale": [
+        59.9214548384127,
+        12.806185125783356,
+        34.78322716824562,
+        23.453933038756137,
+        30.652081896826946
+      ],
+      "coefficients": [
+        -0.07568569183825895,
+        0.08455144643792872,
+        -0.0387811520606128,
+        -0.09396997630853961,
+        0.03533627874726184,
+        -0.364135244733439
+      ]
+    },
+    "2025:combined": {
+      "training_rows": 4607,
+      "last_training_season": 2024,
+      "features": [
+        "count_Out_diff",
+        "count_Doubtful_diff",
+        "count_Questionable_diff",
+        "count_Probable_diff",
+        "minutes_Out_diff",
+        "minutes_Doubtful_diff",
+        "minutes_Questionable_diff",
+        "minutes_Probable_diff",
+        "out_points_diff"
+      ],
+      "mean": [
+        -0.24983720425439548,
+        -0.003038853917950944,
+        0.007814195789016714,
+        0.03711742999782939,
+        -2.899894328316491,
+        -0.07838319477481108,
+        -0.01723422820903857,
+        0.9536616229123542,
+        -1.461335900564652
+      ],
+      "scale": [
+        2.453183849652538,
+        0.4917282916795665,
+        1.45742849807182,
+        0.8811083011705534,
+        59.9214548384127,
+        12.806185125783356,
+        34.78322716824562,
+        23.453933038756137,
+        30.652081896826946
+      ],
+      "coefficients": [
+        -0.07569803370264307,
+        -0.03556396580247371,
+        0.0003185368565799049,
+        -0.0284706220952004,
+        -0.15955699526743455,
+        0.130510506445775,
+        -0.03953739957009915,
+        -0.06952832896079,
+        0.18790976002229248,
+        -0.38270812297789797
+      ]
+    }
+  },
+  "status": "development_only_not_promoted",
+  "evaluated_seasons": [
+    2023,
+    2024,
+    2025
+  ],
+  "excluded_season": 2026,
   "coverage": {
     "2021": {
       "games": 1080,
-      "both_known": 985,
-      "document_available": 1028
+      "both_known": 992,
+      "document_available": 1038
     },
     "2022": {
       "games": 1230,
@@ -23,12 +688,69 @@
     },
     "2025": {
       "games": 1229,
-      "both_known": 205,
-      "document_available": 210
+      "both_known": 1217,
+      "document_available": 1229
     }
   },
-  "source_quality_gate": false,
-  "evaluated_seasons": [],
-  "excluded_season": 2026,
-  "experiment_lock_sha256": "96f5f0482a23bdf108db317684626c04b1e0d92cd1c8b063a473a75200d7343f"
+  "source_quality_gate": true,
+  "player_audits": [
+    {
+      "season": 2020,
+      "rows": 22317,
+      "sha256": "9d9cb6be4517107d48745270102557b719f052b1dcc3cc90e3b8a3594e6b1eaa",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_player_boxscores/player_box_2020.parquet"
+    },
+    {
+      "season": 2021,
+      "rows": 22969,
+      "sha256": "50133d2a044dd9736e05b2c779e3faa3f0a03ed5f18219cf9f44962427c421c8",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_player_boxscores/player_box_2021.parquet"
+    },
+    {
+      "season": 2022,
+      "rows": 25955,
+      "sha256": "474d15255f2a908f2c0ac0f7104b504c3cf2815b02dd0b0097c69cb634fe4395",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_player_boxscores/player_box_2022.parquet"
+    },
+    {
+      "season": 2023,
+      "rows": 25818,
+      "sha256": "968d835cd04b10533c5b5af8c0e41bf0154a73782e9446c76f765109223e8679",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_player_boxscores/player_box_2023.parquet"
+    },
+    {
+      "season": 2024,
+      "rows": 26283,
+      "sha256": "1e500a538ec45ddbcb58d9789b5494f8db4f25658eafd01d90f2d09600921665",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_player_boxscores/player_box_2024.parquet"
+    },
+    {
+      "season": 2025,
+      "rows": 26187,
+      "sha256": "e89f7fbc1124092c715b722e6d72d9dd1b9d28776ca6888b508fd2831cd705e2",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_nba_player_boxscores/player_box_2025.parquet"
+    }
+  ],
+  "v1_replay_verified_games": 8288,
+  "v1_replay_max_error": 1.1102230246251565e-16,
+  "impact_name_match": {
+    "listed": 35853,
+    "matched": 33555
+  },
+  "experiment_lock_sha256": "96f5f0482a23bdf108db317684626c04b1e0d92cd1c8b063a473a75200d7343f",
+  "runtime": {
+    "pandas": "2.2.3",
+    "numpy": "2.3.5",
+    "scikit-learn": "1.8.0",
+    "scipy": "1.17.0",
+    "pyarrow": "26.0.0",
+    "pypdf": "6.10.0"
+  },
+  "limitations": [
+    "Previously inspected development seasons are exploratory, not a fresh holdout",
+    "Reports are afternoon snapshots, not guaranteed final active lists",
+    "Prior minutes/points are a simple importance proxy, not player impact ratings",
+    "Archived PDFs may have source corrections; hashes and embedded timestamps are retained"
+  ],
+  "predictions_sha256": "25ddfb711985934a94eb3bd36baaee6b567f8ff53f717c0a597d07d609bf5fb5"
 }
