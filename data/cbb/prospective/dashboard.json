@@ -2,9 +2,9 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-10-19T13:01:37.263525+00:00",
+  "updated_at_utc": "2026-10-19T18:59:14.366471+00:00",
   "coverage": {
-    "source_games_in_horizon": 222
+    "source_games_in_horizon": 223
   },
   "excluded": {
     "tipoff_time_unconfirmed": 196,
@@ -12,9 +12,9 @@
   },
   "grading_issues": [],
   "summary": {
-    "saved_games": 23,
+    "saved_games": 24,
     "settled_games": 0,
-    "pending_games": 23,
+    "pending_games": 24,
     "wins": 0,
     "losses": 0,
     "accuracy": null,
@@ -800,6 +800,40 @@
         "orb_rate_diff": 0.005174366253309914,
         "ft_rate_diff": 0.010245388305532066,
         "pace_diff": 1.8774999999999835,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0
+      }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401909753",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401909753",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "239",
+      "away_team_id": "2296",
+      "home_team": "Baylor Bears",
+      "away_team": "Jackson State Tigers",
+      "neutral_site": false,
+      "start_time_utc": "2026-11-18T17:00:00+00:00",
+      "created_at_utc": "2026-10-19T18:59:14.366471+00:00",
+      "home_win_prob": 0.935478565474732,
+      "predicted_winner": "Baylor Bears",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": 97.64972434260358,
+        "home_advantage": 1.0,
+        "off_eff_diff": 18.422204135056035,
+        "def_eff_diff": -4.73748586479455,
+        "efg_diff": 0.08259371989638647,
+        "tov_rate_diff": -0.030837203346300218,
+        "orb_rate_diff": 0.07369096752141613,
+        "ft_rate_diff": -0.023147661128206598,
+        "pace_diff": -1.9706011730204978,
         "rest_diff": 0.0,
         "experience_diff": 0.0
       }
