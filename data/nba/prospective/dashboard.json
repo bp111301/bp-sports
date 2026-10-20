@@ -1,6 +1,6 @@
 {
   "feed_status": "enabled",
-  "updated_at_utc": "2026-10-20T21:10:07.858389+00:00",
+  "updated_at_utc": "2026-10-20T21:41:31.437165+00:00",
   "season": 2027,
   "regular_season_only": true,
   "weights_frozen": true,
@@ -36,8 +36,13 @@
       "season_type": 2,
       "source_receipt_sha256": "189120900ebcaf396f2a0bda90e4a1ddd2237d3f36fccf1d18d9510485951b98",
       "start_time_utc": "2026-10-20T19:00:00+00:00",
-      "status": "pending",
-      "actual_home_win": null
+      "home_score": 121.0,
+      "away_score": 113.0,
+      "actual_home_win": 1,
+      "actual_start_time_utc": "2026-10-20T19:00:00+00:00",
+      "settled_at_utc": "2026-10-20T21:40:55.379827+00:00",
+      "source_state": "post_completed",
+      "status": "settled"
     },
     {
       "away_id": "20",
@@ -470,13 +475,13 @@
     }
   ],
   "record": {
-    "games": 0,
-    "correct": 0,
-    "accuracy": null,
-    "brier": null,
-    "log_loss": null
+    "games": 1,
+    "correct": 1,
+    "accuracy": 1.0,
+    "brier": 0.19443584664690292,
+    "log_loss": 0.5815142228120839
   },
-  "prediction_blocked_reason": null,
+  "prediction_blocked_reason": "Completed regular-season box scores are not available yet",
   "forecast_rule": "First pregame snapshot within 36 hours; earlier-date results only",
   "grading": "Hourly after source reports completed final"
 }
