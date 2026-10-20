@@ -2,19 +2,19 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-10-20T01:02:10.416495+00:00",
+  "updated_at_utc": "2026-10-20T07:01:14.797120+00:00",
   "coverage": {
-    "source_games_in_horizon": 224
+    "source_games_in_horizon": 229
   },
   "excluded": {
-    "tipoff_time_unconfirmed": 196,
+    "tipoff_time_unconfirmed": 200,
     "division_or_conference_unknown": 3
   },
   "grading_issues": [],
   "summary": {
-    "saved_games": 25,
+    "saved_games": 26,
     "settled_games": 0,
-    "pending_games": 25,
+    "pending_games": 26,
     "wins": 0,
     "losses": 0,
     "accuracy": null,
@@ -868,6 +868,40 @@
         "orb_rate_diff": 0.004017966924585725,
         "ft_rate_diff": -0.05676661892745938,
         "pace_diff": 6.461752873563199,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0
+      }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401911473",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401911473",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "23",
+      "away_team_id": "278",
+      "home_team": "San Jos\u00e9 State Spartans",
+      "away_team": "Fresno State Bulldogs",
+      "neutral_site": false,
+      "start_time_utc": "2026-11-19T02:00:00+00:00",
+      "created_at_utc": "2026-10-20T07:01:14.797120+00:00",
+      "home_win_prob": 0.47193980371129063,
+      "predicted_winner": "Fresno State Bulldogs",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": -17.042625364692185,
+        "home_advantage": 1.0,
+        "off_eff_diff": 2.8217154094395056,
+        "def_eff_diff": 14.261535093865575,
+        "efg_diff": -0.009974817796052915,
+        "tov_rate_diff": -0.029550431799025806,
+        "orb_rate_diff": 0.0214207136791284,
+        "ft_rate_diff": -0.0036170934153401113,
+        "pace_diff": -3.3457787298386847,
         "rest_diff": 0.0,
         "experience_diff": 0.0
       }
