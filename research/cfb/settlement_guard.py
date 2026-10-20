@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-ALIASES={'Southern Mississippi':'Southern Miss','UT San Antonio':'UTSA','Sam Houston State':'Sam Houston','Connecticut':'UConn','UMass':'Massachusetts'}
+ALIASES={'Louisiana Monroe':'UL Monroe','Southern Mississippi':'Southern Miss','UT San Antonio':'UTSA','Sam Houston State':'Sam Houston','Connecticut':'UConn','UMass':'Massachusetts'}
 def team(name):return ALIASES.get(str(name),str(name))
 def flag(value):return str(value).lower() in ('true','1','1.0','yes')
 def verify_bundle(path,manifest):
@@ -38,3 +38,4 @@ def checked_schedule_fields(ledger,index):
     if d.prediction_id.duplicated().any():raise ValueError('Duplicate CFB snapshot IDs')
     d['schedule_kickoff_utc']=[index.get(int(g),{}).get('start_date') for g in d.game_id]
     return d
+

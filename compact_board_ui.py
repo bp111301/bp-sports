@@ -117,7 +117,7 @@ def compact_html(r, feed, now):
         if not r.settled and context_for(r.game_id).get('qb_review_required'):
             probability_text='Review';bar_style='display:none'
         if d.get('display_uses_latest_pregame'):availability_note+='<div style="font-size:.60rem;color:#91bfff;margin-top:4px">Updated pregame pick</div>'
-    return f'''<div class="bp-mini" style="--bp-away:{away_color};--bp-home:{home_color};--bp-pick:{accent_color(pick_color)};--bp-away-tint:{away_color}38;--bp-home-tint:{home_color}38">
+    card = f'''<div class="bp-mini" style="--bp-away:{away_color};--bp-home:{home_color};--bp-pick:{accent_color(pick_color)};--bp-away-tint:{away_color}38;--bp-home-tint:{home_color}38">
       <div class="bp-mini-top"><span>{esc(r.sport)} · {esc(state)}</span><span>{esc(detail)}</span></div>
       <div class="bp-mini-team"><span class="bp-mini-badge" style="background:{away_color};color:{text_color(away_color)}">{esc(short_name(r.away,r.sport,d.get('away_team_id')))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.away))}</span><strong>{a if a is not None else '—'}</strong></div>
       <div class="bp-mini-team"><span class="bp-mini-badge" style="background:{home_color};color:{text_color(home_color)}">{esc(short_name(r.home,r.sport,d.get('home_team_id')))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.home))}</span><strong>{h if h is not None else '—'}</strong></div>
@@ -125,6 +125,8 @@ def compact_html(r, feed, now):
       <div class="bp-mini-bar" style="{bar_style}"><div style="width:{r.confidence*100:.1f}%"></div></div>
       {availability_note}
     </div>'''
+    # Blank lines end Markdown HTML blocks; indented closing tags become code.
+    return ''.join(line.strip() for line in card.splitlines())
 
 @st.dialog('Game details',width='large')
 def open_cbb_details(r):
@@ -223,3 +225,4 @@ html,body,.stApp,[data-testid="stAppViewContainer"],[data-testid="stMain"]{max-w
 [class*="st-key-bp_game_tile_"] [data-testid="stButton"] button:hover{background:#ffffff06!important}
 [class*="st-key-bp_game_tile_"] [data-testid="stButton"] button:focus-visible{outline:3px solid #8bbdff!important;outline-offset:2px}
 </style>''',unsafe_allow_html=True)
+

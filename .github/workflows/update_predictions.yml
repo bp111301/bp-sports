@@ -100,5 +100,12 @@ jobs:
           git add bp_week5_website_feed.csv data/current/website_feed.csv data/current/prediction_metadata.json data/current/nfl_availability.json data/ledger/prediction_ledger.csv data/ledger/summary.json
           if git diff --cached --quiet; then echo "No generated changes."; exit 0; fi
           git commit -m "Update frozen V4 predictions"
-          git pull --rebase origin main
-          git push origin HEAD:main
+          # Other score/preview workflows can advance main between pull and push.
+          # Rebase the same saved forecasts; never regenerate or force-push them.
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            git push origin HEAD:main && exit 0
+            if [ "$attempt" = '3' ]; then exit 1; fi
+            sleep $((attempt * 3))
+          done
+

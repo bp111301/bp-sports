@@ -35,3 +35,23 @@ def test_current_kickoff_metadata_preserves_original_snapshot_time():
 
 def test_candidate_b_bundle_integrity():
  m=g.verify_bundle('model/cfb/v2/candidate_b_bundle.joblib','model/cfb/v2/candidate_b_manifest.json');assert m['version']=='CFB_V2_CANDIDATE_B'
+
+
+
+def test_ul_monroe_final_settles_both_saved_team_name_variants():
+ now=pd.Timestamp('2026-10-20T14:00Z')
+ p=dict(prediction_id='CFBV1_2026_401871091',game_id=401871091,
+        home_team='Louisiana Monroe',away_team='Louisiana Tech',
+        predicted_winner='Louisiana Tech',home_win_prob=.2,
+        snapshot_created_utc='2026-10-10T09:07:42Z')
+ actual=dict(game_id=401871091,home_team='UL Monroe',away_team='Louisiana Tech',
+             start_date='2026-10-18T00:00Z',start_time_tbd=False,
+             completed=True,home_points=0,away_points=24)
+ before=p.copy()
+ for freeze in (None,'2026-10-06T14:09:17Z'):
+  result=g.result_for(p,actual,now,freeze)
+  assert result['correct']==1 and result['actual_winner']=='Louisiana Tech'
+  assert result['home_points_final']==0 and result['away_points_final']==24
+ assert p==before
+ assert g.result_for(p,{**actual,'home_team':'Louisiana'},now) is None
+ assert g.result_for(p,{**actual,'completed':False},now) is None
