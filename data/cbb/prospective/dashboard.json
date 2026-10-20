@@ -2,9 +2,9 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-10-19T18:59:14.366471+00:00",
+  "updated_at_utc": "2026-10-20T01:02:10.416495+00:00",
   "coverage": {
-    "source_games_in_horizon": 223
+    "source_games_in_horizon": 224
   },
   "excluded": {
     "tipoff_time_unconfirmed": 196,
@@ -12,9 +12,9 @@
   },
   "grading_issues": [],
   "summary": {
-    "saved_games": 24,
+    "saved_games": 25,
     "settled_games": 0,
-    "pending_games": 24,
+    "pending_games": 25,
     "wins": 0,
     "losses": 0,
     "accuracy": null,
@@ -834,6 +834,40 @@
         "orb_rate_diff": 0.07369096752141613,
         "ft_rate_diff": -0.023147661128206598,
         "pace_diff": -1.9706011730204978,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0
+      }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401911377",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401911377",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "2127",
+      "away_team_id": "2747",
+      "home_team": "Charleston Southern Buccaneers",
+      "away_team": "Wofford Terriers",
+      "neutral_site": false,
+      "start_time_utc": "2026-11-19T00:00:00+00:00",
+      "created_at_utc": "2026-10-20T01:02:10.416495+00:00",
+      "home_win_prob": 0.5769153703874601,
+      "predicted_winner": "Charleston Southern Buccaneers",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": -69.79626062160742,
+        "home_advantage": 1.0,
+        "off_eff_diff": -6.213535629729563,
+        "def_eff_diff": -6.726797744883356,
+        "efg_diff": 0.016868911462460057,
+        "tov_rate_diff": 0.052263365328814676,
+        "orb_rate_diff": 0.004017966924585725,
+        "ft_rate_diff": -0.05676661892745938,
+        "pace_diff": 6.461752873563199,
         "rest_diff": 0.0,
         "experience_diff": 0.0
       }
