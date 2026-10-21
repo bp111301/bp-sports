@@ -1,6 +1,6 @@
 {
   "feed_status": "enabled",
-  "updated_at_utc": "2026-10-21T10:57:40.360243+00:00",
+  "updated_at_utc": "2026-10-21T11:38:32.570826+00:00",
   "season": 2027,
   "regular_season_only": true,
   "weights_frozen": true,
@@ -491,7 +491,7 @@
     "brier": 0.3048504188996002,
     "log_loss": 0.8064545334878744
   },
-  "prediction_blocked_reason": "Completed regular-season box scores are not available yet",
+  "prediction_blocked_reason": "(\"Could not convert '0' with type str: tried to convert to int64\", 'Conversion failed for column home_score with type object')",
   "forecast_rule": "First pregame snapshot within 36 hours; earlier-date results only",
   "grading": "Hourly after source reports completed final"
 }
