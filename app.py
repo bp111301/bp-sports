@@ -490,7 +490,8 @@ elif sport == "CFB":
             st.error("The current CFB prediction feed is unavailable.")
         else:
             ledger = load_csv("data/cfb/ledger/prediction_ledger.csv")
-            board = pd.concat([cfb_pred,ledger],ignore_index=True).drop_duplicates("game_id")
+            # Preserve the first saved forecast and its grading fields on every view.
+            board = pd.concat([ledger,cfb_pred],ignore_index=True).drop_duplicates("game_id")
             if "correct" in ledger:
                 results=ledger.drop_duplicates("game_id").set_index("game_id")["correct"]
                 board["correct"]=board["game_id"].map(results)
