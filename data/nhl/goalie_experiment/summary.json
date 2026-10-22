@@ -1,50 +1,50 @@
 {
-  "as_of_utc": "2026-10-22T01:45:32.896215+00:00",
+  "as_of_utc": "2026-10-22T02:13:01.312161+00:00",
   "status": "research_only_not_promoted",
   "weights_frozen": true,
   "paired_games": 96,
-  "settled_paired_games": 95,
-  "pending_paired_games": 1,
+  "settled_paired_games": 96,
+  "pending_paired_games": 0,
   "invalid_timing": 0,
   "coverage": [],
   "metrics": [
     {
       "candidate": "team_control",
-      "games": 95,
+      "games": 96,
       "correct": 58,
-      "accuracy": 0.6105263157894737,
-      "brier": 0.23445461597995457,
-      "log_loss": 0.6662883054662113
+      "accuracy": 0.6041666666666666,
+      "brier": 0.23665991391629693,
+      "log_loss": 0.6708320031157977
     },
     {
       "candidate": "inferred_goalie",
-      "games": 95,
+      "games": 96,
       "correct": 61,
-      "accuracy": 0.6421052631578947,
-      "brier": 0.23343303906113796,
-      "log_loss": 0.6621093942898483
+      "accuracy": 0.6354166666666666,
+      "brier": 0.23601997658144566,
+      "log_loss": 0.6675510359260853
     },
     {
       "candidate": "confirmed_goalie",
-      "games": 95,
+      "games": 96,
       "correct": 61,
-      "accuracy": 0.6421052631578947,
-      "brier": 0.23334981490771514,
-      "log_loss": 0.661726653859055
+      "accuracy": 0.6354166666666666,
+      "brier": 0.23588668685442235,
+      "log_loss": 0.6670527247583876
     }
   ],
   "first_formal_review_paired_games": 500,
   "automatic_promotion": false,
   "confirmed_minus_control": {
     "team_control": {
-      "accuracy": 0.03157894736842104,
-      "brier": -0.0011048010722394253,
-      "log_loss": -0.00456165160715627
+      "accuracy": 0.03125,
+      "brier": -0.0007732270618745762,
+      "log_loss": -0.0037792783574100985
     },
     "inferred_goalie": {
       "accuracy": 0.0,
-      "brier": -8.322415342282286e-05,
-      "log_loss": -0.00038274043079322695
+      "brier": -0.00013328972702331132,
+      "log_loss": -0.0004983111676977181
     }
   },
   "games_in_current_prediction_window": 0,
