@@ -1,6 +1,6 @@
 {
   "feed_status": "enabled",
-  "updated_at_utc": "2026-10-22T02:37:46.146374+00:00",
+  "updated_at_utc": "2026-10-22T03:10:00.007758+00:00",
   "season": 2027,
   "regular_season_only": true,
   "weights_frozen": true,
@@ -226,10 +226,10 @@
       "season_type": 2,
       "source_receipt_sha256": "64d8707aae527fd90519385b343e56b763689b3a5ac01c90fb468ced1cbfb510",
       "start_time_utc": "2026-10-21T23:30:00+00:00",
-      "home_score": 106.0,
-      "away_score": 131.0,
       "actual_home_win": 0,
       "actual_start_time_utc": "2026-10-21T23:30:00+00:00",
+      "away_score": 131.0,
+      "home_score": 106.0,
       "settled_at_utc": "2026-10-22T02:37:11.824780+00:00",
       "source_state": "post_completed",
       "status": "settled"
@@ -264,10 +264,10 @@
       "season_type": 2,
       "source_receipt_sha256": "64d8707aae527fd90519385b343e56b763689b3a5ac01c90fb468ced1cbfb510",
       "start_time_utc": "2026-10-21T23:30:00+00:00",
-      "home_score": 103.0,
-      "away_score": 110.0,
       "actual_home_win": 0,
       "actual_start_time_utc": "2026-10-21T23:30:00+00:00",
+      "away_score": 110.0,
+      "home_score": 103.0,
       "settled_at_utc": "2026-10-22T02:37:11.824780+00:00",
       "source_state": "post_completed",
       "status": "settled"
@@ -302,10 +302,10 @@
       "season_type": 2,
       "source_receipt_sha256": "64d8707aae527fd90519385b343e56b763689b3a5ac01c90fb468ced1cbfb510",
       "start_time_utc": "2026-10-21T23:30:00+00:00",
-      "home_score": 135.0,
-      "away_score": 92.0,
       "actual_home_win": 1,
       "actual_start_time_utc": "2026-10-21T23:30:00+00:00",
+      "away_score": 92.0,
+      "home_score": 135.0,
       "settled_at_utc": "2026-10-22T02:37:11.824780+00:00",
       "source_state": "post_completed",
       "status": "settled"
@@ -340,10 +340,10 @@
       "season_type": 2,
       "source_receipt_sha256": "de93a564e0b22786b81b2082834281f24d8e3c39182d64d9e7b7cc6fa01b4ef0",
       "start_time_utc": "2026-10-22T00:00:00+00:00",
-      "home_score": 123.0,
-      "away_score": 103.0,
       "actual_home_win": 1,
       "actual_start_time_utc": "2026-10-22T00:00:00+00:00",
+      "away_score": 103.0,
+      "home_score": 123.0,
       "settled_at_utc": "2026-10-22T02:37:11.824780+00:00",
       "source_state": "post_completed",
       "status": "settled"
@@ -378,10 +378,10 @@
       "season_type": 2,
       "source_receipt_sha256": "de93a564e0b22786b81b2082834281f24d8e3c39182d64d9e7b7cc6fa01b4ef0",
       "start_time_utc": "2026-10-22T00:00:00+00:00",
-      "home_score": 120.0,
-      "away_score": 123.0,
       "actual_home_win": 0,
       "actual_start_time_utc": "2026-10-22T00:00:00+00:00",
+      "away_score": 123.0,
+      "home_score": 120.0,
       "settled_at_utc": "2026-10-22T02:37:11.824780+00:00",
       "source_state": "post_completed",
       "status": "settled"
@@ -416,8 +416,13 @@
       "season_type": 2,
       "source_receipt_sha256": "b126d6a64e023fb6000bd791171074b0e49935b5b615ff6dc4d69861bded565d",
       "start_time_utc": "2026-10-22T00:30:00+00:00",
-      "status": "pending",
-      "actual_home_win": null
+      "home_score": 128.0,
+      "away_score": 110.0,
+      "actual_home_win": 1,
+      "actual_start_time_utc": "2026-10-22T00:30:00+00:00",
+      "settled_at_utc": "2026-10-22T03:09:43.983343+00:00",
+      "source_state": "post_completed",
+      "status": "settled"
     },
     {
       "away_id": "9",
@@ -520,11 +525,11 @@
     }
   ],
   "record": {
-    "games": 10,
-    "correct": 4,
-    "accuracy": 0.4,
-    "brier": 0.25651784111602105,
-    "log_loss": 0.7055964562829609
+    "games": 11,
+    "correct": 5,
+    "accuracy": 0.45454545454545453,
+    "brier": 0.23939215606076053,
+    "log_loss": 0.6689508185232714
   },
   "prediction_blocked_reason": "(\"Could not convert '0' with type str: tried to convert to int64\", 'Conversion failed for column home_score with type object')",
   "forecast_rule": "First pregame snapshot within 36 hours; earlier-date results only",
