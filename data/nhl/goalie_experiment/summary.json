@@ -1,30 +1,22 @@
 {
-  "as_of_utc": "2026-10-22T22:58:10.287769+00:00",
+  "as_of_utc": "2026-10-22T23:06:36.353791+00:00",
   "status": "research_only_not_promoted",
   "weights_frozen": true,
-  "paired_games": 100,
+  "paired_games": 102,
   "settled_paired_games": 96,
-  "pending_paired_games": 4,
+  "pending_paired_games": 6,
   "invalid_timing": 0,
   "coverage": [
     {
-      "game_id": 2026020154,
+      "game_id": 2026020160,
       "status": "missing_both_eligible_confirmations"
     },
     {
-      "game_id": 2026020155,
+      "game_id": 2026020159,
       "status": "paired_prediction_recorded"
     },
     {
-      "game_id": 2026020156,
-      "status": "paired_prediction_recorded"
-    },
-    {
-      "game_id": 2026020157,
-      "status": "paired_prediction_recorded"
-    },
-    {
-      "game_id": 2026020158,
+      "game_id": 2026020161,
       "status": "paired_prediction_recorded"
     }
   ],
@@ -32,23 +24,20 @@
     {
       "candidate": "team_control",
       "games": 96,
-      "correct": 58,
       "accuracy": 0.6041666666666666,
-      "brier": 0.23665991391629693,
+      "brier": 0.2366599139162969,
       "log_loss": 0.6708320031157977
     },
     {
       "candidate": "inferred_goalie",
       "games": 96,
-      "correct": 61,
       "accuracy": 0.6354166666666666,
-      "brier": 0.23601997658144566,
+      "brier": 0.2360199765814457,
       "log_loss": 0.6675510359260853
     },
     {
       "candidate": "confirmed_goalie",
       "games": 96,
-      "correct": 61,
       "accuracy": 0.6354166666666666,
       "brier": 0.23588668685442235,
       "log_loss": 0.6670527247583876
@@ -59,15 +48,15 @@
   "confirmed_minus_control": {
     "team_control": {
       "accuracy": 0.03125,
-      "brier": -0.0007732270618745762,
+      "brier": -0.0007732270618745485,
       "log_loss": -0.0037792783574100985
     },
     "inferred_goalie": {
       "accuracy": 0.0,
-      "brier": -0.00013328972702331132,
+      "brier": -0.00013328972702333908,
       "log_loss": -0.0004983111676977181
     }
   },
-  "games_in_current_prediction_window": 5,
-  "newly_eligible_games": 4
+  "games_in_current_prediction_window": 3,
+  "newly_eligible_games": 2
 }
