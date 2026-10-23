@@ -58,3 +58,19 @@ def test_logs_append_without_changing_original_forecast(tmp_path):
     path=tmp_path/'predictions.jsonl';p=prediction();live.append(path,[p]);first=path.read_bytes()
     live.append(path,[{**p,'game_id':'3'}]); assert path.read_bytes().startswith(first)
     assert live.read_log(path)[0]==p
+
+def test_mixed_score_types_serialize_without_changing_source(monkeypatch):
+    final = {**schedule(), 'game_id': 1, 'date': '2026-10-24T23:00Z',
+             'status_type_state': 'post', 'status_type_completed': True,
+             'home_score': 110, 'away_score': 100}
+    source = pd.DataFrame([final, {**schedule(), 'home_score': '0', 'away_score': '0'}])
+    before = source.copy(deep=True)
+    def load(seasons):
+        saved = pd.read_parquet(live.baseline.ROOT/'data/nba/source/schedule_2027.parquet')
+        assert saved.home_score.tolist() == [110, 0]
+        assert saved.away_score.tolist() == [100, 0]
+        assert pd.api.types.is_numeric_dtype(saved.home_score)
+        return pd.DataFrame([game()]), []
+    monkeypatch.setattr(live, 'load_games', load)
+    assert len(live.current_history(source, b'test boxes')) == 1
+    pd.testing.assert_frame_equal(source, before)
