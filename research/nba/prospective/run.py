@@ -114,6 +114,11 @@ def current_history(schedule, box_bytes):
         return pd.DataFrame()
     if box_bytes is None:
         raise ValueError('Completed regular-season box scores are not available yet')
+    # ESPN overlays use score strings; the archive uses numeric scores.
+    # Normalize only the temporary history input before Arrow serialization.
+    schedule = schedule.copy()
+    for column in ('home_score', 'away_score'):
+        schedule[column] = pd.to_numeric(schedule[column], errors='raise')
     with tempfile.TemporaryDirectory() as temp:
         root = Path(temp); source = root/'data/nba/source'; source.mkdir(parents=True)
         schedule.to_parquet(source/f'schedule_{SEASON}.parquet', index=False)
