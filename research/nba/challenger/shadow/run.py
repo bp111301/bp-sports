@@ -102,6 +102,7 @@ def main():
     if due:
         try:
             history,_=v1.load_games(range(2016,2027)) # 2026 is forward state only, never residual fit/evaluation.
+            box=v1.complete_current_boxes(schedule,box,receipts,OUT/'validated_team_boxes.jsonl')
             current=v1.current_history(schedule,box)
             if not current.empty:history=pd.concat([history,current],ignore_index=True)
             cache=ROOT/'runtime/nba/shadow-injuries';cache.mkdir(parents=True,exist_ok=True)
@@ -150,3 +151,4 @@ def main():
 
 
 if __name__=='__main__':main()
+

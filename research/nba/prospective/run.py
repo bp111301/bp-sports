@@ -15,6 +15,7 @@ import requests
 import baseline
 from baseline import FEATURES, build_features, load_games, metrics, truth
 from evaluate import verify_frozen
+from team_box_fallback import complete_boxes
 
 ROOT = baseline.ROOT
 OUT = ROOT / 'data/nba/prospective'
@@ -108,6 +109,19 @@ def fetch_sources(now, predictions, results):
     schedule = pd.DataFrame(indexed.values())
     return schedule, box_bytes, receipts
 
+def complete_current_boxes(schedule, box_bytes, receipts, cache_path=None):
+    eligible = schedule[schedule.apply(regular, axis=1)].copy()
+    def fetch(url):
+        try:
+            response = requests.get(url, timeout=(15,45))
+            response.raise_for_status()
+        except requests.RequestException as error:
+            raise ValueError(f'Final team-box source unavailable: {error}') from error
+        receipts.append(dict(url=url,status=response.status_code,sha256=digest(response.content),role='validated_final_team_box_fallback'))
+        return response.content
+    path = OUT/'validated_team_boxes.jsonl' if cache_path is None else cache_path
+    return complete_boxes(eligible, box_bytes, fetch, path)
+
 def current_history(schedule, box_bytes):
     completed = [r for r in schedule.to_dict('records') if regular(r) and truth(r['status_type_completed']) and r['status_type_state'] == 'post']
     if not completed:
@@ -180,6 +194,7 @@ def main():
     blocked = None; new_predictions = []
     try:
         history, _ = load_games(range(2016, 2027))
+        box_bytes = complete_current_boxes(schedule, box_bytes, receipts)
         current = current_history(schedule, box_bytes)
         if not current.empty: history = pd.concat([history, current], ignore_index=True)
         known = {p['game_id'] for p in predictions}
@@ -204,10 +219,12 @@ def main():
     by_id = {r['game_id']:r for r in results}
     dashboard_rows = [{**p, **by_id.get(p['game_id'],{}), 'status':'settled' if p['game_id'] in by_id else 'pending', 'actual_home_win':by_id.get(p['game_id'],{}).get('actual_home_win')} for p in predictions]
     record = metrics([r['actual_home_win'] for r in dashboard_rows if r['status']=='settled'], [r['home_win_prob'] for r in dashboard_rows if r['status']=='settled']) if results else dict(games=0,correct=0,accuracy=None,brier=None,log_loss=None)
-    dashboard = dict(feed_status='enabled', updated_at_utc=datetime.now(timezone.utc).isoformat(), season=SEASON, regular_season_only=True,
+    missing = [str(int(r['game_id'])) for r in schedule.to_dict('records') if regular(r) and r['status_type_state']=='pre' and datetime.now(timezone.utc) < pd.Timestamp(r['date']) <= now+timedelta(hours=36) and str(int(r['game_id'])) not in {p['game_id'] for p in predictions}]
+    dashboard = dict(operational_status='blocked' if blocked or missing else 'ready', missing_upcoming_game_ids=missing, new_prediction_rows=len(new_predictions), feed_status='enabled', updated_at_utc=datetime.now(timezone.utc).isoformat(), season=SEASON, regular_season_only=True,
         weights_frozen=True, bundle_sha256=manifest['bundle_sha256'], predictions=dashboard_rows, record=record,
         prediction_blocked_reason=blocked, forecast_rule='First pregame snapshot within 36 hours; earlier-date results only', grading='Hourly after source reports completed final')
     (OUT/'dashboard.json').write_text(json.dumps(dashboard, indent=2, allow_nan=False)+'\n')
     print(json.dumps(dict(new_predictions=len(new_predictions), new_results=len(new_results), record=record, prediction_blocked_reason=blocked), indent=2))
 
 if __name__ == '__main__': main()
+
