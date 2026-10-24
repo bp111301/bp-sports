@@ -412,6 +412,9 @@ def render_overview(now=None):
     now=pd.Timestamp.now(tz='UTC') if now is None else ts(now)
     payload=load_overview()
     board,available,updates=prepare(payload,now)
+    nba_capture=payload.get('nba',{}).get('data') or {}
+    if nba_capture.get('prediction_blocked_reason') or nba_capture.get('missing_upcoming_game_ids'):
+        st.warning('NBA forecast capture is delayed. Some upcoming games may be missing; saved picks and graded results remain available.')
     for i,r in board.iterrows():
         status=context(r.sport,r.game_id,r.home,r.away)
         if status:board.loc[i,'start']=ts(status['start_time_utc'])
