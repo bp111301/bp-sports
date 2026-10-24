@@ -18,11 +18,13 @@ SOURCES={
  'shadow':('main','data/cfb/v2_shadow/verified_prediction_ledger.csv'), 'shadow_update':('main','data/cfb/v2_shadow/metadata.json'),
  'nhl':('nhl-v1-research','data/nhl/v2_research/prediction_ledger.csv'), 'nhl_update':('nhl-v1-research','data/nhl/v2_research/summary.json'),
  'goalie':('nhl-v1-research','data/nhl/goalie_experiment/paired_ledger.jsonl'), 'goalie_update':('nhl-v1-research','data/nhl/goalie_experiment/summary.json'),
- 'nba':('nba-v1-research','data/nba/prospective/dashboard.json')}
-PRIMARY={'NFL':'nfl','CFB':'cfb','NHL':'reference_control','NBA':'nba'}
-LABELS={'nfl':'NFL V4','cfb':'CFB V1','reference_control':'NHL reference','nba':'NBA V1','shadow':'CFB Candidate B','decay2_logistic':'NHL recency weighting','linear_regulation_blend':'NHL regulation blend','goalie_team_control':'Goalie test · team control','goalie_inferred_goalie':'Goalie test · inferred starter','goalie_confirmed_goalie':'Goalie test · confirmed starter'}
-COLORS={'NFL':'#85b4ff','CFB':'#f3cc73','NHL':'#77d7db','NBA':'#f5ac74'}
-LIMITS={'NFL':108,'CFB':30,'NHL':30,'NBA':3}
+ 'nba':('nba-v1-research','data/nba/prospective/dashboard.json'),
+ 'cbb':('cbb-v1-research','data/cbb/prospective/dashboard.json')}
+PRIMARY={'NFL':'nfl','CFB':'cfb','NHL':'reference_control','NBA':'nba','CBB':'cbb'}
+LABELS={'nfl':'NFL V4','cfb':'CFB V1','reference_control':'NHL reference','nba':'NBA V1','cbb':'CBB V1 candidate','shadow':'CFB Candidate B','decay2_logistic':'NHL recency weighting','linear_regulation_blend':'NHL regulation blend','goalie_team_control':'Goalie test · team control','goalie_inferred_goalie':'Goalie test · inferred starter','goalie_confirmed_goalie':'Goalie test · confirmed starter'}
+COLORS={'NFL':'#85b4ff','CFB':'#f3cc73','NHL':'#77d7db','NBA':'#f5ac74','CBB':'#c9a6ff'}
+LIMITS={'NFL':108,'CFB':30,'NHL':30,'NBA':3,'CBB':8}
+FROZEN_CBB='fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163'
 FROZEN_NBA='c57d804ab9062542e9e456a9585327bbb677732e5ad55b0186f91ddbdf5e079f'
 FROZEN_NHL='d60b32b93d795cc0905f626489720640eeb4691002b40aa6b2b38440953d5cbe'
 FROZEN_SHADOW='43363558b09e708bd7e9131c87250dc65a67faf770bdcb3627e9b4ac8a9dd1c6'
@@ -95,6 +97,13 @@ def normalize(key,data,now):
             if r.get('season')!=2027 or r.get('season_type')!=2 or r.get('status') not in ('pending','settled'):continue
             if r.get('bundle_sha256')!=data.get('bundle_sha256'):raise ValueError('NBA model identity mismatch')
             rows.append(row(r['game_id'],'NBA','nba',r['home_team'],r['away_team'],r['home_win_prob'],r['created_at_utc'],r['start_time_utc'],r['status']=='settled',r.get('actual_home_win'),details=r))
+    elif key=='cbb':
+        if data.get('feed_status')!='research_preview':raise ValueError('CBB feed unavailable')
+        if data.get('bundle_sha256')!=FROZEN_CBB:raise ValueError('CBB model identity mismatch')
+        for r in data.get('predictions',[]):
+            if r.get('season')!=2027 or r.get('season_type')!=2 or r.get('status') not in ('pending','settled'):continue
+            if r.get('bundle_sha256')!=FROZEN_CBB:raise ValueError('CBB snapshot identity mismatch')
+            rows.append(row(r['game_id'],'CBB','cbb',r['home_team'],r['away_team'],r['home_win_prob'],r['created_at_utc'],r['start_time_utc'],r['status']=='settled',r.get('actual_home_win'),details=r))
     valid=[]
     for r in rows:
         if not math.isfinite(r['p']) or not 0<=r['p']<=1 or pd.isna(r['created']) or r['created']>now:continue
@@ -106,7 +115,7 @@ def normalize(key,data,now):
 
 def prepare(payload,now):
     records=[];available={};updates={}
-    for key in ('nfl','cfb','shadow','nhl','goalie','nba'):
+    for key in ('nfl','cfb','shadow','nhl','goalie','nba','cbb'):
         source=payload.get(key,{});available[key]=source.get('ok',False)
         if available[key]:
             try:records+=normalize(key,source['data'],now)
@@ -115,6 +124,7 @@ def prepare(payload,now):
         source=payload.get(key,{})
         updates[sport]=ts(source['data'].get(field)) if source.get('ok') else pd.NaT
     updates['NBA']=ts(payload['nba']['data'].get('updated_at_utc')) if payload.get('nba',{}).get('ok') else pd.NaT
+    updates['CBB']=ts(payload['cbb']['data'].get('updated_at_utc')) if payload.get('cbb',{}).get('ok') else pd.NaT
     board=pd.DataFrame(records,columns=COLUMNS)
     if not board.empty:board['confidence']=board.p.where(board.p.ge(.5),1-board.p)
     else:board['confidence']=pd.Series(dtype=float)
@@ -189,7 +199,7 @@ def select_day(board,day,sport='All sports'):
 
 def render_game_cards(board,now,key):
     # Share the sport-board tile so dimensions and content stay consistent.
-    from compact_board_ui import compact_html
+    from compact_board_ui import compact_html, open_cbb_details
     from game_center_ui import load_scores
     feed=load_scores()
     for offset in range(0,len(board),2):
@@ -198,7 +208,8 @@ def render_game_cards(board,now,key):
             for column,(_,r) in zip(columns,board.iloc[offset:offset+2].iterrows()):
                 with column:
                     game_tile(r.sport,r,key+'_'+r.sport+'_'+str(r.game_id),
-                              compact_html(r,feed,now),LABELS[r.group],now=now)
+                              compact_html(r,feed,now),LABELS[r.group],now=now,
+                              on_open=(lambda r=r:open_cbb_details(r)) if r.sport=='CBB' else None)
 
 def render_daily_results(primary,available,now):
     st.markdown('<div class="section-title">Results by date</div><div class="section-sub">Review a game night · dates and times are Central</div>',unsafe_allow_html=True)
@@ -214,7 +225,7 @@ def render_daily_results(primary,available,now):
     shown=select_day(personal,day,sport);m=metrics(shown)
     a,b,c=st.columns(3);a.metric('Slate record',f"{m['wins']}–{m['losses']}");b.metric('Awaiting grading',len(shown)-m['games']);c.metric('Graded accuracy',f"{m['accuracy']*100:.1f}%" if m['games'] else '—')
     st.caption(f"{day:%B %d, %Y} · {len(shown)} saved matchups · {m['games']} graded. One primary forecast per game; pending games stay out of accuracy. NHL uses the experimental reference control. Filters affect this slate only.")
-    missing=[s for s,k in [('NFL','nfl'),('CFB','cfb'),('NHL','nhl'),('NBA','nba')] if (sport=='All sports' or sport==s) and not available.get(k)]
+    missing=[s for s,k in [('NFL','nfl'),('CFB','cfb'),('NHL','nhl'),('NBA','nba'),('CBB','cbb')] if (sport=='All sports' or sport==s) and not available.get(k)]
     if missing:st.warning('This slate is incomplete: '+', '.join(missing)+' grading feeds are unavailable.')
     if shown.empty:st.info('No saved matchups match this date and filter.');return
     rows=[]
@@ -315,7 +326,8 @@ def render_weekly_results(now=None):
     section, ok = weekly_board(load_overview(), sport, now, latest)
     if not ok:st.warning('The grading feed is unavailable. Results cannot be verified right now.');return
     if sport == 'NHL':st.caption('NHL uses the experimental reference control. Challenger and goalie experiments remain separate.')
-    st.caption('The official record uses the first saved forecast per game. Latest NFL snapshots are a separate comparison. Ties and pending games are excluded from accuracy. NHL and NBA weeks run Monday–Sunday in Central time.')
+    if sport == 'CBB':st.caption('CBB is a research candidate collecting prospective results. Historical accuracy is separate.')
+    st.caption('The official record uses the first saved forecast per game. Latest NFL snapshots are a separate comparison. Ties and pending games are excluded from accuracy. NHL, NBA and CBB weeks run Monday–Sunday in Central time.')
     if section.empty:st.info('No prospective games are saved yet. Results will appear after regular-season forecasts and verified finals.');return
     overall = weekly_metrics(section)
     overall_accuracy = f"{overall['accuracy']*100:.1f}% accuracy" if overall['games'] else 'Accuracy pending'
@@ -453,8 +465,8 @@ def render_overview(now=None):
 .desk-match .desk-at{color:#94a7bf;font-size:.85rem}
 @media(max-width:640px){.ov-compact-hero{padding:14px 15px;border-radius:14px;margin-bottom:12px}.ov-compact-hero .hero-title{font-size:1.3rem}.ov-compact-hero .hero-copy{font-size:.76rem}.ov-compact-hero .stat{padding:9px 7px}.ov-compact-hero .stat-v{font-size:1.2rem}.ov-compact-hero .stat-l{font-size:.53rem;letter-spacing:.02em}}
 </style>''' ,unsafe_allow_html=True)
-    missing=[name for name,key in [('NFL','nfl'),('CFB','cfb'),('NHL','nhl'),('NBA','nba')] if not available[key]]
-    st.markdown(f'''<div class="hero ov-compact-hero"><div class="hero-title">Your sports desk.</div><div class="hero-copy">Saved picks and verified results, all in one place.</div><div class="stat-grid"><div class="stat"><div class="stat-v">{4-len(missing)} / 4</div><div class="stat-l">Feeds verified</div></div><div class="stat"><div class="stat-v">{saved}</div><div class="stat-l">Saved matchups</div></div><div class="stat"><div class="stat-v">{total_graded}</div><div class="stat-l">Finals graded</div></div></div></div>''',unsafe_allow_html=True)
+    missing=[name for name,key in [('NFL','nfl'),('CFB','cfb'),('NHL','nhl'),('NBA','nba'),('CBB','cbb')] if not available[key]]
+    st.markdown(f'''<div class="hero ov-compact-hero"><div class="hero-title">Your sports desk.</div><div class="hero-copy">Saved picks and verified results, all in one place.</div><div class="stat-grid"><div class="stat"><div class="stat-v">{len(PRIMARY)-len(missing)} / {len(PRIMARY)}</div><div class="stat-l">Feeds verified</div></div><div class="stat"><div class="stat-v">{saved}</div><div class="stat-l">Saved matchups</div></div><div class="stat"><div class="stat-v">{total_graded}</div><div class="stat-l">Finals graded</div></div></div></div>''',unsafe_allow_html=True)
     if missing:st.warning('Live data unavailable for '+', '.join(missing)+'. Those records show — until they can be verified.')
     tabs=st.tabs(['LIVE RECORDS','DAILY RESULTS','CONFIDENCE','RESEARCH'])
     with tabs[0]:
@@ -462,9 +474,10 @@ def render_overview(now=None):
         for sport,group in PRIMARY.items():
             key='nhl' if sport=='NHL' else sport.lower();ok=available[key];b=board[board.group==group];m=metrics(b);state,cls=freshness(sport,updates[sport],now)
             if not ok:state,cls='Feed unavailable','unknown'
+            elif sport=='CBB' and len(b) and not m['games'] and b.start.min()>now and cls=='good':state='Awaiting season'
             record=f"{m['wins']}–{m['losses']}" if ok else '—';accuracy=f"{m['accuracy']*100:.1f}%" if ok and m['games'] else '—';pending=len(b)-m['games']
-            tag='FROZEN · RESEARCH' if sport=='NHL' else 'FROZEN V4' if sport=='NFL' else 'FROZEN V1'
-            sub='Reference control · prospective research' if sport=='NHL' else 'Official prospective record'
+            tag='FROZEN · CANDIDATE' if sport=='CBB' else 'FROZEN · RESEARCH' if sport=='NHL' else 'FROZEN V4' if sport=='NFL' else 'FROZEN V1'
+            sub='Research candidate · prospective record' if sport=='CBB' else 'Reference control · prospective research' if sport=='NHL' else 'Official prospective record'
             cards.append(f'<div class="ov-sport" style="--accent:{COLORS[sport]}"><div class="ov-top"><div class="ov-name">{sport}</div><div class="ov-tag">{tag}</div></div><div class="ov-score">{record}</div><div class="ov-caption">{sub}</div><div class="ov-details"><div class="ov-detail"><b>{m["games"] if ok else "—"}</b><span>Graded</span></div><div class="ov-detail"><b>{pending if ok else "—"}</b><span>Pending</span></div><div class="ov-detail"><b>{accuracy}</b><span>Accuracy</span></div></div><div class="ov-update"><span>{esc(ct(updates[sport]))}</span><span class="ov-status {cls}">{state}</span></div></div>')
         sports=list(PRIMARY)
         for offset in range(0,len(cards),2):
@@ -474,7 +487,7 @@ def render_overview(now=None):
                     st.markdown(card,unsafe_allow_html=True)
                     st.button('Open '+sport+' board',key='open_'+sport,on_click=open_board,args=(sport,),width='stretch')
         st.caption('Saved and graded totals count one primary forecast per matchup. NHL uses the research reference control; challengers are tracked separately.')
-        st.markdown('<div class="section-title">Game center</div><div class="section-sub">Saved picks, clear results, all four sports · Central time</div>',unsafe_allow_html=True)
+        st.markdown('<div class="section-title">Game center</div><div class="section-sub">Saved picks, clear results, all five sports · Central time</div>',unsafe_allow_html=True)
         f1,f2=st.columns([2,1])
         view=f1.selectbox('Show games',['Today','Results','Upcoming','Awaiting finals','All tracked'],key='desk_view')
         sport=f2.selectbox('Filter sport',['All sports',*PRIMARY],key='desk_sport')
