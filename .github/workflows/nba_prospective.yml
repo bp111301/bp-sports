@@ -28,7 +28,7 @@ jobs:
           python-version: '3.12'
       - run: pip install pandas==2.2.3 numpy==2.3.5 scikit-learn==1.8.0 pyarrow==23.0.1 requests==2.32.5 pytest==8.4.2 joblib==1.5.3
       - name: Verify leakage and immutable record rules
-        run: python -m pytest -q research/nba/prospective/test_safety.py
+        run: python -m pytest -q research/nba/prospective/
       - name: Capture regular-season predictions and grade finals
         run: python research/nba/prospective/run.py
       - name: Save prospective ledgers and dashboard
@@ -40,3 +40,6 @@ jobs:
             git commit -m 'Collect frozen NBA regular-season forecasts and results [skip ci]'
             git push origin HEAD:nba-v1-research
           fi
+
+      - name: Verify forecast capture is operational
+        run: python research/nba/prospective/capture_health.py
