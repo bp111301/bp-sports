@@ -38,7 +38,12 @@ jobs:
           git add data/nba/prospective/
           if ! git diff --cached --quiet; then
             git commit -m 'Collect frozen NBA regular-season forecasts and results [skip ci]'
-            git push origin HEAD:nba-v1-research
+            for attempt in 1 2 3; do
+              git pull --rebase origin nba-v1-research
+              git push origin HEAD:nba-v1-research && break
+              if [ "$attempt" = '3' ]; then exit 1; fi
+              sleep $((attempt * 3))
+            done
           fi
 
       - name: Verify forecast capture is operational
@@ -73,5 +78,10 @@ jobs:
           git add data/nba/availability-shadow/
           if ! git diff --cached --quiet; then
             git commit -m 'Collect frozen NBA availability shadow pairs and results [skip ci]'
-            git push origin HEAD:nba-v2-challenger
+            for attempt in 1 2 3; do
+              git pull --rebase origin nba-v2-challenger
+              git push origin HEAD:nba-v2-challenger && break
+              if [ "$attempt" = '3' ]; then exit 1; fi
+              sleep $((attempt * 3))
+            done
           fi
