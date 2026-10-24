@@ -1,6 +1,6 @@
 {
   "status": "enabled_shadow_only",
-  "updated_at_utc": "2026-10-24T01:46:54.443908+00:00",
+  "updated_at_utc": "2026-10-24T02:17:58.344089+00:00",
   "season": 2027,
   "regular_season_only": true,
   "shadow_sha256": "b161f4327eb6524d99311169c1d150e08724c82901d9a7713b75511b76824451",
@@ -41,32 +41,8 @@
       "log_loss": 0.6415194080522606
     }
   },
-  "capture_blocked_reason": "Waiting for complete validated team boxes: 16/20",
+  "capture_blocked_reason": null,
   "upcoming": [
-    {
-      "game_id": "401909850",
-      "home_team": "GS",
-      "away_team": "MEM",
-      "start_time_utc": "2026-10-24T02:00:00+00:00",
-      "capture_opens_utc": "2026-10-23T22:00:00+00:00",
-      "status": "capture_window_open"
-    },
-    {
-      "game_id": "401909851",
-      "home_team": "LAL",
-      "away_team": "LAC",
-      "start_time_utc": "2026-10-24T02:00:00+00:00",
-      "capture_opens_utc": "2026-10-23T22:00:00+00:00",
-      "status": "capture_window_open"
-    },
-    {
-      "game_id": "401909852",
-      "home_team": "SAC",
-      "away_team": "POR",
-      "start_time_utc": "2026-10-24T02:00:00+00:00",
-      "capture_opens_utc": "2026-10-23T22:00:00+00:00",
-      "status": "capture_window_open"
-    },
     {
       "game_id": "401909853",
       "home_team": "CHA",
@@ -121,6 +97,30 @@
       "away_team": "NO",
       "start_time_utc": "2026-10-25T01:00:00+00:00",
       "capture_opens_utc": "2026-10-24T22:00:00+00:00",
+      "status": "waiting_for_capture_window"
+    },
+    {
+      "game_id": "401909860",
+      "home_team": "PHX",
+      "away_team": "GS",
+      "start_time_utc": "2026-10-25T02:00:00+00:00",
+      "capture_opens_utc": "2026-10-24T22:00:00+00:00",
+      "status": "waiting_for_capture_window"
+    },
+    {
+      "game_id": "401909861",
+      "home_team": "UTAH",
+      "away_team": "LAL",
+      "start_time_utc": "2026-10-25T21:00:00+00:00",
+      "capture_opens_utc": "2026-10-25T20:00:00+00:00",
+      "status": "waiting_for_capture_window"
+    },
+    {
+      "game_id": "401909862",
+      "home_team": "BKN",
+      "away_team": "IND",
+      "start_time_utc": "2026-10-25T22:00:00+00:00",
+      "capture_opens_utc": "2026-10-25T21:00:00+00:00",
       "status": "waiting_for_capture_window"
     }
   ],
