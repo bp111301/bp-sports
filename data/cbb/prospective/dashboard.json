@@ -2,9 +2,9 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-10-24T18:48:56.435290+00:00",
+  "updated_at_utc": "2026-10-25T00:56:22.628511+00:00",
   "coverage": {
-    "source_games_in_horizon": 260
+    "source_games_in_horizon": 261
   },
   "excluded": {
     "tipoff_time_unconfirmed": 225,
@@ -12,9 +12,9 @@
   },
   "grading_issues": [],
   "summary": {
-    "saved_games": 31,
+    "saved_games": 32,
     "settled_games": 0,
-    "pending_games": 31,
+    "pending_games": 32,
     "wins": 0,
     "losses": 0,
     "accuracy": null,
@@ -1072,6 +1072,40 @@
         "orb_rate_diff": 0.0013908024854651369,
         "ft_rate_diff": 0.014988127911806037,
         "pace_diff": 0.09525331439391493,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0
+      }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401911457",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401911457",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "2440",
+      "away_team_id": "2539",
+      "home_team": "Nevada Wolf Pack",
+      "away_team": "San Francisco Dons",
+      "neutral_site": true,
+      "start_time_utc": "2026-11-23T21:30:00+00:00",
+      "created_at_utc": "2026-10-25T00:56:22.628511+00:00",
+      "home_win_prob": 0.653696003559908,
+      "predicted_winner": "Nevada Wolf Pack",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": 39.47082651307301,
+        "home_advantage": 0.0,
+        "off_eff_diff": 2.2762110620486737,
+        "def_eff_diff": -4.33636877320167,
+        "efg_diff": -0.014625423631070666,
+        "tov_rate_diff": -0.00831018658784799,
+        "orb_rate_diff": 0.005639578850303972,
+        "ft_rate_diff": 0.06450330603978216,
+        "pace_diff": 0.538832720588232,
         "rest_diff": 0.0,
         "experience_diff": 0.0
       }
