@@ -41,17 +41,34 @@ def pending_dates(values,now):
     starts=pd.to_datetime(values,utc=True,format='mixed',errors='coerce').dropna()
     return {d for d in starts.dt.tz_convert('America/New_York').dt.date if d<=now.tz_convert('America/New_York').date()}
 
+def cfb_pending_events(pending,now):
+    # Scoreboard responses can stop at 25 games even when limit=1000 is requested.
+    starts=pending.schedule_kickoff_utc.fillna(pending.kickoff_utc)
+    dates=pending_dates(starts,now)
+    events={str(e['id']):e for e in espn_events('college-football',dates)}
+    due=pending[pd.to_datetime(starts,utc=True,format='mixed',errors='coerce').le(now)]
+    missing=sorted({str(int(g)) for g in due.game_id}-set(events))
+    def fetch(gid):
+        data=get('https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event='+gid)
+        event=data.get('header',{})
+        if str(event.get('id'))!=gid:raise ValueError('CFB final event identity mismatch')
+        competitions=event.get('competitions',[])
+        if len(competitions)!=1 or str(competitions[0].get('id'))!=gid:raise ValueError('CFB final competition identity mismatch')
+        return gid,event
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        events.update(pool.map(fetch,missing))
+    return events.values()
+
 def cfb(now):
     paths=[Path('data/cfb/ledger/prediction_ledger.csv'),Path('data/cfb/v2_shadow/verified_prediction_ledger.csv')]
     frames=[pd.read_csv(p) for p in paths if p.exists()]
     combined=pd.concat(frames,ignore_index=True)
     pending=combined[combined.correct.isna()]
-    dates=pending_dates(pending.schedule_kickoff_utc.fillna(pending.kickoff_utc),now)
     # Overlay live ESPN states onto the full schedule so future kickoff metadata remains intact.
     schedule_url='https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_schedules/cfb_schedules_2026.csv.gz'
     response=requests.get(schedule_url,timeout=90);response.raise_for_status()
     schedule=pd.read_csv(io.BytesIO(response.content),compression='gzip');index={int(r['game_id']):r for r in schedule.to_dict('records')}
-    for e in espn_events('college-football',dates):
+    for e in cfb_pending_events(pending,now):
         c=e['competitions'][0];t={x['homeAway']:x for x in c['competitors']};status=c['status']['type']
         old=index.get(int(e['id']),{})
         # Preserve unified schedule names, verified below against ESPN team identity.

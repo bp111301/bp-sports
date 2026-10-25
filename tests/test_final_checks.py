@@ -49,3 +49,31 @@ def test_nhl_grades_once_and_preserves_saved_predictions(tmp_path,monkeypatch):
     assert paired['probabilities']==pair['probabilities']
     csv_before=lp.read_bytes();pair_before=pp.read_bytes();m.nhl(NOW+pd.Timedelta(minutes=15))
     assert lp.read_bytes()==csv_before and pp.read_bytes()==pair_before
+
+def test_cfb_fetches_omitted_scoreboard_games_by_id(monkeypatch):
+    now=pd.Timestamp('2026-10-25T13:00Z')
+    pending=pd.DataFrame([
+        dict(game_id=1,schedule_kickoff_utc='2026-10-24T19:30Z',kickoff_utc='2026-10-24T19:30Z'),
+        dict(game_id=42,schedule_kickoff_utc='2026-10-24T23:30Z',kickoff_utc='2026-10-24T23:30Z'),
+        dict(game_id=43,schedule_kickoff_utc='2026-10-26T23:30Z',kickoff_utc='2026-10-26T23:30Z'),
+        dict(game_id=42,schedule_kickoff_utc='2026-10-24T23:30Z',kickoff_utc='2026-10-24T23:30Z'),
+    ])
+    monkeypatch.setattr(m,'espn_events',lambda sport,dates:[dict(id=str(i)) for i in range(1,26)])
+    calls=[]
+    def get(url):
+        calls.append(url)
+        return dict(header=dict(id='42',competitions=[dict(id='42',status=dict(type=dict(completed=True,state='post')))]))
+    monkeypatch.setattr(m,'get',get)
+    events={e['id']:e for e in m.cfb_pending_events(pending,now)}
+    assert len(events)==26 and events['42']['competitions'][0]['status']['type']['completed']
+    assert len(calls)==1 and calls[0].endswith('event=42')
+    assert '43' not in events
+
+def test_cfb_direct_lookup_rejects_wrong_event_identity(monkeypatch):
+    import pytest
+    pending=pd.DataFrame([dict(game_id=42,schedule_kickoff_utc='2026-10-24T23:30Z',kickoff_utc='2026-10-24T23:30Z')])
+    monkeypatch.setattr(m,'espn_events',lambda sport,dates:[])
+    for header in [dict(id='41',competitions=[dict(id='42')]),dict(id='42',competitions=[dict(id='41')]),dict(id='42',competitions=[])]:
+        monkeypatch.setattr(m,'get',lambda url:dict(header=header))
+        with pytest.raises(ValueError,match='identity mismatch'):
+            list(m.cfb_pending_events(pending,pd.Timestamp('2026-10-25T13:00Z')))
