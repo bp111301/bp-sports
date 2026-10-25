@@ -1,6 +1,6 @@
 {
   "status": "enabled_shadow_only",
-  "updated_at_utc": "2026-10-24T23:57:39.453851+00:00",
+  "updated_at_utc": "2026-10-25T00:45:40.308362+00:00",
   "season": 2027,
   "regular_season_only": true,
   "shadow_sha256": "b161f4327eb6524d99311169c1d150e08724c82901d9a7713b75511b76824451",
@@ -11,62 +11,38 @@
   "fallback_pairs": 2,
   "record": {
     "control": {
-      "games": 1,
-      "correct": 1,
+      "games": 2,
+      "correct": 2,
       "accuracy": 1.0,
-      "brier": 0.19443584664690292,
-      "log_loss": 0.5815142228120839
+      "brier": 0.18998655779751378,
+      "log_loss": 0.5724664426499666
     },
     "candidate": {
-      "games": 1,
+      "games": 2,
       "correct": 1,
-      "accuracy": 1.0,
-      "brier": 0.22420995861427148,
-      "log_loss": 0.6415194080522606
+      "accuracy": 0.5,
+      "brier": 0.26358262449379016,
+      "log_loss": 0.7204734799559107
     }
   },
   "adjusted_only_record": {
     "control": {
-      "games": 1,
-      "correct": 1,
+      "games": 2,
+      "correct": 2,
       "accuracy": 1.0,
-      "brier": 0.19443584664690292,
-      "log_loss": 0.5815142228120839
+      "brier": 0.18998655779751378,
+      "log_loss": 0.5724664426499666
     },
     "candidate": {
-      "games": 1,
+      "games": 2,
       "correct": 1,
-      "accuracy": 1.0,
-      "brier": 0.22420995861427148,
-      "log_loss": 0.6415194080522606
+      "accuracy": 0.5,
+      "brier": 0.26358262449379016,
+      "log_loss": 0.7204734799559107
     }
   },
   "capture_blocked_reason": null,
   "upcoming": [
-    {
-      "game_id": "401909857",
-      "home_team": "CHI",
-      "away_team": "WSH",
-      "start_time_utc": "2026-10-25T00:00:00+00:00",
-      "capture_opens_utc": "2026-10-24T22:00:00+00:00",
-      "status": "already_saved"
-    },
-    {
-      "game_id": "401909858",
-      "home_team": "DAL",
-      "away_team": "SA",
-      "start_time_utc": "2026-10-25T00:00:00+00:00",
-      "capture_opens_utc": "2026-10-24T22:00:00+00:00",
-      "status": "already_saved"
-    },
-    {
-      "game_id": "401909856",
-      "home_team": "ATL",
-      "away_team": "HOU",
-      "start_time_utc": "2026-10-25T00:30:00+00:00",
-      "capture_opens_utc": "2026-10-24T22:00:00+00:00",
-      "status": "already_saved"
-    },
     {
       "game_id": "401909859",
       "home_team": "DEN",
@@ -121,6 +97,30 @@
       "away_team": "LAC",
       "start_time_utc": "2026-10-25T23:00:00+00:00",
       "capture_opens_utc": "2026-10-25T22:00:00+00:00",
+      "status": "waiting_for_capture_window"
+    },
+    {
+      "game_id": "401909866",
+      "home_team": "PHI",
+      "away_team": "DET",
+      "start_time_utc": "2026-10-25T23:30:00+00:00",
+      "capture_opens_utc": "2026-10-25T22:00:00+00:00",
+      "status": "waiting_for_capture_window"
+    },
+    {
+      "game_id": "401909867",
+      "home_team": "SAC",
+      "away_team": "MEM",
+      "start_time_utc": "2026-10-26T01:00:00+00:00",
+      "capture_opens_utc": "2026-10-25T22:00:00+00:00",
+      "status": "waiting_for_capture_window"
+    },
+    {
+      "game_id": "401909868",
+      "home_team": "CHA",
+      "away_team": "WSH",
+      "start_time_utc": "2026-10-26T23:00:00+00:00",
+      "capture_opens_utc": "2026-10-26T22:00:00+00:00",
       "status": "waiting_for_capture_window"
     }
   ],
