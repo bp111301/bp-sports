@@ -3,7 +3,7 @@
   "missing_upcoming_game_ids": [],
   "new_prediction_rows": 0,
   "feed_status": "enabled",
-  "updated_at_utc": "2026-10-24T23:56:58.112939+00:00",
+  "updated_at_utc": "2026-10-25T00:44:51.001000+00:00",
   "season": 2027,
   "regular_season_only": true,
   "weights_frozen": true,
@@ -571,8 +571,13 @@
       "season_type": 2,
       "source_receipt_sha256": "fc5176311408a907ec6fb288c964938be9a4b71fc8c9c3d2042258482ad238de",
       "start_time_utc": "2026-10-24T22:00:00+00:00",
-      "status": "pending",
-      "actual_home_win": null
+      "home_score": 115.0,
+      "away_score": 110.0,
+      "actual_home_win": 1,
+      "actual_start_time_utc": "2026-10-24T22:00:00+00:00",
+      "settled_at_utc": "2026-10-25T00:44:15.128785+00:00",
+      "source_state": "post_completed",
+      "status": "settled"
     },
     {
       "away_id": "17",
@@ -1038,11 +1043,11 @@
     }
   ],
   "record": {
-    "games": 14,
-    "correct": 8,
-    "accuracy": 0.5714285714285714,
-    "brier": 0.21293247942074553,
-    "log_loss": 0.6138393596698818
+    "games": 15,
+    "correct": 9,
+    "accuracy": 0.6,
+    "brier": 0.21110613205590414,
+    "log_loss": 0.6104779798577463
   },
   "prediction_blocked_reason": null,
   "forecast_rule": "First pregame snapshot within 36 hours; earlier-date results only",
