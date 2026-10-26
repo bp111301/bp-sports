@@ -17,6 +17,7 @@ import baseline
 from baseline import FEATURES, build_features, load_games, metrics, truth
 from evaluate import verify_frozen
 from team_box_fallback import complete_boxes
+from source_retry import fetch_scoreboard
 
 ROOT = baseline.ROOT
 OUT = ROOT / 'data/nba/prospective'
@@ -100,7 +101,7 @@ def fetch_sources(now, predictions, results):
     days.update(pd.Timestamp(p['start_time_utc']).tz_convert('America/New_York').date() for p in predictions if p['game_id'] not in settled and pd.Timestamp(p['start_time_utc']) <= now)
     indexed = {str(int(r['game_id'])): r for r in schedule.to_dict('records')}
     for d in sorted(days):
-        data = json.loads(get(f'{API}?dates={d:%Y%m%d}'))
+        data = fetch_scoreboard(get, f'{API}?dates={d:%Y%m%d}')
         for r in scoreboard_rows(data):
             gid = str(r['game_id'])
             old = indexed.get(gid, {})
