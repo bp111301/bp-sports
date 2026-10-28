@@ -1,0 +1,31 @@
+{
+  "cutoff_utc": "2026-10-28T23:08:00Z",
+  "sources": {
+    "cfb.csv": {
+      "url": "https://raw.githubusercontent.com/bp111301/bp-sports/2ff8cf28a5156625fc86094c5f45b3811708f881/data/cfb/ledger/prediction_ledger.csv",
+      "sha256": "d751595d9d694dd4d19fbeb022e72c99bffc177787c770be2d503c5771873bd8"
+    },
+    "shadow.csv": {
+      "url": "https://raw.githubusercontent.com/bp111301/bp-sports/2ff8cf28a5156625fc86094c5f45b3811708f881/data/cfb/v2_shadow/verified_prediction_ledger.csv",
+      "sha256": "68a283a285f6d85c5720e4b3496077123143f6bd3c77067916b9b9f3f0f1299f"
+    },
+    "nhlledger.csv": {
+      "url": "https://raw.githubusercontent.com/bp111301/bp-sports/1b58a6c802c525f2659b38a16a71cc6970365d0e/data/nhl/v2_research/prediction_ledger.csv",
+      "sha256": "acd0046feeaf0aaf21c9686e3f6559b4c4fe06eb8a4e1e84ff1e0b6bfc8cd2f3"
+    },
+    "goalie.jsonl": {
+      "url": "https://raw.githubusercontent.com/bp111301/bp-sports/1b58a6c802c525f2659b38a16a71cc6970365d0e/data/nhl/goalie_experiment/paired_ledger.jsonl",
+      "sha256": "98d685b8709c61cbf15f699d11e6d30e393abb961ae8153cff5af978f704d0b3"
+    },
+    "scores.json": {
+      "url": "https://raw.githubusercontent.com/bp111301/bp-sports/2ff8cf28a5156625fc86094c5f45b3811708f881/data/game_status.json",
+      "sha256": "fa81367753d0e7f1fa5726e50d6740f762d7af7f189755d40a6dfd957b6ac3e7"
+    }
+  },
+  "normalization": "UTF-8 with exactly one final newline; no other input transformation",
+  "supplements": [
+    "schedule_metadata.json",
+    "upstream_coverage.json",
+    "provenance.json"
+  ]
+}
