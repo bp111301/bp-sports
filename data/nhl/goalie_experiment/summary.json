@@ -1,50 +1,47 @@
 {
-  "as_of_utc": "2026-10-28T04:36:00.130041+00:00",
+  "as_of_utc": "2026-10-28T05:19:02.721876+00:00",
   "status": "research_only_not_promoted",
   "weights_frozen": true,
   "paired_games": 133,
-  "settled_paired_games": 131,
-  "pending_paired_games": 2,
+  "settled_paired_games": 132,
+  "pending_paired_games": 1,
   "invalid_timing": 0,
   "coverage": [],
   "metrics": [
     {
       "candidate": "team_control",
-      "games": 131,
-      "correct": 79,
-      "accuracy": 0.6030534351145038,
-      "brier": 0.23553404930252034,
-      "log_loss": 0.6671815044567242
+      "games": 132,
+      "accuracy": 0.6060606060606061,
+      "brier": 0.2351338882746524,
+      "log_loss": 0.6663517488387113
     },
     {
       "candidate": "inferred_goalie",
-      "games": 131,
-      "correct": 80,
-      "accuracy": 0.6106870229007634,
-      "brier": 0.2344730417065542,
-      "log_loss": 0.6634788252825891
+      "games": 132,
+      "accuracy": 0.6136363636363636,
+      "brier": 0.2342036257190582,
+      "log_loss": 0.6629265517305434
     },
     {
       "candidate": "confirmed_goalie",
-      "games": 131,
-      "correct": 82,
-      "accuracy": 0.6259541984732825,
-      "brier": 0.23428997419914377,
-      "log_loss": 0.6630413966797937
+      "games": 132,
+      "accuracy": 0.6287878787878788,
+      "brier": 0.23387061457807354,
+      "log_loss": 0.6621844488890739
     }
   ],
   "first_formal_review_paired_games": 500,
   "automatic_promotion": false,
   "confirmed_minus_control": {
     "team_control": {
-      "accuracy": 0.022900763358778664,
-      "brier": -0.0012440751033765685,
-      "log_loss": -0.004140107776930524
+      "accuracy": 0.022727272727272707,
+      "brier": -0.0012632736965788594,
+      "log_loss": -0.004167299949637382
     },
     "inferred_goalie": {
-      "accuracy": 0.01526717557251911,
-      "brier": -0.0001830675074104282,
-      "log_loss": -0.00043742860279538665
+      "accuracy": 0.015151515151515138,
+      "brier": -0.00033301114098466256,
+      "log_loss": -0.0007421028414694719
     }
   },
   "games_in_current_prediction_window": 0,
