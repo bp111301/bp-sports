@@ -1,6 +1,6 @@
 {
   "status": "enabled_shadow_only",
-  "updated_at_utc": "2026-10-28T01:31:36.770704+00:00",
+  "updated_at_utc": "2026-10-28T03:07:08.321724+00:00",
   "season": 2027,
   "regular_season_only": true,
   "shadow_sha256": "b161f4327eb6524d99311169c1d150e08724c82901d9a7713b75511b76824451",
@@ -11,46 +11,38 @@
   "fallback_pairs": 6,
   "record": {
     "control": {
-      "games": 23,
-      "correct": 17,
-      "accuracy": 0.7391304347826086,
-      "brier": 0.19990317953175285,
-      "log_loss": 0.5847678612979962
+      "games": 26,
+      "correct": 19,
+      "accuracy": 0.7307692307692307,
+      "brier": 0.18995911496609652,
+      "log_loss": 0.5603700911054137
     },
     "candidate": {
-      "games": 23,
-      "correct": 17,
-      "accuracy": 0.7391304347826086,
-      "brier": 0.20232554829993185,
-      "log_loss": 0.5899680403289311
+      "games": 26,
+      "correct": 20,
+      "accuracy": 0.7692307692307693,
+      "brier": 0.18880625529680284,
+      "log_loss": 0.5581105985641025
     }
   },
   "adjusted_only_record": {
     "control": {
-      "games": 17,
-      "correct": 11,
-      "accuracy": 0.6470588235294118,
-      "brier": 0.2169770700279197,
-      "log_loss": 0.621434836507417
+      "games": 20,
+      "correct": 13,
+      "accuracy": 0.65,
+      "brier": 0.2014887025181414,
+      "log_loss": 0.5842176889756464
     },
     "candidate": {
-      "games": 17,
-      "correct": 11,
-      "accuracy": 0.6470588235294118,
-      "brier": 0.22025439247898534,
-      "log_loss": 0.6284703728433878
+      "games": 20,
+      "correct": 14,
+      "accuracy": 0.7,
+      "brier": 0.1999899849480596,
+      "log_loss": 0.5812803486719421
     }
   },
   "capture_blocked_reason": null,
   "upcoming": [
-    {
-      "game_id": "401909880",
-      "home_team": "LAL",
-      "away_team": "POR",
-      "start_time_utc": "2026-10-28T03:00:00+00:00",
-      "capture_opens_utc": "2026-10-27T22:00:00+00:00",
-      "status": "already_saved"
-    },
     {
       "game_id": "401909881",
       "home_team": "ATL",
@@ -120,6 +112,14 @@
       "home_team": "NO",
       "away_team": "DEN",
       "start_time_utc": "2026-10-29T00:00:00+00:00",
+      "capture_opens_utc": "2026-10-28T22:00:00+00:00",
+      "status": "waiting_for_capture_window"
+    },
+    {
+      "game_id": "401909890",
+      "home_team": "UTAH",
+      "away_team": "SA",
+      "start_time_utc": "2026-10-29T01:00:00+00:00",
       "capture_opens_utc": "2026-10-28T22:00:00+00:00",
       "status": "waiting_for_capture_window"
     }
