@@ -1,0 +1,36 @@
+{
+  "validated_at_utc": "2026-10-28T23:36:22.364798+00:00",
+  "implementation_commit": "18793d73ccc64e5628aacbadb50dbafbb3258b95",
+  "cfb_workflow_run": 40788452013,
+  "general_workflow_run": 40788451949,
+  "cfb_workflow_result": "success",
+  "general_workflow_result": "success",
+  "existing_cfb_guardrail_tests_passed": 11,
+  "new_safety_tests_passed": 13,
+  "live_observations": 58,
+  "first_capture_receipts": 0,
+  "refresh_receipts": 58,
+  "bundle_sha256": [
+    "9308d702d52299106f1ea6424bc8c70e786b27c4d3ccb9286bde0f2b0ab3826b"
+  ],
+  "coverage": {
+    "fbs_vs_fbs": {
+      "scheduled_games": 58,
+      "missing_feature_game_ids": [],
+      "missing_current_forecast_game_ids": []
+    },
+    "fbs_vs_fcs": {
+      "scheduled_games": 0,
+      "missing_feature_game_ids": [],
+      "missing_current_forecast_game_ids": []
+    }
+  },
+  "preservation": {
+    "existing_forecasts_checked": 234,
+    "previously_graded_rows_checked": 175,
+    "first_forecast_fields_preserved": true,
+    "previously_graded_fields_preserved": true,
+    "numeric_csv_roundtrip_tolerance": 1e-15
+  },
+  "challenger_activation": "none; all four failed preregistered research eligibility"
+}
