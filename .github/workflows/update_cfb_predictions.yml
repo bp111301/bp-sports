@@ -54,6 +54,8 @@ jobs:
           python research/cfb/download_schedule.py 2026
       - name: Validate frozen CFB guardrails
         run: python -m pytest -q tests/test_cfb_research.py tests/test_cfb_settlement.py
+      - name: Validate challenger and input-receipt safety
+        run: python -m unittest discover -s research/challengers_20261028 -p 'test_safety.py'
       - name: Freeze Candidate B artifact if absent
         run: |
           if [ ! -f model/cfb/v2/candidate_b_bundle.joblib ]; then
@@ -65,6 +67,8 @@ jobs:
         run: python research/cfb/settle_candidate_b_shadow.py
       - name: Build current frozen CFB V1 slate
         run: python research/cfb/build_live_predictions.py
+      - name: Preserve separate CFB input receipts and source coverage
+        run: python research/challengers_20261028/capture_cfb_inputs.py
       - name: Build Candidate B prospective shadow slate
         run: python research/cfb/build_candidate_b_shadow.py
       - name: Score prospective Candidate B shadow
@@ -86,3 +90,4 @@ jobs:
               git pull --rebase origin main
             done
           fi
+

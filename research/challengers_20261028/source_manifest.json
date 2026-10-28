@@ -1,0 +1,244 @@
+{
+  "protocol_sha256": "f45c372de958736a10b3d0034a2c7aec98480f86b2a319f9a57e460c54131a59",
+  "packages": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "joblib": "1.5.3"
+  },
+  "sources": {
+    "cfb": [
+      {
+        "path": "runtime/cfb/matchup_line/cfb_matchup_line_2015.csv",
+        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_matchup_line/cfb_matchup_line_2015.csv",
+        "sha256": "eee759834615cdc2ac2089f0cbe2146196cb83f82bb3167c9100a2187cdf008a",
+        "bytes": 2517624
+      },
+      {
+        "path": "runtime/cfb/matchup_line/cfb_matchup_line_2016.csv",
+        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_matchup_line/cfb_matchup_line_2016.csv",
+        "sha256": "873f161cf88dc6173ce0a2c972ceabff9bbf91c23745fe6fb5db477770947600",
+        "bytes": 2511329
+      },
+      {
+        "path": "runtime/cfb/matchup_line/cfb_matchup_line_2017.csv",
+        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_matchup_line/cfb_matchup_line_2017.csv",
+        "sha256": "c921f1f5bcaa0a36cb814e4bc0a3db4174f885e805ea93bddb9ad43b00e719d5",
+        "bytes": 2557509
+      },
+      {
+        "path": "runtime/cfb/matchup_line/cfb_matchup_line_2018.csv",
+        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_matchup_line/cfb_matchup_line_2018.csv",
+        "sha256": "42fdfa0daf9f87b5974654f302d4befdd094f5a99445b23b4b70cfccb03a3d89",
+        "bytes": 2550102
+      },
+      {
+        "path": "runtime/cfb/matchup_line/cfb_matchup_line_2019.csv",
+        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_matchup_line/cfb_matchup_line_2019.csv",
+        "sha256": "13b5efdde071ee8a91afb3c69a9821016b7542c161d407e22f743f53a310bcb3",
+        "bytes": 2554471
+      },
+      {
+        "path": "runtime/cfb/matchup_line/cfb_matchup_line_2020.csv",
+        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_matchup_line/cfb_matchup_line_2020.csv",
+        "sha256": "08162c4fa84c20dd413e154328650b76a519eb992809060ec4527e51a5646b0f",
+        "bytes": 1761859
+      },
+      {
+        "path": "runtime/cfb/matchup_line/cfb_matchup_line_2021.csv",
+        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_matchup_line/cfb_matchup_line_2021.csv",
+        "sha256": "0941ce5c4eb3f391615cd6c4a008ff6053dadbc73c51c933a7ba02a5a608ff78",
+        "bytes": 2526257
+      },
+      {
+        "path": "runtime/cfb/matchup_line/cfb_matchup_line_2022.csv",
+        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_matchup_line/cfb_matchup_line_2022.csv",
+        "sha256": "3ae914a574a0d365a2629e11ac8f6236fe02169308762e08be2a52d872e5fcb6",
+        "bytes": 2563255
+      },
+      {
+        "path": "runtime/cfb/matchup_line/cfb_matchup_line_2023.csv",
+        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_matchup_line/cfb_matchup_line_2023.csv",
+        "sha256": "a582fdaf7c0807b837ae97d59368f2246401644a8f21174ef5a6e7af321e2c5f",
+        "bytes": 2621636
+      },
+      {
+        "path": "runtime/cfb/matchup_line/cfb_matchup_line_2024.csv",
+        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_matchup_line/cfb_matchup_line_2024.csv",
+        "sha256": "f9918ff09701d45009662e2ee13a47f86d11ec7a345c2f97b5de470000477e3e",
+        "bytes": 2676784
+      },
+      {
+        "path": "runtime/cfb/matchup_line/cfb_matchup_line_2025.csv",
+        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_matchup_line/cfb_matchup_line_2025.csv",
+        "sha256": "2d35c4e1bf29852c71e58eb5a1f54e00fe257d9047362e1585facac9bbb6d3be",
+        "bytes": 2713931
+      }
+    ],
+    "nhl": [
+      {
+        "path": "runtime/nhl/team_game_stats/summary_20182019.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/summary?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20182019+and+gameTypeId%3D2",
+        "sha256": "3cb1d68b6b6de3d169db42e2452311ee3e6a0294e56589c54e1958bd7148d2cd",
+        "rows": 2542
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/powerplay_20182019.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/powerplay?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20182019+and+gameTypeId%3D2",
+        "sha256": "b7ba3a7eb34ac9022b97f3dd4695d1fb708334fc49dcea595381fc202d26e0dc",
+        "rows": 2542
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/penaltykill_20182019.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/penaltykill?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20182019+and+gameTypeId%3D2",
+        "sha256": "197d19d1e6b47fe4c156026669bc8ded92d1f3d7f76c5d6dc841404830ef00d1",
+        "rows": 2542
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/summary_20192020.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/summary?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20192020+and+gameTypeId%3D2",
+        "sha256": "a3ab08cd5a7b2274457d62613de8dd48bb8742ef21f0b3851f2631caef09097d",
+        "rows": 2164
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/powerplay_20192020.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/powerplay?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20192020+and+gameTypeId%3D2",
+        "sha256": "5b5beca3698907b3d52d41d18b2bc8ac457c44ebd3bb88e58d3dc48504d32e70",
+        "rows": 2164
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/penaltykill_20192020.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/penaltykill?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20192020+and+gameTypeId%3D2",
+        "sha256": "92ef27eec235ffed9d5b5a9ea2c2a51bd32b068033bb69f0cf9baf098411aa13",
+        "rows": 2164
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/summary_20202021.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/summary?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20202021+and+gameTypeId%3D2",
+        "sha256": "58a3b81e898309a1832f5e43678110f472d8ccf436eadcaec23fa46915180e29",
+        "rows": 1736
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/powerplay_20202021.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/powerplay?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20202021+and+gameTypeId%3D2",
+        "sha256": "74bbac581566f1520d3d8a802dbcd279a1c88266143254dd4d4400cad4dda208",
+        "rows": 1736
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/penaltykill_20202021.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/penaltykill?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20202021+and+gameTypeId%3D2",
+        "sha256": "8dba6d8b7ac660beb7856e95e9d372ddd9136d48f581a41fba6964499fbb2afa",
+        "rows": 1736
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/summary_20212022.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/summary?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20212022+and+gameTypeId%3D2",
+        "sha256": "bba0342432e6b934325a97c7d1cb09f8c3eeb8267d1212a20793acda5b42d78b",
+        "rows": 2624
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/powerplay_20212022.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/powerplay?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20212022+and+gameTypeId%3D2",
+        "sha256": "75788dab1219c87b280bb9980bd8fdc83d89be18851bc918f4d88161469b3d69",
+        "rows": 2624
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/penaltykill_20212022.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/penaltykill?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20212022+and+gameTypeId%3D2",
+        "sha256": "0bf5815535ce70d350eb1793ddb7da18ade58e9c52ea499005b5b813a8ec7b2a",
+        "rows": 2624
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/summary_20222023.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/summary?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20222023+and+gameTypeId%3D2",
+        "sha256": "a20d7fdd23d0668a5490a585edb053d79110cda4f44ca85d13a37dbb1c39995c",
+        "rows": 2624
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/powerplay_20222023.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/powerplay?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20222023+and+gameTypeId%3D2",
+        "sha256": "7c7f2d72bd7ab2bd27ad667f163381048e6aae46bff771fe0ce253691fc59ad2",
+        "rows": 2624
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/penaltykill_20222023.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/penaltykill?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20222023+and+gameTypeId%3D2",
+        "sha256": "b0bbc0fad985aa5662880197371d35cbe3ed10348beadf6d4a1269259f359e7b",
+        "rows": 2624
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/summary_20232024.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/summary?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20232024+and+gameTypeId%3D2",
+        "sha256": "b4e455ee30f13f4068a8d3316726ac04982a09e9d9b0a96269c417c9138d160a",
+        "rows": 2624
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/powerplay_20232024.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/powerplay?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20232024+and+gameTypeId%3D2",
+        "sha256": "dcbe2e5efef7ce90aedadf7ae3a304d4c649a4ab1a2d841e753227993ab321a9",
+        "rows": 2624
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/penaltykill_20232024.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/penaltykill?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20232024+and+gameTypeId%3D2",
+        "sha256": "2bad105143800b3ec088c603947d46fb708418aca44db3b7293e3982469106a3",
+        "rows": 2624
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/summary_20242025.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/summary?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20242025+and+gameTypeId%3D2",
+        "sha256": "8c81184738fcebb63832ad998e8a6859b5b6550b71874df80876f8928b1a19b5",
+        "rows": 2624
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/powerplay_20242025.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/powerplay?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20242025+and+gameTypeId%3D2",
+        "sha256": "e571ce3ea494a70c0e9f142cefe6e4580f1374b32cf0bd5a5b8eb05de3726912",
+        "rows": 2624
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/penaltykill_20242025.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/penaltykill?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20242025+and+gameTypeId%3D2",
+        "sha256": "5b2caa953636ba96b6d92bcf8d70db286da99dadc9f91fe5365c7d05c09536b2",
+        "rows": 2624
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/summary_20252026.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/summary?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20252026+and+gameTypeId%3D2",
+        "sha256": "0c9fc1c27e6637522c711195ce999f92fa29983fcf3b6cd502f9a49842c3bab3",
+        "rows": 2624
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/powerplay_20252026.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/powerplay?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20252026+and+gameTypeId%3D2",
+        "sha256": "4c55e68345212826e7ddbfed6e89954b2e79f994f1844bae27ec4f6d9be9bce1",
+        "rows": 2624
+      },
+      {
+        "path": "runtime/nhl/team_game_stats/penaltykill_20252026.csv",
+        "url": "https://api.nhle.com/stats/rest/en/team/penaltykill?isAggregate=false&isGame=true&start=0&limit=-1&factCayenneExp=gamesPlayed%3E%3D1&cayenneExp=seasonId%3D20252026+and+gameTypeId%3D2",
+        "sha256": "a06f338be527921caf36f4efafe924eba26d5bee95639057056e2433419737dd",
+        "rows": 2624
+      }
+    ]
+  },
+  "selection_boundaries": {
+    "cfb": "2018\u20132025 target folds; earlier seasons only; no 2026 labels",
+    "nhl": "2021\u201322 through 2024\u201325 target folds; 2025\u201326 downloaded but never opened by selection loader; no live season labels"
+  },
+  "source_code_sha256": {
+    "research/cfb/backtest_baseline.py": "bc2f77ab1890b4acc0cd073b16d34ac52b45006b4e5b7aed8114aa5cbf61e497",
+    "research/cfb/experiment_priors.py": "00ce86cab10cfa943c29b56bc3e76cdaae80e45e730beba9e30a2a3d98d73ba3",
+    "research/challengers_20261028/vendor/nhl/backtest_baseline.py": "4809025e663f704e7dcf444504675ae0e67a0b0f720461c75b4911ff18856da0",
+    "research/challengers_20261028/vendor/nhl/experiment_team_stats.py": "741cf4bb0d4538bf488eb923c46f2c1374ab20659b36f6f0d40b6ccb4a012239"
+  },
+  "implementation_sha256": {
+    "research/challengers_20261028/capture_cfb_inputs.py": "3e3224522fbede2d708a920b64174779270dff274232be19b31021d9ffb15ce2",
+    "research/challengers_20261028/cfb.py": "06c19bf75fba56c2f2203e2c679ea171a340c9d54234722a83ce8240fefd80a1",
+    "research/challengers_20261028/download_history.py": "a4a51c38aaad38d04d2ed56054f417d2071ec05e734b68d0ce53697dcb2a1c2c",
+    "research/challengers_20261028/download_nhl_history.py": "96f4aacaf3a85ec46971a7d41c0c8abcccbd04c3394ebccfba99d3d361f5e72c",
+    "research/challengers_20261028/nhl.py": "650856b5be7ca74bc83a8fcf1aee070bb2e933a5f6cd1c65181c55760b9e6ea0",
+    "research/challengers_20261028/test_safety.py": "6f3bc28334aca5af5ebf9013fdf72205166789ad1b92cb2426afa2b78c6b9b92"
+  }
+}
