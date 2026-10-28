@@ -28,12 +28,15 @@ jobs:
         run: |
           git config user.name 'bp-sports-bot'
           git config user.email 'actions@users.noreply.github.com'
-          git add data/game_status.json
-          if ! git diff --cached --quiet; then
+          # Rebuild from the latest checkout rather than rebasing a generated JSON file.
+          for attempt in 1 2 3; do
+            git fetch origin main
+            git reset --hard origin/main
+            python pipeline/build_game_status.py
+            git add data/game_status.json
+            if git diff --cached --quiet; then exit 0; fi
             git commit -m 'Refresh presentation-only game scores [skip ci]'
-            for attempt in 1 2 3; do
-              git pull --rebase origin main
-              git push origin HEAD:main && break
-              if [ "$attempt" = '3' ]; then exit 1; fi
-            done
-          fi
+            if git push origin HEAD:main; then exit 0; fi
+          done
+          echo 'Could not save score feed after three attempts' >&2
+          exit 1
