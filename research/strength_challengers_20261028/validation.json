@@ -1,0 +1,38 @@
+{
+  "new_temporal_safety_tests": 5,
+  "existing_safety_tests": 13,
+  "all_passed": true,
+  "independent_full_run_reproduction": {
+    "cfb": {
+      "development_predictions.csv": {
+        "exact_reproduction": true,
+        "sha256": "7681b7af36c890be7a27d169add81315086a003978a473701b9e59039ca45ebf"
+      },
+      "strength_boundaries.json": {
+        "exact_reproduction": true,
+        "sha256": "eb047146b53d303a09cd8d48cedf8ca8a2d6becb8a6fa77bff3ff33d831939df"
+      },
+      "development_results.json": {
+        "exact_reproduction": true,
+        "sha256": "d4acc4004139307a3ed62021a1eef192396ce7db62763c44cf8519d0364780e9"
+      }
+    },
+    "nhl": {
+      "development_predictions.csv": {
+        "exact_reproduction": true,
+        "sha256": "9477d42596431ea93dd4ac901a8b1f53bca15fbea17e9332729f42c0561634e3"
+      },
+      "strength_boundaries.json": {
+        "exact_reproduction": true,
+        "sha256": "2b36b86e42d1cb017c3fdccf9d73b302060dc81e87b9a6de6693dc623478eb81"
+      },
+      "development_results.json": {
+        "exact_reproduction": true,
+        "sha256": "4aa76858aa73d6531c38dfc95e045ad4b66c0a7084f8659ea36fa84d1375c3e6"
+      }
+    }
+  },
+  "control_metric_tolerance": 1e-12,
+  "existing_model_or_forecast_file_changes": 0,
+  "production_promoted": false
+}

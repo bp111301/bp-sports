@@ -1,0 +1,221 @@
+{
+  "status": "reused_historical_development_only",
+  "sport": "nhl",
+  "protocol_sha256": "1a3941a42e7b0a2527965ad550e265402ebc59774a5001bd8f1d2e7dd59406d9",
+  "scores": {
+    "control": {
+      "overall": {
+        "games": 5248,
+        "accuracy": 0.6133765243902439,
+        "brier": 0.23162021873804492,
+        "log_loss": 0.6551475411951188
+      },
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6463414634146342,
+          "brier": 0.2272661491645251,
+          "log_loss": 0.6469141071686887
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6112804878048781,
+          "brier": 0.23143147173179296,
+          "log_loss": 0.6544796406975085
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.5990853658536586,
+          "brier": 0.23416583979291378,
+          "log_loss": 0.6602705045082958
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.5967987804878049,
+          "brier": 0.23361741426294788,
+          "log_loss": 0.6589259124059819
+        }
+      ],
+      "recent": {
+        "games": 2624,
+        "accuracy": 0.5979420731707317,
+        "brier": 0.23389162702793082,
+        "log_loss": 0.6595982084571389
+      }
+    },
+    "strength_linear": {
+      "overall": {
+        "games": 5248,
+        "accuracy": 0.6158536585365854,
+        "brier": 0.23143486443677172,
+        "log_loss": 0.6547771641072475
+      },
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6448170731707317,
+          "brier": 0.22745931406375983,
+          "log_loss": 0.6473043825053871
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6112804878048781,
+          "brier": 0.23124327740602668,
+          "log_loss": 0.6541369032948151
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.6051829268292683,
+          "brier": 0.2341005398469272,
+          "log_loss": 0.660103501185802
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.6021341463414634,
+          "brier": 0.23293632643037324,
+          "log_loss": 0.6575638694429857
+        }
+      ],
+      "recent": {
+        "games": 2624,
+        "accuracy": 0.6036585365853658,
+        "brier": 0.23351843313865023,
+        "log_loss": 0.6588336853143939
+      }
+    },
+    "strength_nonlinear50": {
+      "overall": {
+        "games": 5248,
+        "accuracy": 0.612233231707317,
+        "brier": 0.23180814807412486,
+        "log_loss": 0.6555135851489187
+      },
+      "by_season": [
+        {
+          "season": "20212022",
+          "games": 1312,
+          "accuracy": 0.6402439024390244,
+          "brier": 0.2279179140155056,
+          "log_loss": 0.6480941917860653
+        },
+        {
+          "season": "20222023",
+          "games": 1312,
+          "accuracy": 0.6105182926829268,
+          "brier": 0.23177372020473053,
+          "log_loss": 0.6553279611992996
+        },
+        {
+          "season": "20232024",
+          "games": 1312,
+          "accuracy": 0.604420731707317,
+          "brier": 0.2331011873477501,
+          "log_loss": 0.6579873875872094
+        },
+        {
+          "season": "20242025",
+          "games": 1312,
+          "accuracy": 0.59375,
+          "brier": 0.23443977072851332,
+          "log_loss": 0.6606448000231004
+        }
+      ],
+      "recent": {
+        "games": 2624,
+        "accuracy": 0.5990853658536586,
+        "brier": 0.23377047903813172,
+        "log_loss": 0.659316093805155
+      }
+    }
+  },
+  "decisions": {
+    "strength_linear": {
+      "research_eligible": false,
+      "checks": {
+        "accuracy_gain_threshold": false,
+        "brier_improved": true,
+        "log_loss_improved": true,
+        "season_consistency": true,
+        "recent_accuracy_preserved": true
+      },
+      "production_promoted": false,
+      "accuracy_difference": 0.002477134146341431,
+      "paired_block_bootstrap_95pct": [
+        -0.0011336155408483734,
+        0.006128182150038254
+      ]
+    },
+    "strength_nonlinear50": {
+      "research_eligible": false,
+      "checks": {
+        "accuracy_gain_threshold": false,
+        "brier_improved": false,
+        "log_loss_improved": false,
+        "season_consistency": false,
+        "recent_accuracy_preserved": true
+      },
+      "production_promoted": false,
+      "accuracy_difference": -0.0011432926829268997,
+      "paired_block_bootstrap_95pct": [
+        -0.007191553872341272,
+        0.004876225791884539
+      ]
+    }
+  },
+  "new_features": [
+    "strength_diff"
+  ],
+  "linear_features": [
+    "elo_diff",
+    "home_field",
+    "win10_diff",
+    "gd10_diff",
+    "gf10_diff",
+    "ga10_diff",
+    "rest_diff",
+    "home_b2b",
+    "away_b2b",
+    "games_played_diff",
+    "shots_for_20_diff",
+    "shots_against_20_diff",
+    "shot_diff_20_diff",
+    "shoot_pct_20_diff",
+    "save_pct_20_diff",
+    "faceoff_pct_20_diff",
+    "pp_rate_20_diff",
+    "pk_rate_20_diff",
+    "strength_diff"
+  ],
+  "nonlinear_features": [
+    "elo_diff",
+    "home_field",
+    "win10_diff",
+    "gd10_diff",
+    "gf10_diff",
+    "ga10_diff",
+    "rest_diff",
+    "home_b2b",
+    "away_b2b",
+    "games_played_diff",
+    "shots_for_20_diff",
+    "shots_against_20_diff",
+    "shot_diff_20_diff",
+    "shoot_pct_20_diff",
+    "save_pct_20_diff",
+    "faceoff_pct_20_diff",
+    "pp_rate_20_diff",
+    "pk_rate_20_diff",
+    "strength_diff"
+  ],
+  "control_reproduction_tolerance": 1e-12,
+  "live_labels_used": false,
+  "source_manifest_reference": "research/challengers_20261028/source_manifest.json"
+}
