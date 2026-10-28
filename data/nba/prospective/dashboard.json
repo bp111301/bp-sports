@@ -3,7 +3,7 @@
   "missing_upcoming_game_ids": [],
   "new_prediction_rows": 0,
   "feed_status": "enabled",
-  "updated_at_utc": "2026-10-28T01:30:48.039614+00:00",
+  "updated_at_utc": "2026-10-28T03:06:09.946919+00:00",
   "season": 2027,
   "regular_season_only": true,
   "weights_frozen": true,
@@ -1483,8 +1483,13 @@
       "season_type": 2,
       "source_receipt_sha256": "f4b7a00bed536f6488cb0b96b9e1751090f47cccc132d75c515585ed559e6470",
       "start_time_utc": "2026-10-27T23:30:00+00:00",
-      "status": "pending",
-      "actual_home_win": null
+      "home_score": 125.0,
+      "away_score": 124.0,
+      "actual_home_win": 1,
+      "actual_start_time_utc": "2026-10-27T23:30:00+00:00",
+      "settled_at_utc": "2026-10-28T03:05:45.492839+00:00",
+      "source_state": "post_completed",
+      "status": "settled"
     },
     {
       "away_id": "8",
@@ -1516,8 +1521,13 @@
       "season_type": 2,
       "source_receipt_sha256": "7c89d8c39035dcccbd6a3ecb36b06089bc14390f3626ba4b8ef4e332f93d9c6e",
       "start_time_utc": "2026-10-28T00:00:00+00:00",
-      "status": "pending",
-      "actual_home_win": null
+      "home_score": 111.0,
+      "away_score": 97.0,
+      "actual_home_win": 1,
+      "actual_start_time_utc": "2026-10-28T00:00:00+00:00",
+      "settled_at_utc": "2026-10-28T03:05:45.492839+00:00",
+      "source_state": "post_completed",
+      "status": "settled"
     },
     {
       "away_id": "23",
@@ -1549,8 +1559,13 @@
       "season_type": 2,
       "source_receipt_sha256": "7c89d8c39035dcccbd6a3ecb36b06089bc14390f3626ba4b8ef4e332f93d9c6e",
       "start_time_utc": "2026-10-28T00:00:00+00:00",
-      "status": "pending",
-      "actual_home_win": null
+      "home_score": 130.0,
+      "away_score": 103.0,
+      "actual_home_win": 1,
+      "actual_start_time_utc": "2026-10-28T00:00:00+00:00",
+      "settled_at_utc": "2026-10-28T03:05:45.492839+00:00",
+      "source_state": "post_completed",
+      "status": "settled"
     },
     {
       "away_id": "22",
@@ -1983,11 +1998,11 @@
     }
   ],
   "record": {
-    "games": 38,
-    "correct": 25,
-    "accuracy": 0.6578947368421053,
-    "brier": 0.20308715718840176,
-    "log_loss": 0.5910394115708564
+    "games": 41,
+    "correct": 27,
+    "accuracy": 0.6585365853658537,
+    "brier": 0.19648612227147674,
+    "log_loss": 0.5748748843166932
   },
   "prediction_blocked_reason": null,
   "forecast_rule": "First pregame snapshot within 36 hours; earlier-date results only",
