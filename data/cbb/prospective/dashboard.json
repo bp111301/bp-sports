@@ -2,9 +2,9 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-10-29T13:15:07.132041+00:00",
+  "updated_at_utc": "2026-10-29T19:07:08.187721+00:00",
   "coverage": {
-    "source_games_in_horizon": 309
+    "source_games_in_horizon": 310
   },
   "excluded": {
     "tipoff_time_unconfirmed": 259,
@@ -12,9 +12,9 @@
   },
   "grading_issues": [],
   "summary": {
-    "saved_games": 45,
+    "saved_games": 46,
     "settled_games": 0,
-    "pending_games": 45,
+    "pending_games": 46,
     "wins": 0,
     "losses": 0,
     "accuracy": null,
@@ -1548,6 +1548,40 @@
         "orb_rate_diff": -0.03140693873742478,
         "ft_rate_diff": -0.13923331305433234,
         "pace_diff": -6.8944683908046045,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0
+      }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401912232",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401912232",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "349",
+      "away_team_id": "2520",
+      "home_team": "Army Black Knights",
+      "away_team": "Rider Broncs",
+      "neutral_site": false,
+      "start_time_utc": "2026-11-28T18:00:00+00:00",
+      "created_at_utc": "2026-10-29T19:07:08.187721+00:00",
+      "home_win_prob": 0.7706701712436343,
+      "predicted_winner": "Army Black Knights",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": 17.787254638135437,
+        "home_advantage": 1.0,
+        "off_eff_diff": 7.818651266361954,
+        "def_eff_diff": -1.474976300593724,
+        "efg_diff": 0.0654248396612035,
+        "tov_rate_diff": 0.0021113728766516404,
+        "orb_rate_diff": -0.029581574510317732,
+        "ft_rate_diff": -0.03318915698196173,
+        "pace_diff": 2.9468749999999773,
         "rest_diff": 0.0,
         "experience_diff": 0.0
       }
