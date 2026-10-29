@@ -1,5 +1,5 @@
 {
-  "stage": "frozen_research_bundles_not_shadowing",
+  "stage": "prospective_shadow_collecting",
   "candidates": [
     {
       "id": "CFB_CONFIDENCE_PROJECTION_RESEARCH_20261028",
@@ -11,13 +11,17 @@
       "projection_code_sha256": "8e75fd2f255ffa136d05694b07620cd2d6288f2ccd0e16e5e93e2e77a36af78e",
       "protocol_sha256": "229ccaf5d7d8bd1452ef1a65dddaa1998d89c93553494f19f6fd04348436d1ad",
       "prospective_model_bundle_built": true,
-      "same_time_shadow_ledger_started": false,
+      "same_time_shadow_ledger_started": true,
       "required_new_paired_finals_before_review": 200,
       "production_promoted": false,
       "artifact_path": "research/confidence_projection_20261028/final_bundles/cfb.joblib",
       "artifact_sha256": "a9b1c208ba82f9720de2844d1bdba905698b40e08e6f10fb360ebb073c8ecc6b",
       "final_fit_protocol_path": "research/confidence_projection_20261028/FINAL_FIT_PROTOCOL.md",
-      "final_fit_training_season_max": "2025"
+      "final_fit_training_season_max": "2025",
+      "shadow_forecasts_path": "data/confidence_shadow_20261029/forecasts.jsonl",
+      "shadow_settlements_path": "data/confidence_shadow_20261029/settlements.jsonl",
+      "shadow_first_capture_at_utc": "2026-10-29T05:02:37.315365+00:00",
+      "shadow_workflow": ".github/workflows/confidence_shadow.yml"
     },
     {
       "id": "NHL_CONFIDENCE_PROJECTION_RESEARCH_20261028",
@@ -29,13 +33,18 @@
       "projection_code_sha256": "8e75fd2f255ffa136d05694b07620cd2d6288f2ccd0e16e5e93e2e77a36af78e",
       "protocol_sha256": "229ccaf5d7d8bd1452ef1a65dddaa1998d89c93553494f19f6fd04348436d1ad",
       "prospective_model_bundle_built": true,
-      "same_time_shadow_ledger_started": false,
+      "same_time_shadow_ledger_started": true,
       "required_new_paired_finals_before_review": 300,
       "production_promoted": false,
       "artifact_path": "research/confidence_projection_20261028/final_bundles/nhl.joblib",
       "artifact_sha256": "95e6c460ded433d425c836b73df409168af3d7b4f160f8f0652485d569bf5d07",
       "final_fit_protocol_path": "research/confidence_projection_20261028/FINAL_FIT_PROTOCOL.md",
-      "final_fit_training_season_max": "20252026"
+      "final_fit_training_season_max": "20252026",
+      "shadow_forecasts_path": "data/confidence_shadow_20261029/forecasts.jsonl",
+      "shadow_settlements_path": "data/confidence_shadow_20261029/settlements.jsonl",
+      "shadow_first_capture_at_utc": "2026-10-29T05:10:35.195653+00:00",
+      "shadow_workflow": ".github/workflows/confidence_shadow.yml"
     }
-  ]
+  ],
+  "current_status_source": "data/confidence_shadow_20261029/summary.json"
 }

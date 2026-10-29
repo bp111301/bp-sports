@@ -1,6 +1,8 @@
 # Same-input confidence shadow trial
 
-The trial has59 new CFB and11 new NHL paired pregame forecasts. A repeated real-source capture added no duplicate forecasts. Hourly collection and separate immutable grading are configured in confidence_shadow.yml; the corrected GitHub Actions run is being verified. No prospective finals have settled yet.
+The same-input shadow trial is active and verified in GitHub Actions. Initial capture saved59 CFB and11 NHL paired pregame forecasts; scheduled collection has since increased NHL to14. At the2026-10-29T13:22:36Z verification cutoff, all73 records are pending. Live counts and grading results are in data/confidence_shadow_20261029/summary.json.
+
+The corrected startup and seven subsequent scheduled runs succeeded. Latest verified shadow run:40881217946; all23 focused checks passed, original reference replay passed, both live source checks passed, and the job preserved the research records. Production run40878047900 also passed all108 tests. Collection and official-final settlement are scheduled hourly; GitHub may delay execution. No live shadow final had settled by this cutoff, so the settlement safeguards and scheduled path are verified, not a completed real-world shadow grade.
 
 Both probabilities use the same timestamped input snapshot. The reference is freshly reconstructed for this paired comparison; it is not the earlier official first forecast. Original official ledgers and live displayed confidence remain unchanged. Every challenger pick matches its reference pick.
 
@@ -29,3 +31,7 @@ python research/confidence_shadow_20261029/collect.py --reference-python PATH_TO
 ```
 
 Read data/confidence_shadow_20261029/summary.json for sample sizes and, after settlements, paired probability metrics, confidence buckets and Wilson intervals. health.json distinguishes actual failures, coverage and new records. GitHub schedules may be delayed; the horizon and pregame validation remain enforced on actual execution.
+
+## Integrity verification at rollout completion
+
+All73 event digests, five compressed input-snapshot hashes and pregame timestamps were independently verified. All reference winners are preserved. The original first70 forecast bytes remain an exact prefix of the current ledger, with zero duplicate keys. Existing frozen model weights and pre-existing research-result files match their pre-rollout Git blob hashes. See validation.json for the verification cutoff and run IDs.
