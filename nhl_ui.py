@@ -1,5 +1,5 @@
 """Read-only presentation of the separate NHL research ledgers."""
-UI_REVISION="confidence-evidence-20261028"
+UI_REVISION="confidence-evidence-20261028b"
 from concurrent.futures import ThreadPoolExecutor
 import csv
 import html

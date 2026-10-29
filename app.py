@@ -225,7 +225,7 @@ sport = st.radio("Sport", ["Overview", "NFL", "CFB", "NHL", "NBA", "CBB"], horiz
 
 def current_ui(module):
     # Streamlit can retain imported modules during a deployment rerun. Reload once per UI revision.
-    expected="cbb-overview-20261024" if module.__name__=='overview_ui' else "confidence-evidence-20261028" if module.__name__=='nhl_ui' else "mobile-layout-20261007"
+    expected="cbb-overview-20261024" if module.__name__=='overview_ui' else "confidence-evidence-20261028b" if module.__name__=='nhl_ui' else "mobile-layout-20261007"
     if getattr(module,"UI_REVISION",None)!=expected:module=importlib.reload(module)
     return module
 
