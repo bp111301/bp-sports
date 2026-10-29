@@ -9,6 +9,7 @@ import joblib,numpy as np,pandas as pd
 HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[1]
 sys.path.insert(0,str(HERE))
 import events
+from nhl_game_counts import completed_rows as official_count_rows, parity as count_parity
 
 def module(name,path):
  s=importlib.util.spec_from_file_location(name,path);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
@@ -167,6 +168,19 @@ def nhl_inputs(existing):
    if df.empty:raise ValueError('Empty current NHL stat report')
    df.to_csv(currentdir/f'{report}_20262027.csv',index=False);sources.append(r)
  ct=e.nhl.adv.load_team_stats(currentdir);ct=ct[ct.gameId.isin(final.game_id)]
+ if ct.duplicated(['gameId','teamId']).any():raise ValueError('Duplicate current NHL stat identity')
+ expected_teams={int(r.game_id):{int(r.home_id),int(r.away_id)} for r in final.itertuples()}
+ observed_teams={int(gid):set(g.teamId.astype(int)) for gid,g in ct.groupby('gameId')}
+ missing=[gid for gid,teams in expected_teams.items() if observed_teams.get(gid)!=teams]
+ if missing:
+  fallback_rows=[]
+  for gid in sorted(missing):
+   landing,lr=fetch(f'https://api-web.nhle.com/v1/gamecenter/{gid}/landing');rail,rr=fetch(f'https://api-web.nhle.com/v1/gamecenter/{gid}/right-rail')
+   l=json.loads(landing);r=json.loads(rail);official=final[final.game_id.eq(gid)].iloc[0]
+   if int(l['id'])!=gid or str(l['season'])!='20262027' or int(l['homeTeam']['id'])!=int(official.home_id) or int(l['awayTeam']['id'])!=int(official.away_id) or events.stamp(l['startTimeUTC'])!=events.stamp(official.start_time_utc):raise ValueError('NHL count fallback identity/start mismatch')
+   rows=official_count_rows(l,r);count_parity(ct[ct.gameId.eq(gid)],rows);fallback_rows.append(rows)
+   sources.extend([{**lr,'role':'verified_equivalent_counts_for_delayed_report','game_id':gid},{**rr,'role':'verified_equivalent_counts_for_delayed_report','game_id':gid}])
+  ct=pd.concat([ct[~ct.gameId.isin(missing)],*fallback_rows],ignore_index=True)
  dcurrent=e.nhl.historical_games(ct)
  if set(dcurrent.game_id)!=set(final.game_id):raise ValueError('Current NHL final/stat coverage incomplete')
  check=final.set_index('game_id')
@@ -179,9 +193,9 @@ def nhl_inputs(existing):
  upcoming=raw[raw.game_state.isin(['FUT','PRE'])&starts.gt(current)&starts.le(current+pd.Timedelta(hours=CONFIG['nhl_horizon_hours']))].sort_values(['start_time_utc','game_id'])
  targets=[jsonable(r) for r in upcoming.to_dict('records') if f"{CONFIG['version']}:nhl:{r['game_id']}" not in existing]
  statscols=list(dict.fromkeys(['season','gameId','gameDate','teamId']+e.nhl.adv.RAW+['goalsFor','goalsAgainst','shotsForPerGame','shotsAgainstPerGame','powerPlayGoalsFor','ppOpportunities','ppGoalsAgainst','timesShorthanded']))
- snapshot={'sport':'nhl','input_snapshot_at_utc':now().isoformat(),'sources':sources,'targets':targets,'history':records(history),'stats':records(allstats[statscols])}
+ snapshot={'sport':'nhl','input_snapshot_at_utc':now().isoformat(),'sources':sources,'targets':targets,'history':records(history),'stats':records(allstats[statscols]),'official_count_fallback_game_ids':missing}
  official={int(r['game_id']):{'game_id':int(r['game_id']),'home_id':int(r['home_id']),'away_id':int(r['away_id']),'home_score':r['home_score'],'away_score':r['away_score'],'start_time_utc':r['start_time_utc'],'state':r['game_state'],'source_receipts':[s for s in sources if 'club-schedule' in s.get('url','')]} for r in final.to_dict('records')}
- return jsonable(snapshot),official,{'supported_future_games':len(upcoming),'new_targets':len(targets),'completed_current_games':len(final)}
+ return jsonable(snapshot),official,{'supported_future_games':len(upcoming),'new_targets':len(targets),'completed_current_games':len(final),'official_count_fallback_game_ids':missing}
 
 def save_snapshot(snapshot):
  raw=events.canonical(snapshot).encode();digest=hashlib.sha256(raw).hexdigest();path=OUT/'inputs'/f'{digest}.json.gz'
@@ -207,9 +221,9 @@ def forecasts(snapshot,reference_python,nhl_root):
  x=x[bundle['feature_columns']];q=fit.predict_features(bundle,x,p);snapshot_sha,snapshot_path=save_snapshot(snapshot);rows=[]
  captured=now()
  for i,target in enumerate(targets):
-  r={'forecast_key':f"{CONFIG['version']}:{sport}:{target['game_id']}",'version':CONFIG['version'],'sport':sport,'game_id':int(target['game_id']),'home_id':int(target['home_id']),'away_id':int(target['away_id']),'home_team':str(target['home_team']),'away_team':str(target['away_team']),'game_state':target['game_state'],'start_time_utc':events.stamp(target['start_time_utc']).isoformat(),'input_snapshot_at_utc':snapshot['input_snapshot_at_utc'],'captured_at_utc':captured.isoformat(),'reference_home_win_prob':float(p[i]),'challenger_home_win_prob':float(q[i]),'comparison_role':'same_snapshot_fresh_reference_not_original_first_forecast','reference_bundle_sha256':reference['reference_bundle_sha256'],'challenger_bundle_sha256':CONFIG['challenger_bundle_sha256'][sport],'input_snapshot_sha256':snapshot_sha,'input_snapshot_path':snapshot_path,'reference_feature_vectors':{k:v[i] for k,v in reference['feature_vectors'].items()},'challenger_feature_vector':records(x.iloc[[i]])[0],'feature_temporal_boundary':boundaries[i] if sport=='cfb' else next(b for b in boundaries if pd.Timestamp(b['target_date']).date()==pd.Timestamp(target['game_date']).date()),'reference_producer_code_sha256':reference['producer_code_sha256'],'reference_environment':reference['producer_versions'],'collector_code_sha256':sha(Path(__file__)),'reference_worker_code_sha256':sha(HERE/'reference_worker.py'),'protocol_sha256':sha(HERE/'PROTOCOL.md')}
+  r={'forecast_key':f"{CONFIG['version']}:{sport}:{target['game_id']}",'version':CONFIG['version'],'sport':sport,'game_id':int(target['game_id']),'home_id':int(target['home_id']),'away_id':int(target['away_id']),'home_team':str(target['home_team']),'away_team':str(target['away_team']),'game_state':target['game_state'],'start_time_utc':events.stamp(target['start_time_utc']).isoformat(),'input_snapshot_at_utc':snapshot['input_snapshot_at_utc'],'captured_at_utc':captured.isoformat(),'reference_home_win_prob':float(p[i]),'challenger_home_win_prob':float(q[i]),'comparison_role':'same_snapshot_fresh_reference_not_original_first_forecast','reference_bundle_sha256':reference['reference_bundle_sha256'],'challenger_bundle_sha256':CONFIG['challenger_bundle_sha256'][sport],'input_snapshot_sha256':snapshot_sha,'input_snapshot_path':snapshot_path,'reference_feature_vectors':{k:v[i] for k,v in reference['feature_vectors'].items()},'challenger_feature_vector':records(x.iloc[[i]])[0],'feature_temporal_boundary':boundaries[i] if sport=='cfb' else next(b for b in boundaries if pd.Timestamp(b['target_date']).date()==pd.Timestamp(target['game_date']).date()),'reference_producer_code_sha256':reference['producer_code_sha256'],'reference_environment':reference['producer_versions'],'collector_code_sha256':sha(Path(__file__)),'reference_worker_code_sha256':sha(HERE/'reference_worker.py'),'protocol_sha256':sha(HERE/'PROTOCOL.md'),'source_adapter_protocol_sha256':sha(HERE/'SOURCE_ADAPTER.md'),'source_adapter_code_sha256':sha(HERE/'nhl_game_counts.py'),'events_code_sha256':sha(HERE/'events.py'),'configuration_sha256':sha(HERE/'config.json')}
   # A game can cross its start while the models run. Do not backfill it.
-  if events.stamp(r['start_time_utc'])<=captured:continue
+  if events.stamp(r['start_time_utc'])<=captured+pd.Timedelta(minutes=10):continue
   rows.append(events.validate_forecast(r,now()))
  return rows
 
@@ -232,25 +246,29 @@ def main():
  a=argparse.ArgumentParser();a.add_argument('--reference-python',required=True);a.add_argument('--nhl-root',default=str(RUNTIME/'nhl_reference'));a.add_argument('--sport',choices=['cfb','nhl','both'],default='both');args=a.parse_args()
  versions={k:importlib.metadata.version(k) for k in RESEARCH_VERSIONS}
  if versions!=RESEARCH_VERSIONS:raise ValueError('Frozen challenger environment changed: '+str(versions))
+ for p,digest in CONFIG['research_inference_code_sha256'].items():
+  if sha(ROOT/p)!=digest:raise ValueError('Frozen research inference code changed: '+p)
  OUT.mkdir(parents=True,exist_ok=True)
  protected=[ROOT/'model/cfb/v1/frozen_bundle.joblib',ROOT/'data/cfb/ledger/prediction_ledger.csv',Path(args.nhl_root)/'model/nhl/v2_research/watchlist.joblib',Path(args.nhl_root)/'data/nhl/v2_research/prediction_ledger.csv']
  before={str(p):sha(p) for p in protected if p.exists()}
  fs=events.read_events(OUT/'forecasts.jsonl','forecast_key');ss=events.read_events(OUT/'settlements.jsonl','forecast_key');health={'checked_at_utc':now().isoformat(),'sports':{},'errors':[]};new_forecasts=[];new_settlements=[]
- try:
-  for sport in (['cfb','nhl'] if args.sport=='both' else [args.sport]):
+ for sport in (['cfb','nhl'] if args.sport=='both' else [args.sport]):
+  try:
    snapshot,official,coverage=(cfb_inputs if sport=='cfb' else nhl_inputs)(fs);health['sports'][sport]=coverage
-   new_forecasts+=forecasts(snapshot,args.reference_python,args.nhl_root)
+   new_forecasts=forecasts(snapshot,args.reference_python,args.nhl_root);new_settlements=[]
    for key,f in fs.items():
     if f['sport']!=sport or key in ss or int(f['game_id']) not in official:continue
     new_settlements.append(events.settlement(f,official[int(f['game_id'])],now()))
-  if any(sha(p)!=digest for p,digest in before.items()):raise ValueError('Protected reference or original ledger changed')
-  append_time=now();eligible=[r for r in new_forecasts if events.stamp(r['start_time_utc'])>append_time]
-  health['dropped_crossed_start_before_persistence']=len(new_forecasts)-len(eligible)
-  for r in eligible:events.validate_forecast(r,append_time)
-  new_forecasts=eligible
-  health['new_paired_forecasts']=events.append(OUT/'forecasts.jsonl',new_forecasts,'forecast_key');health['new_settlements']=events.append(OUT/'settlements.jsonl',new_settlements,'forecast_key')
-  summary=report(events.read_events(OUT/'forecasts.jsonl','forecast_key'),events.read_events(OUT/'settlements.jsonl','forecast_key'));(OUT/'summary.json').write_text(json.dumps(summary,indent=2,allow_nan=False)+'\n');print(json.dumps(health,indent=2),flush=True)
- except Exception as exc:
-  health['errors'].append(f'{type(exc).__name__}: {exc}');raise
- finally:(OUT/'health.json').write_text(json.dumps(health,indent=2)+'\n')
+   if any(sha(p)!=digest for p,digest in before.items()):raise ValueError('Protected reference or original ledger changed')
+   append_time=now();eligible=[r for r in new_forecasts if events.stamp(r['start_time_utc'])>append_time+pd.Timedelta(minutes=10)]
+   for r in eligible:events.validate_forecast(r,append_time)
+   health['sports'][sport]['dropped_crossed_publish_margin']=len(new_forecasts)-len(eligible)
+   health['sports'][sport]['new_paired_forecasts']=events.append(OUT/'forecasts.jsonl',eligible,'forecast_key')
+   health['sports'][sport]['new_settlements']=events.append(OUT/'settlements.jsonl',new_settlements,'forecast_key')
+   fs=events.read_events(OUT/'forecasts.jsonl','forecast_key');ss=events.read_events(OUT/'settlements.jsonl','forecast_key')
+  except Exception as exc:
+   health['errors'].append({'sport':sport,'error':f'{type(exc).__name__}: {exc}'})
+ summary=report(fs,ss);(OUT/'summary.json').write_text(json.dumps(summary,indent=2,allow_nan=False)+'\n')
+ (OUT/'health.json').write_text(json.dumps(health,indent=2)+'\n');print(json.dumps(health,indent=2),flush=True)
+ if health['errors']:raise SystemExit('Shadow source/provenance check failed; valid other-sport receipts were preserved')
 if __name__=='__main__':main()

@@ -28,3 +28,13 @@ def test_empty_report_has_no_invented_results():
 def test_reference_dependency_guard():
  worker=m.module('refworker',Path(__file__).with_name('reference_worker.py'))
  with pytest.raises(ValueError,match='environment'):worker.run({'sport':'cfb'},'unused')
+
+def test_one_sport_failure_preserves_other_sports_valid_capture(tmp_path,monkeypatch):
+ monkeypatch.setattr(m,'OUT',tmp_path);t=m.now();start=t+pd.Timedelta(days=1)
+ r=dict(forecast_key='isolation:cfb:1',sport='cfb',game_id=1,home_id=2,away_id=3,game_state='STATUS_SCHEDULED',captured_at_utc=t.isoformat(),input_snapshot_at_utc=t.isoformat(),start_time_utc=start.isoformat(),reference_home_win_prob=.7,challenger_home_win_prob=.6,reference_bundle_sha256='a'*64,challenger_bundle_sha256='b'*64,input_snapshot_sha256='c'*64)
+ monkeypatch.setattr(m,'cfb_inputs',lambda existing:({'sport':'cfb'}, {}, {'new_targets':1}))
+ def failed(existing):raise ValueError('known source delay')
+ monkeypatch.setattr(m,'nhl_inputs',failed);monkeypatch.setattr(m,'forecasts',lambda *args:[r]);monkeypatch.setattr(m.sys,'argv',['collect','--reference-python','unused'])
+ with pytest.raises(SystemExit):m.main()
+ assert len(m.events.read_events(tmp_path/'forecasts.jsonl','forecast_key'))==1
+ health=json.loads((tmp_path/'health.json').read_text());assert health['errors'][0]['sport']=='nhl' and health['sports']['cfb']['new_paired_forecasts']==1

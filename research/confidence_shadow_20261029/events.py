@@ -37,6 +37,7 @@ def append(path,records,key):
 def validate_forecast(r,now):
  captured=stamp(r['captured_at_utc']);start=stamp(r['start_time_utc']);snapshot=stamp(r['input_snapshot_at_utc']);now=stamp(now)
  if not snapshot<=captured<=now<start:raise ValueError('Forecast must be newly observed before exact start')
+ if start-captured<pd.Timedelta(minutes=10):raise ValueError('Insufficient time to publish a pregame receipt')
  if (captured-snapshot)>pd.Timedelta(minutes=15):raise ValueError('Input snapshot became stale before capture')
  if r['sport'] not in ['cfb','nhl'] or r['game_state'] not in ['FUT','PRE','STATUS_SCHEDULED']:raise ValueError('Unsupported pregame state')
  p=float(r['reference_home_win_prob']);q=float(r['challenger_home_win_prob'])

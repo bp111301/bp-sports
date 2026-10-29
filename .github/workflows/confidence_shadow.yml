@@ -1,0 +1,79 @@
+name: CFB and NHL same-input confidence shadow
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'research/confidence_shadow_20261029/**'
+      - '.github/workflows/confidence_shadow.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '23 * * * *'
+
+concurrency:
+  group: confidence-shadow-20261029
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read locked NHL reference source revision
+        id: reference
+        run: |
+          echo "revision=$(python -c 'import json; print(json.load(open("research/confidence_shadow_20261029/config.json"))["nhl_reference_commit"])')" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.reference.outputs.revision }}
+          path: runtime/confidence_shadow/nhl_reference
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: |
+            research/confidence_shadow_20261029/requirements-research.txt
+            research/confidence_shadow_20261029/requirements-reference.txt
+      - name: Cache immutable historical source inputs
+        uses: actions/cache@v4
+        with:
+          path: |
+            runtime/challengers_20261028/cfb/matchup_line/cfb_matchup_line_2025.csv
+            runtime/confidence_projection_20261028/final_nhl_sources
+          key: confidence-shadow-history-${{ hashFiles('research/confidence_projection_20261028/final_bundles/cfb.json', 'research/confidence_projection_20261028/final_bundles/nhl.json') }}
+      - name: Install the two isolated frozen environments
+        run: |
+          python -m venv runtime/confidence_shadow/research_env
+          python -m venv runtime/confidence_shadow/reference_env
+          runtime/confidence_shadow/research_env/bin/python -m pip install -r research/confidence_shadow_20261029/requirements-research.txt
+          runtime/confidence_shadow/reference_env/bin/python -m pip install -r research/confidence_shadow_20261029/requirements-reference.txt
+      - name: Verify forecast, settlement, source-adapter and projection safeguards
+        run: |
+          runtime/confidence_shadow/research_env/bin/python -m pytest --import-mode=importlib -q research/confidence_shadow_20261029 research/confidence_projection_20261028/test_projection.py research/confidence_projection_20261028/test_final_bundle.py
+      - name: Replay original CFB input receipts in their producer environment
+        run: |
+          runtime/confidence_shadow/research_env/bin/python research/confidence_shadow_20261029/validate_reference.py --reference-python runtime/confidence_shadow/reference_env/bin/python
+      - name: Capture paired pregame forecasts and append official final settlements
+        run: |
+          runtime/confidence_shadow/research_env/bin/python research/confidence_shadow_20261029/collect.py --reference-python runtime/confidence_shadow/reference_env/bin/python --nhl-root runtime/confidence_shadow/nhl_reference
+      - name: Preserve valid research receipts and health even if one source fails
+        if: always()
+        run: |
+          git diff --exit-code -- model/ data/cfb/ledger/ data/cfb/current/
+          if [ ! -d data/confidence_shadow_20261029 ]; then exit 0; fi
+          git config user.name 'bp-sports-bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -- data/confidence_shadow_20261029/
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Capture same-input confidence research and immutable settlements [skip ci]'
+          for attempt in 1 2 3; do
+            git pull --rebase origin main
+            if git push origin HEAD:main; then exit 0; fi
+            if [ "$attempt" = '3' ]; then exit 1; fi
+          done
