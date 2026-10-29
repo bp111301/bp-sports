@@ -9,9 +9,9 @@ import nhl_ui
 
 APP=Path(__file__).resolve().parents[1]/'app.py'
 
-def fixture():
+def fixture(now=None):
     data=json.loads(nhl_ui.SNAPSHOT.read_text())
-    now=pd.Timestamp.now(tz='UTC')
+    now=pd.Timestamp.now(tz='UTC') if now is None else pd.Timestamp(now)
     for r in data['predictions']:
         r['start_time_utc']=(now+pd.Timedelta(days=1)).isoformat()
         r['created_at_utc']=(now-pd.Timedelta(hours=2)).isoformat()
@@ -42,13 +42,13 @@ def test_sport_navigation_models_and_search():
         assert not at.exception
 
 def test_records_not_backtests_and_started_pending_not_upcoming():
-    data=fixture();now=pd.Timestamp.now(tz='UTC')
+    now=pd.Timestamp('2026-10-29T18:00:00Z');data=fixture(now)
     for r in data['predictions']:
         r['start_time_utc']=(now-pd.Timedelta(minutes=10)).isoformat()
     board=nhl_ui.prepare_predictions(data['predictions'])
     assert set(nhl_ui.record_metrics(board).Accuracy)=={'—'}
     with patch('nhl_ui.load_dashboard',return_value=(data,False)),patch('game_center_ui.load_scores',return_value={}):
-        at=AppTest.from_file(APP,default_timeout=15);at.session_state['bp_board_view']='Detailed';at.session_state['bp_sport']='NHL';at.run()
+        at=AppTest.from_string("import nhl_ui\nnhl_ui.render_nhl(now='2026-10-29T18:00:00Z')",default_timeout=15).run()
         assert not at.exception and len([e for e in at.button if e.label.startswith("Game details")])==12
         assert at.selectbox(key='nhl_view').value=='Today + upcoming'
         at.selectbox(key='nhl_view').set_value('Upcoming').run()

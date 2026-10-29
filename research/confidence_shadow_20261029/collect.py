@@ -9,6 +9,7 @@ import joblib,numpy as np,pandas as pd
 HERE=Path(__file__).resolve().parent;ROOT=HERE.parents[1]
 sys.path.insert(0,str(HERE))
 import events
+from frozen_history import restore as restore_frozen_history
 from nhl_game_counts import completed_rows as official_count_rows, parity as count_parity
 
 def module(name,path):
@@ -100,7 +101,7 @@ def cfb_inputs(existing):
  feature_cols|={f'{side}_{f}' for side in ['home','away'] for f in ['pregame_elo','opp_elo_roll_avg','talent','team_talent_weighted','ovr_rtprod','hc_tenure']}
  keep=feature_cols|{'game_id','season','week','start_date','neutral_site','conference_game','home_team_id','away_team_id','home_team','away_team'}
  summaries={}
- needed=set(supported.game_id)|{int(f['game_id']) for f in existing.values() if f['sport']=='cfb' and events.stamp(f['start_time_utc'])<=current}
+ needed={int(gid) for gid in supported.game_id if f"{CONFIG['version']}:cfb:{gid}" not in existing}|{int(f['game_id']) for f in existing.values() if f['sport']=='cfb' and events.stamp(f['start_time_utc'])<=current}
  def official_summary(gid):
   data,r=fetch(f'https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event={gid}');header=json.loads(data)['header'];c=header['competitions'][0];sides={t['homeAway']:t for t in c['competitors']}
   if int(header['id'])!=gid:raise ValueError('Wrong ESPN CFB event identity')
@@ -248,17 +249,19 @@ def main():
  if versions!=RESEARCH_VERSIONS:raise ValueError('Frozen challenger environment changed: '+str(versions))
  for p,digest in CONFIG['research_inference_code_sha256'].items():
   if sha(ROOT/p)!=digest:raise ValueError('Frozen research inference code changed: '+p)
+ restored_sources=restore_frozen_history(ROOT,CONFIG)
  OUT.mkdir(parents=True,exist_ok=True)
  protected=[ROOT/'model/cfb/v1/frozen_bundle.joblib',ROOT/'data/cfb/ledger/prediction_ledger.csv',Path(args.nhl_root)/'model/nhl/v2_research/watchlist.joblib',Path(args.nhl_root)/'data/nhl/v2_research/prediction_ledger.csv']
  before={str(p):sha(p) for p in protected if p.exists()}
- fs=events.read_events(OUT/'forecasts.jsonl','forecast_key');ss=events.read_events(OUT/'settlements.jsonl','forecast_key');health={'checked_at_utc':now().isoformat(),'sports':{},'errors':[]};new_forecasts=[];new_settlements=[]
+ fs=events.read_events(OUT/'forecasts.jsonl','forecast_key');ss=events.read_events(OUT/'settlements.jsonl','forecast_key');health={'checked_at_utc':now().isoformat(),'sports':{},'errors':[],'frozen_sources':restored_sources};new_forecasts=[];new_settlements=[]
  for sport in (['cfb','nhl'] if args.sport=='both' else [args.sport]):
   try:
    snapshot,official,coverage=(cfb_inputs if sport=='cfb' else nhl_inputs)(fs);health['sports'][sport]=coverage
    new_forecasts=forecasts(snapshot,args.reference_python,args.nhl_root);new_settlements=[]
    for key,f in fs.items():
     if f['sport']!=sport or key in ss or int(f['game_id']) not in official:continue
-    new_settlements.append(events.settlement(f,official[int(f['game_id'])],now()))
+    try:new_settlements.append(events.settlement(f,official[int(f['game_id'])],now()))
+    except ValueError as exc:health['errors'].append({'sport':sport,'forecast_key':key,'error':'Settlement requires review: '+str(exc)})
    if any(sha(p)!=digest for p,digest in before.items()):raise ValueError('Protected reference or original ledger changed')
    append_time=now();eligible=[r for r in new_forecasts if events.stamp(r['start_time_utc'])>append_time+pd.Timedelta(minutes=10)]
    for r in eligible:events.validate_forecast(r,append_time)
