@@ -41,3 +41,9 @@ Review only after at least200 NEW paired settled CFB games or300 NHL games. The 
 ## Correction to the earlier CFB quarterback claim
 
 The archived `research/cfb/results/qb_layer_experiment.json` reports0% coverage for every QB feature. Its loader converts `pos_team`—a team-name field—to numeric and drops the resulting NaNs; the source's numeric field is `pos_team_id`. That empty-join experiment did not establish that useful quarterback data fails to improve predictions. The old result and experiment are preserved. A new investigation needs validated IDs, date-safe joins and a nonempty coverage gate before any model comparison. The CFB dashboard's description is corrected accordingly; this does not add QB inputs to V1.
+
+## Frozen research bundles
+
+Separate final bundles are now fitted and hashed under `final_bundles/`, using the preregistered `FINAL_FIT_PROTOCOL.md`. CFB fits2015–2025. NHL fits2018–19 through2025–26; the added2025–26 data is final-fit only, not used to select or evaluate the recipe. Both reloaded artifacts return identical smoke-test probabilities and preserve all reference winners. This is a serialization check, not a performance evaluation.
+
+These bundles are not imported by production and have no live shadow ledger. A prospective observer still must generate reference and candidate probabilities from the same timestamped pregame inputs, keep raw provenance, reject started games and append separate immutable forecasts. No live confidence or pick improvement is claimed. The minimum review sizes remain200 new paired CFB finals and300 NHL finals.

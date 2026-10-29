@@ -1,5 +1,5 @@
 {
-  "stage": "development_qualified_not_deployed",
+  "stage": "frozen_research_bundles_not_shadowing",
   "candidates": [
     {
       "id": "CFB_CONFIDENCE_PROJECTION_RESEARCH_20261028",
@@ -10,10 +10,14 @@
       "source_git_blob_sha": "f1dbeba23a4c6c729248c0116ce42fd95fe6845d",
       "projection_code_sha256": "8e75fd2f255ffa136d05694b07620cd2d6288f2ccd0e16e5e93e2e77a36af78e",
       "protocol_sha256": "229ccaf5d7d8bd1452ef1a65dddaa1998d89c93553494f19f6fd04348436d1ad",
-      "prospective_model_bundle_built": false,
+      "prospective_model_bundle_built": true,
       "same_time_shadow_ledger_started": false,
       "required_new_paired_finals_before_review": 200,
-      "production_promoted": false
+      "production_promoted": false,
+      "artifact_path": "research/confidence_projection_20261028/final_bundles/cfb.joblib",
+      "artifact_sha256": "a9b1c208ba82f9720de2844d1bdba905698b40e08e6f10fb360ebb073c8ecc6b",
+      "final_fit_protocol_path": "research/confidence_projection_20261028/FINAL_FIT_PROTOCOL.md",
+      "final_fit_training_season_max": "2025"
     },
     {
       "id": "NHL_CONFIDENCE_PROJECTION_RESEARCH_20261028",
@@ -24,10 +28,14 @@
       "source_git_blob_sha": "d4963d192d2f04c1655a20d4e268a74aa54c07ad",
       "projection_code_sha256": "8e75fd2f255ffa136d05694b07620cd2d6288f2ccd0e16e5e93e2e77a36af78e",
       "protocol_sha256": "229ccaf5d7d8bd1452ef1a65dddaa1998d89c93553494f19f6fd04348436d1ad",
-      "prospective_model_bundle_built": false,
+      "prospective_model_bundle_built": true,
       "same_time_shadow_ledger_started": false,
       "required_new_paired_finals_before_review": 300,
-      "production_promoted": false
+      "production_promoted": false,
+      "artifact_path": "research/confidence_projection_20261028/final_bundles/nhl.joblib",
+      "artifact_sha256": "95e6c460ded433d425c836b73df409168af3d7b4f160f8f0652485d569bf5d07",
+      "final_fit_protocol_path": "research/confidence_projection_20261028/FINAL_FIT_PROTOCOL.md",
+      "final_fit_training_season_max": "20252026"
     }
   ]
 }
