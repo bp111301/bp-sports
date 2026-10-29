@@ -1,5 +1,5 @@
 """Real paired pregame confidence research. Original production files are read-only."""
-import argparse,concurrent.futures,gzip,hashlib,importlib.metadata,importlib.util,json,subprocess,sys
+import argparse,concurrent.futures,gzip,hashlib,importlib.metadata,importlib.util,json,subprocess,sys,time
 from datetime import datetime,timezone
 from pathlib import Path
 from urllib.parse import urlencode
@@ -32,8 +32,15 @@ def jsonable(value):
 
 def records(frame):return jsonable(frame.to_dict('records'))
 def fetch(url):
- with urlopen(Request(url,headers={'User-Agent':'BP-Sports-Confidence-Shadow/1.0'}),timeout=60) as r:raw=r.read()
- return raw,{'url':url,'sha256':hashlib.sha256(raw).hexdigest(),'bytes':len(raw),'observed_at_utc':now().isoformat()}
+ error=None
+ for attempt in range(3):
+  try:
+   with urlopen(Request(url,headers={'User-Agent':'BP-Sports-Confidence-Shadow/1.0'}),timeout=60) as r:raw=r.read()
+   return raw,{'url':url,'sha256':hashlib.sha256(raw).hexdigest(),'bytes':len(raw),'observed_at_utc':now().isoformat()}
+  except Exception as exc:
+   error=exc
+   if attempt<2:time.sleep(attempt+1)
+ raise error
 
 def table(url,compression=None):
  import io
@@ -76,11 +83,12 @@ def cfb_inputs(existing):
  if sha(prior_path)!=expected:raise ValueError('Frozen CFB history source changed')
  sources.append({'path':str(prior_path.relative_to(ROOT)),'sha256':expected,'role':'frozen_completed_history'})
  prior=pd.read_csv(prior_path,low_memory=False)
+ if not raw.season.eq(2026).all() or not schedule.season.eq(2026).all():raise ValueError('Wrong live CFB source season')
  for df in [raw,schedule]:
   df['game_id']=pd.to_numeric(df.game_id,errors='raise').astype(int)
   if df.game_id.duplicated().any():raise ValueError('Duplicate CFB source identity')
  starts=pd.to_datetime(schedule.start_date,utc=True,format='mixed',errors='coerce');current=now();truth=lambda x:x.astype(str).str.lower().isin(['true','1','1.0'])
- eligible=schedule[starts.gt(current)&starts.le(current+pd.Timedelta(days=CONFIG['cfb_horizon_days']))&schedule.status.eq('STATUS_SCHEDULED')&~truth(schedule.completed)&~truth(schedule.start_time_tbd)].copy()
+ eligible=schedule[starts.gt(current)&starts.le(current+pd.Timedelta(days=CONFIG['cfb_horizon_days']))&~truth(schedule.completed)&~truth(schedule.start_time_tbd)].copy()
  eligible['exact_start']=starts.loc[eligible.index]
  supported=eligible[truth(eligible.fbs_game)]
  missing=set(supported.game_id)-set(raw.game_id)
@@ -90,20 +98,31 @@ def cfb_inputs(existing):
  feature_cols={f'{prefix}{side}_{f}' for prefix in ['', 'prev_'] for side in ['home','away'] for f in bases}
  feature_cols|={f'{side}_{f}' for side in ['home','away'] for f in ['pregame_elo','opp_elo_roll_avg','talent','team_talent_weighted','ovr_rtprod','hc_tenure']}
  keep=feature_cols|{'game_id','season','week','start_date','neutral_site','conference_game','home_team_id','away_team_id','home_team','away_team'}
+ summaries={}
+ needed=set(supported.game_id)|{int(f['game_id']) for f in existing.values() if f['sport']=='cfb' and events.stamp(f['start_time_utc'])<=current}
+ def official_summary(gid):
+  data,r=fetch(f'https://site.api.espn.com/apis/site/v2/sports/football/college-football/summary?event={gid}');header=json.loads(data)['header'];c=header['competitions'][0];sides={t['homeAway']:t for t in c['competitors']}
+  if int(header['id'])!=gid:raise ValueError('Wrong ESPN CFB event identity')
+  return gid,{'game_id':gid,'home_id':int(sides['home']['id']),'away_id':int(sides['away']['id']),'home_score':sides['home'].get('score'),'away_score':sides['away'].get('score'),'start_time_utc':events.stamp(c['date']).isoformat(),'state':c['status']['type']['name'],'completed':c['status']['type']['completed'],'phase':c['status']['type']['state'],'source_receipt':r}
+ with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
+  for gid,result in pool.map(official_summary,sorted(needed)):summaries[gid]=result;sources.append(result['source_receipt'])
  for s in supported.sort_values('exact_start').to_dict('records'):
   key=f"{CONFIG['version']}:cfb:{s['game_id']}"
   if key in existing:continue
+  official=summaries[int(s['game_id'])]
+  if official['state']!='STATUS_SCHEDULED' or official['completed'] or official['phase']!='pre':continue
+  if events.stamp(official['start_time_utc'])!=s['exact_start'] or official['home_id']!=int(s['home_id']) or official['away_id']!=int(s['away_id']):raise ValueError('CFB official schedule/identity mismatch')
   t=lookup.loc[int(s['game_id'])]
   if int(t.home_team_id)!=int(s['home_id']) or int(t.away_team_id)!=int(s['away_id']):raise ValueError('CFB scheduled/source team mismatch')
   target=jsonable({c:t[c] for c in keep if c in t.index});target.update(start_time_utc=s['exact_start'].isoformat(),game_state='STATUS_SCHEDULED',home_id=int(s['home_id']),away_id=int(s['away_id']))
   targets.append(target)
  histcols=['game_id','season','start_date','home_team_id','away_team_id','home_points','away_points','neutral_site']
- finals=schedule[truth(schedule.completed)&schedule.status.eq('STATUS_FINAL')&starts.le(current)]
+ finals=schedule[truth(schedule.completed)&starts.le(current)]
  complete=raw[raw.game_id.isin(finals.game_id)].copy()
  history=pd.concat([prior[histcols],complete[histcols]],ignore_index=True)
  if history.game_id.duplicated().any() or history[['home_points','away_points']].isna().any().any():raise ValueError('Invalid completed CFB strength history')
  snapshot={'sport':'cfb','input_snapshot_at_utc':now().isoformat(),'sources':sources,'targets':targets,'history':records(history)}
- official={int(r['game_id']):{'game_id':int(r['game_id']),'home_id':int(r['home_id']),'away_id':int(r['away_id']),'home_score':r['home_points'],'away_score':r['away_points'],'start_time_utc':pd.to_datetime(r['start_date'],utc=True).isoformat(),'state':'STATUS_FINAL','source_receipt':sources[1]} for r in finals.to_dict('records')}
+ official={gid:r for gid,r in summaries.items() if r['state']=='STATUS_FINAL' and r['completed'] and r['phase']=='post'}
  coverage={'supported_future_games':len(supported),'new_targets':len(targets),'unsupported_fbs_fcs_future_games':len(eligible[truth(eligible.fbs_participant)&~truth(eligible.fbs_game)])}
  return jsonable(snapshot),official,coverage
 
@@ -135,6 +154,7 @@ def nhl_inputs(existing):
    if gid in games and games[gid]!=record:raise ValueError('Conflicting official NHL schedules')
    games[gid]=record
  if not games:raise ValueError('Empty NHL current schedule')
+ if any(g['season']!='20262027' for g in games.values()):raise ValueError('Wrong live NHL source season')
  raw=pd.DataFrame(games.values());starts=pd.to_datetime(raw.start_time_utc,utc=True,errors='coerce');current=now()
  final=raw[raw.game_state.isin(['OFF','FINAL'])&starts.le(current)].copy()
  if final[['home_score','away_score']].isna().any().any() or final.home_score.eq(final.away_score).any():raise ValueError('Invalid official NHL final')
@@ -213,7 +233,7 @@ def main():
  versions={k:importlib.metadata.version(k) for k in RESEARCH_VERSIONS}
  if versions!=RESEARCH_VERSIONS:raise ValueError('Frozen challenger environment changed: '+str(versions))
  OUT.mkdir(parents=True,exist_ok=True)
- protected=[ROOT/'model/cfb/v1/frozen_bundle.joblib',ROOT/'data/cfb/ledger/prediction_ledger.csv',Path(args.nhl_root)/'model/nhl/v2_research/watchlist.joblib']
+ protected=[ROOT/'model/cfb/v1/frozen_bundle.joblib',ROOT/'data/cfb/ledger/prediction_ledger.csv',Path(args.nhl_root)/'model/nhl/v2_research/watchlist.joblib',Path(args.nhl_root)/'data/nhl/v2_research/prediction_ledger.csv']
  before={str(p):sha(p) for p in protected if p.exists()}
  fs=events.read_events(OUT/'forecasts.jsonl','forecast_key');ss=events.read_events(OUT/'settlements.jsonl','forecast_key');health={'checked_at_utc':now().isoformat(),'sports':{},'errors':[]};new_forecasts=[];new_settlements=[]
  try:
@@ -224,6 +244,10 @@ def main():
     if f['sport']!=sport or key in ss or int(f['game_id']) not in official:continue
     new_settlements.append(events.settlement(f,official[int(f['game_id'])],now()))
   if any(sha(p)!=digest for p,digest in before.items()):raise ValueError('Protected reference or original ledger changed')
+  append_time=now();eligible=[r for r in new_forecasts if events.stamp(r['start_time_utc'])>append_time]
+  health['dropped_crossed_start_before_persistence']=len(new_forecasts)-len(eligible)
+  for r in eligible:events.validate_forecast(r,append_time)
+  new_forecasts=eligible
   health['new_paired_forecasts']=events.append(OUT/'forecasts.jsonl',new_forecasts,'forecast_key');health['new_settlements']=events.append(OUT/'settlements.jsonl',new_settlements,'forecast_key')
   summary=report(events.read_events(OUT/'forecasts.jsonl','forecast_key'),events.read_events(OUT/'settlements.jsonl','forecast_key'));(OUT/'summary.json').write_text(json.dumps(summary,indent=2,allow_nan=False)+'\n');print(json.dumps(health,indent=2),flush=True)
  except Exception as exc:
