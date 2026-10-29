@@ -1,0 +1,9 @@
+# Postseason source-week correction — separate registered CFB experiment
+
+2026-10-28 Central / 2026-10-29 UTC. Registered after the four feature/rate experiments and source-metadata inspection, before scoring the new postseason candidate or inspecting postseason-only winner results. Not an independent holdout. Do not combine the correction with the expanded-feature candidate in this experiment.
+
+Confirmed metadata/recipe mismatch: all 31 rows marked postseason in the guarded 2015–2025 source have week=1. The original k7 prior function assigns current efficiency weight zero at week1; all 31 have both current and previous home EPA, and blended home EPA equals previous-season EPA. This audit inspected input values, not their prediction outcomes.
+
+Exactly one new recipe: for source rows explicitly marked postseason, use effective prior progress week8 (current-season weight1) when constructing the k7 prior matrix. Keep raw source rows and game week unchanged. The original 25% context /75% prior blend, feature set, C=.5 logistic, imputation and training folds remain identical. Train only earlier seasons; evaluate 2018–2025 against the already reproduced original control OOF. Other season types retain the original week behavior. Unknown season types raise. No market/player/weather/outcome-based feature or live2026 selection.
+
+Apply the same joint CFB gate as PROTOCOL.md: >=.5pp aggregate accuracy improvement, better aggregate Brier/log loss, nonworsening fixed-bin ECE, >=5/8 seasons with Brier improvement, recent2023–2025 accuracy/Brier/logloss preserved. Also report the small postseason subset separately with sample sizes and winner changes; never substitute subgroup results for the full gate. This is a candidate input-recipe correction, not permission to change frozen V1. No production or shadow promotion unless it passes the existing gate and future validation. Rejected results are saved without retuning.
