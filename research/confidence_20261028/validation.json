@@ -17,15 +17,21 @@
   "calibration_safety_tests_passed": 4,
   "live_labels_used_for_training": false,
   "production_calibrator_installed": false,
-  "dashboard_tests_passed": 21,
-  "new_dashboard_safety_and_rendering_tests": 9,
+  "dashboard_tests_passed": 22,
+  "new_dashboard_safety_and_rendering_tests": 10,
   "existing_dashboard_regression_tests": 12,
-  "total_tests_passed": 25,
+  "total_tests_passed": 26,
   "ui_files_changed": [
     "app.py",
     "nhl_ui.py",
     "game_center_ui.py",
     "confidence_audit.py",
     "confidence_ui.py"
-  ]
+  ],
+  "additional_compatibility_fix": "NHL missing update timestamps display Time unavailable, tested with pandas 2.2.3 and numpy 2.3.5 matching workflow",
+  "ui_test_dependencies": {
+    "pandas": "2.2.3",
+    "numpy": "2.3.5",
+    "streamlit": "1.66.1"
+  }
 }

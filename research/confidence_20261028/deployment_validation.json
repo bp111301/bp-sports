@@ -1,0 +1,42 @@
+{
+  "ui_commit": "500b8964afeb0e1e40e3d8c0dfe68f4316001089",
+  "verified_at_utc": "2026-10-29T00:06:32Z",
+  "live_dashboard": "https://bp-sports-xx4tsbjuc6pqeowzcfrfro.streamlit.app/",
+  "cfb": {
+    "expanded_board_confidence_verified": true,
+    "graded_games": 175,
+    "mean_confidence_display": "70.4%",
+    "win_rate_display": "63.4%",
+    "numeric_model_bands_and_unvalidated_note_verified": true
+  },
+  "nhl": {
+    "model_record_verified": true,
+    "reference": {
+      "graded_games": 155,
+      "mean_confidence_display": "59.3%",
+      "win_rate_display": "58.7%"
+    },
+    "candidate_selector_changed_to": "Recency weighting",
+    "recency": {
+      "graded_games": 155,
+      "mean_confidence_display": "58.9%",
+      "win_rate_display": "61.3%"
+    },
+    "buckets_with_samples_and_intervals_verified": true
+  },
+  "tests_passed": 26,
+  "production_calibrator_installed": false,
+  "existing_model_forecast_grade_or_schedule_files_changed_by_ui_commit": false,
+  "workflow": {
+    "id": 40791723685,
+    "status": "completed",
+    "conclusion": "failure",
+    "initial_run_failure": {
+      "id": 40791723685,
+      "cause": "New integration test exposed existing NHL null timestamp formatting failure on pandas 2.2.3. Frozen model checks otherwise passed (106 tests).",
+      "corrective_change": "Explicit null/invalid datetime handling and regression test; 22 local UI tests pass under workflow pandas/numpy pins.",
+      "recovery_run": "pending_after_this_commit"
+    }
+  },
+  "screenshot": "research/confidence_20261028/deployed-nhl-1793232415358.jpg"
+}

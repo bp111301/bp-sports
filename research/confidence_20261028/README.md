@@ -45,3 +45,9 @@ Defaults write into runtime rather than committed historical outputs. Research t
 ## Accuracy work remains open
 
 The previous opponent-strength/nonlinear challengers did not earn promotion. These confidence tests also do not improve winner selection. The next accuracy work must establish point-in-time availability and coverage of richer inputs before another bounded experiment: CFB player/QB availability and efficiency/prior coverage, NHL pregame goalie confirmation and shot-quality data. Existing goalie layers and source helpers must be audited before adding duplicate layers. No historical realized starter or postgame revised availability can stand in for pregame evidence. A future candidate requires a new frozen shadow and fresh paired results, not a relabeling of these tests.
+
+## Deployment verification
+
+Both live detailed boards and the NHL candidate selector were verified after deployment. CFB displayed 70.4% mean confidence / 63.4% actual wins / 175 games; NHL reference 59.3% / 58.7% / 155; NHL recency selection refreshed to 58.9% / 61.3% / 155. A screenshot and `deployment_validation.json` preserve this evidence.
+
+The first GitHub verification run found a pre-existing null timestamp formatting edge case exposed by the new NHL fixture under pandas 2.2.3. Explicit missing/invalid date handling now displays Time unavailable. An added regression test and 22 dashboard checks pass under the workflow pandas/numpy versions, alongside four research safety checks. Model inputs and weights were unaffected; the failed run did not publish generated feeds. The corrective commit starts a new verification run.

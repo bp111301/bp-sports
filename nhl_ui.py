@@ -42,7 +42,9 @@ def audit_note(game_id,bundle):
 
 def ct(value):
     try:
-        return pd.to_datetime(value, utc=True).tz_convert('America/Chicago').strftime('%a %b %d • %I:%M %p CT').replace(' 0', ' ')
+        stamp = pd.to_datetime(value, utc=True, errors='coerce')
+        if stamp is None or pd.isna(stamp):return 'Time unavailable'
+        return stamp.tz_convert('America/Chicago').strftime('%a %b %d • %I:%M %p CT').replace(' 0', ' ')
     except (ValueError, TypeError):
         return 'Time unavailable'
 

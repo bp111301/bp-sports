@@ -53,3 +53,10 @@ def test_full_cfb_board_and_nhl_record_have_confidence_evidence():
         at.selectbox(key='nhl_confidence_candidate').set_value('decay2_logistic').run()
         assert not at.exception
         assert any(x.label=='Actual win rate' and x.value=='100.0%' for x in at.metric)
+
+
+def test_missing_nhl_update_time_is_unavailable_across_dependency_versions():
+    import nhl_ui
+    for value in [None, '', float('nan'), 'invalid']:
+        assert nhl_ui.ct(value)=='Time unavailable'
+    assert 'CT' in nhl_ui.ct('2026-10-28T23:00:00Z')
