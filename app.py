@@ -706,8 +706,8 @@ elif sport == "CFB":
                 unsafe_allow_html=True,
             )
         st.info(
-            "A tested QB layer was deferred from CFB V1 because it did not add meaningful historical "
-            "probability quality. It can be revisited in CFB V2 with better player-availability data."
+            "The original QB experiment had no joined quarterback data. Corrected QB research is "
+            "evaluated separately; frozen V1 does not claim to know the upcoming starting quarterback."
         )
 
 elif sport == "NHL":
