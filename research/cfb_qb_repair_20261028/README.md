@@ -18,3 +18,5 @@ Safeguards: duplicate identities fail; <99% source retention or <70% paired cove
 See results/results.json for every gate, season, confidence bucket, support/Wilson interval and paired season/week bootstrap accuracy interval. Bootstrap intervals are descriptive, not adjusted for repeated model selection.
 
 This is a rebuilt implementation, not an exact reproduction of the lost preliminary QB run. The source validation and resulting candidate counts differ. No gate or hyperparameter was relaxed. No weights, historical evaluations or immutable forecasts were changed.
+
+A second complete run produced byte-identical prediction rows, feature rows, temporal boundaries and result JSON.

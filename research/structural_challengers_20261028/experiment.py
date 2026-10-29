@@ -47,7 +47,7 @@ def cfb_features(d):
     out['effective_week']=pd.to_numeric(corrected.week,errors='coerce')
     dates=pd.to_datetime(d.start_date,utc=True)
     origin=pd.to_datetime(d.season.astype(str)+'-07-01',utc=True)
-    out['days_since_july1']=(dates-origin).dt.total_seconds()/86400
+    out['days_since_july1']=(dates.dt.normalize()-origin).dt.days
     cats=['home_team_id','away_team_id','home_conference','away_conference','season_type']
     for c in cats:out[c]=d[c].fillna('__missing__').astype(str)
     return out.replace([np.inf,-np.inf],np.nan),cats,[]

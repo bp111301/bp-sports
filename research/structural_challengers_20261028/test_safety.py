@@ -44,3 +44,14 @@ def test_duplicate_team_date_rejected():
 def test_all_empty_training_rows_kept():
     x=pd.DataFrame({'n':[np.nan]*4,'cat':['a']*4});tr,te,_,_=m.prepare(x,[0,1],[2,3],['cat'])
     assert len(tr)==len(te)==2 and np.all(tr.n==0) and np.all(te.n==0)
+
+def test_cfb_calendar_day_and_excluded_outcomes():
+    bases=set(m.e.cfb.base.PAIR_BASES+m.e.cfb.pri.BLEND_BASES+m.e.EXTRA_BASES)
+    data={f'{prefix}{side}_{f}':[1.] for prefix in ['', 'prev_'] for side in ['home','away'] for f in bases}
+    data.update({f'{side}_{f}':[1.] for side in ['home','away'] for f in ['pregame_elo','opp_elo_roll_avg','talent','team_talent_weighted','ovr_rtprod','hc_tenure']})
+    data.update(season=[2019],season_type=['postseason'],week=[1],start_date=['2019-12-20T18:00Z'],home_team_id=[1],away_team_id=[2],home_conference=['A'],away_conference=['B'])
+    d=pd.DataFrame(data);a,cats,_=m.cfb_features(d)
+    b,_,_=m.cfb_features(d.assign(start_date='2019-12-20T00:00Z',home_points=999,away_points=0,home_qb_name='future QB',spread=30))
+    pd.testing.assert_frame_equal(a,b)
+    assert a.effective_week.iloc[0]==8 and a.source_week.iloc[0]==1
+    assert not set(a)&{'home_points','away_points','home_qb_name','spread'}
