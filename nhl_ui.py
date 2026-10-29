@@ -1,5 +1,5 @@
 """Read-only presentation of the separate NHL research ledgers."""
-UI_REVISION="mobile-layout-20261007"
+UI_REVISION="confidence-evidence-20261028"
 from concurrent.futures import ThreadPoolExecutor
 import csv
 import html
@@ -147,6 +147,9 @@ def render_nhl(now=None):
         candidate=left.selectbox('Research model',list(MODEL_NAMES),format_func=MODEL_NAMES.get,key='nhl_candidate')
         view=right.selectbox('Games',['Today + upcoming','Upcoming','Awaiting results','Completed','All tracked'],key='nhl_view')
         selected=board[board.candidate==candidate].copy()
+        with st.expander("How reliable are these confidence levels?"):
+            from confidence_ui import render_confidence_check
+            render_confidence_check(pd.DataFrame(data.get("predictions", [])), "NHL", candidate, now=now)
         upcoming=selected[(selected.status=='pending') & selected.start_time_utc.gt(now)]
         confirmed=sum(bool(reports.get((int(g),'home'),{}).get('confirmed_eligible')) and bool(reports.get((int(g),'away'),{}).get('confirmed_eligible')) for g in upcoming.game_id)
         st.markdown(f'''<div class="hero"><div class="eyebrow">2026–27 • PROSPECTIVE RESEARCH</div><div class="hero-title">The B.P. Sports NHL Board</div><div class="hero-copy">Follow the three fixed models on games predicted before puck drop. Compare their probabilities and track new results as they arrive.</div><div class="stat-grid"><div class="stat"><div class="stat-v">{len(upcoming)}</div><div class="stat-l">Upcoming games</div></div><div class="stat"><div class="stat-v">3</div><div class="stat-l">Models tracked</div></div><div class="stat"><div class="stat-v">{confirmed}</div><div class="stat-l">Both goalies confirmed</div></div><div class="stat"><div class="stat-v">{int((selected.status=='settled').sum())}</div><div class="stat-l">Graded games</div></div></div></div>''',unsafe_allow_html=True)
@@ -182,6 +185,9 @@ def render_nhl(now=None):
         metrics=record_metrics(board);st.dataframe(metrics,hide_index=True,use_container_width=True)
         if metrics.Games.sum()==0:st.info('No tracked games have been settled yet. Accuracy will appear after recorded games finish and the ledger refreshes.')
         st.caption('The models share a fixed training boundary through 2025–26. Early results are descriptive; there is no automatic promotion.')
+        from confidence_ui import render_confidence_check
+        confidence_candidate=st.selectbox("Confidence evidence model", list(MODEL_NAMES), format_func=MODEL_NAMES.get, key="nhl_confidence_candidate")
+        render_confidence_check(pd.DataFrame(data.get("predictions", [])), "NHL", confidence_candidate, now=now)
         st.markdown('<div class="section-title" style="margin-top:24px">Historical research</div>',unsafe_allow_html=True)
         st.dataframe(pd.DataFrame([{'Model':'Original team-stat reference','Development accuracy':'61.34%','Decision':'Comparator'}, {'Model':'Recency weighting','Development accuracy':'61.70%','Decision':'Failed season-consistency requirement'}, {'Model':'Regulation blend','Development accuracy':'61.32%','Decision':'One fewer correct pick than reference'}]),hide_index=True,use_container_width=True)
         st.caption('Reused development seasons: 2021–22 through 2024–25, 5,248 games. These figures are not live performance.')

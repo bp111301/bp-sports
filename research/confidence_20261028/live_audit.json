@@ -1,0 +1,451 @@
+{
+  "as_of_utc": "2026-10-29T00:03:26.937860+00:00",
+  "sources": {
+    "CFB": {
+      "sha256": "d751595d9d694dd4d19fbeb022e72c99bffc177787c770be2d503c5771873bd8",
+      "branch": "main",
+      "commit": "1ddcf349ed2dd39c092d6dd4cde2afa7119b3574"
+    },
+    "NHL": {
+      "sha256": "acd0046feeaf0aaf21c9686e3f6559b4c4fe06eb8a4e1e84ff1e0b6bfc8cd2f3",
+      "branch": "nhl-v1-research",
+      "commit": "3243b0184eb62925e0dfa09b172212226a03c4f7"
+    }
+  },
+  "reports": {
+    "CFB:None": {
+      "overall": {
+        "games": 175,
+        "wins": 111,
+        "losses": 64,
+        "accuracy": 0.6342857142857142,
+        "mean_confidence": 0.7038257004676649,
+        "confidence_minus_accuracy": 0.06953998618195067,
+        "accuracy_ci95": [
+          0.5607549530082774,
+          0.7020476449459365
+        ],
+        "brier": 0.23542669578537437,
+        "log_loss": 0.6718755391215007
+      },
+      "buckets": [
+        {
+          "games": 45,
+          "wins": 26,
+          "losses": 19,
+          "accuracy": 0.5777777777777777,
+          "mean_confidence": 0.5433135181175293,
+          "confidence_minus_accuracy": -0.034464259660248464,
+          "accuracy_ci95": [
+            0.4330078870920313,
+            0.710312975327297
+          ],
+          "brier": 0.2492325272040334,
+          "log_loss": 0.6916065504595292,
+          "bucket": "50%–60%",
+          "lower": 0.5,
+          "upper": 0.6,
+          "limited_sample": true
+        },
+        {
+          "games": 44,
+          "wins": 22,
+          "losses": 22,
+          "accuracy": 0.5,
+          "mean_confidence": 0.6528745838542303,
+          "confidence_minus_accuracy": 0.15287458385423025,
+          "accuracy_ci95": [
+            0.35831760539989393,
+            0.641682394600106
+          ],
+          "brier": 0.27128963255645416,
+          "log_loss": 0.7382617478798758,
+          "bucket": "60%–70%",
+          "lower": 0.6,
+          "upper": 0.7,
+          "limited_sample": true
+        },
+        {
+          "games": 40,
+          "wins": 32,
+          "losses": 8,
+          "accuracy": 0.8,
+          "mean_confidence": 0.7509515370168898,
+          "confidence_minus_accuracy": -0.049048462983110275,
+          "accuracy_ci95": [
+            0.652426936536005,
+            0.895000102745623
+          ],
+          "brier": 0.16557252043231796,
+          "log_loss": 0.5158433251787947,
+          "bucket": "70%–80%",
+          "lower": 0.7,
+          "upper": 0.8,
+          "limited_sample": true
+        },
+        {
+          "games": 33,
+          "wins": 21,
+          "losses": 12,
+          "accuracy": 0.6363636363636364,
+          "mean_confidence": 0.8402020859863644,
+          "confidence_minus_accuracy": 0.203838449622728,
+          "accuracy_ci95": [
+            0.466161783022664,
+            0.7781282176475764
+          ],
+          "brier": 0.2675246716184446,
+          "log_loss": 0.7591360871449687,
+          "bucket": "80%–90%",
+          "lower": 0.8,
+          "upper": 0.9,
+          "limited_sample": true
+        },
+        {
+          "games": 13,
+          "wins": 10,
+          "losses": 3,
+          "accuracy": 0.7692307692307693,
+          "mean_confidence": 0.9407059429800597,
+          "confidence_minus_accuracy": 0.17147517374929044,
+          "accuracy_ci95": [
+            0.49743624053272495,
+            0.9182047128150143
+          ],
+          "brier": 0.19971147885181853,
+          "log_loss": 0.6374756758410371,
+          "bucket": "90%–100%",
+          "lower": 0.9,
+          "upper": 1,
+          "limited_sample": true
+        }
+      ],
+      "ece": 0.10968661708521443,
+      "sport": "CFB",
+      "candidate": "CFB_V1",
+      "as_of_utc": "2026-10-29T00:03:26.937860+00:00",
+      "tracked_games": 234,
+      "pending_games": 59
+    },
+    "NHL:reference_control": {
+      "overall": {
+        "games": 155,
+        "wins": 91,
+        "losses": 64,
+        "accuracy": 0.5870967741935483,
+        "mean_confidence": 0.5933047770544757,
+        "confidence_minus_accuracy": 0.006208002860927375,
+        "accuracy_ci95": [
+          0.5083938189432099,
+          0.6615869921149317
+        ],
+        "brier": 0.23992051959517827,
+        "log_loss": 0.6772373749103763
+      },
+      "buckets": [
+        {
+          "games": 93,
+          "wins": 49,
+          "losses": 44,
+          "accuracy": 0.5268817204301075,
+          "mean_confidence": 0.5439509757050709,
+          "confidence_minus_accuracy": 0.01706925527496339,
+          "accuracy_ci95": [
+            0.4263701891771973,
+            0.6252605902522792
+          ],
+          "brier": 0.25085156970685446,
+          "log_loss": 0.6948811953933568,
+          "bucket": "50%–60%",
+          "lower": 0.5,
+          "upper": 0.6,
+          "limited_sample": true
+        },
+        {
+          "games": 51,
+          "wins": 33,
+          "losses": 18,
+          "accuracy": 0.6470588235294118,
+          "mean_confidence": 0.6447244810565231,
+          "confidence_minus_accuracy": -0.002334342472888662,
+          "accuracy_ci95": [
+            0.5098605845450523,
+            0.7636551154847915
+          ],
+          "brier": 0.22894388766035062,
+          "log_loss": 0.6505069280719243,
+          "bucket": "60%–70%",
+          "lower": 0.6,
+          "upper": 0.7,
+          "limited_sample": true
+        },
+        {
+          "games": 8,
+          "wins": 8,
+          "losses": 0,
+          "accuracy": 1,
+          "mean_confidence": 0.7377104135881579,
+          "confidence_minus_accuracy": -0.2622895864118421,
+          "accuracy_ci95": [
+            0.6755924351161198,
+            1
+          ],
+          "brier": 0.0697361554110082,
+          "log_loss": 0.3050614622754781,
+          "bucket": "70%–80%",
+          "lower": 0.7,
+          "upper": 0.8,
+          "limited_sample": true
+        },
+        {
+          "games": 2,
+          "wins": 1,
+          "losses": 1,
+          "accuracy": 0.5,
+          "mean_confidence": 0.8342607555273056,
+          "confidence_minus_accuracy": 0.3342607555273056,
+          "accuracy_ci95": [
+            0.09453120573423074,
+            0.9054687942657693
+          ],
+          "brier": 0.3856672310520364,
+          "log_loss": 1.079558738719929,
+          "bucket": "80%–90%",
+          "lower": 0.8,
+          "upper": 0.9,
+          "limited_sample": true
+        },
+        {
+          "games": 1,
+          "wins": 0,
+          "losses": 1,
+          "accuracy": 0,
+          "mean_confidence": 0.923646349229591,
+          "confidence_minus_accuracy": 0.923646349229591,
+          "accuracy_ci95": [
+            0,
+            0.7934506856227626
+          ],
+          "brier": 0.8531225784451516,
+          "log_loss": 2.572379432214303,
+          "bucket": "90%–100%",
+          "lower": 0.9,
+          "upper": 1,
+          "limited_sample": true
+        }
+      ],
+      "ece": 0.03481920489205068,
+      "sport": "NHL",
+      "candidate": "reference_control",
+      "as_of_utc": "2026-10-29T00:03:26.937860+00:00",
+      "tracked_games": 163,
+      "pending_games": 8
+    },
+    "NHL:decay2_logistic": {
+      "overall": {
+        "games": 155,
+        "wins": 95,
+        "losses": 60,
+        "accuracy": 0.6129032258064516,
+        "mean_confidence": 0.588502490952336,
+        "confidence_minus_accuracy": -0.024400734854115647,
+        "accuracy_ci95": [
+          0.534375426382658,
+          0.6859700694334515
+        ],
+        "brier": 0.23742281208985394,
+        "log_loss": 0.6701892577788313
+      },
+      "buckets": [
+        {
+          "games": 93,
+          "wins": 51,
+          "losses": 42,
+          "accuracy": 0.5483870967741935,
+          "mean_confidence": 0.5415193627915734,
+          "confidence_minus_accuracy": -0.006867733982620083,
+          "accuracy_ci95": [
+            0.44733301650860635,
+            0.6456023864644514
+          ],
+          "brier": 0.254132992838072,
+          "log_loss": 0.7015135629611321,
+          "bucket": "50%–60%",
+          "lower": 0.5,
+          "upper": 0.6,
+          "limited_sample": true
+        },
+        {
+          "games": 53,
+          "wins": 38,
+          "losses": 15,
+          "accuracy": 0.7169811320754716,
+          "mean_confidence": 0.6421736667561221,
+          "confidence_minus_accuracy": -0.07480746531934956,
+          "accuracy_ci95": [
+            0.5842971358358297,
+            0.8203370955366142
+          ],
+          "brier": 0.20683250675363124,
+          "log_loss": 0.6046275453317997,
+          "bucket": "60%–70%",
+          "lower": 0.6,
+          "upper": 0.7,
+          "limited_sample": true
+        },
+        {
+          "games": 8,
+          "wins": 6,
+          "losses": 2,
+          "accuracy": 0.75,
+          "mean_confidence": 0.7388331229618512,
+          "confidence_minus_accuracy": -0.011166877038148781,
+          "accuracy_ci95": [
+            0.40927543031016883,
+            0.9285207872478909
+          ],
+          "brier": 0.17183012292552202,
+          "log_loss": 0.5221725391898184,
+          "bucket": "70%–80%",
+          "lower": 0.7,
+          "upper": 0.8,
+          "limited_sample": true
+        },
+        {
+          "games": 0,
+          "bucket": "80%–90%",
+          "lower": 0.8,
+          "upper": 0.9,
+          "limited_sample": true
+        },
+        {
+          "games": 1,
+          "wins": 0,
+          "losses": 1,
+          "accuracy": 0,
+          "mean_confidence": 0.910716036226462,
+          "confidence_minus_accuracy": 0.910716036226462,
+          "accuracy_ci95": [
+            0,
+            0.7934506856227626
+          ],
+          "brier": 0.8294036986400385,
+          "log_loss": 2.4159333842296187,
+          "bucket": "90%–100%",
+          "lower": 0.9,
+          "upper": 1,
+          "limited_sample": true
+        }
+      ],
+      "ece": 0.036151909515102235,
+      "sport": "NHL",
+      "candidate": "decay2_logistic",
+      "as_of_utc": "2026-10-29T00:03:26.937860+00:00",
+      "tracked_games": 163,
+      "pending_games": 8
+    },
+    "NHL:linear_regulation_blend": {
+      "overall": {
+        "games": 155,
+        "wins": 92,
+        "losses": 63,
+        "accuracy": 0.5935483870967742,
+        "mean_confidence": 0.5892881692664533,
+        "confidence_minus_accuracy": -0.004260217830320823,
+        "accuracy_ci95": [
+          0.5148691530258751,
+          0.6677028292217584
+        ],
+        "brier": 0.23820126860136837,
+        "log_loss": 0.6705117262414751
+      },
+      "buckets": [
+        {
+          "games": 95,
+          "wins": 51,
+          "losses": 44,
+          "accuracy": 0.5368421052631579,
+          "mean_confidence": 0.5441742370022382,
+          "confidence_minus_accuracy": 0.0073321317390803165,
+          "accuracy_ci95": [
+            0.4370969126824784,
+            0.6337235717935605
+          ],
+          "brier": 0.2502033170984507,
+          "log_loss": 0.6935576359889,
+          "bucket": "50%–60%",
+          "lower": 0.5,
+          "upper": 0.6,
+          "limited_sample": true
+        },
+        {
+          "games": 50,
+          "wins": 33,
+          "losses": 17,
+          "accuracy": 0.66,
+          "mean_confidence": 0.6404742595247057,
+          "confidence_minus_accuracy": -0.019525740475294318,
+          "accuracy_ci95": [
+            0.521538260502326,
+            0.7756305077749992
+          ],
+          "brier": 0.22477288406186854,
+          "log_loss": 0.6418742502563428,
+          "bucket": "60%–70%",
+          "lower": 0.6,
+          "upper": 0.7,
+          "limited_sample": true
+        },
+        {
+          "games": 7,
+          "wins": 7,
+          "losses": 0,
+          "accuracy": 1,
+          "mean_confidence": 0.7361228852332354,
+          "confidence_minus_accuracy": -0.26387711476676456,
+          "accuracy_ci95": [
+            0.6456695649333126,
+            1
+          ],
+          "brier": 0.07041545693228211,
+          "log_loss": 0.30707694419402476,
+          "bucket": "70%–80%",
+          "lower": 0.7,
+          "upper": 0.8,
+          "limited_sample": true
+        },
+        {
+          "games": 3,
+          "wins": 1,
+          "losses": 2,
+          "accuracy": 0.3333333333333333,
+          "mean_confidence": 0.8221801827399062,
+          "confidence_minus_accuracy": 0.4888468494065729,
+          "accuracy_ci95": [
+            0.06149194472039621,
+            0.7923403991979522
+          ],
+          "brier": 0.4734430357466255,
+          "log_loss": 1.2660303421026173,
+          "bucket": "80%–90%",
+          "lower": 0.8,
+          "upper": 0.9,
+          "limited_sample": true
+        },
+        {
+          "games": 0,
+          "bucket": "90%–100%",
+          "lower": 0.9,
+          "upper": 1,
+          "limited_sample": true
+        }
+      ],
+      "ece": 0.03217109606815753,
+      "sport": "NHL",
+      "candidate": "linear_regulation_blend",
+      "as_of_utc": "2026-10-29T00:03:26.937860+00:00",
+      "tracked_games": 163,
+      "pending_games": 8
+    }
+  }
+}

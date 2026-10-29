@@ -1,5 +1,5 @@
 """Shared scores, preferences and probability guidance for the web UI."""
-UI_REVISION="clean-nav-20261013"
+UI_REVISION="confidence-evidence-20261028"
 import html,json
 from pathlib import Path
 from urllib.request import Request,urlopen
@@ -41,6 +41,7 @@ def score_html(sport,gid,home,away,settled=False,start=None,now=None,feed=None):
 def confidence_html(prob,sport,audit=False):
     p=float(prob);opponent=(1-p)*100
     if audit:note='Input concern: missing power-play feature. Treat this estimate cautiously; see the audit.'
+    elif sport=='CFB':note=('Unusually high raw estimate' if p>=.9 else 'Raw model estimate')+' · confidence is not validated. Compare estimates with actual results in Model record.'
     elif p>=.9:note='Unusually high estimate · limited prospective evidence at this confidence level.'
     elif sport=='NHL':note='Experimental estimate · NHL models have not passed the release gate.'
     else:note='Saved model estimate · performance is tracked against actual results.'

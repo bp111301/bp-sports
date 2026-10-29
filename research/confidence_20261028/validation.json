@@ -1,0 +1,31 @@
+{
+  "research_packages": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "scipy": "1.17.0",
+    "sklearn": "1.8.0"
+  },
+  "research_python": "3.12.14",
+  "implementation_sha256": {
+    "research/confidence_20261028/PROTOCOL.md": "d3ce3e38e704e251d1efc35b399fc4c28f08d401074466b98d0e240c75d39a43",
+    "research/confidence_20261028/experiment.py": "3ec9629fb1a54c1ccdf2d5f1aec23c6f97e4a9c9cc15b56d5d5cd5238cf0b24e",
+    "research/confidence_20261028/test_calibration.py": "c464f03a8dd5a5bfabd53492dfb97c31f7ea0c88ff1ecbf926546b8c91a5c987",
+    "confidence_audit.py": "b811abb822e6f422e37396ec1bc1576bfab0f879da4b797e5cc9edae956a5993"
+  },
+  "control_input_manifest": "research/challengers_20261028/source_manifest.json",
+  "independent_research_result_reproduction": "exact",
+  "calibration_safety_tests_passed": 4,
+  "live_labels_used_for_training": false,
+  "production_calibrator_installed": false,
+  "dashboard_tests_passed": 21,
+  "new_dashboard_safety_and_rendering_tests": 9,
+  "existing_dashboard_regression_tests": 12,
+  "total_tests_passed": 25,
+  "ui_files_changed": [
+    "app.py",
+    "nhl_ui.py",
+    "game_center_ui.py",
+    "confidence_audit.py",
+    "confidence_ui.py"
+  ]
+}

@@ -10,7 +10,7 @@ from matchup_preview_ui import render_preview
 from matchup_details_ui import details_button
 from cfb_board_ui import dated_board, date_choices, games_on_date, date_label
 import game_center_ui
-if getattr(game_center_ui,"UI_REVISION",None)!="clean-nav-20261013":importlib.reload(game_center_ui)
+if getattr(game_center_ui,"UI_REVISION",None)!="confidence-evidence-20261028":importlib.reload(game_center_ui)
 from game_center_ui import render_preferences, filter_favorites, score_html, confidence_html, render_score_refresh, render_header, render_host_chrome, board_route, render_information
 
 st.set_page_config(
@@ -225,7 +225,7 @@ sport = st.radio("Sport", ["Overview", "NFL", "CFB", "NHL", "NBA", "CBB"], horiz
 
 def current_ui(module):
     # Streamlit can retain imported modules during a deployment rerun. Reload once per UI revision.
-    expected="cbb-overview-20261024" if module.__name__=='overview_ui' else "mobile-layout-20261007"
+    expected="cbb-overview-20261024" if module.__name__=='overview_ui' else "confidence-evidence-20261028" if module.__name__=='nhl_ui' else "mobile-layout-20261007"
     if getattr(module,"UI_REVISION",None)!=expected:module=importlib.reload(module)
     return module
 
@@ -490,6 +490,9 @@ elif sport == "CFB":
             st.error("The current CFB prediction feed is unavailable.")
         else:
             ledger = load_csv("data/cfb/ledger/prediction_ledger.csv")
+            with st.expander("How reliable are these confidence levels?"):
+                from confidence_ui import render_confidence_check
+                render_confidence_check(ledger, "CFB")
             # Preserve the first saved forecast and its grading fields on every view.
             board = pd.concat([ledger,cfb_pred],ignore_index=True).drop_duplicates("game_id")
             if "correct" in ledger:
@@ -599,6 +602,7 @@ elif sport == "CFB":
                     home_prob = float(r["home_win_prob"])
                     away_prob = 1 - home_prob
                     tier, tier_class = confidence_tier(conf)
+                    tier = "MODEL 70%+" if conf >= .70 else "MODEL 60%+" if conf >= .60 else "MODEL 55%+" if conf >= .55 else "CLOSE CALL"
                     accent = "#44d17a" if conf >= .70 else "#6ea8fe" if conf >= .60 else "#f5c451" if conf >= .55 else "#ff6b7a"
                     kickoff = kickoff_ct(r['_display_kickoff']) if pd.notna(r['_display_kickoff']) else 'Kickoff TBD'
                     week = int(r["week"]) if pd.notna(r["week"]) else "—"
@@ -645,6 +649,8 @@ elif sport == "CFB":
             st.caption("Confirmed finals are checked every 15 minutes. Pending games never count as wins or losses; original pregame picks stay fixed.")
         else:
             st.info("The CFB prospective record is unavailable. Historical results below are separate.")
+        from confidence_ui import render_confidence_check
+        render_confidence_check(load_csv("data/cfb/ledger/prediction_ledger.csv"), "CFB")
         hold = cfb_holdout.get("overall", {})
         if hold:
             st.markdown(
