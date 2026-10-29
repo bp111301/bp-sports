@@ -1,5 +1,5 @@
-# Status of structural-model research
+# Structural research reconstruction
 
-The registered CatBoost/scoring-model experiment ran locally and reported no recipe passing all joint accuracy-and-confidence rules. Its final code and complete prediction artifacts were not committed before the workspace was cleared. It has not completed artifact preservation and independent reproduction, so it is not a deployable or promoted challenger.
+Code and source manifests have been restored and saved. NHL: all12 fixed candidates evaluated over5,248 games; none qualified. A second complete run was byte-identical. CFB: full fixed tournament is still in progress; no qualification decision yet. Eight structural safeguards and six QB safeguards pass with pytest --import-mode=importlib.
 
-Preserve the registered protocol. Rebuild and rerun all planned recipes before relying on their detailed metrics. Do not reconstruct prediction rows or evaluations from remembered summaries. The separately saved confidence-projection package uses previously committed immutable archives and has been rebuilt and independently reproduced; it does not depend on this unfinished structural run.
+The earlier unsaved structural run remains preliminary. These rebuilt outputs are separately retained; no exact reproduction of that lost run is claimed. Original frozen models, historical evaluations and immutable forecasts are unchanged.
