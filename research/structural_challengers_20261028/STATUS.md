@@ -1,5 +1,3 @@
-# Structural research reconstruction
+# Rebuilt structural research completed
 
-Code and source manifests have been restored and saved. NHL: all12 fixed candidates evaluated over5,248 games; none qualified. A second complete run was byte-identical. CFB: full fixed tournament is still in progress; no qualification decision yet. Eight structural safeguards and six QB safeguards pass with pytest --import-mode=importlib.
-
-The earlier unsaved structural run remains preliminary. These rebuilt outputs are separately retained; no exact reproduction of that lost run is claimed. Original frozen models, historical evaluations and immutable forecasts are unchanged.
+All10 fixed CFB and12 fixed NHL candidate recipes finished. Selected research candidates: cfb=none, nhl=none. Complete predictions, per-season/bucket metrics, gate decisions and source/code hashes are retained. NHL repeated byte-identically. The lost preliminary runs are not claimed as exactly reproduced. Production models and original saved evidence remain unchanged.

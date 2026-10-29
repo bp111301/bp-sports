@@ -23,7 +23,7 @@ CFB and NHL accuracy remain exactly72.737% and61.338% respectively on these hist
 
 Sources are existing immutable compressed prediction archives in this repository. The evaluator verifies their Git blob SHA before use, joins identical game/season/outcome keys and rejects duplicate games or excluded seasons. Both evaluations were independently rerun byte-for-byte, and their core metrics match the earlier recorded run exactly. Six safety tests cover winner preservation, ties/extremes, invalid probabilities, outcome independence, CSV round trips and source validation. `source_manifest.json` and `validation.json` preserve hashes and checks.
 
-The previous local experiment workspace was cleared before the final files were committed. This package was rebuilt from the registered protocol and existing GitHub archives, then rerun. It does not recreate missing prediction rows from remembered numbers or claim that unarchived structural/QB runs are fully reproduced. Those investigations remain separate and unfinished at the artifact/reproduction stage.
+The previous local experiment workspace was cleared before the final files were committed. This package was rebuilt from the registered protocol and existing GitHub archives, then rerun. It does not recreate missing prediction rows from remembered numbers or claim that unarchived structural/QB runs are fully reproduced. Those investigations are separately rebuilt and audited; their saved results do not claim exact reproduction of the lost preliminary runs.
 
 ```sh
 python -m unittest discover -s research/confidence_projection_20261028 -p 'test_projection.py'
@@ -34,16 +34,18 @@ Defaults write new results into runtime. Committed evaluations and original arch
 
 ## What remains before a live confidence change
 
-`qualification_package.json` records the exact stage: development-qualified; no prospective bundle built; no shadow ledger started; production unchanged. The underlying model must be fit once under a separately fixed training specification, artifact hashes and dependencies frozen, and input provenance verified. Then capture reference and challenger on the SAME pregame inputs and timestamp into a separate append-only ledger. No backfilled predictions for started games, and no comparison between a refreshed challenger and an earlier official forecast presented as same-time evidence.
+`qualification_package.json` records the exact stage: development-qualified with separately frozen final research bundles; no shadow ledger started; production unchanged. Final-fit rules, hashes and dependencies are retained below. Prospective input provenance and reference replay parity still need verification. Then capture reference and challenger on the SAME pregame inputs and timestamp into a separate append-only ledger. No backfilled predictions for started games, and no comparison between a refreshed challenger and an earlier official forecast presented as same-time evidence.
 
 Review only after at least200 NEW paired settled CFB games or300 NHL games. The original first forecasts, model weights, grades and historical evaluations stay intact. Finding a better winner-selection model remains a separate open objective.
 
 ## Correction to the earlier CFB quarterback claim
 
-The archived `research/cfb/results/qb_layer_experiment.json` reports0% coverage for every QB feature. Its loader converts `pos_team`—a team-name field—to numeric and drops the resulting NaNs; the source's numeric field is `pos_team_id`. That empty-join experiment did not establish that useful quarterback data fails to improve predictions. The old result and experiment are preserved. A new investigation needs validated IDs, date-safe joins and a nonempty coverage gate before any model comparison. The CFB dashboard's description is corrected accordingly; this does not add QB inputs to V1.
+The archived `research/cfb/results/qb_layer_experiment.json` reports0% coverage for every QB feature. Its loader converts `pos_team`—a team-name field—to numeric and drops the resulting NaNs; the source's numeric field is `pos_team_id`. That empty-join experiment did not establish that useful quarterback data fails to improve predictions. The old result and experiment are preserved. The separate rebuilt investigation in `research/cfb_qb_repair_20261028/` now validates IDs, date-safe joins and nonempty coverage. All three fixed QB recipes failed the joint qualification gate; their full predictions and checks are saved. The CFB dashboard's description is corrected accordingly; this does not add QB inputs to V1.
 
 ## Frozen research bundles
 
 Separate final bundles are now fitted and hashed under `final_bundles/`, using the preregistered `FINAL_FIT_PROTOCOL.md`. CFB fits2015–2025. NHL fits2018–19 through2025–26; the added2025–26 data is final-fit only, not used to select or evaluate the recipe. Both reloaded artifacts return identical smoke-test probabilities and preserve all reference winners. This is a serialization check, not a performance evaluation.
 
 These bundles are not imported by production and have no live shadow ledger. A prospective observer still must generate reference and candidate probabilities from the same timestamped pregame inputs, keep raw provenance, reject started games and append separate immutable forecasts. No live confidence or pick improvement is claimed. The minimum review sizes remain200 new paired CFB finals and300 NHL finals.
+
+Final-fit entry points: `download_final_nhl.py`, then `fit_final.py --sport cfb` and `fit_final.py --sport nhl` after acquiring the registered historical CFB matchup files. `test_final_bundle.py` checks exact feature order, invalid references, infinite inputs and winner preservation. Final training is not scored as a holdout.
