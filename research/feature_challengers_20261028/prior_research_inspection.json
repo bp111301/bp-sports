@@ -1,0 +1,30 @@
+{
+  "branch": "nhl-v1-research",
+  "commit": "3243b0184eb62925e0dfa09b172212226a03c4f7",
+  "inspection_date_utc": "2026-10-29",
+  "files": [
+    {
+      "path": "research/nhl/download_shot_quality.py",
+      "git_blob_sha": "73e991e9d7ac8156978e265438c5b85b1500b670"
+    },
+    {
+      "path": "research/nhl/experiment_factors.py",
+      "git_blob_sha": "f27c677aa27430dcf81d8f58ab217e06af55571a"
+    },
+    {
+      "path": "research/nhl/results/factor_tournament.json",
+      "git_blob_sha": "8b972d3cf37fbb291ec25f66a17198dc3e70f4b9"
+    }
+  ],
+  "shot_quality": [
+    {
+      "candidate": "shot_quality_exploratory",
+      "accuracy": 0.6133765243902439,
+      "brier": 0.2315859791348021,
+      "log_loss": 0.6550271840541073,
+      "eligible": false,
+      "exploratory": true
+    }
+  ],
+  "historical_model_vintage_verified": false
+}
