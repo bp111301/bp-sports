@@ -1,0 +1,15 @@
+# CFB reference-confidence anchor experiment — 2026-10-29
+
+Register after the fixed descriptive failure audit and before computing this candidate's metrics. The underlying cat_d5_l2_5_halfblend failed the original season-consistency gate. Diagnostics showed its changed picks fixed144 reference errors and broke114 correct picks (+30 wins); confidence changes on unchanged picks caused the net Brier deterioration in2018,2020 and2024. All reused historical evidence and this adaptive motivation are disclosed. This is not a new independent holdout.
+
+## Exactly one candidate, no fitting or weight search
+Let r be the original control's home probability and q the already archived cat_d5_l2_5_halfblend probability. If (r>=.5)==(q>=.5), output r. Otherwise output q. This keeps EVERY underlying challenger winner and preserves the EXACT reference probability on unchanged picks. No outcomes, season labels, missingness labels, team IDs or game-specific exclusions enter the transform. No epsilon cap, temperature, calibration, optional blend weight, threshold search or alternative recipe. Invalid probabilities fail.
+
+Use the same5,733 games in2018–2025 and the same archived labels/control as the structural tournament, joined exactly by game/season. Use existing archived out-of-fold predictions only, with training_max_season strictly before test season. No2026 outcome enters selection or fitting. All prior failed recipes remain failed.
+
+## Unchanged joint qualification
+Accuracy gain>=.5 percentage points; strictly lower overall Brier AND logloss; fixed50/60/70/80/90/100 confidence ECE no worse; Brier improves in>=5/8 seasons; recent2023–2025 accuracy, Brier and logloss all preserved. Record every check, per-season and recent scores, confidence buckets/support/Wilson intervals and paired season/week block-bootstrap accuracy difference intervals2000 draws seed20261028. Intervals are descriptive and not adjusted for repeated/adaptive research. Declare failed if any check fails. No gate change after results.
+
+Only if eligible: separately fit the exact structural CatBoost depth5/l2_leaf_reg5 recipe (original structural protocol,400 iterations/.03 learning rate/Ordered/has_time/seed20261028, train-only median numeric imputation and no indicators) once on2015–2025, freeze/hash it and all features/dependencies, and verify reload. Proposed q remains .5 fresh frozen reference + .5 raw CatBoost probability; then apply this registered anchor. Do not refit the original reference. Future inference must reconstruct all registered raw structural features with the same recipe, including corrected postseason week8, while preserving original V1 inputs.
+
+An eligible research winner challenger may only enter a separate immutable prospective shadow: identical timestamped raw inputs for its fresh frozen reference and challenger, no started-game backfill, separate append-only final settlements, at least200 NEW paired settled CFB games before promotion review. No production pick, displayed confidence, original weight, historical evaluation or original forecast changes. Passing this development gate is not proof of better live accuracy.
