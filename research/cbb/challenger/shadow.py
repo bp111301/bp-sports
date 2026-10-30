@@ -11,6 +11,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 import develop as v1
 from evaluate_holdout import predict_bundle
 from prospective import targets, grade, confirmed
+from live_schedule import supplement
 from run import VARIANTS, prospective_extra_features
 from shadow_data import load_history, load_season
 
@@ -147,6 +148,9 @@ def main():
     expected_control=bundle.get('control_bundle_sha256')
     if expected_control!=identities['control']:raise ValueError('Frozen V1 control changed')
     schedule,source=v1.fetch(2027,'schedule',cache,refresh=True)
+    existing_path=Path(args.output)/'paired_ledger.json'
+    existing=json.loads(existing_path.read_text()) if existing_path.exists() else []
+    schedule,source=supplement(schedule,source,pd.Timestamp.now(tz='UTC'),[p['control'] for p in existing])
     now=pd.Timestamp.now(tz='UTC');upcoming,coverage,excluded=targets(schedule,now)
     active=in_capture_window(upcoming,now)
     needed=upcoming if args.preflight else active

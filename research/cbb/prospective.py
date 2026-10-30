@@ -9,6 +9,7 @@ import numpy as np
 import pandas as pd
 from develop import FEATURES, build_features, fetch, ident, season_games
 from evaluate_holdout import predict_bundle
+from live_schedule import supplement
 
 
 def confirmed(value):return str(value).lower() in ('true','1')
@@ -104,11 +105,14 @@ def main():
     if bundle['status']!='passed_historical_gate_pending_live_validation' or not all(report['gate_checks'].values()):raise ValueError('Candidate did not pass historical gate')
     if bundle['evaluation_lock_sha256']!=hashlib.sha256((root/'EVALUATION_LOCK.json').read_bytes()).hexdigest():raise ValueError('Evaluation lock changed')
     schedule,source=fetch(2027,'schedule',cache,refresh=True)
+    saved_path=Path(args.output)/'prediction_ledger.json'
+    pending=json.loads(saved_path.read_text()) if saved_path.exists() else []
+    schedule,source=supplement(schedule,source,now,pending)
     upcoming,coverage,excluded=targets(schedule,now,args.horizon_days)
     with ThreadPoolExecutor(max_workers=4) as pool:seasons=list(pool.map(lambda y:season_games(y,cache),range(2020,2027)))
     history=[g for games,_ in seasons for g in games]
     # Once the season begins, refresh current-season final boxes before state updates.
-    if schedule.status_type_name.eq('STATUS_FINAL').any():
+    if ((schedule.season_type==2)&schedule.status_type_name.eq('STATUS_FINAL')).any():
         fetch(2027,'box',cache,refresh=True)
         current,_=season_games(2027,cache);history+=current
     now=pd.Timestamp.now(tz='UTC')
