@@ -2,19 +2,19 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-10-30T01:41:31.343226+00:00",
+  "updated_at_utc": "2026-10-30T07:15:29.464741+00:00",
   "coverage": {
-    "source_games_in_horizon": 1579
+    "source_games_in_horizon": 1582
   },
   "excluded": {
-    "division_or_conference_unknown": 371,
-    "tipoff_time_unconfirmed": 46
+    "division_or_conference_unknown": 372,
+    "tipoff_time_unconfirmed": 47
   },
   "grading_issues": [],
   "summary": {
-    "saved_games": 1163,
+    "saved_games": 1164,
     "settled_games": 0,
-    "pending_games": 1163,
+    "pending_games": 1164,
     "wins": 0,
     "losses": 0,
     "accuracy": null,
@@ -39560,6 +39560,40 @@
         "orb_rate_diff": 0.03679841815112894,
         "ft_rate_diff": 0.07949558645754884,
         "pace_diff": 2.6402083333333337,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0
+      }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401917551",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401917551",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "28",
+      "away_team_id": "2351",
+      "home_team": "UC San Diego Tritons",
+      "away_team": "Loyola Marymount Lions",
+      "neutral_site": false,
+      "start_time_utc": "2026-11-29T03:00:00+00:00",
+      "created_at_utc": "2026-10-30T07:15:29.464741+00:00",
+      "home_win_prob": 0.7871543878531788,
+      "predicted_winner": "UC San Diego Tritons",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "a37f1dec440df6b9e836e1d780ea3203d8bc29e9694f20382a6d820cbc1e6626",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": 106.5416275545956,
+        "home_advantage": 1.0,
+        "off_eff_diff": 1.7835459183750686,
+        "def_eff_diff": -4.096527947059855,
+        "efg_diff": 0.008494248498371881,
+        "tov_rate_diff": -0.010333575486134977,
+        "orb_rate_diff": -0.008889070255167497,
+        "ft_rate_diff": 0.003966714758075918,
+        "pace_diff": 0.8341985887096541,
         "rest_diff": 0.0,
         "experience_diff": 0.0
       }
