@@ -1,22 +1,25 @@
 {
-  "checked_at_utc": "2026-10-30T11:01:00.963769+00:00",
+  "checked_at_utc": "2026-10-30T12:00:05.622714+00:00",
   "sports": {
+    "cfb": {
+      "supported_future_games": 62,
+      "new_targets": 0,
+      "unsupported_fbs_fcs_future_games": 0,
+      "dropped_crossed_publish_margin": 0,
+      "new_paired_forecasts": 0,
+      "new_settlements": 0
+    },
     "nhl": {
-      "supported_future_games": 11,
-      "new_targets": 2,
+      "supported_future_games": 12,
+      "new_targets": 1,
       "completed_current_games": 213,
       "official_count_fallback_game_ids": [],
       "dropped_crossed_publish_margin": 0,
-      "new_paired_forecasts": 2,
+      "new_paired_forecasts": 1,
       "new_settlements": 0
     }
   },
-  "errors": [
-    {
-      "sport": "cfb",
-      "error": "ValueError: Invalid completed CFB strength history"
-    }
-  ],
+  "errors": [],
   "frozen_sources": {
     "verified_original_inputs": 25,
     "restored_runtime_inputs": 0,
