@@ -23,7 +23,7 @@ jobs:
           python-version: '3.12'
       - run: pip install -r research/cbb/requirements.txt
       - name: Verify leakage, capture and grading rules
-        run: python -m pytest -q research/cbb/test_develop.py research/cbb/test_holdout.py research/cbb/test_prospective.py
+        run: python -m pytest -q research/cbb/test_develop.py research/cbb/test_holdout.py research/cbb/test_prospective.py research/cbb/test_live_schedule.py
       - uses: actions/cache@v4
         with:
           path: runtime/cbb
@@ -53,7 +53,7 @@ jobs:
           python-version: '3.12'
       - run: pip install -r research/cbb/challenger/requirements.txt
       - name: Verify paired capture, frozen inference and leakage rules
-        run: python -m pytest -q research/cbb/test_develop.py research/cbb/test_holdout.py research/cbb/test_prospective.py research/cbb/challenger/test_challenger.py research/cbb/challenger/test_shadow.py
+        run: python -m pytest -q research/cbb/test_develop.py research/cbb/test_holdout.py research/cbb/test_prospective.py research/cbb/test_live_schedule.py research/cbb/challenger/test_challenger.py research/cbb/challenger/test_shadow.py
       - uses: actions/cache/restore@v4
         id: shadow-cache
         with:
