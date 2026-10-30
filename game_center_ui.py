@@ -1,11 +1,12 @@
 """Shared scores, preferences and probability guidance for the web UI."""
-UI_REVISION="confidence-evidence-20261028"
+UI_REVISION="direct-live-scores-20261029"
 import html,json
 from pathlib import Path
 from urllib.request import Request,urlopen
 import pandas as pd
 import streamlit as st
 from game_status import matches,display_state,score
+from live_scores import collect_scores
 from preview_data import game_id,team,stamp
 ROOT=Path(__file__).parent
 STATUS_URL='https://raw.githubusercontent.com/bp111301/bp-sports/main/data/game_status.json'
@@ -15,10 +16,12 @@ def esc(x):return html.escape(str(x),quote=True)
 @st.cache_data(ttl=60)
 def load_scores():
     try:
-        with urlopen(Request(STATUS_URL,headers={'User-Agent':'BP-Sports-Scores/1.0'}),timeout=6) as response:return json.loads(response.read(4*1024*1024))
+        minute=int(pd.Timestamp.now(tz='UTC').timestamp())//60
+        with urlopen(Request(STATUS_URL+'?minute='+str(minute),headers={'User-Agent':'BP-Sports-Scores/1.0','Cache-Control':'no-cache'}),timeout=6) as response:archive=json.loads(response.read(4*1024*1024))
     except Exception:
-        try:return json.loads((ROOT/'data/game_status.json').read_text())
-        except (OSError,ValueError):return {}
+        try:archive=json.loads((ROOT/'data/game_status.json').read_text())
+        except (OSError,ValueError):archive={}
+    return collect_scores(archive)
 
 def context(sport,gid,home,away,feed=None):
     r=(load_scores() if feed is None else feed).get('games',{}).get(sport+':'+game_id(gid))
@@ -182,7 +185,9 @@ def score_freshness(feed,now=None):
 def render_score_refresh():
     feed=load_scores();stamp_value=feed.get('updated_at_utc');old=st.session_state.get('bp_score_version');st.session_state['bp_score_version']=stamp_value
     if old and stamp_value and old!=stamp_value:
-        st.cache_data.clear();st.rerun()
+        # Keep the fresh 60-second score cache across the full app rerun.
+        # Clearing it here would refetch and change the timestamp indefinitely.
+        st.rerun()
     if st.button('Refresh',key='bp_refresh_scores',use_container_width=True):
         st.cache_data.clear();st.rerun()
     label,state,at=score_freshness(feed)

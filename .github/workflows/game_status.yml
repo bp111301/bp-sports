@@ -2,7 +2,7 @@ name: Refresh game scores and status
 on:
   push:
     branches: [main]
-    paths: ['.github/workflows/game_status.yml', 'pipeline/build_game_status.py', 'game_status.py', 'tests/test_game_center.py']
+    paths: ['.github/workflows/game_status.yml', 'pipeline/build_game_status.py', 'game_status.py', 'live_scores.py', 'game_center_ui.py', 'preview_data.py', 'tests/test_game_center.py', 'tests/test_live_scores.py']
   workflow_dispatch:
   schedule:
     - cron: '2-57/5 * * * *'
@@ -14,16 +14,17 @@ concurrency:
 jobs:
   refresh:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: pip install -r requirements.txt requests pytest
       - name: Check score validation and presentation rules
-        run: python -m pytest -q tests/test_game_center.py
-      - name: Refresh presentation-only scores
-        run: python pipeline/build_game_status.py
+        run: python -m pytest -q tests/test_game_center.py tests/test_live_scores.py
       - name: Save score feed only
         run: |
           git config user.name 'bp-sports-bot'

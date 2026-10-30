@@ -23,12 +23,12 @@ def targets():
             if pd.isna(start):start=r.get('kickoff_utc')
             if sport=='NFL':start=previews.get(key,{}).get('start_time_utc')
             rows.append(dict(sport=sport,game_id=game_id(r['game_id']),home_team=r['home_team'],away_team=r['away_team'],start_time_utc=start))
-    for sport,branch,path in [('NHL','nhl-v1-research','data/nhl/v2_research/prediction_ledger.csv'),('NBA','nba-v1-research','data/nba/prospective/dashboard.json')]:
+    for sport,branch,path in [('NHL','nhl-v1-research','data/nhl/v2_research/prediction_ledger.csv'),('NBA','nba-v1-research','data/nba/prospective/dashboard.json'),('CBB','cbb-v1-research','data/cbb/prospective/dashboard.json')]:
         try:
             response=get(RAW+branch+'/'+path)
             if sport=='NHL':data=pd.read_csv(io.StringIO(response.text)).drop_duplicates('game_id').to_dict('records')
             else:
-                feed=response.json();data=[r for r in feed.get('predictions',[]) if r.get('season_type')==2] if feed.get('feed_status')=='enabled' else []
+                feed=response.json();data=[r for r in feed.get('predictions',[]) if r.get('season_type')==2] if feed.get('feed_status') in ('enabled','research_preview') else []
             rows.extend({**r,'sport':sport,'game_id':game_id(r['game_id'])} for r in data)
         except Exception as e:errors.append(sport+' forecast list unavailable: '+type(e).__name__)
     return rows,errors
@@ -38,10 +38,10 @@ def build():
     for r in rows:
         key=r['sport']+':'+r['game_id'];cached=saved.get(key)
         if matches(cached,r['sport'],r['home_team'],r['away_team']) and cached['state']=='final':continue
-        if pd.notna(stamp(r['start_time_utc'])):work.append(r)
+        if pd.notna(stamp(r['start_time_utc'])) and stamp(r['start_time_utc'])<=now+pd.Timedelta(hours=36):work.append(r)
     def fetch(item):
-        sport,day=item;league={'NFL':'football/nfl','CFB':'football/college-football','NBA':'basketball/nba'}[sport]
-        url=f'https://site.api.espn.com/apis/site/v2/sports/{league}/scoreboard?dates={day}&limit=1000'+('&groups=80' if sport=='CFB' else '')
+        sport,day=item;league={'NFL':'football/nfl','CFB':'football/college-football','NBA':'basketball/nba','CBB':'basketball/mens-college-basketball'}[sport]
+        url=f'https://site.api.espn.com/apis/site/v2/sports/{league}/scoreboard?dates={day}&limit=1000'+('&groups=80' if sport=='CFB' else '&groups=50' if sport=='CBB' else '')
         try:return sport,[g for e in get(url).json().get('events',[]) if (g:=espn_game(sport,e,checked))],None
         except Exception as e:return sport,[],sport+' '+day+' status unavailable: '+type(e).__name__
     dates=sorted({(r['sport'],stamp(r['start_time_utc']).tz_convert('America/New_York').strftime('%Y%m%d')) for r in work if r['sport']!='NHL'})
@@ -59,12 +59,12 @@ def build():
             if g:fresh['NHL:'+g['game_id']]=g
     # Daily scoreboards can omit unranked or distant scheduled games. Resolve missing IDs directly.
     def detail(r):
-        league={'CFB':'football/college-football','NBA':'basketball/nba'}[r['sport']]
+        league={'CFB':'football/college-football','NBA':'basketball/nba','CBB':'basketball/mens-college-basketball'}[r['sport']]
         try:
             header=get(f'https://site.api.espn.com/apis/site/v2/sports/{league}/summary?event={r["game_id"]}').json().get('header',{})
             return espn_game(r['sport'],header,checked),None
         except Exception as e:return None,r['sport']+' '+r['game_id']+' detail unavailable: '+type(e).__name__
-    missing=[r for r in work if r['sport'] in ('CFB','NBA') and r['sport']+':'+r['game_id'] not in fresh]
+    missing=[r for r in work if r['sport'] in ('CFB','NBA','CBB') and r['sport']+':'+r['game_id'] not in fresh]
     with ThreadPoolExecutor(max_workers=8) as pool:
         for g,error in pool.map(detail,missing):
             if error:errors.append(error)

@@ -21,11 +21,12 @@ def espn_game(sport,event,checked):
         for word in ('postponed','canceled','cancelled','delayed','suspended'):
             if word.upper() in name:state='canceled' if word=='cancelled' else word
         def identity(side):
-            v=t[side]['team'];return team(sport,v.get('location',v.get('displayName'))) if sport=='CFB' else team(sport,v['abbreviation'])
+            v=t[side]['team'];return team(sport,v.get('location',v.get('displayName'))) if sport=='CFB' else team(sport,v['displayName']) if sport=='CBB' else team(sport,v['abbreviation'])
         h,a=score(t['home'].get('score')),score(t['away'].get('score'))
         if state=='scheduled':h=a=None
         if state=='final' and (h is None or a is None):return None
-        return dict(game_id=game_id(event['id']),sport=sport,home_team=identity('home'),away_team=identity('away'),start_time_utc=stamp(c['date']).isoformat(),state=state,home_score=h,away_score=a,detail=str(s.get('shortDetail',s.get('description',''))),checked_at_utc=checked,source_url=f'https://www.espn.com/{"college-football" if sport=="CFB" else sport.lower()}/game/_/gameId/{event["id"]}')
+        route={'CFB':'college-football','CBB':'mens-college-basketball'}.get(sport,sport.lower())
+        return dict(game_id=game_id(event['id']),sport=sport,home_team=identity('home'),away_team=identity('away'),start_time_utc=stamp(c['date']).isoformat(),state=state,home_score=h,away_score=a,detail=str(s.get('shortDetail',s.get('description',''))),checked_at_utc=checked,source_url=f'https://www.espn.com/{route}/game/_/gameId/{event["id"]}')
     except (KeyError,ValueError,TypeError,IndexError):return None
 
 def nhl_game(payload,checked):

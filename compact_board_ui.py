@@ -179,7 +179,7 @@ def render_compact(sport):
         with st.expander('Schedule coverage'):
             excluded = (cbb or {}).get('excluded',{})
             st.write(f"Partial schedule: {excluded.get('tipoff_time_unconfirmed',0)} source games await confirmed tipoff times; {excluded.get('division_or_conference_unknown',0)} have unknown eligibility.")
-    st.caption('Scores use the existing periodic feed. A source final may appear before grading; saved probabilities stay unchanged.')
+    st.caption('Scores check live sources about every minute while the app is open. A final score may appear before the separate grading check.')
 
 def render_compact_styles():
     st.markdown('''<style>

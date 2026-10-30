@@ -1,4 +1,5 @@
 import importlib
+import sys
 import json
 import html
 import io
@@ -10,7 +11,11 @@ from matchup_preview_ui import render_preview
 from matchup_details_ui import details_button
 from cfb_board_ui import dated_board, date_choices, games_on_date, date_label
 import game_center_ui
-if getattr(game_center_ui,"UI_REVISION",None)!="confidence-evidence-20261028":importlib.reload(game_center_ui)
+if getattr(game_center_ui,"UI_REVISION",None)!="direct-live-scores-20261029":
+    importlib.reload(game_center_ui)
+    # Rebind score-loader imports retained by an existing Streamlit process.
+    for name in ('overview_ui','compact_board_ui','nhl_ui','nba_ui'):
+        if name in sys.modules:importlib.reload(sys.modules[name])
 from game_center_ui import render_preferences, filter_favorites, score_html, confidence_html, render_score_refresh, render_header, render_host_chrome, board_route, render_information
 
 st.set_page_config(
