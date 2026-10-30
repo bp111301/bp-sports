@@ -1,4 +1,5 @@
 """Read-only NFL availability context and explicitly labeled pregame refreshes."""
+UI_REVISION='shared-availability-20261030'
 import html,json
 from urllib.request import Request,urlopen
 import pandas as pd

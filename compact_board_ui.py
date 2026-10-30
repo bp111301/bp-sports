@@ -7,7 +7,7 @@ from game_center_ui import load_scores, context, filter_favorites
 from game_status import display_state, score
 from matchup_details_ui import details_button, game_tile
 
-UI_REVISION = 'compact-board-20261013'
+UI_REVISION = 'fast-compact-20261030'
 def esc(value): return html.escape(str(value), quote=True)
 
 def prepare_compact(sport, payload, score_feed, now, cbb=None):

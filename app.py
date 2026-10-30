@@ -230,7 +230,9 @@ sport = st.radio("Sport", ["Overview", "NFL", "CFB", "NHL", "NBA", "CBB"], horiz
 
 def current_ui(module):
     # Streamlit can retain imported modules during a deployment rerun. Reload once per UI revision.
-    expected="fast-navigation-20261030" if module.__name__=='overview_ui' else "confidence-evidence-20261028b" if module.__name__=='nhl_ui' else "mobile-layout-20261007"
+    expected={'overview_ui':'fast-navigation-20261030','compact_board_ui':'fast-compact-20261030',
+              'cbb_ui':'cbb-shared-feed-20261030','nfl_availability_ui':'shared-availability-20261030',
+              'nhl_ui':'confidence-evidence-20261028b'}.get(module.__name__,'mobile-layout-20261007')
     if getattr(module,"UI_REVISION",None)!=expected:module=importlib.reload(module)
     return module
 
@@ -239,6 +241,8 @@ with st.container(key='bp_toolbar'):
     with refresh:render_score_refresh()
     with options:render_preferences(TEAM_NAMES)
 
+import overview_ui,compact_board_ui,cbb_ui,nfl_availability_ui
+for module in (overview_ui,cbb_ui,nfl_availability_ui,compact_board_ui):current_ui(module)
 from compact_board_ui import render_compact, render_compact_styles
 render_compact_styles()
 board_view = "Detailed"
