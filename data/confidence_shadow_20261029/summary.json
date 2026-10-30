@@ -1,20 +1,31 @@
 {
   "version": "confidence_shadow_20261029",
-  "as_of_utc": "2026-10-30T03:06:58.764465+00:00",
+  "as_of_utc": "2026-10-30T04:07:43.300235+00:00",
   "status": "prospective_confidence_research_only",
   "comparison": "fresh reference and confidence challenger on the same captured inputs; original first forecasts unchanged",
   "results": {
     "cfb": {
-      "captured_games": 63,
-      "paired_settled_games": 0,
-      "pending_games": 63,
+      "captured_games": 64,
+      "paired_settled_games": 2,
+      "pending_games": 62,
       "required_new_paired_finals_before_review": 200,
       "minimum_review_sample_reached": false,
       "production_promoted": false,
       "metrics": {
         "reference": {
           "overall": {
-            "games": 0
+            "games": 2,
+            "wins": 1,
+            "losses": 1,
+            "accuracy": 0.5,
+            "mean_confidence": 0.9147539488044686,
+            "confidence_minus_accuracy": 0.4147539488044686,
+            "accuracy_ci95": [
+              0.09453120573423074,
+              0.9054687942657693
+            ],
+            "brier": 0.4350516253682946,
+            "log_loss": 1.3645393408338933
           },
           "buckets": [
             {
@@ -46,18 +57,40 @@
               "limited_sample": true
             },
             {
-              "games": 0,
+              "games": 2,
+              "wins": 1,
+              "losses": 1,
+              "accuracy": 0.5,
+              "mean_confidence": 0.9147539488044686,
+              "confidence_minus_accuracy": 0.4147539488044686,
+              "accuracy_ci95": [
+                0.09453120573423074,
+                0.9054687942657693
+              ],
+              "brier": 0.4350516253682946,
+              "log_loss": 1.3645393408338933,
               "bucket": "90%\u2013100%",
               "lower": 0.9,
               "upper": 1,
               "limited_sample": true
             }
           ],
-          "ece": 0.0
+          "ece": 0.4147539488044686
         },
         "confidence_challenger": {
           "overall": {
-            "games": 0
+            "games": 2,
+            "wins": 1,
+            "losses": 1,
+            "accuracy": 0.5,
+            "mean_confidence": 0.9184639841738436,
+            "confidence_minus_accuracy": 0.41846398417384356,
+            "accuracy_ci95": [
+              0.09453120573423074,
+              0.9054687942657693
+            ],
+            "brier": 0.4294018872096948,
+            "log_loss": 1.3251175506886277
           },
           "buckets": [
             {
@@ -89,14 +122,25 @@
               "limited_sample": true
             },
             {
-              "games": 0,
+              "games": 2,
+              "wins": 1,
+              "losses": 1,
+              "accuracy": 0.5,
+              "mean_confidence": 0.9184639841738436,
+              "confidence_minus_accuracy": 0.41846398417384356,
+              "accuracy_ci95": [
+                0.09453120573423074,
+                0.9054687942657693
+              ],
+              "brier": 0.4294018872096948,
+              "log_loss": 1.3251175506886277,
               "bucket": "90%\u2013100%",
               "lower": 0.9,
               "upper": 1,
               "limited_sample": true
             }
           ],
-          "ece": 0.0
+          "ece": 0.41846398417384356
         }
       }
     },
