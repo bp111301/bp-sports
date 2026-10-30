@@ -6,11 +6,10 @@ import streamlit as st
 
 URL='https://raw.githubusercontent.com/bp111301/bp-sports/main/data/current/nfl_availability.json'
 
-@st.cache_data(ttl=60)
 def load_availability():
-    try:
-        with urlopen(Request(URL,headers={'User-Agent':'BP-Sports-Availability/1.0'}),timeout=8) as response:return json.loads(response.read(4*1024*1024))
-    except Exception:return {}
+    from overview_ui import load_overview
+    source=load_overview().get('nfl_availability',{})
+    return (source.get('data') or {}) if source.get('ok') else {}
 
 def context_for(game_id,payload=None):return (load_availability() if payload is None else payload).get('games',{}).get(str(game_id),{})
 def stamp(value):return pd.to_datetime(value,utc=True,errors='coerce')

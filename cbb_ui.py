@@ -6,7 +6,7 @@ import pandas as pd
 import streamlit as st
 
 FEED_URL = 'https://raw.githubusercontent.com/bp111301/bp-sports/cbb-v1-research/data/cbb/prospective/dashboard.json'
-UI_REVISION = 'cbb-board-20261013'
+UI_REVISION = 'cbb-shared-feed-20261030'
 
 def team_block(name, home=False):
     from college_team_ui import college_abbreviation
@@ -36,16 +36,12 @@ def card_html(row):
       <div class="layer-note">Saved {captured}</div>
     </div>'''
 
-@st.cache_data(ttl=60)
 def load_feed():
-    try:
-        with urlopen(Request(FEED_URL, headers={'User-Agent': 'BP-Sports-CBB-UI/1.0'}), timeout=8) as response:
-            feed = json.loads(response.read(4*1024*1024))
-        if feed.get('feed_status') != 'research_preview' or not isinstance(feed.get('predictions'), list):
-            return None
-        return feed
-    except (OSError, ValueError):
-        return None
+    from overview_ui import load_overview
+    source=load_overview().get('cbb',{})
+    feed=source.get('data') or {}
+    if source.get('ok') and feed.get('feed_status')=='research_preview' and isinstance(feed.get('predictions'),list):return feed
+    return None
 
 def board_rows(feed):
     rows = pd.DataFrame(feed.get('predictions', []))

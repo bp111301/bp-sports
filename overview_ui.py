@@ -1,5 +1,5 @@
 """Read-only cross-sport prospective dashboard. Parallel experiments stay separate."""
-UI_REVISION="cbb-overview-20261024"
+UI_REVISION="fast-navigation-20261030"
 from concurrent.futures import ThreadPoolExecutor
 from urllib.request import Request,urlopen
 import io,json,math,html
@@ -14,6 +14,7 @@ from matchup_details_ui import game_tile, details_button
 RAW='https://raw.githubusercontent.com/bp111301/bp-sports/'
 SOURCES={
  'nfl':('main','data/ledger/prediction_ledger.csv'), 'nfl_update':('main','data/current/prediction_metadata.json'),
+ 'nfl_availability':('main','data/current/nfl_availability.json'),
  'cfb':('main','data/cfb/ledger/prediction_ledger.csv'), 'cfb_update':('main','data/cfb/current/metadata.json'),
  'shadow':('main','data/cfb/v2_shadow/verified_prediction_ledger.csv'), 'shadow_update':('main','data/cfb/v2_shadow/metadata.json'),
  'nhl':('nhl-v1-research','data/nhl/v2_research/prediction_ledger.csv'), 'nhl_update':('nhl-v1-research','data/nhl/v2_research/summary.json'),
@@ -32,7 +33,13 @@ COLUMNS=['game_id','sport','group','home','away','p','created','start','settled'
 
 def esc(value):return html.escape(str(value),quote=True)
 def flag(value):return str(value).lower() in ('true','1','1.0','yes')
-def ts(value):return pd.to_datetime(value,utc=True,errors='coerce')
+def ts(value):
+    # Scalar ISO timestamps don't need pandas' array-format inference on every row.
+    try:
+        value=pd.Timestamp(value)
+        if pd.isna(value):return pd.NaT
+        return value.tz_localize('UTC') if value.tzinfo is None else value.tz_convert('UTC')
+    except (ValueError,TypeError,OverflowError):return pd.NaT
 
 def fetch_source(item):
     key,(branch,path)=item
@@ -47,7 +54,7 @@ def fetch_source(item):
         return key,dict(ok=True,data=value)
     except Exception:return key,dict(ok=False,data=None)
 
-@st.cache_data(ttl=120)
+@st.cache_data(ttl=120,refresh_mode='background',show_spinner=False)
 def load_overview():
     with ThreadPoolExecutor(max_workers=8) as pool:return dict(pool.map(fetch_source,SOURCES.items()))
 

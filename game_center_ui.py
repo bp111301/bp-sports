@@ -1,5 +1,5 @@
 """Shared scores, preferences and probability guidance for the web UI."""
-UI_REVISION="direct-live-scores-20261029"
+UI_REVISION="background-refresh-20261030"
 import html,json
 from pathlib import Path
 from urllib.request import Request,urlopen
@@ -13,7 +13,7 @@ STATUS_URL='https://raw.githubusercontent.com/bp111301/bp-sports/main/data/game_
 
 def esc(x):return html.escape(str(x),quote=True)
 
-@st.cache_data(ttl=60)
+@st.cache_data(ttl=60,refresh_mode='background',show_spinner=False)
 def load_scores():
     try:
         minute=int(pd.Timestamp.now(tz='UTC').timestamp())//60
@@ -181,7 +181,7 @@ def score_freshness(feed,now=None):
     state='delayed' if minutes>30 else 'partial' if feed.get('errors') else 'current'
     return 'Scores checked '+age,state,when.tz_convert('America/Chicago').strftime('%b %-d · %-I:%M %p CT')
 
-@st.fragment(run_every='60s')
+@st.fragment(run_every='5s')
 def render_score_refresh():
     feed=load_scores();stamp_value=feed.get('updated_at_utc');old=st.session_state.get('bp_score_version');st.session_state['bp_score_version']=stamp_value
     if old and stamp_value and old!=stamp_value:

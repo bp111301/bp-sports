@@ -11,7 +11,10 @@ UI_REVISION = 'compact-board-20261013'
 def esc(value): return html.escape(str(value), quote=True)
 
 def prepare_compact(sport, payload, score_feed, now, cbb=None):
-    board, available, _ = prepare(payload, now)
+    # A sport switch must not normalize every other sport and research experiment.
+    key={'NFL':'nfl','CFB':'cfb','NHL':'nhl','NBA':'nba'}.get(sport)
+    selected={key:payload[key]} if key in payload else {}
+    board, available, _ = prepare(selected, now)
     board = board[(board.sport == sport) & (board.group == PRIMARY.get(sport))].copy()
     if sport == 'NFL':
         ties = []
@@ -39,6 +42,7 @@ def prepare_compact(sport, payload, score_feed, now, cbb=None):
             if settled and (y not in (0,1) or start > now): continue
             records.append(row(r['game_id'],sport,'cbb',r['home_team'],r['away_team'],p,created,start,settled,y,r))
         board = pd.DataFrame(records,columns=COLUMNS)
+    board['start']=pd.to_datetime(board.start,utc=True,errors='coerce')
     for index, r in board.iterrows():
         status = context(sport,r.game_id,r.home,r.away,score_feed)
         start = ts(status.get('start_time_utc')) if status else r.start
