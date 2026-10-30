@@ -69,6 +69,9 @@ def test_id_mapping_does_not_cross_game_dates_or_reverse_teams_or_regress_finals
     final={**game,'state':'final'}
     assert merge_games({'NFL:1':final},[game])['NFL:1']==final
     assert espn_game('CBB',event(sport='CBB',season=1),NOW.isoformat()) is None
+    hockey={**game,'sport':'NHL','game_id':'hockey','home_team':'DET','away_team':'CHI'}
+    basketball={**hockey,'sport':'NBA','game_id':'basketball','home_score':100}
+    assert merge_games({'NBA:basketball':basketball},[hockey])['NBA:basketball']==basketball
 
 
 def test_omitted_college_game_is_resolved_by_id_and_wrong_teams_are_rejected():

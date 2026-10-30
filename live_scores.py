@@ -30,6 +30,8 @@ def merge_games(saved, fresh):
         keys = [g['sport']+':'+g['game_id']]
         if g['sport'] in ('NFL', 'NHL'):
             for key, old in saved.items():
+                if old.get('sport')!=g['sport']:
+                    continue
                 if not matches(g, g['sport'], old.get('home_team'), old.get('away_team')):
                     continue
                 old_start, new_start = stamp(old.get('start_time_utc')), stamp(g['start_time_utc'])
