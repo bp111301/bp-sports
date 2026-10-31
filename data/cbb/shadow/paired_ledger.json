@@ -1,1 +1,89 @@
-[]
+[
+  {
+    "game_id": "401920982",
+    "identities": {
+      "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+      "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+    },
+    "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+    "roster_context": {
+      "home_known": false,
+      "away_known": false,
+      "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+    },
+    "feature_state_as_of_utc": "2026-10-31T19:09:00.190720+00:00",
+    "control": {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401920982",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401920982",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "222",
+      "away_team_id": "87",
+      "home_team": "Villanova Wildcats",
+      "away_team": "Notre Dame Fighting Irish",
+      "neutral_site": true,
+      "start_time_utc": "2026-11-01T14:30:00+00:00",
+      "created_at_utc": "2026-10-31T19:09:00.190720+00:00",
+      "home_win_prob": 0.7770386889406543,
+      "predicted_winner": "Villanova Wildcats",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "c07a238c022c7ff9b081eaeca8c016807a8cf1e382266ccaadf85860ef07373b",
+      "features": {
+        "elo_diff": 133.7896859397615,
+        "home_advantage": 0.0,
+        "off_eff_diff": 5.424205406543905,
+        "def_eff_diff": -5.78641889093565,
+        "efg_diff": 0.015109788165934002,
+        "tov_rate_diff": -0.018882411001183985,
+        "orb_rate_diff": 0.008229693773342261,
+        "ft_rate_diff": -0.030417314343074153,
+        "pace_diff": -0.5192918346774178,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0
+      }
+    },
+    "challenger": {
+      "prediction_id": "CBB_SHADOW_COMBINED_20261016:401920982",
+      "model_version": "CBB_SHADOW_COMBINED_20261016",
+      "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+      "game_id": "401920982",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "222",
+      "away_team_id": "87",
+      "home_team": "Villanova Wildcats",
+      "away_team": "Notre Dame Fighting Irish",
+      "neutral_site": true,
+      "start_time_utc": "2026-11-01T14:30:00+00:00",
+      "created_at_utc": "2026-10-31T19:09:00.190720+00:00",
+      "home_win_prob": 0.7717658092935229,
+      "predicted_winner": "Villanova Wildcats",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "c07a238c022c7ff9b081eaeca8c016807a8cf1e382266ccaadf85860ef07373b",
+      "features": {
+        "elo_diff": 133.7896859397615,
+        "home_advantage": 0.0,
+        "off_eff_diff": 5.424205406543905,
+        "def_eff_diff": -5.78641889093565,
+        "efg_diff": 0.015109788165934002,
+        "tov_rate_diff": -0.018882411001183985,
+        "orb_rate_diff": 0.008229693773342261,
+        "ft_rate_diff": -0.030417314343074153,
+        "pace_diff": -0.5192918346774178,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0,
+        "adjusted_off_diff": 5.7674834700531505,
+        "adjusted_def_diff": -7.397661178752244,
+        "returning_share_diff": 0.0,
+        "transfer_share_diff": 0.0,
+        "prior_minutes_experience_diff": 0.0,
+        "rotation_known_diff": 0.0
+      }
+    }
+  }
+]
