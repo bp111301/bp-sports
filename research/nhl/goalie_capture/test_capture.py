@@ -1,6 +1,6 @@
 import copy
 import unittest
-from collect import observation,append_observation,available_at,goalie_id,schedule_games,source_rows,timestamp
+from collect import observation,append_observation,available_at,goalie_id,schedule_games,source_rows,timestamp,schedule_time_reconciliation
 
 class CaptureSafety(unittest.TestCase):
     def setUp(self):
@@ -50,5 +50,42 @@ class CaptureSafety(unittest.TestCase):
         self.assertEqual(schedule_games(payload,timestamp('2026-10-06T23:00:00Z')),[])
     def test_wrong_source_date_fails_closed(self):
         with self.assertRaises(ValueError):source_rows({'date':'2026-10-05','data':[]},'2026-10-06')
+    def fallback_fixture(self):
+        game={**self.game,'game_date':'2026-11-01','start_time_utc':'2026-11-01T18:00:00Z'}
+        source={**copy.deepcopy(self.source),**game,'start_time_utc':'2026-11-01T19:00:00Z'}
+        source['home']['source_reported_at_utc']='2026-11-01T15:00:00Z'
+        return game,source
+    def test_fallback_uses_official_start_and_preserves_source_time(self):
+        game,source=self.fallback_fixture();original=copy.deepcopy(source)
+        row=observation(game,source,'home',self.roster,timestamp('2026-11-01T17:00:00Z'),'url','response','snapshot')
+        self.assertTrue(row['confirmed_eligible'])
+        self.assertEqual(row['start_time_utc'],game['start_time_utc'])
+        self.assertEqual(row['source_start_time_utc'],source['start_time_utc'])
+        self.assertIn('fall_back',row['schedule_time_reconciliation'])
+        self.assertEqual(source,original)
+        self.assertIsNone(available_at([row],game['game_id'],'home',timestamp('2026-11-01T18:00:00Z')))
+    def test_fallback_never_extends_pregame_window(self):
+        game,source=self.fallback_fixture()
+        for when in ['2026-11-01T18:00:00Z','2026-11-01T18:30:00Z']:
+            with self.assertRaisesRegex(ValueError,'Post-start'):
+                observation(game,source,'home',self.roster,timestamp(when),'url','response','snapshot')
+    def test_fallback_does_not_relax_confirmation_requirements(self):
+        game,source=self.fallback_fixture()
+        for report in [None,'2026-11-01T18:30:00Z','2026-11-01T15:00:00']:
+            source['home']['source_reported_at_utc']=report
+            row=observation(game,source,'home',self.roster,timestamp('2026-11-01T17:00:00Z'),'url','response','snapshot')
+            self.assertFalse(row['confirmed_eligible'])
+    def test_other_clock_and_identity_mismatches_still_fail(self):
+        game,source=self.fallback_fixture()
+        for field,value in [('start_time_utc','2026-11-01T17:00:00Z'),('start_time_utc','2026-11-01T20:00:00Z'),('home_team','BUF'),('away_team','BOS'),('game_date','2026-11-02')]:
+            bad={**source,field:value}
+            with self.assertRaisesRegex(ValueError,'mismatch'):schedule_time_reconciliation(game,bad)
+        for date in ['2026-10-31','2026-11-02','2026-03-08']:
+            g={**game,'game_date':date,'start_time_utc':date+'T18:00:00Z'}
+            s={**source,'game_date':date,'start_time_utc':date+'T19:00:00Z'}
+            with self.assertRaisesRegex(ValueError,'mismatch'):schedule_time_reconciliation(g,s)
+    def test_exact_time_after_source_correction_needs_no_exception(self):
+        game,source=self.fallback_fixture();source['start_time_utc']=game['start_time_utc']
+        self.assertIsNone(schedule_time_reconciliation(game,source))
 
 if __name__=='__main__':unittest.main()
