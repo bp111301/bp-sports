@@ -73,12 +73,17 @@ def grade(ledger, schedule, now):
         s=indexed.get(r['game_id'])
         if s is None:result.append(r);continue
         start=pd.to_datetime(s['date'],utc=True,errors='coerce')
-        if s['season']!=r['season'] or s['season_type']!=2 or ident(s['home_id'])!=r['home_team_id'] or ident(s['away_id'])!=r['away_team_id']:
+        same_sides=ident(s['home_id'])==r['home_team_id'] and ident(s['away_id'])==r['away_team_id']
+        reversed_sides=(ident(s['home_id'])==r['away_team_id'] and ident(s['away_id'])==r['home_team_id']
+                        and confirmed(r.get('neutral_site',False)) and confirmed(s.get('neutral_site',False)))
+        if s['season']!=r['season'] or s['season_type']!=2 or not (same_sides or reversed_sides):
             issues.append({'game_id':r['game_id'],'reason':'result_identity_mismatch'});result.append(r);continue
         if s['status_type_name']!='STATUS_FINAL' or not confirmed(s['status_type_completed']):result.append(r);continue
         if not confirmed(s.get('time_valid',False)) or pd.isna(start) or pd.Timestamp(r['created_at_utc'])>=start or start>now:
             issues.append({'game_id':r['game_id'],'reason':'final_tipoff_not_verified_after_capture'});result.append(r);continue
         h=pd.to_numeric(s['home_score'],errors='coerce');a=pd.to_numeric(s['away_score'],errors='coerce')
+        # Results must use the saved forecast's orientation, never today's labels.
+        if reversed_sides:h,a=a,h
         if pd.isna(h) or pd.isna(a) or h==a or min(h,a)<0 or not float(h).is_integer() or not float(a).is_integer():
             issues.append({'game_id':r['game_id'],'reason':'invalid_final_scores'});result.append(r);continue
         y=int(h>a);p=r['home_win_prob'];q=min(1-1e-15,max(1e-15,p))

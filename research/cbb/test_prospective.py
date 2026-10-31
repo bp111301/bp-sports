@@ -1,6 +1,7 @@
 import copy
 import numpy as np
 import pandas as pd
+import pytest
 from develop import FEATURES
 from test_develop import game
 from prospective import capture, forecast_features, grade, summary, targets
@@ -68,3 +69,44 @@ def test_grading_requires_final_identity_and_pregame_capture():
     rejected,issues=grade(saved,wrong,final_time);assert rejected==saved and issues
     late=copy.deepcopy(saved);late[0]['created_at_utc']='2026-11-02T21:00Z'
     rejected,issues=grade(late,s,final_time);assert rejected==late and issues
+
+
+@pytest.mark.parametrize('home_points,away_points',[(80,70),(65,78)])
+def test_neutral_reversal_grades_scores_in_saved_orientation(home_points,away_points):
+    saved,_=ledger();saved[0]['neutral_site']=True;original=copy.deepcopy(saved)
+    s=schedule();s.loc[0,['neutral_site','status_type_name','status_type_completed','home_score','away_score']]=[True,'STATUS_FINAL',True,home_points,away_points]
+    normal,issues=grade(saved,s,pd.Timestamp('2026-11-03T04:00Z'));assert not issues
+    reverse=s.copy();reverse.loc[0,['home_id','away_id','home_score','away_score']]=[3,2,away_points,home_points]
+    source_original=reverse.copy(deep=True)
+    graded,issues=grade(saved,reverse,pd.Timestamp('2026-11-03T04:00Z'))
+    assert not issues and graded==normal
+    assert graded[0]['home_score']==home_points and graded[0]['away_score']==away_points
+    assert graded[0]['actual_winner']==('Home' if home_points>away_points else 'Away')
+    assert saved==original
+    pd.testing.assert_frame_equal(reverse,source_original)
+    for key,value in original[0].items():
+        if key!='status':assert graded[0][key]==value
+    assert grade(graded,s,pd.Timestamp('2026-11-04T04:00Z'))[0]==graded
+
+
+def test_neutral_reversal_clears_pending_warning_without_changing_forecast():
+    saved,_=ledger();saved[0]['neutral_site']=True
+    s=schedule();s.loc[0,['neutral_site','home_id','away_id']]=[True,3,2]
+    pending,issues=grade(saved,s,NOW)
+    assert not issues and pending==saved
+
+
+@pytest.mark.parametrize('saved_neutral,source_neutral',[(False,True),(True,False),(True,np.nan),(True,None)])
+def test_reversal_requires_verified_neutral_venue_on_both_sides(saved_neutral,source_neutral):
+    saved,_=ledger();saved[0]['neutral_site']=saved_neutral
+    s=schedule();s['neutral_site']=s['neutral_site'].astype(object);s.loc[0,['neutral_site','home_id','away_id']]=[source_neutral,3,2]
+    pending,issues=grade(saved,s,NOW)
+    assert pending==saved and issues[0]['reason']=='result_identity_mismatch'
+
+
+@pytest.mark.parametrize('field,value',[('home_id',9),('season',2026),('season_type',1)])
+def test_neutral_reversal_still_rejects_different_teams_or_season(field,value):
+    saved,_=ledger();saved[0]['neutral_site']=True
+    s=schedule();s.loc[0,['neutral_site','home_id','away_id']]=[True,3,2];s.loc[0,field]=value
+    pending,issues=grade(saved,s,NOW)
+    assert pending==saved and issues[0]['reason']=='result_identity_mismatch'
