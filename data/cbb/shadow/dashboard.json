@@ -1,6 +1,6 @@
 {
   "status": "shadow_only_not_public",
-  "updated_at_utc": "2026-10-31T01:18:44.251131+00:00",
+  "updated_at_utc": "2026-10-31T07:10:42.207251+00:00",
   "identities": {
     "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
     "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
@@ -36,22 +36,22 @@
     "roster_unknown_pairs": 0
   },
   "coverage": {
-    "source_games_in_horizon": 658
+    "source_games_in_horizon": 659
   },
   "excluded": {
     "tipoff_time_unconfirmed": 182,
-    "division_or_conference_unknown": 138
+    "division_or_conference_unknown": 139
   },
   "coverage_by_day": {
-    "2026-11-29": {
-      "source_games": 2,
-      "eligible": 2,
-      "unconfirmed_tipoff": 0
-    },
     "Unconfirmed source date/time": {
       "source_games": 182,
       "eligible": 0,
       "unconfirmed_tipoff": 182
+    },
+    "2026-11-29": {
+      "source_games": 2,
+      "eligible": 2,
+      "unconfirmed_tipoff": 0
     },
     "2026-11-28": {
       "source_games": 3,
@@ -134,7 +134,7 @@
       "unconfirmed_tipoff": 0
     },
     "2026-11-07": {
-      "source_games": 60,
+      "source_games": 61,
       "eligible": 48,
       "unconfirmed_tipoff": 0
     },
@@ -171,7 +171,7 @@
   },
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "441bcdbb546a9bc75c21f174414d5b9da5967a35497e6709d45eedb096a625e8",
+    "sha256": "c07a238c022c7ff9b081eaeca8c016807a8cf1e382266ccaadf85860ef07373b",
     "bytes": 133319,
     "archive_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
     "live_schedule_sources": [
@@ -217,7 +217,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&groups=50&limit=1000",
-        "sha256": "34220aed8b70e47f8725398cee5b7fa7524b1ad25119812bb36a2a797abad6f9",
+        "sha256": "a9c5fbadab5c276d4e5251e121057eae64f3279ebfac1d758e7483da20bc0ccf",
         "games": 61
       }
     ],
