@@ -1,9 +1,9 @@
 {
-  "as_of_utc": "2026-10-31T05:43:14.304505+00:00",
+  "as_of_utc": "2026-10-31T06:52:53.458209+00:00",
   "status": "collection_only_no_model_changes",
   "new_observations": 0,
   "total_observations": 931,
-  "upcoming_schedule_games": 10,
+  "upcoming_schedule_games": 11,
   "captured_sides": 20,
   "eligible_confirmed_sides": 3,
   "coverage": [
@@ -148,6 +148,17 @@
       "roster_mapping": "unique_exact_normalized_name"
     }
   ],
-  "errors": [],
+  "errors": [
+    {
+      "game_id": 2026020227,
+      "side": "home",
+      "error": "Source/schedule mismatch"
+    },
+    {
+      "game_id": 2026020227,
+      "side": "away",
+      "error": "Source/schedule mismatch"
+    }
+  ],
   "schedule_delay_caveat": "Polling can miss late confirmations; availability begins at our capture time, not publication time."
 }
