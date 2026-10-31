@@ -1,13 +1,13 @@
 {
   "status": "shadow_only_not_public",
-  "updated_at_utc": "2026-10-30T19:01:42.163199+00:00",
+  "updated_at_utc": "2026-10-31T01:18:44.251131+00:00",
   "identities": {
     "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
     "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
     "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
   },
   "capture_window_hours": 24,
-  "eligible_future_games": 289,
+  "eligible_future_games": 338,
   "within_capture_window": 0,
   "summary": {
     "saved_pairs": 0,
@@ -36,17 +36,22 @@
     "roster_unknown_pairs": 0
   },
   "coverage": {
-    "source_games_in_horizon": 603
+    "source_games_in_horizon": 658
   },
   "excluded": {
-    "tipoff_time_unconfirmed": 188,
-    "division_or_conference_unknown": 126
+    "tipoff_time_unconfirmed": 182,
+    "division_or_conference_unknown": 138
   },
   "coverage_by_day": {
+    "2026-11-29": {
+      "source_games": 2,
+      "eligible": 2,
+      "unconfirmed_tipoff": 0
+    },
     "Unconfirmed source date/time": {
-      "source_games": 188,
+      "source_games": 182,
       "eligible": 0,
-      "unconfirmed_tipoff": 188
+      "unconfirmed_tipoff": 182
     },
     "2026-11-28": {
       "source_games": 3,
@@ -129,8 +134,8 @@
       "unconfirmed_tipoff": 0
     },
     "2026-11-07": {
-      "source_games": 1,
-      "eligible": 1,
+      "source_games": 60,
+      "eligible": 48,
       "unconfirmed_tipoff": 0
     },
     "2026-11-06": {
@@ -166,15 +171,10 @@
   },
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "eceb863153e66c431628973ff45ee84185484fd42266bd86597455efae712ef8",
+    "sha256": "441bcdbb546a9bc75c21f174414d5b9da5967a35497e6709d45eedb096a625e8",
     "bytes": 133319,
     "archive_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
     "live_schedule_sources": [
-      {
-        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261029&groups=50&limit=1000",
-        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-        "games": 0
-      },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261030&groups=50&limit=1000",
         "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
@@ -214,6 +214,11 @@
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&groups=50&limit=1000",
         "sha256": "473a0c2c01f66632a4331737936c1e0d2aa8838de3712160484af3b779d4ac7c",
         "games": 72
+      },
+      {
+        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&groups=50&limit=1000",
+        "sha256": "34220aed8b70e47f8725398cee5b7fa7524b1ad25119812bb36a2a797abad6f9",
+        "games": 61
       }
     ],
     "identity_conflicts": []
