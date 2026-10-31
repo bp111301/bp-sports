@@ -3,7 +3,7 @@
   "missing_upcoming_game_ids": [],
   "new_prediction_rows": 0,
   "feed_status": "enabled",
-  "updated_at_utc": "2026-10-31T01:27:14.915839+00:00",
+  "updated_at_utc": "2026-10-31T02:25:47.015758+00:00",
   "season": 2027,
   "regular_season_only": true,
   "weights_frozen": true,
@@ -2205,8 +2205,13 @@
       "season_type": 2,
       "source_receipt_sha256": "739896f9f357c8ba7c0a3b3208ba21ee309671169e42568b0a72beb6294a2829",
       "start_time_utc": "2026-10-30T23:00:00+00:00",
-      "status": "pending",
-      "actual_home_win": null
+      "home_score": 95.0,
+      "away_score": 79.0,
+      "actual_home_win": 1,
+      "actual_start_time_utc": "2026-10-30T23:00:00+00:00",
+      "settled_at_utc": "2026-10-31T02:25:21.460918+00:00",
+      "source_state": "post_completed",
+      "status": "settled"
     },
     {
       "away_id": "4",
@@ -2238,8 +2243,13 @@
       "season_type": 2,
       "source_receipt_sha256": "eacdf1feff5482c4dd1da850d3e6794357fbe48fc8eb6420257103829ba3e511",
       "start_time_utc": "2026-10-30T23:30:00+00:00",
-      "status": "pending",
-      "actual_home_win": null
+      "home_score": 125.0,
+      "away_score": 111.0,
+      "actual_home_win": 1,
+      "actual_start_time_utc": "2026-10-30T23:30:00+00:00",
+      "settled_at_utc": "2026-10-31T02:25:21.460918+00:00",
+      "source_state": "post_completed",
+      "status": "settled"
     },
     {
       "away_id": "8",
@@ -2271,8 +2281,13 @@
       "season_type": 2,
       "source_receipt_sha256": "eacdf1feff5482c4dd1da850d3e6794357fbe48fc8eb6420257103829ba3e511",
       "start_time_utc": "2026-10-30T23:30:00+00:00",
-      "status": "pending",
-      "actual_home_win": null
+      "home_score": 94.0,
+      "away_score": 110.0,
+      "actual_home_win": 0,
+      "actual_start_time_utc": "2026-10-30T23:30:00+00:00",
+      "settled_at_utc": "2026-10-31T02:25:21.460918+00:00",
+      "source_state": "post_completed",
+      "status": "settled"
     },
     {
       "away_id": "18",
@@ -2304,8 +2319,13 @@
       "season_type": 2,
       "source_receipt_sha256": "eacdf1feff5482c4dd1da850d3e6794357fbe48fc8eb6420257103829ba3e511",
       "start_time_utc": "2026-10-30T23:30:00+00:00",
-      "status": "pending",
-      "actual_home_win": null
+      "home_score": 98.0,
+      "away_score": 93.0,
+      "actual_home_win": 1,
+      "actual_start_time_utc": "2026-10-30T23:30:00+00:00",
+      "settled_at_utc": "2026-10-31T02:25:21.460918+00:00",
+      "source_state": "post_completed",
+      "status": "settled"
     },
     {
       "away_id": "19",
@@ -2337,8 +2357,13 @@
       "season_type": 2,
       "source_receipt_sha256": "eacdf1feff5482c4dd1da850d3e6794357fbe48fc8eb6420257103829ba3e511",
       "start_time_utc": "2026-10-30T23:30:00+00:00",
-      "status": "pending",
-      "actual_home_win": null
+      "home_score": 114.0,
+      "away_score": 121.0,
+      "actual_home_win": 0,
+      "actual_start_time_utc": "2026-10-30T23:30:00+00:00",
+      "settled_at_utc": "2026-10-31T02:25:21.460918+00:00",
+      "source_state": "post_completed",
+      "status": "settled"
     },
     {
       "away_id": "11",
@@ -2436,8 +2461,13 @@
       "season_type": 2,
       "source_receipt_sha256": "eacdf1feff5482c4dd1da850d3e6794357fbe48fc8eb6420257103829ba3e511",
       "start_time_utc": "2026-10-31T00:00:00+00:00",
-      "status": "pending",
-      "actual_home_win": null
+      "home_score": 127.0,
+      "away_score": 101.0,
+      "actual_home_win": 1,
+      "actual_start_time_utc": "2026-10-31T00:00:00+00:00",
+      "settled_at_utc": "2026-10-31T02:25:21.460918+00:00",
+      "source_state": "post_completed",
+      "status": "settled"
     },
     {
       "away_id": "13",
@@ -2738,11 +2768,11 @@
     }
   ],
   "record": {
-    "games": 57,
-    "correct": 38,
+    "games": 63,
+    "correct": 42,
     "accuracy": 0.6666666666666666,
-    "brier": 0.2120981802311317,
-    "log_loss": 0.6118975149136725
+    "brier": 0.21115404066646873,
+    "log_loss": 0.6088082263887558
   },
   "prediction_blocked_reason": null,
   "forecast_rule": "First pregame snapshot within 36 hours; earlier-date results only",
