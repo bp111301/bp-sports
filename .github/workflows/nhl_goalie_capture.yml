@@ -27,7 +27,7 @@ jobs:
       - name: Verify capture safety
         run: python research/nhl/goalie_capture/test_capture.py
       - name: Capture pregame goalie observations
-        run: python research/nhl/goalie_capture/collect.py
+        run: python research/nhl/goalie_capture/collect_live.py
       - name: Commit observations and source health
         if: always()
         run: |

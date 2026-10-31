@@ -50,24 +50,9 @@ def source_rows(props,day):
         result.append(row)
     return result
 
-def schedule_time_reconciliation(game,source):
-    if any(source[k]!=game[k] for k in ['game_date','home_team','away_team']):
-        raise ValueError('Source/schedule mismatch')
-    official=timestamp(game['start_time_utc']);reported=timestamp(source['start_time_utc'])
-    if official==reported:return None
-    # DFO's Nov 1 board is one hour late across the fall-back transition.
-    # Accept only this specific clock pattern; NHL time remains the cutoff.
-    eastern=ZoneInfo('America/New_York')
-    midnight=datetime.fromisoformat(game['game_date']).replace(tzinfo=eastern)
-    fallback=midnight.utcoffset()-(midnight+timedelta(days=1)).utcoffset()==timedelta(hours=1)
-    if (fallback and official.astimezone(eastern).date()==midnight.date()
-            and reported-official==timedelta(hours=1)):
-        return 'source_one_hour_late_on_fall_back_day_nhl_time_used'
-    raise ValueError('Source/schedule mismatch')
-
 def observation(game,source,side,roster,captured,url,response_hash,snapshot_hash):
     if timestamp(game['start_time_utc'])<=captured:raise ValueError('Post-start capture rejected')
-    reconciliation=schedule_time_reconciliation(game,source)
+    if source['game_date']!=game['game_date'] or any(source[k]!=game[k] for k in ['home_team','away_team']) or timestamp(source['start_time_utc'])!=timestamp(game['start_time_utc']):raise ValueError('Source/schedule mismatch')
     s=source[side];name=s['goalie_name'];reported=s['source_reported_at_utc'];status=s['status'] or 'Unknown'
     report_valid=False
     if reported:
@@ -76,10 +61,7 @@ def observation(game,source,side,roster,captured,url,response_hash,snapshot_hash
     player_id=goalie_id(name,roster) if name else None
     eligible=status=='Confirmed' and report_valid and player_id is not None and bool(s['report_source_url'])
     event={'game_id':game['game_id'],'team':game[side+'_team'],'side':side,'goalie_name':name,'nhl_goalie_id':player_id,'source_goalie_id':s['source_goalie_id'],'status':status,'source_reported_at_utc':reported,'report_source_url':s['report_source_url']}
-    result={**event,'event_id':digest(event),'observation_id':digest({'event':event,'captured_at_utc':captured.isoformat()}),'season':SEASON,'start_time_utc':game['start_time_utc'],'captured_at_utc':captured.isoformat(),'report_source_name':s['report_source_name'],'page_url':url,'source_response_sha256':response_hash,'snapshot_sha256':snapshot_hash,'report_timestamp_valid':report_valid,'confirmed_eligible':eligible,'roster_mapping':'unique_exact_normalized_name' if player_id else 'unresolved'}
-    if reconciliation:
-        result.update(source_start_time_utc=source['start_time_utc'],schedule_time_reconciliation=reconciliation)
-    return result
+    return {**event,'event_id':digest(event),'observation_id':digest({'event':event,'captured_at_utc':captured.isoformat()}),'season':SEASON,'start_time_utc':game['start_time_utc'],'captured_at_utc':captured.isoformat(),'report_source_name':s['report_source_name'],'page_url':url,'source_response_sha256':response_hash,'snapshot_sha256':snapshot_hash,'report_timestamp_valid':report_valid,'confirmed_eligible':eligible,'roster_mapping':'unique_exact_normalized_name' if player_id else 'unresolved'}
 
 def append_observation(rows,new):
     if timestamp(new['captured_at_utc'])>=timestamp(new['start_time_utc']):return False
@@ -104,7 +86,7 @@ def main():
     OUT.mkdir(parents=True,exist_ok=True);now=datetime.now(timezone.utc);day=now.astimezone(ZoneInfo('America/New_York')).date().isoformat()
     schedule_url=f'https://api-web.nhle.com/v1/schedule/{day}'
     schedule_response=request(schedule_url);games=schedule_games(schedule_response.json(),datetime.now(timezone.utc))
-    path=OUT/'observations.jsonl';rows=[json.loads(line) for line in path.read_text().splitlines()] if path.exists() else [];added=0;errors=[];coverage=[];rosters={};warnings=[]
+    path=OUT/'observations.jsonl';rows=[json.loads(line) for line in path.read_text().splitlines()] if path.exists() else [];added=0;errors=[];coverage=[];rosters={}
     for date in sorted({g['game_date'] for g in games}):
         url=f'https://www.dailyfaceoff.com/starting-goalies/{date}'
         try:
@@ -131,8 +113,6 @@ def main():
             for side in ['home','away']:
                 try:
                     r=observation(game,source,side,rosters[game[side+'_team']],captured,url,response_hash,snapshot_hash)
-                    if r.get('schedule_time_reconciliation'):
-                        warnings.append({'game_id':game['game_id'],'side':side,'warning':r['schedule_time_reconciliation'],'nhl_start_time_utc':r['start_time_utc'],'source_start_time_utc':r['source_start_time_utc']})
                     if append_observation(rows,r):new.append(r);added+=1
                     coverage.append({'game_id':game['game_id'],'side':side,'status':r['status'],'confirmed_eligible':r['confirmed_eligible'],'roster_mapping':r['roster_mapping']})
                 except ValueError as e:errors.append({'game_id':game['game_id'],'side':side,'error':str(e)})
@@ -140,7 +120,6 @@ def main():
             snapshots=OUT/'snapshots';snapshots.mkdir(exist_ok=True);(snapshots/f'{snapshot_hash}.json').write_text(json.dumps(snapshot,indent=2)+'\n')
     path.write_text(''.join(json.dumps(r,sort_keys=True)+'\n' for r in rows))
     summary={'as_of_utc':datetime.now(timezone.utc).isoformat(),'status':'collection_only_no_model_changes','new_observations':added,'total_observations':len(rows),'upcoming_schedule_games':len(games),'captured_sides':len(coverage),'eligible_confirmed_sides':sum(r['confirmed_eligible'] for r in coverage),'coverage':coverage,'errors':errors,'schedule_delay_caveat':'Polling can miss late confirmations; availability begins at our capture time, not publication time.'}
-    summary['warnings']=warnings
     (OUT/'summary.json').write_text(json.dumps(summary,indent=2)+'\n');print(json.dumps(summary,indent=2))
     if errors:raise SystemExit('Source/mapping/coverage errors recorded; inspect summary before using data')
 

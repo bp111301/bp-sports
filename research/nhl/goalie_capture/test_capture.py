@@ -1,6 +1,9 @@
 import copy
+import hashlib
+import json
+from pathlib import Path
 import unittest
-from collect import observation,append_observation,available_at,goalie_id,schedule_games,source_rows,timestamp,schedule_time_reconciliation
+from collect_live import observation,append_observation,available_at,goalie_id,schedule_games,source_rows,timestamp,schedule_time_reconciliation
 
 class CaptureSafety(unittest.TestCase):
     def setUp(self):
@@ -87,5 +90,11 @@ class CaptureSafety(unittest.TestCase):
     def test_exact_time_after_source_correction_needs_no_exception(self):
         game,source=self.fallback_fixture();source['start_time_utc']=game['start_time_utc']
         self.assertIsNone(schedule_time_reconciliation(game,source))
+    def test_live_adapter_preserves_frozen_experiment_code_identity(self):
+        root=Path(__file__).resolve().parents[3]
+        manifest=json.loads((root/'model/nhl/goalie_experiment/manifest.json').read_text())
+        for path,expected in manifest['code_sha256'].items():
+            with self.subTest(path=path):
+                self.assertEqual(hashlib.sha256((root/path).read_bytes()).hexdigest(),expected)
 
 if __name__=='__main__':unittest.main()
