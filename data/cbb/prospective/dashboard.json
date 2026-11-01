@@ -2,19 +2,24 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-01T07:18:33.113994+00:00",
+  "updated_at_utc": "2026-11-01T13:05:09.783328+00:00",
   "coverage": {
-    "source_games_in_horizon": 1646
+    "source_games_in_horizon": 1645
   },
   "excluded": {
-    "division_or_conference_unknown": 384,
-    "tipoff_time_unconfirmed": 41
+    "tipoff_time_unconfirmed": 37,
+    "division_or_conference_unknown": 384
   },
-  "grading_issues": [],
+  "grading_issues": [
+    {
+      "game_id": "401911200",
+      "reason": "result_identity_mismatch"
+    }
+  ],
   "summary": {
-    "saved_games": 1224,
+    "saved_games": 1226,
     "settled_games": 0,
-    "pending_games": 1224,
+    "pending_games": 1226,
     "wins": 0,
     "losses": 0,
     "accuracy": null,
@@ -41637,13 +41642,81 @@
         "rest_diff": 0.0,
         "experience_diff": 0.0
       }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401911454",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401911454",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "2540",
+      "away_team_id": "2440",
+      "home_team": "UC Santa Barbara Gauchos",
+      "away_team": "Nevada Wolf Pack",
+      "neutral_site": false,
+      "start_time_utc": "2026-11-12T02:00:00+00:00",
+      "created_at_utc": "2026-11-01T13:05:09.783328+00:00",
+      "home_win_prob": 0.5377630348249847,
+      "predicted_winner": "UC Santa Barbara Gauchos",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "55af4d2ac8554f21813990bdecefcf15c386683ef72c6f6459af1ea7d0313118",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": -65.73407675599515,
+        "home_advantage": 1.0,
+        "off_eff_diff": 0.24576062564793233,
+        "def_eff_diff": 2.58420309913285,
+        "efg_diff": 0.04659919819200842,
+        "tov_rate_diff": 0.03889860664120029,
+        "orb_rate_diff": -0.0043433943137082265,
+        "ft_rate_diff": -0.10656040691520668,
+        "pace_diff": 0.4217401960784173,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0
+      }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401911028",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401911028",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "275",
+      "away_team_id": "111",
+      "home_team": "Wisconsin Badgers",
+      "away_team": "Northeastern Huskies",
+      "neutral_site": false,
+      "start_time_utc": "2026-11-26T00:00:00+00:00",
+      "created_at_utc": "2026-11-01T13:05:09.783328+00:00",
+      "home_win_prob": 0.934058445187214,
+      "predicted_winner": "Wisconsin Badgers",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "55af4d2ac8554f21813990bdecefcf15c386683ef72c6f6459af1ea7d0313118",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": 227.94166604542465,
+        "home_advantage": 1.0,
+        "off_eff_diff": 11.860532512122404,
+        "def_eff_diff": -7.312942858914127,
+        "efg_diff": 0.021264862836295806,
+        "tov_rate_diff": -0.03444421742098272,
+        "orb_rate_diff": 0.019419156469293153,
+        "ft_rate_diff": 0.029130932059335868,
+        "pace_diff": -0.06140891840608731,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0
+      }
     }
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "8df8b7dedf215a31e66cc9062883fd384085b9652aea3233d7a5260d452a2c09",
-    "bytes": 133319,
-    "archive_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
+    "sha256": "55af4d2ac8554f21813990bdecefcf15c386683ef72c6f6459af1ea7d0313118",
+    "bytes": 426859,
+    "archive_sha256": "a7c8fce7c1223079b12b3dd4780453235a7c64a3c7d8f29e18d6707d78947efd",
     "live_schedule_sources": [
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261031&groups=50&limit=1000",
@@ -41806,20 +41879,7 @@
         "games": 66
       }
     ],
-    "identity_conflicts": [
-      {
-        "game_id": 401911028,
-        "reason": "Live/archive schedule identity mismatch: 401911028 archive={'home_id': 111, 'away_id': 113, 'season': 2027} live={'home_id': 275, 'away_id': 111, 'season': 2027}"
-      },
-      {
-        "game_id": 401911200,
-        "reason": "Live/archive schedule identity mismatch: 401911200 archive={'home_id': 301, 'away_id': 2230, 'season': 2027} live={'home_id': 2230, 'away_id': 301, 'season': 2027}"
-      },
-      {
-        "game_id": 401911454,
-        "reason": "Live/archive schedule identity mismatch: 401911454 archive={'home_id': 131652, 'away_id': 2440, 'season': 2027} live={'home_id': 2540, 'away_id': 2440, 'season': 2027}"
-      }
-    ]
+    "identity_conflicts": []
   },
   "history_sources": [
     [
