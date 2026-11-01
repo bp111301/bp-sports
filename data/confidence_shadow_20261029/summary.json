@@ -1,6 +1,6 @@
 {
   "version": "confidence_shadow_20261029",
-  "as_of_utc": "2026-11-01T19:55:32.548090+00:00",
+  "as_of_utc": "2026-11-01T20:55:23.714866+00:00",
   "status": "prospective_confidence_research_only",
   "comparison": "fresh reference and confidence challenger on the same captured inputs; original first forecasts unchanged",
   "results": {
@@ -234,26 +234,26 @@
     },
     "nhl": {
       "captured_games": 33,
-      "paired_settled_games": 24,
-      "pending_games": 9,
+      "paired_settled_games": 25,
+      "pending_games": 8,
       "required_new_paired_finals_before_review": 300,
       "minimum_review_sample_reached": false,
       "production_promoted": false,
       "metrics": {
         "reference": {
           "overall": {
-            "games": 24,
-            "wins": 18,
+            "games": 25,
+            "wins": 19,
             "losses": 6,
-            "accuracy": 0.75,
-            "mean_confidence": 0.596516849850233,
-            "confidence_minus_accuracy": -0.153483150149767,
+            "accuracy": 0.76,
+            "mean_confidence": 0.6025886210903748,
+            "confidence_minus_accuracy": -0.1574113789096252,
             "accuracy_ci95": [
-              0.55100555994846,
-              0.8800063377140499
+              0.5657031664457093,
+              0.8850368630659855
             ],
-            "brier": 0.2030334738481725,
-            "log_loss": 0.5955520231251713
+            "brier": 0.19744602636832972,
+            "log_loss": 0.5833273996862343
           },
           "buckets": [
             {
@@ -293,18 +293,18 @@
               "limited_sample": true
             },
             {
-              "games": 2,
-              "wins": 2,
+              "games": 3,
+              "wins": 3,
               "losses": 0,
               "accuracy": 1.0,
-              "mean_confidence": 0.730553367899226,
-              "confidence_minus_accuracy": -0.269446632100774,
+              "mean_confidence": 0.7364726222174104,
+              "confidence_minus_accuracy": -0.2635273777825896,
               "accuracy_ci95": [
-                0.34238022750665303,
+                0.4385029682449546,
                 1.0
               ],
-              "brier": 0.07280582875507274,
-              "log_loss": 0.3141444657601323,
+              "brier": 0.06965298145408301,
+              "log_loss": 0.3060751228906697,
               "bucket": "70%\u201380%",
               "lower": 0.7,
               "upper": 0.8,
@@ -325,22 +325,22 @@
               "limited_sample": true
             }
           ],
-          "ece": 0.15348315014976696
+          "ece": 0.15741137890962512
         },
         "confidence_challenger": {
           "overall": {
-            "games": 24,
-            "wins": 18,
+            "games": 25,
+            "wins": 19,
             "losses": 6,
-            "accuracy": 0.75,
-            "mean_confidence": 0.5944330557566736,
-            "confidence_minus_accuracy": -0.1555669442433264,
+            "accuracy": 0.76,
+            "mean_confidence": 0.6000599358333694,
+            "confidence_minus_accuracy": -0.15994006416663065,
             "accuracy_ci95": [
-              0.55100555994846,
-              0.8800063377140499
+              0.5657031664457093,
+              0.8850368630659855
             ],
-            "brier": 0.20241567237987276,
-            "log_loss": 0.5945295935738687
+            "brier": 0.19712581870347223,
+            "log_loss": 0.5830580840058197
           },
           "buckets": [
             {
@@ -380,18 +380,18 @@
               "limited_sample": true
             },
             {
-              "games": 2,
-              "wins": 2,
+              "games": 3,
+              "wins": 3,
               "losses": 0,
               "accuracy": 1.0,
-              "mean_confidence": 0.7213577624190717,
-              "confidence_minus_accuracy": -0.2786422375809283,
+              "mean_confidence": 0.7259401941707367,
+              "confidence_minus_accuracy": -0.27405980582926326,
               "accuracy_ci95": [
-                0.34238022750665303,
+                0.4385029682449546,
                 1.0
               ],
-              "brier": 0.07765144570426682,
-              "log_loss": 0.32662962169612864,
+              "brier": 0.0751574072927977,
+              "log_loss": 0.32033369925496785,
               "bucket": "70%\u201380%",
               "lower": 0.7,
               "upper": 0.8,
@@ -412,7 +412,7 @@
               "limited_sample": true
             }
           ],
-          "ece": 0.15556694424332632
+          "ece": 0.1599400641666306
         }
       }
     }
