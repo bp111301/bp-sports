@@ -2,19 +2,19 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-01T01:27:13.039430+00:00",
+  "updated_at_utc": "2026-11-01T07:18:33.113994+00:00",
   "coverage": {
-    "source_games_in_horizon": 1643
+    "source_games_in_horizon": 1646
   },
   "excluded": {
     "division_or_conference_unknown": 384,
-    "tipoff_time_unconfirmed": 39
+    "tipoff_time_unconfirmed": 41
   },
   "grading_issues": [],
   "summary": {
-    "saved_games": 1223,
+    "saved_games": 1224,
     "settled_games": 0,
-    "pending_games": 1223,
+    "pending_games": 1224,
     "wins": 0,
     "losses": 0,
     "accuracy": null,
@@ -41603,11 +41603,45 @@
         "rest_diff": 0.0,
         "experience_diff": 0.0
       }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401921735",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401921735",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "9",
+      "away_team_id": "149",
+      "home_team": "Arizona State Sun Devils",
+      "away_team": "Montana Grizzlies",
+      "neutral_site": false,
+      "start_time_utc": "2026-12-01T02:00:00+00:00",
+      "created_at_utc": "2026-11-01T07:18:33.113994+00:00",
+      "home_win_prob": 0.7031118237696992,
+      "predicted_winner": "Arizona State Sun Devils",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "8df8b7dedf215a31e66cc9062883fd384085b9652aea3233d7a5260d452a2c09",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": 22.059582305853837,
+        "home_advantage": 1.0,
+        "off_eff_diff": 1.4077714214483024,
+        "def_eff_diff": 1.750797929831947,
+        "efg_diff": -0.04624136181174976,
+        "tov_rate_diff": -0.02549842884639769,
+        "orb_rate_diff": 0.08621346848893713,
+        "ft_rate_diff": 0.02879734240490317,
+        "pace_diff": -0.4710227272727536,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0
+      }
     }
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "6e601248c1725482ebed4dd4f43efb06b92931b8b39bce3c60713d1a27ebc9b1",
+    "sha256": "8df8b7dedf215a31e66cc9062883fd384085b9652aea3233d7a5260d452a2c09",
     "bytes": 133319,
     "archive_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
     "live_schedule_sources": [
@@ -41643,7 +41677,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&groups=50&limit=1000",
-        "sha256": "15ef696a6964f5afa6e162b9894b4d07fe1ee0632323d2181f61bbc86b22daa6",
+        "sha256": "6f01bc77e6f1222603b1a00ea0a8c313802d9913fe2c9e43e2ad7f9e939e6414",
         "games": 72
       },
       {
@@ -41688,7 +41722,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&groups=50&limit=1000",
-        "sha256": "8485d33d539b59137a2a549c5a97f154da9565f20ce7a4ab905decf705b5705f",
+        "sha256": "d5324a1345c39fb2cbee4016fac551d0bde931025d3db4982442fddc99790a1b",
         "games": 43
       },
       {
@@ -41765,6 +41799,11 @@
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261130&groups=50&limit=1000",
         "sha256": "ebcfe5f8f0c4b163316014ee797b3cc5f0eafe1c2de9005fa8a4cc82f13479e9",
         "games": 15
+      },
+      {
+        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261201&groups=50&limit=1000",
+        "sha256": "e83a5a6896b8485ee1bcfd4ea3fe0e91953cca1fe47702daefb61da5a5209629",
+        "games": 66
       }
     ],
     "identity_conflicts": [
