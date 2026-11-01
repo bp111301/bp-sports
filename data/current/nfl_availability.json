@@ -1,7 +1,7 @@
 {
   "season": 2026,
   "week": 8,
-  "updated_at_utc": "2026-11-01T20:08:52.572846+00:00",
+  "updated_at_utc": "2026-11-01T20:52:01.407053+00:00",
   "games": {
     "2026_06_CHI_ATL": {
       "game_id": "2026_06_CHI_ATL",
@@ -6232,7 +6232,7 @@
       "home_team": "LA",
       "away_team": "LAC",
       "kickoff_utc": "2026-11-01T21:05:00+00:00",
-      "checked_at_utc": "2026-11-01T20:08:52.572566+00:00",
+      "checked_at_utc": "2026-11-01T20:52:01.406671+00:00",
       "home": {
         "team": "LA",
         "injury_report_available": true,
@@ -6370,14 +6370,14 @@
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-01T20:08:52.204635+00:00",
-          "sha256": "5f5c7174f13b6c049f3aa911a3e74bf67df13939d6b69a0c7180df980391548e",
+          "retrieved_at_utc": "2026-11-01T20:52:00.942568+00:00",
+          "sha256": "44ec89cc2a9252ee6442db3363acb0cb43e0a68e0a55e22008ba624ee7f13c81",
           "http_status": 200
         },
         {
           "url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season",
-          "retrieved_at_utc": "2026-11-01T20:08:52.483663+00:00",
-          "sha256": "a2f2e2d56769eba95d9da993d82db2aeb333f612c10dd15d5e1ab1bdcaccd6f6",
+          "retrieved_at_utc": "2026-11-01T20:52:01.300758+00:00",
+          "sha256": "a1ed431f9c7989f72d712929dd8f2f692e5853ae480d2526da0c667f312ebb74",
           "http_status": 200
         }
       ],
@@ -6401,8 +6401,8 @@
         "away_qb_name_assumed": "Justin Herbert",
         "away_qb_id_assumed": "00-0036355",
         "kickoff_utc": "2026-11-01T21:05:00.000Z",
-        "captured_at_utc": "2026-11-01T20:08:54.718468+00:00",
-        "availability_checked_at_utc": "2026-11-01T20:08:52.572566+00:00",
+        "captured_at_utc": "2026-11-01T20:52:03.580590+00:00",
+        "availability_checked_at_utc": "2026-11-01T20:52:01.406671+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -6414,11 +6414,11 @@
       "home_team": "DEN",
       "away_team": "KC",
       "kickoff_utc": "2026-11-01T21:25:00+00:00",
-      "checked_at_utc": "2026-11-01T20:08:52.572677+00:00",
+      "checked_at_utc": "2026-11-01T20:52:01.406834+00:00",
       "home": {
         "team": "DEN",
         "injury_report_available": true,
-        "inactives_published": false,
+        "inactives_published": true,
         "assumed_qb": "Bo Nix",
         "qb_status": "No game designation found",
         "qb_review_required": false,
@@ -6449,8 +6449,8 @@
             "name": "Talanoa Hufanga",
             "position": "S",
             "injury": "Ankle",
-            "status": "Out",
-            "source_url": "https://www.nfl.com/injuries/"
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
           },
           {
             "name": "Brandon Jones",
@@ -6465,13 +6465,49 @@
             "injury": "Chest",
             "status": "Questionable",
             "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "position": "QB",
+            "name": "Sam Ehlinger (emergency third QB)",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "OL",
+            "name": "Gavin Ortega",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "OL",
+            "name": "Kage Casey",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "TE",
+            "name": "Dallen Bentley",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "DL",
+            "name": "Jordan Jackson",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "DT",
+            "name": "Tyler Onyedim",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
           }
         ]
       },
       "away": {
         "team": "KC",
         "injury_report_available": true,
-        "inactives_published": false,
+        "inactives_published": true,
         "assumed_qb": "Patrick Mahomes",
         "qb_status": "No game designation found",
         "qb_review_required": false,
@@ -6481,8 +6517,8 @@
             "name": "Mansoor Delane",
             "position": "CB",
             "injury": "Shoulder",
-            "status": "Questionable",
-            "source_url": "https://www.nfl.com/injuries/"
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
           },
           {
             "name": "Omarr Norman-Lott",
@@ -6504,6 +6540,36 @@
             "injury": "Not injury related - personal matter",
             "status": "Questionable",
             "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "position": "QB",
+            "name": "Garrett Nussmeier (emergency third QB)",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "FB",
+            "name": "Ben VanSumeren",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "DE",
+            "name": "Jack Pyburn",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "DE",
+            "name": "Tyreke Smith",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "OT",
+            "name": "Diego Pounds",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
           }
         ]
       },
@@ -6515,14 +6581,14 @@
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-01T20:08:52.204635+00:00",
-          "sha256": "5f5c7174f13b6c049f3aa911a3e74bf67df13939d6b69a0c7180df980391548e",
+          "retrieved_at_utc": "2026-11-01T20:52:00.942568+00:00",
+          "sha256": "44ec89cc2a9252ee6442db3363acb0cb43e0a68e0a55e22008ba624ee7f13c81",
           "http_status": 200
         },
         {
           "url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season",
-          "retrieved_at_utc": "2026-11-01T20:08:52.483663+00:00",
-          "sha256": "a2f2e2d56769eba95d9da993d82db2aeb333f612c10dd15d5e1ab1bdcaccd6f6",
+          "retrieved_at_utc": "2026-11-01T20:52:01.300758+00:00",
+          "sha256": "a1ed431f9c7989f72d712929dd8f2f692e5853ae480d2526da0c667f312ebb74",
           "http_status": 200
         }
       ],
@@ -6546,8 +6612,8 @@
         "away_qb_name_assumed": "Patrick Mahomes",
         "away_qb_id_assumed": "00-0033873",
         "kickoff_utc": "2026-11-01T21:25:00.000Z",
-        "captured_at_utc": "2026-11-01T20:08:54.718468+00:00",
-        "availability_checked_at_utc": "2026-11-01T20:08:52.572677+00:00",
+        "captured_at_utc": "2026-11-01T20:52:03.580590+00:00",
+        "availability_checked_at_utc": "2026-11-01T20:52:01.406834+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -6559,11 +6625,11 @@
       "home_team": "MIA",
       "away_team": "NE",
       "kickoff_utc": "2026-11-01T21:25:00+00:00",
-      "checked_at_utc": "2026-11-01T20:08:52.572728+00:00",
+      "checked_at_utc": "2026-11-01T20:52:01.406922+00:00",
       "home": {
         "team": "MIA",
         "injury_report_available": true,
-        "inactives_published": false,
+        "inactives_published": true,
         "assumed_qb": "Malik Willis",
         "qb_status": "No game designation found",
         "qb_review_required": false,
@@ -6578,10 +6644,10 @@
           },
           {
             "name": "Kadyn Proctor",
-            "position": "T",
+            "position": "OL",
             "injury": "Concussion",
-            "status": "Out",
-            "source_url": "https://www.nfl.com/injuries/"
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
           },
           {
             "name": "Reese Taylor",
@@ -6589,13 +6655,49 @@
             "injury": "Quadricep",
             "status": "Questionable",
             "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "position": "TE",
+            "name": "Justin Joly",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "CB",
+            "name": "Marcellas Dial Jr.",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "CB",
+            "name": "Jaylin Simpson",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "OG",
+            "name": "Christian Haynes",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "WR",
+            "name": "Jared Wayne",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "EDGE",
+            "name": "Jamree Kromah",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
           }
         ]
       },
       "away": {
         "team": "NE",
         "injury_report_available": true,
-        "inactives_published": false,
+        "inactives_published": true,
         "assumed_qb": "Drake Maye",
         "qb_status": "No game designation found",
         "qb_review_required": false,
@@ -6605,8 +6707,8 @@
             "name": "A.J. Brown",
             "position": "WR",
             "injury": "Ankle, Knee",
-            "status": "Questionable",
-            "source_url": "https://www.nfl.com/injuries/"
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
           },
           {
             "name": "Carlton Davis III",
@@ -6626,8 +6728,32 @@
             "name": "TreVeyon Henderson",
             "position": "RB",
             "injury": "Illness",
-            "status": "Questionable",
-            "source_url": "https://www.nfl.com/injuries/"
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "CB",
+            "name": "Karon Prunty",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "S",
+            "name": "Elliot Davison",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "CB",
+            "name": "Channing Canada",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
+          },
+          {
+            "position": "QB",
+            "name": "Behren Morton",
+            "status": "Inactive",
+            "source_url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season"
           }
         ]
       },
@@ -6639,14 +6765,14 @@
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-01T20:08:52.204635+00:00",
-          "sha256": "5f5c7174f13b6c049f3aa911a3e74bf67df13939d6b69a0c7180df980391548e",
+          "retrieved_at_utc": "2026-11-01T20:52:00.942568+00:00",
+          "sha256": "44ec89cc2a9252ee6442db3363acb0cb43e0a68e0a55e22008ba624ee7f13c81",
           "http_status": 200
         },
         {
           "url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season",
-          "retrieved_at_utc": "2026-11-01T20:08:52.483663+00:00",
-          "sha256": "a2f2e2d56769eba95d9da993d82db2aeb333f612c10dd15d5e1ab1bdcaccd6f6",
+          "retrieved_at_utc": "2026-11-01T20:52:01.300758+00:00",
+          "sha256": "a1ed431f9c7989f72d712929dd8f2f692e5853ae480d2526da0c667f312ebb74",
           "http_status": 200
         }
       ],
@@ -6670,8 +6796,8 @@
         "away_qb_name_assumed": "Drake Maye",
         "away_qb_id_assumed": "00-0039851",
         "kickoff_utc": "2026-11-01T21:25:00.000Z",
-        "captured_at_utc": "2026-11-01T20:08:54.718468+00:00",
-        "availability_checked_at_utc": "2026-11-01T20:08:52.572728+00:00",
+        "captured_at_utc": "2026-11-01T20:52:03.580590+00:00",
+        "availability_checked_at_utc": "2026-11-01T20:52:01.406922+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -6683,7 +6809,7 @@
       "home_team": "WAS",
       "away_team": "PHI",
       "kickoff_utc": "2026-11-02T01:20:00+00:00",
-      "checked_at_utc": "2026-11-01T20:08:52.572782+00:00",
+      "checked_at_utc": "2026-11-01T20:52:01.406978+00:00",
       "home": {
         "team": "WAS",
         "injury_report_available": true,
@@ -6792,14 +6918,14 @@
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-01T20:08:52.204635+00:00",
-          "sha256": "5f5c7174f13b6c049f3aa911a3e74bf67df13939d6b69a0c7180df980391548e",
+          "retrieved_at_utc": "2026-11-01T20:52:00.942568+00:00",
+          "sha256": "44ec89cc2a9252ee6442db3363acb0cb43e0a68e0a55e22008ba624ee7f13c81",
           "http_status": 200
         },
         {
           "url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season",
-          "retrieved_at_utc": "2026-11-01T20:08:52.483663+00:00",
-          "sha256": "a2f2e2d56769eba95d9da993d82db2aeb333f612c10dd15d5e1ab1bdcaccd6f6",
+          "retrieved_at_utc": "2026-11-01T20:52:01.300758+00:00",
+          "sha256": "a1ed431f9c7989f72d712929dd8f2f692e5853ae480d2526da0c667f312ebb74",
           "http_status": 200
         }
       ],
@@ -6823,8 +6949,8 @@
         "away_qb_name_assumed": "Tanner McKee",
         "away_qb_id_assumed": "00-0038400",
         "kickoff_utc": "2026-11-02T01:20:00.000Z",
-        "captured_at_utc": "2026-11-01T20:08:54.718468+00:00",
-        "availability_checked_at_utc": "2026-11-01T20:08:52.572782+00:00",
+        "captured_at_utc": "2026-11-01T20:52:03.580590+00:00",
+        "availability_checked_at_utc": "2026-11-01T20:52:01.406978+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -6836,7 +6962,7 @@
       "home_team": "SEA",
       "away_team": "CHI",
       "kickoff_utc": "2026-11-03T01:15:00+00:00",
-      "checked_at_utc": "2026-11-01T20:08:52.572831+00:00",
+      "checked_at_utc": "2026-11-01T20:52:01.407034+00:00",
       "home": {
         "team": "SEA",
         "injury_report_available": true,
@@ -6944,14 +7070,14 @@
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-01T20:08:52.204635+00:00",
-          "sha256": "5f5c7174f13b6c049f3aa911a3e74bf67df13939d6b69a0c7180df980391548e",
+          "retrieved_at_utc": "2026-11-01T20:52:00.942568+00:00",
+          "sha256": "44ec89cc2a9252ee6442db3363acb0cb43e0a68e0a55e22008ba624ee7f13c81",
           "http_status": 200
         },
         {
           "url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season",
-          "retrieved_at_utc": "2026-11-01T20:08:52.483663+00:00",
-          "sha256": "a2f2e2d56769eba95d9da993d82db2aeb333f612c10dd15d5e1ab1bdcaccd6f6",
+          "retrieved_at_utc": "2026-11-01T20:52:01.300758+00:00",
+          "sha256": "a1ed431f9c7989f72d712929dd8f2f692e5853ae480d2526da0c667f312ebb74",
           "http_status": 200
         }
       ],
@@ -6975,8 +7101,8 @@
         "away_qb_name_assumed": "Caleb Williams",
         "away_qb_id_assumed": "00-0039918",
         "kickoff_utc": "2026-11-03T01:15:00.000Z",
-        "captured_at_utc": "2026-11-01T20:08:54.718468+00:00",
-        "availability_checked_at_utc": "2026-11-01T20:08:52.572831+00:00",
+        "captured_at_utc": "2026-11-01T20:52:03.580590+00:00",
+        "availability_checked_at_utc": "2026-11-01T20:52:01.407034+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -6985,14 +7111,14 @@
   "source_receipts": [
     {
       "url": "https://www.nfl.com/injuries/",
-      "retrieved_at_utc": "2026-11-01T20:08:52.204635+00:00",
-      "sha256": "5f5c7174f13b6c049f3aa911a3e74bf67df13939d6b69a0c7180df980391548e",
+      "retrieved_at_utc": "2026-11-01T20:52:00.942568+00:00",
+      "sha256": "44ec89cc2a9252ee6442db3363acb0cb43e0a68e0a55e22008ba624ee7f13c81",
       "http_status": 200
     },
     {
       "url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season",
-      "retrieved_at_utc": "2026-11-01T20:08:52.483663+00:00",
-      "sha256": "a2f2e2d56769eba95d9da993d82db2aeb333f612c10dd15d5e1ab1bdcaccd6f6",
+      "retrieved_at_utc": "2026-11-01T20:52:01.300758+00:00",
+      "sha256": "a1ed431f9c7989f72d712929dd8f2f692e5853ae480d2526da0c667f312ebb74",
       "http_status": 200
     }
   ],
