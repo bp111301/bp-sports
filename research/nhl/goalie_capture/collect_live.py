@@ -16,14 +16,18 @@ def schedule_time_reconciliation(game,source):
         raise ValueError('Source/schedule mismatch')
     official=timestamp(game['start_time_utc']);reported=timestamp(source['start_time_utc'])
     if official==reported:return None
-    # DFO's Nov 1 board is one hour late across the fall-back transition.
-    # Accept only this specific clock pattern; NHL time remains the cutoff.
+    # DFO's UTC conversion can shift in either direction as its server rolls
+    # into fall-back day, including the preceding evening's games. Match the
+    # date and both teams first; only reconcile a one-hour clock discrepancy
+    # on those two calendar dates. NHL time remains the pregame cutoff.
     eastern=ZoneInfo('America/New_York')
     midnight=datetime.fromisoformat(game['game_date']).replace(tzinfo=eastern)
-    fallback=midnight.utcoffset()-(midnight+timedelta(days=1)).utcoffset()==timedelta(hours=1)
+    fallback=midnight.utcoffset()-(midnight+timedelta(days=2)).utcoffset()==timedelta(hours=1)
+    delta=reported-official
     if (fallback and official.astimezone(eastern).date()==midnight.date()
-            and reported-official==timedelta(hours=1)):
-        return 'source_one_hour_late_on_fall_back_day_nhl_time_used'
+            and abs(delta)==timedelta(hours=1)):
+        direction='late' if delta>timedelta(0) else 'early'
+        return f'source_one_hour_{direction}_near_fall_back_nhl_time_used'
     raise ValueError('Source/schedule mismatch')
 
 def observation(game,source,side,roster,captured,url,response_hash,snapshot_hash):

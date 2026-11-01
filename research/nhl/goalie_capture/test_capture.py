@@ -80,13 +80,39 @@ class CaptureSafety(unittest.TestCase):
             self.assertFalse(row['confirmed_eligible'])
     def test_other_clock_and_identity_mismatches_still_fail(self):
         game,source=self.fallback_fixture()
-        for field,value in [('start_time_utc','2026-11-01T17:00:00Z'),('start_time_utc','2026-11-01T20:00:00Z'),('home_team','BUF'),('away_team','BOS'),('game_date','2026-11-02')]:
+        for field,value in [('start_time_utc','2026-11-01T16:00:00Z'),('start_time_utc','2026-11-01T20:00:00Z'),('home_team','BUF'),('away_team','BOS'),('game_date','2026-11-02')]:
             bad={**source,field:value}
             with self.assertRaisesRegex(ValueError,'mismatch'):schedule_time_reconciliation(game,bad)
-        for date in ['2026-10-31','2026-11-02','2026-03-08']:
+        for date in ['2026-10-30','2026-11-02','2026-03-08']:
             g={**game,'game_date':date,'start_time_utc':date+'T18:00:00Z'}
             s={**source,'game_date':date,'start_time_utc':date+'T19:00:00Z'}
             with self.assertRaisesRegex(ValueError,'mismatch'):schedule_time_reconciliation(g,s)
+    def test_clock_reconciliation_covers_both_directions_and_transition_dates(self):
+        for day in ['2026-10-31','2026-11-01','2027-11-06','2027-11-07']:
+            for hour,direction in [(17,'early'),(19,'late')]:
+                with self.subTest(day=day,direction=direction):
+                    game={**self.game,'game_date':day,'start_time_utc':day+'T18:00:00Z'}
+                    source={**self.source,**game,'start_time_utc':day+f'T{hour}:00:00Z'}
+                    self.assertIn(direction,schedule_time_reconciliation(game,source))
+    def test_calgary_colorado_regression_uses_official_start_after_early_source_time(self):
+        game={**self.game,'game_id':2026020226,'game_date':'2026-10-31',
+              'home_team':'COL','away_team':'CGY','start_time_utc':'2026-11-01T02:00:00Z'}
+        source={**copy.deepcopy(self.source),**game,'start_time_utc':'2026-11-01T01:00:00Z'}
+        source['home']['source_reported_at_utc']='2026-11-01T00:30:00Z'
+        original=copy.deepcopy(source)
+        row=observation(game,source,'home',self.roster,timestamp('2026-11-01T01:07:00Z'),'url','response','snapshot')
+        self.assertTrue(row['confirmed_eligible'])
+        self.assertEqual(row['start_time_utc'],game['start_time_utc'])
+        self.assertEqual(row['source_start_time_utc'],source['start_time_utc'])
+        self.assertIn('early',row['schedule_time_reconciliation'])
+        self.assertEqual(source,original)
+        self.assertIsNone(available_at([row],game['game_id'],'home',timestamp('2026-11-01T01:06:00Z')))
+        for when in ['2026-11-01T02:00:00Z','2026-11-01T02:01:00Z']:
+            with self.assertRaisesRegex(ValueError,'Post-start'):
+                observation(game,source,'home',self.roster,timestamp(when),'url','response','snapshot')
+        source['home']['source_reported_at_utc']='2026-11-01T01:30:00Z'
+        row=observation(game,source,'home',self.roster,timestamp('2026-11-01T01:07:00Z'),'url','response','snapshot')
+        self.assertFalse(row['confirmed_eligible'])
     def test_exact_time_after_source_correction_needs_no_exception(self):
         game,source=self.fallback_fixture();source['start_time_utc']=game['start_time_utc']
         self.assertIsNone(schedule_time_reconciliation(game,source))
