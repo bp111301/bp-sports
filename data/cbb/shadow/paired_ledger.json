@@ -85,5 +85,92 @@
         "rotation_known_diff": 0.0
       }
     }
+  },
+  {
+    "game_id": "401920409",
+    "identities": {
+      "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+      "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+    },
+    "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+    "roster_context": {
+      "home_known": false,
+      "away_known": false,
+      "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+    },
+    "feature_state_as_of_utc": "2026-11-01T07:19:21.531775+00:00",
+    "control": {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401920409",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401920409",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "2272",
+      "away_team_id": "2335",
+      "home_team": "High Point Panthers",
+      "away_team": "Liberty Flames",
+      "neutral_site": true,
+      "start_time_utc": "2026-11-02T04:59:00+00:00",
+      "created_at_utc": "2026-11-01T07:19:21.531775+00:00",
+      "home_win_prob": 0.798561389976151,
+      "predicted_winner": "High Point Panthers",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "7cfae44426889fbbd7fbf51ca67a582fd61dd304aa54f34c3cb10c930bb6853d",
+      "features": {
+        "elo_diff": 34.70695713235068,
+        "home_advantage": 0.0,
+        "off_eff_diff": 4.261833219238582,
+        "def_eff_diff": -10.256663294375088,
+        "efg_diff": -0.04708681581763763,
+        "tov_rate_diff": -0.0059440993142468035,
+        "orb_rate_diff": 0.13745470476191346,
+        "ft_rate_diff": 0.11149176674020761,
+        "pace_diff": 6.245759176863174,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0
+      }
+    },
+    "challenger": {
+      "prediction_id": "CBB_SHADOW_COMBINED_20261016:401920409",
+      "model_version": "CBB_SHADOW_COMBINED_20261016",
+      "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+      "game_id": "401920409",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "2272",
+      "away_team_id": "2335",
+      "home_team": "High Point Panthers",
+      "away_team": "Liberty Flames",
+      "neutral_site": true,
+      "start_time_utc": "2026-11-02T04:59:00+00:00",
+      "created_at_utc": "2026-11-01T07:19:21.531775+00:00",
+      "home_win_prob": 0.6694637617634019,
+      "predicted_winner": "High Point Panthers",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "7cfae44426889fbbd7fbf51ca67a582fd61dd304aa54f34c3cb10c930bb6853d",
+      "features": {
+        "elo_diff": 34.70695713235068,
+        "home_advantage": 0.0,
+        "off_eff_diff": 4.261833219238582,
+        "def_eff_diff": -10.256663294375088,
+        "efg_diff": -0.04708681581763763,
+        "tov_rate_diff": -0.0059440993142468035,
+        "orb_rate_diff": 0.13745470476191346,
+        "ft_rate_diff": 0.11149176674020761,
+        "pace_diff": 6.245759176863174,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0,
+        "adjusted_off_diff": -0.949767616880834,
+        "adjusted_def_diff": -6.0921269662632085,
+        "returning_share_diff": 0.0,
+        "transfer_share_diff": 0.0,
+        "prior_minutes_experience_diff": 0.0,
+        "rotation_known_diff": 0.0
+      }
+    }
   }
 ]
