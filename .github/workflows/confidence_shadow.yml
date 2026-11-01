@@ -24,6 +24,9 @@ jobs:
       OPENBLAS_NUM_THREADS: '1'
     steps:
       - uses: actions/checkout@v4
+        with:
+          # A rerun must append to the current ledger, not replay an old checkout.
+          ref: main
       - name: Read locked NHL reference source revision
         id: reference
         run: |
