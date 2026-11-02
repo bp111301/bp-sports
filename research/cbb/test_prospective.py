@@ -110,3 +110,41 @@ def test_neutral_reversal_still_rejects_different_teams_or_season(field,value):
     s=schedule();s.loc[0,['neutral_site','home_id','away_id']]=[True,3,2];s.loc[0,field]=value
     pending,issues=grade(saved,s,NOW)
     assert pending==saved and issues[0]['reason']=='result_identity_mismatch'
+
+
+def test_missing_opening_box_archive_does_not_block_verified_grading(tmp_path,monkeypatch):
+    import json
+    import sys
+    from urllib.error import HTTPError
+    import prospective as module
+    saved,_=ledger();saved[0]['start_time_utc']='2020-11-02T20:00:00+00:00';saved[0]['created_at_utc']='2020-11-01T00:00:00+00:00'
+    model_path=__import__('pathlib').Path(module.__file__).parent/'results/candidate_bundle.json'
+    import hashlib
+    saved[0]['bundle_sha256']=hashlib.sha256(model_path.read_bytes()).hexdigest()
+    original=copy.deepcopy(saved[0])
+    (tmp_path/'prediction_ledger.json').write_text(json.dumps(saved))
+    s=schedule();s.loc[0,['date','status_type_name','status_type_completed','home_score','away_score']]=['2020-11-02T20:00:00Z','STATUS_FINAL',True,80,70]
+    def missing(season,kind,cache,refresh=False):
+        if kind=='schedule':return s,{'sha256':'current-schedule'}
+        raise HTTPError('https://example.com/box',404,'Not published',None,None)
+    monkeypatch.setattr(module,'fetch',missing)
+    monkeypatch.setattr(module,'supplement',lambda schedule,source,now,pending:(schedule,source))
+    monkeypatch.setattr(module,'season_games',lambda *a:pytest.fail('Must not generate new forecasts with incomplete current stats'))
+    monkeypatch.setattr(sys,'argv',['prospective.py','--output',str(tmp_path),'--cache',str(tmp_path/'cache')])
+    module.main()
+    result=json.loads((tmp_path/'dashboard.json').read_text())
+    assert result['capture_blocked_reason']=='waiting_for_current_season_box_archive'
+    assert result['summary']['saved_games']==1 and result['summary']['settled_games']==1
+    assert result['predictions'][0]['correct']==1
+    for key,value in original.items():
+        if key!='status':assert result['predictions'][0][key]==value
+
+
+@pytest.mark.parametrize('code',[403,500])
+def test_box_archive_errors_other_than_not_published_still_fail(monkeypatch,code):
+    import prospective as module
+    from urllib.error import HTTPError
+    s=schedule();s.loc[0,'status_type_name']='STATUS_FINAL'
+    def fail(*a,**k):raise HTTPError('https://example.com/box',code,'Failed',None,None)
+    monkeypatch.setattr(module,'fetch',fail)
+    with pytest.raises(HTTPError):module.current_box_status(s,None)

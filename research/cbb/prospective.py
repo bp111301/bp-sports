@@ -4,6 +4,7 @@ from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 import hashlib
 import json
+from urllib.error import HTTPError
 from pathlib import Path
 import numpy as np
 import pandas as pd
@@ -102,6 +103,18 @@ def summary(ledger):
                 log_loss=sum(r['log_loss'] for r in settled)/n if n else None)
 
 
+def current_box_status(schedule,cache):
+    if not ((schedule.season_type==2)&schedule.status_type_name.eq('STATUS_FINAL')).any():
+        return False,None
+    try:fetch(2027,'box',cache,refresh=True)
+    except HTTPError as error:
+        # The first final can precede publication of the season's box archive.
+        # Grade verified results, but do not create forecasts from stale state.
+        if error.code!=404:raise
+        return False,'waiting_for_current_season_box_archive'
+    return True,None
+
+
 def main():
     parser=argparse.ArgumentParser();parser.add_argument('--cache',default='runtime/cbb');parser.add_argument('--output',default='data/cbb/prospective');parser.add_argument('--horizon-days',type=int,default=30);args=parser.parse_args()
     now=pd.Timestamp.now(tz='UTC');root=Path(__file__).parent;cache=Path(args.cache);cache.mkdir(parents=True,exist_ok=True)
@@ -114,15 +127,16 @@ def main():
     pending=json.loads(saved_path.read_text()) if saved_path.exists() else []
     schedule,source=supplement(schedule,source,now,pending)
     upcoming,coverage,excluded=targets(schedule,now,args.horizon_days)
-    with ThreadPoolExecutor(max_workers=4) as pool:seasons=list(pool.map(lambda y:season_games(y,cache),range(2020,2027)))
-    history=[g for games,_ in seasons for g in games]
-    # Once the season begins, refresh current-season final boxes before state updates.
-    if ((schedule.season_type==2)&schedule.status_type_name.eq('STATUS_FINAL')).any():
-        fetch(2027,'box',cache,refresh=True)
-        current,_=season_games(2027,cache);history+=current
+    current_ready,capture_blocked_reason=current_box_status(schedule,cache)
+    seasons=[];history=[]
+    if capture_blocked_reason is None:
+        with ThreadPoolExecutor(max_workers=4) as pool:seasons=list(pool.map(lambda y:season_games(y,cache),range(2020,2027)))
+        history=[g for games,_ in seasons for g in games]
+        if current_ready:
+            current,_=season_games(2027,cache);history+=current
     now=pd.Timestamp.now(tz='UTC')
     upcoming,coverage,excluded=targets(schedule,now,args.horizon_days)
-    frame=forecast_features(history,upcoming,now)
+    frame=forecast_features(history,upcoming,now) if capture_blocked_reason is None else pd.DataFrame(columns=FEATURES)
     now=pd.Timestamp.now(tz='UTC')
     if len(frame):frame=frame[frame.start.gt(now)]
     output=Path(args.output);output.mkdir(parents=True,exist_ok=True);path=output/'prediction_ledger.json'
@@ -133,10 +147,11 @@ def main():
     totals=summary(ledger)
     dashboard=dict(feed_status='research_preview',model_version=bundle['version'],bundle_sha256=bundle_sha,
                    updated_at_utc=now.isoformat(),coverage=coverage,excluded=excluded,grading_issues=issues,
+                   capture_blocked_reason=capture_blocked_reason,
                    summary=totals,predictions=ledger,source=source,history_sources=[audit['sources'] for _,audit in seasons],
                    limitations=['Early forecasts use prior-season state; no roster/transfer/injury inputs','Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded','Historical accuracy is separate from this prospective record'])
     # Atomic local replacement; existing forecast identity/probabilities stay immutable.
-    for file,value in [('prediction_ledger.json',ledger),('dashboard.json',dashboard),('summary.json',{**totals,'updated_at_utc':now.isoformat(),'bundle_sha256':bundle_sha,'grading_issues':issues})]:
+    for file,value in [('prediction_ledger.json',ledger),('dashboard.json',dashboard),('summary.json',{**totals,'updated_at_utc':now.isoformat(),'bundle_sha256':bundle_sha,'grading_issues':issues,'capture_blocked_reason':capture_blocked_reason})]:
         target=output/file;temporary=target.with_suffix('.tmp');temporary.write_text(json.dumps(value,indent=2,allow_nan=False)+'\n');temporary.replace(target)
     print(json.dumps({'summary':totals,'coverage':coverage,'excluded':excluded,'grading_issues':issues},indent=2))
 
