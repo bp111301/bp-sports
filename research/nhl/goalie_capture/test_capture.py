@@ -26,7 +26,7 @@ class CaptureSafety(unittest.TestCase):
             source=copy.deepcopy(self.source);source['home']['source_reported_at_utc']=when
             self.assertFalse(self.record(source)['confirmed_eligible'])
     def test_wrong_matchup_or_start_rejected(self):
-        for field,value in [('home_team','BUF'),('game_date','2026-10-05'),('start_time_utc','2026-10-06T22:00:00Z')]:
+        for field,value in [('home_team','BUF'),('game_date','2026-10-05'),('start_time_utc','2026-10-06T21:00:00Z')]:
             source=copy.deepcopy(self.source);source[field]=value
             with self.assertRaises(ValueError):self.record(source)
     def test_ambiguous_and_unresolved_names_not_eligible(self):
@@ -64,7 +64,7 @@ class CaptureSafety(unittest.TestCase):
         self.assertTrue(row['confirmed_eligible'])
         self.assertEqual(row['start_time_utc'],game['start_time_utc'])
         self.assertEqual(row['source_start_time_utc'],source['start_time_utc'])
-        self.assertIn('fall_back',row['schedule_time_reconciliation'])
+        self.assertIn('nhl_time_used',row['schedule_time_reconciliation'])
         self.assertEqual(source,original)
         self.assertIsNone(available_at([row],game['game_id'],'home',timestamp('2026-11-01T18:00:00Z')))
     def test_fallback_never_extends_pregame_window(self):
@@ -85,10 +85,10 @@ class CaptureSafety(unittest.TestCase):
             with self.assertRaisesRegex(ValueError,'mismatch'):schedule_time_reconciliation(game,bad)
         for date in ['2026-10-30','2026-11-02','2026-03-08']:
             g={**game,'game_date':date,'start_time_utc':date+'T18:00:00Z'}
-            s={**source,'game_date':date,'start_time_utc':date+'T19:00:00Z'}
+            s={**source,'game_date':date,'start_time_utc':date+'T20:00:00Z'}
             with self.assertRaisesRegex(ValueError,'mismatch'):schedule_time_reconciliation(g,s)
     def test_clock_reconciliation_covers_both_directions_and_transition_dates(self):
-        for day in ['2026-10-31','2026-11-01','2027-11-06','2027-11-07']:
+        for day in ['2026-10-31','2026-11-01','2026-11-02','2026-11-03','2027-11-06','2027-11-07']:
             for hour,direction in [(17,'early'),(19,'late')]:
                 with self.subTest(day=day,direction=direction):
                     game={**self.game,'game_date':day,'start_time_utc':day+'T18:00:00Z'}
