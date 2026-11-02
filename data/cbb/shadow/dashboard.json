@@ -1,48 +1,53 @@
 {
   "status": "shadow_only_not_public",
-  "updated_at_utc": "2026-11-01T13:06:06.075809+00:00",
+  "updated_at_utc": "2026-11-02T00:47:05.863715+00:00",
   "identities": {
     "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
     "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
     "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
   },
   "capture_window_hours": 24,
-  "eligible_future_games": 1224,
-  "within_capture_window": 4,
+  "eligible_future_games": 1253,
+  "within_capture_window": 0,
   "summary": {
     "saved_pairs": 4,
-    "settled_pairs": 0,
-    "pending_pairs": 4,
+    "settled_pairs": 1,
+    "pending_pairs": 3,
     "control": {
       "wins": 0,
-      "losses": 0,
-      "accuracy": null,
-      "brier": null,
-      "log_loss": null
+      "losses": 1,
+      "accuracy": 0.0,
+      "brier": 0.6037891241106109,
+      "log_loss": 1.5007570155810894
     },
     "challenger": {
       "wins": 0,
-      "losses": 0,
-      "accuracy": null,
-      "brier": null,
-      "log_loss": null
+      "losses": 1,
+      "accuracy": 0.0,
+      "brier": 0.5956224643944864,
+      "log_loss": 1.477383024966197
     },
     "challenger_minus_control": {
-      "accuracy": null,
-      "brier": null,
-      "log_loss": null
+      "accuracy": 0.0,
+      "brier": -0.008166659716124514,
+      "log_loss": -0.023373990614892426
     },
     "pick_disagreements": 0,
     "roster_unknown_pairs": 4
   },
   "coverage": {
-    "source_games_in_horizon": 1645
+    "source_games_in_horizon": 1683
   },
   "excluded": {
-    "tipoff_time_unconfirmed": 37,
-    "division_or_conference_unknown": 384
+    "division_or_conference_unknown": 393,
+    "tipoff_time_unconfirmed": 37
   },
   "coverage_by_day": {
+    "2026-12-01": {
+      "source_games": 39,
+      "eligible": 30,
+      "unconfirmed_tipoff": 0
+    },
     "Unconfirmed source date/time": {
       "source_games": 37,
       "eligible": 0,
@@ -194,14 +199,14 @@
       "unconfirmed_tipoff": 0
     },
     "2026-11-01": {
-      "source_games": 2,
-      "eligible": 2,
+      "source_games": 1,
+      "eligible": 1,
       "unconfirmed_tipoff": 0
     }
   },
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "138026bf9b4a6ab891c8e25d69888c014479798522cfff753107513208061481",
+    "sha256": "83c22698f1b449ad1eef26e2da6b603f4f2cf8ff6cd3d5632b6bfeebef311fe6",
     "bytes": 426859,
     "archive_sha256": "a7c8fce7c1223079b12b3dd4780453235a7c64a3c7d8f29e18d6707d78947efd",
     "live_schedule_sources": [
@@ -212,12 +217,12 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261101&groups=50&limit=1000",
-        "sha256": "f6b42caa91cd1947f518ea077f9c9061b238ae221ca4872b952a65640e8252f4",
+        "sha256": "bbc8669d83918b8ed39420b791ec2ad38c01764f10048cdf8981834321dcae11",
         "games": 2
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261102&groups=50&limit=1000",
-        "sha256": "07952ee34f91884f8b993c7db2a3dfc0543826954313891edeb56627eee9b0df",
+        "sha256": "6065374e87ea2641df549e3b3bdb031b79c7c3287740091b4b66adbdbaf71014",
         "games": 182
       },
       {
@@ -242,13 +247,18 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&groups=50&limit=1000",
-        "sha256": "a9c5fbadab5c276d4e5251e121057eae64f3279ebfac1d758e7483da20bc0ccf",
+        "sha256": "3b7f018fdac3298f8af7e87adfe6300a3993b3fc239986fe26228e7390ff6ff6",
         "games": 61
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261108&groups=50&limit=1000",
         "sha256": "ce52ac0a3ebc7463814bf061ba02a7bb6d78f3ea7eb1e420bd0ef8f1cc998112",
         "games": 35
+      },
+      {
+        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261109&groups=50&limit=1000",
+        "sha256": "f1ba06e467606e13b3b9080c3503ed9df572660a2ef8f61e8f403ec462d799bc",
+        "games": 50
       }
     ],
     "identity_conflicts": []
@@ -496,6 +506,7 @@
     }
   ],
   "grading_issues": [],
+  "capture_blocked_reason": "waiting_for_current_season_box_archive",
   "limitations": [
     "Source schedule coverage is partial; unconfirmed tipoffs are excluded",
     "Continuity uses observed earlier appearances; opening-night roster and injury availability unknown",
@@ -533,7 +544,7 @@
         "created_at_utc": "2026-10-31T19:09:00.190720+00:00",
         "home_win_prob": 0.7770386889406543,
         "predicted_winner": "Villanova Wildcats",
-        "status": "pending",
+        "status": "settled",
         "market_used_for_pick": false,
         "source_schedule_sha256": "c07a238c022c7ff9b081eaeca8c016807a8cf1e382266ccaadf85860ef07373b",
         "features": {
@@ -548,7 +559,16 @@
           "pace_diff": -0.5192918346774178,
           "rest_diff": 0.0,
           "experience_diff": 0.0
-        }
+        },
+        "actual_home_win": 0,
+        "home_score": 72,
+        "away_score": 74,
+        "actual_winner": "Notre Dame Fighting Irish",
+        "correct": 0,
+        "brier": 0.6037891241106109,
+        "log_loss": 1.5007570155810894,
+        "verified_start_time_utc": "2026-11-01T14:30:00+00:00",
+        "settled_at_utc": "2026-11-02T00:47:05.863715+00:00"
       },
       "challenger": {
         "prediction_id": "CBB_SHADOW_COMBINED_20261016:401920982",
@@ -566,7 +586,7 @@
         "created_at_utc": "2026-10-31T19:09:00.190720+00:00",
         "home_win_prob": 0.7717658092935229,
         "predicted_winner": "Villanova Wildcats",
-        "status": "pending",
+        "status": "settled",
         "market_used_for_pick": false,
         "source_schedule_sha256": "c07a238c022c7ff9b081eaeca8c016807a8cf1e382266ccaadf85860ef07373b",
         "features": {
@@ -587,7 +607,16 @@
           "transfer_share_diff": 0.0,
           "prior_minutes_experience_diff": 0.0,
           "rotation_known_diff": 0.0
-        }
+        },
+        "actual_home_win": 0,
+        "home_score": 72,
+        "away_score": 74,
+        "actual_winner": "Notre Dame Fighting Irish",
+        "correct": 0,
+        "brier": 0.5956224643944864,
+        "log_loss": 1.477383024966197,
+        "verified_start_time_utc": "2026-11-01T14:30:00+00:00",
+        "settled_at_utc": "2026-11-02T00:47:05.863715+00:00"
       }
     },
     {
