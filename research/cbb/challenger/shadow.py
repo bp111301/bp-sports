@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+from urllib.error import HTTPError
 import sys
 import numpy as np
 import pandas as pd
@@ -154,13 +155,16 @@ def main():
     now=pd.Timestamp.now(tz='UTC');upcoming,coverage,excluded=targets(schedule,now)
     active=in_capture_window(upcoming,now)
     needed=upcoming if args.preflight else active
-    audits=[]
+    audits=[];capture_blocked_reason=None
     if needed:
         history,players,audits=load_history(cache,range(2020,2027))
         if ((schedule.season_type==2)&schedule.status_type_name.eq('STATUS_FINAL')).any():
-            batch,rotation,audit=load_season(2027,cache,refresh=True)
-            history+=batch;players.update(rotation);audits.append(audit)
-        frame=forecast_frame(history,needed,players,now)
+            try:batch,rotation,audit=load_season(2027,cache,refresh=True)
+            except HTTPError as error:
+                if error.code!=404:raise
+                capture_blocked_reason='waiting_for_current_season_box_archive'
+            else:history+=batch;players.update(rotation);audits.append(audit)
+        frame=forecast_frame(history,needed,players,now) if capture_blocked_reason is None else pd.DataFrame(columns=VARIANTS['combined'])
     else:frame=pd.DataFrame(columns=VARIANTS['combined'])
     now=pd.Timestamp.now(tz='UTC')
     if len(frame):frame=frame[frame.start.gt(now)]
@@ -184,12 +188,12 @@ def main():
     dashboard=dict(status='shadow_only_not_public',updated_at_utc=now.isoformat(),identities=identities,
                    capture_window_hours=24,eligible_future_games=len(upcoming),within_capture_window=len(frame),
                    summary=totals,coverage=coverage,excluded=excluded,coverage_by_day=coverage_by_day(schedule,upcoming,now),
-                   source=source,history_sources=audits,grading_issues=issues,
+                   source=source,history_sources=audits,grading_issues=issues,capture_blocked_reason=capture_blocked_reason,
                    limitations=['Source schedule coverage is partial; unconfirmed tipoffs are excluded',
                                 'Continuity uses observed earlier appearances; opening-night roster and injury availability unknown',
                                 'Paired V1 control is separate from original public V1 snapshots',
                                 'No automatic promotion; historical 2026 evaluation unchanged'],predictions=ledger)
-    for filename,value in [('paired_ledger.json',ledger),('dashboard.json',dashboard),('summary.json',{**totals,'updated_at_utc':now.isoformat(),'identities':identities,'grading_issues':issues})]:
+    for filename,value in [('paired_ledger.json',ledger),('dashboard.json',dashboard),('summary.json',{**totals,'updated_at_utc':now.isoformat(),'identities':identities,'grading_issues':issues,'capture_blocked_reason':capture_blocked_reason})]:
         target=output/filename;temp=target.with_suffix('.tmp');temp.write_text(json.dumps(value,indent=2,allow_nan=False)+'\n');temp.replace(target)
     print(json.dumps({k:dashboard[k] for k in ['status','summary','coverage','excluded','coverage_by_day','grading_issues']},indent=2))
 
