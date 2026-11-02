@@ -1,48 +1,53 @@
 {
   "status": "shadow_only_not_public",
-  "updated_at_utc": "2026-11-02T13:29:03.672561+00:00",
+  "updated_at_utc": "2026-11-02T19:14:32.132495+00:00",
   "identities": {
     "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
     "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
     "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
   },
   "capture_window_hours": 24,
-  "eligible_future_games": 1276,
-  "within_capture_window": 117,
+  "eligible_future_games": 1275,
+  "within_capture_window": 114,
   "summary": {
     "saved_pairs": 121,
-    "settled_pairs": 4,
-    "pending_pairs": 117,
+    "settled_pairs": 6,
+    "pending_pairs": 115,
     "control": {
       "wins": 2,
-      "losses": 2,
-      "accuracy": 0.5,
-      "brier": 0.2496622737708844,
-      "log_loss": 0.6983273161066801
+      "losses": 4,
+      "accuracy": 0.3333333333333333,
+      "brier": 0.2729523273888353,
+      "log_loss": 0.7432317326070365
     },
     "challenger": {
-      "wins": 2,
-      "losses": 2,
+      "wins": 3,
+      "losses": 3,
       "accuracy": 0.5,
-      "brier": 0.29525829476568344,
-      "log_loss": 0.8042286133676813
+      "brier": 0.2670012485755127,
+      "log_loss": 0.7385787528598681
     },
     "challenger_minus_control": {
-      "accuracy": 0.0,
-      "brier": 0.045596020994799036,
-      "log_loss": 0.10590129726100117
+      "accuracy": 0.16666666666666669,
+      "brier": -0.0059510788133225745,
+      "log_loss": -0.004652979747168384
     },
     "pick_disagreements": 5,
     "roster_unknown_pairs": 121
   },
   "coverage": {
-    "source_games_in_horizon": 1706
+    "source_games_in_horizon": 1700
   },
   "excluded": {
-    "tipoff_time_unconfirmed": 33,
-    "division_or_conference_unknown": 397
+    "division_or_conference_unknown": 392,
+    "tipoff_time_unconfirmed": 33
   },
   "coverage_by_day": {
+    "2026-12-02": {
+      "source_games": 3,
+      "eligible": 2,
+      "unconfirmed_tipoff": 0
+    },
     "Unconfirmed source date/time": {
       "source_games": 33,
       "eligible": 0,
@@ -194,14 +199,14 @@
       "unconfirmed_tipoff": 0
     },
     "2026-11-02": {
-      "source_games": 180,
-      "eligible": 117,
+      "source_games": 171,
+      "eligible": 114,
       "unconfirmed_tipoff": 0
     }
   },
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "74b7b12a0a58952d499c70be7eb472e29a26bd69f2259946a354b973a2ef86ed",
+    "sha256": "523b8f943c47e53157c90bcd534baeb0dc216956c053647bade3693db24796b5",
     "bytes": 429012,
     "archive_sha256": "eb0f077201fea782c3891eb4d2b0df6d1c504068572ea622343460cab568da5c",
     "live_schedule_sources": [
@@ -212,7 +217,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261102&groups=50&limit=1000",
-        "sha256": "8838e00faa7ae0d5c61e48ec9077a183a5a09f011249a3d40509c3035397315f",
+        "sha256": "4d8ac7a08ae1c92039cc3b5e11b154678d526464bc04c757ba913d89d1347361",
         "games": 182
       },
       {
@@ -232,7 +237,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&groups=50&limit=1000",
-        "sha256": "6f01bc77e6f1222603b1a00ea0a8c313802d9913fe2c9e43e2ad7f9e939e6414",
+        "sha256": "244814d638a8994f434a00b039e024ebc4f110ade127ab7934b0c5dc421ac9ae",
         "games": 72
       },
       {
@@ -985,7 +990,7 @@
         "created_at_utc": "2026-11-02T13:29:03.672561+00:00",
         "home_win_prob": 0.4316464489838949,
         "predicted_winner": "Winthrop Eagles",
-        "status": "pending",
+        "status": "settled",
         "market_used_for_pick": false,
         "source_schedule_sha256": "74b7b12a0a58952d499c70be7eb472e29a26bd69f2259946a354b973a2ef86ed",
         "features": {
@@ -1000,7 +1005,16 @@
           "pace_diff": -0.6889540566960051,
           "rest_diff": 0.0,
           "experience_diff": 0.0
-        }
+        },
+        "actual_home_win": 1,
+        "home_score": 103,
+        "away_score": 98,
+        "actual_winner": "Queens University Royals",
+        "correct": 0,
+        "brier": 0.32302575895261637,
+        "log_loss": 0.8401484309442091,
+        "verified_start_time_utc": "2026-11-02T14:00:00+00:00",
+        "settled_at_utc": "2026-11-02T19:14:32.132495+00:00"
       },
       "challenger": {
         "prediction_id": "CBB_SHADOW_COMBINED_20261016:401921423",
@@ -1018,7 +1032,7 @@
         "created_at_utc": "2026-11-02T13:29:03.672561+00:00",
         "home_win_prob": 0.4287927218455657,
         "predicted_winner": "Winthrop Eagles",
-        "status": "pending",
+        "status": "settled",
         "market_used_for_pick": false,
         "source_schedule_sha256": "74b7b12a0a58952d499c70be7eb472e29a26bd69f2259946a354b973a2ef86ed",
         "features": {
@@ -1039,7 +1053,16 @@
           "transfer_share_diff": 0.0,
           "prior_minutes_experience_diff": 0.0,
           "rotation_known_diff": 0.0
-        }
+        },
+        "actual_home_win": 1,
+        "home_score": 103,
+        "away_score": 98,
+        "actual_winner": "Queens University Royals",
+        "correct": 0,
+        "brier": 0.32627775461659725,
+        "log_loss": 0.8467816426775088,
+        "verified_start_time_utc": "2026-11-02T14:00:00+00:00",
+        "settled_at_utc": "2026-11-02T19:14:32.132495+00:00"
       }
     },
     {
@@ -1072,7 +1095,7 @@
         "created_at_utc": "2026-11-02T13:29:03.672561+00:00",
         "home_win_prob": 0.5621735588738214,
         "predicted_winner": "Tennessee State Tigers",
-        "status": "pending",
+        "status": "settled",
         "market_used_for_pick": false,
         "source_schedule_sha256": "74b7b12a0a58952d499c70be7eb472e29a26bd69f2259946a354b973a2ef86ed",
         "features": {
@@ -1087,7 +1110,16 @@
           "pace_diff": -1.4104256465517437,
           "rest_diff": 0.0,
           "experience_diff": 0.0
-        }
+        },
+        "actual_home_win": 0,
+        "home_score": 64,
+        "away_score": 94,
+        "actual_winner": "Murray State Racers",
+        "correct": 0,
+        "brier": 0.3160391102968579,
+        "log_loss": 0.8259327002712891,
+        "verified_start_time_utc": "2026-11-02T16:30:00+00:00",
+        "settled_at_utc": "2026-11-02T19:14:32.132495+00:00"
       },
       "challenger": {
         "prediction_id": "CBB_SHADOW_COMBINED_20261016:401911707",
@@ -1105,7 +1137,7 @@
         "created_at_utc": "2026-11-02T13:29:03.672561+00:00",
         "home_win_prob": 0.3077280581515848,
         "predicted_winner": "Murray State Racers",
-        "status": "pending",
+        "status": "settled",
         "market_used_for_pick": false,
         "source_schedule_sha256": "74b7b12a0a58952d499c70be7eb472e29a26bd69f2259946a354b973a2ef86ed",
         "features": {
@@ -1126,7 +1158,16 @@
           "transfer_share_diff": 0.0,
           "prior_minutes_experience_diff": 0.0,
           "rotation_known_diff": 0.0
-        }
+        },
+        "actual_home_win": 0,
+        "home_score": 64,
+        "away_score": 94,
+        "actual_winner": "Murray State Racers",
+        "correct": 1,
+        "brier": 0.09469655777374517,
+        "log_loss": 0.3677764210109742,
+        "verified_start_time_utc": "2026-11-02T16:30:00+00:00",
+        "settled_at_utc": "2026-11-02T19:14:32.132495+00:00"
       }
     },
     {
