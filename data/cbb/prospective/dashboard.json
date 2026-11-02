@@ -2,13 +2,13 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-01T13:05:09.783328+00:00",
+  "updated_at_utc": "2026-11-02T00:45:25.477778+00:00",
   "coverage": {
-    "source_games_in_horizon": 1645
+    "source_games_in_horizon": 1683
   },
   "excluded": {
-    "tipoff_time_unconfirmed": 37,
-    "division_or_conference_unknown": 384
+    "division_or_conference_unknown": 394,
+    "tipoff_time_unconfirmed": 32
   },
   "grading_issues": [
     {
@@ -16,15 +16,16 @@
       "reason": "result_identity_mismatch"
     }
   ],
+  "capture_blocked_reason": "waiting_for_current_season_box_archive",
   "summary": {
     "saved_games": 1226,
-    "settled_games": 0,
-    "pending_games": 1226,
+    "settled_games": 1,
+    "pending_games": 1225,
     "wins": 0,
-    "losses": 0,
-    "accuracy": null,
-    "brier": null,
-    "log_loss": null
+    "losses": 1,
+    "accuracy": 0.0,
+    "brier": 0.6037891241106109,
+    "log_loss": 1.5007570155810894
   },
   "predictions": [
     {
@@ -1675,7 +1676,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7770386889406543,
       "predicted_winner": "Villanova Wildcats",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -1691,7 +1692,16 @@
         "pace_diff": -0.5192918346774178,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 72,
+      "away_score": 74,
+      "actual_winner": "Notre Dame Fighting Irish",
+      "correct": 0,
+      "brier": 0.6037891241106109,
+      "log_loss": 1.5007570155810894,
+      "verified_start_time_utc": "2026-11-01T14:30:00+00:00",
+      "settled_at_utc": "2026-11-02T00:45:25.477778+00:00"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920409",
@@ -41714,7 +41724,7 @@
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "55af4d2ac8554f21813990bdecefcf15c386683ef72c6f6459af1ea7d0313118",
+    "sha256": "4bf9db5364733902d29d12af0fe9241aa810daf98790caca2e705f87ee7360a4",
     "bytes": 426859,
     "archive_sha256": "a7c8fce7c1223079b12b3dd4780453235a7c64a3c7d8f29e18d6707d78947efd",
     "live_schedule_sources": [
@@ -41725,12 +41735,12 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261101&groups=50&limit=1000",
-        "sha256": "f6b42caa91cd1947f518ea077f9c9061b238ae221ca4872b952a65640e8252f4",
+        "sha256": "bbc8669d83918b8ed39420b791ec2ad38c01764f10048cdf8981834321dcae11",
         "games": 2
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261102&groups=50&limit=1000",
-        "sha256": "07952ee34f91884f8b993c7db2a3dfc0543826954313891edeb56627eee9b0df",
+        "sha256": "6065374e87ea2641df549e3b3bdb031b79c7c3287740091b4b66adbdbaf71014",
         "games": 182
       },
       {
@@ -41755,7 +41765,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&groups=50&limit=1000",
-        "sha256": "a9c5fbadab5c276d4e5251e121057eae64f3279ebfac1d758e7483da20bc0ccf",
+        "sha256": "3b7f018fdac3298f8af7e87adfe6300a3993b3fc239986fe26228e7390ff6ff6",
         "games": 61
       },
       {
@@ -41775,7 +41785,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261111&groups=50&limit=1000",
-        "sha256": "889077570dba81629d5eaa05b772da82075b63ac543ac1aebe27dd6b6d0d9d9e",
+        "sha256": "df8ab9b07808d2ab37ad2237f803c1d3708573731bb8d4a201db1390a9082d7c",
         "games": 67
       },
       {
@@ -41805,7 +41815,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&groups=50&limit=1000",
-        "sha256": "ed0eab8502dadc5570ade7ba4fc988d402e1619869741a57725aa15b2098d57a",
+        "sha256": "4b5c14a9dc5d939e7733e971ff9fc0930ade2f1998943aa49de9827badc986dc",
         "games": 66
       },
       {
@@ -41820,13 +41830,13 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&groups=50&limit=1000",
-        "sha256": "312a284a888c3efa4c8f10dc64b50f073e9259431ca8fa02c5b581a1b2b1feb0",
-        "games": 59
+        "sha256": "d90e5d4122d57fa6f4c09c328a5a9d46c567d7c6599869986d0f1f96b5642150",
+        "games": 58
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&groups=50&limit=1000",
-        "sha256": "5c7383506fd1ccf0a03cc1c23ce106e5619bcef4fef002a3d3e1b80ce6a1e8ea",
-        "games": 56
+        "sha256": "9b8fabded733e3b59f234bdb9ec8839b284e7bc2cc1c78047eb7d3c74aa239db",
+        "games": 57
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261122&groups=50&limit=1000",
@@ -41860,12 +41870,12 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261128&groups=50&limit=1000",
-        "sha256": "08a1fd86f8709161c7da9727a7c49aac6543c24b68da6b0da4dd6344792f668a",
+        "sha256": "b2166516d89ba4dd5c9e2506c1c8a838a5214926751ad326e4604ba321d61632",
         "games": 76
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261129&groups=50&limit=1000",
-        "sha256": "510f30423d5027298a908bfce67f2d8cabec7f42ab4cdf1ae76e97f6c5f4a04c",
+        "sha256": "475b1dcfd220732048c14a1a6694e92fb603487854efa4da7dcada76f3fac582",
         "games": 50
       },
       {
@@ -41875,98 +41885,13 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261201&groups=50&limit=1000",
-        "sha256": "e83a5a6896b8485ee1bcfd4ea3fe0e91953cca1fe47702daefb61da5a5209629",
+        "sha256": "7133e40806dcd1d3bd568e95e659bc3a507ca14c77f209a64468d178083934b7",
         "games": 66
       }
     ],
     "identity_conflicts": []
   },
-  "history_sources": [
-    [
-      {
-        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2020.parquet",
-        "sha256": "f87d7a04d905c95221b1201a4fd43bdf9bad3bfae7b3f880800e9eb8ae1cfa3a",
-        "bytes": 598411
-      },
-      {
-        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2020.parquet",
-        "sha256": "e0691635680d2acc2002b9a5092e9f6065c7da46a9d44f433831b0332a628126",
-        "bytes": 706896
-      }
-    ],
-    [
-      {
-        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2021.parquet",
-        "sha256": "26b26e9fd035a567ca66e65fadd8a3df9482e25e4a1c63ff40466e0d99c9cc76",
-        "bytes": 465503
-      },
-      {
-        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2021.parquet",
-        "sha256": "61dd52ed579a1ed628bf30f79b38580e559d7a9e8160a8a03204f6415ef6f4a4",
-        "bytes": 525456
-      }
-    ],
-    [
-      {
-        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2022.parquet",
-        "sha256": "75a702d5c8db85bfd7ad30bc046a801742b88ac3f7a900d7e05450a6a4c10276",
-        "bytes": 621024
-      },
-      {
-        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2022.parquet",
-        "sha256": "2ddae04a435686e16c2bbc5bbe133fa8706eadd69dd860344fb5c2cd216c2fb6",
-        "bytes": 733561
-      }
-    ],
-    [
-      {
-        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2023.parquet",
-        "sha256": "1a75500bd669a2e0f01b39623a1aa28d8d4cc1b8658f8adbabfc5319c73c496c",
-        "bytes": 1039184
-      },
-      {
-        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2023.parquet",
-        "sha256": "2dc03013ed57653e7063134bfc6af0cd96866cb25c11268288828ff42757a84c",
-        "bytes": 762833
-      }
-    ],
-    [
-      {
-        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2024.parquet",
-        "sha256": "27889ecf392a9a6281e7898dc39d51a2f4a4576f689533dda0d67c4d57d52602",
-        "bytes": 1024630
-      },
-      {
-        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2024.parquet",
-        "sha256": "b9137f1cb2b8bc94836c63842de8c587df197bf7bd7746727593e1301a819b2d",
-        "bytes": 798459
-      }
-    ],
-    [
-      {
-        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2025.parquet",
-        "sha256": "e01bf54b51c8d71b00cd8144e9a022ed170af2c2e57787b1cef672340891c45b",
-        "bytes": 1433410
-      },
-      {
-        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2025.parquet",
-        "sha256": "571f7ab5c4dd5c4332544f27a0e9d32d131f6f20c4527884a7e180084ae887c9",
-        "bytes": 711263
-      }
-    ],
-    [
-      {
-        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2026.parquet",
-        "sha256": "480896940f9502e537513386efa1ece6ed9cac0bcd8bd30f3493aa6254912aec",
-        "bytes": 1761833
-      },
-      {
-        "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2026.parquet",
-        "sha256": "db58650c1a9b2a1b6c8735507b8e922580ea514bb9f2ccbc1d91ae6588a27f42",
-        "bytes": 728329
-      }
-    ]
-  ],
+  "history_sources": [],
   "limitations": [
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
