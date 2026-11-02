@@ -2,13 +2,13 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-02T01:22:53.858790+00:00",
+  "updated_at_utc": "2026-11-02T07:41:06.444026+00:00",
   "coverage": {
-    "source_games_in_horizon": 1693
+    "source_games_in_horizon": 1708
   },
   "excluded": {
-    "division_or_conference_unknown": 397,
-    "tipoff_time_unconfirmed": 32
+    "tipoff_time_unconfirmed": 33,
+    "division_or_conference_unknown": 397
   },
   "grading_issues": [
     {
@@ -19,13 +19,13 @@
   "capture_blocked_reason": "waiting_for_current_season_box_archive",
   "summary": {
     "saved_games": 1226,
-    "settled_games": 1,
-    "pending_games": 1225,
-    "wins": 0,
+    "settled_games": 2,
+    "pending_games": 1224,
+    "wins": 1,
     "losses": 1,
-    "accuracy": 0.0,
-    "brier": 0.6037891241106109,
-    "log_loss": 1.5007570155810894
+    "accuracy": 0.5,
+    "brier": 0.3221833188594756,
+    "log_loss": 0.8628502241200838
   },
   "predictions": [
     {
@@ -1719,7 +1719,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.798561389976151,
       "predicted_winner": "High Point Panthers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -1735,7 +1735,16 @@
         "pace_diff": 6.245759176863174,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 72,
+      "away_score": 57,
+      "actual_winner": "High Point Panthers",
+      "correct": 1,
+      "brier": 0.04057751360834032,
+      "log_loss": 0.22494343265907815,
+      "verified_start_time_utc": "2026-11-02T04:59:00+00:00",
+      "settled_at_utc": "2026-11-02T07:41:06.444026+00:00"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920912",
@@ -41724,18 +41733,18 @@
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "4bf9db5364733902d29d12af0fe9241aa810daf98790caca2e705f87ee7360a4",
+    "sha256": "bca054231b2b6102f21c480ad78301e4ba52e3c8e479a2e9f15be8094c5a630e",
     "bytes": 426859,
     "archive_sha256": "a7c8fce7c1223079b12b3dd4780453235a7c64a3c7d8f29e18d6707d78947efd",
     "live_schedule_sources": [
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261101&groups=50&limit=1000",
-        "sha256": "bbc8669d83918b8ed39420b791ec2ad38c01764f10048cdf8981834321dcae11",
+        "sha256": "0f048f47bfd5049facea82ece5bed4f799d83b4bdabe607e086313bb4abaa5b8",
         "games": 2
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261102&groups=50&limit=1000",
-        "sha256": "6065374e87ea2641df549e3b3bdb031b79c7c3287740091b4b66adbdbaf71014",
+        "sha256": "a2005663fa20a5bf404d7e342b471d4af8334679937f50924fb04fdbddf51bb3",
         "games": 182
       },
       {
@@ -41865,7 +41874,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261128&groups=50&limit=1000",
-        "sha256": "b2166516d89ba4dd5c9e2506c1c8a838a5214926751ad326e4604ba321d61632",
+        "sha256": "2d5bbfe812b49fe8d182a75a14f851d835891482792df18662c8ca2f9dbd45a9",
         "games": 76
       },
       {
