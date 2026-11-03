@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-03T12:18:58.733078+00:00",
+  "updated_at_utc": "2026-11-03T13:21:06.354438+00:00",
   "coverage": {
     "source_games_in_horizon": 1597
   },
@@ -47030,13 +47030,13 @@
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "e186fcc7585fa83da163f7cc863ce921d778307ade9029fe7e8c90120457bfd1",
-    "bytes": 429012,
-    "archive_sha256": "eb0f077201fea782c3891eb4d2b0df6d1c504068572ea622343460cab568da5c",
+    "sha256": "6c907e8a7e9fca6a3a0dc4f309c8b2216818ab951a2efb3f93115269d408097e",
+    "bytes": 454596,
+    "archive_sha256": "28c7c39e950e9ecb11eca221264787c188a4ed3edfafcfc2970682f8d38bf45b",
     "live_schedule_sources": [
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261102&groups=50&limit=1000",
-        "sha256": "37687fc9b9685dc6dc55a359843b1e284856452c0bf77f1f3a27311e8bcec5f3",
+        "sha256": "54e55e084294832b33e14ebc85ef7ba78fa3a1b988d0a75cb5036f562d6d1cc2",
         "games": 182
       },
       {
@@ -47195,12 +47195,7 @@
         "games": 29
       }
     ],
-    "identity_conflicts": [
-      {
-        "game_id": 401925892,
-        "reason": "Live/archive schedule identity mismatch: 401925892 archive={'home_id': 2450, 'away_id': 111926, 'season': 2027} live={'home_id': 2450, 'away_id': 131784, 'season': 2027}"
-      }
-    ]
+    "identity_conflicts": []
   },
   "history_sources": [
     [
@@ -47292,6 +47287,5 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ],
-  "results_checked_at_utc": "2026-11-03T12:18:58.733078+00:00"
+  ]
 }
