@@ -1,7 +1,7 @@
 {
   "season": 2026,
-  "week": 8,
-  "updated_at_utc": "2026-11-03T00:58:42.541430+00:00",
+  "week": 9,
+  "updated_at_utc": "2026-11-03T03:55:53.301262+00:00",
   "games": {
     "2026_06_CHI_ATL": {
       "game_id": "2026_06_CHI_ATL",
@@ -7136,22 +7136,1053 @@
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
+    },
+    "2026_09_JAX_BAL": {
+      "game_id": "2026_09_JAX_BAL",
+      "season": 2026,
+      "week": 9,
+      "home_team": "BAL",
+      "away_team": "JAX",
+      "kickoff_utc": "2026-11-06T01:15:00+00:00",
+      "checked_at_utc": "2026-11-03T03:55:53.300689+00:00",
+      "home": {
+        "team": "BAL",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Tyler Huntley",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "away": {
+        "team": "JAX",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Trevor Lawrence",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "qb_review_required": false,
+      "qb_uncertain": false,
+      "source_errors": [
+        "Official injury page has a different season/week"
+      ],
+      "injuries_url": "https://www.nfl.com/injuries/",
+      "inactives_url": null,
+      "source_receipts": [
+        {
+          "url": "https://www.nfl.com/injuries/",
+          "retrieved_at_utc": "2026-11-03T03:55:53.178207+00:00",
+          "sha256": "68cd0740e05179a5d9620c5a531ff4f017dea4038c64e71109fa360b3c829665",
+          "http_status": 200
+        }
+      ],
+      "near_kickoff_check": false,
+      "latest_forecast": {
+        "game_id": "2026_09_JAX_BAL",
+        "away_team": "JAX",
+        "home_team": "BAL",
+        "v3_pick": "JAX",
+        "v3_confidence": 0.632442132797229,
+        "v4_pick": "JAX",
+        "v4_core_confidence": 0.638393328323285,
+        "v4_adjusted_confidence": 0.638393328323285,
+        "explosive_extreme": false,
+        "turnover_risk_flag": false,
+        "early_down_risk_flag": false,
+        "prediction_status": "EARLY_LOCK",
+        "qb_status_flag": "",
+        "home_qb_name_assumed": "Tyler Huntley",
+        "home_qb_id_assumed": "00-0035993",
+        "away_qb_name_assumed": "Trevor Lawrence",
+        "away_qb_id_assumed": "00-0036971",
+        "kickoff_utc": "2026-11-06T01:15:00.000Z",
+        "captured_at_utc": "2026-11-03T03:55:56.419160+00:00",
+        "availability_checked_at_utc": "2026-11-03T03:55:53.300689+00:00",
+        "qb_input_review_required": false,
+        "bundle_version": "BP_V4_2026_FROZEN_20261005"
+      }
+    },
+    "2026_09_CIN_ATL": {
+      "game_id": "2026_09_CIN_ATL",
+      "season": 2026,
+      "week": 9,
+      "home_team": "ATL",
+      "away_team": "CIN",
+      "kickoff_utc": "2026-11-08T14:30:00+00:00",
+      "checked_at_utc": "2026-11-03T03:55:53.300820+00:00",
+      "home": {
+        "team": "ATL",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Michael Penix Jr.",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "away": {
+        "team": "CIN",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Joe Burrow",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "qb_review_required": false,
+      "qb_uncertain": false,
+      "source_errors": [
+        "Official injury page has a different season/week"
+      ],
+      "injuries_url": "https://www.nfl.com/injuries/",
+      "inactives_url": null,
+      "source_receipts": [
+        {
+          "url": "https://www.nfl.com/injuries/",
+          "retrieved_at_utc": "2026-11-03T03:55:53.178207+00:00",
+          "sha256": "68cd0740e05179a5d9620c5a531ff4f017dea4038c64e71109fa360b3c829665",
+          "http_status": 200
+        }
+      ],
+      "near_kickoff_check": false,
+      "latest_forecast": {
+        "game_id": "2026_09_CIN_ATL",
+        "away_team": "CIN",
+        "home_team": "ATL",
+        "v3_pick": "CIN",
+        "v3_confidence": 0.706347053438314,
+        "v4_pick": "CIN",
+        "v4_core_confidence": 0.703610396947421,
+        "v4_adjusted_confidence": 0.626850746288579,
+        "explosive_extreme": true,
+        "turnover_risk_flag": false,
+        "early_down_risk_flag": false,
+        "prediction_status": "EARLY_LOCK",
+        "qb_status_flag": "",
+        "home_qb_name_assumed": "Michael Penix Jr.",
+        "home_qb_id_assumed": "00-0039917",
+        "away_qb_name_assumed": "Joe Burrow",
+        "away_qb_id_assumed": "00-0036442",
+        "kickoff_utc": "2026-11-08T14:30:00.000Z",
+        "captured_at_utc": "2026-11-03T03:55:56.419160+00:00",
+        "availability_checked_at_utc": "2026-11-03T03:55:53.300820+00:00",
+        "qb_input_review_required": false,
+        "bundle_version": "BP_V4_2026_FROZEN_20261005"
+      }
+    },
+    "2026_09_DEN_CAR": {
+      "game_id": "2026_09_DEN_CAR",
+      "season": 2026,
+      "week": 9,
+      "home_team": "CAR",
+      "away_team": "DEN",
+      "kickoff_utc": "2026-11-08T18:00:00+00:00",
+      "checked_at_utc": "2026-11-03T03:55:53.300868+00:00",
+      "home": {
+        "team": "CAR",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Bryce Young",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "away": {
+        "team": "DEN",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Bo Nix",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "qb_review_required": false,
+      "qb_uncertain": false,
+      "source_errors": [
+        "Official injury page has a different season/week"
+      ],
+      "injuries_url": "https://www.nfl.com/injuries/",
+      "inactives_url": null,
+      "source_receipts": [
+        {
+          "url": "https://www.nfl.com/injuries/",
+          "retrieved_at_utc": "2026-11-03T03:55:53.178207+00:00",
+          "sha256": "68cd0740e05179a5d9620c5a531ff4f017dea4038c64e71109fa360b3c829665",
+          "http_status": 200
+        }
+      ],
+      "near_kickoff_check": false,
+      "latest_forecast": {
+        "game_id": "2026_09_DEN_CAR",
+        "away_team": "DEN",
+        "home_team": "CAR",
+        "v3_pick": "DEN",
+        "v3_confidence": 0.534720684339219,
+        "v4_pick": "DEN",
+        "v4_core_confidence": 0.534262089724746,
+        "v4_adjusted_confidence": 0.534262089724746,
+        "explosive_extreme": false,
+        "turnover_risk_flag": false,
+        "early_down_risk_flag": false,
+        "prediction_status": "EARLY_LOCK",
+        "qb_status_flag": "",
+        "home_qb_name_assumed": "Bryce Young",
+        "home_qb_id_assumed": "00-0039150",
+        "away_qb_name_assumed": "Bo Nix",
+        "away_qb_id_assumed": "00-0039732",
+        "kickoff_utc": "2026-11-08T18:00:00.000Z",
+        "captured_at_utc": "2026-11-03T03:55:56.419160+00:00",
+        "availability_checked_at_utc": "2026-11-03T03:55:53.300868+00:00",
+        "qb_input_review_required": false,
+        "bundle_version": "BP_V4_2026_FROZEN_20261005"
+      }
+    },
+    "2026_09_DAL_IND": {
+      "game_id": "2026_09_DAL_IND",
+      "season": 2026,
+      "week": 9,
+      "home_team": "IND",
+      "away_team": "DAL",
+      "kickoff_utc": "2026-11-08T18:00:00+00:00",
+      "checked_at_utc": "2026-11-03T03:55:53.300910+00:00",
+      "home": {
+        "team": "IND",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Daniel Jones",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "away": {
+        "team": "DAL",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Dak Prescott",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "qb_review_required": false,
+      "qb_uncertain": false,
+      "source_errors": [
+        "Official injury page has a different season/week"
+      ],
+      "injuries_url": "https://www.nfl.com/injuries/",
+      "inactives_url": null,
+      "source_receipts": [
+        {
+          "url": "https://www.nfl.com/injuries/",
+          "retrieved_at_utc": "2026-11-03T03:55:53.178207+00:00",
+          "sha256": "68cd0740e05179a5d9620c5a531ff4f017dea4038c64e71109fa360b3c829665",
+          "http_status": 200
+        }
+      ],
+      "near_kickoff_check": false,
+      "latest_forecast": {
+        "game_id": "2026_09_DAL_IND",
+        "away_team": "DAL",
+        "home_team": "IND",
+        "v3_pick": "DAL",
+        "v3_confidence": 0.568838803743353,
+        "v4_pick": "DAL",
+        "v4_core_confidence": 0.565651212086455,
+        "v4_adjusted_confidence": 0.565651212086455,
+        "explosive_extreme": false,
+        "turnover_risk_flag": false,
+        "early_down_risk_flag": false,
+        "prediction_status": "EARLY_LOCK",
+        "qb_status_flag": "",
+        "home_qb_name_assumed": "Daniel Jones",
+        "home_qb_id_assumed": "00-0035710",
+        "away_qb_name_assumed": "Dak Prescott",
+        "away_qb_id_assumed": "00-0033077",
+        "kickoff_utc": "2026-11-08T18:00:00.000Z",
+        "captured_at_utc": "2026-11-03T03:55:56.419160+00:00",
+        "availability_checked_at_utc": "2026-11-03T03:55:53.300910+00:00",
+        "qb_input_review_required": false,
+        "bundle_version": "BP_V4_2026_FROZEN_20261005"
+      }
+    },
+    "2026_09_NYJ_KC": {
+      "game_id": "2026_09_NYJ_KC",
+      "season": 2026,
+      "week": 9,
+      "home_team": "KC",
+      "away_team": "NYJ",
+      "kickoff_utc": "2026-11-08T18:00:00+00:00",
+      "checked_at_utc": "2026-11-03T03:55:53.300944+00:00",
+      "home": {
+        "team": "KC",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Patrick Mahomes",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "away": {
+        "team": "NYJ",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Geno Smith",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "qb_review_required": false,
+      "qb_uncertain": false,
+      "source_errors": [
+        "Official injury page has a different season/week"
+      ],
+      "injuries_url": "https://www.nfl.com/injuries/",
+      "inactives_url": null,
+      "source_receipts": [
+        {
+          "url": "https://www.nfl.com/injuries/",
+          "retrieved_at_utc": "2026-11-03T03:55:53.178207+00:00",
+          "sha256": "68cd0740e05179a5d9620c5a531ff4f017dea4038c64e71109fa360b3c829665",
+          "http_status": 200
+        }
+      ],
+      "near_kickoff_check": false,
+      "latest_forecast": {
+        "game_id": "2026_09_NYJ_KC",
+        "away_team": "NYJ",
+        "home_team": "KC",
+        "v3_pick": "KC",
+        "v3_confidence": 0.733558526383508,
+        "v4_pick": "KC",
+        "v4_core_confidence": 0.731015641363772,
+        "v4_adjusted_confidence": 0.731015641363772,
+        "explosive_extreme": false,
+        "turnover_risk_flag": false,
+        "early_down_risk_flag": false,
+        "prediction_status": "EARLY_LOCK",
+        "qb_status_flag": "",
+        "home_qb_name_assumed": "Patrick Mahomes",
+        "home_qb_id_assumed": "00-0033873",
+        "away_qb_name_assumed": "Geno Smith",
+        "away_qb_id_assumed": "00-0030565",
+        "kickoff_utc": "2026-11-08T18:00:00.000Z",
+        "captured_at_utc": "2026-11-03T03:55:56.419160+00:00",
+        "availability_checked_at_utc": "2026-11-03T03:55:53.300944+00:00",
+        "qb_input_review_required": false,
+        "bundle_version": "BP_V4_2026_FROZEN_20261005"
+      }
+    },
+    "2026_09_DET_MIA": {
+      "game_id": "2026_09_DET_MIA",
+      "season": 2026,
+      "week": 9,
+      "home_team": "MIA",
+      "away_team": "DET",
+      "kickoff_utc": "2026-11-08T18:00:00+00:00",
+      "checked_at_utc": "2026-11-03T03:55:53.300975+00:00",
+      "home": {
+        "team": "MIA",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Malik Willis",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "away": {
+        "team": "DET",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Jared Goff",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "qb_review_required": false,
+      "qb_uncertain": false,
+      "source_errors": [
+        "Official injury page has a different season/week"
+      ],
+      "injuries_url": "https://www.nfl.com/injuries/",
+      "inactives_url": null,
+      "source_receipts": [
+        {
+          "url": "https://www.nfl.com/injuries/",
+          "retrieved_at_utc": "2026-11-03T03:55:53.178207+00:00",
+          "sha256": "68cd0740e05179a5d9620c5a531ff4f017dea4038c64e71109fa360b3c829665",
+          "http_status": 200
+        }
+      ],
+      "near_kickoff_check": false,
+      "latest_forecast": {
+        "game_id": "2026_09_DET_MIA",
+        "away_team": "DET",
+        "home_team": "MIA",
+        "v3_pick": "DET",
+        "v3_confidence": 0.727498650513443,
+        "v4_pick": "DET",
+        "v4_core_confidence": 0.724308753503545,
+        "v4_adjusted_confidence": 0.724308753503545,
+        "explosive_extreme": false,
+        "turnover_risk_flag": false,
+        "early_down_risk_flag": false,
+        "prediction_status": "EARLY_LOCK",
+        "qb_status_flag": "",
+        "home_qb_name_assumed": "Malik Willis",
+        "home_qb_id_assumed": "00-0038128",
+        "away_qb_name_assumed": "Jared Goff",
+        "away_qb_id_assumed": "00-0033106",
+        "kickoff_utc": "2026-11-08T18:00:00.000Z",
+        "captured_at_utc": "2026-11-03T03:55:56.419160+00:00",
+        "availability_checked_at_utc": "2026-11-03T03:55:53.300975+00:00",
+        "qb_input_review_required": false,
+        "bundle_version": "BP_V4_2026_FROZEN_20261005"
+      }
+    },
+    "2026_09_CLE_NO": {
+      "game_id": "2026_09_CLE_NO",
+      "season": 2026,
+      "week": 9,
+      "home_team": "NO",
+      "away_team": "CLE",
+      "kickoff_utc": "2026-11-08T18:00:00+00:00",
+      "checked_at_utc": "2026-11-03T03:55:53.301004+00:00",
+      "home": {
+        "team": "NO",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Tyler Shough",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "away": {
+        "team": "CLE",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Deshaun Watson",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "qb_review_required": false,
+      "qb_uncertain": false,
+      "source_errors": [
+        "Official injury page has a different season/week"
+      ],
+      "injuries_url": "https://www.nfl.com/injuries/",
+      "inactives_url": null,
+      "source_receipts": [
+        {
+          "url": "https://www.nfl.com/injuries/",
+          "retrieved_at_utc": "2026-11-03T03:55:53.178207+00:00",
+          "sha256": "68cd0740e05179a5d9620c5a531ff4f017dea4038c64e71109fa360b3c829665",
+          "http_status": 200
+        }
+      ],
+      "near_kickoff_check": false,
+      "latest_forecast": {
+        "game_id": "2026_09_CLE_NO",
+        "away_team": "CLE",
+        "home_team": "NO",
+        "v3_pick": "NO",
+        "v3_confidence": 0.503616244330577,
+        "v4_pick": "NO",
+        "v4_core_confidence": 0.501599777063078,
+        "v4_adjusted_confidence": 0.501599777063078,
+        "explosive_extreme": false,
+        "turnover_risk_flag": false,
+        "early_down_risk_flag": false,
+        "prediction_status": "EARLY_LOCK",
+        "qb_status_flag": "",
+        "home_qb_name_assumed": "Tyler Shough",
+        "home_qb_id_assumed": "00-0040743",
+        "away_qb_name_assumed": "Deshaun Watson",
+        "away_qb_id_assumed": "00-0033537",
+        "kickoff_utc": "2026-11-08T18:00:00.000Z",
+        "captured_at_utc": "2026-11-03T03:55:56.419160+00:00",
+        "availability_checked_at_utc": "2026-11-03T03:55:53.301004+00:00",
+        "qb_input_review_required": false,
+        "bundle_version": "BP_V4_2026_FROZEN_20261005"
+      }
+    },
+    "2026_09_NYG_PHI": {
+      "game_id": "2026_09_NYG_PHI",
+      "season": 2026,
+      "week": 9,
+      "home_team": "PHI",
+      "away_team": "NYG",
+      "kickoff_utc": "2026-11-08T18:00:00+00:00",
+      "checked_at_utc": "2026-11-03T03:55:53.301039+00:00",
+      "home": {
+        "team": "PHI",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Tanner McKee",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "away": {
+        "team": "NYG",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "J.J. McCarthy",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "qb_review_required": false,
+      "qb_uncertain": false,
+      "source_errors": [
+        "Official injury page has a different season/week"
+      ],
+      "injuries_url": "https://www.nfl.com/injuries/",
+      "inactives_url": null,
+      "source_receipts": [
+        {
+          "url": "https://www.nfl.com/injuries/",
+          "retrieved_at_utc": "2026-11-03T03:55:53.178207+00:00",
+          "sha256": "68cd0740e05179a5d9620c5a531ff4f017dea4038c64e71109fa360b3c829665",
+          "http_status": 200
+        }
+      ],
+      "near_kickoff_check": false,
+      "latest_forecast": {
+        "game_id": "2026_09_NYG_PHI",
+        "away_team": "NYG",
+        "home_team": "PHI",
+        "v3_pick": "NYG",
+        "v3_confidence": 0.56675890836016,
+        "v4_pick": "NYG",
+        "v4_core_confidence": 0.566620372972928,
+        "v4_adjusted_confidence": 0.57973619804799,
+        "explosive_extreme": true,
+        "turnover_risk_flag": false,
+        "early_down_risk_flag": false,
+        "prediction_status": "EARLY_LOCK",
+        "qb_status_flag": "",
+        "home_qb_name_assumed": "Tanner McKee",
+        "home_qb_id_assumed": "00-0038400",
+        "away_qb_name_assumed": "J.J. McCarthy",
+        "away_qb_id_assumed": "00-0039923",
+        "kickoff_utc": "2026-11-08T18:00:00.000Z",
+        "captured_at_utc": "2026-11-03T03:55:56.419160+00:00",
+        "availability_checked_at_utc": "2026-11-03T03:55:53.301039+00:00",
+        "qb_input_review_required": false,
+        "bundle_version": "BP_V4_2026_FROZEN_20261005"
+      }
+    },
+    "2026_09_LA_WAS": {
+      "game_id": "2026_09_LA_WAS",
+      "season": 2026,
+      "week": 9,
+      "home_team": "WAS",
+      "away_team": "LA",
+      "kickoff_utc": "2026-11-08T18:00:00+00:00",
+      "checked_at_utc": "2026-11-03T03:55:53.301069+00:00",
+      "home": {
+        "team": "WAS",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Jayden Daniels",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "away": {
+        "team": "LA",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Matthew Stafford",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "qb_review_required": false,
+      "qb_uncertain": false,
+      "source_errors": [
+        "Official injury page has a different season/week"
+      ],
+      "injuries_url": "https://www.nfl.com/injuries/",
+      "inactives_url": null,
+      "source_receipts": [
+        {
+          "url": "https://www.nfl.com/injuries/",
+          "retrieved_at_utc": "2026-11-03T03:55:53.178207+00:00",
+          "sha256": "68cd0740e05179a5d9620c5a531ff4f017dea4038c64e71109fa360b3c829665",
+          "http_status": 200
+        }
+      ],
+      "near_kickoff_check": false,
+      "latest_forecast": {
+        "game_id": "2026_09_LA_WAS",
+        "away_team": "LA",
+        "home_team": "WAS",
+        "v3_pick": "LA",
+        "v3_confidence": 0.667162593543851,
+        "v4_pick": "LA",
+        "v4_core_confidence": 0.663591188351195,
+        "v4_adjusted_confidence": 0.614513831845837,
+        "explosive_extreme": false,
+        "turnover_risk_flag": true,
+        "early_down_risk_flag": false,
+        "prediction_status": "EARLY_LOCK",
+        "qb_status_flag": "",
+        "home_qb_name_assumed": "Jayden Daniels",
+        "home_qb_id_assumed": "00-0039910",
+        "away_qb_name_assumed": "Matthew Stafford",
+        "away_qb_id_assumed": "00-0026498",
+        "kickoff_utc": "2026-11-08T18:00:00.000Z",
+        "captured_at_utc": "2026-11-03T03:55:56.419160+00:00",
+        "availability_checked_at_utc": "2026-11-03T03:55:53.301069+00:00",
+        "qb_input_review_required": false,
+        "bundle_version": "BP_V4_2026_FROZEN_20261005"
+      }
+    },
+    "2026_09_HOU_LAC": {
+      "game_id": "2026_09_HOU_LAC",
+      "season": 2026,
+      "week": 9,
+      "home_team": "LAC",
+      "away_team": "HOU",
+      "kickoff_utc": "2026-11-08T21:05:00+00:00",
+      "checked_at_utc": "2026-11-03T03:55:53.301098+00:00",
+      "home": {
+        "team": "LAC",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Justin Herbert",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "away": {
+        "team": "HOU",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "C.J. Stroud",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "qb_review_required": false,
+      "qb_uncertain": false,
+      "source_errors": [
+        "Official injury page has a different season/week"
+      ],
+      "injuries_url": "https://www.nfl.com/injuries/",
+      "inactives_url": null,
+      "source_receipts": [
+        {
+          "url": "https://www.nfl.com/injuries/",
+          "retrieved_at_utc": "2026-11-03T03:55:53.178207+00:00",
+          "sha256": "68cd0740e05179a5d9620c5a531ff4f017dea4038c64e71109fa360b3c829665",
+          "http_status": 200
+        }
+      ],
+      "near_kickoff_check": false,
+      "latest_forecast": {
+        "game_id": "2026_09_HOU_LAC",
+        "away_team": "HOU",
+        "home_team": "LAC",
+        "v3_pick": "HOU",
+        "v3_confidence": 0.710227017609211,
+        "v4_pick": "HOU",
+        "v4_core_confidence": 0.696394976387773,
+        "v4_adjusted_confidence": 0.696394976387773,
+        "explosive_extreme": false,
+        "turnover_risk_flag": false,
+        "early_down_risk_flag": false,
+        "prediction_status": "EARLY_LOCK",
+        "qb_status_flag": "",
+        "home_qb_name_assumed": "Justin Herbert",
+        "home_qb_id_assumed": "00-0036355",
+        "away_qb_name_assumed": "C.J. Stroud",
+        "away_qb_id_assumed": "00-0039163",
+        "kickoff_utc": "2026-11-08T21:05:00.000Z",
+        "captured_at_utc": "2026-11-03T03:55:56.419160+00:00",
+        "availability_checked_at_utc": "2026-11-03T03:55:53.301098+00:00",
+        "qb_input_review_required": false,
+        "bundle_version": "BP_V4_2026_FROZEN_20261005"
+      }
+    },
+    "2026_09_LV_SF": {
+      "game_id": "2026_09_LV_SF",
+      "season": 2026,
+      "week": 9,
+      "home_team": "SF",
+      "away_team": "LV",
+      "kickoff_utc": "2026-11-08T21:05:00+00:00",
+      "checked_at_utc": "2026-11-03T03:55:53.301126+00:00",
+      "home": {
+        "team": "SF",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Brock Purdy",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "away": {
+        "team": "LV",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Kirk Cousins",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "qb_review_required": false,
+      "qb_uncertain": false,
+      "source_errors": [
+        "Official injury page has a different season/week"
+      ],
+      "injuries_url": "https://www.nfl.com/injuries/",
+      "inactives_url": null,
+      "source_receipts": [
+        {
+          "url": "https://www.nfl.com/injuries/",
+          "retrieved_at_utc": "2026-11-03T03:55:53.178207+00:00",
+          "sha256": "68cd0740e05179a5d9620c5a531ff4f017dea4038c64e71109fa360b3c829665",
+          "http_status": 200
+        }
+      ],
+      "near_kickoff_check": false,
+      "latest_forecast": {
+        "game_id": "2026_09_LV_SF",
+        "away_team": "LV",
+        "home_team": "SF",
+        "v3_pick": "SF",
+        "v3_confidence": 0.831394070836762,
+        "v4_pick": "SF",
+        "v4_core_confidence": 0.825336636919685,
+        "v4_adjusted_confidence": 0.865706361179883,
+        "explosive_extreme": true,
+        "turnover_risk_flag": false,
+        "early_down_risk_flag": false,
+        "prediction_status": "EARLY_LOCK",
+        "qb_status_flag": "",
+        "home_qb_name_assumed": "Brock Purdy",
+        "home_qb_id_assumed": "00-0037834",
+        "away_qb_name_assumed": "Kirk Cousins",
+        "away_qb_id_assumed": "00-0029604",
+        "kickoff_utc": "2026-11-08T21:05:00.000Z",
+        "captured_at_utc": "2026-11-03T03:55:56.419160+00:00",
+        "availability_checked_at_utc": "2026-11-03T03:55:53.301126+00:00",
+        "qb_input_review_required": false,
+        "bundle_version": "BP_V4_2026_FROZEN_20261005"
+      }
+    },
+    "2026_09_GB_NE": {
+      "game_id": "2026_09_GB_NE",
+      "season": 2026,
+      "week": 9,
+      "home_team": "NE",
+      "away_team": "GB",
+      "kickoff_utc": "2026-11-08T21:25:00+00:00",
+      "checked_at_utc": "2026-11-03T03:55:53.301154+00:00",
+      "home": {
+        "team": "NE",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Drake Maye",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "away": {
+        "team": "GB",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Jordan Love",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "qb_review_required": false,
+      "qb_uncertain": false,
+      "source_errors": [
+        "Official injury page has a different season/week"
+      ],
+      "injuries_url": "https://www.nfl.com/injuries/",
+      "inactives_url": null,
+      "source_receipts": [
+        {
+          "url": "https://www.nfl.com/injuries/",
+          "retrieved_at_utc": "2026-11-03T03:55:53.178207+00:00",
+          "sha256": "68cd0740e05179a5d9620c5a531ff4f017dea4038c64e71109fa360b3c829665",
+          "http_status": 200
+        }
+      ],
+      "near_kickoff_check": false,
+      "latest_forecast": {
+        "game_id": "2026_09_GB_NE",
+        "away_team": "GB",
+        "home_team": "NE",
+        "v3_pick": "NE",
+        "v3_confidence": 0.62212409243579,
+        "v4_pick": "NE",
+        "v4_core_confidence": 0.617015649692701,
+        "v4_adjusted_confidence": 0.58191095478489,
+        "explosive_extreme": false,
+        "turnover_risk_flag": true,
+        "early_down_risk_flag": false,
+        "prediction_status": "EARLY_LOCK",
+        "qb_status_flag": "",
+        "home_qb_name_assumed": "Drake Maye",
+        "home_qb_id_assumed": "00-0039851",
+        "away_qb_name_assumed": "Jordan Love",
+        "away_qb_id_assumed": "00-0036264",
+        "kickoff_utc": "2026-11-08T21:25:00.000Z",
+        "captured_at_utc": "2026-11-03T03:55:56.419160+00:00",
+        "availability_checked_at_utc": "2026-11-03T03:55:53.301154+00:00",
+        "qb_input_review_required": false,
+        "bundle_version": "BP_V4_2026_FROZEN_20261005"
+      }
+    },
+    "2026_09_ARI_SEA": {
+      "game_id": "2026_09_ARI_SEA",
+      "season": 2026,
+      "week": 9,
+      "home_team": "SEA",
+      "away_team": "ARI",
+      "kickoff_utc": "2026-11-08T21:25:00+00:00",
+      "checked_at_utc": "2026-11-03T03:55:53.301182+00:00",
+      "home": {
+        "team": "SEA",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Sam Darnold",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "away": {
+        "team": "ARI",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Gardner Minshew",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "qb_review_required": false,
+      "qb_uncertain": false,
+      "source_errors": [
+        "Official injury page has a different season/week"
+      ],
+      "injuries_url": "https://www.nfl.com/injuries/",
+      "inactives_url": null,
+      "source_receipts": [
+        {
+          "url": "https://www.nfl.com/injuries/",
+          "retrieved_at_utc": "2026-11-03T03:55:53.178207+00:00",
+          "sha256": "68cd0740e05179a5d9620c5a531ff4f017dea4038c64e71109fa360b3c829665",
+          "http_status": 200
+        }
+      ],
+      "near_kickoff_check": false,
+      "latest_forecast": {
+        "game_id": "2026_09_ARI_SEA",
+        "away_team": "ARI",
+        "home_team": "SEA",
+        "v3_pick": "SEA",
+        "v3_confidence": 0.755621037292657,
+        "v4_pick": "SEA",
+        "v4_core_confidence": 0.734462403413071,
+        "v4_adjusted_confidence": 0.734462403413071,
+        "explosive_extreme": false,
+        "turnover_risk_flag": false,
+        "early_down_risk_flag": false,
+        "prediction_status": "PROVISIONAL_REFRESH_AFTER_PENDING_GAME",
+        "qb_status_flag": "",
+        "home_qb_name_assumed": "Sam Darnold",
+        "home_qb_id_assumed": "00-0034869",
+        "away_qb_name_assumed": "Gardner Minshew",
+        "away_qb_id_assumed": "00-0035289",
+        "kickoff_utc": "2026-11-08T21:25:00.000Z",
+        "captured_at_utc": "2026-11-03T03:55:56.419160+00:00",
+        "availability_checked_at_utc": "2026-11-03T03:55:53.301182+00:00",
+        "qb_input_review_required": false,
+        "bundle_version": "BP_V4_2026_FROZEN_20261005"
+      }
+    },
+    "2026_09_TB_CHI": {
+      "game_id": "2026_09_TB_CHI",
+      "season": 2026,
+      "week": 9,
+      "home_team": "CHI",
+      "away_team": "TB",
+      "kickoff_utc": "2026-11-09T01:20:00+00:00",
+      "checked_at_utc": "2026-11-03T03:55:53.301210+00:00",
+      "home": {
+        "team": "CHI",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Caleb Williams",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "away": {
+        "team": "TB",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Baker Mayfield",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "qb_review_required": false,
+      "qb_uncertain": false,
+      "source_errors": [
+        "Official injury page has a different season/week"
+      ],
+      "injuries_url": "https://www.nfl.com/injuries/",
+      "inactives_url": null,
+      "source_receipts": [
+        {
+          "url": "https://www.nfl.com/injuries/",
+          "retrieved_at_utc": "2026-11-03T03:55:53.178207+00:00",
+          "sha256": "68cd0740e05179a5d9620c5a531ff4f017dea4038c64e71109fa360b3c829665",
+          "http_status": 200
+        }
+      ],
+      "near_kickoff_check": false,
+      "latest_forecast": {
+        "game_id": "2026_09_TB_CHI",
+        "away_team": "TB",
+        "home_team": "CHI",
+        "v3_pick": "CHI",
+        "v3_confidence": 0.704142692719554,
+        "v4_pick": "CHI",
+        "v4_core_confidence": 0.692465337453888,
+        "v4_adjusted_confidence": 0.634725736217722,
+        "explosive_extreme": false,
+        "turnover_risk_flag": true,
+        "early_down_risk_flag": false,
+        "prediction_status": "PROVISIONAL_REFRESH_AFTER_PENDING_GAME",
+        "qb_status_flag": "",
+        "home_qb_name_assumed": "Caleb Williams",
+        "home_qb_id_assumed": "00-0039918",
+        "away_qb_name_assumed": "Baker Mayfield",
+        "away_qb_id_assumed": "00-0034855",
+        "kickoff_utc": "2026-11-09T01:20:00.000Z",
+        "captured_at_utc": "2026-11-03T03:55:56.419160+00:00",
+        "availability_checked_at_utc": "2026-11-03T03:55:53.301210+00:00",
+        "qb_input_review_required": false,
+        "bundle_version": "BP_V4_2026_FROZEN_20261005"
+      }
+    },
+    "2026_09_BUF_MIN": {
+      "game_id": "2026_09_BUF_MIN",
+      "season": 2026,
+      "week": 9,
+      "home_team": "MIN",
+      "away_team": "BUF",
+      "kickoff_utc": "2026-11-10T01:15:00+00:00",
+      "checked_at_utc": "2026-11-03T03:55:53.301237+00:00",
+      "home": {
+        "team": "MIN",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Kyler Murray",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "away": {
+        "team": "BUF",
+        "injury_report_available": false,
+        "inactives_published": false,
+        "assumed_qb": "Josh Allen",
+        "qb_status": "Unknown",
+        "qb_review_required": false,
+        "qb_uncertain": false,
+        "players": []
+      },
+      "qb_review_required": false,
+      "qb_uncertain": false,
+      "source_errors": [
+        "Official injury page has a different season/week"
+      ],
+      "injuries_url": "https://www.nfl.com/injuries/",
+      "inactives_url": null,
+      "source_receipts": [
+        {
+          "url": "https://www.nfl.com/injuries/",
+          "retrieved_at_utc": "2026-11-03T03:55:53.178207+00:00",
+          "sha256": "68cd0740e05179a5d9620c5a531ff4f017dea4038c64e71109fa360b3c829665",
+          "http_status": 200
+        }
+      ],
+      "near_kickoff_check": false,
+      "latest_forecast": {
+        "game_id": "2026_09_BUF_MIN",
+        "away_team": "BUF",
+        "home_team": "MIN",
+        "v3_pick": "BUF",
+        "v3_confidence": 0.601227266525574,
+        "v4_pick": "BUF",
+        "v4_core_confidence": 0.596654117888587,
+        "v4_adjusted_confidence": 0.567657882522011,
+        "explosive_extreme": false,
+        "turnover_risk_flag": true,
+        "early_down_risk_flag": false,
+        "prediction_status": "EARLY_LOCK",
+        "qb_status_flag": "",
+        "home_qb_name_assumed": "Kyler Murray",
+        "home_qb_id_assumed": "00-0035228",
+        "away_qb_name_assumed": "Josh Allen",
+        "away_qb_id_assumed": "00-0034857",
+        "kickoff_utc": "2026-11-10T01:15:00.000Z",
+        "captured_at_utc": "2026-11-03T03:55:56.419160+00:00",
+        "availability_checked_at_utc": "2026-11-03T03:55:53.301237+00:00",
+        "qb_input_review_required": false,
+        "bundle_version": "BP_V4_2026_FROZEN_20261005"
+      }
     }
   },
   "source_receipts": [
     {
       "url": "https://www.nfl.com/injuries/",
-      "retrieved_at_utc": "2026-11-03T00:58:41.988431+00:00",
-      "sha256": "ea025162ebee10b48fbb8c6fe3b0821b87c47d6d7e29d6d483134cdfcb416473",
-      "http_status": 200
-    },
-    {
-      "url": "https://www.nfl.com/news/nfl-week-8-inactives-players-ruled-out-sunday-2026-season",
-      "retrieved_at_utc": "2026-11-03T00:58:42.414245+00:00",
-      "sha256": "2cc4d02c4c56ab29b9b38ceef7472128cc13ecab61c3f3f17fe09d6c8501b67b",
+      "retrieved_at_utc": "2026-11-03T03:55:53.178207+00:00",
+      "sha256": "68cd0740e05179a5d9620c5a531ff4f017dea4038c64e71109fa360b3c829665",
       "http_status": 200
     }
   ],
-  "source_errors": [],
+  "source_errors": [
+    "Official injury page has a different season/week"
+  ],
   "scope": "Official injury reports/inactives and explicit QB starter announcements; no non-QB probability coefficients"
 }
