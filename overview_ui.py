@@ -1,5 +1,5 @@
 """Read-only cross-sport prospective dashboard. Parallel experiments stay separate."""
-UI_REVISION="fast-finals-20261102"
+UI_REVISION="mobile-results-20261103"
 from concurrent.futures import ThreadPoolExecutor
 from urllib.request import Request,urlopen
 import io,json,math,html
@@ -230,7 +230,23 @@ def render_daily_results(primary,available,now):
     sport=right.selectbox('Results sport',['All sports',*PRIMARY],key='daily_sport')
     personal=filter_favorites(primary,None,'daily_my_teams',home='home',away='away')
     shown=select_day(personal,day,sport);m=metrics(shown)
-    a,b,c=st.columns(3);a.metric('Slate record',f"{m['wins']}–{m['losses']}");b.metric('Awaiting grading',len(shown)-m['games']);c.metric('Graded accuracy',f"{m['accuracy']*100:.1f}%" if m['games'] else '—')
+    accuracy=f"{m['accuracy']*100:.1f}%" if m['games'] else '—'
+    st.markdown(f'''<style>
+.daily-results-stats{{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:20px 0 14px}}
+.daily-results-stats>div{{min-width:0}}
+.daily-results-stats dt{{color:#bcc7d7;font-size:.9rem;line-height:1.4;margin:0 0 6px}}
+.daily-results-stats dd{{color:#f5f7fb;font-size:2.4rem;font-weight:600;line-height:1.2;margin:0;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}}
+@media(max-width:640px){{
+ .daily-results-stats{{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 12px}}
+ .daily-results-stats .daily-slate-record{{grid-column:1/-1}}
+ .daily-results-stats dd{{font-size:2rem}}
+ .daily-results-stats .daily-slate-record dd{{font-size:2.5rem}}
+}}
+</style><dl class="daily-results-stats" aria-label="Daily results summary">
+<div class="daily-slate-record"><dt>Slate record</dt><dd>{m['wins']}–{m['losses']}</dd></div>
+<div><dt>Awaiting grading</dt><dd>{len(shown)-m['games']}</dd></div>
+<div><dt>Graded accuracy</dt><dd>{accuracy}</dd></div>
+</dl>''',unsafe_allow_html=True)
     st.caption(f"{day:%B %d, %Y} · {len(shown)} saved matchups · {m['games']} graded. One primary forecast per game; pending games stay out of accuracy. NHL uses the experimental reference control. Filters affect this slate only.")
     missing=[s for s,k in [('NFL','nfl'),('CFB','cfb'),('NHL','nhl'),('NBA','nba'),('CBB','cbb')] if (sport=='All sports' or sport==s) and not available.get(k)]
     if missing:st.warning('This slate is incomplete: '+', '.join(missing)+' grading feeds are unavailable.')
