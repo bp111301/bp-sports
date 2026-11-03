@@ -77,3 +77,82 @@ def test_cfb_direct_lookup_rejects_wrong_event_identity(monkeypatch):
         monkeypatch.setattr(m,'get',lambda url:dict(header=header))
         with pytest.raises(ValueError,match='identity mismatch'):
             list(m.cfb_pending_events(pending,pd.Timestamp('2026-10-25T13:00Z')))
+
+
+def basketball_event(gid='42',completed=True,**changes):
+    competition=dict(id=gid,date=P['start_time_utc'],neutralSite=True,timeValid=True,
+                     status=dict(type=dict(name='STATUS_FINAL' if completed else 'STATUS_IN_PROGRESS',state='post' if completed else 'in',completed=completed)),
+                     competitors=[dict(homeAway='home',team=dict(id='2'),score='80'),dict(homeAway='away',team=dict(id='3'),score='70')])
+    competition.update(changes)
+    return dict(id=gid,season=dict(year=2027,type=2),competitions=[competition])
+
+
+def test_basketball_lookup_falls_back_for_omitted_games_and_ignores_future(monkeypatch):
+    rows=[dict(game_id='42',start_time_utc=P['start_time_utc']),dict(game_id='43',start_time_utc='2026-10-08T23:00Z')]
+    calls=[]
+    def get(url):
+        calls.append(url)
+        return {'events':[]} if '/scoreboard?' in url else {'header':basketball_event()}
+    monkeypatch.setattr(m,'get',get)
+    result=m.basketball_schedule('cbb',rows,NOW)
+    assert len(result)==1 and result.iloc[0].game_id=='42'
+    assert len(calls)==2 and calls[1].endswith('event=42')
+    assert '&groups=50' in calls[0]
+
+
+def test_basketball_lookup_rejects_wrong_event_identity(monkeypatch):
+    import pytest
+    monkeypatch.setattr(m,'get',lambda url:{'events':[]} if '/scoreboard?' in url else {'header':basketball_event('99')})
+    with pytest.raises(ValueError,match='identity mismatch'):
+        m.basketball_schedule('nba',[dict(game_id='42',start_time_utc=P['start_time_utc'])],NOW)
+
+
+def test_summary_missing_time_flag_needs_confirmed_final_and_exact_saved_tipoff(monkeypatch):
+    pending=[dict(game_id='42',start_time_utc=P['start_time_utc'])]
+    for completed,start,flag,expected in [(True,P['start_time_utc'],None,True),(False,P['start_time_utc'],None,False),
+                                          (True,'2026-10-06T23:30Z',None,False),(True,P['start_time_utc'],False,False)]:
+        event=basketball_event(completed=completed,date=start)
+        if flag is None:event['competitions'][0].pop('timeValid')
+        else:event['competitions'][0]['timeValid']=flag
+        monkeypatch.setattr(m,'get',lambda url:{'events':[event]})
+        assert bool(m.basketball_schedule('cbb',pending,NOW).iloc[0].time_valid)==expected
+
+
+def test_nba_final_check_appends_once_without_loading_or_changing_forecasts(tmp_path,monkeypatch):
+    monkeypatch.chdir(tmp_path);directory=Path('data/nba/prospective');directory.mkdir(parents=True)
+    model=Path('model/nba/v1');model.mkdir(parents=True)
+    digest=hashlib.sha256(b'frozen').hexdigest();(model/'frozen_bundle.joblib').write_bytes(b'frozen')
+    (model/'manifest.json').write_text(json.dumps(dict(bundle_sha256=digest)))
+    p={**P,'game_id':'42','home_id':'2','away_id':'3','season':2027,'season_type':2,'bundle_sha256':digest,'home_win_prob':.7}
+    pp=directory/'predictions.jsonl';pp.write_text(json.dumps(p)+'\n');before=pp.read_bytes()
+    (directory/'results.jsonl').write_text('');(directory/'dashboard.json').write_text(json.dumps({'prediction_blocked_reason':'keep this source warning'}))
+    monkeypatch.setattr(m,'get',lambda url:{'events':[basketball_event()]})
+    m.nba(NOW)
+    assert pp.read_bytes()==before
+    result=json.loads((directory/'results.jsonl').read_text());assert result['actual_home_win']==1 and result['home_score']==80
+    dashboard=json.loads((directory/'dashboard.json').read_text())
+    assert dashboard['record']['games']==1 and dashboard['record']['correct']==1
+    assert dashboard['prediction_blocked_reason']=='keep this source warning'
+    settled=(directory/'results.jsonl').read_bytes();m.nba(NOW+pd.Timedelta(minutes=5))
+    assert (directory/'results.jsonl').read_bytes()==settled and pp.read_bytes()==before
+
+
+def test_cbb_fast_check_preserves_forecasts_and_existing_source_warnings(tmp_path,monkeypatch):
+    from types import SimpleNamespace
+    monkeypatch.chdir(tmp_path);directory=Path('data/cbb/prospective');directory.mkdir(parents=True)
+    root=Path('research/cbb/results');root.mkdir(parents=True);(root/'candidate_bundle.json').write_bytes(b'frozen')
+    digest=hashlib.sha256(b'frozen').hexdigest()
+    p={**P,'game_id':'42','home_team_id':'2','away_team_id':'3','bundle_sha256':digest,'home_win_prob':.7,'status':'pending'}
+    (directory/'prediction_ledger.json').write_text(json.dumps([p]))
+    warning=dict(game_id='future',reason='result_identity_mismatch')
+    original=dict(bundle_sha256=digest,predictions=[p],grading_issues=[warning],capture_blocked_reason='waiting_for_stats')
+    (directory/'dashboard.json').write_text(json.dumps(original));(directory/'summary.json').write_text(json.dumps(original))
+    def grade(rows,schedule,now):
+        assert schedule.iloc[0].home_id=='2' and schedule.iloc[0].status_type_completed
+        return [{**rows[0],'status':'settled','actual_home_win':1}],[]
+    monkeypatch.setattr(m,'module',lambda path:SimpleNamespace(grade=grade,summary=lambda rows:dict(saved_games=1,settled_games=1,pending_games=0)))
+    monkeypatch.setattr(m,'get',lambda url:{'events':[basketball_event()]})
+    m.cbb(NOW);result=json.loads((directory/'dashboard.json').read_text())
+    assert result['predictions'][0]['status']=='settled'
+    assert all(result['predictions'][0][k]==v for k,v in p.items() if k!='status')
+    assert result['grading_issues']==[warning] and result['capture_blocked_reason']=='waiting_for_stats'

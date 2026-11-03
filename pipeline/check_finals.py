@@ -140,10 +140,127 @@ def nhl(now):
             by={r['candidate']:r for r in s['metrics']};s['confirmed_minus_control']={c:{k:by['confirmed_goalie'][k]-by[c][k] for k in ['accuracy','brier','log_loss']} for c in ['team_control','inferred_goalie']}
         sp.write_text(json.dumps(s,indent=2)+'\n')
 
+def basketball_event(event):
+    """Normalize official identity and status, retaining designated sides."""
+    gid=str(event['id']);competitions=event.get('competitions',[])
+    if len(competitions)!=1 or str(competitions[0].get('id'))!=gid:
+        raise ValueError('Basketball final competition identity mismatch')
+    c=competitions[0];sides={t['homeAway']:t for t in c['competitors']}
+    if set(sides)!={'home','away'} or len(c['competitors'])!=2:
+        raise ValueError('Basketball final team identity mismatch')
+    season=event.get('season',{});status=c.get('status',{}).get('type',{})
+    row=dict(game_id=gid,season=season.get('year'),season_type=season.get('type'),
+             date=c.get('date'),neutral_site=c.get('neutralSite'),time_valid=c.get('timeValid',False),
+             time_valid_missing=c.get('timeValid') is None,
+             status_type_name=status.get('name'),status_type_completed=status.get('completed') is True and status.get('state')=='post')
+    for side,t in sides.items():
+        row[side+'_id']=str(t['team']['id']);row[side+'_score']=t.get('score')
+    return row
+
+def basketball_schedule(sport,pending,now):
+    league='nba' if sport=='nba' else 'mens-college-basketball'
+    due=[p for p in pending if pd.to_datetime(p['start_time_utc'],utc=True,errors='coerce')<=now]
+    ids={str(p['game_id']) for p in due};events={};source_urls={}
+    dates=pending_dates(pd.Series([p['start_time_utc'] for p in due],dtype=object),now)
+    for day in sorted(dates):
+        url=f'https://site.api.espn.com/apis/site/v2/sports/basketball/{league}/scoreboard?dates={day:%Y%m%d}&limit=1000'
+        if sport=='cbb':url+='&groups=50'
+        for event in get(url).get('events',[]):
+            if str(event['id']) in ids:
+                events[str(event['id'])]=event;source_urls[str(event['id'])]=url
+    def missing(gid):
+        event=get(f'https://site.api.espn.com/apis/site/v2/sports/basketball/{league}/summary?event={gid}').get('header',{})
+        if str(event.get('id'))!=gid:raise ValueError('Basketball final event identity mismatch')
+        return gid,event
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        for gid,event in pool.map(missing,sorted(ids-set(events))):
+            events[gid]=event
+            source_urls[gid]=f'https://site.api.espn.com/apis/site/v2/sports/basketball/{league}/summary?event={gid}'
+    rows=[{**basketball_event(e),'result_source_url':source_urls[str(e['id'])],
+           'result_source_event_sha256':hashlib.sha256(json.dumps(e,sort_keys=True,separators=(',',':')).encode()).hexdigest()} for e in events.values()]
+    if sport=='cbb':
+        saved={str(p['game_id']):p for p in due}
+        for row in rows:
+            # Summary headers omit timeValid. A confirmed final with the exact
+            # originally verified tipoff retains that evidence; false or changed
+            # source times never receive this fallback.
+            p=saved[row['game_id']]
+            if row['time_valid_missing'] and row['status_type_name']=='STATUS_FINAL' and row['status_type_completed']:
+                start=pd.to_datetime(row['date'],utc=True,errors='coerce')
+                row['time_valid']=pd.notna(start) and start==pd.to_datetime(p['start_time_utc'],utc=True,errors='coerce')
+    return pd.DataFrame(rows,columns=[
+        'game_id','season','season_type','date','neutral_site','time_valid','status_type_name',
+        'status_type_completed','home_id','away_id','home_score','away_score','time_valid_missing',
+        'result_source_url','result_source_event_sha256'])
+
+def cbb(now):
+    directory=Path('data/cbb/prospective');path=directory/'prediction_ledger.json'
+    ledger=json.loads(path.read_text());dashboard=json.loads((directory/'dashboard.json').read_text())
+    bundle_sha=hashlib.sha256(Path('research/cbb/results/candidate_bundle.json').read_bytes()).hexdigest()
+    if dashboard['bundle_sha256']!=bundle_sha or any(p['bundle_sha256']!=bundle_sha for p in ledger):
+        raise ValueError('Frozen CBB model identity changed')
+    schedule=basketball_schedule('cbb',[p for p in ledger if p['status']=='pending'],now)
+    grader=module('research/cbb/prospective.py');graded,issues=grader.grade(ledger,schedule,now)
+    for old,new in zip(ledger,graded):
+        if any(new[k]!=v for k,v in old.items() if k!='status'):raise ValueError('CBB saved forecast changed')
+        if old['status']=='pending' and new['status']=='settled':
+            source=schedule[schedule.game_id.eq(str(old['game_id']))].iloc[0]
+            new.update(result_source_url=source.result_source_url,result_source_event_sha256=source.result_source_event_sha256)
+    checked=set(schedule.game_id)
+    issues=[r for r in dashboard.get('grading_issues',[]) if str(r['game_id']) not in checked]+issues
+    totals=grader.summary(graded)
+    dashboard.update(predictions=graded,summary=totals,grading_issues=issues,
+                     updated_at_utc=now.isoformat(),results_checked_at_utc=now.isoformat())
+    summary={**json.loads((directory/'summary.json').read_text()),**totals,
+             'updated_at_utc':now.isoformat(),'results_checked_at_utc':now.isoformat(),'grading_issues':issues}
+    for p,value in [(path,graded),(directory/'dashboard.json',dashboard),(directory/'summary.json',summary)]:
+        p.write_text(json.dumps(value,indent=2,allow_nan=False)+'\n')
+
+def nba(now):
+    directory=Path('data/nba/prospective');predpath=directory/'predictions.jsonl';resultpath=directory/'results.jsonl'
+    original=predpath.read_bytes();predictions=[json.loads(l) for l in original.splitlines() if l.strip()]
+    results=[json.loads(l) for l in resultpath.read_text().splitlines() if l.strip()] if resultpath.exists() else []
+    manifest=json.loads(Path('model/nba/v1/manifest.json').read_text());settled={r['game_id'] for r in results}
+    if hashlib.sha256(Path('model/nba/v1/frozen_bundle.joblib').read_bytes()).hexdigest()!=manifest['bundle_sha256']:
+        raise ValueError('Frozen NBA model identity changed')
+    if len(settled)!=len(results) or len({p['game_id'] for p in predictions})!=len(predictions):
+        raise ValueError('Duplicate NBA ledger identity')
+    if any(p['bundle_sha256']!=manifest['bundle_sha256'] or p['season']!=2027 or p['season_type']!=2 for p in predictions):
+        raise ValueError('Frozen NBA forecast identity changed')
+    if not settled<={p['game_id'] for p in predictions}:raise ValueError('Unknown NBA settlement identity')
+    pending=[p for p in predictions if p['game_id'] not in settled]
+    schedule={r['game_id']:r for r in basketball_schedule('nba',pending,now).to_dict('records')};new=[]
+    for p in pending:
+        r=schedule.get(p['game_id'])
+        if not r or r['season']!=2027 or r['season_type']!=2 or r['status_type_name']!='STATUS_FINAL' or not r['status_type_completed']:continue
+        if (r['home_id'],r['away_id'])!=(p['home_id'],p['away_id']):raise ValueError('NBA final team identity mismatch')
+        actual={**r,'home_team':p['home_team'],'away_team':p['away_team'],'start_time_utc':r['date'],'completed':True}
+        if not final_valid(p,actual,now):continue
+        h,a=float(r['home_score']),float(r['away_score'])
+        if h==a or not h.is_integer() or not a.is_integer():continue
+        new.append(dict(game_id=p['game_id'],home_score=h,away_score=a,actual_home_win=int(h>a),
+                        actual_start_time_utc=pd.Timestamp(r['date']).isoformat(),settled_at_utc=now.isoformat(),source_state='post_completed',
+                        result_source_url=r['result_source_url'],result_source_event_sha256=r['result_source_event_sha256']))
+    if new:
+        with resultpath.open('a') as f:
+            for r in new:f.write(json.dumps(r,sort_keys=True,allow_nan=False)+'\n')
+    by_id={r['game_id']:r for r in results+new}
+    rows=[{**p,**by_id.get(p['game_id'],{}),'status':'settled' if p['game_id'] in by_id else 'pending',
+           'actual_home_win':by_id.get(p['game_id'],{}).get('actual_home_win')} for p in predictions]
+    from sklearn.metrics import accuracy_score,brier_score_loss,log_loss
+    completed=[r for r in rows if r['status']=='settled'];y=[r['actual_home_win'] for r in completed];p=[r['home_win_prob'] for r in completed]
+    record=dict(games=len(y),correct=sum((v>=.5)==t for v,t in zip(p,y)),accuracy=float(accuracy_score(y,[v>=.5 for v in p])),
+                brier=float(brier_score_loss(y,p)),log_loss=float(log_loss(y,p,labels=[0,1]))) if y else metrics([])
+    dashboard=json.loads((directory/'dashboard.json').read_text())
+    dashboard.update(predictions=rows,record=record,updated_at_utc=now.isoformat(),results_checked_at_utc=now.isoformat(),
+                     grading='Confirmed final checks run separately from forecast builds')
+    (directory/'dashboard.json').write_text(json.dumps(dashboard,indent=2,allow_nan=False)+'\n')
+    if predpath.read_bytes()!=original:raise ValueError('NBA saved forecasts changed')
+
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('sport',choices=['nfl','cfb','nhl']);a=ap.parse_args();now=pd.Timestamp.now(tz='UTC')
+    ap=argparse.ArgumentParser();ap.add_argument('sport',choices=['nfl','cfb','nhl','nba','cbb']);a=ap.parse_args();now=pd.Timestamp.now(tz='UTC')
     globals()[a.sport](now)
     directory=Path('data/current') if a.sport=='nfl' else Path('data')/a.sport
-    directory.mkdir(parents=True,exist_ok=True);(directory/'result_check.json').write_text(json.dumps(dict(sport=a.sport,checked_at_utc=now.isoformat(),status='success',interval_minutes=15,forecasts_unchanged=True),indent=2)+'\n')
+    directory.mkdir(parents=True,exist_ok=True);(directory/'result_check.json').write_text(json.dumps(dict(sport=a.sport,checked_at_utc=now.isoformat(),status='success',interval_minutes=5,forecasts_unchanged=True),indent=2)+'\n')
     print(f'{a.sport}: final-score check completed')
 if __name__=='__main__':main()

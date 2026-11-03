@@ -1,5 +1,5 @@
 """Read-only cross-sport prospective dashboard. Parallel experiments stay separate."""
-UI_REVISION="fast-navigation-20261030"
+UI_REVISION="fast-finals-20261102"
 from concurrent.futures import ThreadPoolExecutor
 from urllib.request import Request,urlopen
 import io,json,math,html
@@ -511,7 +511,7 @@ def render_overview(now=None):
             if len(recent):
                 st.markdown('<div class="section-title">Latest settled results</div>',unsafe_allow_html=True)
                 render_game_cards(recent,now,'recent_details')
-        st.caption('Win / Loss grades the saved pick. The game-state label comes from the score source; Win / Loss comes from the grading ledger. A final score can appear before grading. Result checks run about every 15 minutes; source and workflow delays can take longer. NBA excludes preseason.')
+        st.caption('Win / Loss grades the saved pick. The game-state label comes from the score source; Win / Loss comes from the grading ledger. A final score can appear before grading. Final checks are scheduled every 5 minutes and after score refreshes; source and workflow delays can take longer. NBA excludes preseason.')
     with tabs[1]:
         render_daily_results(primary,available,now)
     with tabs[2]:

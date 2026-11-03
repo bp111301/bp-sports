@@ -6,12 +6,16 @@ on:
       - '.github/workflows/check_final_results.yml'
       - 'pipeline/check_finals.py'
   workflow_dispatch:
+  workflow_run:
+    workflows: ['Refresh game scores and status']
+    types: [completed]
   schedule:
-    - cron: '4,19,34,49 * * * *'
+    - cron: '4-59/5 * * * *'
 permissions:
   contents: write
 jobs:
   grade:
+    if: github.event_name != 'workflow_run' || (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_repository.full_name == github.repository)
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -26,6 +30,12 @@ jobs:
           - sport: nhl
             branch: nhl-v1-research
             group: nhl-confirmed-goalie-experiment
+          - sport: nba
+            branch: nba-v1-research
+            group: nba-prospective-ledger
+          - sport: cbb
+            branch: cbb-v1-research
+            group: cbb-research-feed
     concurrency:
       group: ${{ matrix.group }}
       cancel-in-progress: false
@@ -56,10 +66,15 @@ jobs:
         run: |
           git config user.name 'bp-sports-bot'
           git config user.email 'actions@users.noreply.github.com'
+          git diff --exit-code -- model/
           case "$SPORT" in
             nfl) git add data/ledger/ data/current/result_check.json ;;
             cfb) git add data/cfb/ledger/ data/cfb/v2_shadow/verified_prediction_ledger.csv data/cfb/v2_shadow/summary.json data/cfb/result_check.json ;;
             nhl) git add data/nhl/v2_research/ data/nhl/goalie_experiment/ data/nhl/result_check.json ;;
+            nba)
+              git diff --exit-code -- data/nba/prospective/predictions.jsonl
+              git add data/nba/prospective/results.jsonl data/nba/prospective/dashboard.json data/nba/result_check.json ;;
+            cbb) git add data/cbb/prospective/ data/cbb/result_check.json ;;
           esac
           if ! git diff --cached --quiet; then
             git commit -m "Grade confirmed $SPORT final results [skip ci]"
