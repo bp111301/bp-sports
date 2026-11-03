@@ -2,13 +2,13 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-03T18:59:11.194594+00:00",
+  "updated_at_utc": "2026-11-03T19:11:22.125418+00:00",
   "coverage": {
     "source_games_in_horizon": 1597
   },
   "excluded": {
     "division_or_conference_unknown": 343,
-    "tipoff_time_unconfirmed": 33
+    "tipoff_time_unconfirmed": 32
   },
   "grading_issues": [
     {
@@ -18,9 +18,9 @@
   ],
   "capture_blocked_reason": null,
   "summary": {
-    "saved_games": 1344,
+    "saved_games": 1345,
     "settled_games": 121,
-    "pending_games": 1223,
+    "pending_games": 1224,
     "wins": 102,
     "losses": 19,
     "accuracy": 0.8429752066115702,
@@ -47026,11 +47026,45 @@
         "rest_diff": 0.0,
         "experience_diff": 0.0
       }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401920887",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401920887",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "2429",
+      "away_team_id": "2550",
+      "home_team": "Charlotte 49ers",
+      "away_team": "Seton Hall Pirates",
+      "neutral_site": true,
+      "start_time_utc": "2026-11-10T02:30:00+00:00",
+      "created_at_utc": "2026-11-03T19:11:22.125418+00:00",
+      "home_win_prob": 0.28296226847434025,
+      "predicted_winner": "Seton Hall Pirates",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "cdd4dea36ed1525ffa4cdbe2f2d98ccfa4008c27617f5a8a4eb7c7647de8da98",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": -48.11926706193981,
+        "home_advantage": 0.0,
+        "off_eff_diff": 6.617943724268912,
+        "def_eff_diff": 17.745549543646135,
+        "efg_diff": 0.06072473349186602,
+        "tov_rate_diff": 0.01780555844935658,
+        "orb_rate_diff": -0.00631906966899104,
+        "ft_rate_diff": -0.002764413688464862,
+        "pace_diff": -0.4606902356902225,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0
+      }
     }
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "6c907e8a7e9fca6a3a0dc4f309c8b2216818ab951a2efb3f93115269d408097e",
+    "sha256": "cdd4dea36ed1525ffa4cdbe2f2d98ccfa4008c27617f5a8a4eb7c7647de8da98",
     "bytes": 454596,
     "archive_sha256": "28c7c39e950e9ecb11eca221264787c188a4ed3edfafcfc2970682f8d38bf45b",
     "live_schedule_sources": [
@@ -47066,12 +47100,12 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261108&groups=50&limit=1000",
-        "sha256": "2ac43d36a92beb58dbd100871350b9cf374b66af6aa2e4cc1c0784a4b323a83b",
+        "sha256": "8a4eb9ecadf0d291820e5518f23fe5213df480d8706eaf4bc98f3c41adc2bc48",
         "games": 35
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261109&groups=50&limit=1000",
-        "sha256": "2bcc1e9f63874fec015bf47ffc34e127e768764699716ac5a06eeb9665476234",
+        "sha256": "28d9ee4d7a6fa9da6644ab964afd4f50620b0177271b100379845c955e066f0f",
         "games": 50
       },
       {
@@ -47096,7 +47130,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&groups=50&limit=1000",
-        "sha256": "a89a464522676b3bf673c6ff36bb8203eccd595c8d9d6efd9a966b316e55c2ff",
+        "sha256": "a6536ec5b4cf5c06270eda5cd000541f71096031a4f6ee2e6b13a5bdaeb446a3",
         "games": 72
       },
       {
@@ -47287,6 +47321,5 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ],
-  "results_checked_at_utc": "2026-11-03T18:59:11.194594+00:00"
+  ]
 }
