@@ -1,9 +1,9 @@
 {
   "operational_status": "ready",
   "missing_upcoming_game_ids": [],
-  "new_prediction_rows": 3,
+  "new_prediction_rows": 1,
   "feed_status": "enabled",
-  "updated_at_utc": "2026-11-03T15:19:28.556918+00:00",
+  "updated_at_utc": "2026-11-03T15:26:01.697076+00:00",
   "season": 2027,
   "regular_season_only": true,
   "weights_frozen": true,
@@ -3954,6 +3954,39 @@
       "start_time_utc": "2026-11-05T02:30:00+00:00",
       "status": "pending",
       "actual_home_win": null
+    },
+    {
+      "game_id": "401909934",
+      "season": 2027,
+      "season_type": 2,
+      "home_team": "SAC",
+      "away_team": "LAL",
+      "home_id": "23",
+      "away_id": "13",
+      "home_win_prob": 0.21954571114893526,
+      "start_time_utc": "2026-11-05T03:00:00+00:00",
+      "created_at_utc": "2026-11-03T15:26:01.635120+00:00",
+      "history_cutoff": "2026-11-02",
+      "bundle_sha256": "c57d804ab9062542e9e456a9585327bbb677732e5ad55b0186f91ddbdf5e079f",
+      "features": {
+        "home_advantage": 1.0,
+        "elo_diff": -237.9108287745728,
+        "off_diff": -8.219060953786624,
+        "def_diff": 3.8803928799954406,
+        "pace_diff": 0.9352564102564145,
+        "efg_diff": -0.051874132686381635,
+        "tov_diff": -0.0127242941218694,
+        "orb_diff": -0.019384731336085342,
+        "ftr_diff": -0.06446884205861708,
+        "win_diff": -0.36217948717948717,
+        "net5_diff": -7.983594890855214,
+        "rest_diff": 0.0,
+        "b2b_diff": 0.0,
+        "history_diff": -1.0
+      },
+      "source_receipt_sha256": "cc5d48c86f5ce834a21b63c33ee80aeb49ded2d68ddec408b3934cb23c594d01",
+      "status": "pending",
+      "actual_home_win": null
     }
   ],
   "record": {
@@ -3965,6 +3998,5 @@
   },
   "prediction_blocked_reason": null,
   "forecast_rule": "First pregame snapshot within 36 hours; earlier-date results only",
-  "grading": "Confirmed final checks run separately from forecast builds",
-  "results_checked_at_utc": "2026-11-03T15:19:28.556918+00:00"
+  "grading": "Hourly after source reports completed final"
 }
