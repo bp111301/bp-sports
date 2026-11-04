@@ -10,8 +10,7 @@ INJURY_BRANCH = 'nba-v2-challenger'
 INJURY_PATH = 'data/nba/availability-shadow/primary.json'
 BASE_HASH = 'c57d804ab9062542e9e456a9585327bbb677732e5ad55b0186f91ddbdf5e079f'
 INJURY_HASH = 'b161f4327eb6524d99311169c1d150e08724c82901d9a7713b75511b76824451'
-CUTOVER = datetime(2026, 11, 6, 18, tzinfo=timezone.utc)
-SAVED_BEFORE = datetime(2026, 11, 4, 21, tzinfo=timezone.utc)
+CUTOVER = datetime(2026, 11, 4, 21, tzinfo=timezone.utc)
 
 
 def stamp(value):
@@ -36,7 +35,7 @@ def publish(directory, now):
                 continue
             start = stamp(row['start_time_utc'])
             created = stamp(row['created_at_utc'])
-            if start < CUTOVER or not SAVED_BEFORE <= created <= now < start:
+            if not CUTOVER <= created <= now < start:
                 continue
             if (row['shadow_sha256'] != INJURY_HASH or row['v1_bundle_sha256'] != BASE_HASH
                     or row['season'] != 2027 or row['season_type'] != 2
@@ -59,7 +58,7 @@ def merge(base, injury):
     picks = injury['picks'] if injury.get('bundle_sha256') == INJURY_HASH else None
     selected = []
     for row in base['predictions']:
-        if stamp(row['start_time_utc']) < CUTOVER or stamp(row['created_at_utc']) < SAVED_BEFORE:
+        if stamp(row['start_time_utc']) <= CUTOVER:
             selected.append({**row, 'nba_pick_source': 'legacy'})
             continue
         if picks is None:
@@ -68,12 +67,12 @@ def merge(base, injury):
         if pick and (
             pick['home_id'] == row['home_id'] and pick['away_id'] == row['away_id']
             and stamp(pick['start_time_utc']) == stamp(row['start_time_utc'])
-            and stamp(row['created_at_utc']) <= stamp(pick['created_at_utc']) < stamp(row['start_time_utc'])
+            and max(CUTOVER, stamp(row['created_at_utc'])) <= stamp(pick['created_at_utc']) < stamp(row['start_time_utc'])
             and stamp(pick['created_at_utc']) < stamp(row.get('actual_start_time_utc') or row['start_time_utc'])
             and 0 <= pick['candidate_probability'] <= 1
         ):
             selected.append(dict(row, nba_pick_source='injury', home_win_prob=pick['candidate_probability'],
-                                 created_at_utc=pick['created_at_utc']))
+                                 created_at_utc=pick['created_at_utc'], nba_baseline_probability=row['home_win_prob']))
         else:
             selected.append({**row, 'nba_pick_source': 'team'})
     return dict(base, predictions=selected)
