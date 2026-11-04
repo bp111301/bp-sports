@@ -24,7 +24,7 @@ def test_nba_page_keeps_live_and_historical_scores_separate():
         assert any('0–0' in m.value and 'PROSPECTIVE' in m.value for m in at.markdown)
         assert any('69.19%' in m.value and 'HISTORICAL ACCURACY' in m.value for m in at.markdown)
         assert any('has not been enabled' in m.value for m in at.markdown)
-        assert any('not yet adjust' in m.value for m in at.markdown)
+        assert any('verified reports and player history' in m.value for m in at.markdown)
         at.radio(key='bp_sport').set_value('NFL').run();assert not at.exception
         at.radio(key='bp_sport').set_value('CFB').run();assert not at.exception
 

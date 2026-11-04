@@ -38,6 +38,8 @@ def detail_payload(sport,row,model_label=None,settled=None):
     preview={**source,'game_id':r['game_id'],'home_team':home,'away_team':away,'home_win_prob':p,'created_at_utc':capture,'start_time_utc':start}
     if sport=='NFL':preview.update(v4_pick=pick,v4_adjusted_confidence=prob,captured_at_utc=capture)
     if sport=='CFB':preview.update(snapshot_created_utc=capture,kickoff_utc=source.get('kickoff_utc',start))
+    if sport=='NBA':
+        model_label={'injury':'NBA injury-adjusted','team':'NBA team model','legacy':'NBA V1'}.get(source.get('nba_pick_source'),model_label)
     return dict(sport=sport,game_id=game_id(r['game_id']),home=home,away=away,p=p,pick=pick,prob=prob,capture=capture,start=start,settled=done,result=result,label=model_label or LABELS[sport],preview=preview)
 
 def render_details(payload,extras=None,now=None):
