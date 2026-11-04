@@ -61,6 +61,12 @@ def render_details(payload,extras=None,now=None):
     if d['result']=='Win':st.success('Saved pick result: Win')
     elif d['result']=='Loss':st.error('Saved pick result: Loss')
     else:st.info('Saved pick result: '+d['result'])
+    if sport=='NBA' and d['preview'].get('nba_pick_source')=='injury':
+        baseline=float(d['preview']['nba_baseline_probability'])
+        team=d['home'] if baseline>=.5 else d['away']
+        actual=d['preview'].get('actual_home_win')
+        grade=(' · Win' if (baseline>=.5)==actual else ' · Loss') if d['settled'] and actual in (0,1) else ''
+        st.caption(f'Original team-model pick · {team} · {max(baseline,1-baseline):.1%}{grade}')
     audit=None
     if sport=='NHL':
         from nhl_ui import audit_note
