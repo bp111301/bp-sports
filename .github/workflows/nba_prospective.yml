@@ -5,6 +5,7 @@ on:
     paths:
       - 'research/nba/prospective/**'
       - '.github/workflows/nba_prospective.yml'
+      - 'nba_primary.py'
   workflow_dispatch:
   schedule:
     - cron: '11,26,41,56 * * * *'
@@ -51,6 +52,7 @@ jobs:
 
   availability-shadow:
     needs: collect
+    if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -71,7 +73,15 @@ jobs:
         run: python -m pytest --import-mode=importlib -q research/nba/test_safety.py research/nba/prospective/test_safety.py research/nba/prospective/test_team_box_fallback.py research/nba/challenger/test_availability.py research/nba/challenger/shadow/test_shadow.py
       - name: Capture separate frozen availability pairs and grade finals
         run: python research/nba/challenger/shadow/run.py
-      - name: Save only availability-shadow data
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: primary-release
+          sparse-checkout: nba_primary.py
+          sparse-checkout-cone-mode: false
+      - name: Publish eligible pregame injury picks
+        run: python primary-release/nba_primary.py data/nba/availability-shadow
+      - name: Save availability experiment and primary injury picks
         run: |
           git config user.name 'bp-sports-bot'
           git config user.email 'actions@users.noreply.github.com'

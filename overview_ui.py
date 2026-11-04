@@ -9,6 +9,7 @@ from nhl_ui import audit_note
 from navigation_ui import open_board
 from game_center_ui import filter_favorites,score_html,confidence_html,context,load_scores
 from game_status import display_state
+from nba_primary import BASE_BRANCH, BASE_HASH, BASE_PATH, INJURY_BRANCH, INJURY_PATH, merge
 from matchup_details_ui import game_tile, details_button
 
 RAW='https://raw.githubusercontent.com/bp111301/bp-sports/'
@@ -19,14 +20,14 @@ SOURCES={
  'shadow':('main','data/cfb/v2_shadow/verified_prediction_ledger.csv'), 'shadow_update':('main','data/cfb/v2_shadow/metadata.json'),
  'nhl':('nhl-v1-research','data/nhl/v2_research/prediction_ledger.csv'), 'nhl_update':('nhl-v1-research','data/nhl/v2_research/summary.json'),
  'goalie':('nhl-v1-research','data/nhl/goalie_experiment/paired_ledger.jsonl'), 'goalie_update':('nhl-v1-research','data/nhl/goalie_experiment/summary.json'),
- 'nba':('nba-v1-research','data/nba/prospective/dashboard.json'),
+ 'nba':(BASE_BRANCH,BASE_PATH), 'nba_injury':(INJURY_BRANCH,INJURY_PATH),
  'cbb':('cbb-v1-research','data/cbb/prospective/dashboard.json')}
 PRIMARY={'NFL':'nfl','CFB':'cfb','NHL':'reference_control','NBA':'nba','CBB':'cbb'}
-LABELS={'nfl':'NFL V4','cfb':'CFB V1','reference_control':'NHL reference','nba':'NBA V1','cbb':'CBB V1 candidate','shadow':'CFB Candidate B','decay2_logistic':'NHL recency weighting','linear_regulation_blend':'NHL regulation blend','goalie_team_control':'Goalie test · team control','goalie_inferred_goalie':'Goalie test · inferred starter','goalie_confirmed_goalie':'Goalie test · confirmed starter'}
+LABELS={'nfl':'NFL V4','cfb':'CFB V1','reference_control':'NHL reference','nba':'NBA','cbb':'CBB V1 candidate','shadow':'CFB Candidate B','decay2_logistic':'NHL recency weighting','linear_regulation_blend':'NHL regulation blend','goalie_team_control':'Goalie test · team control','goalie_inferred_goalie':'Goalie test · inferred starter','goalie_confirmed_goalie':'Goalie test · confirmed starter'}
 COLORS={'NFL':'#85b4ff','CFB':'#f3cc73','NHL':'#77d7db','NBA':'#f5ac74','CBB':'#c9a6ff'}
 LIMITS={'NFL':108,'CFB':30,'NHL':30,'NBA':3,'CBB':8}
 FROZEN_CBB='fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163'
-FROZEN_NBA='c57d804ab9062542e9e456a9585327bbb677732e5ad55b0186f91ddbdf5e079f'
+FROZEN_NBA=BASE_HASH
 FROZEN_NHL='d60b32b93d795cc0905f626489720640eeb4691002b40aa6b2b38440953d5cbe'
 FROZEN_SHADOW='43363558b09e708bd7e9131c87250dc65a67faf770bdcb3627e9b4ac8a9dd1c6'
 COLUMNS=['game_id','sport','group','home','away','p','created','start','settled','y','details']
@@ -125,7 +126,11 @@ def prepare(payload,now):
     for key in ('nfl','cfb','shadow','nhl','goalie','nba','cbb'):
         source=payload.get(key,{});available[key]=source.get('ok',False)
         if available[key]:
-            try:records+=normalize(key,source['data'],now)
+            try:
+                data=source['data']
+                if key=='nba':
+                    data=merge(data,payload.get('nba_injury',{}).get('data') or {})
+                records+=normalize(key,data,now)
             except (ValueError,TypeError,KeyError):available[key]=False
     for sport,key,field in [('NFL','nfl_update','captured_at_utc'),('CFB','cfb_update','generated_at_utc'),('NHL','nhl_update','as_of_utc')]:
         source=payload.get(key,{})

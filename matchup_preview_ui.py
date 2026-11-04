@@ -70,7 +70,7 @@ def synopsis(sport,r,context=None,model_label=None):
     elif sport=='CFB':takeaway='CFB V1 combines efficiency, team strength and college-football context, balancing current-season information with prior-season performance.'
     elif sport=='NHL':takeaway='This frozen research forecast combines team strength, recent results, scoring, rest and team statistics. Starting-goalie reports belong to a separate paired experiment.'
     elif sport=='CBB':takeaway='The CBB candidate uses prior-season team efficiency, shooting, rebounding, rest and home-court context. Current rosters, transfers and injuries are not included.'
-    else:takeaway='NBA V1 weighs team efficiency, recent form, rest and home-court context for regular-season games.'
+    else:takeaway='The NBA team model weighs efficiency, recent form, rest and home court. This pick also uses verified pregame injury data.' if r.get('nba_pick_source')=='injury' else 'The NBA team model weighs efficiency, recent form, rest and home court.'
     if prob<.55:takeaway+=' The probability is close to even, so the model sees only a small edge.'
     elif prob<.65:takeaway+=' The opponent still has a substantial chance to win.'
     else:takeaway+=' A stronger model preference still leaves room for an upset.'

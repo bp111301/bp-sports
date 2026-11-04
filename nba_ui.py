@@ -13,6 +13,7 @@ from matchup_preview_ui import render_preview
 from matchup_details_ui import details_button
 from game_center_ui import filter_favorites,score_html,confidence_html,load_scores,context
 from game_status import display_state
+from nba_primary import BASE_PATH, INJURY_BRANCH, INJURY_PATH, merge
 
 RESEARCH_URL='https://raw.githubusercontent.com/bp111301/bp-sports/nba-v1-research/'
 SNAPSHOT=Path(__file__).parent/'data/nba/dashboard_snapshot.json'
@@ -20,17 +21,21 @@ TEAMS={'ATL':'Hawks','BOS':'Celtics','BKN':'Nets','BRK':'Nets','CHA':'Hornets','
 
 def escape(value):return html.escape(str(value),quote=True)
 
-def get_json(path):
-    with urlopen(Request(RESEARCH_URL+path,headers={'User-Agent':'BP-Sports-Dashboard/1.0'}),timeout=8) as response:
+def get_json(path,root=RESEARCH_URL):
+    with urlopen(Request(root+path,headers={'User-Agent':'BP-Sports-Dashboard/1.0'}),timeout=8) as response:
         data=response.read(2*1024*1024+1)
         if len(data)>2*1024*1024:raise ValueError('NBA feed too large')
         return json.loads(data)
 
 def get_prospective():
-    try:return get_json('data/nba/prospective/dashboard.json')
+    try:base=get_json(BASE_PATH)
     except HTTPError as e:
         if e.code==404:return {'feed_status':'not_enabled','predictions':[]}
         return {'feed_status':'unavailable','predictions':[]}
+    except Exception:return {'feed_status':'unavailable','predictions':[]}
+    try:injury=get_json(INJURY_PATH,RESEARCH_URL.replace('/nba-v1-research/',f'/{INJURY_BRANCH}/'))
+    except Exception:injury={}
+    try:return merge(base,injury)
     except Exception:return {'feed_status':'unavailable','predictions':[]}
 
 def validate_history(data):
@@ -104,7 +109,7 @@ def render_nba(now=None):
     tabs=st.tabs(['PREDICTIONS','MODEL RECORD','THE MODEL'])
     with tabs[0]:
         live_text=f'{wins}–{losses}' if available or feed.get('feed_status')=='not_enabled' else '—'
-        st.markdown(f'''<div class="hero nba-hero"><div class="eyebrow">2026–27 • REGULAR SEASON • NBA V1</div><div class="hero-title">The B.P. Sports NBA Board</div><div class="hero-copy">A frozen team model built on efficiency, recent form, rest and home-court context. Pregame forecasts and their live results belong here; preseason games stay outside the official record.</div><div class="stat-grid"><div class="stat"><div class="stat-v">{live_text}</div><div class="stat-l">Official live record</div></div><div class="stat"><div class="stat-v">{games if available else '0' if feed.get('feed_status')=='not_enabled' else '—'}</div><div class="stat-l">Live games graded</div></div><div class="stat"><div class="stat-v">{history['accuracy']*100:.2f}%</div><div class="stat-l">2025–26 historical test</div></div><div class="stat"><div class="stat-v">Frozen V1</div><div class="stat-l">Model status</div></div></div></div>''',unsafe_allow_html=True)
+        st.markdown(f'''<div class="hero nba-hero"><div class="eyebrow">2026–27 • REGULAR SEASON • NBA</div><div class="hero-title">The B.P. Sports NBA Board</div><div class="hero-copy">Team strength, recent form, rest and home court form the baseline. Verified pregame injury reports can update the main pick. Pregame forecasts and their live results belong here; preseason games stay outside the official record.</div><div class="stat-grid"><div class="stat"><div class="stat-v">{live_text}</div><div class="stat-l">Official live record</div></div><div class="stat"><div class="stat-v">{games if available else '0' if feed.get('feed_status')=='not_enabled' else '—'}</div><div class="stat-l">Live games graded</div></div><div class="stat"><div class="stat-v">{history['accuracy']*100:.2f}%</div><div class="stat-l">2025–26 historical test</div></div><div class="stat"><div class="stat-v">Injury-aware</div><div class="stat-l">Model status</div></div></div></div>''',unsafe_allow_html=True)
         if not available:
             unavailable=feed.get('feed_status')=='unavailable'
             title='Live forecast feed unavailable' if unavailable else 'Waiting for the first pregame slate'
@@ -113,7 +118,7 @@ def render_nba(now=None):
             st.markdown(f'<div class="card nba-ready"><div class="nba-record-tag">READY FOR THE REGULAR SEASON</div><div class="about-title">{title}</div><div class="about-copy">{copy}</div><div class="nba-statuses"><span>✓ Model frozen</span><span>✓ Historical gate passed</span><span>{status}</span></div></div>',unsafe_allow_html=True)
             if feed.get('feed_status')=='unavailable':st.warning('The prospective feed is unavailable. Its live record cannot be confirmed.')
         else:
-            st.caption('Live feed active • Regular-season forecasts lock within 36 hours of tipoff • Final results checked about every 15 minutes')
+            st.caption('Live feed active • Early team picks can update before tipoff when verified injury data is available • Final results checked about every 15 minutes')
             if feed.get('prediction_blocked_reason'):
                 st.warning('New forecasts are waiting for complete, verified results from previous games. Saved forecasts remain locked.')
             view=st.selectbox('Games',['Upcoming','Awaiting results','Completed','All tracked'],key='nba_view')
@@ -130,13 +135,15 @@ def render_nba(now=None):
                 time=r.start_time_utc.tz_convert('America/Chicago').strftime('%a %b %d • %I:%M %p CT')
                 status='Awaiting final result' if r.status=='pending' and r.start_time_utc<=now else 'Pregame snapshot' if r.status=='pending' else 'Correct' if (home>=.5)==r.actual_home_win else 'Incorrect'
                 if r.status=='pending':status=display_state(context('NBA',r.game_id,r.home_team,r.away_team),False,r.start_time_utc,now)
-                st.markdown(f'<div class="card nba-ready"><div class="game-meta">{escape(time)} • {escape(status)}</div>{score_html("NBA",r.game_id,r.home_team,r.away_team,r.status=="settled",r.start_time_utc,now)}<div class="spot-match">{escape(r.away_team)} @ {escape(r.home_team)}</div><div class="pick-panel"><div><div class="pick-label">NBA V1 PICK</div><div class="pick-name">{escape(pick)} • {escape(TEAMS.get(pick,pick))}</div></div><div class="prob">{prob*100:.1f}%<span>WIN PROBABILITY</span></div></div>{confidence_html(prob,"NBA")}</div>',unsafe_allow_html=True)
+                source=getattr(r,'nba_pick_source','legacy')
+                label='Injury-adjusted pick' if source=='injury' else 'Team-model pick' if source=='team' else 'NBA V1 pick'
+                st.markdown(f'<div class="card nba-ready"><div class="game-meta">{escape(time)} • {escape(status)}</div>{score_html("NBA",r.game_id,r.home_team,r.away_team,r.status=="settled",r.start_time_utc,now)}<div class="spot-match">{escape(r.away_team)} @ {escape(r.home_team)}</div><div class="pick-panel"><div><div class="pick-label">{label.upper()}</div><div class="pick-name">{escape(pick)} • {escape(TEAMS.get(pick,pick))}</div></div><div class="prob">{prob*100:.1f}%<span>WIN PROBABILITY</span></div></div>{confidence_html(prob,"NBA")}</div>',unsafe_allow_html=True)
                 details_button('NBA',r._asdict(),'details_nba_'+str(r.game_id),now=now)
         st.caption('Historical accuracy is evidence from past games, not a promised future hit rate.')
     with tabs[1]:
         st.markdown('<div class="section-title">Official live record</div><div class="section-sub">2026–27 regular season • forecasts saved before tipoff only</div>',unsafe_allow_html=True)
         if available or feed.get('feed_status')=='not_enabled':
-            st.markdown(f'<div class="record-hero"><div class="record-label">NBA V1 PROSPECTIVE RECORD</div><div class="record-big">{wins}–{losses}</div><div class="section-sub">{games} graded live games • historical test games are excluded</div></div>',unsafe_allow_html=True)
+            st.markdown(f'<div class="record-hero"><div class="record-label">NBA PROSPECTIVE RECORD</div><div class="record-big">{wins}–{losses}</div><div class="section-sub">{games} graded live games • historical test games are excluded</div></div>',unsafe_allow_html=True)
         else:st.info('The official live record is unavailable until the prospective feed can be verified.')
         if games:st.metric('Live accuracy',f'{wins/games*100:.2f}%')
         st.markdown('<div class="section-title" style="margin-top:24px">Reserved-season evaluation</div><div class="section-sub">2025–26 regular season • model frozen before this season was opened</div>',unsafe_allow_html=True)
@@ -156,8 +163,8 @@ def render_nba(now=None):
             st.metric('Development accuracy',f'{development["accuracy"]*100:.2f}%')
             st.caption(f'{development["games"]:,} games • 2018–19 through 2024–25. These games helped choose the model; they are separate from the reserved season and live record.')
     with tabs[2]:
-        st.markdown('<div class="section-title">Inside NBA V1</div><div class="section-sub">14 prior-game features • one frozen team model</div>',unsafe_allow_html=True)
-        cards=[('01','Efficiency and form','Offensive and defensive efficiency, shooting, turnovers, rebounding, free throws and recent form use games completed before the prediction date.'),('02','Team strength and schedule','Elo, home or neutral context, rest and back-to-backs provide matchup context. Neutral games receive no home advantage.'),('03','Frozen selection','Advanced-stat, tree, blend and calibration challengers did not meet the replacement rules. The original logistic baseline remained selected.'),('04','Separate scoreboards','The reserved-season evaluation is historical. Only valid pregame forecasts for the 2026–27 regular season can enter the official live record.'),('05','Player availability','NBA V1 does not yet adjust for confirmed starters or injuries. A future player layer needs verified pregame inputs and its own validation.')]
+        st.markdown('<div class="section-title">Inside the NBA model</div><div class="section-sub">14 prior-game features • pregame injury adjustments</div>',unsafe_allow_html=True)
+        cards=[('01','Efficiency and form','Offensive and defensive efficiency, shooting, turnovers, rebounding, free throws and recent form use games completed before the prediction date.'),('02','Team strength and schedule','Elo, home or neutral context, rest and back-to-backs provide matchup context. Neutral games receive no home advantage.'),('03','Frozen selection','Advanced-stat, tree, blend and calibration challengers did not meet the replacement rules. The original logistic baseline remained selected.'),('04','Separate scoreboards','The reserved-season evaluation is historical. Only valid pregame forecasts for the 2026–27 regular season can enter the official live record.'),('05','Player availability','The main pregame pick uses the injury adjustment when verified reports and player history are available. The team forecast covers games without a usable adjustment, and the original NBA V1 record remains part of the season history.')]
         for num,title,copy in cards:st.markdown(f'<div class="about-card"><div class="about-num">{num}</div><div class="about-title">{escape(title)}</div><div class="about-copy">{escape(copy)}</div></div>',unsafe_allow_html=True)
         st.caption(f'Training: {manifest["training_games"]:,} games, 2015–16 through 2024–25. No preseason testing is enabled.')
         st.link_button('View the NBA research report','https://github.com/bp111301/bp-sports/blob/nba-v1-research/research/nba/HANDOFF.md')
