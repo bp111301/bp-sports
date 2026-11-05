@@ -1,10 +1,10 @@
 {
   "version": "NHL_V2_EXPERIMENTAL_WATCHLIST",
-  "as_of_utc": "2026-11-05T04:20:51.281360+00:00",
+  "as_of_utc": "2026-11-05T07:27:59.768953+00:00",
   "new_prediction_rows": 0,
   "total_prediction_rows": 648,
-  "pending": 33,
-  "settled": 615,
+  "pending": 27,
+  "settled": 621,
   "invalid_timing": 0,
   "status": "research_only_not_promoted",
   "historical_gate_passed": false,
@@ -12,27 +12,27 @@
   "metrics": [
     {
       "candidate": "decay2_logistic",
-      "games": 205,
-      "correct": 128,
-      "accuracy": 0.624390243902439,
-      "brier": 0.23206003798286848,
-      "log_loss": 0.6582406035437427
+      "games": 207,
+      "correct": 130,
+      "accuracy": 0.6280193236714976,
+      "brier": 0.2317240983519383,
+      "log_loss": 0.6575488294680735
     },
     {
       "candidate": "linear_regulation_blend",
-      "games": 205,
-      "correct": 127,
-      "accuracy": 0.6195121951219512,
-      "brier": 0.23263524520060397,
-      "log_loss": 0.6585196467157645
+      "games": 207,
+      "correct": 128,
+      "accuracy": 0.6183574879227053,
+      "brier": 0.23252870999717803,
+      "log_loss": 0.6582963772790509
     },
     {
       "candidate": "reference_control",
-      "games": 205,
-      "correct": 126,
-      "accuracy": 0.6146341463414634,
-      "brier": 0.23379315467743675,
-      "log_loss": 0.6632836257806948
+      "games": 207,
+      "correct": 127,
+      "accuracy": 0.6135265700483091,
+      "brier": 0.23374879506737117,
+      "log_loss": 0.6631638609338014
     }
   ]
 }
