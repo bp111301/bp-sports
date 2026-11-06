@@ -1,0 +1,43 @@
+name: Keep final grading running
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/final_grading_watchdog.yml']
+  workflow_dispatch:
+  schedule:
+    - cron: '17 */2 * * *'
+
+permissions:
+  actions: write
+
+concurrency:
+  group: bp-sports-final-grading-watchdog
+  cancel-in-progress: true
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Start a grading check when the schedule falls behind
+        run: |
+          endpoint="repos/$GITHUB_REPOSITORY/actions/workflows/check_final_results.yml"
+          for ((check=0; check<70; check++)); do
+            if latest=$(gh api "$endpoint/runs?branch=main&per_page=1" \
+              --jq '.workflow_runs[0] | if . then [.status, .run_started_at // .created_at] | @tsv else "missing" end'); then
+              read -r status started_at <<< "$latest"
+              if [[ "$status" == missing ]] || {
+                [[ "$status" == completed ]] &&
+                (( $(date -u +%s) - $(date -u -d "$started_at" +%s) >= 300 ));
+              }; then
+                echo 'Grading is due. Requesting a confirmed finals check.'
+                gh api --method POST "$endpoint/dispatches" -f ref=main ||
+                  echo 'Dispatch failed. The next check will retry.' >&2
+              fi
+            else
+              echo 'Could not read grading status. The next check will retry.' >&2
+            fi
+            sleep 300
+          done
