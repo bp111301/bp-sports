@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-07T03:10:57.470461+00:00",
+  "updated_at_utc": "2026-11-07T03:15:56.291677+00:00",
   "coverage": {
     "source_games_in_horizon": 1670
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1514,
-    "settled_games": 231,
-    "pending_games": 1283,
-    "wins": 189,
+    "settled_games": 233,
+    "pending_games": 1281,
+    "wins": 191,
     "losses": 42,
-    "accuracy": 0.8181818181818182,
-    "brier": 0.1389799654872861,
-    "log_loss": 0.44110072197628414
+    "accuracy": 0.8197424892703863,
+    "brier": 0.13785953034464882,
+    "log_loss": 0.43809264119469515
   },
   "predictions": [
     {
@@ -11472,7 +11472,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9460709972427774,
       "predicted_winner": "Iowa State Cyclones",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -11488,7 +11488,18 @@
         "pace_diff": -1.9512366310160445,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 83,
+      "away_score": 57,
+      "actual_winner": "Iowa State Cyclones",
+      "correct": 1,
+      "brier": 0.002908337338388519,
+      "log_loss": 0.055437662806853555,
+      "verified_start_time_utc": "2026-11-07T01:00:00+00:00",
+      "settled_at_utc": "2026-11-07T03:15:56.291677+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+      "result_source_event_sha256": "60c29196f3945c264dddb594017a0064d30c226980d150a85a165bc1777e302a"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401916304",
@@ -11585,7 +11596,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8817198013119247,
       "predicted_winner": "TCU Horned Frogs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -11601,7 +11612,18 @@
         "pace_diff": -1.8768939393939519,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 106,
+      "away_score": 54,
+      "actual_winner": "TCU Horned Frogs",
+      "correct": 1,
+      "brier": 0.013990205401690561,
+      "log_loss": 0.12588095903548882,
+      "verified_start_time_utc": "2026-11-07T01:00:00+00:00",
+      "settled_at_utc": "2026-11-07T03:15:56.291677+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+      "result_source_event_sha256": "9676884d40ba78ce42f96db8c000505691f622e1e5e409862e9323e995389337"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920685",
@@ -54277,5 +54299,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-07T03:10:57.470461+00:00"
+  "results_checked_at_utc": "2026-11-07T03:15:56.291677+00:00"
 }
