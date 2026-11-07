@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-07T01:57:37.768946+00:00",
+  "updated_at_utc": "2026-11-07T02:05:33.620427+00:00",
   "coverage": {
     "source_games_in_horizon": 1670
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1514,
-    "settled_games": 201,
-    "pending_games": 1313,
-    "wins": 163,
+    "settled_games": 206,
+    "pending_games": 1308,
+    "wins": 168,
     "losses": 38,
-    "accuracy": 0.8109452736318408,
-    "brier": 0.1418649946874007,
-    "log_loss": 0.44717971316799676
+    "accuracy": 0.8155339805825242,
+    "brier": 0.13959718761530196,
+    "log_loss": 0.4416853568312397
   },
   "predictions": [
     {
@@ -10642,7 +10642,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6662911568658569,
       "predicted_winner": "NC State Wolfpack",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -10658,7 +10658,18 @@
         "pace_diff": 3.2863873106060453,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 77,
+      "away_score": 63,
+      "actual_winner": "NC State Wolfpack",
+      "correct": 1,
+      "brier": 0.1113615919859281,
+      "log_loss": 0.40602853150253443,
+      "verified_start_time_utc": "2026-11-07T00:00:00+00:00",
+      "settled_at_utc": "2026-11-07T02:05:33.620427+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+      "result_source_event_sha256": "264b39c054dc38164ce4e0d4016b3764eb77b882027fb4b1e7ff46e3bd7b2350"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920072",
@@ -10778,7 +10789,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7005467911527687,
       "predicted_winner": "Elon Phoenix",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -10794,7 +10805,18 @@
         "pace_diff": -0.31596354166667595,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 74,
+      "away_score": 65,
+      "actual_winner": "Elon Phoenix",
+      "correct": 1,
+      "brier": 0.0896722242889035,
+      "log_loss": 0.3558941186439206,
+      "verified_start_time_utc": "2026-11-07T00:00:00+00:00",
+      "settled_at_utc": "2026-11-07T02:05:33.620427+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+      "result_source_event_sha256": "e8d95f534622a0b04c687bcad642a91fbfaea3093f1026f7bd43f6b909a634d6"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921285",
@@ -10812,7 +10834,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9418086237389144,
       "predicted_winner": "Villanova Wildcats",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -10828,7 +10850,18 @@
         "pace_diff": 1.4270791330644954,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 95,
+      "away_score": 66,
+      "actual_winner": "Villanova Wildcats",
+      "correct": 1,
+      "brier": 0.0033862362711592382,
+      "log_loss": 0.059953184558293036,
+      "verified_start_time_utc": "2026-11-07T00:00:00+00:00",
+      "settled_at_utc": "2026-11-07T02:05:33.620427+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+      "result_source_event_sha256": "0ecf7e438f69e1f6f37b2182b0ae03a4ba993520a0e618c034d5307b15610d58"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921754",
@@ -10880,7 +10913,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.912213270026564,
       "predicted_winner": "West Virginia Mountaineers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -10896,7 +10929,18 @@
         "pace_diff": -3.429939516129025,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 91,
+      "away_score": 53,
+      "actual_winner": "West Virginia Mountaineers",
+      "correct": 1,
+      "brier": 0.0077065099594289576,
+      "log_loss": 0.09188146753281631,
+      "verified_start_time_utc": "2026-11-07T00:00:00+00:00",
+      "settled_at_utc": "2026-11-07T02:05:33.620427+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+      "result_source_event_sha256": "26fd6b4007184345bc65a0feac307cc72bdf592a5d69f40359a4495ba7bd0434"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921802",
@@ -10914,7 +10958,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8267078937768857,
       "predicted_winner": "Kentucky Wildcats",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -10930,7 +10974,18 @@
         "pace_diff": 2.232054227941191,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 89,
+      "away_score": 80,
+      "actual_winner": "Kentucky Wildcats",
+      "correct": 1,
+      "brier": 0.030030154079243133,
+      "log_loss": 0.1903038582304638,
+      "verified_start_time_utc": "2026-11-07T00:00:00+00:00",
+      "settled_at_utc": "2026-11-07T02:05:33.620427+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+      "result_source_event_sha256": "d6ff4943a54f3e0aaa329016ba753bb521809d28720b2f1c288abe60a62687e3"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401926135",
@@ -53947,5 +54002,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-07T01:57:37.768946+00:00"
+  "results_checked_at_utc": "2026-11-07T02:05:33.620427+00:00"
 }
