@@ -414,7 +414,7 @@
     "created_at_utc": "2026-10-14T00:51:58.072020+00:00",
     "home_win_prob": 0.48428362267940106,
     "predicted_winner": "Boston University Terriers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "bddafb0c3661a72f0603bee8e170ec19653cd7f4c2640d1f6f4a9b28fe4aaa15",
     "forecast_stage": "early_research_prior",
@@ -430,7 +430,18 @@
       "pace_diff": 2.7854999999999848,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 67,
+    "away_score": 72,
+    "actual_winner": "Boston University Terriers",
+    "correct": 1,
+    "brier": 0.2345306271954845,
+    "log_loss": 0.6621983209724346,
+    "verified_start_time_utc": "2026-11-07T00:00:00+00:00",
+    "settled_at_utc": "2026-11-07T02:30:42.821260+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+    "result_source_event_sha256": "e0a17c52d76652d48307855c499cbd3e7388a2a04ddd8986756de81844cba471"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401911345",
@@ -11174,7 +11185,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.8645418437515446,
     "predicted_winner": "UAB Blazers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -11190,7 +11201,18 @@
       "pace_diff": 2.900567036290326,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 70,
+    "away_score": 63,
+    "actual_winner": "UAB Blazers",
+    "correct": 1,
+    "brier": 0.018348912094230948,
+    "log_loss": 0.1455555727727175,
+    "verified_start_time_utc": "2026-11-07T00:30:00+00:00",
+    "settled_at_utc": "2026-11-07T02:30:42.821260+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+    "result_source_event_sha256": "cd5342b2efcf8934ae8ac96eb0547fb79f46fb5341ab4185cb56feb50affea99"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401920894",
@@ -11253,7 +11275,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.7344106660428966,
     "predicted_winner": "Wright State Raiders",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -11269,7 +11291,18 @@
       "pace_diff": -1.7822580645161423,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 97,
+    "away_score": 71,
+    "actual_winner": "Wright State Raiders",
+    "correct": 1,
+    "brier": 0.07053769431177778,
+    "log_loss": 0.30868691630243134,
+    "verified_start_time_utc": "2026-11-07T00:30:00+00:00",
+    "settled_at_utc": "2026-11-07T02:30:42.821260+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+    "result_source_event_sha256": "6fde927fb600cc6a931aa75adf9f4f0daed1ba1740accf45adf9dd8bff376c2f"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401906802",
