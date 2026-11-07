@@ -2,9 +2,9 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-07T13:05:32.480240+00:00",
+  "updated_at_utc": "2026-11-07T13:10:27.713995+00:00",
   "coverage": {
-    "source_games_in_horizon": 1616
+    "source_games_in_horizon": 1617
   },
   "excluded": {
     "division_or_conference_unknown": 306,
@@ -18,9 +18,9 @@
   ],
   "capture_blocked_reason": null,
   "summary": {
-    "saved_games": 1529,
+    "saved_games": 1530,
     "settled_games": 252,
-    "pending_games": 1277,
+    "pending_games": 1278,
     "wins": 206,
     "losses": 46,
     "accuracy": 0.8174603174603174,
@@ -54751,17 +54751,51 @@
         "rest_diff": 0.0,
         "experience_diff": -0.4054651081081643
       }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401920567",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401920567",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "2415",
+      "away_team_id": "119",
+      "home_team": "Morgan State Bears",
+      "away_team": "Towson Tigers",
+      "neutral_site": true,
+      "start_time_utc": "2026-11-14T18:00:00+00:00",
+      "created_at_utc": "2026-11-07T13:10:27.713995+00:00",
+      "home_win_prob": 0.1867336883942608,
+      "predicted_winner": "Towson Tigers",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "8c4a5644a311e0cc118ae3eacfea5fdfbcb1d5922628f575954005f198cc0dfb",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": -84.58771390498373,
+        "home_advantage": 0.0,
+        "off_eff_diff": -1.201741349263358,
+        "def_eff_diff": 7.706144733726347,
+        "efg_diff": 0.0028841227872309916,
+        "tov_rate_diff": 0.013120154201521461,
+        "orb_rate_diff": -0.0523229643606703,
+        "ft_rate_diff": 0.11438254681827942,
+        "pace_diff": 5.9375925925926225,
+        "rest_diff": 6.0,
+        "experience_diff": -1.0986122886681096
+      }
     }
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "07bf73784348a1c617c43cefce40cc346dfc7743e5b8378826a288080ef4dc97",
-    "bytes": 484587,
-    "archive_sha256": "69574e1c9200719cc95f0504aebf3094eed8c2adbd9416146626db729803271b",
+    "sha256": "8c4a5644a311e0cc118ae3eacfea5fdfbcb1d5922628f575954005f198cc0dfb",
+    "bytes": 501093,
+    "archive_sha256": "a486c3f36e781762574500fff924ba0ead51b8295379417265bf5bb3ef17bcc1",
     "live_schedule_sources": [
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&groups=50&limit=1000",
-        "sha256": "82218a824f7540dbe582abaa11f421a099e5b63166e559708ea01f40a4bf0102",
+        "sha256": "ff3beb78c94232bfdbeffd9576aba51ecca45afd4bcc36a3ca87b385d9125323",
         "games": 72
       },
       {
@@ -54913,14 +54947,14 @@
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261206&groups=50&limit=1000",
         "sha256": "2081066b9a5c95eeb610ca0f8bd8f01b9e7dfe47ec053897fda37551e807b6a6",
         "games": 41
+      },
+      {
+        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261207&groups=50&limit=1000",
+        "sha256": "56ecb6d970e16887c2ac96b809933f69a40dc1d38029bdafe72639cc37b349ed",
+        "games": 20
       }
     ],
-    "identity_conflicts": [
-      {
-        "game_id": 401920567,
-        "reason": "Live/archive schedule identity mismatch: 401920567 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 2415, 'away_id': 119, 'season': 2027}"
-      }
-    ]
+    "identity_conflicts": []
   },
   "history_sources": [
     [
@@ -55012,6 +55046,5 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ],
-  "results_checked_at_utc": "2026-11-07T13:05:32.480240+00:00"
+  ]
 }
