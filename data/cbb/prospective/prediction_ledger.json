@@ -12748,7 +12748,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.21565750959143198,
     "predicted_winner": "UNC Wilmington Seahawks",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -12764,7 +12764,18 @@
       "pace_diff": 3.833749999999995,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 75,
+    "away_score": 78,
+    "actual_winner": "UNC Wilmington Seahawks",
+    "correct": 1,
+    "brier": 0.046508161443178576,
+    "log_loss": 0.2429095040119865,
+    "verified_start_time_utc": "2026-11-07T19:00:00+00:00",
+    "settled_at_utc": "2026-11-07T21:47:31.282271+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&limit=1000&groups=50",
+    "result_source_event_sha256": "b8762acdbc76abc6ddc8dc4873176250d39075876da73ba994d4d92dac865401"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401918986",
