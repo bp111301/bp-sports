@@ -1,13 +1,13 @@
 {
   "status": "shadow_only_not_public",
-  "updated_at_utc": "2026-11-07T06:05:27.020587+00:00",
+  "updated_at_utc": "2026-11-07T13:11:26.633924+00:00",
   "identities": {
     "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
     "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
     "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
   },
   "capture_window_hours": 24,
-  "eligible_future_games": 1276,
+  "eligible_future_games": 1277,
   "within_capture_window": 48,
   "summary": {
     "saved_pairs": 300,
@@ -36,7 +36,7 @@
     "roster_unknown_pairs": 206
   },
   "coverage": {
-    "source_games_in_horizon": 1616
+    "source_games_in_horizon": 1617
   },
   "excluded": {
     "division_or_conference_unknown": 306,
@@ -159,8 +159,8 @@
       "unconfirmed_tipoff": 0
     },
     "2026-11-14": {
-      "source_games": 69,
-      "eligible": 58,
+      "source_games": 70,
+      "eligible": 59,
       "unconfirmed_tipoff": 0
     },
     "2026-11-13": {
@@ -201,18 +201,13 @@
   },
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "4765f502064dd8c22f71508876063f17105da1ceb7ecae2def870c0600a65187",
-    "bytes": 484587,
-    "archive_sha256": "69574e1c9200719cc95f0504aebf3094eed8c2adbd9416146626db729803271b",
+    "sha256": "dcc258998a3fbf966b48118fd0ef09bd963e8e8e0a3f649a0a8fbe04d8c25c15",
+    "bytes": 501093,
+    "archive_sha256": "a486c3f36e781762574500fff924ba0ead51b8295379417265bf5bb3ef17bcc1",
     "live_schedule_sources": [
       {
-        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261105&groups=50&limit=1000",
-        "sha256": "a632a91bee4b2ae1407b71a28ec3f101106a73f701ef9ddda1fce0b75a356122",
-        "games": 65
-      },
-      {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&groups=50&limit=1000",
-        "sha256": "bd938cda5d912c8e89c6ffb4983ee527c903eb78e31de31a275bf3e20dc34ab0",
+        "sha256": "ff3beb78c94232bfdbeffd9576aba51ecca45afd4bcc36a3ca87b385d9125323",
         "games": 72
       },
       {
@@ -256,12 +251,7 @@
         "games": 72
       }
     ],
-    "identity_conflicts": [
-      {
-        "game_id": 401920567,
-        "reason": "Live/archive schedule identity mismatch: 401920567 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 2415, 'away_id': 119, 'season': 2027}"
-      }
-    ]
+    "identity_conflicts": []
   },
   "history_sources": [
     {
@@ -507,32 +497,32 @@
     {
       "season": 2027,
       "schedule_rows": 6071,
-      "box_rows": 606,
+      "box_rows": 750,
       "sources": [
         {
           "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-          "sha256": "69574e1c9200719cc95f0504aebf3094eed8c2adbd9416146626db729803271b",
-          "bytes": 484587
+          "sha256": "a486c3f36e781762574500fff924ba0ead51b8295379417265bf5bb3ef17bcc1",
+          "bytes": 501093
         },
         {
           "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2027.parquet",
-          "sha256": "6ec18bd96a64b11a9e7d4bd2819faef366993d57c4716a6791fb3c6b992858f0",
-          "bytes": 101618
+          "sha256": "93352b8b4586e57b0791395c5907edbc02fca02ec87c3f60c9034e685b173047",
+          "bytes": 113612
         }
       ],
       "exclusions": {
-        "not_confirmed_final": 5768,
-        "division_or_conference_unknown": 110
+        "not_confirmed_final": 5695,
+        "division_or_conference_unknown": 124
       },
-      "eligible_games": 193,
-      "neutral_games": 15,
+      "eligible_games": 252,
+      "neutral_games": 19,
       "players": {
         "season": 2027,
         "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2027.parquet",
-        "sha256": "bd3d37d4a673f14df4db908830a44da7241f61140fb9ff6a2bd6c4e33548ecc5",
-        "bytes": 350334,
-        "eligible_team_games": 386,
-        "complete_player_team_games": 386,
+        "sha256": "395c09d6f2b998b409a277dea22a83bc60d37725f9b9e1b96313726199f0fd62",
+        "bytes": 414249,
+        "eligible_team_games": 504,
+        "complete_player_team_games": 504,
         "exclusions": {}
       }
     }
