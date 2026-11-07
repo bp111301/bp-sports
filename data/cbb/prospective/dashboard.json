@@ -2,12 +2,12 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-07T21:52:29.082420+00:00",
+  "updated_at_utc": "2026-11-07T21:56:07.178105+00:00",
   "coverage": {
-    "source_games_in_horizon": 1617
+    "source_games_in_horizon": 1592
   },
   "excluded": {
-    "division_or_conference_unknown": 306,
+    "division_or_conference_unknown": 299,
     "tipoff_time_unconfirmed": 34
   },
   "grading_issues": [
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1530,
-    "settled_games": 259,
-    "pending_games": 1271,
+    "settled_games": 260,
+    "pending_games": 1270,
     "wins": 211,
-    "losses": 48,
-    "accuracy": 0.8146718146718147,
-    "brier": 0.1427747800440359,
-    "log_loss": 0.44984344154776024
+    "losses": 49,
+    "accuracy": 0.8115384615384615,
+    "brier": 0.14370711053111832,
+    "log_loss": 0.4518411260278123
   },
   "predictions": [
     {
@@ -13796,7 +13796,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6206292828133885,
       "predicted_winner": "Marshall Thundering Herd",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -13812,7 +13812,16 @@
         "pace_diff": 1.2409778225806605,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 76,
+      "away_score": 81,
+      "actual_winner": "Toledo Rockets",
+      "correct": 0,
+      "brier": 0.38518070668546095,
+      "log_loss": 0.9692414063612923,
+      "verified_start_time_utc": "2026-11-07T19:00:00+00:00",
+      "settled_at_utc": "2026-11-07T21:56:07.178105+00:00"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401924951",
@@ -54866,168 +54875,168 @@
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "8c4a5644a311e0cc118ae3eacfea5fdfbcb1d5922628f575954005f198cc0dfb",
+    "sha256": "0a2dad4ae29b4a965757e0d6129591aabec2095cb5622415e38838bd5418685e",
     "bytes": 501093,
     "archive_sha256": "a486c3f36e781762574500fff924ba0ead51b8295379417265bf5bb3ef17bcc1",
     "live_schedule_sources": [
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&groups=50&limit=1000",
-        "sha256": "ff3beb78c94232bfdbeffd9576aba51ecca45afd4bcc36a3ca87b385d9125323",
+        "sha256": "3a9e21681902e49733ec85432ae134d7b07c9881d56c89991f6154a99a597315",
         "games": 72
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&groups=50&limit=1000",
-        "sha256": "31fa4675773360489357b183cccef4d2a8033835be0f3ee1597dad23fc58b191",
+        "sha256": "cf265c7786c0cfa6f552396c82c06febb146d1469d9ab1f0ebe52d81b113abe5",
         "games": 61
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261108&groups=50&limit=1000",
-        "sha256": "55af8d0b948f79f48edc4b35cbf1f6700139aec451bac264241e7761dcf108b6",
+        "sha256": "1ad1f38fc9d1b627fe2b25ffdf988f23b12df363c2110add61a0f77e48a10461",
         "games": 36
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261109&groups=50&limit=1000",
-        "sha256": "2b654f91b95cdd83fe2162fe22571664f94a3241a2cea8714302594cd08792d9",
+        "sha256": "ccfd5163f9dba85a343f3d74bd42ac40ae7e3c1a1f3cd71367166e156a7d30b6",
         "games": 50
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&groups=50&limit=1000",
-        "sha256": "501b4feea49ef6130218d72981175cd203b4ea0755bb8a69d5ecbc0cb2d16ce2",
+        "sha256": "f7ba6e1daf342b690e426bf7e720da7647522767fda94e4e021fc2d60295c611",
         "games": 69
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261111&groups=50&limit=1000",
-        "sha256": "21d759ec292d85d8ad90d96f9253b88608ada2a4e436750509f24abd048b8231",
+        "sha256": "0ac3fec65d926b02418110950de39104b2dd7e82320ee04dca8c565469388377",
         "games": 67
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261112&groups=50&limit=1000",
-        "sha256": "c7115f5d48a001a7797a63ede5fe8b5db33b78e2ec7c5f1d0d8821ada245ea24",
+        "sha256": "5a81e29e88270425aaef9ef4d1cb1209e6dedb3a4179e11a908ce00da5171746",
         "games": 29
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&groups=50&limit=1000",
-        "sha256": "9ccb015dabebda367339b732563048a557a3d34136e5ad30e19be33d07712192",
+        "sha256": "2d882133c3f65baf190696612a0e1c8c77d35723f92842b46837a09d1f9b513e",
         "games": 61
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&groups=50&limit=1000",
-        "sha256": "2fd7db723a5574cf51413c0bade996ba457a57103a6b87ecb67453ef7b8e0dff",
+        "sha256": "ef120eb0d29ec48f06107f0b88f2fc76e25a4d1efbe9259af67f4d2bcc7395f4",
         "games": 72
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&groups=50&limit=1000",
-        "sha256": "05543aea042e0bba972dbf7fa29a83c4b082280ac0e7062ecc3697b33310f3ee",
+        "sha256": "9cde612d244cad50db45e30ccc7e13444a70a47cd05ad71a3479bea5853ab474",
         "games": 43
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261116&groups=50&limit=1000",
-        "sha256": "55c44cb8671fc7428d5fc091e1cbb0b188b8113495427998eb64cbe046ce4233",
+        "sha256": "25d28d77d2077568762c9e911e8b5cb92f3a1586657f50922571b291374287b3",
         "games": 33
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&groups=50&limit=1000",
-        "sha256": "0024517895a73b7c2f34505ea1510db353c35ba23c81e28c2463a45743ecdeb0",
+        "sha256": "b5798804948c52617127c030a315184fb731c49e7d9476b6fa4bbc1566c2e65d",
         "games": 66
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&groups=50&limit=1000",
-        "sha256": "b5a0de933cfd536b9d02bf9e506d25bedb4f9c00846975599a2898f4a777c1b3",
+        "sha256": "95ea09dd3ea5ba84ce5beade9594e26cf5d14d23a81cc29f8859343d987626ce",
         "games": 71
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&groups=50&limit=1000",
-        "sha256": "d76960f4eeb7a92f9fa807fd2d954919c20eb25fe76273cd65d75bc7141902b0",
+        "sha256": "403089f5b310af2a24be9aae98c902a5119574437c011fcc65c97b5941c4965b",
         "games": 36
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&groups=50&limit=1000",
-        "sha256": "d90e5d4122d57fa6f4c09c328a5a9d46c567d7c6599869986d0f1f96b5642150",
+        "sha256": "6d77eb0c0c81b95d2d2419f9284b72efa4935410546cf9f4a3255384d7f3e5e5",
         "games": 58
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&groups=50&limit=1000",
-        "sha256": "9b8fabded733e3b59f234bdb9ec8839b284e7bc2cc1c78047eb7d3c74aa239db",
+        "sha256": "d601da10f04d384bd773405c6621bc2403377b79b787b26f57149d4276b67c81",
         "games": 57
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261122&groups=50&limit=1000",
-        "sha256": "e2687cdf91365845bd2348fdf7f4e3a5cb09dd7a39bf87379282cdaec4d68e2c",
+        "sha256": "c112ab6a2dcfcb4aed54cf45b860314f0f57a2b55fa3888e7eed13cae37939fe",
         "games": 42
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261123&groups=50&limit=1000",
-        "sha256": "b27d6142c51afbc251cb8105d746c7f9894b46f7ff3d63f949118be60940de8a",
+        "sha256": "110b73a5a46241fd53713eed5fff8fd01d7a3e584e229b8c6e32b00774e82be8",
         "games": 46
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&groups=50&limit=1000",
-        "sha256": "074906cca2bae7f93f3a5cc418a06e89a576a87e33b9d1569397844ef2207d89",
+        "sha256": "05ba22e9a461b2609396aac6083c47b12984d15d543e7fb0fa42383da83c7a07",
         "games": 87
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261125&groups=50&limit=1000",
-        "sha256": "abe1bb964270e3c6ce89e0bf8ea1d9c620c429a20485a283f01146a50cba600e",
+        "sha256": "f66263bda8556ea616c19fb5912cdb8393accf15bd46e90382e3b9614b321616",
         "games": 69
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261126&groups=50&limit=1000",
-        "sha256": "01275e0c844064b450a454db4f3354e5a1b08fa5db57f9abb0d40a6c702bdb1f",
+        "sha256": "3c5ec1cf91c2b29f756980adb6c44ae7458e7759abe5480ca177f6eb88dc9807",
         "games": 21
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&groups=50&limit=1000",
-        "sha256": "b6df0873110a57a6a93af22bebd96f25fc3865ceb916d8916553803e44edbc14",
+        "sha256": "64babcaddcd50a7e5a865e0d43c66a7a252a846e53c2ebe9ad97d5be5eaae345",
         "games": 54
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261128&groups=50&limit=1000",
-        "sha256": "1f1153d8890e767ed097e7bae816f5038265a1560e8a337925390697246e7b3b",
+        "sha256": "aeb858f7b5190a804d9ce3548d2bb8be73895d853576f460541d070fc26f8b7e",
         "games": 76
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261129&groups=50&limit=1000",
-        "sha256": "0944a1a5539ba0799fbb0f6a402208f4284cf976dea085aeae091ef42c2efbe3",
+        "sha256": "29830fed37f5606d98f7e9595100a587ccfedca3760356c7fd1aa6c78ddbc08c",
         "games": 50
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261130&groups=50&limit=1000",
-        "sha256": "ebcfe5f8f0c4b163316014ee797b3cc5f0eafe1c2de9005fa8a4cc82f13479e9",
+        "sha256": "cfa96c13cfd48ce375f1f00f7600654a47dc6f8c3546380d5aa8076bcc533c67",
         "games": 15
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261201&groups=50&limit=1000",
-        "sha256": "7133e40806dcd1d3bd568e95e659bc3a507ca14c77f209a64468d178083934b7",
+        "sha256": "2b385fe487ac2f8f230efa628db34aea4bac83356be0d3d32cda8abc8f04fcc4",
         "games": 66
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261202&groups=50&limit=1000",
-        "sha256": "b9f08f8d80469107798a32ab0f284ee25c353d9c64eff832169315e5779639bb",
+        "sha256": "98133ad1a135f42808cf231be81a56c1df77c98f1223740d0514bd8ac156e64b",
         "games": 71
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261203&groups=50&limit=1000",
-        "sha256": "091ab5a089ef34789938dbe775954776e477f6e8085e107dca274180679d2f15",
+        "sha256": "36e4b48a4aa61fda06168a31fb18e8fd1dfac4142ac58304107c4c1884b8fa93",
         "games": 29
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261204&groups=50&limit=1000",
-        "sha256": "a6b16408d64bded999f5f18ff95aa9bd689682b4d9f99c40daa10b038e9ba746",
+        "sha256": "187a7f8cb5ceb749eff4124b0b3af1cc33eb46a6175386107dc73780aacc3809",
         "games": 20
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261205&groups=50&limit=1000",
-        "sha256": "c6497a1dce410210ce0fe098c28fac9e33a1a140ddb49e581b59dc28be72fb4c",
+        "sha256": "874118ccd0d7e6e0a5d350dd572968a60c6eb55c3173651419668f6bba22073a",
         "games": 121
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261206&groups=50&limit=1000",
-        "sha256": "2081066b9a5c95eeb610ca0f8bd8f01b9e7dfe47ec053897fda37551e807b6a6",
+        "sha256": "f45a20456fe4a17edcdb25c7c42914882926d042f180d157b2c2a9c770b6c523",
         "games": 41
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261207&groups=50&limit=1000",
-        "sha256": "56ecb6d970e16887c2ac96b809933f69a40dc1d38029bdafe72639cc37b349ed",
+        "sha256": "cb5dd55b8b8f1a4d41b140d551526444cb8d818f1b4d9e18849a8eb10fa007b5",
         "games": 20
       }
     ],
@@ -55123,6 +55132,5 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ],
-  "results_checked_at_utc": "2026-11-07T21:52:29.082420+00:00"
+  ]
 }
