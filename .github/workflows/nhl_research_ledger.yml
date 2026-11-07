@@ -1,7 +1,7 @@
 name: NHL experimental pregame research ledger
 on:
   push:
-    branches: [nhl-v1-research]
+    branches: [main, nhl-v1-research]
     paths:
       - "research/nhl/prospective/**"
       - "model/nhl/v2_research/spec.json"
@@ -10,7 +10,7 @@ on:
   schedule:
     - cron: "15 11 * * *"
 concurrency:
-  group: nhl-experimental-ledger
+  group: nhl-confirmed-goalie-experiment
   cancel-in-progress: false
 permissions:
   contents: write
