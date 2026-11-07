@@ -11669,7 +11669,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.7938899030375323,
     "predicted_winner": "Texas A&M Aggies",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -11685,7 +11685,18 @@
       "pace_diff": 2.7877394153225765,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 104,
+    "away_score": 67,
+    "actual_winner": "Texas A&M Aggies",
+    "correct": 1,
+    "brier": 0.04248137206987785,
+    "log_loss": 0.23081048851114716,
+    "verified_start_time_utc": "2026-11-07T01:00:00+00:00",
+    "settled_at_utc": "2026-11-07T03:05:51.212487+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+    "result_source_event_sha256": "7b9a09d52df0ea9da66a890971f9203118e6b9fe9813aefaf36d6f79c0449723"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401921809",
@@ -11703,7 +11714,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.8492563780121658,
     "predicted_winner": "LSU Tigers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -11719,7 +11730,18 @@
       "pace_diff": -1.336160714285711,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 92,
+    "away_score": 51,
+    "actual_winner": "LSU Tigers",
+    "correct": 1,
+    "brier": 0.02272363957001105,
+    "log_loss": 0.16339416179929958,
+    "verified_start_time_utc": "2026-11-07T01:00:00+00:00",
+    "settled_at_utc": "2026-11-07T03:05:51.212487+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+    "result_source_event_sha256": "9db1e73ecebe855146080e07978673a9f48e5a838713ca24957c776b10417864"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401925097",
