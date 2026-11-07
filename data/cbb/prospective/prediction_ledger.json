@@ -11781,7 +11781,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.45779393540263424,
     "predicted_winner": "Texas A&M-Corpus Christi Islanders",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -11797,7 +11797,18 @@
       "pace_diff": -2.786102403343776,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 60,
+    "away_score": 67,
+    "actual_winner": "Texas A&M-Corpus Christi Islanders",
+    "correct": 1,
+    "brier": 0.20957528729143127,
+    "log_loss": 0.6121091568134605,
+    "verified_start_time_utc": "2026-11-07T01:00:00+00:00",
+    "settled_at_utc": "2026-11-07T03:31:02.595466+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+    "result_source_event_sha256": "6943702010b8d9a36fd5d704a859ca0376e103f25c7678cadad8e96724c51213"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401928823",
@@ -11894,7 +11905,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.9481960397371559,
     "predicted_winner": "Iowa Hawkeyes",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -11910,7 +11921,18 @@
       "pace_diff": -3.3611363636363834,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 91,
+    "away_score": 47,
+    "actual_winner": "Iowa Hawkeyes",
+    "correct": 1,
+    "brier": 0.0026836502989143265,
+    "log_loss": 0.053194005134151075,
+    "verified_start_time_utc": "2026-11-07T01:30:00+00:00",
+    "settled_at_utc": "2026-11-07T03:31:02.595466+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+    "result_source_event_sha256": "7e08e9cac6555ee727c9b35be38156af93400431daf2ab08125b48ce4908ee39"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401920952",
