@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-07T03:56:07.464262+00:00",
+  "updated_at_utc": "2026-11-07T04:01:14.602123+00:00",
   "coverage": {
     "source_games_in_horizon": 1670
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1514,
-    "settled_games": 238,
-    "pending_games": 1276,
-    "wins": 195,
+    "settled_games": 242,
+    "pending_games": 1272,
+    "wins": 199,
     "losses": 43,
-    "accuracy": 0.819327731092437,
-    "brier": 0.13833993623152263,
-    "log_loss": 0.4388253910779047
+    "accuracy": 0.8223140495867769,
+    "brier": 0.13790361971444554,
+    "log_loss": 0.4379130185132037
   },
   "predictions": [
     {
@@ -11562,7 +11562,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6237250563038933,
       "predicted_winner": "Oklahoma State Cowboys",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -11578,7 +11578,18 @@
         "pace_diff": 3.5965909090909065,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 118,
+      "away_score": 68,
+      "actual_winner": "Oklahoma State Cowboys",
+      "correct": 1,
+      "brier": 0.14158283325350826,
+      "log_loss": 0.4720456226095836,
+      "verified_start_time_utc": "2026-11-07T02:00:00+00:00",
+      "settled_at_utc": "2026-11-07T04:01:14.602123+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+      "result_source_event_sha256": "38d5dbc2a77b3319860b3606362211695906ba6485644fb4556a891fd7cc610a"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401919048",
@@ -12182,7 +12193,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.5450252411698033,
       "predicted_winner": "Arizona State Sun Devils",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -12198,7 +12209,18 @@
         "pace_diff": -0.6634796238244718,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 90,
+      "away_score": 63,
+      "actual_winner": "Arizona State Sun Devils",
+      "correct": 1,
+      "brier": 0.2070020311725956,
+      "log_loss": 0.606923171318323,
+      "verified_start_time_utc": "2026-11-07T02:00:00+00:00",
+      "settled_at_utc": "2026-11-07T04:01:14.602123+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+      "result_source_event_sha256": "4685df8dbc7cbac990af408dc2186b00482f545a28352a3478de50311963b12c"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921739",
@@ -12216,7 +12238,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9070413653296621,
       "predicted_winner": "BYU Cougars",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -12232,7 +12254,18 @@
         "pace_diff": 1.7859660243407802,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 108,
+      "away_score": 67,
+      "actual_winner": "BYU Cougars",
+      "correct": 1,
+      "brier": 0.008641307759773354,
+      "log_loss": 0.09756722314878497,
+      "verified_start_time_utc": "2026-11-07T02:00:00+00:00",
+      "settled_at_utc": "2026-11-07T04:01:14.602123+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+      "result_source_event_sha256": "a569424f03c1a3eea5e2977c0283a92bf005d291801f8673f5036e7f0efeed8b"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401922261",
@@ -12250,7 +12283,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6990930781661044,
       "predicted_winner": "Colorado State Rams",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -12266,7 +12299,18 @@
         "pace_diff": -5.178515624999974,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 78,
+      "away_score": 67,
+      "actual_winner": "Colorado State Rams",
+      "correct": 1,
+      "brier": 0.09054497560755013,
+      "log_loss": 0.3579713865772895,
+      "verified_start_time_utc": "2026-11-07T02:00:00+00:00",
+      "settled_at_utc": "2026-11-07T04:01:14.602123+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&limit=1000&groups=50",
+      "result_source_event_sha256": "d8785da7e7b711d9e425c5b89250b78cfb5d0249a873d085a6c3729ca0729848"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401917515",
@@ -54354,5 +54398,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-07T03:56:07.464262+00:00"
+  "results_checked_at_utc": "2026-11-07T04:01:14.602123+00:00"
 }
