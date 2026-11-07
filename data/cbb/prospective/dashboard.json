@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-07T22:48:52.444297+00:00",
+  "updated_at_utc": "2026-11-07T22:53:48.026231+00:00",
   "coverage": {
     "source_games_in_horizon": 1592
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1530,
-    "settled_games": 264,
-    "pending_games": 1266,
-    "wins": 213,
+    "settled_games": 266,
+    "pending_games": 1264,
+    "wins": 215,
     "losses": 51,
-    "accuracy": 0.8068181818181818,
-    "brier": 0.14549754947674975,
-    "log_loss": 0.4555795505519929
+    "accuracy": 0.8082706766917294,
+    "brier": 0.14480659624280492,
+    "log_loss": 0.45385598551416423
   },
   "predictions": [
     {
@@ -13047,7 +13047,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.678713228025766,
       "predicted_winner": "San Diego State Aztecs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -13063,7 +13063,18 @@
         "pace_diff": -0.007421875000019895,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 77,
+      "away_score": 66,
+      "actual_winner": "San Diego State Aztecs",
+      "correct": 1,
+      "brier": 0.10322518984562347,
+      "log_loss": 0.38755658522253644,
+      "verified_start_time_utc": "2026-11-07T20:30:00+00:00",
+      "settled_at_utc": "2026-11-07T22:53:48.026231+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&limit=1000&groups=50",
+      "result_source_event_sha256": "501dbadd67bab1ec1627af26195fe7b5f0219b52b27e5447eba24491f4a7fae0"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401919805",
@@ -13262,7 +13273,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9369417025400596,
       "predicted_winner": "Utah State Aggies",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -13278,7 +13289,18 @@
         "pace_diff": -0.3398249738767305,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 90,
+      "away_score": 56,
+      "actual_winner": "Utah State Aggies",
+      "correct": 1,
+      "brier": 0.003976348878546326,
+      "log_loss": 0.06513421581902568,
+      "verified_start_time_utc": "2026-11-07T21:00:00+00:00",
+      "settled_at_utc": "2026-11-07T22:53:48.026231+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&limit=1000&groups=50",
+      "result_source_event_sha256": "f5428a2499552ed38210de1c2faf31d4e96a9ca43a83feb9b8f6c3193045d2b9"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911007",
@@ -55177,5 +55199,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-07T22:48:52.444297+00:00"
+  "results_checked_at_utc": "2026-11-07T22:53:48.026231+00:00"
 }
