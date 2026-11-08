@@ -457,9 +457,14 @@ def render_overview(now=None):
     nba_capture=payload.get('nba',{}).get('data') or {}
     if nba_capture.get('prediction_blocked_reason') or nba_capture.get('missing_upcoming_game_ids'):
         st.warning('NBA forecast capture is delayed. Some upcoming games may be missing; saved picks and graded results remain available.')
+    board['confirmed_final'] = False
     for i,r in board.iterrows():
         status=context(r.sport,r.game_id,r.home,r.away)
-        if status:board.loc[i,'start']=ts(status['start_time_utc'])
+        if status:
+            board.loc[i,'start'] = ts(status['start_time_utc'])
+            board.loc[i,'confirmed_final'] = status.get('state') == 'final'
+        elif r.sport == 'NFL':
+            board.loc[i,'start'] = ts(r.details.get('kickoff_utc'))
     primary=board[board.apply(lambda r:PRIMARY[r.sport]==r.group,axis=1)] if len(board) else board
     total_graded=int(primary.settled.sum());saved=len(primary)
     st.markdown('''<style>
@@ -506,7 +511,9 @@ def render_overview(now=None):
             key='nhl' if sport=='NHL' else sport.lower();ok=available[key];b=board[board.group==group];m=metrics(b);state,cls=freshness(sport,updates[sport],now)
             if not ok:state,cls='Feed unavailable','unknown'
             elif sport=='CBB' and len(b) and not m['games'] and b.start.min()>now and cls=='good':state='Awaiting season'
-            record=f"{m['wins']}–{m['losses']}" if ok else '—';accuracy=f"{m['accuracy']*100:.1f}%" if ok and m['games'] else '—';pending=len(b)-m['games']
+            record=f"{m['wins']}–{m['losses']}" if ok else '—';accuracy=f"{m['accuracy']*100:.1f}%" if ok and m['games'] else '—';pending = b[~b.settled]
+            upcoming = int((pending.start.gt(now) & ~pending.confirmed_final).sum())
+            awaiting_grading = int(pending.confirmed_final.sum())
             tag='FROZEN · CANDIDATE' if sport=='CBB' else 'FROZEN · RESEARCH' if sport=='NHL' else 'FROZEN V4' if sport=='NFL' else 'FROZEN V1'
             sub='Research candidate · prospective record' if sport=='CBB' else 'Reference control · prospective research' if sport=='NHL' else 'Official prospective record'
             is_forecast_time = sport in ('NFL', 'CFB')
@@ -521,7 +528,7 @@ def render_overview(now=None):
                     checked = ts(receipt.get('checked_at_utc'))
                 checked_text = ct(checked) if pd.notna(checked) and checked <= now else 'Unavailable'
                 checked_line = f'<div class="ov-update-line"><span>Results checked</span><span>{esc(checked_text)}</span></div>'
-            cards.append(f'<div class="ov-sport" style="--accent:{COLORS[sport]}"><div class="ov-top"><div class="ov-name">{sport}</div><div class="ov-tag">{tag}</div></div><div class="ov-score">{record}</div><div class="ov-caption">{sub}</div><div class="ov-details"><div class="ov-detail"><b>{m["games"] if ok else "—"}</b><span>Graded</span></div><div class="ov-detail"><b>{pending if ok else "—"}</b><span>Pending</span></div><div class="ov-detail"><b>{accuracy}</b><span>Accuracy</span></div></div><div class="ov-update"><div class="ov-update-line"><span>{update_label}</span><span>{esc(ct(updates[sport]))}</span></div>{checked_line}<span class="ov-status {cls}">{state}</span></div></div>')
+            cards.append(f'<div class="ov-sport" style="--accent:{COLORS[sport]}"><div class="ov-top"><div class="ov-name">{sport}</div><div class="ov-tag">{tag}</div></div><div class="ov-score">{record}</div><div class="ov-caption">{sub}</div><div class="ov-details"><div class="ov-detail"><b>{m["games"] if ok else "—"}</b><span>Graded</span></div><div class="ov-detail"><b>{upcoming if ok else "—"}</b><span>Upcoming</span></div><div class="ov-detail"><b>{accuracy}</b><span>Accuracy</span></div></div><div class="ov-update"><div class="ov-update-line"><span>{update_label}</span><span>{esc(ct(updates[sport]))}</span></div>{checked_line}<div class="ov-update-line"><span>Awaiting grading</span><span>{awaiting_grading if ok else "—"}</span></div><span class="ov-status {cls}">{state}</span></div></div>')
         sports=list(PRIMARY)
         for offset in range(0,len(cards),2):
             columns=st.columns(2,gap='small')
