@@ -15479,7 +15479,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.38066726168825527,
     "predicted_winner": "Saint Peter's Peacocks",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -15495,7 +15495,18 @@
       "pace_diff": 1.7901227678571558,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 54,
+    "away_score": 52,
+    "actual_winner": "NJIT Highlanders",
+    "correct": 0,
+    "brier": 0.3835730407447241,
+    "log_loss": 0.9658296143315148,
+    "verified_start_time_utc": "2026-11-08T21:00:00+00:00",
+    "settled_at_utc": "2026-11-08T23:29:02.585369+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261108&limit=1000&groups=50",
+    "result_source_event_sha256": "b0d5fe55b61050937191203c772a13dc2fb90d17fc5008d29d83e60d7ef05bc6"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401911453",
