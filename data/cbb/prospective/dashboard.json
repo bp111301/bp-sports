@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-08T01:59:51.774854+00:00",
+  "updated_at_utc": "2026-11-08T02:05:02.471739+00:00",
   "coverage": {
     "source_games_in_horizon": 1592
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1530,
-    "settled_games": 284,
-    "pending_games": 1246,
-    "wins": 230,
-    "losses": 54,
-    "accuracy": 0.8098591549295775,
-    "brier": 0.14386904468243855,
-    "log_loss": 0.4508882290728693
+    "settled_games": 286,
+    "pending_games": 1244,
+    "wins": 231,
+    "losses": 55,
+    "accuracy": 0.8076923076923077,
+    "brier": 0.14452488332282934,
+    "log_loss": 0.4523972688940742
   },
   "predictions": [
     {
@@ -13857,7 +13857,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.5844625834571698,
       "predicted_winner": "Niagara Purple Eagles",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -13873,7 +13873,18 @@
         "pace_diff": -7.700782247765019,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 67,
+      "away_score": 73,
+      "actual_winner": "Morgan State Bears",
+      "correct": 0,
+      "brier": 0.3415965114614292,
+      "log_loss": 0.8781826168930917,
+      "verified_start_time_utc": "2026-11-07T23:30:00+00:00",
+      "settled_at_utc": "2026-11-08T02:05:02.471739+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&limit=1000&groups=50",
+      "result_source_event_sha256": "1042c15711e4cf2a65f5f3969849127f6d5f835a912506f761132f6ba70c9c21"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401926112",
@@ -14092,7 +14103,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.3656657340457471,
       "predicted_winner": "Houston Christian Huskies",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -14108,7 +14119,18 @@
         "pace_diff": 2.9008333333333525,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 67,
+      "away_score": 74,
+      "actual_winner": "Houston Christian Huskies",
+      "correct": 1,
+      "brier": 0.13371142905521505,
+      "log_loss": 0.45517923011725964,
+      "verified_start_time_utc": "2026-11-08T00:00:00+00:00",
+      "settled_at_utc": "2026-11-08T02:05:02.471739+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&limit=1000&groups=50",
+      "result_source_event_sha256": "30637d2e28930c7ef023c2c90ad7ee93920bc592f92b89cd72860e75cc233f94"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401925772",
@@ -55397,5 +55419,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-08T01:59:51.774854+00:00"
+  "results_checked_at_utc": "2026-11-08T02:05:02.471739+00:00"
 }
