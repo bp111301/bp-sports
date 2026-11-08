@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-08T13:29:11.053086+00:00",
+  "updated_at_utc": "2026-11-08T13:30:59.485494+00:00",
   "coverage": {
     "source_games_in_horizon": 1576
   },
@@ -55791,9 +55791,9 @@
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "a8c6d6a60135550f8211de59a0777181d2bf323b68aa48c82751bf8c661c9d64",
-    "bytes": 501093,
-    "archive_sha256": "a486c3f36e781762574500fff924ba0ead51b8295379417265bf5bb3ef17bcc1",
+    "sha256": "dabf7fb4c8fdafc18f233d883932fca943d1dabf298652b2e58ce362a720a731",
+    "bytes": 512408,
+    "archive_sha256": "7138cfea30aa4f60ab68cbc016fd1f1df0612bcf899d8d87401de586f7cbf94a",
     "live_schedule_sources": [
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&groups=50&limit=1000",
@@ -55949,6 +55949,11 @@
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261207&groups=50&limit=1000",
         "sha256": "56ecb6d970e16887c2ac96b809933f69a40dc1d38029bdafe72639cc37b349ed",
         "games": 20
+      },
+      {
+        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261208&groups=50&limit=1000",
+        "sha256": "1fc698f7a7399a513dba66482f39d41859fa2a65ac24e99808b512ca6d740ead",
+        "games": 56
       }
     ],
     "identity_conflicts": []
@@ -56043,6 +56048,5 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ],
-  "results_checked_at_utc": "2026-11-08T13:29:11.053086+00:00"
+  ]
 }
