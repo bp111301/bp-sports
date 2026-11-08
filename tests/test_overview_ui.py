@@ -128,3 +128,24 @@ def test_football_cards_distinguish_forecast_refresh_and_results_check():
         card = next(m.value for m in app.markdown if f'<div class="ov-name">{sport}</div>' in m.value)
         assert '<span>Forecast refreshed</span><span>Nov 7 · 12:07 PM CT</span>' in card
         assert f'<span>Results checked</span><span>{checked}</span>' in card
+
+
+def test_live_record_card_counts_only_confirmed_finals_awaiting_grading():
+    data = fixture()
+    now = pd.Timestamp('2026-11-08T13:00:00Z')
+    base = dict(data['cfb']['data'][0], snapshot_created_utc='2026-11-07T06:00:00Z')
+    data['cfb']['data'] = [
+        dict(base, game_id='graded', schedule_kickoff_utc='2026-11-07T20:00:00Z'),
+        dict(base, game_id='future', schedule_kickoff_utc='2026-11-14T18:00:00Z', correct=None),
+        dict(base, game_id='live', schedule_kickoff_utc='2026-11-08T12:00:00Z', correct=None),
+        dict(base, game_id='final', schedule_kickoff_utc='2026-11-08T09:00:00Z', correct=None),
+    ]
+    final = dict(start_time_utc='2026-11-08T09:00:00Z', state='final')
+    with patch('overview_ui.load_overview', return_value=data), patch('game_center_ui.load_scores', return_value={}), patch(
+        'overview_ui.context', side_effect=lambda sport, gid, home, away: final if gid == 'final' else None
+    ):
+        app = AppTest.from_string(f'import overview_ui as ov\nov.render_overview("{now.isoformat()}")').run()
+    assert not app.exception
+    card = next(m.value for m in app.markdown if '<div class="ov-name">CFB</div>' in m.value)
+    assert '<b>1</b><span>Upcoming</span>' in card
+    assert '<span>Awaiting grading</span><span>1</span>' in card
