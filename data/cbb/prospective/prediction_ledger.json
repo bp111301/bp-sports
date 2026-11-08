@@ -13536,7 +13536,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.6677693081845979,
     "predicted_winner": "UTSA Roadrunners",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -13552,7 +13552,18 @@
       "pace_diff": 2.012315270935929,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 70,
+    "away_score": 68,
+    "actual_winner": "UTSA Roadrunners",
+    "correct": 1,
+    "brier": 0.11037723258414069,
+    "log_loss": 0.4038125121205544,
+    "verified_start_time_utc": "2026-11-07T22:00:00+00:00",
+    "settled_at_utc": "2026-11-08T00:09:19.628556+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&limit=1000&groups=50",
+    "result_source_event_sha256": "635583e411e88d25af6bd98c9da00fcb18803859a5b34972f7386b742f614b68"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401928788",
