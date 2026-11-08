@@ -15142,7 +15142,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.4929382418189553,
     "predicted_winner": "Central Connecticut Blue Devils",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -15158,7 +15158,18 @@
       "pace_diff": 4.06750000000001,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 71,
+    "away_score": 78,
+    "actual_winner": "Central Connecticut Blue Devils",
+    "correct": 1,
+    "brier": 0.24298811024756284,
+    "log_loss": 0.6791224718013346,
+    "verified_start_time_utc": "2026-11-08T19:00:00+00:00",
+    "settled_at_utc": "2026-11-08T21:20:43.634172+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261108&limit=1000&groups=50",
+    "result_source_event_sha256": "d207c649c9e97126fe5f1c1238df724d13321d8a7f233f791ed401804d9b0a69"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401920692",
