@@ -15,8 +15,10 @@ from matchup_details_ui import game_tile, details_button
 RAW='https://raw.githubusercontent.com/bp111301/bp-sports/'
 SOURCES={
  'nfl':('main','data/ledger/prediction_ledger.csv'), 'nfl_update':('main','data/current/prediction_metadata.json'),
+ 'nfl_results':('main','data/current/result_check.json'),
  'nfl_availability':('main','data/current/nfl_availability.json'),
  'cfb':('main','data/cfb/ledger/prediction_ledger.csv'), 'cfb_update':('main','data/cfb/current/metadata.json'),
+ 'cfb_results':('main','data/cfb/result_check.json'),
  'shadow':('main','data/cfb/v2_shadow/verified_prediction_ledger.csv'), 'shadow_update':('main','data/cfb/v2_shadow/metadata.json'),
  'nhl':('nhl-v1-research','data/nhl/v2_research/prediction_ledger.csv'), 'nhl_update':('nhl-v1-research','data/nhl/v2_research/summary.json'),
  'goalie':('nhl-v1-research','data/nhl/goalie_experiment/paired_ledger.jsonl'), 'goalie_update':('nhl-v1-research','data/nhl/goalie_experiment/summary.json'),
@@ -477,7 +479,8 @@ def render_overview(now=None):
 .ov-score{font-size:1.8rem;margin-top:10px}.ov-caption{font-size:.67rem}
 .ov-details{gap:7px;margin:10px 0}.ov-detail{padding:7px 9px;border-radius:9px}
 .ov-detail b{font-size:.9rem}.ov-detail span{font-size:.55rem}
-.ov-update{font-size:.65rem;padding-top:9px;flex-wrap:wrap;gap:4px}
+.ov-update{font-size:.65rem;padding-top:9px;display:grid;gap:4px}
+.ov-update-line{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 8px}
 @media(max-width:640px){.ov-sport{padding:11px 12px}.ov-top{flex-wrap:wrap;gap:5px}.ov-score{font-size:1.6rem}.ov-details{gap:4px}.ov-detail{padding:6px 4px}.ov-detail b{font-size:.8rem}.ov-detail span{font-size:.5rem}}
 
 .ov-compact-hero{padding:18px 22px;margin:4px 0 16px;border-radius:18px;box-shadow:none}
@@ -506,7 +509,19 @@ def render_overview(now=None):
             record=f"{m['wins']}–{m['losses']}" if ok else '—';accuracy=f"{m['accuracy']*100:.1f}%" if ok and m['games'] else '—';pending=len(b)-m['games']
             tag='FROZEN · CANDIDATE' if sport=='CBB' else 'FROZEN · RESEARCH' if sport=='NHL' else 'FROZEN V4' if sport=='NFL' else 'FROZEN V1'
             sub='Research candidate · prospective record' if sport=='CBB' else 'Reference control · prospective research' if sport=='NHL' else 'Official prospective record'
-            cards.append(f'<div class="ov-sport" style="--accent:{COLORS[sport]}"><div class="ov-top"><div class="ov-name">{sport}</div><div class="ov-tag">{tag}</div></div><div class="ov-score">{record}</div><div class="ov-caption">{sub}</div><div class="ov-details"><div class="ov-detail"><b>{m["games"] if ok else "—"}</b><span>Graded</span></div><div class="ov-detail"><b>{pending if ok else "—"}</b><span>Pending</span></div><div class="ov-detail"><b>{accuracy}</b><span>Accuracy</span></div></div><div class="ov-update"><span>{esc(ct(updates[sport]))}</span><span class="ov-status {cls}">{state}</span></div></div>')
+            is_forecast_time = sport in ('NFL', 'CFB')
+            update_label = 'Forecast refreshed' if is_forecast_time else 'Feed updated'
+            if is_forecast_time and cls == 'warning':
+                state = 'Forecast update overdue'
+            checked_line = ''
+            if is_forecast_time:
+                receipt = payload.get(key+'_results', {}).get('data')
+                checked = pd.NaT
+                if isinstance(receipt, dict) and receipt.get('sport') == key and receipt.get('status') == 'success':
+                    checked = ts(receipt.get('checked_at_utc'))
+                checked_text = ct(checked) if pd.notna(checked) and checked <= now else 'Unavailable'
+                checked_line = f'<div class="ov-update-line"><span>Results checked</span><span>{esc(checked_text)}</span></div>'
+            cards.append(f'<div class="ov-sport" style="--accent:{COLORS[sport]}"><div class="ov-top"><div class="ov-name">{sport}</div><div class="ov-tag">{tag}</div></div><div class="ov-score">{record}</div><div class="ov-caption">{sub}</div><div class="ov-details"><div class="ov-detail"><b>{m["games"] if ok else "—"}</b><span>Graded</span></div><div class="ov-detail"><b>{pending if ok else "—"}</b><span>Pending</span></div><div class="ov-detail"><b>{accuracy}</b><span>Accuracy</span></div></div><div class="ov-update"><div class="ov-update-line"><span>{update_label}</span><span>{esc(ct(updates[sport]))}</span></div>{checked_line}<span class="ov-status {cls}">{state}</span></div></div>')
         sports=list(PRIMARY)
         for offset in range(0,len(cards),2):
             columns=st.columns(2,gap='small')

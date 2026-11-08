@@ -111,3 +111,20 @@ def test_yesterday_recap_central_date_original_picks_ties_and_parallel_models():
  with patch('overview_ui.context',return_value=None):
   _,empty,available=ov.yesterday_recap({},now)
  assert empty.empty and not any(available.values())
+
+
+def test_football_cards_distinguish_forecast_refresh_and_results_check():
+    data = fixture()
+    now = pd.Timestamp('2026-11-08T12:50:00Z')
+    forecast = '2026-11-07T18:07:00Z'
+    data['nfl_update']['data']['captured_at_utc'] = forecast
+    data['cfb_update']['data']['generated_at_utc'] = forecast
+    data['nfl_results'] = dict(ok=True, data=dict(sport='nfl', status='success', checked_at_utc='2026-11-08T12:48:00Z'))
+    data['cfb_results'] = dict(ok=True, data=dict(sport='cfb', status='success', checked_at_utc='2026-11-08T12:49:00Z'))
+    with patch('overview_ui.load_overview', return_value=data), patch('game_center_ui.load_scores', return_value={}):
+        app = AppTest.from_string(f'import overview_ui as ov\nov.render_overview("{now.isoformat()}")').run()
+    assert not app.exception
+    for sport, checked in [('NFL', 'Nov 8 · 6:48 AM CT'), ('CFB', 'Nov 8 · 6:49 AM CT')]:
+        card = next(m.value for m in app.markdown if f'<div class="ov-name">{sport}</div>' in m.value)
+        assert '<span>Forecast refreshed</span><span>Nov 7 · 12:07 PM CT</span>' in card
+        assert f'<span>Results checked</span><span>{checked}</span>' in card
