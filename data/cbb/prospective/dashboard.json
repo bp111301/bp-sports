@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-08T19:55:58.453054+00:00",
+  "updated_at_utc": "2026-11-08T20:05:09.617114+00:00",
   "coverage": {
     "source_games_in_horizon": 1576
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1544,
-    "settled_games": 301,
-    "pending_games": 1243,
-    "wins": 242,
-    "losses": 59,
-    "accuracy": 0.8039867109634552,
-    "brier": 0.1470840247401248,
-    "log_loss": 0.46023714605312316
+    "settled_games": 303,
+    "pending_games": 1241,
+    "wins": 243,
+    "losses": 60,
+    "accuracy": 0.801980198019802,
+    "brier": 0.1476711994713533,
+    "log_loss": 0.46151670910655695
   },
   "predictions": [
     {
@@ -14800,7 +14800,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.24560018659037985,
       "predicted_winner": "Fairfield Stags",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -14816,7 +14816,18 @@
         "pace_diff": -2.109730929989553,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 59,
+      "away_score": 68,
+      "actual_winner": "Fairfield Stags",
+      "correct": 1,
+      "brier": 0.0603194516532294,
+      "log_loss": 0.2818327949990544,
+      "verified_start_time_utc": "2026-11-08T18:00:00+00:00",
+      "settled_at_utc": "2026-11-08T20:05:09.617114+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261108&limit=1000&groups=50",
+      "result_source_event_sha256": "2d0f351030b5690a85fc60fd0b40a481946ecac7c2e7dbb4dd5df5bd87da1d88"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921684",
@@ -14902,7 +14913,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.3583127386418996,
       "predicted_winner": "Marist Red Foxes",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -14918,7 +14929,18 @@
         "pace_diff": 2.1129166666666634,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 63,
+      "away_score": 61,
+      "actual_winner": "UMass Lowell River Hawks",
+      "correct": 0,
+      "brier": 0.41176254138925905,
+      "log_loss": 1.0263491022976412,
+      "verified_start_time_utc": "2026-11-08T18:00:00+00:00",
+      "settled_at_utc": "2026-11-08T20:05:09.617114+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261108&limit=1000&groups=50",
+      "result_source_event_sha256": "53eeb9d98364d4efed1db684520e0356162d26bd64e7ec4da88c28da9e404edc"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921820",
@@ -56060,5 +56082,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-08T19:55:58.453054+00:00"
+  "results_checked_at_utc": "2026-11-08T20:05:09.617114+00:00"
 }
