@@ -1,13 +1,13 @@
 {
   "status": "shadow_only_not_public",
-  "updated_at_utc": "2026-11-08T06:10:43.886508+00:00",
+  "updated_at_utc": "2026-11-08T13:32:04.439454+00:00",
   "identities": {
     "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
     "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
     "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
   },
   "capture_window_hours": 24,
-  "eligible_future_games": 1243,
+  "eligible_future_games": 1236,
   "within_capture_window": 29,
   "summary": {
     "saved_pairs": 329,
@@ -39,7 +39,7 @@
     "source_games_in_horizon": 1576
   },
   "excluded": {
-    "division_or_conference_unknown": 299,
+    "division_or_conference_unknown": 306,
     "tipoff_time_unconfirmed": 34
   },
   "coverage_by_day": {
@@ -55,7 +55,7 @@
     },
     "2026-12-05": {
       "source_games": 116,
-      "eligible": 107,
+      "eligible": 106,
       "unconfirmed_tipoff": 0
     },
     "Unconfirmed source date/time": {
@@ -75,7 +75,7 @@
     },
     "2026-12-02": {
       "source_games": 70,
-      "eligible": 62,
+      "eligible": 61,
       "unconfirmed_tipoff": 0
     },
     "2026-12-01": {
@@ -115,7 +115,7 @@
     },
     "2026-11-24": {
       "source_games": 86,
-      "eligible": 73,
+      "eligible": 72,
       "unconfirmed_tipoff": 0
     },
     "2026-11-23": {
@@ -130,7 +130,7 @@
     },
     "2026-11-21": {
       "source_games": 54,
-      "eligible": 46,
+      "eligible": 45,
       "unconfirmed_tipoff": 0
     },
     "2026-11-20": {
@@ -145,7 +145,7 @@
     },
     "2026-11-18": {
       "source_games": 70,
-      "eligible": 56,
+      "eligible": 55,
       "unconfirmed_tipoff": 0
     },
     "2026-11-17": {
@@ -165,7 +165,7 @@
     },
     "2026-11-14": {
       "source_games": 70,
-      "eligible": 59,
+      "eligible": 58,
       "unconfirmed_tipoff": 0
     },
     "2026-11-13": {
@@ -180,7 +180,7 @@
     },
     "2026-11-11": {
       "source_games": 66,
-      "eligible": 47,
+      "eligible": 46,
       "unconfirmed_tipoff": 0
     },
     "2026-11-10": {
@@ -201,15 +201,10 @@
   },
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "cabf12f32b62aed12b6bd450693f2f83845209eb79f2e9ad668d6cec39371ab6",
-    "bytes": 501093,
-    "archive_sha256": "a486c3f36e781762574500fff924ba0ead51b8295379417265bf5bb3ef17bcc1",
+    "sha256": "82fd1b6e9092277ad1eb2491b70370230486b0e079b621b2f569fd0ab1961449",
+    "bytes": 512408,
+    "archive_sha256": "7138cfea30aa4f60ab68cbc016fd1f1df0612bcf899d8d87401de586f7cbf94a",
     "live_schedule_sources": [
-      {
-        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261106&groups=50&limit=1000",
-        "sha256": "ff3beb78c94232bfdbeffd9576aba51ecca45afd4bcc36a3ca87b385d9125323",
-        "games": 72
-      },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&groups=50&limit=1000",
         "sha256": "86b4e649eb83831614ddf7839d44967570135f7cac80f02f9b3912d822cf6331",
@@ -502,32 +497,32 @@
     {
       "season": 2027,
       "schedule_rows": 6071,
-      "box_rows": 750,
+      "box_rows": 872,
       "sources": [
         {
           "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-          "sha256": "a486c3f36e781762574500fff924ba0ead51b8295379417265bf5bb3ef17bcc1",
-          "bytes": 501093
+          "sha256": "7138cfea30aa4f60ab68cbc016fd1f1df0612bcf899d8d87401de586f7cbf94a",
+          "bytes": 512408
         },
         {
           "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2027.parquet",
-          "sha256": "93352b8b4586e57b0791395c5907edbc02fca02ec87c3f60c9034e685b173047",
-          "bytes": 113612
+          "sha256": "fa198368244d473bedcb65bd3753d8ff85bb97b7ddf03db3aedf966eed144fe4",
+          "bytes": 120182
         }
       ],
       "exclusions": {
-        "not_confirmed_final": 5695,
-        "division_or_conference_unknown": 124
+        "not_confirmed_final": 5634,
+        "division_or_conference_unknown": 139
       },
-      "eligible_games": 252,
-      "neutral_games": 19,
+      "eligible_games": 298,
+      "neutral_games": 23,
       "players": {
         "season": 2027,
         "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2027.parquet",
-        "sha256": "395c09d6f2b998b409a277dea22a83bc60d37725f9b9e1b96313726199f0fd62",
-        "bytes": 414249,
-        "eligible_team_games": 504,
-        "complete_player_team_games": 504,
+        "sha256": "5b00151a7f33c8566035cafa690b1aa3a45f4907473f8b950cd0c02349da77a8",
+        "bytes": 449125,
+        "eligible_team_games": 596,
+        "complete_player_team_games": 596,
         "exclusions": {}
       }
     }
