@@ -1,20 +1,34 @@
 {
-  "checked_at_utc": "2026-11-08T10:34:28.710920+00:00",
+  "checked_at_utc": "2026-11-08T17:08:20.928608+00:00",
   "sports": {
+    "cfb": {
+      "supported_future_games": 53,
+      "new_targets": 2,
+      "unsupported_fbs_fcs_future_games": 0,
+      "dropped_crossed_publish_margin": 0,
+      "new_paired_forecasts": 2,
+      "new_settlements": 16
+    },
     "nhl": {
-      "supported_future_games": 6,
-      "new_targets": 0,
+      "supported_future_games": 9,
+      "new_targets": 3,
       "completed_current_games": 276,
       "official_count_fallback_game_ids": [],
       "dropped_crossed_publish_margin": 0,
-      "new_paired_forecasts": 0,
-      "new_settlements": 9
+      "new_paired_forecasts": 3,
+      "new_settlements": 0
     }
   },
   "errors": [
     {
       "sport": "cfb",
-      "error": "HTTPError: HTTP Error 503: Service Unavailable"
+      "forecast_key": "confidence_shadow_20261029:cfb:401858517",
+      "error": "Settlement requires review: Scheduled start changed; requires explicit review"
+    },
+    {
+      "sport": "cfb",
+      "forecast_key": "confidence_shadow_20261029:cfb:401856854",
+      "error": "Settlement requires review: Scheduled start changed; requires explicit review"
     }
   ],
   "frozen_sources": {
