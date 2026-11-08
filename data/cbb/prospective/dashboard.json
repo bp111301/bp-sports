@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-08T03:20:19.675516+00:00",
+  "updated_at_utc": "2026-11-08T03:25:24.440421+00:00",
   "coverage": {
     "source_games_in_horizon": 1592
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1530,
-    "settled_games": 293,
-    "pending_games": 1237,
-    "wins": 235,
+    "settled_games": 294,
+    "pending_games": 1236,
+    "wins": 236,
     "losses": 58,
-    "accuracy": 0.8020477815699659,
-    "brier": 0.1488606630125207,
-    "log_loss": 0.46485287443261636
+    "accuracy": 0.8027210884353742,
+    "brier": 0.14841850880762467,
+    "log_loss": 0.46377431348491555
   },
   "predictions": [
     {
@@ -488,7 +488,7 @@
       "created_at_utc": "2026-10-14T00:51:58.072020+00:00",
       "home_win_prob": 0.8626416119303882,
       "predicted_winner": "Grand Canyon Lopes",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "bddafb0c3661a72f0603bee8e170ec19653cd7f4c2640d1f6f4a9b28fe4aaa15",
       "forecast_stage": "early_research_prior",
@@ -504,7 +504,18 @@
         "pace_diff": -2.499143145161284,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 99,
+      "away_score": 81,
+      "actual_winner": "Grand Canyon Lopes",
+      "correct": 1,
+      "brier": 0.01886732677308206,
+      "log_loss": 0.14775595580857723,
+      "verified_start_time_utc": "2026-11-08T01:00:00+00:00",
+      "settled_at_utc": "2026-11-08T03:25:24.440421+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&limit=1000&groups=50",
+      "result_source_event_sha256": "122f8a5f77f1ba65160280baa82bd77171a5f9b80b2257f571295c57cff1716f"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911335",
@@ -55496,5 +55507,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-08T03:20:19.675516+00:00"
+  "results_checked_at_utc": "2026-11-08T03:25:24.440421+00:00"
 }
