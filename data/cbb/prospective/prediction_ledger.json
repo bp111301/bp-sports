@@ -13963,7 +13963,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.9504348171751359,
     "predicted_winner": "Dayton Flyers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -13979,7 +13979,18 @@
       "pace_diff": -0.1501575630251608,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 76,
+    "away_score": 81,
+    "actual_winner": "Northern Illinois Huskies",
+    "correct": 0,
+    "brier": 0.9033263416987339,
+    "log_loss": 3.0044666509160813,
+    "verified_start_time_utc": "2026-11-08T00:00:00+00:00",
+    "settled_at_utc": "2026-11-08T02:45:13.770515+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&limit=1000&groups=50",
+    "result_source_event_sha256": "69eabb676bddc8a04d7d040f94d4aec7e0c023ecca66e97fd722387b25ab45f6"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401911262",
@@ -14175,7 +14186,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.8069322551064803,
     "predicted_winner": "Georgetown Hoyas",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -14191,7 +14202,18 @@
       "pace_diff": 0.7967023172905385,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 86,
+    "away_score": 74,
+    "actual_winner": "Georgetown Hoyas",
+    "correct": 1,
+    "brier": 0.03727515411826922,
+    "log_loss": 0.21451556082018713,
+    "verified_start_time_utc": "2026-11-08T00:30:00+00:00",
+    "settled_at_utc": "2026-11-08T02:45:13.770515+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&limit=1000&groups=50",
+    "result_source_event_sha256": "8f6f25ff3eaae961138758b4cab409242731cb77b541e1666df4291b8707f01c"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401926227",
