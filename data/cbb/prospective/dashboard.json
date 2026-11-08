@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-08T22:50:21.158415+00:00",
+  "updated_at_utc": "2026-11-08T22:55:25.680812+00:00",
   "coverage": {
     "source_games_in_horizon": 1548
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1547,
-    "settled_games": 317,
-    "pending_games": 1230,
-    "wins": 252,
-    "losses": 65,
-    "accuracy": 0.7949526813880127,
-    "brier": 0.1538458875498888,
-    "log_loss": 0.4762017505844152
+    "settled_games": 319,
+    "pending_games": 1228,
+    "wins": 253,
+    "losses": 66,
+    "accuracy": 0.7931034482758621,
+    "brier": 0.15419295433667696,
+    "log_loss": 0.4770096138229772
   },
   "predictions": [
     {
@@ -578,7 +578,7 @@
       "created_at_utc": "2026-10-14T00:51:58.072020+00:00",
       "home_win_prob": 0.6880150606369323,
       "predicted_winner": "Binghamton Bearcats",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "bddafb0c3661a72f0603bee8e170ec19653cd7f4c2640d1f6f4a9b28fe4aaa15",
       "forecast_stage": "early_research_prior",
@@ -594,7 +594,18 @@
         "pace_diff": 0.8254464285714249,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 75,
+      "away_score": 63,
+      "actual_winner": "Binghamton Bearcats",
+      "correct": 1,
+      "brier": 0.09733460238937704,
+      "log_loss": 0.3739445508277286,
+      "verified_start_time_utc": "2026-11-08T21:00:00+00:00",
+      "settled_at_utc": "2026-11-08T22:55:25.680812+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261108&limit=1000&groups=50",
+      "result_source_event_sha256": "8d397fbbf1c2d33c8ac4b74b7cff3f21f6058c8b56c3797efe6b8c8a1509879b"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911230",
@@ -15407,7 +15418,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.4333683050730119,
       "predicted_winner": "Western Kentucky Hilltoppers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -15423,7 +15434,18 @@
         "pace_diff": -3.238154761904738,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 97,
+      "away_score": 94,
+      "actual_winner": "Tennessee Tech Golden Eagles",
+      "correct": 0,
+      "brier": 0.3210714776958313,
+      "log_loss": 0.8361673234423697,
+      "verified_start_time_utc": "2026-11-08T20:00:00+00:00",
+      "settled_at_utc": "2026-11-08T22:55:25.680812+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261108&limit=1000&groups=50",
+      "result_source_event_sha256": "97233dd6f476f7d6b1ab9cd557c29efd67f9072d98d9d96be1610a15824515ca"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401927362",
@@ -56338,5 +56360,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-08T22:50:21.158415+00:00"
+  "results_checked_at_utc": "2026-11-08T22:55:25.680812+00:00"
 }
