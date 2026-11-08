@@ -14389,7 +14389,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.8896775884123763,
     "predicted_winner": "Murray State Racers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -14405,7 +14405,18 @@
       "pace_diff": 6.845468749999995,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 93,
+    "away_score": 71,
+    "actual_winner": "Murray State Racers",
+    "correct": 1,
+    "brier": 0.012171034498509044,
+    "log_loss": 0.1168961420988459,
+    "verified_start_time_utc": "2026-11-08T01:00:00+00:00",
+    "settled_at_utc": "2026-11-08T03:15:20.710884+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&limit=1000&groups=50",
+    "result_source_event_sha256": "30a02ade348bbcbd51dcbe7fb5477213b9a5ff548224bf2da824d43afaa26cfc"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401920435",
