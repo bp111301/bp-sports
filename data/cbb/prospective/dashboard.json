@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-08T03:25:24.440421+00:00",
+  "updated_at_utc": "2026-11-08T03:30:31.830695+00:00",
   "coverage": {
     "source_games_in_horizon": 1592
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1530,
-    "settled_games": 294,
-    "pending_games": 1236,
+    "settled_games": 295,
+    "pending_games": 1235,
     "wins": 236,
-    "losses": 58,
-    "accuracy": 0.8027210884353742,
-    "brier": 0.14841850880762467,
-    "log_loss": 0.46377431348491555
+    "losses": 59,
+    "accuracy": 0.8,
+    "brier": 0.14882682948687515,
+    "log_loss": 0.46467986106924336
   },
   "predictions": [
     {
@@ -14406,7 +14406,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.48147024271839695,
       "predicted_winner": "Southern Indiana Screaming Eagles",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -14422,7 +14422,18 @@
         "pace_diff": -1.1109821428571394,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 78,
+      "away_score": 76,
+      "actual_winner": "Evansville Purple Aces",
+      "correct": 0,
+      "brier": 0.26887310918651813,
+      "log_loss": 0.7309108508616284,
+      "verified_start_time_utc": "2026-11-08T01:00:00+00:00",
+      "settled_at_utc": "2026-11-08T03:30:31.830695+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&limit=1000&groups=50",
+      "result_source_event_sha256": "cdc131c80adced789146dda8be468aa469beedaf6cba8527a9ac93231fa78938"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401925077",
@@ -55507,5 +55518,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-08T03:25:24.440421+00:00"
+  "results_checked_at_utc": "2026-11-08T03:30:31.830695+00:00"
 }
