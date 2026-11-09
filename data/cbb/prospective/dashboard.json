@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-09T06:28:43.263354+00:00",
+  "updated_at_utc": "2026-11-09T06:33:47.167530+00:00",
   "coverage": {
     "source_games_in_horizon": 1548
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1547,
-    "settled_games": 328,
-    "pending_games": 1219,
+    "settled_games": 329,
+    "pending_games": 1218,
     "wins": 258,
-    "losses": 70,
-    "accuracy": 0.7865853658536586,
-    "brier": 0.15735397162699868,
-    "log_loss": 0.48483913342258805
+    "losses": 71,
+    "accuracy": 0.78419452887538,
+    "brier": 0.1585970575396099,
+    "log_loss": 0.48761026266554636
   },
   "predictions": [
     {
@@ -15868,7 +15868,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7525484947005664,
       "predicted_winner": "Wichita State Shockers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -15884,7 +15884,18 @@
         "pace_diff": -3.632623487903203,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 86,
+      "away_score": 93,
+      "actual_winner": "USC Trojans",
+      "correct": 0,
+      "brier": 0.5663292368760884,
+      "log_loss": 1.3965406543558925,
+      "verified_start_time_utc": "2026-11-09T04:00:00+00:00",
+      "settled_at_utc": "2026-11-09T06:33:47.167530+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261108&limit=1000&groups=50",
+      "result_source_event_sha256": "e12c42a61fe0b3a51f0cff97e72f37be0c5a5ecc75ebaff95514558796e510ee"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401929002",
@@ -56459,5 +56470,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-09T06:28:43.263354+00:00"
+  "results_checked_at_utc": "2026-11-09T06:33:47.167530+00:00"
 }
