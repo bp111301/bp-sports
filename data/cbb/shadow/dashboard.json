@@ -1,13 +1,13 @@
 {
   "status": "shadow_only_not_public",
-  "updated_at_utc": "2026-11-09T06:42:40.722013+00:00",
+  "updated_at_utc": "2026-11-09T22:27:27.670947+00:00",
   "identities": {
     "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
     "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
     "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
   },
   "capture_window_hours": 24,
-  "eligible_future_games": 1254,
+  "eligible_future_games": 1257,
   "within_capture_window": 34,
   "summary": {
     "saved_pairs": 363,
@@ -36,13 +36,18 @@
     "roster_unknown_pairs": 211
   },
   "coverage": {
-    "source_games_in_horizon": 1597
+    "source_games_in_horizon": 1600
   },
   "excluded": {
-    "tipoff_time_unconfirmed": 29,
-    "division_or_conference_unknown": 314
+    "division_or_conference_unknown": 314,
+    "tipoff_time_unconfirmed": 29
   },
   "coverage_by_day": {
+    "2026-12-09": {
+      "source_games": 4,
+      "eligible": 3,
+      "unconfirmed_tipoff": 0
+    },
     "Unconfirmed source date/time": {
       "source_games": 29,
       "eligible": 0,
@@ -194,22 +199,17 @@
       "unconfirmed_tipoff": 0
     },
     "2026-11-09": {
-      "source_games": 50,
+      "source_games": 49,
       "eligible": 34,
       "unconfirmed_tipoff": 0
     }
   },
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "a5e3d775b4d38d271af20482356ba472857fc7e7613972d624f7feea99ea8ebb",
-    "bytes": 512408,
-    "archive_sha256": "7138cfea30aa4f60ab68cbc016fd1f1df0612bcf899d8d87401de586f7cbf94a",
+    "sha256": "599c4e34fb0dff08e85bf362f0f0d0494a97e99879c8ddba0218edf519d78fa8",
+    "bytes": 521123,
+    "archive_sha256": "83e0630b719d20debec427b4b0b2877aba5ff6d33ff0f4b2d13ec165194b16bb",
     "live_schedule_sources": [
-      {
-        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261107&groups=50&limit=1000",
-        "sha256": "86b4e649eb83831614ddf7839d44967570135f7cac80f02f9b3912d822cf6331",
-        "games": 61
-      },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261108&groups=50&limit=1000",
         "sha256": "594d7528c1488b0d11ef100fd065221716d52bf455f52236f6540cbe5944bd9a",
@@ -217,17 +217,17 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261109&groups=50&limit=1000",
-        "sha256": "7a1c8f1d82786aa43ec6f55a18b88ffa3e79fd601c96424faa6c11d709f7f7bb",
+        "sha256": "4f8e46ca7ab9bf4b8d41d1951f052dc7ed8bfa33dd11aa03d406c8cbb0b3e24c",
         "games": 50
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&groups=50&limit=1000",
-        "sha256": "501b4feea49ef6130218d72981175cd203b4ea0755bb8a69d5ecbc0cb2d16ce2",
+        "sha256": "7e6d41682df97cbb0417b0429155fa878471ef7c7a0c64f575d3143c7680e977",
         "games": 69
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261111&groups=50&limit=1000",
-        "sha256": "b5f2c9e4305bbb44af6e84de969458502d23d78dbb94fae0515c8acc3c2c8653",
+        "sha256": "d3fcdba89cb620ce00423e4ee75d74295941f9af5f763f034511e8fa41b326fa",
         "games": 67
       },
       {
@@ -237,7 +237,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&groups=50&limit=1000",
-        "sha256": "641020bdc05826ddf256a582cdf8cbd14dd5bcc5024b2d89065a18c017fb34fb",
+        "sha256": "ce432e6be2cc3ceee97b015a87be1c31a205613f055e5b61788642a466ca2359",
         "games": 61
       },
       {
@@ -247,7 +247,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&groups=50&limit=1000",
-        "sha256": "6ba599ca15f96f18138990ecefd90fff067d452d6320fd09db8cbc1aacce3133",
+        "sha256": "ff6fbda39cfcf4848e48a298b47816dd2e5729722e7f25637dc872443b260e28",
         "games": 43
       },
       {
@@ -502,32 +502,32 @@
     {
       "season": 2027,
       "schedule_rows": 6071,
-      "box_rows": 872,
+      "box_rows": 944,
       "sources": [
         {
           "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-          "sha256": "7138cfea30aa4f60ab68cbc016fd1f1df0612bcf899d8d87401de586f7cbf94a",
-          "bytes": 512408
+          "sha256": "83e0630b719d20debec427b4b0b2877aba5ff6d33ff0f4b2d13ec165194b16bb",
+          "bytes": 521123
         },
         {
           "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2027.parquet",
-          "sha256": "fa198368244d473bedcb65bd3753d8ff85bb97b7ddf03db3aedf966eed144fe4",
-          "bytes": 120182
+          "sha256": "f437056c66a9d990fee14f6e10eaa4526667d3994f2a5cb241ecafa503b32bd1",
+          "bytes": 124433
         }
       ],
       "exclusions": {
-        "not_confirmed_final": 5634,
-        "division_or_conference_unknown": 139
+        "not_confirmed_final": 5598,
+        "division_or_conference_unknown": 146
       },
-      "eligible_games": 298,
-      "neutral_games": 23,
+      "eligible_games": 327,
+      "neutral_games": 29,
       "players": {
         "season": 2027,
         "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2027.parquet",
-        "sha256": "5b00151a7f33c8566035cafa690b1aa3a45f4907473f8b950cd0c02349da77a8",
-        "bytes": 449125,
-        "eligible_team_games": 596,
-        "complete_player_team_games": 596,
+        "sha256": "c995071885919cb96f94f8214c8e1a899eeb03fba2ac65b4e991680589a6792c",
+        "bytes": 470628,
+        "eligible_team_games": 654,
+        "complete_player_team_games": 654,
         "exclusions": {}
       }
     }
