@@ -2,6 +2,7 @@ import unittest
 import pandas as pd
 from compact_board_ui import prepare_compact, date_options, compact_html
 from overview_ui import FROZEN_NHL
+from nba_primary import BASE_HASH, INJURY_HASH
 
 class CompactBoardTests(unittest.TestCase):
     def test_nfl_dropdown_does_not_invent_an_off_day(self):
@@ -23,6 +24,24 @@ class CompactBoardTests(unittest.TestCase):
         self.assertFalse(refreshed.iloc[0].settled)
         self.assertIn('60.0%',compact_html(refreshed.iloc[0],changed,now))
         self.assertIn('PENDING',compact_html(refreshed.iloc[0],changed,now))
+
+    def test_nba_board_preserves_injury_adjusted_saved_forecast(self):
+        now = pd.Timestamp('2026-11-09T23:30Z')
+        start = '2026-11-10T00:00:00Z'
+        record = dict(game_id='nba1', season=2027, season_type=2, bundle_sha256=BASE_HASH,
+                      home_id='2', away_id='8', home_team='BOS', away_team='DET',
+                      start_time_utc=start, created_at_utc='2026-11-09T12:00:00Z',
+                      home_win_prob=.55, status='pending')
+        adjustment = dict(home_id='2', away_id='8', start_time_utc=start,
+                          created_at_utc='2026-11-09T23:00:00Z', candidate_probability=.47)
+        payload = {
+            'nba': dict(ok=True, data=dict(feed_status='enabled', bundle_sha256=BASE_HASH, predictions=[record])),
+            'nba_injury': dict(ok=True, data=dict(bundle_sha256=INJURY_HASH, picks={'nba1': adjustment})),
+        }
+        board, available = prepare_compact('NBA', payload, {}, now)
+        self.assertTrue(available['nba'])
+        self.assertEqual(board.iloc[0].p, .47)
+        self.assertEqual(board.iloc[0].details['nba_baseline_probability'], .55)
 
     def test_cbb_dates_use_central_and_reject_bad_snapshot_identity(self):
         now=pd.Timestamp('2026-10-14T00:00Z')
