@@ -13,7 +13,8 @@ def esc(value): return html.escape(str(value), quote=True)
 def prepare_compact(sport, payload, score_feed, now, cbb=None):
     # A sport switch must not normalize every other sport and research experiment.
     key={'NFL':'nfl','CFB':'cfb','NHL':'nhl','NBA':'nba'}.get(sport)
-    selected={key:payload[key]} if key in payload else {}
+    source_keys = (key, 'nba_injury') if sport == 'NBA' else (key,)
+    selected = {source_key: payload[source_key] for source_key in source_keys if source_key in payload}
     board, available, _ = prepare(selected, now)
     board = board[(board.sport == sport) & (board.group == PRIMARY.get(sport))].copy()
     if sport == 'NFL':
