@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-10T02:17:31.443363+00:00",
+  "updated_at_utc": "2026-11-10T02:22:48.366389+00:00",
   "coverage": {
     "source_games_in_horizon": 1600
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1594,
-    "settled_games": 346,
-    "pending_games": 1248,
+    "settled_games": 347,
+    "pending_games": 1247,
     "wins": 274,
-    "losses": 72,
-    "accuracy": 0.791907514450867,
-    "brier": 0.15461834989932785,
-    "log_loss": 0.4773861944849747
+    "losses": 73,
+    "accuracy": 0.7896253602305475,
+    "brier": 0.15520609534904328,
+    "log_loss": 0.4786424439449012
   },
   "predictions": [
     {
@@ -56310,7 +56310,7 @@
       "created_at_utc": "2026-11-08T22:12:46.740919+00:00",
       "home_win_prob": 0.5988038250968282,
       "predicted_winner": "Chicago State Cougars",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "bc53ed679cd79871cb05f8a81ccec82193de3d45fe408a15ea30baba41e8d87f",
       "forecast_stage": "early_research_prior",
@@ -56326,7 +56326,18 @@
         "pace_diff": -3.5240860215054113,
         "rest_diff": 0.0,
         "experience_diff": 0.4054651081081643
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 67,
+      "away_score": 82,
+      "actual_winner": "South Carolina State Bulldogs",
+      "correct": 0,
+      "brier": 0.35856602095059276,
+      "log_loss": 0.9133047570794582,
+      "verified_start_time_utc": "2026-11-10T00:00:00+00:00",
+      "settled_at_utc": "2026-11-10T02:22:48.366389+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261109&limit=1000&groups=50",
+      "result_source_event_sha256": "1222bd005aa38408e5d4c00aa36c78bce82566ccb655bee27936e395b38b2429"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401917529",
@@ -58255,5 +58266,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-10T02:17:31.443363+00:00"
+  "results_checked_at_utc": "2026-11-10T02:22:48.366389+00:00"
 }
