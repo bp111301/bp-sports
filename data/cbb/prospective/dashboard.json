@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-10T07:12:07.568929+00:00",
+  "updated_at_utc": "2026-11-10T07:17:16.193237+00:00",
   "coverage": {
     "source_games_in_horizon": 1600
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1594,
-    "settled_games": 362,
-    "pending_games": 1232,
+    "settled_games": 363,
+    "pending_games": 1231,
     "wins": 289,
-    "losses": 73,
-    "accuracy": 0.7983425414364641,
-    "brier": 0.1507799346818902,
-    "log_loss": 0.468006035148162
+    "losses": 74,
+    "accuracy": 0.7961432506887053,
+    "brier": 0.1526738314395801,
+    "log_loss": 0.47352614753125954
   },
   "predictions": [
     {
@@ -43465,7 +43465,7 @@
       "created_at_utc": "2026-10-30T01:41:31.343226+00:00",
       "home_win_prob": 0.9155678334909612,
       "predicted_winner": "Hawai'i Rainbow Warriors",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "a37f1dec440df6b9e836e1d780ea3203d8bc29e9694f20382a6d820cbc1e6626",
       "forecast_stage": "early_research_prior",
@@ -43481,7 +43481,18 @@
         "pace_diff": 2.6402083333333337,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 66,
+      "away_score": 73,
+      "actual_winner": "Portland Pilots",
+      "correct": 0,
+      "brier": 0.8382644577233324,
+      "log_loss": 2.4718068302125777,
+      "verified_start_time_utc": "2026-11-10T04:59:00+00:00",
+      "settled_at_utc": "2026-11-10T07:17:16.193237+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261109&limit=1000&groups=50",
+      "result_source_event_sha256": "aaf47d8ba364f94930ec619fd4b0ab619e95cfd3518daea659fa1d958637c7d4"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401917551",
@@ -58431,5 +58442,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-10T07:12:07.568929+00:00"
+  "results_checked_at_utc": "2026-11-10T07:17:16.193237+00:00"
 }
