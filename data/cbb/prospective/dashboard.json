@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-10T03:45:18.022114+00:00",
+  "updated_at_utc": "2026-11-10T04:11:08.283653+00:00",
   "coverage": {
     "source_games_in_horizon": 1600
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1594,
-    "settled_games": 356,
-    "pending_games": 1238,
-    "wins": 283,
+    "settled_games": 357,
+    "pending_games": 1237,
+    "wins": 284,
     "losses": 73,
-    "accuracy": 0.7949438202247191,
-    "brier": 0.15220834277956016,
-    "log_loss": 0.4713050057789556
+    "accuracy": 0.7955182072829131,
+    "brier": 0.15199998184589755,
+    "log_loss": 0.4709009934828626
   },
   "predictions": [
     {
@@ -43274,7 +43274,7 @@
       "created_at_utc": "2026-10-30T01:41:31.343226+00:00",
       "home_win_prob": 0.721031382657471,
       "predicted_winner": "Auburn Tigers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "a37f1dec440df6b9e836e1d780ea3203d8bc29e9694f20382a6d820cbc1e6626",
       "forecast_stage": "early_research_prior",
@@ -43290,7 +43290,18 @@
         "pace_diff": 5.395833333333329,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 75,
+      "away_score": 53,
+      "actual_winner": "Auburn Tigers",
+      "correct": 1,
+      "brier": 0.07782348946200236,
+      "log_loss": 0.32707261607374677,
+      "verified_start_time_utc": "2026-11-10T02:00:00+00:00",
+      "settled_at_utc": "2026-11-10T04:11:08.283653+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261109&limit=1000&groups=50",
+      "result_source_event_sha256": "15a1193401872f517e0ba97cfbaa2f99780c7d8ca6a72b222b63701fd4e53763"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920718",
@@ -58365,5 +58376,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-10T03:45:18.022114+00:00"
+  "results_checked_at_utc": "2026-11-10T04:11:08.283653+00:00"
 }
