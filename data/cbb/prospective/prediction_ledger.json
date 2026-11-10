@@ -43301,7 +43301,7 @@
     "created_at_utc": "2026-10-30T01:41:31.343226+00:00",
     "home_win_prob": 0.6149937390401525,
     "predicted_winner": "Oregon State Beavers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "a37f1dec440df6b9e836e1d780ea3203d8bc29e9694f20382a6d820cbc1e6626",
     "forecast_stage": "early_research_prior",
@@ -43317,7 +43317,18 @@
       "pace_diff": -2.225946969696949,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 94,
+    "away_score": 84,
+    "actual_winner": "Oregon State Beavers",
+    "correct": 1,
+    "brier": 0.14822982097828216,
+    "log_loss": 0.48614319164995623,
+    "verified_start_time_utc": "2026-11-10T02:30:00+00:00",
+    "settled_at_utc": "2026-11-10T04:51:16.292304+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261109&limit=1000&groups=50",
+    "result_source_event_sha256": "b420e9c879fbd5b56576f5468f0c0d241b5cfa73e51861b634548204ee4a6d3a"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401921095",
