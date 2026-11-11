@@ -17459,7 +17459,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.4181299284113021,
     "predicted_winner": "Illinois Fighting Illini",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -17475,7 +17475,18 @@
       "pace_diff": 0.9660156249999687,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 84,
+    "away_score": 78,
+    "actual_winner": "Texas Tech Red Raiders",
+    "correct": 0,
+    "brier": 0.3385727802106365,
+    "log_loss": 0.8719630612362494,
+    "verified_start_time_utc": "2026-11-11T01:00:00+00:00",
+    "settled_at_utc": "2026-11-11T03:19:48.845329+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+    "result_source_event_sha256": "052d1fa6a1fb7a9d020ba940be0443f5b7c9bd577ac24486a3d71d83ef65056f"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401918969",
