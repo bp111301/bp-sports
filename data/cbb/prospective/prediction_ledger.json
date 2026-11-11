@@ -16199,7 +16199,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.760324412178487,
     "predicted_winner": "Duke Blue Devils",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -16215,7 +16215,18 @@
       "pace_diff": -0.18419117647057703,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 73,
+    "away_score": 79,
+    "actual_winner": "Michigan State Spartans",
+    "correct": 0,
+    "brier": 0.5780932117545619,
+    "log_loss": 1.4284689874445815,
+    "verified_start_time_utc": "2026-11-11T00:00:00+00:00",
+    "settled_at_utc": "2026-11-11T02:29:28.826784+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+    "result_source_event_sha256": "1572319cf655d22b52ded221482de57fa2e6f41e51432d855dea083e1f0e2ee1"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401909727",
