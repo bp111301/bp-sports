@@ -17999,7 +17999,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.9701426940633514,
     "predicted_winner": "TCU Horned Frogs",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -18015,7 +18015,18 @@
       "pace_diff": -0.8581439393939547,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 100,
+    "away_score": 92,
+    "actual_winner": "TCU Horned Frogs",
+    "correct": 1,
+    "brier": 0.0008914587177946313,
+    "log_loss": 0.03031211102211811,
+    "verified_start_time_utc": "2026-11-11T02:00:00+00:00",
+    "settled_at_utc": "2026-11-11T04:49:40.134753+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+    "result_source_event_sha256": "aeecb9ea79d9781657df66738bd2e137b5192481ecd96ecf7ce8a61da9ba3123"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401920425",
