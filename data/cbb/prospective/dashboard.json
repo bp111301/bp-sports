@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-11T03:04:44.743200+00:00",
+  "updated_at_utc": "2026-11-11T03:09:42.960142+00:00",
   "coverage": {
     "source_games_in_horizon": 1599
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1632,
-    "settled_games": 398,
-    "pending_games": 1234,
+    "settled_games": 399,
+    "pending_games": 1233,
     "wins": 315,
-    "losses": 83,
-    "accuracy": 0.7914572864321608,
-    "brier": 0.152174256457229,
-    "log_loss": 0.4712713247616821
+    "losses": 84,
+    "accuracy": 0.7894736842105263,
+    "brier": 0.15294767294264053,
+    "log_loss": 0.4729365261957517
   },
   "predictions": [
     {
@@ -17669,7 +17669,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6787985224913464,
       "predicted_winner": "Arkansas State Red Wolves",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -17685,7 +17685,18 @@
         "pace_diff": 7.201666666666654,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 65,
+      "away_score": 82,
+      "actual_winner": "UT Martin Skyhawks",
+      "correct": 0,
+      "brier": 0.46076743413643495,
+      "log_loss": 1.1356866969554353,
+      "verified_start_time_utc": "2026-11-11T01:00:00+00:00",
+      "settled_at_utc": "2026-11-11T03:09:42.960142+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+      "result_source_event_sha256": "d4ed50cdc1c1eaa4fc57c41849db5007ca671000107d7c72862ff94f137434a4"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401927386",
@@ -60119,5 +60130,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-11T03:04:44.743200+00:00"
+  "results_checked_at_utc": "2026-11-11T03:09:42.960142+00:00"
 }
