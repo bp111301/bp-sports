@@ -1,10 +1,10 @@
 {
-  "as_of_utc": "2026-11-11T03:47:27.469920+00:00",
+  "as_of_utc": "2026-11-11T03:54:10.875927+00:00",
   "status": "research_only_not_promoted",
   "weights_frozen": true,
   "paired_games": 173,
-  "settled_paired_games": 172,
-  "pending_paired_games": 1,
+  "settled_paired_games": 173,
+  "pending_paired_games": 0,
   "invalid_timing": 0,
   "coverage": [
     {
@@ -15,41 +15,41 @@
   "metrics": [
     {
       "candidate": "team_control",
-      "games": 172,
-      "correct": 107,
-      "accuracy": 0.622093023255814,
-      "brier": 0.23057766649106654,
-      "log_loss": 0.655986935090123
+      "games": 173,
+      "correct": 108,
+      "accuracy": 0.6242774566473989,
+      "brier": 0.23056642357303553,
+      "log_loss": 0.6559545571244381
     },
     {
       "candidate": "inferred_goalie",
-      "games": 172,
-      "correct": 108,
-      "accuracy": 0.627906976744186,
-      "brier": 0.22965427933612192,
-      "log_loss": 0.6529197450232024
+      "games": 173,
+      "correct": 109,
+      "accuracy": 0.630057803468208,
+      "brier": 0.2294903273228447,
+      "log_loss": 0.6525872208321962
     },
     {
       "candidate": "confirmed_goalie",
-      "games": 172,
-      "correct": 108,
-      "accuracy": 0.627906976744186,
-      "brier": 0.22983288436275448,
-      "log_loss": 0.6532349065951568
+      "games": 173,
+      "correct": 109,
+      "accuracy": 0.630057803468208,
+      "brier": 0.22966789995047937,
+      "log_loss": 0.65290056066096
     }
   ],
   "first_formal_review_paired_games": 500,
   "automatic_promotion": false,
   "confirmed_minus_control": {
     "team_control": {
-      "accuracy": 0.005813953488372103,
-      "brier": -0.0007447821283120548,
-      "log_loss": -0.002752028494966141
+      "accuracy": 0.00578034682080919,
+      "brier": -0.0008985236225561577,
+      "log_loss": -0.003053996463478037
     },
     "inferred_goalie": {
       "accuracy": 0.0,
-      "brier": 0.00017860502663255562,
-      "log_loss": 0.0003151615719544365
+      "brier": 0.00017757262763468118,
+      "log_loss": 0.0003133398287638034
     }
   },
   "games_in_current_prediction_window": 1,
