@@ -594,7 +594,7 @@
     "created_at_utc": "2026-10-14T00:51:58.072020+00:00",
     "home_win_prob": 0.28943017873654214,
     "predicted_winner": "Loyola Chicago Ramblers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "bddafb0c3661a72f0603bee8e170ec19653cd7f4c2640d1f6f4a9b28fe4aaa15",
     "forecast_stage": "early_research_prior",
@@ -610,7 +610,18 @@
       "pace_diff": 1.2945904356060822,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 107,
+    "away_score": 93,
+    "actual_winner": "Air Force Falcons",
+    "correct": 0,
+    "brier": 0.5049094708903825,
+    "log_loss": 1.239841189860335,
+    "verified_start_time_utc": "2026-11-11T20:00:00+00:00",
+    "settled_at_utc": "2026-11-11T22:17:59.739536+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261111&limit=1000&groups=50",
+    "result_source_event_sha256": "11aa630b081e72c1bbfd8023e6e02cfbf63d4d828ad106757067e581472a04c4"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401911346",
