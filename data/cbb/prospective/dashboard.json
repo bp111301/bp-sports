@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-11T02:29:28.826784+00:00",
+  "updated_at_utc": "2026-11-11T02:34:29.930212+00:00",
   "coverage": {
     "source_games_in_horizon": 1599
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1632,
-    "settled_games": 388,
-    "pending_games": 1244,
-    "wins": 309,
+    "settled_games": 390,
+    "pending_games": 1242,
+    "wins": 311,
     "losses": 79,
-    "accuracy": 0.7963917525773195,
-    "brier": 0.15142254426436258,
-    "log_loss": 0.4704147542466085
+    "accuracy": 0.7974358974358975,
+    "brier": 0.15069474161377083,
+    "log_loss": 0.46852712598297097
   },
   "predictions": [
     {
@@ -17151,7 +17151,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8960327563555023,
       "predicted_winner": "Vanderbilt Commodores",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -17167,7 +17167,18 @@
         "pace_diff": -0.6218979779411455,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 105,
+      "away_score": 81,
+      "actual_winner": "Vanderbilt Commodores",
+      "correct": 1,
+      "brier": 0.010809187751034352,
+      "log_loss": 0.10977830824296957,
+      "verified_start_time_utc": "2026-11-11T00:15:00+00:00",
+      "settled_at_utc": "2026-11-11T02:34:29.930212+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+      "result_source_event_sha256": "4a68ba927c9fc83867e0d0b1bc223e6363fad8aaab47b9fe0ed7cec1d1b86047"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401919003",
@@ -17253,7 +17264,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9094855423321546,
       "predicted_winner": "Middle Tennessee Blue Raiders",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -17269,7 +17280,18 @@
         "pace_diff": 0.3199568965517301,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 73,
+      "away_score": 68,
+      "actual_winner": "Middle Tennessee Blue Raiders",
+      "correct": 1,
+      "brier": 0.008192867046904174,
+      "log_loss": 0.09487617743161066,
+      "verified_start_time_utc": "2026-11-11T00:30:00+00:00",
+      "settled_at_utc": "2026-11-11T02:34:29.930212+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+      "result_source_event_sha256": "611281a5fcba336e34f92f9c2c9e4b9f404f27b55d003de989cc194249dfab1c"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401909752",
@@ -60009,5 +60031,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-11T02:29:28.826784+00:00"
+  "results_checked_at_utc": "2026-11-11T02:34:29.930212+00:00"
 }
