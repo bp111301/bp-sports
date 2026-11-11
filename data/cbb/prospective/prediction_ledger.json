@@ -53594,7 +53594,7 @@
     "created_at_utc": "2026-11-06T06:54:43.832646+00:00",
     "home_win_prob": 0.8232919107371057,
     "predicted_winner": "San Francisco Dons",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "c23bfc23250d4528fce15afe17b83d7306c504c0c4b55e8a473afce156398339",
     "forecast_stage": "early_research_prior",
@@ -53610,7 +53610,18 @@
       "pace_diff": -3.467361111111103,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 63,
+    "away_score": 58,
+    "actual_winner": "San Francisco Dons",
+    "correct": 1,
+    "brier": 0.031225748810943012,
+    "log_loss": 0.19444445013947748,
+    "verified_start_time_utc": "2026-11-11T03:00:00+00:00",
+    "settled_at_utc": "2026-11-11T05:19:47.773481+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+    "result_source_event_sha256": "8e30f453d4f6ad8dd96e2e9e0e6c60646f4207704a55f12c60970eef39dddd68"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401917558",
