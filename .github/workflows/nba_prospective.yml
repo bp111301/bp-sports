@@ -12,13 +12,16 @@ on:
 permissions:
   contents: write
 concurrency:
-  group: nba-prospective-ledger
+  group: nba-forecast-capture
   cancel-in-progress: false
 env:
   OMP_NUM_THREADS: '1'
   OPENBLAS_NUM_THREADS: '1'
 jobs:
   collect:
+    concurrency:
+      group: nba-prospective-ledger
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
