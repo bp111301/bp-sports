@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-11T02:04:27.393983+00:00",
+  "updated_at_utc": "2026-11-11T02:09:16.970214+00:00",
   "coverage": {
     "source_games_in_horizon": 1599
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1632,
-    "settled_games": 376,
-    "pending_games": 1256,
-    "wins": 301,
-    "losses": 75,
-    "accuracy": 0.800531914893617,
-    "brier": 0.15019197234659737,
-    "log_loss": 0.4676667628809502
+    "settled_games": 380,
+    "pending_games": 1252,
+    "wins": 304,
+    "losses": 76,
+    "accuracy": 0.8,
+    "brier": 0.14965012662769264,
+    "log_loss": 0.4663519500875275
   },
   "predictions": [
     {
@@ -16262,7 +16262,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7509134564826435,
       "predicted_winner": "Wake Forest Demon Deacons",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -16278,7 +16278,18 @@
         "pace_diff": -4.842737722048071,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 82,
+      "away_score": 64,
+      "actual_winner": "Wake Forest Demon Deacons",
+      "correct": 1,
+      "brier": 0.062044106161423924,
+      "log_loss": 0.2864648715645773,
+      "verified_start_time_utc": "2026-11-11T00:00:00+00:00",
+      "settled_at_utc": "2026-11-11T02:09:16.970214+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+      "result_source_event_sha256": "94a402b99ee60050be9a653a00c02a0b60bae3313eff3ca295b8140b096388cb"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911011",
@@ -16296,7 +16307,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.4597978410573694,
       "predicted_winner": "Youngstown State Penguins",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -16312,7 +16323,18 @@
         "pace_diff": -0.5831896551724327,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 91,
+      "away_score": 78,
+      "actual_winner": "Central Michigan Chippewas",
+      "correct": 0,
+      "brier": 0.2918183725262791,
+      "log_loss": 0.7769683620591001,
+      "verified_start_time_utc": "2026-11-11T00:00:00+00:00",
+      "settled_at_utc": "2026-11-11T02:09:16.970214+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+      "result_source_event_sha256": "127f9ea9b53a1ef509f128aad3cd95756b8727d2cfc1b7d77e6ddc13f87ccaf7"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911187",
@@ -16398,7 +16420,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.842912586492889,
       "predicted_winner": "George Washington Revolutionaries",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -16414,7 +16436,18 @@
         "pace_diff": 1.2526822916666873,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 69,
+      "away_score": 50,
+      "actual_winner": "George Washington Revolutionaries",
+      "correct": 1,
+      "brier": 0.02467645548235407,
+      "log_loss": 0.17089201972230375,
+      "verified_start_time_utc": "2026-11-11T00:00:00+00:00",
+      "settled_at_utc": "2026-11-11T02:09:16.970214+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+      "result_source_event_sha256": "a44e3731fdac684951e567fee741f42d679fc5bd41075553430ceaf6ebe7d661"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401912228",
@@ -16601,7 +16634,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8722205727335643,
       "predicted_winner": "Rhode Island Rams",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -16617,7 +16650,18 @@
         "pace_diff": 1.6623109879032114,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 71,
+      "away_score": 65,
+      "actual_winner": "Rhode Island Rams",
+      "correct": 1,
+      "brier": 0.01632758203253832,
+      "log_loss": 0.13671293667718362,
+      "verified_start_time_utc": "2026-11-11T00:00:00+00:00",
+      "settled_at_utc": "2026-11-11T02:09:16.970214+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+      "result_source_event_sha256": "9cc38d7d8fbd9aae03088870a4c14f24af034531b51b5a6879f4d85d484b0797"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920306",
@@ -59877,5 +59921,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-11T02:04:27.393983+00:00"
+  "results_checked_at_utc": "2026-11-11T02:09:16.970214+00:00"
 }
