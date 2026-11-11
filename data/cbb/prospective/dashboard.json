@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-11T03:54:09.266413+00:00",
+  "updated_at_utc": "2026-11-11T03:59:15.466699+00:00",
   "coverage": {
     "source_games_in_horizon": 1599
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1632,
-    "settled_games": 406,
-    "pending_games": 1226,
-    "wins": 319,
+    "settled_games": 410,
+    "pending_games": 1222,
+    "wins": 323,
     "losses": 87,
-    "accuracy": 0.7857142857142857,
-    "brier": 0.1533966854557992,
-    "log_loss": 0.47357004498070576
+    "accuracy": 0.7878048780487805,
+    "brier": 0.15259041024924797,
+    "log_loss": 0.4713110448019155
   },
   "predictions": [
     {
@@ -17927,7 +17927,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9879493722637873,
       "predicted_winner": "Arizona Wildcats",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -17943,7 +17943,18 @@
         "pace_diff": 6.086777383367135,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 90,
+      "away_score": 59,
+      "actual_winner": "Arizona Wildcats",
+      "correct": 1,
+      "brier": 0.0001452176288367784,
+      "log_loss": 0.01212382519520712,
+      "verified_start_time_utc": "2026-11-11T02:00:00+00:00",
+      "settled_at_utc": "2026-11-11T03:59:15.466699+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+      "result_source_event_sha256": "d81c26a1e8289a726c4d0c9ebb03435d98fc3371c3730953f8a58901e3712c14"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401909761",
@@ -18063,7 +18074,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.5040890781151874,
       "predicted_winner": "Utah Utes",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -18079,7 +18090,18 @@
         "pace_diff": -2.420078124999975,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 85,
+      "away_score": 64,
+      "actual_winner": "Utah Utes",
+      "correct": 1,
+      "brier": 0.24592764244464466,
+      "log_loss": 0.6850022842358087,
+      "verified_start_time_utc": "2026-11-11T02:00:00+00:00",
+      "settled_at_utc": "2026-11-11T03:59:15.466699+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+      "result_source_event_sha256": "53a753cbac124be64102960b59bc668cc26c6bd56bf788e5176f1a0826014b51"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921733",
@@ -18131,7 +18153,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8217784306298558,
       "predicted_winner": "BYU Cougars",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -18147,7 +18169,18 @@
         "pace_diff": -0.5673908199643307,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 98,
+      "away_score": 82,
+      "actual_winner": "BYU Cougars",
+      "correct": 1,
+      "brier": 0.031762927788757125,
+      "log_loss": 0.19628446937294614,
+      "verified_start_time_utc": "2026-11-11T02:00:00+00:00",
+      "settled_at_utc": "2026-11-11T03:59:15.466699+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+      "result_source_event_sha256": "19fccaa636166f7e2c7c6de70f0064366fd0d668c78ba7b4bdfe695a2c1460d2"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401924896",
@@ -18199,7 +18232,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9280408499567281,
       "predicted_winner": "Utah State Aggies",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -18215,7 +18248,18 @@
         "pace_diff": -1.3103616813294536,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 118,
+      "away_score": 86,
+      "actual_winner": "Utah State Aggies",
+      "correct": 1,
+      "brier": 0.00517811927495012,
+      "log_loss": 0.07467952781483712,
+      "verified_start_time_utc": "2026-11-11T02:00:00+00:00",
+      "settled_at_utc": "2026-11-11T03:59:15.466699+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+      "result_source_event_sha256": "80eb69ac057b782200f7b59cd3a355d2e12f1601419fe5749d0385c3c791f7c6"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401929180",
@@ -60207,5 +60251,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-11T03:54:09.266413+00:00"
+  "results_checked_at_utc": "2026-11-11T03:59:15.466699+00:00"
 }
