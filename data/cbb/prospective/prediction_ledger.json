@@ -18359,7 +18359,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.49596687313745086,
     "predicted_winner": "Kentucky Wildcats",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -18375,7 +18375,18 @@
       "pace_diff": -1.0206550802139134,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 89,
+    "away_score": 69,
+    "actual_winner": "Kansas Jayhawks",
+    "correct": 0,
+    "brier": 0.25404939297483853,
+    "log_loss": 0.7012461425169623,
+    "verified_start_time_utc": "2026-11-11T02:58:00+00:00",
+    "settled_at_utc": "2026-11-11T05:04:42.259986+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+    "result_source_event_sha256": "47d9199b3f4fbc9732fd9467ae74fa53ccf241d9b5903b7d376f9b8e462a0d1b"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401919759",
