@@ -34,7 +34,9 @@ def test_invalid_or_empty_evidence_is_never_shown_as_confident():
 
 def test_full_cfb_board_and_nhl_record_have_confidence_evidence():
     root=Path(__file__).resolve().parents[1]
-    with patch('game_center_ui.load_scores',return_value={}):
+    with patch('game_center_ui.load_scores',return_value={}), patch(
+        'urllib.request.urlopen', side_effect=OSError('Use the checked-in CFB fixtures')
+    ):
         at=AppTest.from_file(root/'app.py',default_timeout=20)
         at.session_state['bp_sport']='CFB';at.session_state['bp_board_view']='Detailed';at.run()
         assert not at.exception

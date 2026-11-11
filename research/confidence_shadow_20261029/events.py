@@ -48,11 +48,15 @@ def validate_forecast(r,now):
   if len(value)!=64 or any(c not in '0123456789abcdef' for c in value):raise ValueError('Invalid provenance hash')
  return r
 
+class ScheduleChanged(ValueError):
+    """An official final has a different start time from the saved forecast."""
+
+
 def settlement(forecast,official,observed_at):
  now=stamp(observed_at)
  if official['state'] not in ['OFF','FINAL','STATUS_FINAL']:raise ValueError('Official final required')
  if int(official['game_id'])!=int(forecast['game_id']) or int(official['home_id'])!=int(forecast['home_id']) or int(official['away_id'])!=int(forecast['away_id']):raise ValueError('Official settlement identity mismatch')
- if stamp(official['start_time_utc'])!=stamp(forecast['start_time_utc']):raise ValueError('Scheduled start changed; requires explicit review')
+ if stamp(official['start_time_utc'])!=stamp(forecast['start_time_utc']):raise ScheduleChanged('Scheduled start changed; requires explicit review')
  if not stamp(forecast['captured_at_utc'])<stamp(official['start_time_utc'])<now:raise ValueError('Invalid settlement timing')
  h=float(official['home_score']);a=float(official['away_score'])
  if not h>=0 or not a>=0 or not h.is_integer() or not a.is_integer() or h==a:raise ValueError('Invalid official final score')

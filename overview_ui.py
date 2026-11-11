@@ -170,13 +170,14 @@ def game_state(r,now):
 def select_games(board,view,sport,query,now):
     shown=board.copy()
     if sport!='All sports':shown=shown[shown.sport==sport]
+    if shown.empty:return shown
     if view=='Today':
         today=now.tz_convert('America/Chicago').date()
-        shown=shown[shown.start.map(lambda t:pd.notna(t) and t.tz_convert('America/Chicago').date()==today)]
+        shown=shown.loc[shown.start.map(lambda t:pd.notna(t) and t.tz_convert('America/Chicago').date()==today).astype(bool)]
     elif view=='Upcoming':shown=shown[(~shown.settled)&shown.start.gt(now)]
     elif view=='Awaiting finals':shown=shown[(~shown.settled)&shown.start.le(now)]
     elif view=='Results':shown=shown[shown.settled]
-    if query.strip():
+    if query.strip() and not shown.empty:
         q=query.strip().casefold()
         shown=shown[shown.apply(lambda r:q in (str(r.home)+' '+str(r.away)).casefold(),axis=1)]
     return shown.sort_values(['start','created'],ascending=view!='Results',na_position='last')
@@ -208,7 +209,7 @@ def game_cards(board,now):
 def select_day(board,day,sport='All sports'):
     shown=board[board.apply(lambda r:PRIMARY.get(r.sport)==r.group,axis=1).astype(bool)].copy()
     if sport!='All sports':shown=shown[shown.sport==sport]
-    shown=shown[shown.start.map(lambda t:pd.notna(t) and ts(t).tz_convert('America/Chicago').date()==day)]
+    shown=shown.loc[shown.start.map(lambda t:pd.notna(t) and ts(t).tz_convert('America/Chicago').date()==day).astype(bool)]
     return shown.drop_duplicates(['sport','game_id']).sort_values(['start','sport'])
 
 def render_game_cards(board,now,key):
@@ -511,7 +512,7 @@ def render_overview(now=None):
             key='nhl' if sport=='NHL' else sport.lower();ok=available[key];b=board[board.group==group];m=metrics(b);state,cls=freshness(sport,updates[sport],now)
             if not ok:state,cls='Feed unavailable','unknown'
             elif sport=='CBB' and len(b) and not m['games'] and b.start.min()>now and cls=='good':state='Awaiting season'
-            record=f"{m['wins']}–{m['losses']}" if ok else '—';accuracy=f"{m['accuracy']*100:.1f}%" if ok and m['games'] else '—';pending = b[~b.settled]
+            record=f"{m['wins']}–{m['losses']}" if ok else '—';accuracy=f"{m['accuracy']*100:.1f}%" if ok and m['games'] else '—';pending = b.loc[~b.settled.astype(bool)]
             upcoming = int((pending.start.gt(now) & ~pending.confirmed_final).sum())
             awaiting_grading = int(pending.confirmed_final.sum())
             tag='FROZEN · CANDIDATE' if sport=='CBB' else 'FROZEN · RESEARCH' if sport=='NHL' else 'FROZEN V4' if sport=='NFL' else 'FROZEN V1'
