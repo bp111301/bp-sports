@@ -17482,7 +17482,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.8627919403919116,
     "predicted_winner": "SMU Mustangs",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -17498,7 +17498,18 @@
       "pace_diff": -1.8038000977517044,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 98,
+    "away_score": 63,
+    "actual_winner": "SMU Mustangs",
+    "correct": 1,
+    "brier": 0.018826051621416727,
+    "log_loss": 0.14758170573478976,
+    "verified_start_time_utc": "2026-11-11T01:00:00+00:00",
+    "settled_at_utc": "2026-11-11T03:04:44.743200+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+    "result_source_event_sha256": "b08b1727798b3d250bed0f6fdf30185024bbfd09c45fee9262f7b79250841075"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401920704",
