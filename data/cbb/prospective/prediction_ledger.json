@@ -18404,7 +18404,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.5815891790068067,
     "predicted_winner": "East Texas A&M Lions",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -18420,7 +18420,18 @@
       "pace_diff": 4.088965517241377,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 76,
+    "away_score": 80,
+    "actual_winner": "Fairleigh Dickinson Knights",
+    "correct": 0,
+    "brier": 0.33824597313781146,
+    "log_loss": 0.8712915037714213,
+    "verified_start_time_utc": "2026-11-11T16:30:00+00:00",
+    "settled_at_utc": "2026-11-11T18:56:39.858044+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261111&limit=1000&groups=50",
+    "result_source_event_sha256": "8c1cf031495fa2a4c167b2fdd738ed40bcc6530f77f0d1d640372660a0daca4c"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401920234",
