@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-11T01:50:23.983473+00:00",
+  "updated_at_utc": "2026-11-11T01:55:33.985859+00:00",
   "coverage": {
     "source_games_in_horizon": 1599
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1632,
-    "settled_games": 366,
-    "pending_games": 1266,
-    "wins": 292,
-    "losses": 74,
-    "accuracy": 0.7978142076502732,
-    "brier": 0.1517884060790692,
-    "log_loss": 0.47147324388648437
+    "settled_games": 368,
+    "pending_games": 1264,
+    "wins": 293,
+    "losses": 75,
+    "accuracy": 0.7961956521739131,
+    "brier": 0.15196462227689075,
+    "log_loss": 0.4718234018370091
   },
   "predictions": [
     {
@@ -16433,7 +16433,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8057027712068695,
       "predicted_winner": "North Carolina Tar Heels",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -16449,7 +16449,18 @@
         "pace_diff": 1.4609627016128997,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 76,
+      "away_score": 63,
+      "actual_winner": "North Carolina Tar Heels",
+      "correct": 1,
+      "brier": 0.0377514131166901,
+      "log_loss": 0.21604037470276768,
+      "verified_start_time_utc": "2026-11-11T00:00:00+00:00",
+      "settled_at_utc": "2026-11-11T01:55:33.985859+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+      "result_source_event_sha256": "aceb794a79804f5e8d778c34d182af1004bfc1763d90fa23129ed71012841ce4"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401917520",
@@ -16875,7 +16886,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.5750417026962287,
       "predicted_winner": "Toledo Rockets",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -16891,7 +16902,18 @@
         "pace_diff": 0.18281249999999716,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 68,
+      "away_score": 76,
+      "actual_winner": "Wright State Raiders",
+      "correct": 0,
+      "brier": 0.33067295983977785,
+      "log_loss": 0.8557642388633203,
+      "verified_start_time_utc": "2026-11-11T00:00:00+00:00",
+      "settled_at_utc": "2026-11-11T01:55:33.985859+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&limit=1000&groups=50",
+      "result_source_event_sha256": "ae31c542e2cae4f6362307a821c57205ebf6506b7f9ab1bd47f3e097d600bbb6"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401918987",
@@ -59767,5 +59789,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-11T01:50:23.983473+00:00"
+  "results_checked_at_utc": "2026-11-11T01:55:33.985859+00:00"
 }
