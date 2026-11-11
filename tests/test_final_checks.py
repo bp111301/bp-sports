@@ -156,3 +156,24 @@ def test_cbb_fast_check_preserves_forecasts_and_existing_source_warnings(tmp_pat
     assert result['predictions'][0]['status']=='settled'
     assert all(result['predictions'][0][k]==v for k,v in p.items() if k!='status')
     assert result['grading_issues']==[warning] and result['capture_blocked_reason']=='waiting_for_stats'
+
+
+def test_temporary_final_score_request_errors_are_retried(monkeypatch):
+    response = m.requests.Response()
+    response.status_code = 504
+    failed = m.requests.HTTPError('gateway timeout', response=response)
+    success = m.requests.Response()
+    success.status_code = 200
+    calls = iter([failed, m.requests.ConnectionError('reset'), success])
+
+    def get(url, timeout):
+        result = next(calls)
+        if isinstance(result, Exception):
+            raise result
+        return result
+
+    delays = []
+    monkeypatch.setattr(m.requests, 'get', get)
+    monkeypatch.setattr(m, 'sleep', delays.append)
+    assert m.get_response('https://example.test/final') is success
+    assert delays == [1, 2]

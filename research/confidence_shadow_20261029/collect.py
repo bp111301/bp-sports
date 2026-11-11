@@ -253,7 +253,7 @@ def main():
  OUT.mkdir(parents=True,exist_ok=True)
  protected=[ROOT/'model/cfb/v1/frozen_bundle.joblib',ROOT/'data/cfb/ledger/prediction_ledger.csv',Path(args.nhl_root)/'model/nhl/v2_research/watchlist.joblib',Path(args.nhl_root)/'data/nhl/v2_research/prediction_ledger.csv']
  before={str(p):sha(p) for p in protected if p.exists()}
- fs=events.read_events(OUT/'forecasts.jsonl','forecast_key');ss=events.read_events(OUT/'settlements.jsonl','forecast_key');health={'checked_at_utc':now().isoformat(),'sports':{},'errors':[],'frozen_sources':restored_sources};new_forecasts=[];new_settlements=[]
+ fs=events.read_events(OUT/'forecasts.jsonl','forecast_key');ss=events.read_events(OUT/'settlements.jsonl','forecast_key');health={'checked_at_utc':now().isoformat(),'sports':{},'errors':[],'settlement_reviews':[],'frozen_sources':restored_sources};new_forecasts=[];new_settlements=[]
  for sport in (['cfb','nhl'] if args.sport=='both' else [args.sport]):
   try:
    snapshot,official,coverage=(cfb_inputs if sport=='cfb' else nhl_inputs)(fs);health['sports'][sport]=coverage
@@ -261,6 +261,10 @@ def main():
    for key,f in fs.items():
     if f['sport']!=sport or key in ss or int(f['game_id']) not in official:continue
     try:new_settlements.append(events.settlement(f,official[int(f['game_id'])],now()))
+    except events.ScheduleChanged as exc:
+     health['settlement_reviews'].append({'sport':sport,'forecast_key':key,'reason':str(exc),
+                                          'saved_start_time_utc':f['start_time_utc'],
+                                          'official_start_time_utc':official[int(f['game_id'])]['start_time_utc']})
     except ValueError as exc:health['errors'].append({'sport':sport,'forecast_key':key,'error':'Settlement requires review: '+str(exc)})
    if any(sha(p)!=digest for p,digest in before.items()):raise ValueError('Protected reference or original ledger changed')
    append_time=now();eligible=[r for r in new_forecasts if events.stamp(r['start_time_utc'])>append_time+pd.Timedelta(minutes=10)]
@@ -273,5 +277,7 @@ def main():
    health['errors'].append({'sport':sport,'error':f'{type(exc).__name__}: {exc}'})
  summary=report(fs,ss);(OUT/'summary.json').write_text(json.dumps(summary,indent=2,allow_nan=False)+'\n')
  (OUT/'health.json').write_text(json.dumps(health,indent=2)+'\n');print(json.dumps(health,indent=2),flush=True)
+ if health['settlement_reviews']:
+  print(f"::warning::{len(health['settlement_reviews'])} research settlements need start-time review. See the saved health report.")
  if health['errors']:raise SystemExit('Shadow source/provenance check failed; valid other-sport receipts were preserved')
 if __name__=='__main__':main()

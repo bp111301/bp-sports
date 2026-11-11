@@ -3,12 +3,29 @@ import argparse, hashlib, importlib.util, io, json, math, subprocess, sys
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
+from time import sleep
 from zoneinfo import ZoneInfo
 import pandas as pd
 import requests
 
+def get_response(url, timeout=45):
+    for attempt in range(3):
+        try:
+            response = requests.get(url, timeout=timeout)
+            response.raise_for_status()
+            return response
+        except requests.HTTPError as error:
+            status = error.response.status_code
+            if attempt == 2 or not (status in (408, 429) or 500 <= status < 600):
+                raise
+        except (requests.Timeout, requests.ConnectionError):
+            if attempt == 2:
+                raise
+        sleep(2 ** attempt)
+
+
 def get(url):
-    r=requests.get(url,timeout=45);r.raise_for_status();return r.json()
+    return get_response(url).json()
 
 def metrics(rows,prob='home_win_prob'):
     if not rows:return dict(games=0,correct=0,accuracy=None,brier=None,log_loss=None)
@@ -66,7 +83,7 @@ def cfb(now):
     pending=combined[combined.correct.isna()]
     # Overlay live ESPN states onto the full schedule so future kickoff metadata remains intact.
     schedule_url='https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_schedules/cfb_schedules_2026.csv.gz'
-    response=requests.get(schedule_url,timeout=90);response.raise_for_status()
+    response=get_response(schedule_url,timeout=30)
     schedule=pd.read_csv(io.BytesIO(response.content),compression='gzip');index={int(r['game_id']):r for r in schedule.to_dict('records')}
     for e in cfb_pending_events(pending,now):
         c=e['competitions'][0];t={x['homeAway']:x for x in c['competitors']};status=c['status']['type']
@@ -85,7 +102,7 @@ def cfb(now):
 NFL_ALIASES={'WSH':'WAS','LAR':'LA'}
 def nfl(now):
     path=Path('data/ledger/prediction_ledger.csv');ledger=pd.read_csv(path);ledger['scored_at_utc']=ledger.scored_at_utc.astype('object')
-    response=requests.get('https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv',timeout=45);response.raise_for_status();schedule=pd.read_csv(io.StringIO(response.text))
+    response=get_response('https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv');schedule=pd.read_csv(io.StringIO(response.text))
     pending=ledger[ledger.settlement_status.eq('pending')]
     known=schedule[schedule.game_id.isin(pending.game_id)]
     dates={pd.Timestamp(d).date() for d in known.gameday if pd.Timestamp(d).date()<=now.tz_convert('America/New_York').date()}

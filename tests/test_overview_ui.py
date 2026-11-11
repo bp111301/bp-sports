@@ -6,8 +6,8 @@ import pytest
 from streamlit.testing.v1 import AppTest
 import overview_ui as ov
 NOW=pd.Timestamp.now(tz='UTC')
-def fixture():
- created=(NOW-pd.Timedelta(days=2)).isoformat();past=(NOW-pd.Timedelta(days=1)).isoformat();future=(NOW+pd.Timedelta(hours=1)).isoformat()
+def fixture(now=NOW):
+ created=(now-pd.Timedelta(days=2)).isoformat();past=(now-pd.Timedelta(days=1)).isoformat();future=(now+pd.Timedelta(hours=1)).isoformat()
  nfl=dict(game_id='nfl1',home_team='DET',away_team='CHI',v4_pick='DET',v4_adjusted_confidence=.6,captured_at_utc=created,settlement_status='final',actual_home_score=24,actual_away_score=10)
  cfb=dict(game_id='cfb1',home_team='Troy',away_team='Southern Mississippi',home_win_prob=.7,predicted_winner='Troy',snapshot_created_utc=created,kickoff_utc=past,schedule_kickoff_utc=past,correct=1,actual_winner='Troy')
  nhl=[dict(game_id='nhl1',home_team='TOR',away_team='NSH',candidate=k,home_win_prob=.6,created_at_utc=created,start_time_utc=future,status='pending',actual_home_win=None,bundle_sha256=ov.FROZEN_NHL) for k in ('reference_control','decay2_logistic','linear_regulation_blend')]
@@ -114,8 +114,8 @@ def test_yesterday_recap_central_date_original_picks_ties_and_parallel_models():
 
 
 def test_football_cards_distinguish_forecast_refresh_and_results_check():
-    data = fixture()
     now = pd.Timestamp('2026-11-08T12:50:00Z')
+    data = fixture(now)
     forecast = '2026-11-07T18:07:00Z'
     data['nfl_update']['data']['captured_at_utc'] = forecast
     data['cfb_update']['data']['generated_at_utc'] = forecast
@@ -149,3 +149,10 @@ def test_live_record_card_counts_only_confirmed_finals_awaiting_grading():
     card = next(m.value for m in app.markdown if '<div class="ov-name">CFB</div>' in m.value)
     assert '<b>1</b><span>Upcoming</span>' in card
     assert '<span>Awaiting grading</span><span>1</span>' in card
+
+
+def test_overview_renders_with_empty_forecast_feeds():
+    with patch('overview_ui.load_overview', return_value={}), patch('game_center_ui.load_scores', return_value={}):
+        app = AppTest.from_string('import overview_ui as ov\nov.render_overview("2026-11-11T03:40:00Z")').run()
+    assert not app.exception
+    assert any('Feed unavailable' in m.value for m in app.markdown)

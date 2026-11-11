@@ -38,3 +38,20 @@ def test_one_sport_failure_preserves_other_sports_valid_capture(tmp_path,monkeyp
  with pytest.raises(SystemExit):m.main()
  assert len(m.events.read_events(tmp_path/'forecasts.jsonl','forecast_key'))==1
  health=json.loads((tmp_path/'health.json').read_text());assert health['errors'][0]['sport']=='nhl' and health['sports']['cfb']['new_paired_forecasts']==1
+
+
+def test_changed_start_is_logged_for_review_without_failing_collection(tmp_path, monkeypatch):
+    monkeypatch.setattr(m, 'OUT', tmp_path)
+    forecast = dict(forecast_key='cfb:42', sport='cfb', game_id=42, home_id=2, away_id=3,
+                    start_time_utc='2026-10-24T18:00:00Z')
+    m.events.append(tmp_path/'forecasts.jsonl', [forecast], 'forecast_key')
+    final = dict(game_id=42, home_id=2, away_id=3, state='STATUS_FINAL',
+                 start_time_utc='2026-10-24T19:00:00Z')
+    monkeypatch.setattr(m, 'cfb_inputs', lambda existing: ({'sport':'cfb'}, {42:final}, {}))
+    monkeypatch.setattr(m, 'forecasts', lambda *args: [])
+    monkeypatch.setattr(m.sys, 'argv', ['collect', '--sport', 'cfb', '--reference-python', 'unused'])
+    m.main()
+    health = json.loads((tmp_path/'health.json').read_text())
+    assert health['errors'] == []
+    assert [r['forecast_key'] for r in health['settlement_reviews']] == ['cfb:42']
+    assert m.events.read_events(tmp_path/'settlements.jsonl', 'forecast_key') == {}
