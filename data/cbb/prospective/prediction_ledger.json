@@ -18719,7 +18719,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.45032721674259746,
     "predicted_winner": "North Carolina Central Eagles",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -18735,7 +18735,18 @@
       "pace_diff": 0.6274168719211985,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 65,
+    "away_score": 51,
+    "actual_winner": "VMI Keydets",
+    "correct": 0,
+    "brier": 0.30214016865393944,
+    "log_loss": 0.797780812145137,
+    "verified_start_time_utc": "2026-11-11T23:00:00+00:00",
+    "settled_at_utc": "2026-11-12T01:09:59.451889+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261111&limit=1000&groups=50",
+    "result_source_event_sha256": "e2f1ccd2e1844e1a1e896fdc0ca025c738bb64fc4c5ec5a059165396d4d321ec"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401921175",
