@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-12T03:15:54.727256+00:00",
+  "updated_at_utc": "2026-11-12T03:21:06.595057+00:00",
   "coverage": {
     "source_games_in_horizon": 1546
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1647,
-    "settled_games": 453,
-    "pending_games": 1194,
-    "wins": 353,
+    "settled_games": 455,
+    "pending_games": 1192,
+    "wins": 355,
     "losses": 100,
-    "accuracy": 0.7792494481236203,
-    "brier": 0.15428016131480876,
-    "log_loss": 0.47367163984977206
+    "accuracy": 0.7802197802197802,
+    "brier": 0.15402112768865633,
+    "log_loss": 0.4731514103168809
   },
   "predictions": [
     {
@@ -19918,7 +19918,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6072235752478158,
       "predicted_winner": "South Dakota State Jackrabbits",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -19934,7 +19934,18 @@
         "pace_diff": 0.7733297413793139,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 81,
+      "away_score": 69,
+      "actual_winner": "South Dakota State Jackrabbits",
+      "correct": 1,
+      "brier": 0.15427331984110823,
+      "log_loss": 0.49885822748872843,
+      "verified_start_time_utc": "2026-11-12T01:00:00+00:00",
+      "settled_at_utc": "2026-11-12T03:21:06.595057+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261111&limit=1000&groups=50",
+      "result_source_event_sha256": "d75a8e0a5b4ff1a96c2f494d51701f2d4cf90a47be2110d559f6c90b0eed103e"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401917963",
@@ -19952,7 +19963,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.19085780803821642,
       "predicted_winner": "Stephen F. Austin Lumberjacks",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -19968,7 +19979,18 @@
         "pace_diff": 3.1609543010752645,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 71,
+      "away_score": 76,
+      "actual_winner": "Stephen F. Austin Lumberjacks",
+      "correct": 1,
+      "brier": 0.036426702889152666,
+      "log_loss": 0.21178061474536158,
+      "verified_start_time_utc": "2026-11-12T01:00:00+00:00",
+      "settled_at_utc": "2026-11-12T03:21:06.595057+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261111&limit=1000&groups=50",
+      "result_source_event_sha256": "dd18673a97eff19c5fe52bb0c40cadacc62e7be719e74ae8dc23f5f8849374e5"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401925915",
@@ -61234,5 +61256,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-12T03:15:54.727256+00:00"
+  "results_checked_at_utc": "2026-11-12T03:21:06.595057+00:00"
 }
