@@ -20181,7 +20181,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.39985312494230735,
     "predicted_winner": "Pacific Tigers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -20197,7 +20197,18 @@
       "pace_diff": 5.6402419354839,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 62,
+    "away_score": 59,
+    "actual_winner": "Long Beach State Beach",
+    "correct": 0,
+    "brier": 0.36017627164151367,
+    "log_loss": 0.9166579869482765,
+    "verified_start_time_utc": "2026-11-12T03:00:00+00:00",
+    "settled_at_utc": "2026-11-12T05:11:53.457002+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261111&limit=1000&groups=50",
+    "result_source_event_sha256": "3f5c1eb7edc20595776f5e112cf9bb0d728fdc4915cd1461a043fed470f86a29"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401919734",
