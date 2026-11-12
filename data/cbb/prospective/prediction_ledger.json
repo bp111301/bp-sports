@@ -46567,7 +46567,7 @@
     "created_at_utc": "2026-11-01T13:05:09.783328+00:00",
     "home_win_prob": 0.5377630348249847,
     "predicted_winner": "UC Santa Barbara Gauchos",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "55af4d2ac8554f21813990bdecefcf15c386683ef72c6f6459af1ea7d0313118",
     "forecast_stage": "early_research_prior",
@@ -46583,7 +46583,18 @@
       "pace_diff": 0.4217401960784173,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 76,
+    "away_score": 63,
+    "actual_winner": "UC Santa Barbara Gauchos",
+    "correct": 1,
+    "brier": 0.21366301197420834,
+    "log_loss": 0.6203372715651057,
+    "verified_start_time_utc": "2026-11-12T02:00:00+00:00",
+    "settled_at_utc": "2026-11-12T04:01:18.042327+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261111&limit=1000&groups=50",
+    "result_source_event_sha256": "db9033ed5aca4b31cdd933ee8b167d52e38a0df96811ab7b0721bb8cee36afc5"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401911028",
