@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-12T02:00:21.003276+00:00",
+  "updated_at_utc": "2026-11-12T02:05:23.987632+00:00",
   "coverage": {
     "source_games_in_horizon": 1546
   },
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1647,
-    "settled_games": 434,
-    "pending_games": 1213,
-    "wins": 338,
-    "losses": 96,
-    "accuracy": 0.7788018433179723,
-    "brier": 0.15566638170361086,
-    "log_loss": 0.4778605786653381
+    "settled_games": 438,
+    "pending_games": 1209,
+    "wins": 341,
+    "losses": 97,
+    "accuracy": 0.7785388127853882,
+    "brier": 0.1553535376095145,
+    "log_loss": 0.47695574501934246
   },
   "predictions": [
     {
@@ -18928,7 +18928,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7811581167067472,
       "predicted_winner": "Massachusetts Minutemen",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -18944,7 +18944,18 @@
         "pace_diff": 3.810286458333337,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 72,
+      "away_score": 62,
+      "actual_winner": "Massachusetts Minutemen",
+      "correct": 1,
+      "brier": 0.04789176988333769,
+      "log_loss": 0.24697769546356016,
+      "verified_start_time_utc": "2026-11-12T00:00:00+00:00",
+      "settled_at_utc": "2026-11-12T02:05:23.987632+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261111&limit=1000&groups=50",
+      "result_source_event_sha256": "ad524f850a9e0e091556bf4043b9be9fe0726998d8c8ed95631d0d6616bfec3a"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911263",
@@ -19143,7 +19154,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9219522879739941,
       "predicted_winner": "St. John's Red Storm",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -19159,7 +19170,18 @@
         "pace_diff": 2.679245730550278,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 90,
+      "away_score": 59,
+      "actual_winner": "St. John's Red Storm",
+      "correct": 1,
+      "brier": 0.006091445352494348,
+      "log_loss": 0.08126180516584587,
+      "verified_start_time_utc": "2026-11-12T00:00:00+00:00",
+      "settled_at_utc": "2026-11-12T02:05:23.987632+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261111&limit=1000&groups=50",
+      "result_source_event_sha256": "cfd69025234ecb5f84e065a2e2a49de78104b0514e28aff577e39300f2367692"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920740",
@@ -19177,7 +19199,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8428714330617493,
       "predicted_winner": "East Tennessee State Buccaneers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -19193,7 +19215,18 @@
         "pace_diff": -2.981640624999983,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 68,
+      "away_score": 53,
+      "actual_winner": "East Tennessee State Buccaneers",
+      "correct": 1,
+      "brier": 0.024689386548068338,
+      "log_loss": 0.1709408438073236,
+      "verified_start_time_utc": "2026-11-12T00:00:00+00:00",
+      "settled_at_utc": "2026-11-12T02:05:23.987632+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261111&limit=1000&groups=50",
+      "result_source_event_sha256": "bdffd86cce68e3c73fdc08eed1ed740f546485ae149dccf5018f2850f38f3b02"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920903",
@@ -19471,7 +19504,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6379398183342518,
       "predicted_winner": "Indiana State Sycamores",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -19487,7 +19520,18 @@
         "pace_diff": 0.6620564516129122,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 73,
+      "away_score": 82,
+      "actual_winner": "Milwaukee Panthers",
+      "correct": 0,
+      "brier": 0.4069672118163382,
+      "log_loss": 1.015944833278546,
+      "verified_start_time_utc": "2026-11-12T00:00:00+00:00",
+      "settled_at_utc": "2026-11-12T02:05:23.987632+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261111&limit=1000&groups=50",
+      "result_source_event_sha256": "1258790b53010cc2611405b0e4957d667ba310ffbad9437ff98c3c2b05812f84"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401928794",
@@ -61025,5 +61069,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-12T02:00:21.003276+00:00"
+  "results_checked_at_utc": "2026-11-12T02:05:23.987632+00:00"
 }
