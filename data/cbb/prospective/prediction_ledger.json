@@ -20204,7 +20204,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.9504147972145528,
     "predicted_winner": "California Baptist Lancers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -20220,7 +20220,18 @@
       "pace_diff": 2.1838954056696025,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 62,
+    "away_score": 81,
+    "actual_winner": "Chicago State Cougars",
+    "correct": 0,
+    "brier": 0.9032882867643796,
+    "log_loss": 3.004062820699347,
+    "verified_start_time_utc": "2026-11-12T03:00:00+00:00",
+    "settled_at_utc": "2026-11-12T05:01:53.224893+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261111&limit=1000&groups=50",
+    "result_source_event_sha256": "90b9df960171d75f527eae4c0b5cea85c6a19a632d9dbf567542e6a87dc0c89a"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401925738",
