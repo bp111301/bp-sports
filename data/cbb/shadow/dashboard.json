@@ -1,18 +1,18 @@
 {
   "status": "shadow_only_not_public",
-  "updated_at_utc": "2026-11-12T07:19:49.427093+00:00",
+  "updated_at_utc": "2026-11-12T20:00:41.611461+00:00",
   "identities": {
     "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
     "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
     "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
   },
   "capture_window_hours": 24,
-  "eligible_future_games": 1187,
+  "eligible_future_games": 1233,
   "within_capture_window": 24,
   "summary": {
-    "saved_pairs": 491,
+    "saved_pairs": 492,
     "settled_pairs": 467,
-    "pending_pairs": 24,
+    "pending_pairs": 25,
     "control": {
       "wins": 366,
       "losses": 101,
@@ -36,13 +36,19 @@
     "roster_unknown_pairs": 218
   },
   "coverage": {
-    "source_games_in_horizon": 1500
+    "source_games_in_horizon": 1545
   },
   "excluded": {
+    "division_or_conference_unknown": 282,
     "tipoff_time_unconfirmed": 29,
-    "division_or_conference_unknown": 284
+    "not_scheduled": 1
   },
   "coverage_by_day": {
+    "2026-12-12": {
+      "source_games": 46,
+      "eligible": 43,
+      "unconfirmed_tipoff": 0
+    },
     "Unconfirmed source date/time": {
       "source_games": 29,
       "eligible": 0,
@@ -65,7 +71,7 @@
     },
     "2026-12-08": {
       "source_games": 56,
-      "eligible": 42,
+      "eligible": 43,
       "unconfirmed_tipoff": 0
     },
     "2026-12-07": {
@@ -80,7 +86,7 @@
     },
     "2026-12-05": {
       "source_games": 116,
-      "eligible": 106,
+      "eligible": 107,
       "unconfirmed_tipoff": 0
     },
     "2026-12-04": {
@@ -95,7 +101,7 @@
     },
     "2026-12-02": {
       "source_games": 70,
-      "eligible": 61,
+      "eligible": 62,
       "unconfirmed_tipoff": 0
     },
     "2026-12-01": {
@@ -135,7 +141,7 @@
     },
     "2026-11-24": {
       "source_games": 86,
-      "eligible": 72,
+      "eligible": 73,
       "unconfirmed_tipoff": 0
     },
     "2026-11-23": {
@@ -150,7 +156,7 @@
     },
     "2026-11-21": {
       "source_games": 54,
-      "eligible": 45,
+      "eligible": 46,
       "unconfirmed_tipoff": 0
     },
     "2026-11-20": {
@@ -185,7 +191,7 @@
     },
     "2026-11-14": {
       "source_games": 72,
-      "eligible": 61,
+      "eligible": 60,
       "unconfirmed_tipoff": 0
     },
     "2026-11-13": {
@@ -194,22 +200,17 @@
       "unconfirmed_tipoff": 0
     },
     "2026-11-12": {
-      "source_games": 29,
-      "eligible": 24,
+      "source_games": 28,
+      "eligible": 23,
       "unconfirmed_tipoff": 0
     }
   },
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "6ad4f3771d2ede370c26105e934364f7756043caeb2e7e95d0f75feb306e293f",
-    "bytes": 549793,
-    "archive_sha256": "e471174c595b5e986ef7ac537b5064cbeccaee1fd27d87308bd560702edcc28f",
+    "sha256": "ba7ed55e1d098e7ebb146514731d4e6a3f9ccc34e047a0c39009e1c4d4084eee",
+    "bytes": 562326,
+    "archive_sha256": "2d6f648c4fde15165b6ab68e7739331698154717d836ccbec8579fe49b6a1a86",
     "live_schedule_sources": [
-      {
-        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261110&groups=50&limit=1000",
-        "sha256": "07e9f46c736bda6a8ab2deb0f247b67bb83b28bcb922f376a91d748a1722243e",
-        "games": 69
-      },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261111&groups=50&limit=1000",
         "sha256": "41abae3a72c7e11c9d8b69247035dcf35149dc40220db8d2302d475cbdeae0e9",
@@ -222,12 +223,12 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&groups=50&limit=1000",
-        "sha256": "ce432e6be2cc3ceee97b015a87be1c31a205613f055e5b61788642a466ca2359",
+        "sha256": "a479fa73b3debe886af502192d4f8825662e0b475328fcaafd0759873b5f0f3e",
         "games": 61
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&groups=50&limit=1000",
-        "sha256": "8a3461674f39fe2bb608184cfc1e3b3408dd840488375c87c96b9901b69d4a85",
+        "sha256": "a2a90787257000225170d24ba130753c18d46d502a718fdf5a7cbd1e423f30f5",
         "games": 72
       },
       {
@@ -237,12 +238,12 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261116&groups=50&limit=1000",
-        "sha256": "55c44cb8671fc7428d5fc091e1cbb0b188b8113495427998eb64cbe046ce4233",
+        "sha256": "f04d645f89831f4e06d1c8544e3406e2f94a1c07846ce9439ca1b971f3d09c4f",
         "games": 33
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&groups=50&limit=1000",
-        "sha256": "563b4e4b09ef1cfa591ebbefef28d682c11f44ceda63ef081cb8288f60c79550",
+        "sha256": "fcc9aa540e5208bfb3e7a09cd8626ecd49e78d66dce761b30217406d16341cd9",
         "games": 66
       },
       {
@@ -502,32 +503,32 @@
     {
       "season": 2027,
       "schedule_rows": 6071,
-      "box_rows": 1180,
+      "box_rows": 1316,
       "sources": [
         {
           "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-          "sha256": "e471174c595b5e986ef7ac537b5064cbeccaee1fd27d87308bd560702edcc28f",
-          "bytes": 549793
+          "sha256": "2d6f648c4fde15165b6ab68e7739331698154717d836ccbec8579fe49b6a1a86",
+          "bytes": 562326
         },
         {
           "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2027.parquet",
-          "sha256": "355dd269ab4dc27bebe5702e1177ee25a4013a9ac7f8eb24652feddd0a37b9ae",
-          "bytes": 138370
+          "sha256": "6cc6bc65e58f9a3894786924a1efdf76509ae54a58098099937e45fa294d4077",
+          "bytes": 148795
         }
       ],
       "exclusions": {
-        "not_confirmed_final": 5479,
-        "division_or_conference_unknown": 175
+        "not_confirmed_final": 5412,
+        "division_or_conference_unknown": 192
       },
-      "eligible_games": 417,
-      "neutral_games": 34,
+      "eligible_games": 467,
+      "neutral_games": 36,
       "players": {
         "season": 2027,
         "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2027.parquet",
-        "sha256": "13152e0a86e46bcd4cdcafa34bbb1a885110af4dc07fe85999b62ca61ff4da65",
-        "bytes": 544124,
-        "eligible_team_games": 834,
-        "complete_player_team_games": 834,
+        "sha256": "83beab04d0caf52f1259102de44983f7928ba2edde8e3dfb1f7f18ebf245be24",
+        "bytes": 590672,
+        "eligible_team_games": 934,
+        "complete_player_team_games": 934,
         "exclusions": {}
       }
     }
@@ -51660,6 +51661,93 @@
           "returning_share_diff": 0.024999999999999994,
           "transfer_share_diff": 0.375,
           "prior_minutes_experience_diff": 1.9197352237407475,
+          "rotation_known_diff": 0.0
+        }
+      }
+    },
+    {
+      "game_id": "401921167",
+      "identities": {
+        "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+      },
+      "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+      "roster_context": {
+        "home_known": true,
+        "away_known": true,
+        "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+      },
+      "feature_state_as_of_utc": "2026-11-12T20:00:41.611461+00:00",
+      "control": {
+        "prediction_id": "CBB_V1_CANDIDATE_20261013:401921167",
+        "model_version": "CBB_V1_CANDIDATE_20261013",
+        "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "game_id": "401921167",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "325",
+        "away_team_id": "2697",
+        "home_team": "Cleveland State Vikings",
+        "away_team": "West Florida Argonauts",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-13T20:00:00+00:00",
+        "created_at_utc": "2026-11-12T20:00:41.611461+00:00",
+        "home_win_prob": 0.18078151473261325,
+        "predicted_winner": "West Florida Argonauts",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "ba7ed55e1d098e7ebb146514731d4e6a3f9ccc34e047a0c39009e1c4d4084eee",
+        "features": {
+          "elo_diff": -69.06949370689836,
+          "home_advantage": 0.0,
+          "off_eff_diff": 5.341951120950839,
+          "def_eff_diff": 26.744743072998048,
+          "efg_diff": 0.05363232315240052,
+          "tov_rate_diff": 0.0035055997633476055,
+          "orb_rate_diff": -0.02393320969096513,
+          "ft_rate_diff": 0.07104814802752785,
+          "pace_diff": 0.504361111111109,
+          "rest_diff": -4.0,
+          "experience_diff": 0.4054651081081643
+        }
+      },
+      "challenger": {
+        "prediction_id": "CBB_SHADOW_COMBINED_20261016:401921167",
+        "model_version": "CBB_SHADOW_COMBINED_20261016",
+        "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "game_id": "401921167",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "325",
+        "away_team_id": "2697",
+        "home_team": "Cleveland State Vikings",
+        "away_team": "West Florida Argonauts",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-13T20:00:00+00:00",
+        "created_at_utc": "2026-11-12T20:00:41.611461+00:00",
+        "home_win_prob": 0.15335639642804982,
+        "predicted_winner": "West Florida Argonauts",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "ba7ed55e1d098e7ebb146514731d4e6a3f9ccc34e047a0c39009e1c4d4084eee",
+        "features": {
+          "elo_diff": -69.06949370689836,
+          "home_advantage": 0.0,
+          "off_eff_diff": 5.341951120950839,
+          "def_eff_diff": 26.744743072998048,
+          "efg_diff": 0.05363232315240052,
+          "tov_rate_diff": 0.0035055997633476055,
+          "orb_rate_diff": -0.02393320969096513,
+          "ft_rate_diff": 0.07104814802752785,
+          "pace_diff": 0.504361111111109,
+          "rest_diff": -4.0,
+          "experience_diff": 0.4054651081081643,
+          "adjusted_off_diff": 1.3531290390171336,
+          "adjusted_def_diff": 23.52798197982129,
+          "returning_share_diff": 0.0,
+          "transfer_share_diff": 0.43000000000000005,
+          "prior_minutes_experience_diff": 2.0073318785120806,
           "rotation_known_diff": 0.0
         }
       }

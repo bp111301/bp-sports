@@ -51121,5 +51121,92 @@
         "rotation_known_diff": 0.0
       }
     }
+  },
+  {
+    "game_id": "401921167",
+    "identities": {
+      "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+      "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+    },
+    "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+    "roster_context": {
+      "home_known": true,
+      "away_known": true,
+      "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+    },
+    "feature_state_as_of_utc": "2026-11-12T20:00:41.611461+00:00",
+    "control": {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401921167",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401921167",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "325",
+      "away_team_id": "2697",
+      "home_team": "Cleveland State Vikings",
+      "away_team": "West Florida Argonauts",
+      "neutral_site": true,
+      "start_time_utc": "2026-11-13T20:00:00+00:00",
+      "created_at_utc": "2026-11-12T20:00:41.611461+00:00",
+      "home_win_prob": 0.18078151473261325,
+      "predicted_winner": "West Florida Argonauts",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "ba7ed55e1d098e7ebb146514731d4e6a3f9ccc34e047a0c39009e1c4d4084eee",
+      "features": {
+        "elo_diff": -69.06949370689836,
+        "home_advantage": 0.0,
+        "off_eff_diff": 5.341951120950839,
+        "def_eff_diff": 26.744743072998048,
+        "efg_diff": 0.05363232315240052,
+        "tov_rate_diff": 0.0035055997633476055,
+        "orb_rate_diff": -0.02393320969096513,
+        "ft_rate_diff": 0.07104814802752785,
+        "pace_diff": 0.504361111111109,
+        "rest_diff": -4.0,
+        "experience_diff": 0.4054651081081643
+      }
+    },
+    "challenger": {
+      "prediction_id": "CBB_SHADOW_COMBINED_20261016:401921167",
+      "model_version": "CBB_SHADOW_COMBINED_20261016",
+      "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+      "game_id": "401921167",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "325",
+      "away_team_id": "2697",
+      "home_team": "Cleveland State Vikings",
+      "away_team": "West Florida Argonauts",
+      "neutral_site": true,
+      "start_time_utc": "2026-11-13T20:00:00+00:00",
+      "created_at_utc": "2026-11-12T20:00:41.611461+00:00",
+      "home_win_prob": 0.15335639642804982,
+      "predicted_winner": "West Florida Argonauts",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "ba7ed55e1d098e7ebb146514731d4e6a3f9ccc34e047a0c39009e1c4d4084eee",
+      "features": {
+        "elo_diff": -69.06949370689836,
+        "home_advantage": 0.0,
+        "off_eff_diff": 5.341951120950839,
+        "def_eff_diff": 26.744743072998048,
+        "efg_diff": 0.05363232315240052,
+        "tov_rate_diff": 0.0035055997633476055,
+        "orb_rate_diff": -0.02393320969096513,
+        "ft_rate_diff": 0.07104814802752785,
+        "pace_diff": 0.504361111111109,
+        "rest_diff": -4.0,
+        "experience_diff": 0.4054651081081643,
+        "adjusted_off_diff": 1.3531290390171336,
+        "adjusted_def_diff": 23.52798197982129,
+        "returning_share_diff": 0.0,
+        "transfer_share_diff": 0.43000000000000005,
+        "prior_minutes_experience_diff": 2.0073318785120806,
+        "rotation_known_diff": 0.0
+      }
+    }
   }
 ]
