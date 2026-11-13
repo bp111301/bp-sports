@@ -20880,7 +20880,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.5653667491250808,
     "predicted_winner": "Sacred Heart Pioneers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -20896,7 +20896,18 @@
       "pace_diff": 3.1246093750000057,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 75,
+    "away_score": 79,
+    "actual_winner": "Central Connecticut Blue Devils",
+    "correct": 0,
+    "brier": 0.319639561016262,
+    "log_loss": 0.8332527049403277,
+    "verified_start_time_utc": "2026-11-13T00:00:00+00:00",
+    "settled_at_utc": "2026-11-13T01:56:32.815009+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261112&limit=1000&groups=50",
+    "result_source_event_sha256": "92534ec841a2519f6285ba7afaf95f694e28f702331f8229582066e7005864df"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401928818",
@@ -20914,7 +20925,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.7101089237852661,
     "predicted_winner": "Purdue Fort Wayne Mastodons",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -20930,7 +20941,18 @@
       "pace_diff": -0.29051724137931956,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 59,
+    "away_score": 81,
+    "actual_winner": "Western Michigan Broncos",
+    "correct": 0,
+    "brier": 0.5042546836394689,
+    "log_loss": 1.2382500258162252,
+    "verified_start_time_utc": "2026-11-13T00:00:00+00:00",
+    "settled_at_utc": "2026-11-13T01:56:32.815009+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261112&limit=1000&groups=50",
+    "result_source_event_sha256": "2cd48c60c690338ecd76266ffe21eaae8a8cdb4c9d6ae475e5e302a656f47326"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401911239",
