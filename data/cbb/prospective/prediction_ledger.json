@@ -20822,7 +20822,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.70647564232978,
     "predicted_winner": "West Virginia Mountaineers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -20838,7 +20838,18 @@
       "pace_diff": -4.728340517241392,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 75,
+    "away_score": 61,
+    "actual_winner": "West Virginia Mountaineers",
+    "correct": 1,
+    "brier": 0.08615654854571524,
+    "log_loss": 0.34746655398439663,
+    "verified_start_time_utc": "2026-11-13T00:00:00+00:00",
+    "settled_at_utc": "2026-11-13T02:16:26.427163+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261112&limit=1000&groups=50",
+    "result_source_event_sha256": "56904b8e663124b57afe5fc07997812892eaadf3c02083a7ba6d7c4087badad0"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401922250",
