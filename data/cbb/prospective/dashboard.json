@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-13T01:41:18.449636+00:00",
+  "updated_at_utc": "2026-11-13T01:46:24.082221+00:00",
   "coverage": {
     "source_games_in_horizon": 1536
   },
@@ -20,13 +20,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1694,
-    "settled_games": 471,
-    "pending_games": 1223,
-    "wins": 367,
+    "settled_games": 473,
+    "pending_games": 1221,
+    "wins": 369,
     "losses": 104,
-    "accuracy": 0.7791932059447984,
-    "brier": 0.15583499684441932,
-    "log_loss": 0.4792207833595965
+    "accuracy": 0.7801268498942917,
+    "brier": 0.15525842721272584,
+    "log_loss": 0.4778255108450686
   },
   "predictions": [
     {
@@ -20526,7 +20526,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8790121800768277,
       "predicted_winner": "Indiana Hoosiers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -20542,7 +20542,18 @@
         "pace_diff": -0.8952566964285893,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 90,
+      "away_score": 66,
+      "actual_winner": "Indiana Hoosiers",
+      "correct": 1,
+      "brier": 0.01463805256976197,
+      "log_loss": 0.12895652465027022,
+      "verified_start_time_utc": "2026-11-12T23:30:00+00:00",
+      "settled_at_utc": "2026-11-13T01:46:24.082221+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261112&limit=1000&groups=50",
+      "result_source_event_sha256": "a2d8905ab64c264e9db6241994bf34e7844700f356b8ff9d54f7438d5dcb8451"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401917176",
@@ -20741,7 +20752,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8440689083983595,
       "predicted_winner": "Towson Tigers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -20757,7 +20768,18 @@
         "pace_diff": -5.230000000000032,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 90,
+      "away_score": 60,
+      "actual_winner": "Towson Tigers",
+      "correct": 1,
+      "brier": 0.024314505328079213,
+      "log_loss": 0.1695211426972004,
+      "verified_start_time_utc": "2026-11-13T00:00:00+00:00",
+      "settled_at_utc": "2026-11-13T01:46:24.082221+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261112&limit=1000&groups=50",
+      "result_source_event_sha256": "2e235282ab89d079e8c502a5ddd0b7cee91a0b346c4c343ebe1ea50702b9c2b0"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921768",
@@ -63031,5 +63053,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-13T01:41:18.449636+00:00"
+  "results_checked_at_utc": "2026-11-13T01:46:24.082221+00:00"
 }
