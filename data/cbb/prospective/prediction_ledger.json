@@ -20451,7 +20451,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.06892601034674102,
     "predicted_winner": "Bradley Braves",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -20467,7 +20467,18 @@
       "pace_diff": -0.8495312499999841,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 54,
+    "away_score": 56,
+    "actual_winner": "Bradley Braves",
+    "correct": 1,
+    "brier": 0.00475079490231905,
+    "log_loss": 0.07141653155113517,
+    "verified_start_time_utc": "2026-11-12T23:00:00+00:00",
+    "settled_at_utc": "2026-11-13T01:16:08.832357+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261112&limit=1000&groups=50",
+    "result_source_event_sha256": "045bb5c01bce0ec696f328dabfd37f023a9825f7005a427b29675091b68be052"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401916288",
