@@ -20620,7 +20620,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.8979575611171271,
     "predicted_winner": "Rhode Island Rams",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -20636,7 +20636,18 @@
       "pace_diff": 0.7412760416666657,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 67,
+    "away_score": 47,
+    "actual_winner": "Rhode Island Rams",
+    "correct": 1,
+    "brier": 0.010412659333164851,
+    "log_loss": 0.10763247113174278,
+    "verified_start_time_utc": "2026-11-13T00:00:00+00:00",
+    "settled_at_utc": "2026-11-13T01:51:21.144736+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261112&limit=1000&groups=50",
+    "result_source_event_sha256": "bc8e0ed8ba9255284d55f79bbdf656e50e9ba9fa32e3dc4b985f9a4a8357a3da"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401920135",

@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-13T01:46:24.082221+00:00",
+  "updated_at_utc": "2026-11-13T01:51:21.144736+00:00",
   "coverage": {
     "source_games_in_horizon": 1536
   },
@@ -20,13 +20,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1694,
-    "settled_games": 473,
-    "pending_games": 1221,
-    "wins": 369,
+    "settled_games": 474,
+    "pending_games": 1220,
+    "wins": 370,
     "losses": 104,
-    "accuracy": 0.7801268498942917,
-    "brier": 0.15525842721272584,
-    "log_loss": 0.4778255108450686
+    "accuracy": 0.7805907172995781,
+    "brier": 0.1549528454239504,
+    "log_loss": 0.47704451287098976
   },
   "predictions": [
     {
@@ -20650,7 +20650,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8979575611171271,
       "predicted_winner": "Rhode Island Rams",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -20666,7 +20666,18 @@
         "pace_diff": 0.7412760416666657,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 67,
+      "away_score": 47,
+      "actual_winner": "Rhode Island Rams",
+      "correct": 1,
+      "brier": 0.010412659333164851,
+      "log_loss": 0.10763247113174278,
+      "verified_start_time_utc": "2026-11-13T00:00:00+00:00",
+      "settled_at_utc": "2026-11-13T01:51:21.144736+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261112&limit=1000&groups=50",
+      "result_source_event_sha256": "bc8e0ed8ba9255284d55f79bbdf656e50e9ba9fa32e3dc4b985f9a4a8357a3da"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920135",
@@ -63053,5 +63064,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-13T01:46:24.082221+00:00"
+  "results_checked_at_utc": "2026-11-13T01:51:21.144736+00:00"
 }
