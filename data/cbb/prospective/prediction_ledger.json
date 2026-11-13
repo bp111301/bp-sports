@@ -21227,7 +21227,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.41201961494284317,
     "predicted_winner": "New Mexico State Aggies",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -21243,7 +21243,18 @@
       "pace_diff": -1.5490763546797979,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 60,
+    "away_score": 58,
+    "actual_winner": "UTEP Miners",
+    "correct": 0,
+    "brier": 0.34572093321196234,
+    "log_loss": 0.8866843216813164,
+    "verified_start_time_utc": "2026-11-13T02:00:00+00:00",
+    "settled_at_utc": "2026-11-13T04:12:05.003512+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261112&limit=1000&groups=50",
+    "result_source_event_sha256": "d437deb13f184e901a7b6e229c643d6b8ba8e340a9288ebf0a0c7514c175613c"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401921741",
