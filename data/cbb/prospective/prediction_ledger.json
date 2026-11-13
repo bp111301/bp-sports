@@ -21328,7 +21328,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.2397712068308783,
     "predicted_winner": "West Florida Argonauts",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -21344,7 +21344,18 @@
       "pace_diff": 2.3754166666666805,
       "rest_diff": 7.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 69,
+    "away_score": 67,
+    "actual_winner": "Cleveland State Vikings",
+    "correct": 0,
+    "brier": 0.5779478179633792,
+    "log_loss": 1.4280701151955664,
+    "verified_start_time_utc": "2026-11-13T20:00:00+00:00",
+    "settled_at_utc": "2026-11-13T21:52:13.405134+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&limit=1000&groups=50",
+    "result_source_event_sha256": "9f8aa38a1e6917eaf8c16932170e0f8784cabb5153a8ca0730c42449c795cb32"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401909696",
