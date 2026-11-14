@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-14T02:41:08.576823+00:00",
+  "updated_at_utc": "2026-11-14T02:46:22.536110+00:00",
   "coverage": {
     "source_games_in_horizon": 1584
   },
@@ -24,13 +24,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1761,
-    "settled_games": 518,
-    "pending_games": 1243,
-    "wins": 399,
+    "settled_games": 520,
+    "pending_games": 1241,
+    "wins": 401,
     "losses": 119,
-    "accuracy": 0.7702702702702703,
-    "brier": 0.1588559377080056,
-    "log_loss": 0.48480296429763975
+    "accuracy": 0.7711538461538462,
+    "brier": 0.15847211646561432,
+    "log_loss": 0.4839896720733254
   },
   "predictions": [
     {
@@ -22521,7 +22521,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8146246177890737,
       "predicted_winner": "UConn Huskies",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -22537,7 +22537,18 @@
         "pace_diff": -0.778721033868095,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 84,
+      "away_score": 68,
+      "actual_winner": "UConn Huskies",
+      "correct": 1,
+      "brier": 0.034364032329847014,
+      "log_loss": 0.20502786351604768,
+      "verified_start_time_utc": "2026-11-14T00:30:00+00:00",
+      "settled_at_utc": "2026-11-14T02:46:22.536110+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&limit=1000&groups=50",
+      "result_source_event_sha256": "511b68d0d5991bce3fd08688e50d2aa21284e46b6d84e06877836fe3ef1c9288"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401926152",
@@ -22645,7 +22656,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7105854235828799,
       "predicted_winner": "Drake Bulldogs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -22661,7 +22672,18 @@
         "pace_diff": -4.237405711206932,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 81,
+      "away_score": 72,
+      "actual_winner": "Drake Bulldogs",
+      "correct": 1,
+      "brier": 0.08376079704270105,
+      "log_loss": 0.34166610843577316,
+      "verified_start_time_utc": "2026-11-14T00:30:00+00:00",
+      "settled_at_utc": "2026-11-14T02:46:22.536110+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&limit=1000&groups=50",
+      "result_source_event_sha256": "4be984558de021550e013d6ae298a0543253029c1f7dca3de18282a8c79c2867"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401906804",
@@ -65830,5 +65852,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-14T02:41:08.576823+00:00"
+  "results_checked_at_utc": "2026-11-14T02:46:22.536110+00:00"
 }
