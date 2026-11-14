@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-14T22:30:36.341971+00:00",
+  "updated_at_utc": "2026-11-14T22:33:21.897509+00:00",
   "coverage": {
     "source_games_in_horizon": 1514
   },
@@ -24,13 +24,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1784,
-    "settled_games": 562,
-    "pending_games": 1222,
+    "settled_games": 563,
+    "pending_games": 1221,
     "wins": 432,
-    "losses": 130,
-    "accuracy": 0.7686832740213523,
-    "brier": 0.16158703886826428,
-    "log_loss": 0.49265458162843706
+    "losses": 131,
+    "accuracy": 0.7673179396092362,
+    "brier": 0.16258563313035682,
+    "log_loss": 0.4951582350645086
   },
   "predictions": [
     {
@@ -24456,7 +24456,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8507617812445226,
       "predicted_winner": "Northern Kentucky Norse",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -24472,7 +24472,18 @@
         "pace_diff": 3.1496662958843302,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 57,
+      "away_score": 68,
+      "actual_winner": "Central Michigan Chippewas",
+      "correct": 0,
+      "brier": 0.7237956084263529,
+      "log_loss": 1.9022114661367695,
+      "verified_start_time_utc": "2026-11-14T20:30:00+00:00",
+      "settled_at_utc": "2026-11-14T22:33:21.897509+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+      "result_source_event_sha256": "a6c3392d8906bbb35126677400a30d74233b358581d472e14bccfa922d8b19f5"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921689",
@@ -67093,5 +67104,6 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ]
+  ],
+  "results_checked_at_utc": "2026-11-14T22:33:21.897509+00:00"
 }
