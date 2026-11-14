@@ -22117,7 +22117,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.6582277297537847,
     "predicted_winner": "Florida Gulf Coast Eagles",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -22133,7 +22133,18 @@
       "pace_diff": -2.475821659482733,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 80,
+    "away_score": 89,
+    "actual_winner": "Florida International Panthers",
+    "correct": 0,
+    "brier": 0.43326374421682146,
+    "log_loss": 1.0736106401867893,
+    "verified_start_time_utc": "2026-11-14T00:00:00+00:00",
+    "settled_at_utc": "2026-11-14T02:11:02.717136+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&limit=1000&groups=50",
+    "result_source_event_sha256": "8eb80c136c6d1cfe3bd53d43661b29dc545fca5abe492890aae8dc41fde57c37"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401924704",
