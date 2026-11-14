@@ -22982,7 +22982,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.7526921664485576,
     "predicted_winner": "North Dakota State Bison",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -22998,7 +22998,18 @@
       "pace_diff": 1.1975806451613096,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 82,
+    "away_score": 81,
+    "actual_winner": "North Dakota State Bison",
+    "correct": 1,
+    "brier": 0.061161164535907926,
+    "log_loss": 0.2840989442648945,
+    "verified_start_time_utc": "2026-11-14T01:00:00+00:00",
+    "settled_at_utc": "2026-11-14T03:16:24.582438+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&limit=1000&groups=50",
+    "result_source_event_sha256": "c28651f640c4251ea9f288513b346a603e9d864e686e2fad0e367e7e0be171f5"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401927380",
@@ -23016,7 +23027,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.8666824191960402,
     "predicted_winner": "Murray State Racers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -23032,7 +23043,18 @@
       "pace_diff": 0.4380580357142634,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 99,
+    "away_score": 78,
+    "actual_winner": "Murray State Racers",
+    "correct": 1,
+    "brier": 0.01777357735142036,
+    "log_loss": 0.14308266781042378,
+    "verified_start_time_utc": "2026-11-14T01:00:00+00:00",
+    "settled_at_utc": "2026-11-14T03:16:24.582438+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&limit=1000&groups=50",
+    "result_source_event_sha256": "1d28d01ab24989a990998b5661137bd78f91e0042ff4affaab80f7baa9c91bc7"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401929199",
