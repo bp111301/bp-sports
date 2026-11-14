@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-14T19:57:51.442934+00:00",
+  "updated_at_utc": "2026-11-14T20:02:55.548765+00:00",
   "coverage": {
     "source_games_in_horizon": 1543
   },
@@ -24,13 +24,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1781,
-    "settled_games": 547,
-    "pending_games": 1234,
-    "wins": 424,
-    "losses": 123,
-    "accuracy": 0.7751371115173674,
-    "brier": 0.15656392817590653,
-    "log_loss": 0.478908984992485
+    "settled_games": 549,
+    "pending_games": 1232,
+    "wins": 425,
+    "losses": 124,
+    "accuracy": 0.7741347905282332,
+    "brier": 0.15741549734289415,
+    "log_loss": 0.48097099371989893
   },
   "predictions": [
     {
@@ -808,7 +808,7 @@
       "created_at_utc": "2026-10-15T18:58:25.470769+00:00",
       "home_win_prob": 0.19361926358270337,
       "predicted_winner": "St. Thomas Tommies",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "bddafb0c3661a72f0603bee8e170ec19653cd7f4c2640d1f6f4a9b28fe4aaa15",
       "forecast_stage": "early_research_prior",
@@ -824,7 +824,18 @@
         "pace_diff": -1.0441666666666976,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 79,
+      "away_score": 77,
+      "actual_winner": "Army Black Knights",
+      "correct": 0,
+      "brier": 0.6502498920649016,
+      "log_loss": 1.6418616071128802,
+      "verified_start_time_utc": "2026-11-14T18:00:00+00:00",
+      "settled_at_utc": "2026-11-14T20:02:55.548765+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+      "result_source_event_sha256": "b28d296aa6ca3377af6c4e418ef56b0233019a2914b0a76cafd43bfaeb2483ee"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911376",
@@ -23939,7 +23950,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.36109477559654624,
       "predicted_winner": "Drexel Dragons",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -23955,7 +23966,18 @@
         "pace_diff": -0.32285786290320573,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 64,
+      "away_score": 66,
+      "actual_winner": "Drexel Dragons",
+      "correct": 1,
+      "brier": 0.13038943696312008,
+      "log_loss": 0.4479991542223393,
+      "verified_start_time_utc": "2026-11-14T18:00:00+00:00",
+      "settled_at_utc": "2026-11-14T20:02:55.548765+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+      "result_source_event_sha256": "b3c849b864099eea66157604530e1646241bb9bacca6183d93c5ec9c06bd0d9f"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911231",
@@ -66829,5 +66851,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-14T19:57:51.442934+00:00"
+  "results_checked_at_utc": "2026-11-14T20:02:55.548765+00:00"
 }
