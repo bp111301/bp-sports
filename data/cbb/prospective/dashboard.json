@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-14T04:06:47.970673+00:00",
+  "updated_at_utc": "2026-11-14T04:11:52.379392+00:00",
   "coverage": {
     "source_games_in_horizon": 1584
   },
@@ -24,13 +24,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1761,
-    "settled_games": 533,
-    "pending_games": 1228,
-    "wins": 412,
-    "losses": 121,
-    "accuracy": 0.7729831144465291,
-    "brier": 0.15682167244260697,
-    "log_loss": 0.4797743403606366
+    "settled_games": 535,
+    "pending_games": 1226,
+    "wins": 413,
+    "losses": 122,
+    "accuracy": 0.77196261682243,
+    "brier": 0.15786243545308568,
+    "log_loss": 0.48226273570723954
   },
   "predictions": [
     {
@@ -23377,7 +23377,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8140895583576241,
       "predicted_winner": "Idaho Vandals",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -23393,7 +23393,18 @@
         "pace_diff": -6.871370967741925,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 74,
+      "away_score": 83,
+      "actual_winner": "Cal Poly Mustangs",
+      "correct": 0,
+      "brier": 0.6627418090269115,
+      "log_loss": 1.6824902177719874,
+      "verified_start_time_utc": "2026-11-14T02:00:00+00:00",
+      "settled_at_utc": "2026-11-14T04:11:52.379392+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&limit=1000&groups=50",
+      "result_source_event_sha256": "0fedc171eca89d58678dd77861c6c7097d57808439961448728295a86c85e19d"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921728",
@@ -23411,7 +23422,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.5442481525386784,
       "predicted_winner": "UNLV Rebels",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -23427,7 +23438,18 @@
         "pace_diff": 3.4613281250000085,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 76,
+      "away_score": 68,
+      "actual_winner": "UNLV Rebels",
+      "correct": 1,
+      "brier": 0.20770974646440774,
+      "log_loss": 0.608349973381871,
+      "verified_start_time_utc": "2026-11-14T02:00:00+00:00",
+      "settled_at_utc": "2026-11-14T04:11:52.379392+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&limit=1000&groups=50",
+      "result_source_event_sha256": "10597da21acf87a6278b2dc09ef89fd4696fde373903b6d897bf79e23f3d1ef2"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401917526",
@@ -65995,5 +66017,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-14T04:06:47.970673+00:00"
+  "results_checked_at_utc": "2026-11-14T04:11:52.379392+00:00"
 }
