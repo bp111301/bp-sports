@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-14T03:06:20.674197+00:00",
+  "updated_at_utc": "2026-11-14T03:11:29.406160+00:00",
   "coverage": {
     "source_games_in_horizon": 1584
   },
@@ -24,13 +24,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1761,
-    "settled_games": 523,
-    "pending_games": 1238,
-    "wins": 403,
+    "settled_games": 527,
+    "pending_games": 1234,
+    "wins": 407,
     "losses": 120,
-    "accuracy": 0.7705544933078394,
-    "brier": 0.15817586312080506,
-    "log_loss": 0.4832185100606347
+    "accuracy": 0.7722960151802657,
+    "brier": 0.15715603006893833,
+    "log_loss": 0.48065510871132294
   },
   "predictions": [
     {
@@ -22712,7 +22712,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9222105213827705,
       "predicted_winner": "Oklahoma Sooners",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -22728,7 +22728,18 @@
         "pace_diff": 4.479994929006068,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 74,
+      "away_score": 58,
+      "actual_winner": "Oklahoma Sooners",
+      "correct": 1,
+      "brier": 0.006051202983540407,
+      "log_loss": 0.08098175027139297,
+      "verified_start_time_utc": "2026-11-14T01:00:00+00:00",
+      "settled_at_utc": "2026-11-14T03:11:29.406160+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&limit=1000&groups=50",
+      "result_source_event_sha256": "8e092d008f3f29f927d87e977b69ccd1fa204bdeb8a17a89666febffb8b4a6e0"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401909565",
@@ -22746,7 +22757,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9597970621322229,
       "predicted_winner": "Duke Blue Devils",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -22762,7 +22773,18 @@
         "pace_diff": 0.9548174442190884,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 90,
+      "away_score": 47,
+      "actual_winner": "Duke Blue Devils",
+      "correct": 1,
+      "brier": 0.0016162762132003433,
+      "log_loss": 0.04103341047930193,
+      "verified_start_time_utc": "2026-11-14T01:00:00+00:00",
+      "settled_at_utc": "2026-11-14T03:11:29.406160+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&limit=1000&groups=50",
+      "result_source_event_sha256": "9b6af3c284a7486b3e69ad1a6cc567bc51a3b0294c43acd53191ccc930fa4add"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401916297",
@@ -22904,7 +22926,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7497040804682672,
       "predicted_winner": "UCF Knights",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -22920,7 +22942,18 @@
         "pace_diff": -0.6117633928571422,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 84,
+      "away_score": 70,
+      "actual_winner": "UCF Knights",
+      "correct": 1,
+      "brier": 0.06264804733423567,
+      "log_loss": 0.2880767096864558,
+      "verified_start_time_utc": "2026-11-14T01:00:00+00:00",
+      "settled_at_utc": "2026-11-14T03:11:29.406160+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&limit=1000&groups=50",
+      "result_source_event_sha256": "eba10fe1a730b40c955b41841f940371398872757b82244269c72c368a085633"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401925686",
@@ -22938,7 +22971,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8420889249657191,
       "predicted_winner": "Tarleton State Texans",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -22954,7 +22987,18 @@
         "pace_diff": 1.4857700892857224,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 73,
+      "away_score": 69,
+      "actual_winner": "Tarleton State Texans",
+      "correct": 1,
+      "brier": 0.0249359076184823,
+      "log_loss": 0.17186965871808135,
+      "verified_start_time_utc": "2026-11-14T01:00:00+00:00",
+      "settled_at_utc": "2026-11-14T03:11:29.406160+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&limit=1000&groups=50",
+      "result_source_event_sha256": "cab2749f3aa55e1f4ceddf1fd696c8e90eef125c7e19bbfbb8772a70e5bc7f2b"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401927374",
@@ -65885,5 +65929,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-14T03:06:20.674197+00:00"
+  "results_checked_at_utc": "2026-11-14T03:11:29.406160+00:00"
 }
