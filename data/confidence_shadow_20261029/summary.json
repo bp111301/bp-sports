@@ -1,100 +1,100 @@
 {
   "version": "confidence_shadow_20261029",
-  "as_of_utc": "2026-11-14T19:15:40.092743+00:00",
+  "as_of_utc": "2026-11-14T23:04:52.534251+00:00",
   "status": "prospective_confidence_research_only",
   "comparison": "fresh reference and confidence challenger on the same captured inputs; original first forecasts unchanged",
   "results": {
     "cfb": {
       "captured_games": 234,
-      "paired_settled_games": 123,
-      "pending_games": 111,
+      "paired_settled_games": 139,
+      "pending_games": 95,
       "required_new_paired_finals_before_review": 200,
       "minimum_review_sample_reached": false,
       "production_promoted": false,
       "metrics": {
         "reference": {
           "overall": {
-            "games": 123,
-            "wins": 86,
-            "losses": 37,
-            "accuracy": 0.6991869918699187,
-            "mean_confidence": 0.7348117308068909,
-            "confidence_minus_accuracy": 0.035624738936972156,
+            "games": 139,
+            "wins": 96,
+            "losses": 43,
+            "accuracy": 0.6906474820143885,
+            "mean_confidence": 0.7336348232058459,
+            "confidence_minus_accuracy": 0.04298734119145742,
             "accuracy_ci95": [
-              0.6131159096641785,
-              0.7731931130763079
+              0.6095459841941793,
+              0.761494751720803
             ],
-            "brier": 0.19051506998034226,
-            "log_loss": 0.5601837246588617
+            "brier": 0.19398347914628206,
+            "log_loss": 0.5681891965696909
           },
           "buckets": [
             {
-              "games": 19,
+              "games": 21,
               "wins": 10,
-              "losses": 9,
-              "accuracy": 0.5263157894736842,
-              "mean_confidence": 0.5376648843112091,
-              "confidence_minus_accuracy": 0.011349094837524887,
+              "losses": 11,
+              "accuracy": 0.47619047619047616,
+              "mean_confidence": 0.5346587741454405,
+              "confidence_minus_accuracy": 0.05846829795496433,
               "accuracy_ci95": [
-                0.3170780924511316,
-                0.7267019483882042
+                0.2834400610153417,
+                0.6763046541715557
               ],
-              "brier": 0.24777902604430593,
-              "log_loss": 0.6887005254788845,
+              "brier": 0.2485781538526256,
+              "log_loss": 0.6902994391422158,
               "bucket": "50%\u201360%",
               "lower": 0.5,
               "upper": 0.6,
               "limited_sample": true
             },
             {
-              "games": 29,
-              "wins": 15,
+              "games": 32,
+              "wins": 18,
               "losses": 14,
-              "accuracy": 0.5172413793103449,
-              "mean_confidence": 0.6521506248252226,
-              "confidence_minus_accuracy": 0.1349092455148777,
+              "accuracy": 0.5625,
+              "mean_confidence": 0.6502578948330926,
+              "confidence_minus_accuracy": 0.0877578948330926,
               "accuracy_ci95": [
-                0.34431021881994717,
-                0.6861390984731652
+                0.3932559113685198,
+                0.7183466888495963
               ],
-              "brier": 0.27162431645373725,
-              "log_loss": 0.739199375190646,
+              "brier": 0.25887207561312775,
+              "log_loss": 0.7129411140097526,
               "bucket": "60%\u201370%",
               "lower": 0.6,
               "upper": 0.7,
               "limited_sample": true
             },
             {
-              "games": 37,
-              "wins": 27,
-              "losses": 10,
-              "accuracy": 0.7297297297297297,
-              "mean_confidence": 0.7507159974711483,
-              "confidence_minus_accuracy": 0.02098626774141854,
+              "games": 44,
+              "wins": 30,
+              "losses": 14,
+              "accuracy": 0.6818181818181818,
+              "mean_confidence": 0.7507936371988844,
+              "confidence_minus_accuracy": 0.0689754553807026,
               "accuracy_ci95": [
-                0.5702183167528573,
-                0.8460253848895091
+                0.5344310393781777,
+                0.8000069228914657
               ],
-              "brier": 0.1949820203828457,
-              "log_loss": 0.5776706994285974,
+              "brier": 0.22134851178255818,
+              "log_loss": 0.637268541621797,
               "bucket": "70%\u201380%",
               "lower": 0.7,
               "upper": 0.8,
               "limited_sample": true
             },
             {
-              "games": 21,
-              "wins": 19,
+              "games": 25,
+              "wins": 23,
               "losses": 2,
-              "accuracy": 0.9047619047619048,
-              "mean_confidence": 0.8436933398887309,
-              "confidence_minus_accuracy": -0.061068564873173914,
+              "accuracy": 0.92,
+              "mean_confidence": 0.8457777429536452,
+              "confidence_minus_accuracy": -0.07422225704635488,
               "accuracy_ci95": [
-                0.7108586092608176,
-                0.9734812325619255
+                0.7503389104960468,
+                0.9777795987151524
               ],
-              "brier": 0.0879542879071652,
-              "log_loss": 0.32191566391460713,
+              "brier": 0.07732997188037068,
+              "log_loss": 0.29526468696726965,
               "bucket": "80%\u201390%",
               "lower": 0.8,
               "upper": 0.9,
@@ -119,58 +119,40 @@
               "limited_sample": true
             }
           ],
-          "ece": 0.05647741962537318
+          "ece": 0.06968599480525421
         },
         "confidence_challenger": {
           "overall": {
-            "games": 123,
-            "wins": 86,
-            "losses": 37,
-            "accuracy": 0.6991869918699187,
-            "mean_confidence": 0.7322332547982685,
-            "confidence_minus_accuracy": 0.03304626292834978,
+            "games": 139,
+            "wins": 96,
+            "losses": 43,
+            "accuracy": 0.6906474820143885,
+            "mean_confidence": 0.7316638831455954,
+            "confidence_minus_accuracy": 0.04101640113120686,
             "accuracy_ci95": [
-              0.6131159096641785,
-              0.7731931130763079
+              0.6095459841941793,
+              0.761494751720803
             ],
-            "brier": 0.19017803194479363,
-            "log_loss": 0.5600876340058656
+            "brier": 0.1935543989468334,
+            "log_loss": 0.5676101297457146
           },
           "buckets": [
             {
-              "games": 19,
+              "games": 21,
               "wins": 9,
-              "losses": 10,
-              "accuracy": 0.47368421052631576,
-              "mean_confidence": 0.5441066313795242,
-              "confidence_minus_accuracy": 0.07042242085320843,
+              "losses": 12,
+              "accuracy": 0.42857142857142855,
+              "mean_confidence": 0.5414503885606566,
+              "confidence_minus_accuracy": 0.11287895998922809,
               "accuracy_ci95": [
-                0.2732980516117956,
-                0.6829219075488682
+                0.2446996892537596,
+                0.6345344563069328
               ],
-              "brier": 0.25685754495249985,
-              "log_loss": 0.7070853034170653,
+              "brier": 0.25777760095798735,
+              "log_loss": 0.7089057923897999,
               "bucket": "50%\u201360%",
               "lower": 0.5,
               "upper": 0.6,
-              "limited_sample": true
-            },
-            {
-              "games": 31,
-              "wins": 20,
-              "losses": 11,
-              "accuracy": 0.6451612903225806,
-              "mean_confidence": 0.6509483748417152,
-              "confidence_minus_accuracy": 0.0057870845191345666,
-              "accuracy_ci95": [
-                0.46947954064368874,
-                0.788833409061346
-              ],
-              "brier": 0.22557139996706158,
-              "log_loss": 0.6429252862182141,
-              "bucket": "60%\u201370%",
-              "lower": 0.6,
-              "upper": 0.7,
               "limited_sample": true
             },
             {
@@ -178,82 +160,100 @@
               "wins": 24,
               "losses": 11,
               "accuracy": 0.6857142857142857,
-              "mean_confidence": 0.749979263667674,
-              "confidence_minus_accuracy": 0.06426497795338826,
+              "mean_confidence": 0.6509910547202183,
+              "confidence_minus_accuracy": -0.03472323099406738,
               "accuracy_ci95": [
                 0.5202023638793081,
                 0.8144915532573418
               ],
-              "brier": 0.2081978020780675,
-              "log_loss": 0.6032290897655284,
+              "brier": 0.21375998105384958,
+              "log_loss": 0.6185336810182125,
+              "bucket": "60%\u201370%",
+              "lower": 0.6,
+              "upper": 0.7,
+              "limited_sample": true
+            },
+            {
+              "games": 41,
+              "wins": 26,
+              "losses": 15,
+              "accuracy": 0.6341463414634146,
+              "mean_confidence": 0.7507624785201686,
+              "confidence_minus_accuracy": 0.116616137056754,
+              "accuracy_ci95": [
+                0.4812070108791201,
+                0.7641016898031056
+              ],
+              "brier": 0.23663347087273162,
+              "log_loss": 0.6676754789151328,
               "bucket": "70%\u201380%",
               "lower": 0.7,
               "upper": 0.8,
               "limited_sample": true
             },
             {
-              "games": 23,
-              "wins": 20,
+              "games": 26,
+              "wins": 23,
               "losses": 3,
-              "accuracy": 0.8695652173913043,
-              "mean_confidence": 0.8448739937454006,
-              "confidence_minus_accuracy": -0.024691223645903704,
+              "accuracy": 0.8846153846153846,
+              "mean_confidence": 0.8459715868894049,
+              "confidence_minus_accuracy": -0.0386437977259797,
               "accuracy_ci95": [
-                0.6787251772990404,
-                0.9546234090636876
+                0.7102409678828635,
+                0.9599675537638938
               ],
-              "brier": 0.10711826416501434,
-              "log_loss": 0.36273542570801626,
+              "brier": 0.09729395900590047,
+              "log_loss": 0.3391015119936333,
               "bucket": "80%\u201390%",
               "lower": 0.8,
               "upper": 0.9,
               "limited_sample": true
             },
             {
-              "games": 15,
-              "wins": 13,
+              "games": 16,
+              "wins": 14,
               "losses": 2,
-              "accuracy": 0.8666666666666667,
-              "mean_confidence": 0.9243925759580058,
-              "confidence_minus_accuracy": 0.05772590929133914,
+              "accuracy": 0.875,
+              "mean_confidence": 0.9231007377378062,
+              "confidence_minus_accuracy": 0.04810073773780621,
               "accuracy_ci95": [
-                0.6211801716767764,
-                0.9626387408969346
+                0.639771727342413,
+                0.9650225122567595
               ],
-              "brier": 0.117883201840368,
-              "log_loss": 0.4046360941303146,
+              "brier": 0.11109482854199788,
+              "log_loss": 0.3856733507172615,
               "bucket": "90%\u2013100%",
               "lower": 0.9,
               "upper": 1,
               "limited_sample": true
             }
           ],
-          "ece": 0.04228037908860645
+          "ece": 0.07295959286743478
         }
       }
     },
     "nhl": {
       "captured_games": 128,
-      "paired_settled_games": 109,
-      "pending_games": 19,
+      "paired_settled_games": 110,
+      "pending_games": 18,
       "required_new_paired_finals_before_review": 300,
       "minimum_review_sample_reached": false,
       "production_promoted": false,
       "metrics": {
         "reference": {
           "overall": {
-            "games": 109,
-            "wins": 69,
+            "games": 110,
+            "wins": 70,
             "losses": 40,
-            "accuracy": 0.6330275229357798,
-            "mean_confidence": 0.5883510553953953,
-            "confidence_minus_accuracy": -0.04467646754038446,
+            "accuracy": 0.6363636363636364,
+            "mean_confidence": 0.5901027398162813,
+            "confidence_minus_accuracy": -0.0462608965473551,
             "accuracy_ci95": [
-              0.5394549671888808,
-              0.7175427737396657
+              0.5432766706052174,
+              0.7202477106771015
             ],
-            "brier": 0.22345106235231407,
-            "log_loss": 0.6374368954990411
+            "brier": 0.2218555534551044,
+            "log_loss": 0.6338886837033033
           },
           "buckets": [
             {
@@ -293,18 +293,18 @@
               "limited_sample": true
             },
             {
-              "games": 7,
-              "wins": 7,
+              "games": 8,
+              "wins": 8,
               "losses": 0,
               "accuracy": 1.0,
-              "mean_confidence": 0.7363081151364749,
-              "confidence_minus_accuracy": -0.26369188486352513,
+              "mean_confidence": 0.741899143456022,
+              "confidence_minus_accuracy": -0.25810085654397796,
               "accuracy_ci95": [
-                0.6456695649333126,
+                0.6755924351161198,
                 1.0
               ],
-              "brier": 0.06988075526971142,
-              "log_loss": 0.30642667671946483,
+              "brier": 0.06713879631840364,
+              "log_loss": 0.29901504187551536,
               "bucket": "70%\u201380%",
               "lower": 0.7,
               "upper": 0.8,
@@ -336,22 +336,22 @@
               "limited_sample": true
             }
           ],
-          "ece": 0.044676467540384415
+          "ece": 0.04626089654735499
         },
         "confidence_challenger": {
           "overall": {
-            "games": 109,
-            "wins": 69,
+            "games": 110,
+            "wins": 70,
             "losses": 40,
-            "accuracy": 0.6330275229357798,
-            "mean_confidence": 0.5866903603383928,
-            "confidence_minus_accuracy": -0.04633716259738696,
+            "accuracy": 0.6363636363636364,
+            "mean_confidence": 0.5884207647607631,
+            "confidence_minus_accuracy": -0.04794287160287325,
             "accuracy_ci95": [
-              0.5394549671888808,
-              0.7175427737396657
+              0.5432766706052174,
+              0.7202477106771015
             ],
-            "brier": 0.22288227977613767,
-            "log_loss": 0.6362874218701747
+            "brier": 0.22130801777400816,
+            "log_loss": 0.6327963551417624
           },
           "buckets": [
             {
@@ -391,18 +391,18 @@
               "limited_sample": true
             },
             {
-              "games": 7,
-              "wins": 7,
+              "games": 8,
+              "wins": 8,
               "losses": 0,
               "accuracy": 1.0,
-              "mean_confidence": 0.7307209865618677,
-              "confidence_minus_accuracy": -0.2692790134381323,
+              "mean_confidence": 0.7365102190915243,
+              "confidence_minus_accuracy": -0.26348978090847575,
               "accuracy_ci95": [
-                0.6456695649333126,
+                0.6755924351161198,
                 1.0
               ],
-              "brier": 0.07273691599008006,
-              "log_loss": 0.3139321323700524,
+              "brier": 0.06985898393405654,
+              "log_loss": 0.3062243760418971,
               "bucket": "70%\u201380%",
               "lower": 0.7,
               "upper": 0.8,
@@ -434,7 +434,7 @@
               "limited_sample": true
             }
           ],
-          "ece": 0.046337162597387016
+          "ece": 0.04794287160287331
         }
       }
     }
