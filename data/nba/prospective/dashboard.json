@@ -3,7 +3,7 @@
   "missing_upcoming_game_ids": [],
   "new_prediction_rows": 0,
   "feed_status": "enabled",
-  "updated_at_utc": "2026-11-14T05:55:35.517190+00:00",
+  "updated_at_utc": "2026-11-14T06:39:58.172111+00:00",
   "season": 2027,
   "regular_season_only": true,
   "weights_frozen": true,
@@ -6539,14 +6539,14 @@
       "season_type": 2,
       "source_receipt_sha256": "ebf83baf05d5dbd9b835e0ad68d0d71a10ef96e60a2e621aaca06ee5f4f6369a",
       "start_time_utc": "2026-11-14T03:00:00+00:00",
-      "home_score": 107.0,
-      "away_score": 120.0,
       "actual_home_win": 0,
       "actual_start_time_utc": "2026-11-14T03:00:00+00:00",
+      "away_score": 120.0,
+      "home_score": 107.0,
+      "result_source_event_sha256": "8cbb6f1f1041230ebdb948c2a5ec75500ffe1126627b01492deb572b71891cc7",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=20261113&limit=1000",
       "settled_at_utc": "2026-11-14T05:55:35.517190+00:00",
       "source_state": "post_completed",
-      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=20261113&limit=1000",
-      "result_source_event_sha256": "8cbb6f1f1041230ebdb948c2a5ec75500ffe1126627b01492deb572b71891cc7",
       "status": "settled"
     },
     {
@@ -6579,8 +6579,15 @@
       "season_type": 2,
       "source_receipt_sha256": "ebf83baf05d5dbd9b835e0ad68d0d71a10ef96e60a2e621aaca06ee5f4f6369a",
       "start_time_utc": "2026-11-14T03:30:00+00:00",
-      "status": "pending",
-      "actual_home_win": null
+      "home_score": 113.0,
+      "away_score": 112.0,
+      "actual_home_win": 1,
+      "actual_start_time_utc": "2026-11-14T03:30:00+00:00",
+      "settled_at_utc": "2026-11-14T06:39:58.172111+00:00",
+      "source_state": "post_completed",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=20261113&limit=1000",
+      "result_source_event_sha256": "0b28525fc155489df0128d2d34ac2d368defcf6178aff3f0f651b1ebebef5abc",
+      "status": "settled"
     },
     {
       "away_id": "7",
@@ -6749,14 +6756,14 @@
     }
   ],
   "record": {
-    "games": 168,
+    "games": 169,
     "correct": 121,
-    "accuracy": 0.7202380952380952,
-    "brier": 0.19450398185177353,
-    "log_loss": 0.5712096601014771
+    "accuracy": 0.7159763313609467,
+    "brier": 0.19602345625208079,
+    "log_loss": 0.5744219494182327
   },
   "prediction_blocked_reason": null,
   "forecast_rule": "First pregame snapshot within 36 hours; earlier-date results only",
   "grading": "Confirmed final checks run separately from forecast builds",
-  "results_checked_at_utc": "2026-11-14T05:55:35.517190+00:00"
+  "results_checked_at_utc": "2026-11-14T06:39:58.172111+00:00"
 }
