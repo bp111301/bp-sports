@@ -24153,7 +24153,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.8126246186437056,
     "predicted_winner": "Bellarmine Knights",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -24169,7 +24169,18 @@
       "pace_diff": -2.292976190476182,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 64,
+    "away_score": 72,
+    "actual_winner": "Northern Illinois Huskies",
+    "correct": 0,
+    "brier": 0.660358770825828,
+    "log_loss": 1.6746412873043717,
+    "verified_start_time_utc": "2026-11-14T19:00:00+00:00",
+    "settled_at_utc": "2026-11-14T21:02:46.600668+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+    "result_source_event_sha256": "b9ca370a58d9850e17a343aaedfecca91ab977623093f52cf21088a6b28b2b0a"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401921096",
