@@ -3,7 +3,7 @@
   "missing_upcoming_game_ids": [],
   "new_prediction_rows": 0,
   "feed_status": "enabled",
-  "updated_at_utc": "2026-11-14T05:02:05.743562+00:00",
+  "updated_at_utc": "2026-11-14T05:07:09.840681+00:00",
   "season": 2027,
   "regular_season_only": true,
   "weights_frozen": true,
@@ -6499,8 +6499,15 @@
       "season_type": 2,
       "source_receipt_sha256": "ebf83baf05d5dbd9b835e0ad68d0d71a10ef96e60a2e621aaca06ee5f4f6369a",
       "start_time_utc": "2026-11-14T02:30:00+00:00",
-      "status": "pending",
-      "actual_home_win": null
+      "home_score": 123.0,
+      "away_score": 85.0,
+      "actual_home_win": 1,
+      "actual_start_time_utc": "2026-11-14T02:30:00+00:00",
+      "settled_at_utc": "2026-11-14T05:07:09.840681+00:00",
+      "source_state": "post_completed",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=20261113&limit=1000",
+      "result_source_event_sha256": "96f8728769c66578f9a0180d3373664b6ae8eabe9123304d53d0215863c80f61",
+      "status": "settled"
     },
     {
       "away_id": "22",
@@ -6735,14 +6742,14 @@
     }
   ],
   "record": {
-    "games": 166,
-    "correct": 119,
-    "accuracy": 0.7168674698795181,
-    "brier": 0.19605909853017295,
-    "log_loss": 0.5745339007532806
+    "games": 167,
+    "correct": 120,
+    "accuracy": 0.718562874251497,
+    "brier": 0.19530410811341567,
+    "log_loss": 0.5729333650834986
   },
   "prediction_blocked_reason": null,
   "forecast_rule": "First pregame snapshot within 36 hours; earlier-date results only",
   "grading": "Confirmed final checks run separately from forecast builds",
-  "results_checked_at_utc": "2026-11-14T05:02:05.743562+00:00"
+  "results_checked_at_utc": "2026-11-14T05:07:09.840681+00:00"
 }
