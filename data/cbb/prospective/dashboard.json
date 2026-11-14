@@ -2,14 +2,14 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-14T18:07:08.087463+00:00",
+  "updated_at_utc": "2026-11-14T18:10:51.443721+00:00",
   "coverage": {
-    "source_games_in_horizon": 1548
+    "source_games_in_horizon": 1543
   },
   "excluded": {
-    "tipoff_time_unconfirmed": 27,
     "division_or_conference_unknown": 288,
-    "not_scheduled": 3
+    "tipoff_time_unconfirmed": 27,
+    "not_scheduled": 2
   },
   "grading_issues": [
     {
@@ -23,9 +23,9 @@
   ],
   "capture_blocked_reason": null,
   "summary": {
-    "saved_games": 1780,
+    "saved_games": 1781,
     "settled_games": 546,
-    "pending_games": 1234,
+    "pending_games": 1235,
     "wins": 423,
     "losses": 123,
     "accuracy": 0.7747252747252747,
@@ -66522,13 +66522,47 @@
         "rest_diff": 0.0,
         "experience_diff": -0.287682072451781
       }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401922235",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401922235",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "2529",
+      "away_team_id": "2511",
+      "home_team": "Sacred Heart Pioneers",
+      "away_team": "Queens University Royals",
+      "neutral_site": false,
+      "start_time_utc": "2026-12-14T16:00:00+00:00",
+      "created_at_utc": "2026-11-14T18:10:51.443721+00:00",
+      "home_win_prob": 0.5674292482282975,
+      "predicted_winner": "Sacred Heart Pioneers",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "9d0de2a10259b3a450e23495e0c0fd3cd426d2cae8737359b869ab505cd2eee7",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": -87.82453443072063,
+        "home_advantage": 1.0,
+        "off_eff_diff": -9.361452117620601,
+        "def_eff_diff": -10.172494108665447,
+        "efg_diff": -0.05609844194802671,
+        "tov_rate_diff": 0.015591044568303153,
+        "orb_rate_diff": -0.01878219088693145,
+        "ft_rate_diff": -0.048907635001993466,
+        "pace_diff": -3.971559343434336,
+        "rest_diff": 0.0,
+        "experience_diff": -0.2231435513142097
+      }
     }
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "32174ceafbd3e1fdfba73735dab95c629220e111edd166c7ba539b138ddea7a8",
-    "bytes": 567136,
-    "archive_sha256": "47dac80050870a6487ec21d2e3732e29f012668fb680dfd99a4ae7682155c301",
+    "sha256": "9d0de2a10259b3a450e23495e0c0fd3cd426d2cae8737359b869ab505cd2eee7",
+    "bytes": 580627,
+    "archive_sha256": "37be2b0feef15259a848137051793341c5d86c18459ad1daa69d421e22dc6074",
     "live_schedule_sources": [
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&groups=50&limit=1000",
@@ -66537,12 +66571,12 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&groups=50&limit=1000",
-        "sha256": "71a4f215db4cbf112365947f0eff931c168f158d793f0b93cd0a70e348da074b",
+        "sha256": "8155b0248cfdd11605a46e2d62cb0f92ecdf542de029eff8ad3f0924aef6bec0",
         "games": 71
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&groups=50&limit=1000",
-        "sha256": "a8cc32a6731fc779bb32c6b32c5eafb01d04ece90cc8b24df120d270a289734b",
+        "sha256": "6e2dc81ad1c1cc3051eeb5449b3b5f81a8dcf6a7902888880b6cf70a719b30f3",
         "games": 45
       },
       {
@@ -66684,6 +66718,11 @@
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261213&groups=50&limit=1000",
         "sha256": "bd15a60608af6037e537da3ef4223401b7d4d4583a7a3e4f441fad0a5765551d",
         "games": 36
+      },
+      {
+        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261214&groups=50&limit=1000",
+        "sha256": "aef15d992deb4ad5963bafa5e2f75e45ddadcca3f664534cc5db83c711bf2cb0",
+        "games": 16
       }
     ],
     "identity_conflicts": []
@@ -66778,6 +66817,5 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ],
-  "results_checked_at_utc": "2026-11-14T18:07:08.087463+00:00"
+  ]
 }
