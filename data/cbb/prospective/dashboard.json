@@ -2,14 +2,14 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-14T22:28:17.353977+00:00",
+  "updated_at_utc": "2026-11-14T22:30:36.341971+00:00",
   "coverage": {
-    "source_games_in_horizon": 1543
+    "source_games_in_horizon": 1514
   },
   "excluded": {
-    "division_or_conference_unknown": 288,
-    "tipoff_time_unconfirmed": 27,
-    "not_scheduled": 2
+    "division_or_conference_unknown": 284,
+    "tipoff_time_unconfirmed": 25,
+    "not_scheduled": 1
   },
   "grading_issues": [
     {
@@ -23,14 +23,14 @@
   ],
   "capture_blocked_reason": null,
   "summary": {
-    "saved_games": 1781,
-    "settled_games": 561,
-    "pending_games": 1220,
-    "wins": 431,
+    "saved_games": 1784,
+    "settled_games": 562,
+    "pending_games": 1222,
+    "wins": 432,
     "losses": 130,
-    "accuracy": 0.768270944741533,
-    "brier": 0.16154369455476336,
-    "log_loss": 0.4925271125224111
+    "accuracy": 0.7686832740213523,
+    "brier": 0.16158703886826428,
+    "log_loss": 0.49265458162843706
   },
   "predictions": [
     {
@@ -24943,7 +24943,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.568835067819432,
       "predicted_winner": "Youngstown State Penguins",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -24959,7 +24959,16 @@
         "pace_diff": -1.8104282536151288,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 74,
+      "away_score": 71,
+      "actual_winner": "Youngstown State Penguins",
+      "correct": 1,
+      "brier": 0.18590319874227376,
+      "log_loss": 0.564164750109015,
+      "verified_start_time_utc": "2026-11-14T18:00:00+00:00",
+      "settled_at_utc": "2026-11-14T22:30:36.341971+00:00"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401925827",
@@ -66721,11 +66730,113 @@
         "rest_diff": 0.0,
         "experience_diff": -0.2231435513142097
       }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401934396",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401934396",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "279",
+      "away_team_id": "2005",
+      "home_team": "Pacific Tigers",
+      "away_team": "Air Force Falcons",
+      "neutral_site": false,
+      "start_time_utc": "2026-11-15T21:00:00+00:00",
+      "created_at_utc": "2026-11-14T22:30:36.341971+00:00",
+      "home_win_prob": 0.9335635790803112,
+      "predicted_winner": "Pacific Tigers",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "fe1937f773eeb522618ffb46189e6bc1681b267874bfdff800ca1eb7bb0fccf1",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": 118.91081326500762,
+        "home_advantage": 1.0,
+        "off_eff_diff": 8.055099071749865,
+        "def_eff_diff": -16.386628696037278,
+        "efg_diff": 0.028339654943519754,
+        "tov_rate_diff": 0.005704543014426605,
+        "orb_rate_diff": 0.09280633229245833,
+        "ft_rate_diff": -0.11387303283141909,
+        "pace_diff": -4.591068548387113,
+        "rest_diff": -1.0,
+        "experience_diff": -0.287682072451781
+      }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401926183",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401926183",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "2492",
+      "away_team_id": "2430",
+      "home_team": "Pepperdine Waves",
+      "away_team": "UNC Greensboro Spartans",
+      "neutral_site": false,
+      "start_time_utc": "2026-11-24T02:30:00+00:00",
+      "created_at_utc": "2026-11-14T22:30:36.341971+00:00",
+      "home_win_prob": 0.5386947021108257,
+      "predicted_winner": "Pepperdine Waves",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "fe1937f773eeb522618ffb46189e6bc1681b267874bfdff800ca1eb7bb0fccf1",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": -71.103108566434,
+        "home_advantage": 1.0,
+        "off_eff_diff": -7.2633789988184105,
+        "def_eff_diff": -3.9037706961953234,
+        "efg_diff": -0.027930303589574823,
+        "tov_rate_diff": 0.018459859916345384,
+        "orb_rate_diff": 0.012420916898015555,
+        "ft_rate_diff": -0.018221689310913003,
+        "pace_diff": 2.0613958333333358,
+        "rest_diff": -2.0,
+        "experience_diff": 0.0
+      }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401920138",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401920138",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "2492",
+      "away_team_id": "2934",
+      "home_team": "Pepperdine Waves",
+      "away_team": "Cal State Bakersfield Roadrunners",
+      "neutral_site": false,
+      "start_time_utc": "2026-11-26T01:00:00+00:00",
+      "created_at_utc": "2026-11-14T22:30:36.341971+00:00",
+      "home_win_prob": 0.6056782935376606,
+      "predicted_winner": "Pepperdine Waves",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "fe1937f773eeb522618ffb46189e6bc1681b267874bfdff800ca1eb7bb0fccf1",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": -10.662818559104835,
+        "home_advantage": 1.0,
+        "off_eff_diff": -2.5962772027504997,
+        "def_eff_diff": -0.11712116095304737,
+        "efg_diff": -0.007986692144575924,
+        "tov_rate_diff": 0.0014174175086182073,
+        "orb_rate_diff": 0.005861386673576163,
+        "ft_rate_diff": -0.08686252099096975,
+        "pace_diff": -1.7540000000000049,
+        "rest_diff": 1.0,
+        "experience_diff": 0.0
+      }
     }
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "9d0de2a10259b3a450e23495e0c0fd3cd426d2cae8737359b869ab505cd2eee7",
+    "sha256": "fe1937f773eeb522618ffb46189e6bc1681b267874bfdff800ca1eb7bb0fccf1",
     "bytes": 580627,
     "archive_sha256": "37be2b0feef15259a848137051793341c5d86c18459ad1daa69d421e22dc6074",
     "live_schedule_sources": [
@@ -66736,13 +66847,13 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&groups=50&limit=1000",
-        "sha256": "8155b0248cfdd11605a46e2d62cb0f92ecdf542de029eff8ad3f0924aef6bec0",
+        "sha256": "dda3da2b9c83c4794956ec994061bdd3f9ff0c2d33fc19cb58d5760c6cbc43fa",
         "games": 71
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&groups=50&limit=1000",
-        "sha256": "6e2dc81ad1c1cc3051eeb5449b3b5f81a8dcf6a7902888880b6cf70a719b30f3",
-        "games": 45
+        "sha256": "6acfaef3367fc49c02ca99c9e86a41a8f6f4ca61627a184f66194343d0789e9e",
+        "games": 46
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261116&groups=50&limit=1000",
@@ -66781,7 +66892,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261123&groups=50&limit=1000",
-        "sha256": "b27d6142c51afbc251cb8105d746c7f9894b46f7ff3d63f949118be60940de8a",
+        "sha256": "016ecb0b7bd41024da9b0a838b8e2d092365c2e119a9d645fceee8492dedff49",
         "games": 46
       },
       {
@@ -66791,7 +66902,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261125&groups=50&limit=1000",
-        "sha256": "abe1bb964270e3c6ce89e0bf8ea1d9c620c429a20485a283f01146a50cba600e",
+        "sha256": "d027b7ef58c1f5b017bbf1c909d2b0711fd61f9ab425807d36df74d8d5dda35f",
         "games": 69
       },
       {
@@ -66982,6 +67093,5 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ],
-  "results_checked_at_utc": "2026-11-14T22:28:17.353977+00:00"
+  ]
 }
