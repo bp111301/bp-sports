@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-14T22:46:46.088322+00:00",
+  "updated_at_utc": "2026-11-14T22:53:23.116187+00:00",
   "coverage": {
     "source_games_in_horizon": 1514
   },
@@ -24,13 +24,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1784,
-    "settled_games": 564,
-    "pending_games": 1220,
-    "wins": 432,
-    "losses": 132,
-    "accuracy": 0.7659574468085106,
-    "brier": 0.16387919212846538,
-    "log_loss": 0.4994080706854818
+    "settled_games": 566,
+    "pending_games": 1218,
+    "wins": 433,
+    "losses": 133,
+    "accuracy": 0.765017667844523,
+    "brier": 0.16381185388827746,
+    "log_loss": 0.4992243118885557
   },
   "predictions": [
     {
@@ -24546,7 +24546,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8414298649026547,
       "predicted_winner": "St. Bonaventure Bonnies",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -24562,7 +24562,18 @@
         "pace_diff": 0.8662878787879009,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 81,
+      "away_score": 58,
+      "actual_winner": "St. Bonaventure Bonnies",
+      "correct": 1,
+      "brier": 0.02514448774479034,
+      "log_loss": 0.1726526141572469,
+      "verified_start_time_utc": "2026-11-14T21:00:00+00:00",
+      "settled_at_utc": "2026-11-14T22:53:23.116187+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+      "result_source_event_sha256": "4853e8470bdd6c7f9e1e2713fc882e86854de18a47c98c308bf7b28eafdc214b"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401918979",
@@ -24761,7 +24772,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.5142960748107778,
       "predicted_winner": "Detroit Mercy Titans",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -24777,7 +24788,18 @@
         "pace_diff": 0.2780208333333434,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 72,
+      "away_score": 85,
+      "actual_winner": "Toledo Rockets",
+      "correct": 0,
+      "brier": 0.26450045256577315,
+      "log_loss": 0.7221560481534736,
+      "verified_start_time_utc": "2026-11-14T21:00:00+00:00",
+      "settled_at_utc": "2026-11-14T22:53:23.116187+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+      "result_source_event_sha256": "71d5d3e0a8c06e9b234e08baab5ca0253b41fffc3d61d2ed6320a38cc03f5a38"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920741",
@@ -67116,5 +67138,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-14T22:46:46.088322+00:00"
+  "results_checked_at_utc": "2026-11-14T22:53:23.116187+00:00"
 }
