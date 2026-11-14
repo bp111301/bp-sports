@@ -23792,7 +23792,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.9365904834759792,
     "predicted_winner": "Akron Zips",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -23808,7 +23808,18 @@
       "pace_diff": 2.776562499999997,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 65,
+    "away_score": 63,
+    "actual_winner": "Akron Zips",
+    "correct": 1,
+    "brier": 0.00402076678581007,
+    "log_loss": 0.06550914299755632,
+    "verified_start_time_utc": "2026-11-14T17:00:00+00:00",
+    "settled_at_utc": "2026-11-14T19:12:38.486825+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+    "result_source_event_sha256": "f9f90c7f55e239875299be7e626a8c93c86da10df1d38d85a1c0a07a5b2cb099"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401920074",
