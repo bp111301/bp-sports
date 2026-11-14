@@ -23848,7 +23848,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.5822161430203813,
     "predicted_winner": "George Mason Patriots",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -23864,7 +23864,18 @@
       "pace_diff": -5.387676411290315,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 61,
+    "away_score": 62,
+    "actual_winner": "Bradley Braves",
+    "correct": 0,
+    "brier": 0.3389756371935291,
+    "log_loss": 0.8727910687592828,
+    "verified_start_time_utc": "2026-11-14T18:00:00+00:00",
+    "settled_at_utc": "2026-11-14T20:08:02.457798+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+    "result_source_event_sha256": "ea9b230da05c41f445b4757536ead1bffd100fd89b6381fec4b96a46166e9169"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401922031",
