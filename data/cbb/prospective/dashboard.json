@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-14T03:56:42.722475+00:00",
+  "updated_at_utc": "2026-11-14T04:01:49.876370+00:00",
   "coverage": {
     "source_games_in_horizon": 1584
   },
@@ -24,13 +24,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1761,
-    "settled_games": 531,
-    "pending_games": 1230,
-    "wins": 411,
-    "losses": 120,
-    "accuracy": 0.7740112994350282,
-    "brier": 0.15636286842602426,
-    "log_loss": 0.4788665330627205
+    "settled_games": 533,
+    "pending_games": 1228,
+    "wins": 412,
+    "losses": 121,
+    "accuracy": 0.7729831144465291,
+    "brier": 0.15682167244260697,
+    "log_loss": 0.4797743403606366
   },
   "predictions": [
     {
@@ -23332,7 +23332,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9160335028784945,
       "predicted_winner": "Arizona State Sun Devils",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -23348,7 +23348,18 @@
         "pace_diff": -0.7210227272727536,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 92,
+      "away_score": 62,
+      "actual_winner": "Arizona State Sun Devils",
+      "correct": 1,
+      "brier": 0.007050372638855791,
+      "log_loss": 0.08770233978199993,
+      "verified_start_time_utc": "2026-11-14T02:00:00+00:00",
+      "settled_at_utc": "2026-11-14T04:01:49.876370+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&limit=1000&groups=50",
+      "result_source_event_sha256": "68686c38317b2a8dc1fdc94f626c90a2e1d69b5e33ee6c7a0e23aa66c4eca543"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920123",
@@ -58475,7 +58486,7 @@
       "created_at_utc": "2026-11-09T06:41:38.799620+00:00",
       "home_win_prob": 0.7417667457171243,
       "predicted_winner": "Northwestern Wildcats",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "feaae64b14715c99598403226be55095ec7f8ab07855a1d4dc03fe69f3aef1f4",
       "forecast_stage": "early_research_prior",
@@ -58491,7 +58502,18 @@
         "pace_diff": -3.2325551470587897,
         "rest_diff": -1.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 47,
+      "away_score": 67,
+      "actual_winner": "DePaul Blue Demons",
+      "correct": 0,
+      "brier": 0.5502179050517729,
+      "log_loss": 1.3538920161327064,
+      "verified_start_time_utc": "2026-11-14T02:00:00+00:00",
+      "settled_at_utc": "2026-11-14T04:01:49.876370+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&limit=1000&groups=50",
+      "result_source_event_sha256": "d49947c675c9c05d2e69a630bcbf9f563fa5293179f534db976b11d7b7ecea53"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921090",
@@ -65973,5 +65995,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-14T03:56:42.722475+00:00"
+  "results_checked_at_utc": "2026-11-14T04:01:49.876370+00:00"
 }
