@@ -1,5 +1,5 @@
 """Read-only cross-sport prospective dashboard. Parallel experiments stay separate."""
-UI_REVISION="efficient-feeds-20261115"
+UI_REVISION="forecast-health-20261115"
 from concurrent.futures import ThreadPoolExecutor
 from urllib.request import Request,urlopen
 import io,json,math,html
@@ -175,6 +175,23 @@ def freshness(sport,stamp,now):
     if pd.isna(stamp) or stamp>now:return 'Update time unavailable','unknown'
     if now-stamp>pd.Timedelta(hours=LIMITS[sport]):return 'Update overdue','warning'
     return 'Feed verified','good'
+
+def forecast_health(sport,payload,now):
+    """Producer heartbeat is separate from immutable snapshot and grading times."""
+    key,field={'NFL':('nfl_update','captured_at_utc'),'CFB':('cfb_update','generated_at_utc'),
+               'NHL':('nhl_update','as_of_utc'),'NBA':('nba','updated_at_utc'),
+               'CBB':('cbb','updated_at_utc')}[sport]
+    source=payload.get(key,{})
+    if not source.get('ok') or not isinstance(source.get('data'),dict):
+        return pd.NaT,'Forecast check unavailable','unknown'
+    data=source['data'];checked=ts(data.get(field))
+    state,cls=freshness(sport,checked,now)
+    if cls=='warning':state='Forecast checks overdue'
+    if data.get('capture_blocked_reason') or data.get('prediction_blocked_reason'):
+        state,cls='Forecast capture blocked','warning'
+    elif data.get('missing_upcoming_game_ids'):
+        state,cls='Upcoming forecasts missing','warning'
+    return checked,state,cls
 
 def table(headers,rows):
     return '<div class="ov-table-wrap"><table class="ov-table"><thead><tr>'+''.join('<th>'+esc(x)+'</th>' for x in headers)+'</tr></thead><tbody>'+''.join('<tr>'+''.join('<td>'+esc(x)+'</td>' for x in r)+'</tr>' for r in rows)+'</tbody></table></div>'
@@ -528,7 +545,7 @@ def render_overview(now=None):
     with tabs[0]:
         cards=[]
         for sport,group in PRIMARY.items():
-            key='nhl' if sport=='NHL' else sport.lower();ok=available[key];b=board[board.group==group];m=metrics(b);state,cls=freshness(sport,updates[sport],now)
+            key='nhl' if sport=='NHL' else sport.lower();ok=available[key];b=board[board.group==group];m=metrics(b);forecast_checked,state,cls=forecast_health(sport,payload,now)
             if not ok:state,cls='Feed unavailable','unknown'
             elif sport=='CBB' and len(b) and not m['games'] and b.start.min()>now and cls=='good':state='Awaiting season'
             record=f"{m['wins']}–{m['losses']}" if ok else '—';accuracy=f"{m['accuracy']*100:.1f}%" if ok and m['games'] else '—';pending = b.loc[~b.settled.astype(bool)]
@@ -540,7 +557,7 @@ def render_overview(now=None):
             update_label = 'Forecast refreshed' if is_forecast_time else 'Latest saved forecast'
             if is_forecast_time and cls == 'warning':
                 state = 'Forecast update overdue'
-            checked_line = ''
+            forecast_line = '' if is_forecast_time else f'<div class="ov-update-line"><span>Forecasts checked</span><span>{esc(ct(forecast_checked))}</span></div>'
             receipt = payload.get(key+'_results', {}).get('data')
             checked = pd.NaT
             if isinstance(receipt, dict) and receipt.get('sport') == key and receipt.get('status') == 'success':
@@ -549,7 +566,7 @@ def render_overview(now=None):
             checked_line = f'<div class="ov-update-line"><span>Results checked</span><span>{esc(checked_text)}</span></div>'
             if isinstance(receipt,dict) and receipt.get('status') in ('failed','degraded'):
                 checked_line += '<div class="ov-update-line">Some result checks failed; verified results remain available.</div>'
-            cards.append(f'<div class="ov-sport" style="--accent:{COLORS[sport]}"><div class="ov-top"><div class="ov-name">{sport}</div><div class="ov-tag">{tag}</div></div><div class="ov-score">{record}</div><div class="ov-caption">{sub}</div><div class="ov-details"><div class="ov-detail"><b>{m["games"] if ok else "—"}</b><span>Graded</span></div><div class="ov-detail"><b>{upcoming if ok else "—"}</b><span>Upcoming</span></div><div class="ov-detail"><b>{accuracy}</b><span>Accuracy</span></div></div><div class="ov-update"><div class="ov-update-line"><span>{update_label}</span><span>{esc(ct(updates[sport]))}</span></div>{checked_line}<div class="ov-update-line"><span>Awaiting grading</span><span>{awaiting_grading if ok else "—"}</span></div><span class="ov-status {cls}">{state}</span></div></div>')
+            cards.append(f'<div class="ov-sport" style="--accent:{COLORS[sport]}"><div class="ov-top"><div class="ov-name">{sport}</div><div class="ov-tag">{tag}</div></div><div class="ov-score">{record}</div><div class="ov-caption">{sub}</div><div class="ov-details"><div class="ov-detail"><b>{m["games"] if ok else "—"}</b><span>Graded</span></div><div class="ov-detail"><b>{upcoming if ok else "—"}</b><span>Upcoming</span></div><div class="ov-detail"><b>{accuracy}</b><span>Accuracy</span></div></div><div class="ov-update"><div class="ov-update-line"><span>{update_label}</span><span>{esc(ct(updates[sport]))}</span></div>{forecast_line}{checked_line}<div class="ov-update-line"><span>Awaiting grading</span><span>{awaiting_grading if ok else "—"}</span></div><span class="ov-status {cls}">{state}</span></div></div>')
         sports=list(PRIMARY)
         for offset in range(0,len(cards),2):
             columns=st.columns(2,gap='small')

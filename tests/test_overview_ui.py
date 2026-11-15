@@ -156,3 +156,27 @@ def test_overview_renders_with_empty_forecast_feeds():
         app = AppTest.from_string('import overview_ui as ov\nov.render_overview("2026-11-11T03:40:00Z")').run()
     assert not app.exception
     assert any('Feed unavailable' in m.value for m in app.markdown)
+
+
+def test_recent_forecast_check_with_old_snapshots_is_healthy_without_changing_record():
+    from tests.test_cbb_overview import feed
+    now=pd.Timestamp.now(tz='UTC')
+    data=feed();data['updated_at_utc']=(now-pd.Timedelta(minutes=10)).isoformat()
+    data['predictions'][0].update(status='settled',actual_home_win=1,start_time_utc=(now-pd.Timedelta(hours=1)).isoformat())
+    payload={'cbb':dict(ok=True,data=data),'cbb_results':dict(ok=True,data=dict(sport='cbb',status='success',checked_at_utc=now.isoformat()))}
+    before=copy.deepcopy(payload)
+    with patch('overview_ui.load_overview',return_value=payload),patch('game_center_ui.load_scores',return_value={}):
+        app=AppTest.from_string(f'import overview_ui as ov\nov.render_overview("{now.isoformat()}")').run()
+    assert not app.exception
+    card=next(m.value for m in app.markdown if '<div class="ov-name">CBB</div>' in m.value)
+    assert 'Latest saved forecast' in card and 'Forecasts checked' in card and 'Feed verified' in card
+    assert 'overdue' not in card.lower() and '1–0' in card
+    assert payload==before
+    data['updated_at_utc']=(now-pd.Timedelta(days=2)).isoformat()
+    assert ov.forecast_health('CBB',payload,now)[1:] == ('Forecast checks overdue','warning')
+    data['capture_blocked_reason']='missing_stats'
+    assert ov.forecast_health('CBB',payload,now)[1:] == ('Forecast capture blocked','warning')
+    data['capture_blocked_reason']=None;data['updated_at_utc']=(now+pd.Timedelta(hours=1)).isoformat()
+    assert ov.forecast_health('CBB',payload,now)[2]=='unknown'
+    del data['updated_at_utc']
+    assert ov.forecast_health('CBB',payload,now)[2]=='unknown'

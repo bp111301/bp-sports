@@ -11,7 +11,7 @@ from matchup_preview_ui import render_preview
 from matchup_details_ui import details_button
 from cfb_board_ui import dated_board, date_choices, games_on_date, date_label
 import game_center_ui
-if getattr(game_center_ui,"UI_REVISION",None)!="efficient-feeds-20261115":
+if getattr(game_center_ui,"UI_REVISION",None)!="forecast-health-20261115":
     importlib.reload(game_center_ui)
     # Rebind score-loader imports retained by an existing Streamlit process.
     for name in ('overview_ui','nfl_availability_ui','cbb_ui','compact_board_ui','nhl_ui','nba_ui'):
@@ -230,7 +230,7 @@ sport = st.radio("Sport", ["Overview", "NFL", "CFB", "NHL", "NBA", "CBB"], horiz
 
 def current_ui(module):
     # Streamlit can retain imported modules during a deployment rerun. Reload once per UI revision.
-    expected={'overview_ui':'efficient-feeds-20261115','compact_board_ui':'efficient-feeds-20261115',
+    expected={'overview_ui':'forecast-health-20261115','compact_board_ui':'efficient-feeds-20261115',
               'cbb_ui':'efficient-feeds-20261115','nfl_availability_ui':'efficient-feeds-20261115',
               'nhl_ui':'optional-goalies-20261115'}.get(module.__name__,'mobile-layout-20261007')
     if getattr(module,"UI_REVISION",None)!=expected:module=importlib.reload(module)
@@ -291,8 +291,11 @@ elif sport == "NFL":
             provisional_mask = pred["prediction_status"].astype(str).str.startswith("PROVISIONAL")
             locked = pred[~provisional_mask]
             provisional = pred[provisional_mask]
-            avg_conf = pred["v4_adjusted_confidence"].mean() * 100
-            strong_count = int((pred["v4_adjusted_confidence"] >= .60).sum())
+            availability = nfl_availability_ui.load_availability()
+            review_mask = pred.game_id.map(lambda gid: bool(nfl_availability_ui.context_for(gid,availability).get('qb_review_required')))
+            trusted = pred.loc[~review_mask]
+            avg_conf = f'{trusted["v4_adjusted_confidence"].mean()*100:.1f}%' if len(trusted) else 'Review'
+            strong_count = int((trusted["v4_adjusted_confidence"] >= .60).sum())
             risk_count = sum(
                 is_true(r.get("turnover_risk_flag", False)) or
                 is_true(r.get("early_down_risk_flag", False))
@@ -306,24 +309,27 @@ elif sport == "NFL":
                   <div class="hero-copy">Frozen V4 ranks every matchup independently of betting markets. Quarterback context lives in the core model; explosive plays, turnovers and early-down efficiency can adjust confidence without changing the selected winner.</div>
                   <div class="stat-grid">
                     <div class="stat"><div class="stat-v">{len(pred)}</div><div class="stat-l">Games tracked</div></div>
-                    <div class="stat"><div class="stat-v">{len(locked)}</div><div class="stat-l">Early locks</div></div>
+                    <div class="stat"><div class="stat-v">{int((~provisional_mask & ~review_mask).sum())}</div><div class="stat-l">Early locks</div></div>
                     <div class="stat"><div class="stat-v">{strong_count}</div><div class="stat-l">60%+ picks</div></div>
-                    <div class="stat"><div class="stat-v">{avg_conf:.1f}%</div><div class="stat-l">Avg confidence</div></div>
+                    <div class="stat"><div class="stat-v">{avg_conf}</div><div class="stat-l">Avg confidence</div></div>
                   </div>
                 </div>''',
                 unsafe_allow_html=True,
             )
     
-            top = pred.iloc[0]
+            top = trusted.iloc[0] if len(trusted) else pred.iloc[0]
             top_pick = str(top["v4_pick"])
             top_away, top_home = str(top["away_team"]), str(top["home_team"])
+            top_review = bool(review_mask.loc[top.name])
             top_prob = float(top["v4_adjusted_confidence"]) * 100
+            top_value = 'Review' if top_review else f'{top_prob:.1f}%'
+            top_note = 'QB input needs review' if top_review else TEAM_NAMES.get(top_pick, top_pick)+' lead the current frozen V4 board.'
             st.markdown(
                 f'''<div class="spotlight">
                   <div><div class="spot-title">B.P. TOP CONFIDENCE</div>
                   <div class="spot-match">{html.escape(top_away)} @ {html.escape(top_home)} → {html.escape(top_pick)}</div>
-                  <div class="spot-note">{html.escape(TEAM_NAMES.get(top_pick, top_pick))} lead the current frozen V4 board.</div></div>
-                  <div class="spot-prob">{top_prob:.1f}%<small>WIN CONFIDENCE</small></div>
+                  <div class="spot-note">{html.escape(top_note)}</div></div>
+                  <div class="spot-prob">{top_value}<small>WIN CONFIDENCE</small></div>
                 </div>''',
                 unsafe_allow_html=True,
             )
@@ -342,7 +348,7 @@ elif sport == "NFL":
             )
             board = pred
             if filter_choice == "60%+ confidence":
-                board = pred[pred["v4_adjusted_confidence"] >= .60]
+                board = pred[(pred["v4_adjusted_confidence"] >= .60) & ~review_mask]
             elif filter_choice == "Risk flags":
                 mask = pred.apply(
                     lambda r: is_true(r.get("turnover_risk_flag", False))
@@ -369,8 +375,11 @@ elif sport == "NFL":
                     tier, tier_class = confidence_tier(v4)
                     qb_note = r.get("qb_status_flag", "")
     
+                    needs_review = bool(nfl_availability_ui.context_for(r['game_id'],availability).get('qb_review_required')) and r['game_id'] not in nfl_settled
+                    if needs_review:
+                        tier,tier_class='QB REVIEW','tier-toss'
                     badges = []
-                    badges.append('<span class="badge badge-prov">PROVISIONAL</span>' if provisional_flag else '<span class="badge badge-lock">LOCKED SNAPSHOT</span>')
+                    badges.append('<span class="badge badge-warn">QB INPUT NEEDS REVIEW</span>' if needs_review else '<span class="badge badge-prov">PROVISIONAL</span>' if provisional_flag else '<span class="badge badge-lock">LOCKED SNAPSHOT</span>')
                     if is_true(r.get("explosive_extreme", False)):
                         badges.append('<span class="badge badge-warn">⚡ EXPLOSIVE SIGNAL</span>')
                     if is_true(r.get("turnover_risk_flag", False)):
@@ -383,6 +392,15 @@ elif sport == "NFL":
                     core_delta = (v4 - core) * 100
                     layer_text = "Confidence layers: no adjustment" if abs(core_delta) < .05 else f"Confidence layers: {core_delta:+.1f} pts"
                     pick_name = TEAM_NAMES.get(pick, pick)
+                    confidence_value = 'Review' if needs_review else f'{v4*100:.1f}%'
+                    confidence_bar = '' if needs_review else f'<div class="bar"><div class="fill" style="width:{v4*100:.1f}%"></div></div>'
+                    if needs_review:
+                        layer_text = 'The saved forecast uses a QB input that needs review. It remains preserved in the official record.'
+                    model_strip = '' if needs_review else f'''<div class="model-strip">
+                        <div class="model-cell"><div class="m">V3 BASE</div><div class="v">{html.escape(str(r["v3_pick"]))} {v3*100:.1f}%</div></div>
+                        <div class="model-cell"><div class="m">V4 CORE</div><div class="v">{core*100:.1f}%</div></div>
+                        <div class="model-cell"><div class="m">V4 FINAL</div><div class="v">{v4*100:.1f}%</div></div></div>'''
+                    guidance = '' if needs_review else confidence_html(v4,"NFL")
     
                     st.markdown(
                         f'''<div class="card" style="border-left-color:{accent}">
@@ -391,16 +409,12 @@ elif sport == "NFL":
                           <div class="match-row">{team_block(away)}<div class="at">@</div>{team_block(home, True)}</div>
                           <div class="pick-panel">
                             <div><div class="pick-label">B.P. SPORTS V4 PICK</div><div class="pick-name">{html.escape(pick)} • {html.escape(pick_name)}</div></div>
-                            <div class="prob">{v4*100:.1f}%<span>ADJUSTED CONFIDENCE</span></div>
+                            <div class="prob">{confidence_value}<span>ADJUSTED CONFIDENCE</span></div>
                           </div>
-                          <div class="bar"><div class="fill" style="width:{v4*100:.1f}%"></div></div>
+                          {confidence_bar}
                           <div class="badges">{''.join(badges)}</div>
-                          <div class="model-strip">
-                            <div class="model-cell"><div class="m">V3 BASE</div><div class="v">{html.escape(str(r["v3_pick"]))} {v3*100:.1f}%</div></div>
-                            <div class="model-cell"><div class="m">V4 CORE</div><div class="v">{core*100:.1f}%</div></div>
-                            <div class="model-cell"><div class="m">V4 FINAL</div><div class="v">{v4*100:.1f}%</div></div>
-                          </div>
-                          {confidence_html(v4,"NFL")}
+                          {model_strip}
+                          {guidance}
                           <div class="layer-note">{html.escape(layer_text)}</div>
                         </div>''',
                         unsafe_allow_html=True,

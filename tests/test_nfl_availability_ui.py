@@ -47,3 +47,23 @@ def test_official_report_panel_renders_with_pending_inactives(monkeypatch):
         nfl_availability_ui.render_availability('g')
     app=AppTest.from_function(panel).run()
     assert not app.exception and len(app.dataframe)==1
+
+
+def test_detailed_nfl_card_does_not_advertise_a_reviewed_probability(monkeypatch):
+    from pathlib import Path
+    import overview_ui
+    monkeypatch.setattr(overview_ui,'load_overview',lambda keys=None: {})
+    # The local saved board is read-only; only supply review context for its IDs.
+    pred=pd.read_csv('data/current/website_feed.csv')
+    ledger=pd.read_csv('data/ledger/prediction_ledger.csv')
+    settled=set(ledger.loc[ledger.settlement_status.isin(['final','tie']),'game_id'])
+    game=str(pred.loc[~pred.game_id.isin(settled)].iloc[0].game_id)
+    monkeypatch.setattr(ui,'load_availability',lambda: {'games':{game:{'qb_review_required':True}}})
+    app=AppTest.from_file(Path('app.py').resolve(),default_timeout=30).run()
+    app.radio(key='bp_sport').set_value('NFL').run()
+    app.radio(key='bp_board_view').set_value('Detailed').run()
+    assert not app.exception
+    card=next(m.value for m in app.markdown if 'class="card"' in m.value and game in m.value)
+    assert 'QB INPUT NEEDS REVIEW' in card and '>Review<span>' in card
+    assert 'LOCKED SNAPSHOT' not in card and 'ADJUSTED CONFIDENCE' in card
+    assert 'class="model-strip"' not in card and 'class="fill"' not in card
