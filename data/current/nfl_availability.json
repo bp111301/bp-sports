@@ -1,7 +1,7 @@
 {
   "season": 2026,
   "week": 10,
-  "updated_at_utc": "2026-11-11T03:47:47.126753+00:00",
+  "updated_at_utc": "2026-11-15T06:14:35.732084+00:00",
   "games": {
     "2026_06_CHI_ATL": {
       "game_id": "2026_06_CHI_ATL",
@@ -9380,39 +9380,158 @@
       "home_team": "DET",
       "away_team": "NE",
       "kickoff_utc": "2026-11-15T14:30:00+00:00",
-      "checked_at_utc": "2026-11-11T03:47:47.126488+00:00",
+      "checked_at_utc": "2026-11-15T06:14:35.291187+00:00",
       "home": {
         "team": "DET",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Jared Goff",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Kerby Joseph",
+            "position": "S",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Cade Mays",
+            "position": "C",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "D.J. Reed",
+            "position": "CB",
+            "injury": "Hip",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Amon-Ra St. Brown",
+            "position": "WR",
+            "injury": "Rib",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Sione Vaki",
+            "position": "RB",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "away": {
         "team": "NE",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Drake Maye",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Ben Brown",
+            "position": "C",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "A.J. Brown",
+            "position": "WR",
+            "injury": "Ankle, Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Kevin Byard",
+            "position": "S",
+            "injury": "Chest",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Carlton Davis III",
+            "position": "CB",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Reggie Gilliam",
+            "position": "FB",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "TreVeyon Henderson",
+            "position": "RB",
+            "injury": "Illness",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Cameron Latu",
+            "position": "TE",
+            "injury": "Back",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Walter Rouse",
+            "position": "T",
+            "injury": "Concussion",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Brenden Schooler",
+            "position": "S",
+            "injury": "Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Rhamondre Stevenson",
+            "position": "RB",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Greg Van Roten",
+            "position": "G",
+            "injury": "Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Charles Woods",
+            "position": "CB",
+            "injury": "Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-11T03:47:47.050211+00:00",
-          "sha256": "4f401d1e1637c200db3a4565e05303ec0d073bb8758a531ca752b8d05deaec7d",
+          "retrieved_at_utc": "2026-11-15T06:14:35.097932+00:00",
+          "sha256": "f1e4b2b061f791ee4d797d2a07360bcbe5900f93002e69a4b45996ac5c95519d",
           "http_status": 200
         }
       ],
@@ -9436,8 +9555,8 @@
         "away_qb_name_assumed": "Drake Maye",
         "away_qb_id_assumed": "00-0039851",
         "kickoff_utc": "2026-11-15T14:30:00.000Z",
-        "captured_at_utc": "2026-11-11T03:47:49.769241+00:00",
-        "availability_checked_at_utc": "2026-11-11T03:47:47.126488+00:00",
+        "captured_at_utc": "2026-11-15T06:14:38.129429+00:00",
+        "availability_checked_at_utc": "2026-11-15T06:14:35.291187+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -9449,39 +9568,116 @@
       "home_team": "ATL",
       "away_team": "KC",
       "kickoff_utc": "2026-11-15T18:00:00+00:00",
-      "checked_at_utc": "2026-11-11T03:47:47.126520+00:00",
+      "checked_at_utc": "2026-11-15T06:14:35.291308+00:00",
       "home": {
         "team": "ATL",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Michael Penix Jr.",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Zachariah Branch",
+            "position": "WR",
+            "injury": "Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Divine Deablo",
+            "position": "LB",
+            "injury": "Forearm",
+            "status": "Doubtful",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Gervon Dexter Sr.",
+            "position": "DT",
+            "injury": "Illness",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "James Pearce Jr.",
+            "position": "DE",
+            "injury": "Back",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Josh Woods",
+            "position": "LB",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "away": {
         "team": "KC",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Patrick Mahomes",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Mansoor Delane",
+            "position": "CB",
+            "injury": "Shoulder",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jaylon Moore",
+            "position": "T",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Omarr Norman-Lott",
+            "position": "DT",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jaydn Ott",
+            "position": "RB",
+            "injury": "Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Kenneth Walker III",
+            "position": "RB",
+            "injury": "Groin",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Peter Woods",
+            "position": "DT",
+            "injury": "Neck",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-11T03:47:47.050211+00:00",
-          "sha256": "4f401d1e1637c200db3a4565e05303ec0d073bb8758a531ca752b8d05deaec7d",
+          "retrieved_at_utc": "2026-11-15T06:14:35.097932+00:00",
+          "sha256": "f1e4b2b061f791ee4d797d2a07360bcbe5900f93002e69a4b45996ac5c95519d",
           "http_status": 200
         }
       ],
@@ -9505,8 +9701,8 @@
         "away_qb_name_assumed": "Patrick Mahomes",
         "away_qb_id_assumed": "00-0033873",
         "kickoff_utc": "2026-11-15T18:00:00.000Z",
-        "captured_at_utc": "2026-11-11T03:47:49.769241+00:00",
-        "availability_checked_at_utc": "2026-11-11T03:47:47.126520+00:00",
+        "captured_at_utc": "2026-11-15T06:14:38.129429+00:00",
+        "availability_checked_at_utc": "2026-11-15T06:14:35.291308+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -9518,39 +9714,137 @@
       "home_team": "CLE",
       "away_team": "HOU",
       "kickoff_utc": "2026-11-15T18:00:00+00:00",
-      "checked_at_utc": "2026-11-11T03:47:47.126545+00:00",
+      "checked_at_utc": "2026-11-15T06:14:35.291367+00:00",
       "home": {
         "team": "CLE",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Deshaun Watson",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Denzel Boston",
+            "position": "WR",
+            "injury": "Toe",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Michael Burton",
+            "position": "FB",
+            "injury": "Calf",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Ronnie Hickman Jr.",
+            "position": "S",
+            "injury": "Concussion",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "away": {
         "team": "HOU",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "C.J. Stroud",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Azeez Al-Shaair",
+            "position": "LB",
+            "injury": "Groin, Not injury related - personal matter",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Will Anderson Jr.",
+            "position": "DE",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Trent Brown",
+            "position": "T",
+            "injury": "Wrist, Illness",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Marvin Harrison Jr.",
+            "position": "WR",
+            "injury": "Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jacob Hummel",
+            "position": "LB",
+            "injury": "Groin",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Danielle Hunter",
+            "position": "DE",
+            "injury": "Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Brevin Jordan",
+            "position": "TE",
+            "injury": "Finger, Foot",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "David Montgomery",
+            "position": "RB",
+            "injury": "Groin",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Keylan Rutledge",
+            "position": "G",
+            "injury": "Neck, Shoulder",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jaylin Smith",
+            "position": "CB",
+            "injury": "Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Wyatt Teller",
+            "position": "G",
+            "injury": "Illness, Back",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-11T03:47:47.050211+00:00",
-          "sha256": "4f401d1e1637c200db3a4565e05303ec0d073bb8758a531ca752b8d05deaec7d",
+          "retrieved_at_utc": "2026-11-15T06:14:35.097932+00:00",
+          "sha256": "f1e4b2b061f791ee4d797d2a07360bcbe5900f93002e69a4b45996ac5c95519d",
           "http_status": 200
         }
       ],
@@ -9574,8 +9868,8 @@
         "away_qb_name_assumed": "C.J. Stroud",
         "away_qb_id_assumed": "00-0039163",
         "kickoff_utc": "2026-11-15T18:00:00.000Z",
-        "captured_at_utc": "2026-11-11T03:47:49.769241+00:00",
-        "availability_checked_at_utc": "2026-11-11T03:47:47.126545+00:00",
+        "captured_at_utc": "2026-11-15T06:14:38.129429+00:00",
+        "availability_checked_at_utc": "2026-11-15T06:14:35.291367+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -9587,39 +9881,179 @@
       "home_team": "GB",
       "away_team": "MIN",
       "kickoff_utc": "2026-11-15T18:00:00+00:00",
-      "checked_at_utc": "2026-11-11T03:47:47.126565+00:00",
+      "checked_at_utc": "2026-11-15T06:14:35.291431+00:00",
       "home": {
         "team": "GB",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Jordan Love",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Chris Brooks",
+            "position": "RB",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Javon Bullard",
+            "position": "S",
+            "injury": "Ankle, Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Zaire Franklin",
+            "position": "LB",
+            "injury": "Shin",
+            "status": "Doubtful",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Travis Glover",
+            "position": "G",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Josh Jacobs",
+            "position": "RB",
+            "injury": "Finger",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Xavier McKinney",
+            "position": "S",
+            "injury": "Foot",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Skyy Moore",
+            "position": "WR",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Micah Parsons",
+            "position": "LB",
+            "injury": "Knee, Illness",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Sean Rhyan",
+            "position": "C",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Lukas Van Ness",
+            "position": "LB",
+            "injury": "Back",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Josh Whyle",
+            "position": "TE",
+            "injury": "Concussion",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Kevin Zeitler",
+            "position": "G",
+            "injury": "Ankle, Triceps",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "away": {
         "team": "MIN",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Kirk Cousins",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Jordan Addison",
+            "position": "WR",
+            "injury": "Thumb",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Blake Cashman",
+            "position": "LB",
+            "injury": "Concussion",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "T.J. Hockenson",
+            "position": "TE",
+            "injury": "Wrist, Chest",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Tyrion Ingram-Dawkins",
+            "position": "DT",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jauan Jennings",
+            "position": "WR",
+            "injury": "Calf",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Josh Metellus",
+            "position": "S",
+            "injury": "Shoulder",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Kyler Murray",
+            "position": "QB",
+            "injury": "Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Kyle Van Noy",
+            "position": "LB",
+            "injury": "Calf",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-11T03:47:47.050211+00:00",
-          "sha256": "4f401d1e1637c200db3a4565e05303ec0d073bb8758a531ca752b8d05deaec7d",
+          "retrieved_at_utc": "2026-11-15T06:14:35.097932+00:00",
+          "sha256": "f1e4b2b061f791ee4d797d2a07360bcbe5900f93002e69a4b45996ac5c95519d",
           "http_status": 200
         }
       ],
@@ -9643,8 +10077,8 @@
         "away_qb_name_assumed": "Kirk Cousins",
         "away_qb_id_assumed": "00-0029604",
         "kickoff_utc": "2026-11-15T18:00:00.000Z",
-        "captured_at_utc": "2026-11-11T03:47:49.769241+00:00",
-        "availability_checked_at_utc": "2026-11-11T03:47:47.126565+00:00",
+        "captured_at_utc": "2026-11-15T06:14:38.129429+00:00",
+        "availability_checked_at_utc": "2026-11-15T06:14:35.291431+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -9656,39 +10090,116 @@
       "home_team": "IND",
       "away_team": "MIA",
       "kickoff_utc": "2026-11-15T18:00:00+00:00",
-      "checked_at_utc": "2026-11-11T03:47:47.126583+00:00",
+      "checked_at_utc": "2026-11-15T06:14:35.291471+00:00",
       "home": {
         "team": "IND",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Daniel Jones",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Mo Alie-Cox",
+            "position": "TE",
+            "injury": "Groin",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jaylon Carlies",
+            "position": "LB",
+            "injury": "Neck",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Akeem Davis-Gaither",
+            "position": "LB",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Will Mallory",
+            "position": "TE",
+            "injury": "Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Luke Rhodes",
+            "position": "LS",
+            "injury": "Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jerry Tillery",
+            "position": "DT",
+            "injury": "Calf",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jalen Travis",
+            "position": "T",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "away": {
         "team": "MIA",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Malik Willis",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Darrell Baker Jr.",
+            "position": "CB",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Chris Bell",
+            "position": "WR",
+            "injury": "Knee",
+            "status": "Doubtful",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Aaron Brewer",
+            "position": "C",
+            "injury": "Concussion",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jared Wayne",
+            "position": "WR",
+            "injury": "Quadricep",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-11T03:47:47.050211+00:00",
-          "sha256": "4f401d1e1637c200db3a4565e05303ec0d073bb8758a531ca752b8d05deaec7d",
+          "retrieved_at_utc": "2026-11-15T06:14:35.097932+00:00",
+          "sha256": "f1e4b2b061f791ee4d797d2a07360bcbe5900f93002e69a4b45996ac5c95519d",
           "http_status": 200
         }
       ],
@@ -9712,8 +10223,8 @@
         "away_qb_name_assumed": "Malik Willis",
         "away_qb_id_assumed": "00-0038128",
         "kickoff_utc": "2026-11-15T18:00:00.000Z",
-        "captured_at_utc": "2026-11-11T03:47:49.769241+00:00",
-        "availability_checked_at_utc": "2026-11-11T03:47:47.126583+00:00",
+        "captured_at_utc": "2026-11-15T06:14:38.129429+00:00",
+        "availability_checked_at_utc": "2026-11-15T06:14:35.291471+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -9725,39 +10236,130 @@
       "home_team": "NO",
       "away_team": "CAR",
       "kickoff_utc": "2026-11-15T18:00:00+00:00",
-      "checked_at_utc": "2026-11-11T03:47:47.126615+00:00",
+      "checked_at_utc": "2026-11-15T06:14:35.291514+00:00",
       "home": {
         "team": "NO",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Tyler Shough",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "CJ Donaldson",
+            "position": "RB",
+            "injury": "Shoulder",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Martin Emerson",
+            "position": "CB",
+            "injury": "Shin",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Travis Etienne",
+            "position": "RB",
+            "injury": "Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Taliese Fuaga",
+            "position": "T",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Erik McCoy",
+            "position": "C",
+            "injury": "Biceps",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Christen Miller",
+            "position": "DT",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "away": {
         "team": "CAR",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Bryce Young",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Jonathon Brooks",
+            "position": "RB",
+            "injury": "Groin",
+            "status": "Doubtful",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Brady Christensen",
+            "position": "G",
+            "injury": "Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Mike Jackson",
+            "position": "CB",
+            "injury": "Groin",
+            "status": "Doubtful",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Will Lee III",
+            "position": "CB",
+            "injury": "Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Xavier Legette",
+            "position": "WR",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Bobby Okereke",
+            "position": "LB",
+            "injury": "Foot",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jaelan Phillips",
+            "position": "LB",
+            "injury": "Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-11T03:47:47.050211+00:00",
-          "sha256": "4f401d1e1637c200db3a4565e05303ec0d073bb8758a531ca752b8d05deaec7d",
+          "retrieved_at_utc": "2026-11-15T06:14:35.097932+00:00",
+          "sha256": "f1e4b2b061f791ee4d797d2a07360bcbe5900f93002e69a4b45996ac5c95519d",
           "http_status": 200
         }
       ],
@@ -9781,8 +10383,8 @@
         "away_qb_name_assumed": "Bryce Young",
         "away_qb_id_assumed": "00-0039150",
         "kickoff_utc": "2026-11-15T18:00:00.000Z",
-        "captured_at_utc": "2026-11-11T03:47:49.769241+00:00",
-        "availability_checked_at_utc": "2026-11-11T03:47:47.126615+00:00",
+        "captured_at_utc": "2026-11-15T06:14:38.129429+00:00",
+        "availability_checked_at_utc": "2026-11-15T06:14:35.291514+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -9794,39 +10396,137 @@
       "home_team": "NYJ",
       "away_team": "BUF",
       "kickoff_utc": "2026-11-15T18:00:00+00:00",
-      "checked_at_utc": "2026-11-11T03:47:47.126636+00:00",
+      "checked_at_utc": "2026-11-15T06:14:35.291559+00:00",
       "home": {
         "team": "NYJ",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Geno Smith",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Jarvis Brownlee Jr.",
+            "position": "CB",
+            "injury": "Illness",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Omar Cooper Jr.",
+            "position": "WR",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Adonai Mitchell",
+            "position": "WR",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Joseph Ossai",
+            "position": "DE",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "VJ Payne",
+            "position": "S",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Harrison Phillips",
+            "position": "DT",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Trevin Wallace",
+            "position": "LB",
+            "injury": "Groin",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Garrett Wilson",
+            "position": "WR",
+            "injury": "Concussion",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Nahshon Wright",
+            "position": "CB",
+            "injury": "Back",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "away": {
         "team": "BUF",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Josh Allen",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Christian Benford",
+            "position": "CB",
+            "injury": "Wrist",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Spencer Brown",
+            "position": "T",
+            "injury": "Ankle",
+            "status": "Doubtful",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Sam Franklin Jr.",
+            "position": "S",
+            "injury": "Shoulder",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jordan Hancock",
+            "position": "CB",
+            "injury": "Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Tyrell Shavers",
+            "position": "WR",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-11T03:47:47.050211+00:00",
-          "sha256": "4f401d1e1637c200db3a4565e05303ec0d073bb8758a531ca752b8d05deaec7d",
+          "retrieved_at_utc": "2026-11-15T06:14:35.097932+00:00",
+          "sha256": "f1e4b2b061f791ee4d797d2a07360bcbe5900f93002e69a4b45996ac5c95519d",
           "http_status": 200
         }
       ],
@@ -9850,8 +10550,8 @@
         "away_qb_name_assumed": "Josh Allen",
         "away_qb_id_assumed": "00-0034857",
         "kickoff_utc": "2026-11-15T18:00:00.000Z",
-        "captured_at_utc": "2026-11-11T03:47:49.769241+00:00",
-        "availability_checked_at_utc": "2026-11-11T03:47:47.126636+00:00",
+        "captured_at_utc": "2026-11-15T06:14:38.129429+00:00",
+        "availability_checked_at_utc": "2026-11-15T06:14:35.291559+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -9863,39 +10563,109 @@
       "home_team": "TEN",
       "away_team": "JAX",
       "kickoff_utc": "2026-11-15T18:00:00+00:00",
-      "checked_at_utc": "2026-11-11T03:47:47.126652+00:00",
+      "checked_at_utc": "2026-11-15T06:14:35.291595+00:00",
       "home": {
         "team": "TEN",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Cam Ward",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Cody Barton",
+            "position": "LB",
+            "injury": "Concussion",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Anthony Hill Jr.",
+            "position": "LB",
+            "injury": "Neck",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Peter Skoronski",
+            "position": "G",
+            "injury": "Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Tyjae Spears",
+            "position": "RB",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Carnell Tate",
+            "position": "WR",
+            "injury": "Shoulder",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Tommy Townsend",
+            "position": "P",
+            "injury": "Knee, Achilles",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "away": {
         "team": "JAX",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Trevor Lawrence",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Jessie Bates",
+            "position": "S",
+            "injury": "Not injury related - resting player",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jordan Davis",
+            "position": "DT",
+            "injury": "Not injury related - resting player",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "BJ Green II",
+            "position": "DE",
+            "injury": "Forearm",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Robert Hainsey",
+            "position": "C",
+            "injury": "Concussion",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-11T03:47:47.050211+00:00",
-          "sha256": "4f401d1e1637c200db3a4565e05303ec0d073bb8758a531ca752b8d05deaec7d",
+          "retrieved_at_utc": "2026-11-15T06:14:35.097932+00:00",
+          "sha256": "f1e4b2b061f791ee4d797d2a07360bcbe5900f93002e69a4b45996ac5c95519d",
           "http_status": 200
         }
       ],
@@ -9919,8 +10689,8 @@
         "away_qb_name_assumed": "Trevor Lawrence",
         "away_qb_id_assumed": "00-0036971",
         "kickoff_utc": "2026-11-15T18:00:00.000Z",
-        "captured_at_utc": "2026-11-11T03:47:49.769241+00:00",
-        "availability_checked_at_utc": "2026-11-11T03:47:47.126652+00:00",
+        "captured_at_utc": "2026-11-15T06:14:38.129429+00:00",
+        "availability_checked_at_utc": "2026-11-15T06:14:35.291595+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -9932,39 +10702,151 @@
       "home_team": "ARI",
       "away_team": "LA",
       "kickoff_utc": "2026-11-15T21:05:00+00:00",
-      "checked_at_utc": "2026-11-11T03:47:47.126669+00:00",
+      "checked_at_utc": "2026-11-15T06:14:35.291639+00:00",
       "home": {
         "team": "ARI",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Gardner Minshew",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Zachary Carter",
+            "position": "DT",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Hjalte Froholdt",
+            "position": "C",
+            "injury": "Concussion",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jon Gaines II",
+            "position": "G",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Hunter Long",
+            "position": "TE",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Roy Lopez",
+            "position": "DT",
+            "injury": "Toe, Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Max Melton",
+            "position": "CB",
+            "injury": "Knee, Hand",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Darius Robinson",
+            "position": "DT",
+            "injury": "Wrist",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jayden Williams",
+            "position": "T",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Andrew Wingard",
+            "position": "S",
+            "injury": "Groin",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "away": {
         "team": "LA",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Matthew Stafford",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Davis Allen",
+            "position": "TE",
+            "injury": "Oblique",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Steve Avila",
+            "position": "G",
+            "injury": "Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Joe Cardona",
+            "position": "LS",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Kam Curl",
+            "position": "S",
+            "injury": "Toe",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Terrance Ferguson",
+            "position": "TE",
+            "injury": "Ankle, Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Myles Garrett",
+            "position": "LB",
+            "injury": "Knee, Not injury related - resting player",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Trent McDuffie",
+            "position": "CB",
+            "injury": "Back",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-11T03:47:47.050211+00:00",
-          "sha256": "4f401d1e1637c200db3a4565e05303ec0d073bb8758a531ca752b8d05deaec7d",
+          "retrieved_at_utc": "2026-11-15T06:14:35.097932+00:00",
+          "sha256": "f1e4b2b061f791ee4d797d2a07360bcbe5900f93002e69a4b45996ac5c95519d",
           "http_status": 200
         }
       ],
@@ -9988,8 +10870,8 @@
         "away_qb_name_assumed": "Matthew Stafford",
         "away_qb_id_assumed": "00-0026498",
         "kickoff_utc": "2026-11-15T21:05:00.000Z",
-        "captured_at_utc": "2026-11-11T03:47:49.769241+00:00",
-        "availability_checked_at_utc": "2026-11-11T03:47:47.126669+00:00",
+        "captured_at_utc": "2026-11-15T06:14:38.129429+00:00",
+        "availability_checked_at_utc": "2026-11-15T06:14:35.291639+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -10001,67 +10883,103 @@
       "home_team": "LV",
       "away_team": "SEA",
       "kickoff_utc": "2026-11-15T21:05:00+00:00",
-      "checked_at_utc": "2026-11-11T03:47:47.126686+00:00",
+      "checked_at_utc": "2026-11-15T06:14:35.731826+00:00",
       "home": {
         "team": "LV",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Fernando Mendoza",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Thomas Booker",
+            "position": "DT",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Dont'e Thornton Jr.",
+            "position": "WR",
+            "injury": "Back",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "away": {
         "team": "SEA",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Sam Darnold",
-        "qb_status": "Unknown",
-        "qb_review_required": false,
+        "qb_status": "Out",
+        "qb_review_required": true,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Charles Cross",
+            "position": "T",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Sam Darnold",
+            "position": "QB",
+            "injury": "Ribs, Quadricep",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Quenton Nelson",
+            "position": "G",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Leonard Williams",
+            "position": "DT",
+            "injury": "Stinger",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
-      "qb_review_required": false,
+      "qb_review_required": true,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-11T03:47:47.050211+00:00",
-          "sha256": "4f401d1e1637c200db3a4565e05303ec0d073bb8758a531ca752b8d05deaec7d",
+          "retrieved_at_utc": "2026-11-15T06:14:35.097932+00:00",
+          "sha256": "f1e4b2b061f791ee4d797d2a07360bcbe5900f93002e69a4b45996ac5c95519d",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/drew-lock-no-injury-designation-seahawks-raiders",
+          "retrieved_at_utc": "2026-11-15T06:14:35.315181+00:00",
+          "sha256": "e1818c4d74ed7854950847b7071ba0f8fcad5337bca3fe8ab61c7586df5f289d",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-15T06:14:35.525111+00:00",
+          "sha256": "a8a86df9be83cdf88d0dadb47f09fb4a3c5db326e19b46cf20bdade38e3e024d",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-wednesday-nov-11",
+          "retrieved_at_utc": "2026-11-15T06:14:35.663301+00:00",
+          "sha256": "2f612c6dae6e2e7cb4bec1e3228967d4e190c31caca1869093c0909b9f9a3820",
           "http_status": 200
         }
       ],
-      "near_kickoff_check": false,
-      "latest_forecast": {
-        "game_id": "2026_10_SEA_LV",
-        "away_team": "SEA",
-        "home_team": "LV",
-        "v3_pick": "SEA",
-        "v3_confidence": 0.634215864044802,
-        "v4_pick": "SEA",
-        "v4_core_confidence": 0.639899866111988,
-        "v4_adjusted_confidence": 0.616163686427321,
-        "explosive_extreme": true,
-        "turnover_risk_flag": false,
-        "early_down_risk_flag": true,
-        "prediction_status": "EARLY_LOCK",
-        "qb_status_flag": "",
-        "home_qb_name_assumed": "Fernando Mendoza",
-        "home_qb_id_assumed": "00-0041562",
-        "away_qb_name_assumed": "Sam Darnold",
-        "away_qb_id_assumed": "00-0034869",
-        "kickoff_utc": "2026-11-15T21:05:00.000Z",
-        "captured_at_utc": "2026-11-11T03:47:49.769241+00:00",
-        "availability_checked_at_utc": "2026-11-11T03:47:47.126686+00:00",
-        "qb_input_review_required": false,
-        "bundle_version": "BP_V4_2026_FROZEN_20261005"
-      }
+      "near_kickoff_check": false
     },
     "2026_10_SF_DAL": {
       "game_id": "2026_10_SF_DAL",
@@ -10070,39 +10988,190 @@
       "home_team": "DAL",
       "away_team": "SF",
       "kickoff_utc": "2026-11-15T21:25:00+00:00",
-      "checked_at_utc": "2026-11-11T03:47:47.126702+00:00",
+      "checked_at_utc": "2026-11-15T06:14:35.731946+00:00",
       "home": {
         "team": "DAL",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Dak Prescott",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "DaRon Bland",
+            "position": "CB",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jonathan Bullard",
+            "position": "DT",
+            "injury": "Calf",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Alijah Clark",
+            "position": "S",
+            "injury": "Illness",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Donovan Ezeiruaku",
+            "position": "LB",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jake Ferguson",
+            "position": "TE",
+            "injury": "Knee, Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Tyler Goodson",
+            "position": "RB",
+            "injury": "Ankle, Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "P.J. Locke",
+            "position": "S",
+            "injury": "Concussion",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jonathan Mingo",
+            "position": "WR",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Devin Moore",
+            "position": "CB",
+            "injury": "Hip",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Joey Porter Jr.",
+            "position": "CB",
+            "injury": "Ankle, Foot",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Juanyeh Thomas",
+            "position": "S",
+            "injury": "Hamstring",
+            "status": "Doubtful",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "away": {
         "team": "SF",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Brock Purdy",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Mike Evans",
+            "position": "WR",
+            "injury": "Achilles",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Renardo Green",
+            "position": "CB",
+            "injury": "Back",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Dre Greenlaw",
+            "position": "LB",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Nate Hobbs",
+            "position": "CB",
+            "injury": "Groin",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Deommodore Lenoir",
+            "position": "CB",
+            "injury": "Foot",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Upton Stout",
+            "position": "CB",
+            "injury": "Shoulder, Neck",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "C.J. West",
+            "position": "DT",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Trent Williams",
+            "position": "T",
+            "injury": "Shoulder",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-11T03:47:47.050211+00:00",
-          "sha256": "4f401d1e1637c200db3a4565e05303ec0d073bb8758a531ca752b8d05deaec7d",
+          "retrieved_at_utc": "2026-11-15T06:14:35.097932+00:00",
+          "sha256": "f1e4b2b061f791ee4d797d2a07360bcbe5900f93002e69a4b45996ac5c95519d",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/drew-lock-no-injury-designation-seahawks-raiders",
+          "retrieved_at_utc": "2026-11-15T06:14:35.315181+00:00",
+          "sha256": "e1818c4d74ed7854950847b7071ba0f8fcad5337bca3fe8ab61c7586df5f289d",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-15T06:14:35.525111+00:00",
+          "sha256": "a8a86df9be83cdf88d0dadb47f09fb4a3c5db326e19b46cf20bdade38e3e024d",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-wednesday-nov-11",
+          "retrieved_at_utc": "2026-11-15T06:14:35.663301+00:00",
+          "sha256": "2f612c6dae6e2e7cb4bec1e3228967d4e190c31caca1869093c0909b9f9a3820",
           "http_status": 200
         }
       ],
@@ -10126,8 +11195,8 @@
         "away_qb_name_assumed": "Brock Purdy",
         "away_qb_id_assumed": "00-0037834",
         "kickoff_utc": "2026-11-15T21:25:00.000Z",
-        "captured_at_utc": "2026-11-11T03:47:49.769241+00:00",
-        "availability_checked_at_utc": "2026-11-11T03:47:47.126702+00:00",
+        "captured_at_utc": "2026-11-15T06:14:38.129429+00:00",
+        "availability_checked_at_utc": "2026-11-15T06:14:35.731946+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -10139,39 +11208,92 @@
       "home_team": "CIN",
       "away_team": "PIT",
       "kickoff_utc": "2026-11-16T01:20:00+00:00",
-      "checked_at_utc": "2026-11-11T03:47:47.126720+00:00",
+      "checked_at_utc": "2026-11-15T06:14:35.731985+00:00",
       "home": {
         "team": "CIN",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Joe Burrow",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Jalen Davis",
+            "position": "CB",
+            "injury": "Hamstring",
+            "status": "Doubtful",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Kyle Dugger",
+            "position": "S",
+            "injury": "Quadricep",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Andrei Iosivas",
+            "position": "WR",
+            "injury": "Thumb",
+            "status": "Doubtful",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Brian Parker II",
+            "position": "G",
+            "injury": "Knee",
+            "status": "Doubtful",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "away": {
         "team": "PIT",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Aaron Rodgers",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Derrick Harmon",
+            "position": "DT",
+            "injury": "Foot",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-11T03:47:47.050211+00:00",
-          "sha256": "4f401d1e1637c200db3a4565e05303ec0d073bb8758a531ca752b8d05deaec7d",
+          "retrieved_at_utc": "2026-11-15T06:14:35.097932+00:00",
+          "sha256": "f1e4b2b061f791ee4d797d2a07360bcbe5900f93002e69a4b45996ac5c95519d",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/drew-lock-no-injury-designation-seahawks-raiders",
+          "retrieved_at_utc": "2026-11-15T06:14:35.315181+00:00",
+          "sha256": "e1818c4d74ed7854950847b7071ba0f8fcad5337bca3fe8ab61c7586df5f289d",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-15T06:14:35.525111+00:00",
+          "sha256": "a8a86df9be83cdf88d0dadb47f09fb4a3c5db326e19b46cf20bdade38e3e024d",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-wednesday-nov-11",
+          "retrieved_at_utc": "2026-11-15T06:14:35.663301+00:00",
+          "sha256": "2f612c6dae6e2e7cb4bec1e3228967d4e190c31caca1869093c0909b9f9a3820",
           "http_status": 200
         }
       ],
@@ -10195,8 +11317,8 @@
         "away_qb_name_assumed": "Aaron Rodgers",
         "away_qb_id_assumed": "00-0023459",
         "kickoff_utc": "2026-11-16T01:20:00.000Z",
-        "captured_at_utc": "2026-11-11T03:47:49.769241+00:00",
-        "availability_checked_at_utc": "2026-11-11T03:47:47.126720+00:00",
+        "captured_at_utc": "2026-11-15T06:14:38.129429+00:00",
+        "availability_checked_at_utc": "2026-11-15T06:14:35.731985+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -10208,39 +11330,141 @@
       "home_team": "BAL",
       "away_team": "LAC",
       "kickoff_utc": "2026-11-17T01:15:00+00:00",
-      "checked_at_utc": "2026-11-11T03:47:47.126737+00:00",
+      "checked_at_utc": "2026-11-15T06:14:35.732054+00:00",
       "home": {
         "team": "BAL",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Tyler Huntley",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Jaylinn Hawkins",
+            "position": "S",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Adam Randall",
+            "position": "RB",
+            "injury": "Neck, Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "away": {
         "team": "LAC",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Justin Herbert",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": []
+        "players": [
+          {
+            "name": "Kayode Awosika",
+            "position": "G",
+            "injury": "Fibula",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Justin Eboigbe",
+            "position": "DE",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Ladd McConkey",
+            "position": "WR",
+            "injury": "Back",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "David Njoku",
+            "position": "TE",
+            "injury": "Fibula",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Denzel Perryman",
+            "position": "LB",
+            "injury": "Pectoral",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Trey Pipkins",
+            "position": "T",
+            "injury": "Not injury related - personal matter, Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Branson Taylor",
+            "position": "G",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Brenen Thompson",
+            "position": "WR",
+            "injury": "Hamstring",
+            "status": "Doubtful",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Isas Waxter",
+            "position": "CB",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Kendall Williamson",
+            "position": "S",
+            "injury": "Calf",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-11T03:47:47.050211+00:00",
-          "sha256": "4f401d1e1637c200db3a4565e05303ec0d073bb8758a531ca752b8d05deaec7d",
+          "retrieved_at_utc": "2026-11-15T06:14:35.097932+00:00",
+          "sha256": "f1e4b2b061f791ee4d797d2a07360bcbe5900f93002e69a4b45996ac5c95519d",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/drew-lock-no-injury-designation-seahawks-raiders",
+          "retrieved_at_utc": "2026-11-15T06:14:35.315181+00:00",
+          "sha256": "e1818c4d74ed7854950847b7071ba0f8fcad5337bca3fe8ab61c7586df5f289d",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-15T06:14:35.525111+00:00",
+          "sha256": "a8a86df9be83cdf88d0dadb47f09fb4a3c5db326e19b46cf20bdade38e3e024d",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-wednesday-nov-11",
+          "retrieved_at_utc": "2026-11-15T06:14:35.663301+00:00",
+          "sha256": "2f612c6dae6e2e7cb4bec1e3228967d4e190c31caca1869093c0909b9f9a3820",
           "http_status": 200
         }
       ],
@@ -10264,8 +11488,8 @@
         "away_qb_name_assumed": "Justin Herbert",
         "away_qb_id_assumed": "00-0036355",
         "kickoff_utc": "2026-11-17T01:15:00.000Z",
-        "captured_at_utc": "2026-11-11T03:47:49.769241+00:00",
-        "availability_checked_at_utc": "2026-11-11T03:47:47.126737+00:00",
+        "captured_at_utc": "2026-11-15T06:14:38.129429+00:00",
+        "availability_checked_at_utc": "2026-11-15T06:14:35.732054+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -10274,13 +11498,29 @@
   "source_receipts": [
     {
       "url": "https://www.nfl.com/injuries/",
-      "retrieved_at_utc": "2026-11-11T03:47:47.050211+00:00",
-      "sha256": "4f401d1e1637c200db3a4565e05303ec0d073bb8758a531ca752b8d05deaec7d",
+      "retrieved_at_utc": "2026-11-15T06:14:35.097932+00:00",
+      "sha256": "f1e4b2b061f791ee4d797d2a07360bcbe5900f93002e69a4b45996ac5c95519d",
+      "http_status": 200
+    },
+    {
+      "url": "https://www.nfl.com/news/drew-lock-no-injury-designation-seahawks-raiders",
+      "retrieved_at_utc": "2026-11-15T06:14:35.315181+00:00",
+      "sha256": "e1818c4d74ed7854950847b7071ba0f8fcad5337bca3fe8ab61c7586df5f289d",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+      "retrieved_at_utc": "2026-11-15T06:14:35.525111+00:00",
+      "sha256": "a8a86df9be83cdf88d0dadb47f09fb4a3c5db326e19b46cf20bdade38e3e024d",
+      "http_status": 200
+    },
+    {
+      "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-wednesday-nov-11",
+      "retrieved_at_utc": "2026-11-15T06:14:35.663301+00:00",
+      "sha256": "2f612c6dae6e2e7cb4bec1e3228967d4e190c31caca1869093c0909b9f9a3820",
       "http_status": 200
     }
   ],
-  "source_errors": [
-    "Official injury page has a different season/week"
-  ],
+  "source_errors": [],
   "scope": "Official injury reports/inactives and explicit QB starter announcements; no non-QB probability coefficients"
 }
