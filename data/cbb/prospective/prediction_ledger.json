@@ -25266,7 +25266,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.5865587285219316,
     "predicted_winner": "Georgia Tech Yellow Jackets",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -25282,7 +25282,18 @@
       "pace_diff": 3.9198971078976683,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 75,
+    "away_score": 74,
+    "actual_winner": "Georgia Tech Yellow Jackets",
+    "correct": 1,
+    "brier": 0.17093368496140188,
+    "log_loss": 0.5334824820194332,
+    "verified_start_time_utc": "2026-11-14T21:00:00+00:00",
+    "settled_at_utc": "2026-11-15T00:03:54.838218+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+    "result_source_event_sha256": "7dbdd6043729ed354743afcd8bd4d4e971e46f53376896fa62887844203588a9"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401920705",
@@ -46426,7 +46437,7 @@
     "created_at_utc": "2026-10-31T01:18:08.105611+00:00",
     "home_win_prob": 0.8868509776957413,
     "predicted_winner": "Wake Forest Demon Deacons",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "ad93e801be1d2e72bfc862726bd624ed298023ab435c92d54748dfee33ac69a9",
     "forecast_stage": "early_research_prior",
@@ -46442,7 +46453,18 @@
       "pace_diff": -0.890151515151544,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 89,
+    "away_score": 51,
+    "actual_winner": "Wake Forest Demon Deacons",
+    "correct": 1,
+    "brier": 0.012802701248409636,
+    "log_loss": 0.12007831789472684,
+    "verified_start_time_utc": "2026-11-14T21:00:00+00:00",
+    "settled_at_utc": "2026-11-15T00:03:54.838218+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+    "result_source_event_sha256": "0377fe9c5b2c0fe78a7520bba2e62c7cae041bb13558d4f1ff269e907b56cf32"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401921168",
