@@ -25185,7 +25185,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.684575953900783,
     "predicted_winner": "Saint Joseph's Hawks",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -25201,7 +25201,18 @@
       "pace_diff": -1.0601670506912342,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 83,
+    "away_score": 77,
+    "actual_winner": "Saint Joseph's Hawks",
+    "correct": 1,
+    "brier": 0.099492328857601,
+    "log_loss": 0.3789556778079454,
+    "verified_start_time_utc": "2026-11-14T23:30:00+00:00",
+    "settled_at_utc": "2026-11-15T01:44:30.238063+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+    "result_source_event_sha256": "f221a636a60bf4a56f6431a48b66304a434ddd1365deb3d8a77b2cb6c18dcf5c"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401911308",
