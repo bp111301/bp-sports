@@ -23915,7 +23915,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.603189078938319,
     "predicted_winner": "North Dakota Fighting Hawks",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -23931,7 +23931,18 @@
       "pace_diff": -1.3265624999999943,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 71,
+    "away_score": 80,
+    "actual_winner": "Montana Grizzlies",
+    "correct": 0,
+    "brier": 0.3638370649504576,
+    "log_loss": 0.9242953811132679,
+    "verified_start_time_utc": "2026-11-15T02:00:00+00:00",
+    "settled_at_utc": "2026-11-15T04:19:56.229515+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+    "result_source_event_sha256": "d7fa3830de5afae2e6a6286aefe11c94e04c425fe323c487ed49e890aa9b2c76"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401923303",
