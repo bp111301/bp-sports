@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-15T01:54:28.748014+00:00",
+  "updated_at_utc": "2026-11-15T02:04:02.188922+00:00",
   "coverage": {
     "source_games_in_horizon": 1514
   },
@@ -24,13 +24,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1784,
-    "settled_games": 580,
-    "pending_games": 1204,
-    "wins": 445,
-    "losses": 135,
-    "accuracy": 0.7672413793103449,
-    "brier": 0.16279187494877148,
-    "log_loss": 0.49693145025757596
+    "settled_games": 582,
+    "pending_games": 1202,
+    "wins": 446,
+    "losses": 136,
+    "accuracy": 0.7663230240549829,
+    "brier": 0.16285085388463558,
+    "log_loss": 0.4970741838671892
   },
   "predictions": [
     {
@@ -25298,7 +25298,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7468340686716397,
       "predicted_winner": "Wichita State Shockers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -25314,7 +25314,18 @@
         "pace_diff": -1.3209994612068812,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 76,
+      "away_score": 60,
+      "actual_winner": "Wichita State Shockers",
+      "correct": 1,
+      "brier": 0.06409298878535603,
+      "log_loss": 0.2919122488162235,
+      "verified_start_time_utc": "2026-11-15T00:00:00+00:00",
+      "settled_at_utc": "2026-11-15T02:04:02.188922+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+      "result_source_event_sha256": "b09eddf26b884ba96e5081c8082a90c979a7d603362bca9142ec79488e309fea"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401919017",
@@ -25332,7 +25343,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.45610984400791565,
       "predicted_winner": "UAB Blazers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -25348,7 +25359,18 @@
         "pace_diff": -4.9181451612902976,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 71,
+      "away_score": 68,
+      "actual_winner": "Jacksonville State Gamecocks",
+      "correct": 0,
+      "brier": 0.29581650178509383,
+      "log_loss": 0.7850216124938496,
+      "verified_start_time_utc": "2026-11-15T00:00:00+00:00",
+      "settled_at_utc": "2026-11-15T02:04:02.188922+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+      "result_source_event_sha256": "1b17b44cff08943ab97c628db77d7b3ad66196a7cc691fc4c9a867a646921f66"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920307",
@@ -67292,5 +67314,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-15T01:54:28.748014+00:00"
+  "results_checked_at_utc": "2026-11-15T02:04:02.188922+00:00"
 }
