@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-15T06:16:11.476781+00:00",
+  "updated_at_utc": "2026-11-15T06:40:03.169555+00:00",
   "coverage": {
     "source_games_in_horizon": 1493
   },
@@ -67581,7 +67581,7 @@
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "ed4f52b52d1069249440dc3b53076f88504ee8c19b6db8f8883b43ef1edbc35f",
+    "sha256": "3c9566a9d42329e860b1d03b283187b80c5c6d3af471d38a069632f62c826b53",
     "bytes": 580627,
     "archive_sha256": "37be2b0feef15259a848137051793341c5d86c18459ad1daa69d421e22dc6074",
     "live_schedule_sources": [
@@ -67744,6 +67744,11 @@
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261214&groups=50&limit=1000",
         "sha256": "aef15d992deb4ad5963bafa5e2f75e45ddadcca3f664534cc5db83c711bf2cb0",
         "games": 16
+      },
+      {
+        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261215&groups=50&limit=1000",
+        "sha256": "8dfc1bc301020a6089c3d8c23576d7aa81e667846410b10e9ed5c1c8308d0e9c",
+        "games": 45
       }
     ],
     "identity_conflicts": []
@@ -67838,6 +67843,5 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ],
-  "results_checked_at_utc": "2026-11-15T06:35:40.153222+00:00"
+  ]
 }
