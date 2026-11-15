@@ -25950,7 +25950,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.71622118507764,
     "predicted_winner": "Little Rock Trojans",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -25966,7 +25966,18 @@
       "pace_diff": 2.167500000000018,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 84,
+    "away_score": 83,
+    "actual_winner": "Little Rock Trojans",
+    "correct": 1,
+    "brier": 0.08053041579873906,
+    "log_loss": 0.3337662420205405,
+    "verified_start_time_utc": "2026-11-15T01:00:00+00:00",
+    "settled_at_utc": "2026-11-15T03:44:41.784929+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+    "result_source_event_sha256": "48464af3e39025fa6e3f787bcfd6608f989a2ae6016ad21760064355b53737ff"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401920760",
