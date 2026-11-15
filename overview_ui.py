@@ -1,5 +1,5 @@
 """Read-only cross-sport prospective dashboard. Parallel experiments stay separate."""
-UI_REVISION="forecast-health-20261115"
+UI_REVISION="efficient-feeds-20261115"
 from concurrent.futures import ThreadPoolExecutor
 from urllib.request import Request,urlopen
 import io,json,math,html
@@ -37,6 +37,7 @@ FROZEN_NBA=BASE_HASH
 FROZEN_NHL='d60b32b93d795cc0905f626489720640eeb4691002b40aa6b2b38440953d5cbe'
 FROZEN_SHADOW='43363558b09e708bd7e9131c87250dc65a67faf770bdcb3627e9b4ac8a9dd1c6'
 COLUMNS=['game_id','sport','group','home','away','p','created','start','settled','y','details']
+SPORT_SOURCES={'NFL':('nfl',),'CFB':('cfb',),'NHL':('nhl',),'NBA':('nba','nba_injury'),'CBB':('cbb',)}
 
 def esc(value):return html.escape(str(value),quote=True)
 def flag(value):return str(value).lower() in ('true','1','1.0','yes')
@@ -62,8 +63,18 @@ def fetch_source(item):
     except Exception as error:return key,dict(ok=False,data=None,error=type(error).__name__)
 
 @st.cache_data(ttl=120,refresh_mode='background',show_spinner=False)
-def load_overview():
-    with ThreadPoolExecutor(max_workers=8) as pool:return dict(pool.map(fetch_source,SOURCES.items()))
+def load_source(key):
+    return fetch_source((key,SOURCES[key]))[1]
+
+def load_overview(keys=None):
+    """Share per-source caches across pages without downloading unrelated sports."""
+    selected=tuple(SOURCES) if keys is None else tuple(dict.fromkeys(keys))
+    for key in selected:
+        if key not in SOURCES:raise KeyError(key)
+    if not selected:return {}
+    if len(selected)==1:return {selected[0]:load_source(selected[0])}
+    with ThreadPoolExecutor(max_workers=min(8,len(selected))) as pool:
+        return dict(zip(selected,pool.map(load_source,selected)))
 
 def row(game_id,sport,group,home,away,p,created,start,settled=False,y=None,details=None):
     return dict(game_id=str(game_id),sport=sport,group=group,home=home,away=away,p=float(p),created=ts(created),start=ts(start),settled=bool(settled),y=y,details=details or {})
@@ -274,9 +285,10 @@ def render_daily_results(primary,available,now):
     render_game_cards(shown,now,'daily_details')
     if primary.start.isna().any():st.caption('Saved games with unavailable start times are excluded from date grouping until their dates can be verified.')
 
-def weekly_board(payload, sport, now, latest=False):
+def weekly_board(payload, sport, now, latest=False, score_feed=None):
     """Read-only results, with one snapshot per game and ties kept out of accuracy."""
-    board, available, _ = prepare(payload, now)
+    selected={key:payload[key] for key in SPORT_SOURCES[sport] if key in payload}
+    board, available, _ = prepare(selected, now)
     section = board[(board.sport == sport) & (board.group == PRIMARY[sport])].copy()
     section['tie'] = False
     if sport == 'NFL' and available.get('nfl'):
@@ -287,7 +299,7 @@ def weekly_board(payload, sport, now, latest=False):
             # A verified kickoff, when present, must also precede no selected snapshot.
             valid = []
             for item in data.to_dict('records'):
-                status = context('NFL', item['game_id'], item['home_team'], item['away_team'])
+                status = context('NFL', item['game_id'], item['home_team'], item['away_team'],feed=score_feed)
                 start = ts(status.get('start_time_utc')) if status else pd.NaT
                 if pd.notna(start) and item['captured_at_utc'] >= start:continue
                 valid.append(item)
@@ -309,7 +321,7 @@ def weekly_board(payload, sport, now, latest=False):
     section['start']=pd.to_datetime(section['start'],utc=True).astype('datetime64[ns, UTC]')
     periods = []
     for index, item in section.iterrows():
-        status = context(sport, item.game_id, item.home, item.away)
+        status = context(sport, item.game_id, item.home, item.away,feed=score_feed)
         if status:section.loc[index, 'start'] = ts(status.get('start_time_utc'))
         details = item.details
         if sport == 'NFL':
@@ -360,7 +372,7 @@ def render_weekly_results(now=None):
     sport = st.selectbox('Sport', list(PRIMARY), key='weekly_sport')
     mode = st.radio('Forecast to review', ['Original picks · official record','Latest saved pregame picks'], horizontal=True, key='weekly_mode') if sport == 'NFL' else 'Original picks · official record'
     latest = mode == 'Latest saved pregame picks'
-    section, ok = weekly_board(load_overview(), sport, now, latest)
+    section, ok = weekly_board(load_overview(SPORT_SOURCES[sport]), sport, now, latest,score_feed=load_scores())
     if not ok:st.warning('The grading feed is unavailable. Results cannot be verified right now.');return
     if sport == 'NHL':st.caption('NHL uses the experimental reference control. Challenger and goalie experiments remain separate.')
     if sport == 'CBB':st.caption('CBB is a research candidate collecting prospective results. Historical accuracy is separate.')
@@ -465,8 +477,9 @@ def render_overview(now=None):
     if nba_capture.get('prediction_blocked_reason') or nba_capture.get('missing_upcoming_game_ids'):
         st.warning('NBA forecast capture is delayed. Some upcoming games may be missing; saved picks and graded results remain available.')
     board['confirmed_final'] = False
+    score_feed=load_scores()
     for i,r in board.iterrows():
-        status=context(r.sport,r.game_id,r.home,r.away)
+        status=context(r.sport,r.game_id,r.home,r.away,feed=score_feed)
         if status:
             board.loc[i,'start'] = ts(status['start_time_utc'])
             board.loc[i,'confirmed_final'] = status.get('state') == 'final'
@@ -605,5 +618,5 @@ def render_overview(now=None):
             for name in ('team_control','inferred_goalie','confirmed_goalie'):
                 group='goalie_'+name;b=board[board.group==group];m=metrics(b);rows.append([LABELS[group],len(b),m['games'],f"{m['wins']}–{m['losses']}",f"{m['brier']:.4f}" if m['games'] else '—'])
             st.markdown(table(['PAIRED MODEL','SAVED PAIRS','GRADED','RECORD','BRIER'],rows),unsafe_allow_html=True)
-            source=load_overview().get('goalie_update',{});stamp=ts(source.get('data',{}).get('as_of_utc')) if source.get('ok') else pd.NaT
+            source=payload.get('goalie_update',{});stamp=ts(source.get('data',{}).get('as_of_utc')) if source.get('ok') else pd.NaT
             st.caption('Latest goalie comparison update: '+ct(stamp)+'. Formal review starts at 500 settled pairs; no automatic promotion.')
