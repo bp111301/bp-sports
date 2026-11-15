@@ -26277,7 +26277,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.4316093778052311,
     "predicted_winner": "Colgate Raiders",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -26293,7 +26293,18 @@
       "pace_diff": -3.300631720430104,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 64,
+    "away_score": 58,
+    "actual_winner": "Delaware Blue Hens",
+    "correct": 0,
+    "brier": 0.32306789939895647,
+    "log_loss": 0.8402343178332081,
+    "verified_start_time_utc": "2026-11-15T18:00:00+00:00",
+    "settled_at_utc": "2026-11-15T19:51:29.197809+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&limit=1000&groups=50",
+    "result_source_event_sha256": "b4dab3f503f5307d9ef14c39355550585070fc2aa398c78d5f9cd424cb18d949"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401924858",
@@ -26356,7 +26367,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.5153055261164978,
     "predicted_winner": "Georgia State Panthers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -26372,7 +26383,18 @@
       "pace_diff": -0.06586309523808609,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 78,
+    "away_score": 53,
+    "actual_winner": "Georgia State Panthers",
+    "correct": 1,
+    "brier": 0.23492873301320497,
+    "log_loss": 0.6629952996291989,
+    "verified_start_time_utc": "2026-11-15T18:00:00+00:00",
+    "settled_at_utc": "2026-11-15T19:51:29.197809+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&limit=1000&groups=50",
+    "result_source_event_sha256": "973b1798856cdd928de7ba739ee358c277f83f601f90f201a6f454983ccce70a"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401926063",
