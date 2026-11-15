@@ -26051,7 +26051,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.5931018550480612,
     "predicted_winner": "Nevada Wolf Pack",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -26067,7 +26067,18 @@
       "pace_diff": -2.4779901960784088,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 71,
+    "away_score": 73,
+    "actual_winner": "Utah Valley Wolverines",
+    "correct": 0,
+    "brier": 0.35176981046145145,
+    "log_loss": 0.8991923829626712,
+    "verified_start_time_utc": "2026-11-15T03:00:00+00:00",
+    "settled_at_utc": "2026-11-15T05:30:22.262087+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+    "result_source_event_sha256": "6d67c1a7e99af85a06797c7f1dbf76ac234b54c311d806596c71f28a47f486bd"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401917528",
