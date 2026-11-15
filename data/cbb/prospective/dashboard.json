@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1793,
-    "settled_games": 621,
-    "pending_games": 1172,
+    "settled_games": 622,
+    "pending_games": 1171,
     "wins": 471,
-    "losses": 150,
-    "accuracy": 0.7584541062801933,
-    "brier": 0.16548622063186746,
-    "log_loss": 0.5038741033694126
+    "losses": 151,
+    "accuracy": 0.7572347266881029,
+    "brier": 0.16614775149858987,
+    "log_loss": 0.5053555898507176
   },
   "predictions": [
     {
@@ -26928,7 +26928,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.24042220955769025,
       "predicted_winner": "Iowa Hawkeyes",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -26944,7 +26944,18 @@
         "pace_diff": 5.127829071969721,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 70,
+      "away_score": 69,
+      "actual_winner": "Creighton Bluejays",
+      "correct": 0,
+      "brier": 0.5769584197332215,
+      "log_loss": 1.4253586947410968,
+      "verified_start_time_utc": "2026-11-15T20:00:00+00:00",
+      "settled_at_utc": "2026-11-15T22:21:50.248726+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&limit=1000&groups=50",
+      "result_source_event_sha256": "04e4627268fb62d474ef60e672af46b8894627515a99a8ad45cf3601f0a29359"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911251",
@@ -68053,5 +68064,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-15T22:16:54.422610+00:00"
+  "results_checked_at_utc": "2026-11-15T22:21:50.248726+00:00"
 }
