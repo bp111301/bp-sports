@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-15T01:04:21.883143+00:00",
+  "updated_at_utc": "2026-11-15T01:09:21.897874+00:00",
   "coverage": {
     "source_games_in_horizon": 1514
   },
@@ -24,13 +24,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1784,
-    "settled_games": 576,
-    "pending_games": 1208,
-    "wins": 441,
+    "settled_games": 578,
+    "pending_games": 1206,
+    "wins": 443,
     "losses": 135,
-    "accuracy": 0.765625,
-    "brier": 0.16323070403626685,
-    "log_loss": 0.49777843332319116
+    "accuracy": 0.7664359861591695,
+    "brier": 0.16310196406428523,
+    "log_loss": 0.49757324848304096
   },
   "predictions": [
     {
@@ -24996,7 +24996,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6500432947815679,
       "predicted_winner": "Providence Friars",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -25012,7 +25012,18 @@
         "pace_diff": 3.569957386363612,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 67,
+      "away_score": 53,
+      "actual_winner": "Providence Friars",
+      "correct": 1,
+      "brier": 0.1224696955273406,
+      "log_loss": 0.43071631095436747,
+      "verified_start_time_utc": "2026-11-14T23:00:00+00:00",
+      "settled_at_utc": "2026-11-15T01:09:21.897874+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+      "result_source_event_sha256": "a879b506c1742f45bf01879ff0194f18e60e30774ec0eb7374b53e5546e91112"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401919782",
@@ -25118,7 +25129,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6400277667099689,
       "predicted_winner": "North Texas Mean Green",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -25134,7 +25145,18 @@
         "pace_diff": 0.4648387096774229,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 66,
+      "away_score": 65,
+      "actual_winner": "North Texas Mean Green",
+      "correct": 1,
+      "brier": 0.1295800087398126,
+      "log_loss": 0.44624371808521607,
+      "verified_start_time_utc": "2026-11-14T23:00:00+00:00",
+      "settled_at_utc": "2026-11-15T01:09:21.897874+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+      "result_source_event_sha256": "f185ea9da18ed3f292971922289331c3555672db675440475961ad3a915b9460"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401926777",
@@ -67248,5 +67270,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-15T01:04:21.883143+00:00"
+  "results_checked_at_utc": "2026-11-15T01:09:21.897874+00:00"
 }
