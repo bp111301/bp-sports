@@ -2,7 +2,7 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-15T03:09:35.392823+00:00",
+  "updated_at_utc": "2026-11-15T03:14:33.073734+00:00",
   "coverage": {
     "source_games_in_horizon": 1514
   },
@@ -24,13 +24,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1784,
-    "settled_games": 595,
-    "pending_games": 1189,
+    "settled_games": 596,
+    "pending_games": 1188,
     "wins": 455,
-    "losses": 140,
-    "accuracy": 0.7647058823529411,
-    "brier": 0.16275102633046418,
-    "log_loss": 0.4963121289654754
+    "losses": 141,
+    "accuracy": 0.7634228187919463,
+    "brier": 0.16295875378945515,
+    "log_loss": 0.4967652702791468
   },
   "predictions": [
     {
@@ -25928,7 +25928,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.46469019074082407,
       "predicted_winner": "Louisiana Tech Bulldogs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -25944,7 +25944,18 @@
         "pace_diff": 2.8764490927419075,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 71,
+      "away_score": 68,
+      "actual_winner": "Nicholls Colonels",
+      "correct": 0,
+      "brier": 0.2865565918890953,
+      "log_loss": 0.7663843519136021,
+      "verified_start_time_utc": "2026-11-15T01:00:00+00:00",
+      "settled_at_utc": "2026-11-15T03:14:33.073734+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+      "result_source_event_sha256": "3393138868e1904d91aa6cd4cb1fe39fa8b952717cddfc23f18d775efc4eb230"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401925079",
@@ -67457,5 +67468,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-15T03:09:35.392823+00:00"
+  "results_checked_at_utc": "2026-11-15T03:14:33.073734+00:00"
 }
