@@ -864,7 +864,7 @@
     "created_at_utc": "2026-10-16T07:02:23.566930+00:00",
     "home_win_prob": 0.9678448943040939,
     "predicted_winner": "Grand Canyon Lopes",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "bddafb0c3661a72f0603bee8e170ec19653cd7f4c2640d1f6f4a9b28fe4aaa15",
     "forecast_stage": "early_research_prior",
@@ -880,7 +880,18 @@
       "pace_diff": -2.0453124999999943,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 88,
+    "away_score": 52,
+    "actual_winner": "Grand Canyon Lopes",
+    "correct": 1,
+    "brier": 0.0010339508223148912,
+    "log_loss": 0.03268343770119156,
+    "verified_start_time_utc": "2026-11-15T01:00:00+00:00",
+    "settled_at_utc": "2026-11-15T02:59:31.622195+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+    "result_source_event_sha256": "1e9b3df383474beaa7560a68404bb99b5889c1c3b94ab54cbf8370909a395bf4"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401912210",
