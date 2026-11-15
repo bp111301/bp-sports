@@ -4,7 +4,7 @@ import argparse,importlib.util,json,math
 from datetime import datetime,timezone
 from pathlib import Path
 import joblib,numpy as np,pandas as pd
-from settlement_guard import verify_bundle
+from settlement_guard import verify_bundle,eligible_snapshots
 HERE=Path(__file__).parent
 def mod(name,file):
  s=importlib.util.spec_from_file_location(name,HERE/file);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
@@ -24,6 +24,8 @@ def main():
  pc=b["v1_context_model"].predict_proba(bx[cf])[:,1];pp=b["v1_prior_model"].predict_proba(px[pf])[:,1];pv=float(b["v1_context_weight"])*pc+float(b["v1_prior_weight"])*pp
  pred_margin=b["margin_model"].predict(bx[cf]);pm=normcdf(pred_margin/max(float(b["margin_sigma"]),1e-9));p=float(b["candidate_b_v1_weight"])*pv+float(b["candidate_b_margin_weight"])*pm
  created=datetime.now(timezone.utc).isoformat();out=pd.DataFrame({"prediction_id":["CFBV2B_2026_"+str(x) for x in f.game_id],"model_version":"CFB_V2_CANDIDATE_B","snapshot_created_utc":created,"game_id":f.game_id,"season":2026,"week":f.week.astype("Int64"),"kickoff_utc":f.kickoff.astype(str),"away_team":f.away_team,"home_team":f.home_team,"predicted_winner":np.where(p>=.5,f.home_team,f.away_team),"home_win_prob":p,"confidence":np.maximum(p,1-p),"v1_home_win_prob":pv,"margin_home_win_prob":pm,"market_used_for_pick":False,"status":"PREGAME_SHADOW"}).sort_values(["kickoff_utc","game_id"])
+ out['kickoff_time_tbd']=f.start_time_tbd
+ out=eligible_snapshots(out,pd.Timestamp.now(tz='UTC')).drop(columns='kickoff_time_tbd')
  cur=Path(a.current);cur.parent.mkdir(parents=True,exist_ok=True);out.to_csv(cur,index=False);led=Path(a.ledger)
  if led.exists():
   old=pd.read_csv(led);ids=set(old.prediction_id.astype(str));add=out[~out.prediction_id.astype(str).isin(ids)];combined=pd.concat([old,add],ignore_index=True)
@@ -33,9 +35,11 @@ def main():
  verified=led.parent/'verified_prediction_ledger.csv';locked=out.copy();locked['bundle_sha256']=manifest['sha256'];locked['bundle_frozen_at_utc']=manifest['created_utc']
  locked=locked[pd.to_datetime(locked.snapshot_created_utc,utc=True).ge(pd.Timestamp(manifest['created_utc'])) & pd.to_datetime(locked.snapshot_created_utc,utc=True).lt(pd.to_datetime(locked.kickoff_utc,utc=True))]
  if verified.exists():
-  old_verified=pd.read_csv(verified);known=set(old_verified.prediction_id.astype(str));locked=pd.concat([old_verified,locked[~locked.prediction_id.astype(str).isin(known)]],ignore_index=True)
+  old_verified=pd.read_csv(verified,dtype=str,keep_default_na=False);known=set(old_verified.prediction_id.astype(str));locked=pd.concat([old_verified,locked[~locked.prediction_id.astype(str).isin(known)]],ignore_index=True)
  for column,value in [('actual_winner',None),('correct',None),('settled',False)]:
   if column not in locked:locked[column]=value
- locked.to_csv(verified,index=False)
+ if not verified.exists() or len(locked)>len(old_verified):
+  if verified.exists():pd.testing.assert_frame_equal(old_verified,locked.iloc[:len(old_verified)][old_verified.columns],check_dtype=False)
+  temporary=verified.with_suffix('.csv.partial');locked.to_csv(temporary,index=False);temporary.replace(verified)
  Path(a.metadata).write_text(json.dumps({"model_version":"CFB_V2_CANDIDATE_B","status":"PROSPECTIVE_SHADOW_ONLY","generated_at_utc":created,"games":int(len(out)),"ledger_rows":int(len(locked)),"ledger_source":"verified_prediction_ledger.csv","legacy_ledger_preserved":True,"market_used_for_pick":False},indent=2)+"\n");print(f"Candidate B current={len(out)} ledger={len(combined)}")
 if __name__=="__main__":main()

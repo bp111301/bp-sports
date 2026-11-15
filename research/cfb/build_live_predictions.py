@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import joblib
-from settlement_guard import verify_bundle
+from settlement_guard import verify_bundle,eligible_snapshots
 HERE=Path(__file__).parent
 def mod(name,file):
     s=importlib.util.spec_from_file_location(name,HERE/file);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
@@ -44,10 +44,14 @@ def main():
     p=float(bundle["context_weight"])*pc+float(bundle["prior_weight"])*pp
     generated=datetime.now(timezone.utc).isoformat()
     out=pd.DataFrame({"prediction_id":["CFBV1_2026_"+str(x) for x in future.game_id],"model_version":"CFB_V1","snapshot_created_utc":generated,"game_id":future.game_id,"season":2026,"week":future.week.astype("Int64"),"kickoff_utc":future.start_dt.astype(str),"kickoff_time_tbd":future["start_time_tbd"],"away_team":future.away_team,"home_team":future.home_team,"predicted_winner":np.where(p>=.5,future.home_team,future.away_team),"home_win_prob":p,"confidence":np.maximum(p,1-p),"market_used_for_pick":False,"status":"PREGAME_SNAPSHOT"}).sort_values(["kickoff_utc","game_id"])
+    out=eligible_snapshots(out,pd.Timestamp.now(tz='UTC'))
     cur=Path(a.current_dir);cur.mkdir(parents=True,exist_ok=True);out.to_csv(cur/"predictions.csv",index=False);(cur/"metadata.json").write_text(json.dumps({"model_version":"CFB_V1","generated_at_utc":generated,"games":int(len(out)),"horizon_days":a.horizon_days,"market_used_for_pick":False},indent=2)+"\n")
     ledger=Path(a.ledger);ledger.parent.mkdir(parents=True,exist_ok=True)
     if ledger.exists():
-        old=pd.read_csv(ledger);existing=set(old.prediction_id.astype(str));add=out[~out.prediction_id.astype(str).isin(existing)];combined=pd.concat([old,add],ignore_index=True)
+        old=pd.read_csv(ledger,dtype=str,keep_default_na=False);existing=set(old.prediction_id.astype(str));add=out[~out.prediction_id.astype(str).isin(existing)];combined=pd.concat([old,add],ignore_index=True)
     else:combined=out.copy()
-    combined.to_csv(ledger,index=False);print(f"current slate: {len(out)}; immutable ledger rows: {len(combined)}")
+    if not ledger.exists() or len(combined)>len(old):
+        if ledger.exists():pd.testing.assert_frame_equal(old,combined.iloc[:len(old)][old.columns],check_dtype=False)
+        temporary=ledger.with_suffix('.csv.partial');combined.to_csv(temporary,index=False);temporary.replace(ledger)
+    print(f"current slate: {len(out)}; immutable ledger rows: {len(combined)}")
 if __name__=="__main__":main()

@@ -1,5 +1,5 @@
 """Read-only cross-sport prospective dashboard. Parallel experiments stay separate."""
-UI_REVISION="mobile-results-20261103"
+UI_REVISION="forecast-health-20261115"
 from concurrent.futures import ThreadPoolExecutor
 from urllib.request import Request,urlopen
 import io,json,math,html
@@ -19,6 +19,10 @@ SOURCES={
  'nfl_availability':('main','data/current/nfl_availability.json'),
  'cfb':('main','data/cfb/ledger/prediction_ledger.csv'), 'cfb_update':('main','data/cfb/current/metadata.json'),
  'cfb_results':('main','data/cfb/result_check.json'),
+ 'nhl_results':('nhl-v1-research','data/nhl/result_check.json'),
+ 'nba_results':('nba-v1-research','data/nba/result_check.json'),
+ 'cbb_results':('cbb-v1-research','data/cbb/result_check.json'),
+ 'shadow_health':('main','data/confidence_shadow_20261029/health.json'),
  'shadow':('main','data/cfb/v2_shadow/verified_prediction_ledger.csv'), 'shadow_update':('main','data/cfb/v2_shadow/metadata.json'),
  'nhl':('nhl-v1-research','data/nhl/v2_research/prediction_ledger.csv'), 'nhl_update':('nhl-v1-research','data/nhl/v2_research/summary.json'),
  'goalie':('nhl-v1-research','data/nhl/goalie_experiment/paired_ledger.jsonl'), 'goalie_update':('nhl-v1-research','data/nhl/goalie_experiment/summary.json'),
@@ -55,7 +59,7 @@ def fetch_source(item):
         elif path.endswith('.jsonl'):value=[json.loads(line) for line in text.splitlines() if line]
         else:value=json.loads(text)
         return key,dict(ok=True,data=value)
-    except Exception:return key,dict(ok=False,data=None)
+    except Exception as error:return key,dict(ok=False,data=None,error=type(error).__name__)
 
 @st.cache_data(ttl=120,refresh_mode='background',show_spinner=False)
 def load_overview():
@@ -134,12 +138,14 @@ def prepare(payload,now):
                     data=merge(data,payload.get('nba_injury',{}).get('data') or {})
                 records+=normalize(key,data,now)
             except (ValueError,TypeError,KeyError):available[key]=False
-    for sport,key,field in [('NFL','nfl_update','captured_at_utc'),('CFB','cfb_update','generated_at_utc'),('NHL','nhl_update','as_of_utc')]:
+    for sport,key,field in [('NFL','nfl_update','captured_at_utc'),('CFB','cfb_update','generated_at_utc')]:
         source=payload.get(key,{})
         updates[sport]=ts(source['data'].get(field)) if source.get('ok') else pd.NaT
-    updates['NBA']=ts(payload['nba']['data'].get('updated_at_utc')) if payload.get('nba',{}).get('ok') else pd.NaT
-    updates['CBB']=ts(payload['cbb']['data'].get('updated_at_utc')) if payload.get('cbb',{}).get('ok') else pd.NaT
     board=pd.DataFrame(records,columns=COLUMNS)
+    # Summary update times may come from grading, so use saved capture evidence.
+    for sport in ('NHL','NBA','CBB'):
+        captures=board.loc[board.sport.eq(sport) & board.group.eq(PRIMARY[sport]),'created']
+        updates[sport]=max(captures) if len(captures) else pd.NaT
     if not board.empty:board['confidence']=board.p.where(board.p.ge(.5),1-board.p)
     else:board['confidence']=pd.Series(dtype=float)
     return board,available,updates
@@ -518,17 +524,18 @@ def render_overview(now=None):
             tag='FROZEN · CANDIDATE' if sport=='CBB' else 'FROZEN · RESEARCH' if sport=='NHL' else 'FROZEN V4' if sport=='NFL' else 'FROZEN V1'
             sub='Research candidate · prospective record' if sport=='CBB' else 'Reference control · prospective research' if sport=='NHL' else 'Official prospective record'
             is_forecast_time = sport in ('NFL', 'CFB')
-            update_label = 'Forecast refreshed' if is_forecast_time else 'Feed updated'
+            update_label = 'Forecast refreshed' if is_forecast_time else 'Latest saved forecast'
             if is_forecast_time and cls == 'warning':
                 state = 'Forecast update overdue'
             checked_line = ''
-            if is_forecast_time:
-                receipt = payload.get(key+'_results', {}).get('data')
-                checked = pd.NaT
-                if isinstance(receipt, dict) and receipt.get('sport') == key and receipt.get('status') == 'success':
-                    checked = ts(receipt.get('checked_at_utc'))
-                checked_text = ct(checked) if pd.notna(checked) and checked <= now else 'Unavailable'
-                checked_line = f'<div class="ov-update-line"><span>Results checked</span><span>{esc(checked_text)}</span></div>'
+            receipt = payload.get(key+'_results', {}).get('data')
+            checked = pd.NaT
+            if isinstance(receipt, dict) and receipt.get('sport') == key and receipt.get('status') == 'success':
+                checked = ts(receipt.get('checked_at_utc'))
+            checked_text = ct(checked) if pd.notna(checked) and checked <= now else 'Unavailable'
+            checked_line = f'<div class="ov-update-line"><span>Results checked</span><span>{esc(checked_text)}</span></div>'
+            if isinstance(receipt,dict) and receipt.get('status') in ('failed','degraded'):
+                checked_line += '<div class="ov-update-line">Some result checks failed; verified results remain available.</div>'
             cards.append(f'<div class="ov-sport" style="--accent:{COLORS[sport]}"><div class="ov-top"><div class="ov-name">{sport}</div><div class="ov-tag">{tag}</div></div><div class="ov-score">{record}</div><div class="ov-caption">{sub}</div><div class="ov-details"><div class="ov-detail"><b>{m["games"] if ok else "—"}</b><span>Graded</span></div><div class="ov-detail"><b>{upcoming if ok else "—"}</b><span>Upcoming</span></div><div class="ov-detail"><b>{accuracy}</b><span>Accuracy</span></div></div><div class="ov-update"><div class="ov-update-line"><span>{update_label}</span><span>{esc(ct(updates[sport]))}</span></div>{checked_line}<div class="ov-update-line"><span>Awaiting grading</span><span>{awaiting_grading if ok else "—"}</span></div><span class="ov-status {cls}">{state}</span></div></div>')
         sports=list(PRIMARY)
         for offset in range(0,len(cards),2):
@@ -538,6 +545,19 @@ def render_overview(now=None):
                     st.markdown(card,unsafe_allow_html=True)
                     st.button('Open '+sport+' board',key='open_'+sport,on_click=open_board,args=(sport,),width='stretch')
         st.caption('Saved and graded totals count one primary forecast per matchup. NHL uses the research reference control; challengers are tracked separately.')
+        reviews=[]
+        for sport in PRIMARY:
+            receipt=payload.get(sport.lower()+'_results',{}).get('data') or {}
+            reviews.extend(dict(sport=sport,game_id=r['game_id'],state=r['state']) for r in receipt.get('lifecycle',[]))
+        shadow=payload.get('shadow_health',{}).get('data') or {}
+        reviews.extend(dict(sport=r['sport'].upper(),game_id=r['forecast_key'],state='Start-time review') for r in shadow.get('settlement_reviews',[]))
+        cbb=payload.get('cbb',{}).get('data') or {}
+        reviewed={str(r['game_id']) for r in reviews if r['sport']=='CBB'}
+        reviews.extend(dict(sport='CBB',game_id=r['game_id'],state=r['reason']) for r in cbb.get('grading_issues',[]) if str(r['game_id']) not in reviewed)
+        if reviews:
+            with st.expander('Postponements and event reviews'):
+                st.caption('These annotations explain pending results. Saved picks and probabilities remain unchanged.')
+                st.dataframe(pd.DataFrame(reviews),hide_index=True)
         st.markdown('<div class="section-title">Game center</div><div class="section-sub">Saved picks, clear results, all five sports · Central time</div>',unsafe_allow_html=True)
         f1,f2=st.columns([2,1])
         view=f1.selectbox('Show games',['Today','Results','Upcoming','Awaiting finals','All tracked'],key='desk_view')

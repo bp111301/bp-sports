@@ -86,7 +86,7 @@ def risk(tg,targets):
 def append_ledger(path,feed,at):
  x=feed.copy();x['snapshot_id']=at.strftime('%Y%m%dT%H%M%SZ');x['prediction_id']=x.snapshot_id+':'+x.game_id;x['actual_home_score']=np.nan;x['actual_away_score']=np.nan;x['settlement_status']='pending';x['scored_at_utc']='';path.parent.mkdir(parents=True,exist_ok=True)
  if path.exists():
-  old=pd.read_csv(path);x=x[~x.prediction_id.isin(old.get('prediction_id',pd.Series(dtype=str)))];x=pd.concat([old,x],ignore_index=True)
+  old=pd.read_csv(path,dtype=str,keep_default_na=False);x=x[~x.prediction_id.isin(old.get('prediction_id',pd.Series(dtype=str)))];x=pd.concat([old,x],ignore_index=True)
  x.to_csv(path,index=False)
 def eligible_snapshots(frame,now):
  if frame.empty:return frame.copy()
