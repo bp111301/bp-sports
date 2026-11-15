@@ -37,7 +37,7 @@ def test_weekly_original_latest_ties_and_late_snapshots():
  assert 'Tie · excluded' in ov.weekly_game_table(latest).Result.values
 
 def test_weekly_page_renders_and_menu_opens_it():
- with patch('overview_ui.load_overview',return_value=fixture()):
+ with patch('overview_ui.load_overview',return_value=fixture()), patch('game_center_ui.load_scores',return_value={}):
   at=AppTest.from_file(Path(__file__).resolve().parents[1]/'app.py',default_timeout=20).run()
   at.button(key='bp_menu_weekly').click().run()
   assert not at.exception and any(t.value=='Weekly results' for t in at.title)

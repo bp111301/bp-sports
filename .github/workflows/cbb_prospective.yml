@@ -40,6 +40,15 @@ jobs:
           git pull --rebase origin cbb-v1-research
           git push origin HEAD:cbb-v1-research
 
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: operations-runner
+          sparse-checkout: pipeline/capture_health.py
+          sparse-checkout-cone-mode: false
+      - name: Report blocked forecast capture after saving valid results
+        run: python operations-runner/pipeline/capture_health.py cbb data/cbb/prospective/dashboard.json
+
   shadow:
     needs: refresh
     runs-on: ubuntu-latest

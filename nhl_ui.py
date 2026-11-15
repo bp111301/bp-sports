@@ -1,5 +1,5 @@
 """Read-only presentation of the separate NHL research ledgers."""
-UI_REVISION="confidence-evidence-20261028b"
+UI_REVISION="optional-goalies-20261115"
 from concurrent.futures import ThreadPoolExecutor
 import csv
 import html
@@ -59,10 +59,17 @@ def get_text(path):
 def load_dashboard():
     paths=['data/nhl/v2_research/prediction_ledger.csv','data/nhl/v2_research/summary.json','data/nhl/goalie_capture/observations.jsonl','data/nhl/goalie_capture/summary.json']
     try:
-        with ThreadPoolExecutor(max_workers=4) as pool:
-            ledger,summary,goalies,goalie_summary=list(pool.map(get_text,paths))
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            ledger,summary=list(pool.map(get_text,paths[:2]))
+        try:
+            with ThreadPoolExecutor(max_workers=2) as pool:
+                goalies,goalie_summary=list(pool.map(get_text,paths[2:]))
+            goalie_rows=[json.loads(line) for line in goalies.splitlines() if line.strip()]
+            goalie_data=json.loads(goalie_summary)
+        except Exception:
+            goalie_rows=[];goalie_data={'errors':['Goalie reports unavailable']}
         payload={'predictions':list(csv.DictReader(io.StringIO(ledger))), 'prediction_summary':json.loads(summary),
-                 'goalies':[json.loads(line) for line in goalies.splitlines() if line.strip()], 'goalie_summary':json.loads(goalie_summary)}
+                 'goalies':goalie_rows, 'goalie_summary':goalie_data}
         prepare_predictions(payload['predictions'])
         return payload,False
     except Exception:
@@ -140,7 +147,7 @@ def render_nhl(now=None):
     if board.empty:
         st.info('No valid pregame NHL predictions have been recorded yet.');return
     summary=data.get('prediction_summary',{});goalie_summary=data.get('goalie_summary',{})
-    st.caption(f'Prediction ledger updated: {ct(summary.get("as_of_utc"))} • Goalie capture: {ct(goalie_summary.get("as_of_utc"))}')
+    st.caption(f'Latest saved forecast: {ct(board.created_at_utc.max())} • Goalie capture: {ct(goalie_summary.get("as_of_utc"))}')
     if goalie_summary.get('errors'):st.warning('Some goalie reports could not be collected or matched. Check the individual report statuses.')
     reports=latest_goalies(data.get('goalies',[]),now)
     n1,n2,n3=st.tabs(['RESEARCH BOARD','MODEL RECORD','THE MODEL'])

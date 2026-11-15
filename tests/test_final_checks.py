@@ -3,6 +3,7 @@ import importlib.util
 from pathlib import Path
 import pandas as pd
 import hashlib,json
+import pytest
 
 spec=importlib.util.spec_from_file_location('final_checks',Path(__file__).resolve().parents[1]/'pipeline/check_finals.py')
 m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m)
@@ -10,9 +11,13 @@ NOW=pd.Timestamp('2026-10-07T03:00Z')
 P=dict(home_team='DET',away_team='OTT',created_at_utc='2026-10-06T22:00Z',start_time_utc='2026-10-06T23:00Z')
 A=dict(home_team='DET',away_team='OTT',completed=True,start_time_utc='2026-10-06T23:00Z',home_score=3,away_score=2)
 
+@pytest.fixture(autouse=True)
+def clear_attempt_health():
+    m.REQUEST_ERRORS.clear();m.LIFECYCLE.clear();m.CHECKED_IDS.clear();m.ACTIVE_PENDING=None
+
 def test_only_confirmed_final_with_matching_teams_and_pregame_capture():
     assert m.final_valid(P,A,NOW)
-    for changes in [dict(completed=False),dict(home_team='BUF'),dict(home_score=None),dict(home_score=-1),dict(home_score=float('nan')),dict(start_time_utc='2026-10-06T21:00Z'),dict(start_time_utc='2026-10-07T04:00Z')]:
+    for changes in [dict(completed=False),dict(home_team='BUF'),dict(home_score=None),dict(home_score=-1),dict(home_score=2.5),dict(home_score=float('nan')),dict(start_time_utc='2026-10-06T21:00Z'),dict(start_time_utc='2026-10-07T04:00Z')]:
         assert not m.final_valid(P,{**A,**changes},NOW)
     assert not m.final_valid({**P,'created_at_utc':'bad'},A,NOW)
     assert not m.final_valid({**P,'created_at_utc':P['start_time_utc']},A,NOW)
@@ -177,3 +182,97 @@ def test_temporary_final_score_request_errors_are_retried(monkeypatch):
     monkeypatch.setattr(m, 'sleep', delays.append)
     assert m.get_response('https://example.test/final') is success
     assert delays == [1, 2]
+
+
+def test_provider_failure_preserves_other_events_and_records_error():
+    def fetch(gid):
+        if gid==2:raise m.requests.Timeout('provider timed out')
+        return gid,{'completed':True}
+    assert m.fetch_available(fetch,[1,2,3])=={1:{'completed':True},3:{'completed':True}}
+    assert m.REQUEST_ERRORS[0]['event_id']=='2'
+
+
+def test_csv_grading_preserves_exact_forecast_strings_and_rejects_edits(tmp_path):
+    path=tmp_path/'ledger.csv'
+    path.write_text('prediction_id,home_win_prob,status,actual_home_win\np1,0.9236463492295910000,pending,\n')
+    before=pd.read_csv(path,float_precision='round_trip');after=before.copy()
+    after.loc[0,['status','actual_home_win']]=['settled',1]
+    m.write_settlements(path,before,after,['status','actual_home_win'])
+    assert '0.9236463492295910000' in path.read_text()
+    saved=path.read_bytes();before=pd.read_csv(path);m.write_settlements(path,before,before.copy(),['status','actual_home_win'])
+    assert path.read_bytes()==saved
+    changed=before.copy();changed.loc[0,'home_win_prob']=.7
+    with pytest.raises(AssertionError):m.write_settlements(path,before,changed,['status','actual_home_win'])
+    assert path.read_bytes()==saved
+
+
+def test_main_persists_degraded_health_after_saving_valid_work(tmp_path,monkeypatch):
+    monkeypatch.chdir(tmp_path);monkeypatch.setattr(m.sys,'argv',['check_finals','nba'])
+    def grade(now):
+        m.REQUEST_ERRORS.append({'event_id':'bad','error':'timeout'})
+        m.LIFECYCLE.append({'game_id':'42','state':'postponed'})
+        Path('verified-result.txt').write_text('saved')
+    monkeypatch.setattr(m,'nba',grade)
+    with pytest.raises(SystemExit):m.main()
+    status=json.loads(Path('data/nba/result_check.json').read_text())
+    assert status['status']=='degraded' and status['forecasts_unchanged']
+    assert status['lifecycle'][0]['state']=='postponed'
+    assert Path('verified-result.txt').read_text()=='saved'
+
+
+def test_main_records_failed_attempt_without_claiming_a_success(tmp_path,monkeypatch):
+    monkeypatch.chdir(tmp_path);path=Path('data/current/result_check.json');path.parent.mkdir(parents=True)
+    path.write_text(json.dumps({'status':'success','checked_at_utc':'2026-10-06T12:00Z'}))
+    monkeypatch.setattr(m.sys,'argv',['check_finals','nfl'])
+    def fail(now):raise ValueError('identity changed')
+    monkeypatch.setattr(m,'nfl',fail)
+    with pytest.raises(ValueError,match='identity changed'):m.main()
+    status=json.loads(path.read_text())
+    assert status['status']=='failed' and status['checked_at_utc']=='2026-10-06T12:00Z'
+    assert status['attempted_at_utc'] and 'identity changed' in status['errors'][0]['error']
+
+
+def test_basketball_lifecycle_is_separate_from_saved_forecast(monkeypatch):
+    pending=[dict(game_id='42',home_team_id='2',away_team_id='3',start_time_utc=P['start_time_utc'])]
+    original=[r.copy() for r in pending]
+    postponed=basketball_event(status=dict(type=dict(name='STATUS_POSTPONED',state='post',completed=False)))
+    monkeypatch.setattr(m,'get',lambda url:{'events':[postponed]})
+    schedule=m.basketball_schedule('cbb',pending,NOW)
+    assert not schedule.iloc[0].status_type_completed
+    assert m.LIFECYCLE[0]['state']=='postponed' and pending==original
+    replaced=basketball_event(competitors=[dict(homeAway='home',team=dict(id='9'),score='80'),dict(homeAway='away',team=dict(id='3'),score='70')])
+    monkeypatch.setattr(m,'get',lambda url:{'events':[replaced]})
+    m.basketball_schedule('cbb',pending,NOW)
+    assert m.LIFECYCLE[-1]['state']=='identity_review' and pending==original
+
+
+def test_grading_does_not_advance_forecast_health(tmp_path,monkeypatch):
+    # Reuse the full NBA settlement fixture, then check retained producer time.
+    test_nba_final_check_appends_once_without_loading_or_changing_forecasts(tmp_path,monkeypatch)
+    path=Path('data/nba/prospective/dashboard.json');dashboard=json.loads(path.read_text())
+    dashboard['updated_at_utc']='2026-10-06T12:00Z';path.write_text(json.dumps(dashboard))
+    m.nba(NOW+pd.Timedelta(hours=1))
+    result=json.loads(path.read_text())
+    assert result['updated_at_utc']=='2026-10-06T12:00Z'
+    assert result['results_checked_at_utc']==(NOW+pd.Timedelta(hours=1)).isoformat()
+
+
+def test_nfl_update_grades_only_confirmed_finals_and_keeps_legacy_forecast_cells(tmp_path,monkeypatch):
+    from types import SimpleNamespace
+    monkeypatch.chdir(tmp_path);path=Path('data/ledger/prediction_ledger.csv');path.parent.mkdir(parents=True)
+    path.write_text('prediction_id,game_id,home_team,away_team,captured_at_utc,kickoff_utc,v4_adjusted_confidence,settlement_status,actual_home_score,actual_away_score,scored_at_utc\n'
+                    'p1,g1,DET,CHI,2026-10-06T18:00Z,2026-10-06T23:00Z,0.7000000000000000123,pending,,,\n')
+    schedule='game_id,home_team,away_team,gameday\ng1,DET,CHI,2026-10-06\n'
+    monkeypatch.setattr(m,'get_response',lambda url:SimpleNamespace(text=schedule))
+    monkeypatch.setattr(m,'module',lambda path:SimpleNamespace(metrics=lambda *args:{}))
+    event=dict(competitions=[dict(date='2026-10-06T23:00Z',status=dict(type=dict(state='in',completed=False)),
+        competitors=[dict(homeAway='home',team=dict(abbreviation='DET'),score='24'),dict(homeAway='away',team=dict(abbreviation='CHI'),score='10')])])
+    monkeypatch.setattr(m,'espn_events',lambda sport,dates:[event])
+    before=path.read_bytes();m.nfl(NOW)
+    assert path.read_bytes()==before
+    event['competitions'][0]['status']['type']=dict(state='post',completed=True)
+    m.nfl(NOW)
+    assert pd.read_csv(path).iloc[0].settlement_status=='final'
+    assert '0.7000000000000000123' in path.read_text()
+    final=path.read_bytes();m.nfl(NOW)
+    assert path.read_bytes()==final

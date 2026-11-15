@@ -49,6 +49,7 @@ jobs:
           path: result-runner
           sparse-checkout: |
             pipeline/check_finals.py
+            pipeline/verify_preservation.py
             tests/test_final_checks.py
           sparse-checkout-cone-mode: false
       - uses: actions/setup-python@v5
@@ -58,8 +59,11 @@ jobs:
       - name: Verify final-only grading rules
         run: python -m pytest -q result-runner/tests/test_final_checks.py
       - name: Grade saved snapshots from confirmed finals
+        id: finals
+        continue-on-error: true
         run: python result-runner/pipeline/check_finals.py ${{ matrix.sport }}
       - name: Save results without changing predictions or model artifacts
+        if: ${{ !cancelled() && (steps.finals.outcome == 'success' || steps.finals.outcome == 'failure') }}
         env:
           SPORT: ${{ matrix.sport }}
           TARGET_BRANCH: ${{ matrix.branch }}
@@ -67,6 +71,11 @@ jobs:
           git config user.name 'bp-sports-bot'
           git config user.email 'actions@users.noreply.github.com'
           git diff --exit-code -- model/
+          if [ "$SPORT" = nfl ]; then health=data/current/result_check.json; else health="data/$SPORT/result_check.json"; fi
+          git add "$health"
+          status=$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["status"])' "$health")
+          if [ "$status" = success ] || [ "$status" = degraded ]; then
+          python result-runner/pipeline/verify_preservation.py
           case "$SPORT" in
             nfl) git add data/ledger/ data/current/result_check.json ;;
             cfb) git add data/cfb/ledger/ data/cfb/v2_shadow/verified_prediction_ledger.csv data/cfb/v2_shadow/summary.json data/cfb/result_check.json ;;
@@ -76,6 +85,7 @@ jobs:
               git add data/nba/prospective/results.jsonl data/nba/prospective/dashboard.json data/nba/result_check.json ;;
             cbb) git add data/cbb/prospective/ data/cbb/result_check.json ;;
           esac
+          fi
           if ! git diff --cached --quiet; then
             git commit -m "Grade confirmed $SPORT final results [skip ci]"
             for attempt in 1 2 3; do
@@ -84,3 +94,6 @@ jobs:
               if [ "$attempt" = '3' ]; then exit 1; fi
             done
           fi
+      - name: Report incomplete final checks
+        if: steps.finals.outcome == 'failure'
+        run: exit 1

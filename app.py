@@ -11,7 +11,7 @@ from matchup_preview_ui import render_preview
 from matchup_details_ui import details_button
 from cfb_board_ui import dated_board, date_choices, games_on_date, date_label
 import game_center_ui
-if getattr(game_center_ui,"UI_REVISION",None)!="background-refresh-20261030":
+if getattr(game_center_ui,"UI_REVISION",None)!="forecast-health-20261115":
     importlib.reload(game_center_ui)
     # Rebind score-loader imports retained by an existing Streamlit process.
     for name in ('overview_ui','nfl_availability_ui','cbb_ui','compact_board_ui','nhl_ui','nba_ui'):
@@ -230,9 +230,9 @@ sport = st.radio("Sport", ["Overview", "NFL", "CFB", "NHL", "NBA", "CBB"], horiz
 
 def current_ui(module):
     # Streamlit can retain imported modules during a deployment rerun. Reload once per UI revision.
-    expected={'overview_ui':'mobile-results-20261103','compact_board_ui':'fast-compact-20261030',
+    expected={'overview_ui':'forecast-health-20261115','compact_board_ui':'fast-compact-20261030',
               'cbb_ui':'cbb-shared-feed-20261030','nfl_availability_ui':'shared-availability-20261030',
-              'nhl_ui':'confidence-evidence-20261028b'}.get(module.__name__,'mobile-layout-20261007')
+              'nhl_ui':'optional-goalies-20261115'}.get(module.__name__,'mobile-layout-20261007')
     if getattr(module,"UI_REVISION",None)!=expected:module=importlib.reload(module)
     return module
 

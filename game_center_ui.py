@@ -1,5 +1,5 @@
 """Shared scores, preferences and probability guidance for the web UI."""
-UI_REVISION="background-refresh-20261030"
+UI_REVISION="forecast-health-20261115"
 import html,json
 from pathlib import Path
 from urllib.request import Request,urlopen
@@ -84,8 +84,7 @@ def board_route():
 def render_information(page):
     st.button('← Back to games',key='bp_back_to_board',on_click=board_route)
     if page=='Weekly results':
-        import importlib, overview_ui
-        if getattr(overview_ui,'UI_REVISION',None)!='weekly-results-20261013':importlib.reload(overview_ui)
+        import overview_ui
         overview_ui.render_weekly_results()
         return
     if page=='About B.P. Sports':

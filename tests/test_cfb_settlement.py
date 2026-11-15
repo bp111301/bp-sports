@@ -8,7 +8,7 @@ def prediction():return dict(prediction_id='test',game_id=1,home_team='Troy',awa
 def final():return dict(game_id=1,home_team='Troy',away_team='Southern Miss',start_date='2026-10-07T00:00Z',start_time_tbd=False,completed=True,home_points=30,away_points=20)
 def test_numeric_in_progress_scores_and_placeholders_do_not_settle():
  assert g.result_for(prediction(),{**final(),'completed':False},NOW) is None
- for update in [dict(home_points=20),dict(home_points=-1),dict(home_points=float('nan')),dict(start_time_tbd=True)]:assert g.result_for(prediction(),{**final(),**update},NOW) is None
+ for update in [dict(home_points=20),dict(home_points=20.5),dict(home_points=-1),dict(home_points=float('nan')),dict(start_time_tbd=True)]:assert g.result_for(prediction(),{**final(),**update},NOW) is None
 
 def test_final_correctly_settles_aliases_without_altering_snapshot():
  p=prediction();before=p.copy();result=g.result_for(p,final(),NOW)
@@ -55,3 +55,24 @@ def test_ul_monroe_final_settles_both_saved_team_name_variants():
  assert p==before
  assert g.result_for(p,{**actual,'home_team':'Louisiana'},now) is None
  assert g.result_for(p,{**actual,'completed':False},now) is None
+
+
+def test_cfb_rechecks_kickoff_after_inference_and_requires_confirmed_time():
+    module=g
+    start=pd.Timestamp('2026-11-14T17:00Z')
+    rows=pd.DataFrame([dict(kickoff_utc=start.isoformat(),snapshot_created_utc=(start-pd.Timedelta(seconds=2)).isoformat(),kickoff_time_tbd=v) for v in [False,True,None]])
+    assert len(module.eligible_snapshots(rows,start-pd.Timedelta(seconds=1)))==1
+    assert module.eligible_snapshots(rows,start).empty
+    assert module.eligible_snapshots(rows,start+pd.Timedelta(seconds=1)).empty
+
+
+def test_cfb_result_writer_preserves_original_forecast_precision(tmp_path):
+    module=g
+    path=tmp_path/'ledger.csv'
+    path.write_text('prediction_id,home_win_prob,status,correct\np1,0.7000000000000000123,PREGAME_SNAPSHOT,\n')
+    before=pd.read_csv(path,float_precision='round_trip');after=before.copy()
+    after.loc[0,['correct','status']]=[1,'SETTLED']
+    after['schedule_kickoff_utc']='2026-11-14T17:00Z'
+    module.write_results(path,before,after)
+    assert '0.7000000000000000123' in path.read_text()
+    assert pd.read_csv(path).iloc[0].correct==1

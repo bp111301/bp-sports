@@ -75,8 +75,10 @@ jobs:
         if: steps.gate.outputs.run == 'true'
         run: python pipeline/nfl_availability.py --season "${{ steps.vars.outputs.season }}" --data-dir runtime
       - name: Settle completed predictions
+        id: settlement
+        continue-on-error: true
         if: steps.gate.outputs.run == 'true'
-        run: python pipeline/settle_predictions.py --ledger data/ledger/prediction_ledger.csv --schedules runtime/schedules.csv
+        run: python pipeline/check_finals.py nfl
       - name: Build frozen V4 pregame slate
         if: steps.gate.outputs.run == 'true'
         shell: bash
@@ -97,7 +99,9 @@ jobs:
         run: |
           git config user.name "bp-sports-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add bp_week5_website_feed.csv data/current/website_feed.csv data/current/prediction_metadata.json data/current/nfl_availability.json data/ledger/prediction_ledger.csv data/ledger/summary.json
+          git diff --exit-code -- model/
+          python pipeline/verify_preservation.py
+          git add bp_week5_website_feed.csv data/current/website_feed.csv data/current/prediction_metadata.json data/current/nfl_availability.json data/current/result_check.json data/ledger/prediction_ledger.csv data/ledger/summary.json
           if git diff --cached --quiet; then echo "No generated changes."; exit 0; fi
           git commit -m "Update frozen V4 predictions"
           # Other score/preview workflows can advance main between pull and push.
@@ -108,4 +112,7 @@ jobs:
             if [ "$attempt" = '3' ]; then exit 1; fi
             sleep $((attempt * 3))
           done
+      - name: Report incomplete grading after preserving captures
+        if: steps.settlement.outcome == 'failure'
+        run: exit 1
 
