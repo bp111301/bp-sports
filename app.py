@@ -11,7 +11,7 @@ from matchup_preview_ui import render_preview
 from matchup_details_ui import details_button
 from cfb_board_ui import dated_board, date_choices, games_on_date, date_label
 import game_center_ui
-if getattr(game_center_ui,"UI_REVISION",None)!="forecast-health-20261115":
+if getattr(game_center_ui,"UI_REVISION",None)!="forecast-health-render-20261115":
     importlib.reload(game_center_ui)
     # Rebind score-loader imports retained by an existing Streamlit process.
     for name in ('overview_ui','nfl_availability_ui','cbb_ui','compact_board_ui','nhl_ui','nba_ui'):
@@ -416,7 +416,7 @@ elif sport == "NFL":
                           {model_strip}
                           {guidance}
                           <div class="layer-note">{html.escape(layer_text)}</div>
-                        </div>''',
+                        </div>'''.replace('\n',''),
                         unsafe_allow_html=True,
                     )
     

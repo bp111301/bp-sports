@@ -67,3 +67,5 @@ def test_detailed_nfl_card_does_not_advertise_a_reviewed_probability(monkeypatch
     assert 'QB INPUT NEEDS REVIEW' in card and '>Review<span>' in card
     assert 'LOCKED SNAPSHOT' not in card and 'ADJUSTED CONFIDENCE' in card
     assert 'class="model-strip"' not in card and 'class="fill"' not in card
+    # Blank optional sections must not terminate the Markdown HTML block.
+    assert not any(not line.strip() for line in card.splitlines())
