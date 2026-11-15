@@ -30,7 +30,7 @@ The controlled run performs 44 layout checks, plus matchup-dialog interactions. 
 
 ## Findings and limits
 
-Phone screenshots initially exposed paired record tiles with awkwardly wrapped percentages and labels. Explicitly stacking the native Streamlit columns below 640px resolved this; the final screenshots show full-width records and intact values. Tablet records retain two columns.
+Phone screenshots initially exposed paired record tiles with awkwardly wrapped percentages and labels. Explicitly stacking the native Streamlit columns below 640px resolved this; the final screenshots show full-width records and intact values. Tablet records retain two columns. A final phone check also exposed a truncated sport selector label; the date/view controls now stack on phones so the selected sport remains readable.
 
 Tests use Chromium viewport emulation, not physical iPhone/iPad Safari. Analytics tables retain their existing intentional horizontal table scrolling. Data-source or grading exceptions remain governed by the existing pipeline; this change does not resolve them or change a saved prediction.
 

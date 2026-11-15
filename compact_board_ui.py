@@ -229,11 +229,14 @@ html,body,.stApp,[data-testid="stAppViewContainer"],[data-testid="stMain"]{max-w
 
 /* Use full-width cards on phones; retain paired cards at tablet widths. */
 @media(max-width:640px){
+[data-testid="stHorizontalBlock"]:has(.st-key-desk_sport),
 [class*="st-key-season_record_row_"] [data-testid="stHorizontalBlock"],
 [class*="st-key-desk_details_row_"] [data-testid="stHorizontalBlock"],
 [class*="st-key-remaining_details_row_"] [data-testid="stHorizontalBlock"],
 [class*="st-key-daily_details_row_"] [data-testid="stHorizontalBlock"],
 [class*="st-key-compact_row_"] [data-testid="stHorizontalBlock"]{flex-direction:column;align-items:stretch}
+[data-testid="stColumn"]:has(.st-key-desk_sport),
+[data-testid="stColumn"]:has(.st-key-desk_view),
 [class*="st-key-season_record_row_"] [data-testid="stColumn"],
 [class*="st-key-desk_details_row_"] [data-testid="stColumn"],
 [class*="st-key-remaining_details_row_"] [data-testid="stColumn"],
