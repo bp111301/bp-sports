@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1793,
-    "settled_games": 623,
-    "pending_games": 1170,
-    "wins": 472,
+    "settled_games": 625,
+    "pending_games": 1168,
+    "wins": 474,
     "losses": 151,
-    "accuracy": 0.7576243980738363,
-    "brier": 0.1661618129476472,
-    "log_loss": 0.5054138682697846
+    "accuracy": 0.7584,
+    "brier": 0.16580228214956277,
+    "log_loss": 0.5045925102374382
   },
   "predictions": [
     {
@@ -27074,7 +27074,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8703061024815655,
       "predicted_winner": "Loyola Marymount Lions",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -27090,7 +27090,18 @@
         "pace_diff": 2.877419354838736,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 86,
+      "away_score": 49,
+      "actual_winner": "Loyola Marymount Lions",
+      "correct": 1,
+      "brier": 0.016820507053522196,
+      "log_loss": 0.13891028728253196,
+      "verified_start_time_utc": "2026-11-15T21:00:00+00:00",
+      "settled_at_utc": "2026-11-15T23:01:48.764788+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&limit=1000&groups=50",
+      "result_source_event_sha256": "d0e655c4f28f14a3fcc0ec5b691756bcc69abb150811be707bf3821422931b32"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401919825",
@@ -27108,7 +27119,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6986756398181468,
       "predicted_winner": "James Madison Dukes",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -27124,7 +27135,18 @@
         "pace_diff": 1.9371093750000057,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 80,
+      "away_score": 71,
+      "actual_winner": "James Madison Dukes",
+      "correct": 1,
+      "brier": 0.09079637003900318,
+      "log_loss": 0.35856867904062345,
+      "verified_start_time_utc": "2026-11-15T21:00:00+00:00",
+      "settled_at_utc": "2026-11-15T23:01:48.764788+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&limit=1000&groups=50",
+      "result_source_event_sha256": "4264a71ae99ab21b2f23a4058e5472456e0392901c7fdf89590e0e964f1fa038"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401928789",
@@ -68075,5 +68097,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-15T22:52:19.955703+00:00"
+  "results_checked_at_utc": "2026-11-15T23:01:48.764788+00:00"
 }
