@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1793,
-    "settled_games": 619,
-    "pending_games": 1174,
+    "settled_games": 620,
+    "pending_games": 1173,
     "wins": 471,
-    "losses": 148,
-    "accuracy": 0.7609046849757674,
-    "brier": 0.16435769423307675,
-    "log_loss": 0.5013058561214369
+    "losses": 149,
+    "accuracy": 0.7596774193548387,
+    "brier": 0.16513974006238444,
+    "log_loss": 0.5031401806676382
   },
   "predictions": [
     {
@@ -46988,7 +46988,7 @@
       "created_at_utc": "2026-10-31T01:18:08.105611+00:00",
       "home_win_prob": 0.8057456846945201,
       "predicted_winner": "Alabama A&M Bulldogs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "ad93e801be1d2e72bfc862726bd624ed298023ab435c92d54748dfee33ac69a9",
       "forecast_stage": "early_research_prior",
@@ -47004,7 +47004,18 @@
         "pace_diff": -3.7941666666666833,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 73,
+      "away_score": 74,
+      "actual_winner": "Cleveland State Vikings",
+      "correct": 0,
+      "brier": 0.6492261084038411,
+      "log_loss": 1.638587074766309,
+      "verified_start_time_utc": "2026-11-15T20:00:00+00:00",
+      "settled_at_utc": "2026-11-15T22:11:40.714229+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&limit=1000&groups=50",
+      "result_source_event_sha256": "6c2e7595714870171c8b35545e513bfa03e249d18cf1e39f196fb23652ad2abd"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911394",
@@ -68031,5 +68042,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-15T22:06:46.675942+00:00"
+  "results_checked_at_utc": "2026-11-15T22:11:40.714229+00:00"
 }
