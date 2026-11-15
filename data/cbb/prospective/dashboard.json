@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1793,
-    "settled_games": 611,
-    "pending_games": 1182,
-    "wins": 466,
-    "losses": 145,
-    "accuracy": 0.762684124386252,
-    "brier": 0.16352324434216128,
-    "log_loss": 0.4979135042966884
+    "settled_games": 616,
+    "pending_games": 1177,
+    "wins": 469,
+    "losses": 147,
+    "accuracy": 0.7613636363636364,
+    "brier": 0.1644353490974826,
+    "log_loss": 0.5014486852863345
   },
   "predictions": [
     {
@@ -26579,7 +26579,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9356662063777594,
       "predicted_winner": "Michigan Wolverines",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -26595,7 +26595,18 @@
         "pace_diff": -1.9655392156862916,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 123,
+      "away_score": 79,
+      "actual_winner": "Michigan Wolverines",
+      "correct": 1,
+      "brier": 0.004138837001829041,
+      "log_loss": 0.06649648322532946,
+      "verified_start_time_utc": "2026-11-15T19:00:00+00:00",
+      "settled_at_utc": "2026-11-15T21:06:03.264402+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&limit=1000&groups=50",
+      "result_source_event_sha256": "83037a09c001642f25e277543b6e14c0d698a534d2cb573c13b0e9a94a7201b1"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920065",
@@ -26647,7 +26658,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9611736859707615,
       "predicted_winner": "North Dakota State Bison",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -26663,7 +26674,18 @@
         "pace_diff": -3.587352150537626,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 69,
+      "away_score": 73,
+      "actual_winner": "Cal State Bakersfield Roadrunners",
+      "correct": 0,
+      "brier": 0.92385485460262,
+      "log_loss": 3.2486570655944584,
+      "verified_start_time_utc": "2026-11-15T19:00:00+00:00",
+      "settled_at_utc": "2026-11-15T21:06:03.264402+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&limit=1000&groups=50",
+      "result_source_event_sha256": "8f5abe8826255d598963af1fbaa10b626530cdd6f4954294178768c638689a71"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921287",
@@ -26681,7 +26703,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.5594236268718422,
       "predicted_winner": "Holy Cross Crusaders",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -26697,7 +26719,18 @@
         "pace_diff": 0.15717463848723412,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 60,
+      "away_score": 62,
+      "actual_winner": "UAlbany Great Danes",
+      "correct": 0,
+      "brier": 0.31295479430244616,
+      "log_loss": 0.8196714703636724,
+      "verified_start_time_utc": "2026-11-15T19:00:00+00:00",
+      "settled_at_utc": "2026-11-15T21:06:03.264402+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&limit=1000&groups=50",
+      "result_source_event_sha256": "5f6342286b213331f52215acf99bbc2793d3b78e9cc5eaa2cd42d665c3177b27"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401925812",
@@ -26715,7 +26748,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.3642716102370973,
       "predicted_winner": "Temple Owls",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -26731,7 +26764,18 @@
         "pace_diff": 0.793145161290326,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 71,
+      "away_score": 84,
+      "actual_winner": "Temple Owls",
+      "correct": 1,
+      "brier": 0.13269380602472775,
+      "log_loss": 0.4529838669793814,
+      "verified_start_time_utc": "2026-11-15T19:00:00+00:00",
+      "settled_at_utc": "2026-11-15T21:06:03.264402+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&limit=1000&groups=50",
+      "result_source_event_sha256": "0cd23ef281e6630f086b59732d3089804a1b66437a4174646b61dcd232742257"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401925926",
@@ -26749,7 +26793,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9236425572905812,
       "predicted_winner": "Charleston Cougars",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -26765,7 +26809,18 @@
         "pace_diff": -1.4427822580645397,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 90,
+      "away_score": 66,
+      "actual_winner": "Charleston Cougars",
+      "correct": 1,
+      "brier": 0.005830459057122174,
+      "log_loss": 0.07943012494252655,
+      "verified_start_time_utc": "2026-11-15T19:00:00+00:00",
+      "settled_at_utc": "2026-11-15T21:06:03.264402+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&limit=1000&groups=50",
+      "result_source_event_sha256": "6582b03d73cc18762cd5926896182e63f1e2cfd64789b0d8480af0e388ccecce"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401909525",
@@ -67943,5 +67998,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-15T20:56:17.726159+00:00"
+  "results_checked_at_utc": "2026-11-15T21:06:03.264402+00:00"
 }
