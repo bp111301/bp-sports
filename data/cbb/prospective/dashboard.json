@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1793,
-    "settled_games": 620,
-    "pending_games": 1173,
+    "settled_games": 621,
+    "pending_games": 1172,
     "wins": 471,
-    "losses": 149,
-    "accuracy": 0.7596774193548387,
-    "brier": 0.16513974006238444,
-    "log_loss": 0.5031401806676382
+    "losses": 150,
+    "accuracy": 0.7584541062801933,
+    "brier": 0.16548622063186746,
+    "log_loss": 0.5038741033694126
   },
   "predictions": [
     {
@@ -26962,7 +26962,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6166880684035735,
       "predicted_winner": "Saint Louis Billikens",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -26978,7 +26978,18 @@
         "pace_diff": 0.42132056451613664,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 58,
+      "away_score": 68,
+      "actual_winner": "High Point Panthers",
+      "correct": 0,
+      "brier": 0.3803041737113305,
+      "log_loss": 0.9589061784695557,
+      "verified_start_time_utc": "2026-11-15T20:00:00+00:00",
+      "settled_at_utc": "2026-11-15T22:16:54.422610+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&limit=1000&groups=50",
+      "result_source_event_sha256": "32912413b87a0d8811e4001595febd38793977dc9caefe9d588fe3073a896e6b"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401926068",
@@ -68042,5 +68053,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-15T22:11:40.714229+00:00"
+  "results_checked_at_utc": "2026-11-15T22:16:54.422610+00:00"
 }
