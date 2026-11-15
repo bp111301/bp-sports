@@ -1,5 +1,5 @@
 """Read-only NFL availability context and explicitly labeled pregame refreshes."""
-UI_REVISION='shared-availability-20261030'
+UI_REVISION='efficient-feeds-20261115'
 import html,json
 from urllib.request import Request,urlopen
 import pandas as pd
@@ -9,7 +9,7 @@ URL='https://raw.githubusercontent.com/bp111301/bp-sports/main/data/current/nfl_
 
 def load_availability():
     from overview_ui import load_overview
-    source=load_overview().get('nfl_availability',{})
+    source=load_overview(('nfl_availability',)).get('nfl_availability',{})
     return (source.get('data') or {}) if source.get('ok') else {}
 
 def context_for(game_id,payload=None):return (load_availability() if payload is None else payload).get('games',{}).get(str(game_id),{})

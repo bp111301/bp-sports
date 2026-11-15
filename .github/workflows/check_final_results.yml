@@ -51,10 +51,13 @@ jobs:
             pipeline/check_finals.py
             pipeline/verify_preservation.py
             tests/test_final_checks.py
+            .github/workflows/check_final_results.yml
           sparse-checkout-cone-mode: false
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+          cache: pip
+          cache-dependency-path: result-runner/.github/workflows/check_final_results.yml
       - run: pip install pandas==2.2.3 numpy==2.3.5 requests==2.32.5 scikit-learn==1.8.0 joblib==1.5.3 pytest==8.4.2
       - name: Verify final-only grading rules
         run: python -m pytest -q result-runner/tests/test_final_checks.py

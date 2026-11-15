@@ -27,6 +27,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: pip
+          cache-dependency-path: model/nhl/v2_research/requirements-frozen.txt
       - name: Install reproducible research dependencies
         run: |
           if [ -f model/nhl/v2_research/requirements-frozen.txt ]; then
@@ -40,7 +42,16 @@ jobs:
           python research/nhl/prospective/test_ledger_safety.py
           python research/nhl/v2/test_model_safety.py
           python research/nhl/v2/test_regulation_safety.py
-      - name: Download fixed training history
+      - name: Restore fixed historical inputs
+        uses: actions/cache@v4
+        id: history
+        with:
+          path: |
+            runtime/nhl/prospective/training_games
+            runtime/nhl/prospective/training_team_stats
+          key: nhl-frozen-history-${{ runner.os }}-${{ hashFiles('model/nhl/v2_research/manifest.json', 'research/nhl/download_games.py', 'research/nhl/download_team_game_stats.py') }}
+      - name: Download fixed training history on cache miss
+        if: steps.history.outputs.cache-hit != 'true'
         run: |
           python research/nhl/download_games.py 20182019 20192020 20202021 20212022 20222023 20232024 20242025 20252026 --out-dir runtime/nhl/prospective/training_games
           python research/nhl/download_team_game_stats.py 20182019 20192020 20202021 20212022 20222023 20232024 20242025 20252026 --out-dir runtime/nhl/prospective/training_team_stats --schema-out runtime/nhl/prospective/training_team_stats/schema.json

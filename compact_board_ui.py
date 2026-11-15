@@ -2,12 +2,12 @@
 import html
 import pandas as pd
 import streamlit as st
-from overview_ui import load_overview, prepare, PRIMARY, COLUMNS, row, ts
+from overview_ui import load_overview, prepare, PRIMARY, COLUMNS, row, ts, SPORT_SOURCES
 from game_center_ui import load_scores, context, filter_favorites
 from game_status import display_state, score
 from matchup_details_ui import details_button, game_tile
 
-UI_REVISION = 'fast-compact-20261030'
+UI_REVISION = 'efficient-feeds-20261115'
 def esc(value): return html.escape(str(value), quote=True)
 
 def prepare_compact(sport, payload, score_feed, now, cbb=None):
@@ -148,7 +148,8 @@ def render_compact(sport):
         cbb = load_feed()
         payload = {}
     else:
-        payload = load_overview()
+        keys=SPORT_SOURCES[sport]+(('nfl_availability',) if sport=='NFL' else ())
+        payload = load_overview(keys)
     board, available = prepare_compact(sport,payload,feed,now,cbb)
     key = {'NFL':'nfl','CFB':'cfb','NHL':'nhl','NBA':'nba'}.get(sport)
     if (sport == 'CBB' and cbb is None) or (key and not available.get(key)):

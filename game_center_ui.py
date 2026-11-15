@@ -1,5 +1,5 @@
 """Shared scores, preferences and probability guidance for the web UI."""
-UI_REVISION="forecast-health-20261115"
+UI_REVISION="efficient-feeds-20261115"
 import html,json
 from pathlib import Path
 from urllib.request import Request,urlopen
@@ -89,6 +89,7 @@ def render_information(page):
         return
     if page=='About B.P. Sports':
         st.title('Sports, with a clearer picture.')
+        st.caption('App release · dashboard-efficiency-20261115')
         st.write('B.P. Sports brings NFL, college football, NHL and NBA matchups, saved predictions and results into one sports desk. Follow your teams, understand each forecast and see how the models perform when the games are played.')
         st.subheader('Built on evidence')
         st.write('We publish probabilities before games and preserve those snapshots. Confirmed results build the live record. A model’s historical testing is shown separately so you can see the difference between development results and real prospective performance.')
@@ -120,22 +121,21 @@ def render_information(page):
     st.write('Frozen means the algorithm and weights stay fixed while we collect new results. Pregame information can update, but saved forecasts stay preserved. Any future model change receives its own version and evaluation.')
     st.write('Accuracy measures correct winners. Brier score and log loss measure probability quality: lower is better. Pending games do not count as wins or losses. Betting-market prices do not choose our winners.')
 
+@st.cache_data(ttl=3600,show_spinner=False)
+def college_favorites():
+    """Small navigation catalog, independent of live forecast downloads."""
+    try:
+        catalog=json.loads((ROOT/'data/team_catalog.json').read_text())
+    except (OSError,ValueError):return {}
+    return {favorite_key(sport,name):sport+' · '+name for sport in ('CFB','CBB') for name in catalog.get(sport,[])}
+
 def render_preferences(nfl):
     from nhl_ui import TEAMS as hockey
     from nba_ui import TEAMS as basketball
     options={favorite_key('NFL',k):'NFL · '+v+' ('+k+')' for k,v in nfl.items()}
     options.update({favorite_key('NHL',k):'NHL · '+v+' ('+k+')' for k,v in hockey.items()})
     options.update({favorite_key('NBA',k):'NBA · '+v+' ('+team('NBA',k)+')' for k,v in basketball.items()})
-    try:
-        for name in json.loads((ROOT/'data/team_catalog.json').read_text()).get('CFB',[]):options[favorite_key('CFB',name)]='CFB · '+name
-        records=json.loads((ROOT/'data/matchup_previews.json').read_text()).get('games',{}).values()
-        for r in records:
-            if r['sport']=='CFB':
-                for side in ('home_team','away_team'):options[favorite_key('CFB',r[side])]='CFB · '+r[side]
-    except (OSError,ValueError,KeyError):pass
-    from cbb_ui import load_feed
-    for r in (load_feed() or {}).get('predictions',[]):
-        for side in ('home_team','away_team'):options[favorite_key('CBB',r[side])]='CBB · '+r[side]
+    options.update(college_favorites())
     if 'bp_favorites' not in st.session_state:st.session_state['bp_favorites']=[k for k in st.query_params.get('teams','').split('|') if k in options]
     with st.popover('☰ Menu',use_container_width=True):
         st.markdown('### Your sports desk')
@@ -155,7 +155,7 @@ def render_preferences(nfl):
             st.write('70% is the model’s estimated chance of winning: it still gives the opponent 30%. Across many well-calibrated 70% predictions, about 7 in 10 should win. A single game can go either way.')
             st.write('These models are collecting prospective evidence. High estimates are not locks; the confidence table on Overview compares saved probabilities with actual win rates. NHL remains experimental.')
         with st.expander('Score updates'):
-            st.caption('This page checks every minute. The source feed is scheduled to refresh every 5 minutes; source or workflow delays can take longer. Confirmed finals may await grading. Refresh reloads saved feeds for all four sports.')
+            st.caption('This page checks every minute. The source feed is scheduled to refresh every 5 minutes; source or workflow delays can take longer. Confirmed finals may await grading. Refresh reloads saved feeds for all five sports.')
     st.markdown('''<style>
 [data-testid="stPopoverBody"]{max-height:75vh;max-height:75dvh;overflow-y:auto;max-width:calc(100vw - 24px)}
 .bp-score{background:#0b1420;border:1px solid #2a394c;border-radius:12px;padding:12px 14px;margin:12px 0}.bp-score-top{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.7rem;color:#abbdd1}.bp-game-state{display:inline-block;font-weight:850;border-radius:30px;padding:4px 9px;background:#1d2c40;color:#bed6fa}.bp-game-state.live{background:#123e2d;color:#88f0bc}.bp-game-state.final{background:#25354d;color:#d4e3fb}.bp-score-value{font-size:1rem;color:#eef5ff;margin-top:8px;overflow-wrap:anywhere}.bp-score-value b{font-size:1.3rem}.bp-score-value span{color:#91a6c3}.bp-score-source{font-size:.65rem;color:#9bb0ca;margin-top:5px}.bp-score-source a{margin-left:8px;color:#93c1ff}.bp-confidence{display:flex;flex-direction:column;gap:4px;font-size:.72rem;color:#aabbd0;margin:10px 0 0;line-height:1.45}.bp-confidence b{font-weight:650;color:#c7d9ef}.bp-confidence.concern{border-left:3px solid #e4bc62;padding-left:10px;color:#ecd29c}

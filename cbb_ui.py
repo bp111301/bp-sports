@@ -6,7 +6,7 @@ import pandas as pd
 import streamlit as st
 
 FEED_URL = 'https://raw.githubusercontent.com/bp111301/bp-sports/cbb-v1-research/data/cbb/prospective/dashboard.json'
-UI_REVISION = 'cbb-shared-feed-20261030'
+UI_REVISION = 'efficient-feeds-20261115'
 
 def team_block(name, home=False):
     from college_team_ui import college_abbreviation
@@ -38,7 +38,7 @@ def card_html(row):
 
 def load_feed():
     from overview_ui import load_overview
-    source=load_overview().get('cbb',{})
+    source=load_overview(('cbb',)).get('cbb',{})
     feed=source.get('data') or {}
     if source.get('ok') and feed.get('feed_status')=='research_preview' and isinstance(feed.get('predictions'),list):return feed
     return None
@@ -115,7 +115,16 @@ def render_board(feed):
     if state != 'All games': rows = rows[rows['status'] == state.lower()]
     from game_center_ui import filter_favorites
     rows = filter_favorites(rows, 'CBB', 'cbb_favorites')
-    if rows.empty: st.info('No saved games match these filters.')
+    if rows.empty: st.info('No saved games match these filters.');return
+    # Keep the complete filtered download, but bound the DOM sent to the browser.
+    filtered=rows
+    signature=(chosen,state,search,tuple(st.session_state.get('bp_favorites',[])),st.session_state.get('cbb_favorites',False))
+    pages=max(1,(len(rows)+39)//40)
+    if st.session_state.get('cbb_page_filters')!=signature or st.session_state.get('cbb_page',1)>pages:
+        st.session_state['cbb_page']=1;st.session_state['cbb_page_filters']=signature
+    page=st.selectbox('Page',range(1,pages+1),format_func=lambda value:f'{value} of {pages}',key='cbb_page') if pages>1 else 1
+    start=(page-1)*40;rows=rows.iloc[start:start+40]
+    st.caption(f'Showing {start+1}–{start+len(rows)} of {len(filtered)} matching games.')
     last_date = None
     for _, row in rows.iterrows():
         start = row['start'].tz_convert('America/Chicago')
@@ -123,4 +132,4 @@ def render_board(feed):
             st.subheader(start.strftime('%A, %B %-d'))
             last_date = row['date']
         st.markdown(card_html(row), unsafe_allow_html=True)
-    st.download_button('Download displayed picks', rows.drop(columns=['features'], errors='ignore').to_csv(index=False), 'cbb-research-picks.csv', 'text/csv')
+    st.download_button('Download filtered picks', filtered.drop(columns=['features'], errors='ignore').to_csv(index=False), 'cbb-research-picks.csv', 'text/csv')

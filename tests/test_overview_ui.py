@@ -142,7 +142,7 @@ def test_live_record_card_counts_only_confirmed_finals_awaiting_grading():
     ]
     final = dict(start_time_utc='2026-11-08T09:00:00Z', state='final')
     with patch('overview_ui.load_overview', return_value=data), patch('game_center_ui.load_scores', return_value={}), patch(
-        'overview_ui.context', side_effect=lambda sport, gid, home, away: final if gid == 'final' else None
+        'overview_ui.context', side_effect=lambda sport, gid, home, away, feed=None: final if gid == 'final' else None
     ):
         app = AppTest.from_string(f'import overview_ui as ov\nov.render_overview("{now.isoformat()}")').run()
     assert not app.exception
