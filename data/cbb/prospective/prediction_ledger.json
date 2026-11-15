@@ -25860,7 +25860,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.4017917128099338,
     "predicted_winner": "UC Davis Aggies",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -25876,7 +25876,18 @@
       "pace_diff": 0.7657834101382548,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 56,
+    "away_score": 75,
+    "actual_winner": "UC Davis Aggies",
+    "correct": 1,
+    "brier": 0.16143658048274032,
+    "log_loss": 0.5138162793381729,
+    "verified_start_time_utc": "2026-11-15T01:00:00+00:00",
+    "settled_at_utc": "2026-11-15T03:19:37.529906+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+    "result_source_event_sha256": "f76bec715cf4098ef0b278990e577ad4761cbd2f6d45005757ce8acb5f771fe1"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401925063",
