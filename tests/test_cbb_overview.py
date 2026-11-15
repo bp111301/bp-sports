@@ -39,7 +39,7 @@ def test_cbb_overview_tile_filters_details_and_board_navigation():
     with patch('overview_ui.load_overview',return_value=payload),patch('overview_ui.context',return_value=None),patch('game_center_ui.load_scores',return_value={}):
         at=AppTest.from_file(Path(__file__).resolve().parents[1]/'app.py',default_timeout=20).run()
         assert not at.exception and at.button(key='open_CBB')
-        assert any('Research candidate' in m.value and 'Update overdue' in m.value for m in at.markdown)
+        assert any('Research candidate' in m.value and 'Awaiting season' in m.value and 'Forecasts checked' in m.value for m in at.markdown)
         at.selectbox(key='desk_sport').select('CBB')
         at.selectbox(key='desk_view').select('Upcoming').run()
         assert not at.exception

@@ -1,4 +1,4 @@
-name: Keep final grading running
+name: Keep scores and final grading running
 on:
   push:
     branches: [main]
@@ -29,10 +29,11 @@ jobs:
           sparse-checkout: pipeline/nba_pregame_due.py
           sparse-checkout-cone-mode: false
           persist-credentials: false
-      - name: Start overdue grading and NBA pregame checks
+      - name: Start overdue scores, grading and NBA pregame checks
         run: |
           dispatch_if_due() {
             local workflow="$1"
+            local max_age="${2:-300}"
             local endpoint="repos/$GITHUB_REPOSITORY/actions/workflows/$workflow"
             local latest status started_at
             if latest=$(gh api "$endpoint/runs?branch=main&per_page=1" \
@@ -40,7 +41,7 @@ jobs:
               read -r status started_at <<< "$latest"
               if [[ "$status" == missing ]] || {
                 [[ "$status" == completed ]] &&
-                (( $(date -u +%s) - $(date -u -d "$started_at" +%s) >= 300 ));
+                (( $(date -u +%s) - $(date -u -d "$started_at" +%s) >= max_age ));
               }; then
                 echo "Requesting $workflow."
                 gh api --method POST "$endpoint/dispatches" -f ref=main ||
@@ -52,6 +53,9 @@ jobs:
           }
 
           for ((check=0; check<70; check++)); do
+            # Scheduled runs can be delayed for hours. Keep the archive usable
+            # even when the live dashboard overlay cannot reach its provider.
+            dispatch_if_due game_status.yml 900
             dispatch_if_due check_final_results.yml
             if nba_due=$(python3 pipeline/nba_pregame_due.py) && [[ -n "$nba_due" ]]; then
               echo "NBA injury capture window open for $nba_due."
