@@ -3,8 +3,8 @@
   "as_of_utc": "2026-11-15T17:44:05.547805+00:00",
   "new_prediction_rows": 6,
   "total_prediction_rows": 861,
-  "pending": 9,
-  "settled": 852,
+  "pending": 6,
+  "settled": 855,
   "invalid_timing": 0,
   "status": "research_only_not_promoted",
   "historical_gate_passed": false,
@@ -12,28 +12,28 @@
   "metrics": [
     {
       "candidate": "decay2_logistic",
-      "games": 284,
+      "games": 285,
       "correct": 178,
-      "accuracy": 0.6267605633802817,
-      "brier": 0.23109742181230467,
-      "log_loss": 0.6554251480974617
+      "accuracy": 0.624561403508772,
+      "brier": 0.2322454264324969,
+      "log_loss": 0.6579502513911609
     },
     {
       "candidate": "linear_regulation_blend",
-      "games": 284,
+      "games": 285,
       "correct": 175,
-      "accuracy": 0.6161971830985915,
-      "brier": 0.23175272645596523,
-      "log_loss": 0.656039220940478
+      "accuracy": 0.6140350877192983,
+      "brier": 0.23300069034582052,
+      "log_loss": 0.6588401162409436
     },
     {
       "candidate": "reference_control",
-      "games": 284,
+      "games": 285,
       "correct": 173,
-      "accuracy": 0.6091549295774648,
-      "brier": 0.23284150142582294,
-      "log_loss": 0.6599922222272205
+      "accuracy": 0.6070175438596491,
+      "brier": 0.23406867899634204,
+      "log_loss": 0.6627320799584102
     }
   ],
-  "results_checked_at_utc": "2026-11-16T04:44:52.103605+00:00"
+  "results_checked_at_utc": "2026-11-16T06:44:36.329242+00:00"
 }
