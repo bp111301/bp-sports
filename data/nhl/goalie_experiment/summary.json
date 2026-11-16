@@ -3,8 +3,8 @@
   "status": "research_only_not_promoted",
   "weights_frozen": true,
   "paired_games": 175,
-  "settled_paired_games": 174,
-  "pending_paired_games": 1,
+  "settled_paired_games": 175,
+  "pending_paired_games": 0,
   "invalid_timing": 0,
   "coverage": [
     {
@@ -19,44 +19,44 @@
   "metrics": [
     {
       "candidate": "team_control",
-      "games": 174,
-      "correct": 109,
-      "accuracy": 0.6264367816091954,
-      "brier": 0.2304659922591531,
-      "log_loss": 0.6557432512214563
+      "games": 175,
+      "correct": 110,
+      "accuracy": 0.6285714285714286,
+      "brier": 0.23030780207776705,
+      "log_loss": 0.6554156217685118
     },
     {
       "candidate": "inferred_goalie",
-      "games": 174,
-      "correct": 110,
-      "accuracy": 0.632183908045977,
-      "brier": 0.22935468821974422,
-      "log_loss": 0.6523118842491947
+      "games": 175,
+      "correct": 111,
+      "accuracy": 0.6342857142857142,
+      "brier": 0.2291523352960069,
+      "log_loss": 0.6519016123569349
     },
     {
       "candidate": "confirmed_goalie",
-      "games": 174,
-      "correct": 110,
-      "accuracy": 0.632183908045977,
-      "brier": 0.22955482331876417,
-      "log_loss": 0.6526709576609432
+      "games": 175,
+      "correct": 111,
+      "accuracy": 0.6342857142857142,
+      "brier": 0.2293619531079362,
+      "log_loss": 0.652280182182582
     }
   ],
   "first_formal_review_paired_games": 500,
   "automatic_promotion": false,
   "confirmed_minus_control": {
     "team_control": {
-      "accuracy": 0.005747126436781658,
-      "brier": -0.0009111689403889234,
-      "log_loss": -0.003072293560513084
+      "accuracy": 0.005714285714285672,
+      "brier": -0.0009458489698308536,
+      "log_loss": -0.003135439585929767
     },
     "inferred_goalie": {
       "accuracy": 0.0,
-      "brier": 0.00020013509901994908,
-      "log_loss": 0.0003590734117484562
+      "brier": 0.00020961781192929685,
+      "log_loss": 0.0003785698256471015
     }
   },
   "games_in_current_prediction_window": 2,
   "newly_eligible_games": 2,
-  "results_checked_at_utc": "2026-11-16T03:34:16.357835+00:00"
+  "results_checked_at_utc": "2026-11-16T03:44:26.469470+00:00"
 }
