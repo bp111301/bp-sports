@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1793,
-    "settled_games": 632,
-    "pending_games": 1161,
-    "wins": 480,
+    "settled_games": 634,
+    "pending_games": 1159,
+    "wins": 482,
     "losses": 152,
-    "accuracy": 0.759493670886076,
-    "brier": 0.16499361961632128,
-    "log_loss": 0.5026607979079435
+    "accuracy": 0.7602523659305994,
+    "brier": 0.16452585754382926,
+    "log_loss": 0.5014996707544408
   },
   "predictions": [
     {
@@ -27434,7 +27434,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9062908991773045,
       "predicted_winner": "St. John's Red Storm",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -27450,7 +27450,18 @@
         "pace_diff": 2.1192784926470694,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 79,
+      "away_score": 62,
+      "actual_winner": "St. John's Red Storm",
+      "correct": 1,
+      "brier": 0.008781395576998103,
+      "log_loss": 0.09839494370490517,
+      "verified_start_time_utc": "2026-11-16T00:00:00+00:00",
+      "settled_at_utc": "2026-11-16T02:08:36.627510+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&limit=1000&groups=50",
+      "result_source_event_sha256": "4786318ad1129cc0e7c3f9ecc1a968568db4becfed0310709f9dd653153c0243"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401926772",
@@ -27468,7 +27479,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8430137276839471,
       "predicted_winner": "USC Trojans",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -27484,7 +27495,18 @@
         "pace_diff": 0.9210349462365315,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 122,
+      "away_score": 46,
+      "actual_winner": "USC Trojans",
+      "correct": 1,
+      "brier": 0.024644689695689913,
+      "log_loss": 0.1707720367902753,
+      "verified_start_time_utc": "2026-11-16T00:00:00+00:00",
+      "settled_at_utc": "2026-11-16T02:08:36.627510+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&limit=1000&groups=50",
+      "result_source_event_sha256": "95ee01c87d5116efcb7c3a7c3211081e76997401d5502326d8cdff227aac965a"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920896",
@@ -68174,5 +68196,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-16T02:03:30.232126+00:00"
+  "results_checked_at_utc": "2026-11-16T02:08:36.627510+00:00"
 }
