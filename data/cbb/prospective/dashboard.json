@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1831,
-    "settled_games": 655,
-    "pending_games": 1176,
-    "wins": 499,
+    "settled_games": 656,
+    "pending_games": 1175,
+    "wins": 500,
     "losses": 156,
-    "accuracy": 0.7618320610687023,
-    "brier": 0.16367409969082994,
-    "log_loss": 0.4991786608737978
+    "accuracy": 0.7621951219512195,
+    "brier": 0.16347328360677071,
+    "log_loss": 0.49871784593503277
   },
   "predictions": [
     {
@@ -28501,7 +28501,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8212858468167901,
       "predicted_winner": "Oregon State Beavers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -28517,7 +28517,18 @@
         "pace_diff": -1.2771969696969734,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 109,
+      "away_score": 71,
+      "actual_winner": "Oregon State Beavers",
+      "correct": 1,
+      "brier": 0.03193874854799183,
+      "log_loss": 0.19688406104392886,
+      "verified_start_time_utc": "2026-11-17T02:30:00+00:00",
+      "settled_at_utc": "2026-11-17T04:34:58.289172+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261116&limit=1000&groups=50",
+      "result_source_event_sha256": "dd9a8dd8727190caecb27830dd3c3a12c32a6913700630319850067dbe81db50"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401917532",
@@ -69722,5 +69733,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-17T04:29:56.534914+00:00"
+  "results_checked_at_utc": "2026-11-17T04:34:58.289172+00:00"
 }
