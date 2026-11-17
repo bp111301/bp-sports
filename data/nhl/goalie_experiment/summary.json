@@ -3,8 +3,8 @@
   "status": "research_only_not_promoted",
   "weights_frozen": true,
   "paired_games": 176,
-  "settled_paired_games": 175,
-  "pending_paired_games": 1,
+  "settled_paired_games": 176,
+  "pending_paired_games": 0,
   "invalid_timing": 0,
   "coverage": [
     {
@@ -15,44 +15,44 @@
   "metrics": [
     {
       "candidate": "team_control",
-      "games": 175,
+      "games": 176,
       "correct": 110,
-      "accuracy": 0.6285714285714286,
-      "brier": 0.23030780207776705,
-      "log_loss": 0.6554156217685118
+      "accuracy": 0.625,
+      "brier": 0.23277356481799646,
+      "log_loss": 0.661280241180147
     },
     {
       "candidate": "inferred_goalie",
-      "games": 175,
+      "games": 176,
       "correct": 111,
-      "accuracy": 0.6342857142857142,
-      "brier": 0.2291523352960069,
-      "log_loss": 0.6519016123569349
+      "accuracy": 0.6306818181818182,
+      "brier": 0.2315992306924601,
+      "log_loss": 0.657702325680381
     },
     {
       "candidate": "confirmed_goalie",
-      "games": 175,
+      "games": 176,
       "correct": 111,
-      "accuracy": 0.6342857142857142,
-      "brier": 0.2293619531079362,
-      "log_loss": 0.652280182182582
+      "accuracy": 0.6306818181818182,
+      "brier": 0.23180169601306444,
+      "log_loss": 0.6580592217417619
     }
   ],
   "first_formal_review_paired_games": 500,
   "automatic_promotion": false,
   "confirmed_minus_control": {
     "team_control": {
-      "accuracy": 0.005714285714285672,
-      "brier": -0.0009458489698308536,
-      "log_loss": -0.003135439585929767
+      "accuracy": 0.005681818181818232,
+      "brier": -0.0009718688049320245,
+      "log_loss": -0.003221019438385153
     },
     "inferred_goalie": {
       "accuracy": 0.0,
-      "brier": 0.00020961781192929685,
-      "log_loss": 0.0003785698256471015
+      "brier": 0.00020246532060433364,
+      "log_loss": 0.0003568960613808958
     }
   },
   "games_in_current_prediction_window": 1,
   "newly_eligible_games": 1,
-  "results_checked_at_utc": "2026-11-17T05:20:16.333087+00:00"
+  "results_checked_at_utc": "2026-11-17T05:25:26.336669+00:00"
 }
