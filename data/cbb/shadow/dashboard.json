@@ -1,57 +1,62 @@
 {
   "status": "shadow_only_not_public",
-  "updated_at_utc": "2026-11-17T08:01:23.874885+00:00",
+  "updated_at_utc": "2026-11-17T21:00:40.782309+00:00",
   "identities": {
     "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
     "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
     "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
   },
   "capture_window_hours": 24,
-  "eligible_future_games": 1210,
-  "within_capture_window": 55,
+  "eligible_future_games": 1208,
+  "within_capture_window": 54,
   "summary": {
-    "saved_pairs": 718,
-    "settled_pairs": 660,
+    "saved_pairs": 719,
+    "settled_pairs": 661,
     "pending_pairs": 58,
     "control": {
-      "wins": 513,
+      "wins": 514,
       "losses": 147,
-      "accuracy": 0.7772727272727272,
-      "brier": 0.15515345081408846,
-      "log_loss": 0.47118045981943046
+      "accuracy": 0.7776096822995462,
+      "brier": 0.15505704030162595,
+      "log_loss": 0.47101235445224005
     },
     "challenger": {
-      "wins": 517,
+      "wins": 518,
       "losses": 143,
-      "accuracy": 0.7833333333333333,
-      "brier": 0.14287904590519904,
-      "log_loss": 0.42824554867015485
+      "accuracy": 0.783661119515885,
+      "brier": 0.1428289496801798,
+      "log_loss": 0.4282064975069528
     },
     "challenger_minus_control": {
-      "accuracy": 0.0060606060606061,
-      "brier": -0.012274404908889425,
-      "log_loss": -0.04293491114927561
+      "accuracy": 0.006051437216338829,
+      "brier": -0.012228090621446142,
+      "log_loss": -0.04280585694528727
     },
     "pick_disagreements": 44,
     "roster_unknown_pairs": 220
   },
   "coverage": {
-    "source_games_in_horizon": 1515
+    "source_games_in_horizon": 1512
   },
   "excluded": {
     "division_or_conference_unknown": 284,
-    "tipoff_time_unconfirmed": 21
+    "tipoff_time_unconfirmed": 20
   },
   "coverage_by_day": {
+    "2026-12-17": {
+      "source_games": 1,
+      "eligible": 0,
+      "unconfirmed_tipoff": 0
+    },
     "2026-12-16": {
       "source_games": 52,
       "eligible": 44,
       "unconfirmed_tipoff": 0
     },
     "Unconfirmed source date/time": {
-      "source_games": 21,
+      "source_games": 20,
       "eligible": 0,
-      "unconfirmed_tipoff": 21
+      "unconfirmed_tipoff": 20
     },
     "2026-12-15": {
       "source_games": 45,
@@ -164,7 +169,7 @@
       "unconfirmed_tipoff": 0
     },
     "2026-11-23": {
-      "source_games": 45,
+      "source_games": 46,
       "eligible": 28,
       "unconfirmed_tipoff": 0
     },
@@ -194,16 +199,16 @@
       "unconfirmed_tipoff": 0
     },
     "2026-11-17": {
-      "source_games": 68,
-      "eligible": 55,
+      "source_games": 64,
+      "eligible": 53,
       "unconfirmed_tipoff": 0
     }
   },
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "3e53a70628eb673a445fb8f7aa68a5b4a75cdd949f693d4b333282c16dc89a24",
-    "bytes": 605042,
-    "archive_sha256": "58e779374a2c7d8787e4e373ed0337d5f2992acface83b95f9a0037f4101beef",
+    "sha256": "19e39a1796353c480258ac550191d68231c6e14a0e741213caba98a289b47921",
+    "bytes": 612733,
+    "archive_sha256": "628b5c3fdc52655267b839c072bbb8e31993b077c1590af1159fda189de25044",
     "live_schedule_sources": [
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&groups=50&limit=1000",
@@ -227,7 +232,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&groups=50&limit=1000",
-        "sha256": "dbc8c53ceef35054b7d33640c7faca58a09c4192548c669244de6224989fda60",
+        "sha256": "8d85163c80108caeca331da85eedd971df460595b70a1d0c9ae25dfe0fbc303d",
         "games": 68
       },
       {
@@ -257,7 +262,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261123&groups=50&limit=1000",
-        "sha256": "fd5e93d41c6ac0e92a775a5ae9c63590b6eb6a00e4cd725b98f36cdf24949456",
+        "sha256": "bc2f0ff5833ed4bd5cc2b48a6765a07a9e2ac65330f934e26dba6fee5eaf34ee",
         "games": 46
       },
       {
@@ -512,32 +517,32 @@
     {
       "season": 2027,
       "schedule_rows": 6074,
-      "box_rows": 1720,
+      "box_rows": 1786,
       "sources": [
         {
           "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-          "sha256": "58e779374a2c7d8787e4e373ed0337d5f2992acface83b95f9a0037f4101beef",
-          "bytes": 605042
+          "sha256": "628b5c3fdc52655267b839c072bbb8e31993b077c1590af1159fda189de25044",
+          "bytes": 612733
         },
         {
           "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2027.parquet",
-          "sha256": "bfad2980dfa38a5b900a9a07fcc77c19d88f2788fe7c3cc090ab933522305950",
-          "bytes": 171342
+          "sha256": "f8d531de12c54655333d785da4961b1600d3d1afb3cd57165c99414360a442b7",
+          "bytes": 175411
         }
       ],
       "exclusions": {
-        "not_confirmed_final": 5214,
-        "division_or_conference_unknown": 222
+        "not_confirmed_final": 5181,
+        "division_or_conference_unknown": 233
       },
-      "eligible_games": 638,
+      "eligible_games": 660,
       "neutral_games": 49,
       "players": {
         "season": 2027,
         "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2027.parquet",
-        "sha256": "e8d3074140391fc5c057e4369bb9acfc402af5eddf9bdc0a9a587ec41d04b3a9",
-        "bytes": 697091,
-        "eligible_team_games": 1276,
-        "complete_player_team_games": 1276,
+        "sha256": "4c56d528f9afb2309340f9a6fcf198130917f32d7dd9e333aa6831af18832fb5",
+        "bytes": 718362,
+        "eligible_team_games": 1320,
+        "complete_player_team_games": 1320,
         "exclusions": {}
       }
     }
@@ -70142,7 +70147,7 @@
         "created_at_utc": "2026-11-16T22:10:45.670284+00:00",
         "home_win_prob": 0.6976325049275739,
         "predicted_winner": "Murray State Racers",
-        "status": "pending",
+        "status": "settled",
         "market_used_for_pick": false,
         "source_schedule_sha256": "bee1cd6ba8d7791f7e21f1685546196793521bd2f4ce27432921cfe27d269398",
         "features": {
@@ -70157,7 +70162,16 @@
           "pace_diff": 8.831960227272717,
           "rest_diff": 0.0,
           "experience_diff": 0.2231435513142097
-        }
+        },
+        "actual_home_win": 1,
+        "home_score": 82,
+        "away_score": 66,
+        "actual_winner": "Murray State Racers",
+        "correct": 1,
+        "brier": 0.09142610207637362,
+        "log_loss": 0.3600628121065359,
+        "verified_start_time_utc": "2026-11-17T17:00:00+00:00",
+        "settled_at_utc": "2026-11-17T21:00:40.782309+00:00"
       },
       "challenger": {
         "prediction_id": "CBB_SHADOW_COMBINED_20261016:401927381",
@@ -70175,7 +70189,7 @@
         "created_at_utc": "2026-11-16T22:10:45.670284+00:00",
         "home_win_prob": 0.6686913204163205,
         "predicted_winner": "Murray State Racers",
-        "status": "pending",
+        "status": "settled",
         "market_used_for_pick": false,
         "source_schedule_sha256": "bee1cd6ba8d7791f7e21f1685546196793521bd2f4ce27432921cfe27d269398",
         "features": {
@@ -70196,7 +70210,16 @@
           "transfer_share_diff": -0.09700000000000003,
           "prior_minutes_experience_diff": 0.7385579291090076,
           "rotation_known_diff": 0.0
-        }
+        },
+        "actual_home_win": 1,
+        "home_score": 82,
+        "away_score": 66,
+        "actual_winner": "Murray State Racers",
+        "correct": 1,
+        "brier": 0.1097654411674812,
+        "log_loss": 0.4024327297936107,
+        "verified_start_time_utc": "2026-11-17T17:00:00+00:00",
+        "settled_at_utc": "2026-11-17T21:00:40.782309+00:00"
       }
     },
     {
@@ -74893,6 +74916,93 @@
           "returning_share_diff": 0.12833333333333333,
           "transfer_share_diff": -0.125,
           "prior_minutes_experience_diff": 0.04266838713269827,
+          "rotation_known_diff": 0.0
+        }
+      }
+    },
+    {
+      "game_id": "401909753",
+      "identities": {
+        "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+      },
+      "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+      "roster_context": {
+        "home_known": true,
+        "away_known": true,
+        "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+      },
+      "feature_state_as_of_utc": "2026-11-17T21:00:40.782309+00:00",
+      "control": {
+        "prediction_id": "CBB_V1_CANDIDATE_20261013:401909753",
+        "model_version": "CBB_V1_CANDIDATE_20261013",
+        "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "game_id": "401909753",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "239",
+        "away_team_id": "2296",
+        "home_team": "Baylor Bears",
+        "away_team": "Jackson State Tigers",
+        "neutral_site": false,
+        "start_time_utc": "2026-11-18T17:00:00+00:00",
+        "created_at_utc": "2026-11-17T21:00:40.782309+00:00",
+        "home_win_prob": 0.9675493376803804,
+        "predicted_winner": "Baylor Bears",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "19e39a1796353c480258ac550191d68231c6e14a0e741213caba98a289b47921",
+        "features": {
+          "elo_diff": 95.82992948348215,
+          "home_advantage": 1.0,
+          "off_eff_diff": 23.10481482390307,
+          "def_eff_diff": -10.367649711382938,
+          "efg_diff": 0.07935706666512515,
+          "tov_rate_diff": -0.0415276859021029,
+          "orb_rate_diff": 0.11894168377757469,
+          "ft_rate_diff": 0.023524332917200186,
+          "pace_diff": -2.113843381081267,
+          "rest_diff": -1.0,
+          "experience_diff": -0.18232155679395468
+        }
+      },
+      "challenger": {
+        "prediction_id": "CBB_SHADOW_COMBINED_20261016:401909753",
+        "model_version": "CBB_SHADOW_COMBINED_20261016",
+        "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "game_id": "401909753",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "239",
+        "away_team_id": "2296",
+        "home_team": "Baylor Bears",
+        "away_team": "Jackson State Tigers",
+        "neutral_site": false,
+        "start_time_utc": "2026-11-18T17:00:00+00:00",
+        "created_at_utc": "2026-11-17T21:00:40.782309+00:00",
+        "home_win_prob": 0.9911982699576536,
+        "predicted_winner": "Baylor Bears",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "19e39a1796353c480258ac550191d68231c6e14a0e741213caba98a289b47921",
+        "features": {
+          "elo_diff": 95.82992948348215,
+          "home_advantage": 1.0,
+          "off_eff_diff": 23.10481482390307,
+          "def_eff_diff": -10.367649711382938,
+          "efg_diff": 0.07935706666512515,
+          "tov_rate_diff": -0.0415276859021029,
+          "orb_rate_diff": 0.11894168377757469,
+          "ft_rate_diff": 0.023524332917200186,
+          "pace_diff": -2.113843381081267,
+          "rest_diff": -1.0,
+          "experience_diff": -0.18232155679395468,
+          "adjusted_off_diff": 29.531173943362276,
+          "adjusted_def_diff": -17.714884851875368,
+          "returning_share_diff": -0.3828048780487805,
+          "transfer_share_diff": 0.35689024390243906,
+          "prior_minutes_experience_diff": 0.30938976293223597,
           "rotation_known_diff": 0.0
         }
       }

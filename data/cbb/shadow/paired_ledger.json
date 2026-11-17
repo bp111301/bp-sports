@@ -69590,7 +69590,7 @@
       "created_at_utc": "2026-11-16T22:10:45.670284+00:00",
       "home_win_prob": 0.6976325049275739,
       "predicted_winner": "Murray State Racers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "bee1cd6ba8d7791f7e21f1685546196793521bd2f4ce27432921cfe27d269398",
       "features": {
@@ -69605,7 +69605,16 @@
         "pace_diff": 8.831960227272717,
         "rest_diff": 0.0,
         "experience_diff": 0.2231435513142097
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 82,
+      "away_score": 66,
+      "actual_winner": "Murray State Racers",
+      "correct": 1,
+      "brier": 0.09142610207637362,
+      "log_loss": 0.3600628121065359,
+      "verified_start_time_utc": "2026-11-17T17:00:00+00:00",
+      "settled_at_utc": "2026-11-17T21:00:40.782309+00:00"
     },
     "challenger": {
       "prediction_id": "CBB_SHADOW_COMBINED_20261016:401927381",
@@ -69623,7 +69632,7 @@
       "created_at_utc": "2026-11-16T22:10:45.670284+00:00",
       "home_win_prob": 0.6686913204163205,
       "predicted_winner": "Murray State Racers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "bee1cd6ba8d7791f7e21f1685546196793521bd2f4ce27432921cfe27d269398",
       "features": {
@@ -69644,7 +69653,16 @@
         "transfer_share_diff": -0.09700000000000003,
         "prior_minutes_experience_diff": 0.7385579291090076,
         "rotation_known_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 82,
+      "away_score": 66,
+      "actual_winner": "Murray State Racers",
+      "correct": 1,
+      "brier": 0.1097654411674812,
+      "log_loss": 0.4024327297936107,
+      "verified_start_time_utc": "2026-11-17T17:00:00+00:00",
+      "settled_at_utc": "2026-11-17T21:00:40.782309+00:00"
     }
   },
   {
@@ -74341,6 +74359,93 @@
         "returning_share_diff": 0.12833333333333333,
         "transfer_share_diff": -0.125,
         "prior_minutes_experience_diff": 0.04266838713269827,
+        "rotation_known_diff": 0.0
+      }
+    }
+  },
+  {
+    "game_id": "401909753",
+    "identities": {
+      "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+      "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+    },
+    "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+    "roster_context": {
+      "home_known": true,
+      "away_known": true,
+      "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+    },
+    "feature_state_as_of_utc": "2026-11-17T21:00:40.782309+00:00",
+    "control": {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401909753",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401909753",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "239",
+      "away_team_id": "2296",
+      "home_team": "Baylor Bears",
+      "away_team": "Jackson State Tigers",
+      "neutral_site": false,
+      "start_time_utc": "2026-11-18T17:00:00+00:00",
+      "created_at_utc": "2026-11-17T21:00:40.782309+00:00",
+      "home_win_prob": 0.9675493376803804,
+      "predicted_winner": "Baylor Bears",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "19e39a1796353c480258ac550191d68231c6e14a0e741213caba98a289b47921",
+      "features": {
+        "elo_diff": 95.82992948348215,
+        "home_advantage": 1.0,
+        "off_eff_diff": 23.10481482390307,
+        "def_eff_diff": -10.367649711382938,
+        "efg_diff": 0.07935706666512515,
+        "tov_rate_diff": -0.0415276859021029,
+        "orb_rate_diff": 0.11894168377757469,
+        "ft_rate_diff": 0.023524332917200186,
+        "pace_diff": -2.113843381081267,
+        "rest_diff": -1.0,
+        "experience_diff": -0.18232155679395468
+      }
+    },
+    "challenger": {
+      "prediction_id": "CBB_SHADOW_COMBINED_20261016:401909753",
+      "model_version": "CBB_SHADOW_COMBINED_20261016",
+      "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+      "game_id": "401909753",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "239",
+      "away_team_id": "2296",
+      "home_team": "Baylor Bears",
+      "away_team": "Jackson State Tigers",
+      "neutral_site": false,
+      "start_time_utc": "2026-11-18T17:00:00+00:00",
+      "created_at_utc": "2026-11-17T21:00:40.782309+00:00",
+      "home_win_prob": 0.9911982699576536,
+      "predicted_winner": "Baylor Bears",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "19e39a1796353c480258ac550191d68231c6e14a0e741213caba98a289b47921",
+      "features": {
+        "elo_diff": 95.82992948348215,
+        "home_advantage": 1.0,
+        "off_eff_diff": 23.10481482390307,
+        "def_eff_diff": -10.367649711382938,
+        "efg_diff": 0.07935706666512515,
+        "tov_rate_diff": -0.0415276859021029,
+        "orb_rate_diff": 0.11894168377757469,
+        "ft_rate_diff": 0.023524332917200186,
+        "pace_diff": -2.113843381081267,
+        "rest_diff": -1.0,
+        "experience_diff": -0.18232155679395468,
+        "adjusted_off_diff": 29.531173943362276,
+        "adjusted_def_diff": -17.714884851875368,
+        "returning_share_diff": -0.3828048780487805,
+        "transfer_share_diff": 0.35689024390243906,
+        "prior_minutes_experience_diff": 0.30938976293223597,
         "rotation_known_diff": 0.0
       }
     }
