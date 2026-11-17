@@ -2,13 +2,13 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-17T08:00:21.378829+00:00",
+  "updated_at_utc": "2026-11-17T20:59:42.376600+00:00",
   "coverage": {
-    "source_games_in_horizon": 1515
+    "source_games_in_horizon": 1512
   },
   "excluded": {
-    "division_or_conference_unknown": 284,
-    "tipoff_time_unconfirmed": 21
+    "division_or_conference_unknown": 285,
+    "tipoff_time_unconfirmed": 19
   },
   "grading_issues": [
     {
@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1875,
-    "settled_games": 659,
-    "pending_games": 1216,
+    "settled_games": 660,
+    "pending_games": 1215,
     "wins": 503,
-    "losses": 156,
-    "accuracy": 0.7632776934749621,
-    "brier": 0.16277535364473555,
-    "log_loss": 0.4969193363191724
+    "losses": 157,
+    "accuracy": 0.7621212121212121,
+    "brier": 0.16313845732310786,
+    "log_loss": 0.49769086780788874
   },
   "predictions": [
     {
@@ -28681,7 +28681,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.36563119451657944,
       "predicted_winner": "Hofstra Pride",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -28697,7 +28697,16 @@
         "pace_diff": 6.516406249999974,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 82,
+      "away_score": 66,
+      "actual_winner": "Murray State Racers",
+      "correct": 0,
+      "brier": 0.40242378137046186,
+      "log_loss": 1.006130118871967,
+      "verified_start_time_utc": "2026-11-17T17:00:00+00:00",
+      "settled_at_utc": "2026-11-17T20:59:42.376600+00:00"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920511",
@@ -70994,9 +71003,9 @@
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "8e069ad798885fe943954723fa4067af525e86481be84b5fca8577db54455785",
-    "bytes": 605042,
-    "archive_sha256": "58e779374a2c7d8787e4e373ed0337d5f2992acface83b95f9a0037f4101beef",
+    "sha256": "397b9ba9c8c0c0613346357a00fa89697e94b5690c462743a0952f92887a63d8",
+    "bytes": 612733,
+    "archive_sha256": "628b5c3fdc52655267b839c072bbb8e31993b077c1590af1159fda189de25044",
     "live_schedule_sources": [
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&groups=50&limit=1000",
@@ -71020,7 +71029,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&groups=50&limit=1000",
-        "sha256": "dbc8c53ceef35054b7d33640c7faca58a09c4192548c669244de6224989fda60",
+        "sha256": "74936e7931b717b11662e4d9d8a99b074df3ece39d56607c69e5f90b10bcf041",
         "games": 68
       },
       {
@@ -71050,7 +71059,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261123&groups=50&limit=1000",
-        "sha256": "fd5e93d41c6ac0e92a775a5ae9c63590b6eb6a00e4cd725b98f36cdf24949456",
+        "sha256": "bc2f0ff5833ed4bd5cc2b48a6765a07a9e2ac65330f934e26dba6fee5eaf34ee",
         "games": 46
       },
       {
@@ -71075,7 +71084,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261128&groups=50&limit=1000",
-        "sha256": "acf810276769644791b45a64467e9cd3f6f50b5dcfcaa8f6b89262cec28f6455",
+        "sha256": "65794b913502baa55d1a601c550166b97f14b696e1b9203f4270e912951181cb",
         "games": 76
       },
       {
@@ -71090,7 +71099,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261201&groups=50&limit=1000",
-        "sha256": "2efbbe67da206d0cf9d811f31cb486dad4bd9d0a1483b148eead7f430c9a0ef5",
+        "sha256": "001ef9dfe8bdca1b30552eb865ad4d4bd71fd2c1f094c842ae3fdf201826abb0",
         "games": 66
       },
       {
@@ -71167,6 +71176,11 @@
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261216&groups=50&limit=1000",
         "sha256": "f3303c923a3c272b2791eeca850368b3c19a98c3ed103748fb2cf00ae3ef0ce6",
         "games": 53
+      },
+      {
+        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261217&groups=50&limit=1000",
+        "sha256": "e17ab17403a3ea4dd8b898954a4bbc13e5502ccc32c3e6e62166362fa42b816b",
+        "games": 18
       }
     ],
     "identity_conflicts": []
@@ -71261,6 +71275,5 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ],
-  "results_checked_at_utc": "2026-11-17T19:24:34.780962+00:00"
+  ]
 }
