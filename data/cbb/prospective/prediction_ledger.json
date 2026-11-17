@@ -28691,7 +28691,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.9391493287437446,
     "predicted_winner": "Houston Cougars",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -28707,7 +28707,18 @@
       "pace_diff": -2.12054367201425,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 85,
+    "away_score": 73,
+    "actual_winner": "Houston Cougars",
+    "correct": 1,
+    "brier": 0.0037028041923368705,
+    "log_loss": 0.06278078287167807,
+    "verified_start_time_utc": "2026-11-17T19:00:00+00:00",
+    "settled_at_utc": "2026-11-17T22:28:42.347160+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&limit=1000&groups=50",
+    "result_source_event_sha256": "c177edd038303ba98c97e53f8ed932aa60673b40f92cb6ec54a471871e715984"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401923325",
