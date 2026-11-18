@@ -30457,7 +30457,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.6268283472870003,
     "predicted_winner": "Southern Miss Golden Eagles",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -30473,7 +30473,18 @@
       "pace_diff": 2.813712121212106,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 72,
+    "away_score": 83,
+    "actual_winner": "UT Arlington Mavericks",
+    "correct": 0,
+    "brier": 0.3929137769625523,
+    "log_loss": 0.9857167702545201,
+    "verified_start_time_utc": "2026-11-18T01:00:00+00:00",
+    "settled_at_utc": "2026-11-18T03:26:46.722122+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&limit=1000&groups=50",
+    "result_source_event_sha256": "6a52f160a6d29e5648ed525abb64d1d0aa761ed1bf25fd6c1d0d3a3ef3ce9863"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401920720",
@@ -30559,7 +30570,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.7839212108385106,
     "predicted_winner": "Ole Miss Rebels",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -30575,7 +30586,18 @@
       "pace_diff": 1.1559933035714494,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 76,
+    "away_score": 41,
+    "actual_winner": "Ole Miss Rebels",
+    "correct": 1,
+    "brier": 0.04669004312549538,
+    "log_loss": 0.2434467600612794,
+    "verified_start_time_utc": "2026-11-18T01:30:00+00:00",
+    "settled_at_utc": "2026-11-18T03:26:46.722122+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&limit=1000&groups=50",
+    "result_source_event_sha256": "2eeea0f77a89fd087d61d9b16c9a8728c178aacf9d5c4072537065be71bbdf89"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401906851",
