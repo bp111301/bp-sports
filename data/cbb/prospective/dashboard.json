@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1875,
-    "settled_games": 685,
-    "pending_games": 1190,
-    "wins": 523,
-    "losses": 162,
-    "accuracy": 0.7635036496350365,
-    "brier": 0.16301008575026416,
-    "log_loss": 0.49758514777083396
+    "settled_games": 687,
+    "pending_games": 1188,
+    "wins": 524,
+    "losses": 163,
+    "accuracy": 0.7627365356622998,
+    "brier": 0.16354508315670566,
+    "log_loss": 0.4988424003594402
   },
   "predictions": [
     {
@@ -29016,7 +29016,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7796208552681546,
       "predicted_winner": "Duke Blue Devils",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -29032,7 +29032,18 @@
         "pace_diff": -0.14122242647059124,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 78,
+      "away_score": 99,
+      "actual_winner": "Illinois Fighting Illini",
+      "correct": 0,
+      "brier": 0.6078086779690489,
+      "log_loss": 1.512405830809221,
+      "verified_start_time_utc": "2026-11-18T00:00:00+00:00",
+      "settled_at_utc": "2026-11-18T02:36:22.207404+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&limit=1000&groups=50",
+      "result_source_event_sha256": "bc5d8016998442d57d11eab4271ffbc542b03b54b42576c4b7f62d94087f57b3"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401909697",
@@ -29985,7 +29996,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7071609456428591,
       "predicted_winner": "Louisiana Tech Bulldogs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -30001,7 +30012,18 @@
         "pace_diff": -0.8588709677419359,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 68,
+      "away_score": 63,
+      "actual_winner": "Louisiana Tech Bulldogs",
+      "correct": 1,
+      "brier": 0.0857547117567845,
+      "log_loss": 0.34649699310489673,
+      "verified_start_time_utc": "2026-11-18T00:30:00+00:00",
+      "settled_at_utc": "2026-11-18T02:36:22.207404+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&limit=1000&groups=50",
+      "result_source_event_sha256": "a59ad8e8cd891b37cb20176f8e9e19aa0164e2d1c52dcd8479916544a03470c0"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401909504",
@@ -71551,5 +71573,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-18T02:31:33.416075+00:00"
+  "results_checked_at_utc": "2026-11-18T02:36:22.207404+00:00"
 }
