@@ -29370,7 +29370,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.4370620879027359,
     "predicted_winner": "Liberty Flames",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -29386,7 +29386,18 @@
       "pace_diff": 5.348984983314793,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 78,
+    "away_score": 87,
+    "actual_winner": "Liberty Flames",
+    "correct": 1,
+    "brier": 0.1910232686818988,
+    "log_loss": 0.5745859373904555,
+    "verified_start_time_utc": "2026-11-17T23:00:00+00:00",
+    "settled_at_utc": "2026-11-18T01:00:33.430677+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&limit=1000&groups=50",
+    "result_source_event_sha256": "5e8c1dd0d900813e9177b9ffc6f7da168a034016320a2127b04d16e6f67273a3"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401921722",
