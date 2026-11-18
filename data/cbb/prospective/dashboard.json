@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1875,
-    "settled_games": 662,
-    "pending_games": 1213,
+    "settled_games": 663,
+    "pending_games": 1212,
     "wins": 505,
-    "losses": 157,
-    "accuracy": 0.7628398791540786,
-    "brier": 0.16266408962750734,
-    "log_loss": 0.4964286019446388
+    "losses": 158,
+    "accuracy": 0.7616892911010558,
+    "brier": 0.16286203723803458,
+    "log_loss": 0.4968580713117685
   },
   "predictions": [
     {
@@ -28780,7 +28780,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.4578714585939362,
       "predicted_winner": "Saint Peter's Peacocks",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -28796,7 +28796,18 @@
         "pace_diff": 2.7657738095238074,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 66,
+      "away_score": 51,
+      "actual_winner": "UMass Lowell River Hawks",
+      "correct": 0,
+      "brier": 0.29390335540706625,
+      "log_loss": 0.7811667923516473,
+      "verified_start_time_utc": "2026-11-17T23:00:00+00:00",
+      "settled_at_utc": "2026-11-18T00:55:36.902493+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&limit=1000&groups=50",
+      "result_source_event_sha256": "3cfa3f2c46072501e75d5bee375df8a735e46d98f21b3e78007c1285fb65b835"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920706",
@@ -71298,5 +71309,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-18T00:50:29.560129+00:00"
+  "results_checked_at_utc": "2026-11-18T00:55:36.902493+00:00"
 }
