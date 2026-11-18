@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1875,
-    "settled_games": 702,
-    "pending_games": 1173,
-    "wins": 532,
-    "losses": 170,
-    "accuracy": 0.7578347578347578,
-    "brier": 0.16535242368368852,
-    "log_loss": 0.5028186805741677
+    "settled_games": 704,
+    "pending_games": 1171,
+    "wins": 533,
+    "losses": 171,
+    "accuracy": 0.7571022727272727,
+    "brier": 0.1655851953926627,
+    "log_loss": 0.5033438524792337
   },
   "predictions": [
     {
@@ -28444,7 +28444,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.464625963837673,
       "predicted_winner": "SIU Edwardsville Cougars",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -28460,7 +28460,18 @@
         "pace_diff": 3.587446120689677,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 83,
+      "away_score": 78,
+      "actual_winner": "North Dakota Fighting Hawks",
+      "correct": 0,
+      "brier": 0.28662535859674054,
+      "log_loss": 0.766522575924746,
+      "verified_start_time_utc": "2026-11-18T01:00:00+00:00",
+      "settled_at_utc": "2026-11-18T03:31:45.242564+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&limit=1000&groups=50",
+      "result_source_event_sha256": "89b31423288ddd2ace2523792a1c6a018c01ada0b26178b7d5f284f9682fb1cc"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920808",
@@ -30276,7 +30287,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.5439838030415437,
       "predicted_winner": "Rice Owls",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -30292,7 +30303,18 @@
         "pace_diff": 1.0146551724137822,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 81,
+      "away_score": 74,
+      "actual_winner": "Rice Owls",
+      "correct": 1,
+      "brier": 0.2079507718884536,
+      "log_loss": 0.6088358063901351,
+      "verified_start_time_utc": "2026-11-18T01:00:00+00:00",
+      "settled_at_utc": "2026-11-18T03:31:45.242564+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&limit=1000&groups=50",
+      "result_source_event_sha256": "d59212baddf0b35ac1eedda0dd8a449b0c469430cc7b6727c68d03a5d0dac90b"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921106",
@@ -71738,5 +71760,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-18T03:26:46.722122+00:00"
+  "results_checked_at_utc": "2026-11-18T03:31:45.242564+00:00"
 }
