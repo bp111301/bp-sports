@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1875,
-    "settled_games": 678,
-    "pending_games": 1197,
-    "wins": 517,
-    "losses": 161,
-    "accuracy": 0.7625368731563422,
-    "brier": 0.1628215230239155,
-    "log_loss": 0.49660753455520845
+    "settled_games": 681,
+    "pending_games": 1194,
+    "wins": 519,
+    "losses": 162,
+    "accuracy": 0.762114537444934,
+    "brier": 0.16344343838670183,
+    "log_loss": 0.4986177281095422
   },
   "predictions": [
     {
@@ -29343,7 +29343,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8119429384015415,
       "predicted_winner": "Saint Joseph's Hawks",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -29359,7 +29359,18 @@
         "pace_diff": 1.896082949308763,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 84,
+      "away_score": 65,
+      "actual_winner": "Saint Joseph's Hawks",
+      "correct": 1,
+      "brier": 0.03536545841704641,
+      "log_loss": 0.20832521419422084,
+      "verified_start_time_utc": "2026-11-18T00:00:00+00:00",
+      "settled_at_utc": "2026-11-18T02:16:14.720438+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&limit=1000&groups=50",
+      "result_source_event_sha256": "f76d85f11b842ecb1efa1becd334ae8b5b42139e33d1fd940a02edb64280d86d"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920297",
@@ -29377,7 +29388,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.775250947085481,
       "predicted_winner": "Troy Trojans",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -29393,7 +29404,18 @@
         "pace_diff": -5.755330141129022,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 84,
+      "away_score": 74,
+      "actual_winner": "Troy Trojans",
+      "correct": 1,
+      "brier": 0.050512136785973244,
+      "log_loss": 0.25456849935062414,
+      "verified_start_time_utc": "2026-11-18T00:00:00+00:00",
+      "settled_at_utc": "2026-11-18T02:16:14.720438+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&limit=1000&groups=50",
+      "result_source_event_sha256": "f9378f022344f632a988614c13a284cfc6cfc27693e4f0508e0f3b4730037e48"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920308",
@@ -29693,7 +29715,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.09109332936421674,
       "predicted_winner": "Akron Zips",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -29709,7 +29731,18 @@
         "pace_diff": -3.5663233901514957,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 53,
+      "away_score": 49,
+      "actual_winner": "Bucknell Bison",
+      "correct": 0,
+      "brier": 0.8261113359262241,
+      "log_loss": 2.3958707006220195,
+      "verified_start_time_utc": "2026-11-18T00:00:00+00:00",
+      "settled_at_utc": "2026-11-18T02:16:14.720438+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&limit=1000&groups=50",
+      "result_source_event_sha256": "059c3f61ee615f52d5f2608972f1725b7a7ad2f9e773df77e0647c46ddb20cca"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401925775",
@@ -71474,5 +71507,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-18T02:11:16.385944+00:00"
+  "results_checked_at_utc": "2026-11-18T02:16:14.720438+00:00"
 }
