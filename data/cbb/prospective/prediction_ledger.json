@@ -999,7 +999,7 @@
     "created_at_utc": "2026-10-19T01:01:42.956043+00:00",
     "home_win_prob": 0.2511016271096005,
     "predicted_winner": "Marist Red Foxes",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
     "forecast_stage": "early_research_prior",
@@ -1015,7 +1015,18 @@
       "pace_diff": 1.8774999999999835,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 68,
+    "away_score": 73,
+    "actual_winner": "Marist Red Foxes",
+    "correct": 1,
+    "brier": 0.06305202713708885,
+    "log_loss": 0.28915198839522005,
+    "verified_start_time_utc": "2026-11-17T23:00:00+00:00",
+    "settled_at_utc": "2026-11-18T01:10:46.705196+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&limit=1000&groups=50",
+    "result_source_event_sha256": "c469504726c50cc862a5fae19ac883c85a9694ddb9cd1b20c1bb764382ecfa92"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401909753",
