@@ -30727,7 +30727,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.946670426270821,
     "predicted_winner": "Virginia Cavaliers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -30743,7 +30743,18 @@
       "pace_diff": -3.063511029411771,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 85,
+    "away_score": 65,
+    "actual_winner": "Virginia Cavaliers",
+    "correct": 1,
+    "brier": 0.0028440434341359404,
+    "log_loss": 0.054804265090041986,
+    "verified_start_time_utc": "2026-11-18T02:00:00+00:00",
+    "settled_at_utc": "2026-11-18T04:17:15.898593+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&limit=1000&groups=50",
+    "result_source_event_sha256": "52c7c7f3b54b7311d445b635abc2960c5ecfafd3b0f6b56defd21ae06ed192a2"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401909787",
