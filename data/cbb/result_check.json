@@ -1,60 +1,55 @@
 {
   "sport": "cbb",
-  "checked_at_utc": "2026-11-18T13:13:54.697003+00:00",
-  "attempted_at_utc": "2026-11-18T13:13:54.697003+00:00",
-  "last_success_at_utc": "2026-11-18T13:09:14.286146+00:00",
-  "status": "degraded",
-  "errors": [
-    {
-      "source": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
-      "error": "HTTPSConnectionPool(host='site.api.espn.com', port=443): Max retries exceeded with url: /apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50 (Caused by NameResolutionError(\"HTTPSConnection(host='site.api.espn.com', port=443): Failed to resolve 'site.api.espn.com' ([Errno -3] Temporary failure in name resolution)\"))"
-    }
-  ],
+  "checked_at_utc": "2026-11-18T13:19:06.012339+00:00",
+  "attempted_at_utc": "2026-11-18T13:19:06.012339+00:00",
+  "last_success_at_utc": "2026-11-18T13:19:06.012339+00:00",
+  "status": "success",
+  "errors": [],
   "lifecycle": [
-    {
-      "game_id": "401926073",
-      "state": "postponed",
-      "checked_at_utc": "2026-11-18T13:13:54.697003+00:00",
-      "saved_start_time_utc": "2026-11-15T22:00:00+00:00",
-      "official_start_time_utc": "2026-11-15T22:00Z",
-      "source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&limit=1000&groups=50",
-      "source_event_sha256": "a86cb333a6871f1b1b9c3f1aa62c8ad00f7c325d25af4dc9c75dd757a86c8b12"
-    },
-    {
-      "game_id": "401917529",
-      "state": "postponed",
-      "checked_at_utc": "2026-11-18T13:13:54.697003+00:00",
-      "saved_start_time_utc": "2026-11-14T21:00:00+00:00",
-      "official_start_time_utc": "2026-11-14T21:00Z",
-      "source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/summary?event=401917529",
-      "source_event_sha256": "c244ab723acfcc3e8e280c169fe40f9a1e87381c456169f448202278257e15bb"
-    },
     {
       "game_id": "401920567",
       "state": "identity_review",
-      "checked_at_utc": "2026-11-18T13:13:54.697003+00:00",
+      "checked_at_utc": "2026-11-18T13:19:06.012339+00:00",
       "saved_start_time_utc": "2026-11-14T18:00:00+00:00",
       "official_start_time_utc": "2026-11-14T22:00Z",
-      "source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/summary?event=401920567",
-      "source_event_sha256": "cdcd7a93f4ce379ce1af9ef2d0849b6e7dd59c0a9baadb35d2265adaf21aa156"
+      "source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+      "source_event_sha256": "be6593e927dfbcffb100803660cdc3b0878278a9052839918bcba7e1100393e6"
     },
     {
       "game_id": "401924720",
       "state": "postponed",
-      "checked_at_utc": "2026-11-18T13:13:54.697003+00:00",
+      "checked_at_utc": "2026-11-18T13:19:06.012339+00:00",
       "saved_start_time_utc": "2026-11-14T16:00:00+00:00",
       "official_start_time_utc": "2026-11-14T16:00Z",
-      "source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/summary?event=401924720",
-      "source_event_sha256": "e923dfddc4b3e0e0567c5e596f41d5a730a058af4e0e0c0e0fbd522ae2d4eb65"
+      "source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+      "source_event_sha256": "d841d6f7412d10f702630ccf02ae033b329eb33a5410dcb56311c45969df7347"
+    },
+    {
+      "game_id": "401917529",
+      "state": "postponed",
+      "checked_at_utc": "2026-11-18T13:19:06.012339+00:00",
+      "saved_start_time_utc": "2026-11-14T21:00:00+00:00",
+      "official_start_time_utc": "2026-11-14T21:00Z",
+      "source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+      "source_event_sha256": "aa70b7d15105117fdb3a0476b65891866a253a7f7add1ebfb3e0dfb00ad7fa5f"
     },
     {
       "game_id": "401926864",
       "state": "postponed",
-      "checked_at_utc": "2026-11-18T13:13:54.697003+00:00",
+      "checked_at_utc": "2026-11-18T13:19:06.012339+00:00",
       "saved_start_time_utc": "2026-11-15T00:00:00+00:00",
       "official_start_time_utc": "2026-11-15T00:00Z",
-      "source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/summary?event=401926864",
-      "source_event_sha256": "f604078ea1a82d9c1b42cc797ded63b3a2d5ae313ef418794cceb2304493a73c"
+      "source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261114&limit=1000&groups=50",
+      "source_event_sha256": "dcf0b68c2f3f1b09c39fe237734ece9c70589c91bf720a32ec2dde970db3b6e6"
+    },
+    {
+      "game_id": "401926073",
+      "state": "postponed",
+      "checked_at_utc": "2026-11-18T13:19:06.012339+00:00",
+      "saved_start_time_utc": "2026-11-15T22:00:00+00:00",
+      "official_start_time_utc": "2026-11-15T22:00Z",
+      "source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261115&limit=1000&groups=50",
+      "source_event_sha256": "a86cb333a6871f1b1b9c3f1aa62c8ad00f7c325d25af4dc9c75dd757a86c8b12"
     }
   ],
   "interval_minutes": 5,
