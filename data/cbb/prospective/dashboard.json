@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1875,
-    "settled_games": 691,
-    "pending_games": 1184,
-    "wins": 526,
+    "settled_games": 693,
+    "pending_games": 1182,
+    "wins": 528,
     "losses": 165,
-    "accuracy": 0.7612156295224313,
-    "brier": 0.16430370327489366,
-    "log_loss": 0.5005682408339975
+    "accuracy": 0.7619047619047619,
+    "brier": 0.163849733382101,
+    "log_loss": 0.4993532200910458
   },
   "predictions": [
     {
@@ -30085,7 +30085,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8887389524159793,
       "predicted_winner": "DePaul Blue Demons",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -30101,7 +30101,18 @@
         "pace_diff": 1.9412760416666401,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 83,
+      "away_score": 39,
+      "actual_winner": "DePaul Blue Demons",
+      "correct": 1,
+      "brier": 0.012379020709493711,
+      "log_loss": 0.11795172841623026,
+      "verified_start_time_utc": "2026-11-18T01:00:00+00:00",
+      "settled_at_utc": "2026-11-18T02:56:44.894454+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&limit=1000&groups=50",
+      "result_source_event_sha256": "979f50f10fbd17e0980734d511e7aba4c81fb9ea4342fc13169b3ff9ba572b65"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401918970",
@@ -30289,7 +30300,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9596608114241055,
       "predicted_winner": "Vanderbilt Commodores",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -30305,7 +30316,18 @@
         "pace_diff": 4.317450980392167,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 96,
+      "away_score": 50,
+      "actual_winner": "Vanderbilt Commodores",
+      "correct": 1,
+      "brier": 0.001627250134961575,
+      "log_loss": 0.04117537838620244,
+      "verified_start_time_utc": "2026-11-18T01:00:00+00:00",
+      "settled_at_utc": "2026-11-18T02:56:44.894454+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&limit=1000&groups=50",
+      "result_source_event_sha256": "a998d56976ca036061ef19c59e98c521bffe5c7bbccd93991e4cd2def352e00b"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401925012",
@@ -71617,5 +71639,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-18T02:51:30.898827+00:00"
+  "results_checked_at_utc": "2026-11-18T02:56:44.894454+00:00"
 }
