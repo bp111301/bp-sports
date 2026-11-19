@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1893,
-    "settled_games": 751,
-    "pending_games": 1142,
-    "wins": 562,
+    "settled_games": 754,
+    "pending_games": 1139,
+    "wins": 565,
     "losses": 189,
-    "accuracy": 0.748335552596538,
-    "brier": 0.16882774903575207,
-    "log_loss": 0.5102709579371602
+    "accuracy": 0.7493368700265252,
+    "brier": 0.16844590266436077,
+    "log_loss": 0.5094336575430864
   },
   "predictions": [
     {
@@ -32388,7 +32388,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.17582753488364053,
       "predicted_winner": "Wichita State Shockers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -32404,7 +32404,18 @@
         "pace_diff": -2.6969341856060822,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 75,
+      "away_score": 79,
+      "actual_winner": "Wichita State Shockers",
+      "correct": 1,
+      "brier": 0.030915322023257828,
+      "log_loss": 0.19337546864766234,
+      "verified_start_time_utc": "2026-11-19T01:00:00+00:00",
+      "settled_at_utc": "2026-11-19T03:16:09.631066+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "1153f915361812df27d9e7c02f8d4ed2108caed776f55651f06b9e22f0c52783"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911393",
@@ -32422,7 +32433,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.19524049836961604,
       "predicted_winner": "UNC Greensboro Spartans",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -32438,7 +32449,18 @@
         "pace_diff": 1.4294531249999807,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 72,
+      "away_score": 78,
+      "actual_winner": "UNC Greensboro Spartans",
+      "correct": 1,
+      "brier": 0.03811885220361604,
+      "log_loss": 0.2172118019386134,
+      "verified_start_time_utc": "2026-11-19T01:00:00+00:00",
+      "settled_at_utc": "2026-11-19T03:16:09.631066+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "531c92a8b1ba402744cc66c03918fab432f9b58d5f2af6f983a8bc03d9cf1060"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401917982",
@@ -32546,7 +32568,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6132999756253604,
       "predicted_winner": "Syracuse Orange",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -32562,7 +32584,18 @@
         "pace_diff": -2.848407451923066,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 91,
+      "away_score": 82,
+      "actual_winner": "Syracuse Orange",
+      "correct": 1,
+      "brier": 0.14953690885134685,
+      "log_loss": 0.4889011060936199,
+      "verified_start_time_utc": "2026-11-19T01:00:00+00:00",
+      "settled_at_utc": "2026-11-19T03:16:09.631066+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "61e17043d7d6b31c917f90f0f0fc9db5fdf41599493f4d00e776e93a98ec9804"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401927357",
@@ -72875,5 +72908,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-19T03:11:04.702469+00:00"
+  "results_checked_at_utc": "2026-11-19T03:16:09.631066+00:00"
 }
