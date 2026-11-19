@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1893,
-    "settled_games": 773,
-    "pending_games": 1120,
-    "wins": 579,
+    "settled_games": 774,
+    "pending_games": 1119,
+    "wins": 580,
     "losses": 194,
-    "accuracy": 0.7490297542043984,
-    "brier": 0.16840430987769248,
-    "log_loss": 0.5091771360865235
+    "accuracy": 0.7493540051679587,
+    "brier": 0.1683374302540769,
+    "log_loss": 0.5090591153286439
   },
   "predictions": [
     {
@@ -72789,7 +72789,7 @@
       "created_at_utc": "2026-11-18T20:38:28.716897+00:00",
       "home_win_prob": 0.6584747722360511,
       "predicted_winner": "Auburn Tigers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "d7c162bdf2650c21877adf288b3e2e04c1ee68a8fdcf282e2e4c86ee1eba7655",
       "forecast_stage": "early_research_prior",
@@ -72805,7 +72805,18 @@
         "pace_diff": -1.8582386363636516,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 86,
+      "away_score": 71,
+      "actual_winner": "Auburn Tigers",
+      "correct": 1,
+      "brier": 0.11663948119921716,
+      "log_loss": 0.4178290694878083,
+      "verified_start_time_utc": "2026-11-19T03:30:00+00:00",
+      "settled_at_utc": "2026-11-19T05:47:30.360213+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "ccdf66e998da099299a688d476eb5ccbc6760cab8081dd164c1d12e7710b54e5"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911235",
@@ -73117,5 +73128,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-19T05:42:27.484504+00:00"
+  "results_checked_at_utc": "2026-11-19T05:47:30.360213+00:00"
 }
