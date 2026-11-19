@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1893,
-    "settled_games": 716,
-    "pending_games": 1177,
-    "wins": 541,
-    "losses": 175,
-    "accuracy": 0.755586592178771,
-    "brier": 0.16641024855301215,
-    "log_loss": 0.5050768529752317
+    "settled_games": 720,
+    "pending_games": 1173,
+    "wins": 542,
+    "losses": 178,
+    "accuracy": 0.7527777777777778,
+    "brier": 0.16786227834116568,
+    "log_loss": 0.508533621118375
   },
   "predictions": [
     {
@@ -31049,7 +31049,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.3922334014892415,
       "predicted_winner": "Navy Midshipmen",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -31065,7 +31065,18 @@
         "pace_diff": 1.8023719165085197,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 84,
+      "away_score": 53,
+      "actual_winner": "Georgetown Hoyas",
+      "correct": 0,
+      "brier": 0.36938023826533756,
+      "log_loss": 0.9358982044166967,
+      "verified_start_time_utc": "2026-11-18T23:30:00+00:00",
+      "settled_at_utc": "2026-11-19T01:35:08.177298+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "5599551a371ba70824e81c49fa9fae086e921863f97c5eebbd7ab69ecb7899cb"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401917181",
@@ -31083,7 +31094,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7479418077320636,
       "predicted_winner": "Penn State Nittany Lions",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -31099,7 +31110,18 @@
         "pace_diff": -7.78507812499997,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 81,
+      "away_score": 74,
+      "actual_winner": "Penn State Nittany Lions",
+      "correct": 1,
+      "brier": 0.06353333228937998,
+      "log_loss": 0.2904301011836625,
+      "verified_start_time_utc": "2026-11-18T23:30:00+00:00",
+      "settled_at_utc": "2026-11-19T01:35:08.177298+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "aaec80e9d0d20746958a826019875d9e6f1e5d6feb6e219ad500050a960de886"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920947",
@@ -31151,7 +31173,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8573364378734856,
       "predicted_winner": "Winthrop Eagles",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -31167,7 +31189,18 @@
         "pace_diff": 4.384983314794212,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 79,
+      "away_score": 90,
+      "actual_winner": "Chattanooga Mocs",
+      "correct": 0,
+      "brier": 0.735025767705597,
+      "log_loss": 1.947266133100679,
+      "verified_start_time_utc": "2026-11-18T23:30:00+00:00",
+      "settled_at_utc": "2026-11-19T01:35:08.177298+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "4c65f49c0fdbf874faecf62aeab43bf326c5499dddfd45e77037a14e68b7e624"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401922283",
@@ -31219,7 +31252,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7369959995972034,
       "predicted_winner": "UNC Asheville Bulldogs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -31235,7 +31268,18 @@
         "pace_diff": -0.3235837438423772,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 77,
+      "away_score": 98,
+      "actual_winner": "Tennessee Tech Golden Eagles",
+      "correct": 0,
+      "brier": 0.543163103422281,
+      "log_loss": 1.335586036263032,
+      "verified_start_time_utc": "2026-11-18T23:30:00+00:00",
+      "settled_at_utc": "2026-11-19T01:35:08.177298+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "ee7442c89033c7b73f22d1c2c8ea09d9b7233451fd4502899b5ddb986247bf9a"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911277",
@@ -72490,5 +72534,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-19T01:26:34.218963+00:00"
+  "results_checked_at_utc": "2026-11-19T01:35:08.177298+00:00"
 }
