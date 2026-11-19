@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1893,
-    "settled_games": 766,
-    "pending_games": 1127,
-    "wins": 573,
+    "settled_games": 768,
+    "pending_games": 1125,
+    "wins": 575,
     "losses": 193,
-    "accuracy": 0.7480417754569191,
-    "brier": 0.16879766402665428,
-    "log_loss": 0.5101340310289656
+    "accuracy": 0.7486979166666666,
+    "brier": 0.1685670260409782,
+    "log_loss": 0.5096656969823635
   },
   "predictions": [
     {
@@ -32916,7 +32916,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7626419465392453,
       "predicted_winner": "Arizona Wildcats",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -32932,7 +32932,18 @@
         "pace_diff": 5.073897058823505,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 85,
+      "away_score": 79,
+      "actual_winner": "Arizona Wildcats",
+      "correct": 1,
+      "brier": 0.05633884554267847,
+      "log_loss": 0.2709666284303489,
+      "verified_start_time_utc": "2026-11-19T02:00:00+00:00",
+      "settled_at_utc": "2026-11-19T04:41:52.447679+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "8d15fd2a276447f4d278ef56f12d8700e5683fdbbcb90010a4402e580e5e605b"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401909762",
@@ -33220,7 +33231,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6773136050103425,
       "predicted_winner": "San Diego Toreros",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -33236,7 +33247,18 @@
         "pace_diff": -1.4110080645161247,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 71,
+      "away_score": 62,
+      "actual_winner": "San Diego Toreros",
+      "correct": 1,
+      "brier": 0.10412650951142123,
+      "log_loss": 0.3896208858371663,
+      "verified_start_time_utc": "2026-11-19T02:30:00+00:00",
+      "settled_at_utc": "2026-11-19T04:41:52.447679+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "e4c4f1a995cc5386f6787bbb127e58378fd7517c89ddd7cbae5bd0e582f5e260"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911456",
@@ -73040,5 +73062,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-19T04:37:02.384114+00:00"
+  "results_checked_at_utc": "2026-11-19T04:41:52.447679+00:00"
 }
