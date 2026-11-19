@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1893,
-    "settled_games": 754,
-    "pending_games": 1139,
+    "settled_games": 755,
+    "pending_games": 1138,
     "wins": 565,
-    "losses": 189,
-    "accuracy": 0.7493368700265252,
-    "brier": 0.16844590266436077,
-    "log_loss": 0.5094336575430864
+    "losses": 190,
+    "accuracy": 0.7483443708609272,
+    "brier": 0.1690607573287615,
+    "log_loss": 0.5108604983534397
   },
   "predictions": [
     {
@@ -32354,7 +32354,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7954000089809585,
       "predicted_winner": "Harvard Crimson",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -32370,7 +32370,18 @@
         "pace_diff": -2.7013248847926405,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 69,
+      "away_score": 74,
+      "actual_winner": "Boston College Eagles",
+      "correct": 0,
+      "brier": 0.6326611742869089,
+      "log_loss": 1.586698469359815,
+      "verified_start_time_utc": "2026-11-19T01:00:00+00:00",
+      "settled_at_utc": "2026-11-19T03:26:10.809859+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "e5bd2879e5f9b7093cfcefa929554015d6ea0274a889d04c0d55cbdea50b64a0"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911232",
@@ -72908,5 +72919,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-19T03:21:20.602562+00:00"
+  "results_checked_at_utc": "2026-11-19T03:26:10.809859+00:00"
 }
