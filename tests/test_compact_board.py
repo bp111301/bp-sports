@@ -23,7 +23,7 @@ class CompactBoardTests(unittest.TestCase):
         self.assertEqual(board.iloc[0].p,refreshed.iloc[0].p)
         self.assertFalse(refreshed.iloc[0].settled)
         self.assertIn('60.0%',compact_html(refreshed.iloc[0],changed,now))
-        self.assertIn('PENDING',compact_html(refreshed.iloc[0],changed,now))
+        self.assertIn('Saved pregame pick',compact_html(refreshed.iloc[0],changed,now))
 
     def test_nba_board_preserves_injury_adjusted_saved_forecast(self):
         now = pd.Timestamp('2026-11-09T23:30Z')
@@ -59,7 +59,7 @@ class CompactBoardTests(unittest.TestCase):
         record=dict(game_id='g',bundle_sha256=FROZEN_NHL,candidate='reference_control',status='pending',home_team='DET',away_team='NJD',home_win_prob=.6,created_at_utc='2026-10-12T12:00Z',start_time_utc='2026-10-14T00:00Z')
         board,_=prepare_compact('NHL',{'nhl':{'ok':True,'data':[record]}},{},now)
         output=compact_html(board.iloc[0],{},now)
-        self.assertIn('PENDING',output)
+        self.assertIn('Saved pregame pick',output)
         self.assertNotIn('>WIN<',output)
 
     def test_settled_ledger_final_overrides_stale_live_score(self):
