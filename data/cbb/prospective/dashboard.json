@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1893,
-    "settled_games": 738,
-    "pending_games": 1155,
-    "wins": 555,
-    "losses": 183,
-    "accuracy": 0.7520325203252033,
-    "brier": 0.1674170765034269,
-    "log_loss": 0.5073193003736464
+    "settled_games": 743,
+    "pending_games": 1150,
+    "wins": 558,
+    "losses": 185,
+    "accuracy": 0.7510094212651414,
+    "brier": 0.16761886683075203,
+    "log_loss": 0.5075604285872988
   },
   "predictions": [
     {
@@ -32028,7 +32028,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.3398139223403726,
       "predicted_winner": "Howard Bison",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -32044,7 +32044,18 @@
         "pace_diff": 0.9744021134593766,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 74,
+      "away_score": 68,
+      "actual_winner": "Duquesne Dukes",
+      "correct": 0,
+      "brier": 0.43584565713560347,
+      "log_loss": 1.0793570984224508,
+      "verified_start_time_utc": "2026-11-19T00:00:00+00:00",
+      "settled_at_utc": "2026-11-19T02:30:36.388020+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "fa8217cb479e5dc56faef8ce7ea083b6704441b8d5dc99239014d9d84494858e"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401926838",
@@ -32062,7 +32073,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7011601275640239,
       "predicted_winner": "Towson Tigers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -32078,7 +32089,18 @@
         "pace_diff": -3.51132812500002,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 52,
+      "away_score": 70,
+      "actual_winner": "James Madison Dukes",
+      "correct": 0,
+      "brier": 0.49162552448559826,
+      "log_loss": 1.2078473927385813,
+      "verified_start_time_utc": "2026-11-19T00:00:00+00:00",
+      "settled_at_utc": "2026-11-19T02:30:36.388020+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "d4f7ac84e424182116130c3a27746ed10c42d8e5da9e6b5484b2cf94ab45db70"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401928347",
@@ -32141,7 +32163,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9051445345866932,
       "predicted_winner": "Marquette Golden Eagles",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -32157,7 +32179,18 @@
         "pace_diff": 1.9057477678571644,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 79,
+      "away_score": 65,
+      "actual_winner": "Marquette Golden Eagles",
+      "correct": 1,
+      "brier": 0.008997559318775043,
+      "log_loss": 0.09966064130834452,
+      "verified_start_time_utc": "2026-11-19T00:30:00+00:00",
+      "settled_at_utc": "2026-11-19T02:30:36.388020+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "643e590546fe32740291a0221403e985a4a9d68239117cf6b887fc288f6b91c7"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920751",
@@ -32175,7 +32208,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7973421078582101,
       "predicted_winner": "Cincinnati Bearcats",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -32191,7 +32224,18 @@
         "pace_diff": 0.5271682340647743,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 91,
+      "away_score": 54,
+      "actual_winner": "Cincinnati Bearcats",
+      "correct": 1,
+      "brier": 0.041070221247353336,
+      "log_loss": 0.22647144780138487,
+      "verified_start_time_utc": "2026-11-19T00:30:00+00:00",
+      "settled_at_utc": "2026-11-19T02:30:36.388020+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "f242f5f83aade9fd9925a90730717a79bcfcde4fe285b1f32944b2e1807db730"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921134",
@@ -32209,7 +32253,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9026519977998053,
       "predicted_winner": "Texas Tech Red Raiders",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -32225,7 +32269,18 @@
         "pace_diff": -1.979415246212156,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 86,
+      "away_score": 41,
+      "actual_winner": "Texas Tech Red Raiders",
+      "correct": 1,
+      "brier": 0.009476633532369109,
+      "log_loss": 0.10241818434118104,
+      "verified_start_time_utc": "2026-11-19T00:30:00+00:00",
+      "settled_at_utc": "2026-11-19T02:30:36.388020+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "008a260ccf2fbf6dcf4985f820360c3729a22595111c07565996ff423d0c72f9"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401906805",
@@ -72732,5 +72787,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-19T02:25:37.475664+00:00"
+  "results_checked_at_utc": "2026-11-19T02:30:36.388020+00:00"
 }
