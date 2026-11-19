@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1893,
-    "settled_games": 769,
-    "pending_games": 1124,
-    "wins": 576,
-    "losses": 193,
-    "accuracy": 0.7490247074122237,
-    "brier": 0.16843371769052215,
-    "log_loss": 0.5093892389343995
+    "settled_games": 772,
+    "pending_games": 1121,
+    "wins": 578,
+    "losses": 194,
+    "accuracy": 0.7487046632124352,
+    "brier": 0.16860269705178516,
+    "log_loss": 0.5096659594974272
   },
   "predictions": [
     {
@@ -33321,7 +33321,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7857931713642085,
       "predicted_winner": "Hawai'i Rainbow Warriors",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -33337,7 +33337,18 @@
         "pace_diff": 3.922365591397835,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 63,
+      "away_score": 79,
+      "actual_winner": "Washington State Cougars",
+      "correct": 0,
+      "brier": 0.6174709081626203,
+      "log_loss": 1.5408132417577214,
+      "verified_start_time_utc": "2026-11-19T03:00:00+00:00",
+      "settled_at_utc": "2026-11-19T05:07:06.801561+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "93c7558e2b1cabb1cb6721db313254cf9413693751bee1eb0e948dbcec8eef4b"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401929146",
@@ -33355,7 +33366,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.905095257844701,
       "predicted_winner": "San Diego State Aztecs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -33371,7 +33382,18 @@
         "pace_diff": -1.2271763392857338,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 97,
+      "away_score": 51,
+      "actual_winner": "San Diego State Aztecs",
+      "correct": 1,
+      "brier": 0.009006910083563784,
+      "log_loss": 0.09971508353440803,
+      "verified_start_time_utc": "2026-11-19T03:00:00+00:00",
+      "settled_at_utc": "2026-11-19T05:07:06.801561+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "d0224b5ed0f985f5d49e4649e8494ad7e682d25200dddd94ba96ede70a50cf6a"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920158",
@@ -66003,7 +66025,7 @@
       "created_at_utc": "2026-11-13T06:51:27.469118+00:00",
       "home_win_prob": 0.903691112972747,
       "predicted_winner": "San Francisco Dons",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "be30fd45ea98c786f92987dcdb891ec1e32285e64ff483ff8eb333e093e27a2a",
       "forecast_stage": "early_research_prior",
@@ -66019,7 +66041,18 @@
         "pace_diff": 2.714924242424246,
         "rest_diff": -4.0,
         "experience_diff": 0.287682072451781
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 77,
+      "away_score": 56,
+      "actual_winner": "San Francisco Dons",
+      "correct": 1,
+      "brier": 0.00927540172042819,
+      "log_loss": 0.10126766616845184,
+      "verified_start_time_utc": "2026-11-19T03:00:00+00:00",
+      "settled_at_utc": "2026-11-19T05:07:06.801561+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "6be8ca9fa39aebf57b20431a7bd4a4af1dcdc6d8ce65135ca2ba07b59cba0ecb"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921065",
@@ -73073,5 +73106,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-19T05:02:03.767063+00:00"
+  "results_checked_at_utc": "2026-11-19T05:07:06.801561+00:00"
 }
