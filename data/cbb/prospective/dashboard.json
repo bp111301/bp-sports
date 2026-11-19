@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1893,
-    "settled_games": 760,
-    "pending_games": 1133,
+    "settled_games": 762,
+    "pending_games": 1131,
     "wins": 570,
-    "losses": 190,
-    "accuracy": 0.75,
-    "brier": 0.16824720815379052,
-    "log_loss": 0.5088279757225388
+    "losses": 192,
+    "accuracy": 0.7480314960629921,
+    "brier": 0.16850459237400306,
+    "log_loss": 0.5093974540034624
   },
   "predictions": [
     {
@@ -1167,7 +1167,7 @@
       "created_at_utc": "2026-10-20T07:01:14.797120+00:00",
       "home_win_prob": 0.47193980371129063,
       "predicted_winner": "Fresno State Bulldogs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
       "forecast_stage": "early_research_prior",
@@ -1183,7 +1183,18 @@
         "pace_diff": -3.3457787298386847,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 92,
+      "away_score": 86,
+      "actual_winner": "San Jos\u00e9 State Spartans",
+      "correct": 0,
+      "brier": 0.27884757090447027,
+      "log_loss": 0.7509038360397763,
+      "verified_start_time_utc": "2026-11-19T02:00:00+00:00",
+      "settled_at_utc": "2026-11-19T04:06:33.620884+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "72056ddf76a489f84645873a44806cc967ee5e376b999436e58c4800c625f806"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911199",
@@ -33120,7 +33131,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.49624051254087204,
       "predicted_winner": "North Dakota State Bison",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -33136,7 +33147,18 @@
         "pace_diff": -4.711580141129019,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 71,
+      "away_score": 64,
+      "actual_winner": "Colorado State Rams",
+      "correct": 0,
+      "brier": 0.25377362120508334,
+      "log_loss": 0.7006945654690415,
+      "verified_start_time_utc": "2026-11-19T02:00:00+00:00",
+      "settled_at_utc": "2026-11-19T04:06:33.620884+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "b7664010102a8a5520e2144896ed268e14b7215105c6fe67de4ff455b25f014e"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401917535",
@@ -72974,5 +72996,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-19T04:01:37.440161+00:00"
+  "results_checked_at_utc": "2026-11-19T04:06:33.620884+00:00"
 }
