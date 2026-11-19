@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1893,
-    "settled_games": 755,
-    "pending_games": 1138,
-    "wins": 565,
+    "settled_games": 757,
+    "pending_games": 1136,
+    "wins": 567,
     "losses": 190,
-    "accuracy": 0.7483443708609272,
-    "brier": 0.1690607573287615,
-    "log_loss": 0.5108604983534397
+    "accuracy": 0.7490092470277411,
+    "brier": 0.1688529222323931,
+    "log_loss": 0.5103562862797131
   },
   "predictions": [
     {
@@ -31240,7 +31240,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.4127454172760117,
       "predicted_winner": "Samford Bulldogs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -31256,7 +31256,18 @@
         "pace_diff": 1.1766379310344774,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 64,
+      "away_score": 74,
+      "actual_winner": "Samford Bulldogs",
+      "correct": 1,
+      "brier": 0.17035877948234904,
+      "log_loss": 0.5322968517715826,
+      "verified_start_time_utc": "2026-11-19T01:30:00+00:00",
+      "settled_at_utc": "2026-11-19T03:31:15.008001+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "546d6a5a2415bc223d46aefc85b46d8ae7a80b7f621dc2df4ebf713562cf360a"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401922292",
@@ -32669,7 +32680,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8978649559441882,
       "predicted_winner": "Arkansas State Red Wolves",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -32685,7 +32696,18 @@
         "pace_diff": 1.9099999999999824,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 100,
+      "away_score": 69,
+      "actual_winner": "Arkansas State Red Wolves",
+      "correct": 1,
+      "brier": 0.010431567224282607,
+      "log_loss": 0.10773560512426279,
+      "verified_start_time_utc": "2026-11-19T01:00:00+00:00",
+      "settled_at_utc": "2026-11-19T03:31:15.008001+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "7e9868a852a6ad868de4e6b5599add3f5932aaef714fa32077b640333552dc76"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401929201",
@@ -72919,5 +72941,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-19T03:26:10.809859+00:00"
+  "results_checked_at_utc": "2026-11-19T03:31:15.008001+00:00"
 }
