@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1893,
-    "settled_games": 720,
-    "pending_games": 1173,
-    "wins": 542,
+    "settled_games": 721,
+    "pending_games": 1172,
+    "wins": 543,
     "losses": 178,
-    "accuracy": 0.7527777777777778,
-    "brier": 0.16786227834116568,
-    "log_loss": 0.508533621118375
+    "accuracy": 0.753120665742025,
+    "brier": 0.16793088069370812,
+    "log_loss": 0.5086988978532113
   },
   "predictions": [
     {
@@ -31139,7 +31139,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.5338191611356475,
       "predicted_winner": "Eastern Michigan Eagles",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -31155,7 +31155,18 @@
         "pace_diff": -0.860833333333332,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 99,
+      "away_score": 62,
+      "actual_winner": "Eastern Michigan Eagles",
+      "correct": 1,
+      "brier": 0.21732457452427137,
+      "log_loss": 0.6276981469353656,
+      "verified_start_time_utc": "2026-11-18T23:30:00+00:00",
+      "settled_at_utc": "2026-11-19T01:50:25.138235+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "03e2c0f8573b804a127f2e6f32a8be5b76c837b3e578c76207754578d019723e"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920974",
@@ -72534,5 +72545,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-19T01:45:16.210924+00:00"
+  "results_checked_at_utc": "2026-11-19T01:50:25.138235+00:00"
 }
