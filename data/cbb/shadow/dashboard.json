@@ -1,18 +1,18 @@
 {
   "status": "shadow_only_not_public",
-  "updated_at_utc": "2026-11-19T07:32:45.654498+00:00",
+  "updated_at_utc": "2026-11-19T20:44:04.289969+00:00",
   "identities": {
     "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
     "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
     "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
   },
   "capture_window_hours": 24,
-  "eligible_future_games": 1144,
-  "within_capture_window": 25,
+  "eligible_future_games": 1187,
+  "within_capture_window": 35,
   "summary": {
-    "saved_pairs": 803,
+    "saved_pairs": 813,
     "settled_pairs": 775,
-    "pending_pairs": 28,
+    "pending_pairs": 38,
     "control": {
       "wins": 603,
       "losses": 172,
@@ -36,13 +36,18 @@
     "roster_unknown_pairs": 220
   },
   "coverage": {
-    "source_games_in_horizon": 1434
+    "source_games_in_horizon": 1480
   },
   "excluded": {
-    "tipoff_time_unconfirmed": 19,
-    "division_or_conference_unknown": 271
+    "division_or_conference_unknown": 274,
+    "tipoff_time_unconfirmed": 19
   },
   "coverage_by_day": {
+    "2026-12-19": {
+      "source_games": 42,
+      "eligible": 39,
+      "unconfirmed_tipoff": 0
+    },
     "Unconfirmed source date/time": {
       "source_games": 19,
       "eligible": 0,
@@ -154,8 +159,8 @@
       "unconfirmed_tipoff": 0
     },
     "2026-11-27": {
-      "source_games": 54,
-      "eligible": 36,
+      "source_games": 55,
+      "eligible": 37,
       "unconfirmed_tipoff": 0
     },
     "2026-11-26": {
@@ -194,16 +199,16 @@
       "unconfirmed_tipoff": 0
     },
     "2026-11-19": {
-      "source_games": 32,
-      "eligible": 25,
+      "source_games": 35,
+      "eligible": 28,
       "unconfirmed_tipoff": 0
     }
   },
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "c86420c3805a5fd82dc04bdcf96c38e84a8215feedf33c88d1dafe1e7b0c3f57",
-    "bytes": 630611,
-    "archive_sha256": "5cd46f7c65a2408c50fe975a5b8d7b53420c7708b2ea96d510727338bc2b9dfb",
+    "sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+    "bytes": 647505,
+    "archive_sha256": "288197eef6f93d0d89bc07e61bf5fff3bd06384b57ff765014a21442cdfd2761",
     "live_schedule_sources": [
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&groups=50&limit=1000",
@@ -221,23 +226,18 @@
         "games": 44
       },
       {
-        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261117&groups=50&limit=1000",
-        "sha256": "cbe7cd061907b1f95784adda4fcde0879dd0c693e14a4aa9d2f196e3266bccb8",
-        "games": 68
-      },
-      {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&groups=50&limit=1000",
         "sha256": "574e768347b7e456d3c3e60ba90645b4a971777e0acc6bcd29139ce928cea6e5",
         "games": 71
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&groups=50&limit=1000",
-        "sha256": "e0db77f7315463e4dfed59c0340acde73b507262e42ad719e1402463d62254cf",
+        "sha256": "46a1524350266ecde91f01bb3bfd842f0ffe235ec13dc406eb767e47a83bce2a",
         "games": 36
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&groups=50&limit=1000",
-        "sha256": "2eb6b1df441f986bfaffb854db3c9018f38237265375f625abde7f5e4d8ae3f9",
+        "sha256": "32cd2f05ffdfbb5441a3f90c1a7f2db427c006a140c32e34d2c657737ded7161",
         "games": 59
       },
       {
@@ -247,7 +247,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261122&groups=50&limit=1000",
-        "sha256": "5b8816e78bf3250fc92ba5b01cb40b779f7c894610d377aeb95aaa822a651664",
+        "sha256": "b7712e4d2017bc8cbb3d0faab07d8cfc9a8ed3448fbc7780267d783b58619b4b",
         "games": 42
       },
       {
@@ -271,24 +271,7 @@
         "games": 21
       }
     ],
-    "identity_conflicts": [
-      {
-        "game_id": 401920517,
-        "reason": "Live/archive schedule identity mismatch: 401920517 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 277, 'away_id': 57, 'season': 2027}"
-      },
-      {
-        "game_id": 401920518,
-        "reason": "Live/archive schedule identity mismatch: 401920518 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 2305, 'away_id': 248, 'season': 2027}"
-      },
-      {
-        "game_id": 401920519,
-        "reason": "Live/archive schedule identity mismatch: 401920519 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 2, 'away_id': 87, 'season': 2027}"
-      },
-      {
-        "game_id": 401920520,
-        "reason": "Live/archive schedule identity mismatch: 401920520 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 2439, 'away_id': 164, 'season': 2027}"
-      }
-    ]
+    "identity_conflicts": []
   },
   "history_sources": [
     {
@@ -533,33 +516,33 @@
     },
     {
       "season": 2027,
-      "schedule_rows": 6074,
-      "box_rows": 1922,
+      "schedule_rows": 6076,
+      "box_rows": 2064,
       "sources": [
         {
           "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-          "sha256": "5cd46f7c65a2408c50fe975a5b8d7b53420c7708b2ea96d510727338bc2b9dfb",
-          "bytes": 630611
+          "sha256": "288197eef6f93d0d89bc07e61bf5fff3bd06384b57ff765014a21442cdfd2761",
+          "bytes": 647505
         },
         {
           "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2027.parquet",
-          "sha256": "e145aeb20cb3b9977f9f5043e0792b0a335bf31a6b687fc364012df6b3c54084",
-          "bytes": 183206
+          "sha256": "e7514a5823f078505c910631e07570a758a4245e4c6a643e79e4fb9e1d12f20f",
+          "bytes": 191244
         }
       ],
       "exclusions": {
-        "not_confirmed_final": 5113,
-        "division_or_conference_unknown": 246
+        "not_confirmed_final": 5044,
+        "division_or_conference_unknown": 256
       },
-      "eligible_games": 715,
-      "neutral_games": 56,
+      "eligible_games": 776,
+      "neutral_games": 62,
       "players": {
         "season": 2027,
         "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2027.parquet",
-        "sha256": "fb007efedbf544443fd4f3afdb6a0eb80fe1709498bd70703a4d87a1616abecf",
-        "bytes": 753461,
-        "eligible_team_games": 1430,
-        "complete_player_team_games": 1430,
+        "sha256": "f2e1e2eef48bfadd23c9303f0a2ca275f893ecbd884bf9ed17e2d142173d677a",
+        "bytes": 789943,
+        "eligible_team_games": 1552,
+        "complete_player_team_games": 1552,
         "exclusions": {}
       }
     }
@@ -84380,6 +84363,876 @@
           "returning_share_diff": 0.19684010025062654,
           "transfer_share_diff": -0.10107268170426065,
           "prior_minutes_experience_diff": 0.6273890560152697,
+          "rotation_known_diff": 0.0
+        }
+      }
+    },
+    {
+      "game_id": "401920519",
+      "identities": {
+        "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+      },
+      "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+      "roster_context": {
+        "home_known": true,
+        "away_known": true,
+        "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+      },
+      "feature_state_as_of_utc": "2026-11-19T20:44:04.289969+00:00",
+      "control": {
+        "prediction_id": "CBB_V1_CANDIDATE_20261013:401920519",
+        "model_version": "CBB_V1_CANDIDATE_20261013",
+        "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "game_id": "401920519",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "2",
+        "away_team_id": "87",
+        "home_team": "Auburn Tigers",
+        "away_team": "Notre Dame Fighting Irish",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-19T22:00:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.5734977797279726,
+        "predicted_winner": "Auburn Tigers",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 72.24010778990328,
+          "home_advantage": 0.0,
+          "off_eff_diff": 3.0625775811256517,
+          "def_eff_diff": 2.2277618184155017,
+          "efg_diff": -0.0409896730777789,
+          "tov_rate_diff": -0.022521559470647184,
+          "orb_rate_diff": 0.07456322287352296,
+          "ft_rate_diff": 0.07594966058719405,
+          "pace_diff": 0.795186668170544,
+          "rest_diff": 3.0,
+          "experience_diff": -0.4054651081081644
+        }
+      },
+      "challenger": {
+        "prediction_id": "CBB_SHADOW_COMBINED_20261016:401920519",
+        "model_version": "CBB_SHADOW_COMBINED_20261016",
+        "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "game_id": "401920519",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "2",
+        "away_team_id": "87",
+        "home_team": "Auburn Tigers",
+        "away_team": "Notre Dame Fighting Irish",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-19T22:00:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.7123512010112715,
+        "predicted_winner": "Auburn Tigers",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 72.24010778990328,
+          "home_advantage": 0.0,
+          "off_eff_diff": 3.0625775811256517,
+          "def_eff_diff": 2.2277618184155017,
+          "efg_diff": -0.0409896730777789,
+          "tov_rate_diff": -0.022521559470647184,
+          "orb_rate_diff": 0.07456322287352296,
+          "ft_rate_diff": 0.07594966058719405,
+          "pace_diff": 0.795186668170544,
+          "rest_diff": 3.0,
+          "experience_diff": -0.4054651081081644,
+          "adjusted_off_diff": 6.152812925839754,
+          "adjusted_def_diff": -3.535371581816662,
+          "returning_share_diff": -0.12,
+          "transfer_share_diff": 0.032999999999999974,
+          "prior_minutes_experience_diff": -0.4048688347665088,
+          "rotation_known_diff": 0.0
+        }
+      }
+    },
+    {
+      "game_id": "401920520",
+      "identities": {
+        "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+      },
+      "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+      "roster_context": {
+        "home_known": true,
+        "away_known": true,
+        "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+      },
+      "feature_state_as_of_utc": "2026-11-19T20:44:04.289969+00:00",
+      "control": {
+        "prediction_id": "CBB_V1_CANDIDATE_20261013:401920520",
+        "model_version": "CBB_V1_CANDIDATE_20261013",
+        "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "game_id": "401920520",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "2439",
+        "away_team_id": "164",
+        "home_team": "UNLV Rebels",
+        "away_team": "Rutgers Scarlet Knights",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-20T01:30:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.4667315837822332,
+        "predicted_winner": "Rutgers Scarlet Knights",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 51.95295686718828,
+          "home_advantage": 0.0,
+          "off_eff_diff": 0.68819873833678,
+          "def_eff_diff": 2.9817757143779744,
+          "efg_diff": 0.03561614783580247,
+          "tov_rate_diff": 0.017564530905882142,
+          "orb_rate_diff": -0.009434948859545378,
+          "ft_rate_diff": 0.03851633874111654,
+          "pace_diff": 3.5773146124708575,
+          "rest_diff": 0.0,
+          "experience_diff": -0.18232155679395468
+        }
+      },
+      "challenger": {
+        "prediction_id": "CBB_SHADOW_COMBINED_20261016:401920520",
+        "model_version": "CBB_SHADOW_COMBINED_20261016",
+        "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "game_id": "401920520",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "2439",
+        "away_team_id": "164",
+        "home_team": "UNLV Rebels",
+        "away_team": "Rutgers Scarlet Knights",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-20T01:30:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.4301803836344986,
+        "predicted_winner": "Rutgers Scarlet Knights",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 51.95295686718828,
+          "home_advantage": 0.0,
+          "off_eff_diff": 0.68819873833678,
+          "def_eff_diff": 2.9817757143779744,
+          "efg_diff": 0.03561614783580247,
+          "tov_rate_diff": 0.017564530905882142,
+          "orb_rate_diff": -0.009434948859545378,
+          "ft_rate_diff": 0.03851633874111654,
+          "pace_diff": 3.5773146124708575,
+          "rest_diff": 0.0,
+          "experience_diff": -0.18232155679395468,
+          "adjusted_off_diff": -0.921709050192419,
+          "adjusted_def_diff": 1.46058339081425,
+          "returning_share_diff": -0.2993292682926829,
+          "transfer_share_diff": 0.2813109756097561,
+          "prior_minutes_experience_diff": -0.38332176199224666,
+          "rotation_known_diff": 0.0
+        }
+      }
+    },
+    {
+      "game_id": "401920518",
+      "identities": {
+        "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+      },
+      "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+      "roster_context": {
+        "home_known": true,
+        "away_known": true,
+        "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+      },
+      "feature_state_as_of_utc": "2026-11-19T20:44:04.289969+00:00",
+      "control": {
+        "prediction_id": "CBB_V1_CANDIDATE_20261013:401920518",
+        "model_version": "CBB_V1_CANDIDATE_20261013",
+        "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "game_id": "401920518",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "2305",
+        "away_team_id": "248",
+        "home_team": "Kansas Jayhawks",
+        "away_team": "Houston Cougars",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-20T04:00:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.27516561389196015,
+        "predicted_winner": "Houston Cougars",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": -63.91688901211796,
+          "home_advantage": 0.0,
+          "off_eff_diff": -7.895617694801089,
+          "def_eff_diff": 0.15200988216273004,
+          "efg_diff": 0.022003219514108108,
+          "tov_rate_diff": 0.027011729040708338,
+          "orb_rate_diff": -0.0740878250646465,
+          "ft_rate_diff": 0.02889178224607325,
+          "pace_diff": 4.4368992527080735,
+          "rest_diff": 0.0,
+          "experience_diff": -0.18232155679395468
+        }
+      },
+      "challenger": {
+        "prediction_id": "CBB_SHADOW_COMBINED_20261016:401920518",
+        "model_version": "CBB_SHADOW_COMBINED_20261016",
+        "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "game_id": "401920518",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "2305",
+        "away_team_id": "248",
+        "home_team": "Kansas Jayhawks",
+        "away_team": "Houston Cougars",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-20T04:00:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.34972607815572904,
+        "predicted_winner": "Houston Cougars",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": -63.91688901211796,
+          "home_advantage": 0.0,
+          "off_eff_diff": -7.895617694801089,
+          "def_eff_diff": 0.15200988216273004,
+          "efg_diff": 0.022003219514108108,
+          "tov_rate_diff": 0.027011729040708338,
+          "orb_rate_diff": -0.0740878250646465,
+          "ft_rate_diff": 0.02889178224607325,
+          "pace_diff": 4.4368992527080735,
+          "rest_diff": 0.0,
+          "experience_diff": -0.18232155679395468,
+          "adjusted_off_diff": -6.948927885638739,
+          "adjusted_def_diff": -1.5756101488408376,
+          "returning_share_diff": -0.18724030037546935,
+          "transfer_share_diff": -0.07421026282853566,
+          "prior_minutes_experience_diff": -1.328467939573236,
+          "rotation_known_diff": 0.0
+        }
+      }
+    },
+    {
+      "game_id": "401909698",
+      "identities": {
+        "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+      },
+      "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+      "roster_context": {
+        "home_known": true,
+        "away_known": true,
+        "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+      },
+      "feature_state_as_of_utc": "2026-11-19T20:44:04.289969+00:00",
+      "control": {
+        "prediction_id": "CBB_V1_CANDIDATE_20261013:401909698",
+        "model_version": "CBB_V1_CANDIDATE_20261013",
+        "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "game_id": "401909698",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "52",
+        "away_team_id": "2739",
+        "home_team": "Florida State Seminoles",
+        "away_team": "Green Bay Phoenix",
+        "neutral_site": false,
+        "start_time_utc": "2026-11-20T17:00:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.9199659309644443,
+        "predicted_winner": "Florida State Seminoles",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 106.16803552109855,
+          "home_advantage": 1.0,
+          "off_eff_diff": 5.67320237069255,
+          "def_eff_diff": -13.169305235337958,
+          "efg_diff": -0.024985729598513307,
+          "tov_rate_diff": -0.02660439852702795,
+          "orb_rate_diff": 0.0661962847777019,
+          "ft_rate_diff": 0.05023355012578057,
+          "pace_diff": 5.815718522069332,
+          "rest_diff": 0.0,
+          "experience_diff": 0.18232155679395468
+        }
+      },
+      "challenger": {
+        "prediction_id": "CBB_SHADOW_COMBINED_20261016:401909698",
+        "model_version": "CBB_SHADOW_COMBINED_20261016",
+        "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "game_id": "401909698",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "52",
+        "away_team_id": "2739",
+        "home_team": "Florida State Seminoles",
+        "away_team": "Green Bay Phoenix",
+        "neutral_site": false,
+        "start_time_utc": "2026-11-20T17:00:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.9533185897661077,
+        "predicted_winner": "Florida State Seminoles",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 106.16803552109855,
+          "home_advantage": 1.0,
+          "off_eff_diff": 5.67320237069255,
+          "def_eff_diff": -13.169305235337958,
+          "efg_diff": -0.024985729598513307,
+          "tov_rate_diff": -0.02660439852702795,
+          "orb_rate_diff": 0.0661962847777019,
+          "ft_rate_diff": 0.05023355012578057,
+          "pace_diff": 5.815718522069332,
+          "rest_diff": 0.0,
+          "experience_diff": 0.18232155679395468,
+          "adjusted_off_diff": 10.707233153390916,
+          "adjusted_def_diff": -15.43476760808656,
+          "returning_share_diff": -0.253,
+          "transfer_share_diff": 0.30374999999999996,
+          "prior_minutes_experience_diff": 0.4680564123020323,
+          "rotation_known_diff": 0.0
+        }
+      }
+    },
+    {
+      "game_id": "401916122",
+      "identities": {
+        "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+      },
+      "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+      "roster_context": {
+        "home_known": true,
+        "away_known": true,
+        "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+      },
+      "feature_state_as_of_utc": "2026-11-19T20:44:04.289969+00:00",
+      "control": {
+        "prediction_id": "CBB_V1_CANDIDATE_20261013:401916122",
+        "model_version": "CBB_V1_CANDIDATE_20261013",
+        "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "game_id": "401916122",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "2393",
+        "away_team_id": "218",
+        "home_team": "Middle Tennessee Blue Raiders",
+        "away_team": "Temple Owls",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-20T17:30:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.4600158996958078,
+        "predicted_winner": "Temple Owls",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 54.51862368897241,
+          "home_advantage": 0.0,
+          "off_eff_diff": -2.2373167258623,
+          "def_eff_diff": 1.521879439578285,
+          "efg_diff": 0.014224366985247594,
+          "tov_rate_diff": 0.028189975387269972,
+          "orb_rate_diff": -0.003012595825870268,
+          "ft_rate_diff": -0.043662911402000015,
+          "pace_diff": 2.1323032536151345,
+          "rest_diff": -3.0,
+          "experience_diff": 0.0
+        }
+      },
+      "challenger": {
+        "prediction_id": "CBB_SHADOW_COMBINED_20261016:401916122",
+        "model_version": "CBB_SHADOW_COMBINED_20261016",
+        "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "game_id": "401916122",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "2393",
+        "away_team_id": "218",
+        "home_team": "Middle Tennessee Blue Raiders",
+        "away_team": "Temple Owls",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-20T17:30:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.44398695462410553,
+        "predicted_winner": "Temple Owls",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 54.51862368897241,
+          "home_advantage": 0.0,
+          "off_eff_diff": -2.2373167258623,
+          "def_eff_diff": 1.521879439578285,
+          "efg_diff": 0.014224366985247594,
+          "tov_rate_diff": 0.028189975387269972,
+          "orb_rate_diff": -0.003012595825870268,
+          "ft_rate_diff": -0.043662911402000015,
+          "pace_diff": 2.1323032536151345,
+          "rest_diff": -3.0,
+          "experience_diff": 0.0,
+          "adjusted_off_diff": -0.21675807689787518,
+          "adjusted_def_diff": 0.9826038477122694,
+          "returning_share_diff": 0.14125,
+          "transfer_share_diff": -0.21375,
+          "prior_minutes_experience_diff": -0.8390733661438134,
+          "rotation_known_diff": 0.0
+        }
+      }
+    },
+    {
+      "game_id": "401921418",
+      "identities": {
+        "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+      },
+      "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+      "roster_context": {
+        "home_known": true,
+        "away_known": true,
+        "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+      },
+      "feature_state_as_of_utc": "2026-11-19T20:44:04.289969+00:00",
+      "control": {
+        "prediction_id": "CBB_V1_CANDIDATE_20261013:401921418",
+        "model_version": "CBB_V1_CANDIDATE_20261013",
+        "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "game_id": "401921418",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "135",
+        "away_team_id": "197",
+        "home_team": "Minnesota Golden Gophers",
+        "away_team": "Oklahoma State Cowboys",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-20T17:30:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.5815804464801066,
+        "predicted_winner": "Minnesota Golden Gophers",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 1.3823141864738773,
+          "home_advantage": 0.0,
+          "off_eff_diff": -0.7707916851566665,
+          "def_eff_diff": -4.293499126385299,
+          "efg_diff": 0.03763920859781744,
+          "tov_rate_diff": 0.013170635454581414,
+          "orb_rate_diff": -0.04239074408590099,
+          "ft_rate_diff": -0.05922641537725709,
+          "pace_diff": -10.354419191919206,
+          "rest_diff": 0.0,
+          "experience_diff": 0.18232155679395468
+        }
+      },
+      "challenger": {
+        "prediction_id": "CBB_SHADOW_COMBINED_20261016:401921418",
+        "model_version": "CBB_SHADOW_COMBINED_20261016",
+        "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "game_id": "401921418",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "135",
+        "away_team_id": "197",
+        "home_team": "Minnesota Golden Gophers",
+        "away_team": "Oklahoma State Cowboys",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-20T17:30:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.5083609673358244,
+        "predicted_winner": "Minnesota Golden Gophers",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 1.3823141864738773,
+          "home_advantage": 0.0,
+          "off_eff_diff": -0.7707916851566665,
+          "def_eff_diff": -4.293499126385299,
+          "efg_diff": 0.03763920859781744,
+          "tov_rate_diff": 0.013170635454581414,
+          "orb_rate_diff": -0.04239074408590099,
+          "ft_rate_diff": -0.05922641537725709,
+          "pace_diff": -10.354419191919206,
+          "rest_diff": 0.0,
+          "experience_diff": 0.18232155679395468,
+          "adjusted_off_diff": -1.5048064482328982,
+          "adjusted_def_diff": -0.7469476442851288,
+          "returning_share_diff": 0.4099999999999999,
+          "transfer_share_diff": -0.15900000000000003,
+          "prior_minutes_experience_diff": 1.4268222620085194,
+          "rotation_known_diff": 0.0
+        }
+      }
+    },
+    {
+      "game_id": "401919019",
+      "identities": {
+        "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+      },
+      "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+      "roster_context": {
+        "home_known": true,
+        "away_known": true,
+        "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+      },
+      "feature_state_as_of_utc": "2026-11-19T20:44:04.289969+00:00",
+      "control": {
+        "prediction_id": "CBB_V1_CANDIDATE_20261013:401919019",
+        "model_version": "CBB_V1_CANDIDATE_20261013",
+        "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "game_id": "401919019",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "5",
+        "away_team_id": "45",
+        "home_team": "UAB Blazers",
+        "away_team": "George Washington Revolutionaries",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-20T19:00:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.30568833836948256,
+        "predicted_winner": "George Washington Revolutionaries",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 3.085952678785816,
+          "home_advantage": 0.0,
+          "off_eff_diff": -6.431370558628117,
+          "def_eff_diff": 8.331861631867682,
+          "efg_diff": -0.07195489029723395,
+          "tov_rate_diff": -0.04472027208675089,
+          "orb_rate_diff": -0.026774733959343988,
+          "ft_rate_diff": 0.010243408205528937,
+          "pace_diff": 2.1385500672042923,
+          "rest_diff": -4.0,
+          "experience_diff": 0.18232155679395468
+        }
+      },
+      "challenger": {
+        "prediction_id": "CBB_SHADOW_COMBINED_20261016:401919019",
+        "model_version": "CBB_SHADOW_COMBINED_20261016",
+        "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "game_id": "401919019",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "5",
+        "away_team_id": "45",
+        "home_team": "UAB Blazers",
+        "away_team": "George Washington Revolutionaries",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-20T19:00:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.22733483338936622,
+        "predicted_winner": "George Washington Revolutionaries",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 3.085952678785816,
+          "home_advantage": 0.0,
+          "off_eff_diff": -6.431370558628117,
+          "def_eff_diff": 8.331861631867682,
+          "efg_diff": -0.07195489029723395,
+          "tov_rate_diff": -0.04472027208675089,
+          "orb_rate_diff": -0.026774733959343988,
+          "ft_rate_diff": 0.010243408205528937,
+          "pace_diff": 2.1385500672042923,
+          "rest_diff": -4.0,
+          "experience_diff": 0.18232155679395468,
+          "adjusted_off_diff": -8.440254863027334,
+          "adjusted_def_diff": 9.272455308494514,
+          "returning_share_diff": 0.029249999999999984,
+          "transfer_share_diff": 0.02475000000000005,
+          "prior_minutes_experience_diff": 0.4124397488030791,
+          "rotation_known_diff": 0.0
+        }
+      }
+    },
+    {
+      "game_id": "401916123",
+      "identities": {
+        "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+      },
+      "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+      "roster_context": {
+        "home_known": true,
+        "away_known": true,
+        "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+      },
+      "feature_state_as_of_utc": "2026-11-19T20:44:04.289969+00:00",
+      "control": {
+        "prediction_id": "CBB_V1_CANDIDATE_20261013:401916123",
+        "model_version": "CBB_V1_CANDIDATE_20261013",
+        "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "game_id": "401916123",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "2617",
+        "away_team_id": "282",
+        "home_team": "Stephen F. Austin Lumberjacks",
+        "away_team": "Indiana State Sycamores",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-20T20:00:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.8332439210790552,
+        "predicted_winner": "Stephen F. Austin Lumberjacks",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 137.33368584260438,
+          "home_advantage": 0.0,
+          "off_eff_diff": 9.787416405237096,
+          "def_eff_diff": -6.046235774207162,
+          "efg_diff": 0.0010908786572183526,
+          "tov_rate_diff": -0.03816262152096139,
+          "orb_rate_diff": 0.0757069884942781,
+          "ft_rate_diff": 0.008888339759949349,
+          "pace_diff": -2.939369501466274,
+          "rest_diff": -2.0,
+          "experience_diff": -0.287682072451781
+        }
+      },
+      "challenger": {
+        "prediction_id": "CBB_SHADOW_COMBINED_20261016:401916123",
+        "model_version": "CBB_SHADOW_COMBINED_20261016",
+        "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "game_id": "401916123",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "2617",
+        "away_team_id": "282",
+        "home_team": "Stephen F. Austin Lumberjacks",
+        "away_team": "Indiana State Sycamores",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-20T20:00:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.7068375269908747,
+        "predicted_winner": "Stephen F. Austin Lumberjacks",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 137.33368584260438,
+          "home_advantage": 0.0,
+          "off_eff_diff": 9.787416405237096,
+          "def_eff_diff": -6.046235774207162,
+          "efg_diff": 0.0010908786572183526,
+          "tov_rate_diff": -0.03816262152096139,
+          "orb_rate_diff": 0.0757069884942781,
+          "ft_rate_diff": 0.008888339759949349,
+          "pace_diff": -2.939369501466274,
+          "rest_diff": -2.0,
+          "experience_diff": -0.287682072451781,
+          "adjusted_off_diff": 5.607513980852573,
+          "adjusted_def_diff": -2.765526128071329,
+          "returning_share_diff": 0.48,
+          "transfer_share_diff": -0.32196078431372543,
+          "prior_minutes_experience_diff": 0.9241957292093783,
+          "rotation_known_diff": 0.0
+        }
+      }
+    },
+    {
+      "game_id": "401919826",
+      "identities": {
+        "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+      },
+      "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+      "roster_context": {
+        "home_known": true,
+        "away_known": true,
+        "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+      },
+      "feature_state_as_of_utc": "2026-11-19T20:44:04.289969+00:00",
+      "control": {
+        "prediction_id": "CBB_V1_CANDIDATE_20261013:401919826",
+        "model_version": "CBB_V1_CANDIDATE_20261013",
+        "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "game_id": "401919826",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "399",
+        "away_team_id": "2710",
+        "home_team": "UAlbany Great Danes",
+        "away_team": "Western Illinois Leathernecks",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-20T20:00:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.8417790693101548,
+        "predicted_winner": "UAlbany Great Danes",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 119.2332329872504,
+          "home_advantage": 0.0,
+          "off_eff_diff": 8.499590021590635,
+          "def_eff_diff": -8.234352497330036,
+          "efg_diff": 0.045861414020372304,
+          "tov_rate_diff": 0.010627644380043738,
+          "orb_rate_diff": 0.08894380833081755,
+          "ft_rate_diff": -0.11404973025867415,
+          "pace_diff": -1.8949712643678254,
+          "rest_diff": 2.0,
+          "experience_diff": 0.0
+        }
+      },
+      "challenger": {
+        "prediction_id": "CBB_SHADOW_COMBINED_20261016:401919826",
+        "model_version": "CBB_SHADOW_COMBINED_20261016",
+        "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "game_id": "401919826",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "399",
+        "away_team_id": "2710",
+        "home_team": "UAlbany Great Danes",
+        "away_team": "Western Illinois Leathernecks",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-20T20:00:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.790184250194438,
+        "predicted_winner": "UAlbany Great Danes",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 119.2332329872504,
+          "home_advantage": 0.0,
+          "off_eff_diff": 8.499590021590635,
+          "def_eff_diff": -8.234352497330036,
+          "efg_diff": 0.045861414020372304,
+          "tov_rate_diff": 0.010627644380043738,
+          "orb_rate_diff": 0.08894380833081755,
+          "ft_rate_diff": -0.11404973025867415,
+          "pace_diff": -1.8949712643678254,
+          "rest_diff": 2.0,
+          "experience_diff": 0.0,
+          "adjusted_off_diff": 6.444374364026416,
+          "adjusted_def_diff": -7.640969762237091,
+          "returning_share_diff": 0.004665206508135178,
+          "transfer_share_diff": 0.03625,
+          "prior_minutes_experience_diff": 0.16105559479639586,
+          "rotation_known_diff": 0.0
+        }
+      }
+    },
+    {
+      "game_id": "401920380",
+      "identities": {
+        "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+      },
+      "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+      "roster_context": {
+        "home_known": true,
+        "away_known": true,
+        "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+      },
+      "feature_state_as_of_utc": "2026-11-19T20:44:04.289969+00:00",
+      "control": {
+        "prediction_id": "CBB_V1_CANDIDATE_20261013:401920380",
+        "model_version": "CBB_V1_CANDIDATE_20261013",
+        "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "game_id": "401920380",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "259",
+        "away_team_id": "77",
+        "home_team": "Virginia Tech Hokies",
+        "away_team": "Northwestern Wildcats",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-20T20:00:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.7446498830417436,
+        "predicted_winner": "Virginia Tech Hokies",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 67.63952721615419,
+          "home_advantage": 0.0,
+          "off_eff_diff": 7.64924050857627,
+          "def_eff_diff": -4.272025495115429,
+          "efg_diff": 0.029833830136154482,
+          "tov_rate_diff": 0.01070833795264961,
+          "orb_rate_diff": 0.045305234719121734,
+          "ft_rate_diff": 0.055963158643030364,
+          "pace_diff": 5.796196266968309,
+          "rest_diff": 0.0,
+          "experience_diff": 0.0
+        }
+      },
+      "challenger": {
+        "prediction_id": "CBB_SHADOW_COMBINED_20261016:401920380",
+        "model_version": "CBB_SHADOW_COMBINED_20261016",
+        "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "game_id": "401920380",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "259",
+        "away_team_id": "77",
+        "home_team": "Virginia Tech Hokies",
+        "away_team": "Northwestern Wildcats",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-20T20:00:00+00:00",
+        "created_at_utc": "2026-11-19T20:44:04.289969+00:00",
+        "home_win_prob": 0.7842214017317082,
+        "predicted_winner": "Virginia Tech Hokies",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "a2ad655aa97dabb717183e415f2c25187aeaf6342ba7f690d4c5bc676d67fed8",
+        "features": {
+          "elo_diff": 67.63952721615419,
+          "home_advantage": 0.0,
+          "off_eff_diff": 7.64924050857627,
+          "def_eff_diff": -4.272025495115429,
+          "efg_diff": 0.029833830136154482,
+          "tov_rate_diff": 0.01070833795264961,
+          "orb_rate_diff": 0.045305234719121734,
+          "ft_rate_diff": 0.055963158643030364,
+          "pace_diff": 5.796196266968309,
+          "rest_diff": 0.0,
+          "experience_diff": 0.0,
+          "adjusted_off_diff": 8.61188001810207,
+          "adjusted_def_diff": -3.579341104484584,
+          "returning_share_diff": 0.04458284600389861,
+          "transfer_share_diff": -0.0439239766081872,
+          "prior_minutes_experience_diff": 0.5043688464728842,
           "rotation_known_diff": 0.0
         }
       }
