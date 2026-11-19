@@ -1,6 +1,6 @@
 {
   "status": "enabled_shadow_only",
-  "updated_at_utc": "2026-11-19T00:30:53.980590+00:00",
+  "updated_at_utc": "2026-11-19T04:08:59.254517+00:00",
   "season": 2027,
   "regular_season_only": true,
   "shadow_sha256": "b161f4327eb6524d99311169c1d150e08724c82901d9a7713b75511b76824451",
@@ -11,86 +11,38 @@
   "fallback_pairs": 31,
   "record": {
     "control": {
-      "games": 155,
-      "correct": 108,
-      "accuracy": 0.6967741935483871,
-      "brier": 0.20249046489204664,
-      "log_loss": 0.5911122942939938
+      "games": 164,
+      "correct": 112,
+      "accuracy": 0.6829268292682927,
+      "brier": 0.20699564651657912,
+      "log_loss": 0.6006390808036776
     },
     "candidate": {
-      "games": 155,
-      "correct": 107,
-      "accuracy": 0.6903225806451613,
-      "brier": 0.20180367083401315,
-      "log_loss": 0.5889482634706413
+      "games": 164,
+      "correct": 111,
+      "accuracy": 0.676829268292683,
+      "brier": 0.2048002616704973,
+      "log_loss": 0.5950475276920434
     }
   },
   "adjusted_only_record": {
     "control": {
-      "games": 125,
-      "correct": 87,
-      "accuracy": 0.696,
-      "brier": 0.20332111051696042,
-      "log_loss": 0.5937078048803068
+      "games": 133,
+      "correct": 91,
+      "accuracy": 0.6842105263157895,
+      "brier": 0.20645061223317804,
+      "log_loss": 0.6001709517411621
     },
     "candidate": {
-      "games": 125,
-      "correct": 86,
-      "accuracy": 0.688,
-      "brier": 0.20246948588499894,
-      "log_loss": 0.5910244066593497
+      "games": 133,
+      "correct": 90,
+      "accuracy": 0.6766917293233082,
+      "brier": 0.20374352114477637,
+      "log_loss": 0.5932761042952372
     }
   },
   "capture_blocked_reason": null,
   "upcoming": [
-    {
-      "game_id": "401910013",
-      "home_team": "NO",
-      "away_team": "DET",
-      "start_time_utc": "2026-11-19T01:00:00+00:00",
-      "capture_opens_utc": "2026-11-18T23:00:00+00:00",
-      "status": "already_saved"
-    },
-    {
-      "game_id": "401910014",
-      "home_team": "OKC",
-      "away_team": "ATL",
-      "start_time_utc": "2026-11-19T01:00:00+00:00",
-      "capture_opens_utc": "2026-11-18T23:00:00+00:00",
-      "status": "already_saved"
-    },
-    {
-      "game_id": "401910016",
-      "home_team": "DAL",
-      "away_team": "GS",
-      "start_time_utc": "2026-11-19T01:00:00+00:00",
-      "capture_opens_utc": "2026-11-18T23:00:00+00:00",
-      "status": "already_saved"
-    },
-    {
-      "game_id": "401910015",
-      "home_team": "DEN",
-      "away_team": "BOS",
-      "start_time_utc": "2026-11-19T02:30:00+00:00",
-      "capture_opens_utc": "2026-11-18T23:00:00+00:00",
-      "status": "already_saved"
-    },
-    {
-      "game_id": "401910017",
-      "home_team": "LAL",
-      "away_team": "UTAH",
-      "start_time_utc": "2026-11-19T03:00:00+00:00",
-      "capture_opens_utc": "2026-11-18T23:00:00+00:00",
-      "status": "already_saved"
-    },
-    {
-      "game_id": "401910018",
-      "home_team": "SAC",
-      "away_team": "PHX",
-      "start_time_utc": "2026-11-19T03:00:00+00:00",
-      "capture_opens_utc": "2026-11-18T23:00:00+00:00",
-      "status": "already_saved"
-    },
     {
       "game_id": "401910019",
       "home_team": "MEM",
@@ -121,6 +73,54 @@
       "away_team": "LAC",
       "start_time_utc": "2026-11-20T01:00:00+00:00",
       "capture_opens_utc": "2026-11-19T23:00:00+00:00",
+      "status": "waiting_for_capture_window"
+    },
+    {
+      "game_id": "401909305",
+      "home_team": "ATL",
+      "away_team": "CHA",
+      "start_time_utc": "2026-11-21T00:00:00+00:00",
+      "capture_opens_utc": "2026-11-20T23:00:00+00:00",
+      "status": "waiting_for_capture_window"
+    },
+    {
+      "game_id": "401909306",
+      "home_team": "BKN",
+      "away_team": "ORL",
+      "start_time_utc": "2026-11-21T00:30:00+00:00",
+      "capture_opens_utc": "2026-11-20T23:00:00+00:00",
+      "status": "waiting_for_capture_window"
+    },
+    {
+      "game_id": "401909307",
+      "home_team": "CLE",
+      "away_team": "IND",
+      "start_time_utc": "2026-11-21T00:30:00+00:00",
+      "capture_opens_utc": "2026-11-20T23:00:00+00:00",
+      "status": "waiting_for_capture_window"
+    },
+    {
+      "game_id": "401909308",
+      "home_team": "DET",
+      "away_team": "TOR",
+      "start_time_utc": "2026-11-21T00:30:00+00:00",
+      "capture_opens_utc": "2026-11-20T23:00:00+00:00",
+      "status": "waiting_for_capture_window"
+    },
+    {
+      "game_id": "401909309",
+      "home_team": "CHI",
+      "away_team": "WSH",
+      "start_time_utc": "2026-11-21T01:00:00+00:00",
+      "capture_opens_utc": "2026-11-20T23:00:00+00:00",
+      "status": "waiting_for_capture_window"
+    },
+    {
+      "game_id": "401909310",
+      "home_team": "OKC",
+      "away_team": "NO",
+      "start_time_utc": "2026-11-21T01:00:00+00:00",
+      "capture_opens_utc": "2026-11-20T23:00:00+00:00",
       "status": "waiting_for_capture_window"
     }
   ],
