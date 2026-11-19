@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1893,
-    "settled_games": 765,
-    "pending_games": 1128,
+    "settled_games": 766,
+    "pending_games": 1127,
     "wins": 573,
-    "losses": 192,
-    "accuracy": 0.7490196078431373,
-    "brier": 0.16811381212020535,
-    "log_loss": 0.5084704265880069
+    "losses": 193,
+    "accuracy": 0.7480417754569191,
+    "brier": 0.16879766402665428,
+    "log_loss": 0.5101340310289656
   },
   "predictions": [
     {
@@ -32950,7 +32950,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8318319376292783,
       "predicted_winner": "Colorado Buffaloes",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -32966,7 +32966,18 @@
         "pace_diff": 0.4007812500000085,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 74,
+      "away_score": 77,
+      "actual_winner": "Portland Pilots",
+      "correct": 0,
+      "brier": 0.6919443724600796,
+      "log_loss": 1.782791428362451,
+      "verified_start_time_utc": "2026-11-19T02:00:00+00:00",
+      "settled_at_utc": "2026-11-19T04:21:41.490700+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "a61204c42b000f2083295496e0a4f57f48342148142fe892629a4ddc0ab240eb"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921734",
@@ -73029,5 +73040,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-19T04:16:44.734817+00:00"
+  "results_checked_at_utc": "2026-11-19T04:21:41.490700+00:00"
 }
