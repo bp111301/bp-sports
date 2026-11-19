@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1893,
-    "settled_games": 763,
-    "pending_games": 1130,
-    "wins": 571,
+    "settled_games": 765,
+    "pending_games": 1128,
+    "wins": 573,
     "losses": 192,
-    "accuracy": 0.7483617300131061,
-    "brier": 0.16838276346746806,
-    "log_loss": 0.5091510528077497
+    "accuracy": 0.7490196078431373,
+    "brier": 0.16811381212020535,
+    "log_loss": 0.5084704265880069
   },
   "predictions": [
     {
@@ -32984,7 +32984,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6419200579414415,
       "predicted_winner": "Arizona State Sun Devils",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -33000,7 +33000,18 @@
         "pace_diff": -0.5296920821114526,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 68,
+      "away_score": 65,
+      "actual_winner": "Arizona State Sun Devils",
+      "correct": 1,
+      "brier": 0.12822124490466064,
+      "log_loss": 0.44329150338591095,
+      "verified_start_time_utc": "2026-11-19T02:00:00+00:00",
+      "settled_at_utc": "2026-11-19T04:16:44.734817+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "7f5467d776468511ccf273f6ebe8196b5f522868b01261eed43f58bb226d98ef"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921742",
@@ -33063,7 +33074,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9471180430176543,
       "predicted_winner": "Missouri Tigers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -33079,7 +33090,18 @@
         "pace_diff": -0.7976562499999744,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 102,
+      "away_score": 41,
+      "actual_winner": "Missouri Tigers",
+      "correct": 1,
+      "brier": 0.002796501374282657,
+      "log_loss": 0.05433154412629349,
+      "verified_start_time_utc": "2026-11-19T02:00:00+00:00",
+      "settled_at_utc": "2026-11-19T04:16:44.734817+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "bb6e6b3ae9f51ae2f82622ce124d432bbfb2c8707b0a308246777b898b432bf4"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401925949",
@@ -73007,5 +73029,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-19T04:11:31.739372+00:00"
+  "results_checked_at_utc": "2026-11-19T04:16:44.734817+00:00"
 }
