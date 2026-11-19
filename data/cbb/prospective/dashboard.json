@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1893,
-    "settled_games": 772,
-    "pending_games": 1121,
-    "wins": 578,
+    "settled_games": 773,
+    "pending_games": 1120,
+    "wins": 579,
     "losses": 194,
-    "accuracy": 0.7487046632124352,
-    "brier": 0.16860269705178516,
-    "log_loss": 0.5096659594974272
+    "accuracy": 0.7490297542043984,
+    "brier": 0.16840430987769248,
+    "log_loss": 0.5091771360865235
   },
   "predictions": [
     {
@@ -33411,7 +33411,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8765114925260362,
       "predicted_winner": "UCLA Bruins",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -33427,7 +33427,18 @@
         "pace_diff": -9.019025735294122,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 75,
+      "away_score": 71,
+      "actual_winner": "UCLA Bruins",
+      "correct": 1,
+      "brier": 0.015249411478147209,
+      "log_loss": 0.13180546286877393,
+      "verified_start_time_utc": "2026-11-19T03:30:00+00:00",
+      "settled_at_utc": "2026-11-19T05:42:27.484504+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261118&limit=1000&groups=50",
+      "result_source_event_sha256": "9a89db48112279dc499d610e53095568129b3143aa1d1dbc6160fdb641bfc6ab"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401918959",
@@ -73106,5 +73117,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-19T05:37:28.357056+00:00"
+  "results_checked_at_utc": "2026-11-19T05:42:27.484504+00:00"
 }
