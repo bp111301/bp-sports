@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1966,
-    "settled_games": 775,
-    "pending_games": 1191,
-    "wins": 580,
+    "settled_games": 776,
+    "pending_games": 1190,
+    "wins": 581,
     "losses": 195,
-    "accuracy": 0.7483870967741936,
-    "brier": 0.16854460738065602,
-    "log_loss": 0.5095017973814687
+    "accuracy": 0.7487113402061856,
+    "brier": 0.16853855048249294,
+    "log_loss": 0.509513804376726
   },
   "predictions": [
     {
@@ -33456,7 +33456,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.4047770428348207,
       "predicted_winner": "NC State Wolfpack",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -33472,7 +33472,18 @@
         "pace_diff": 1.9511126893939377,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 83,
+      "away_score": 93,
+      "actual_winner": "NC State Wolfpack",
+      "correct": 1,
+      "brier": 0.16384445440610226,
+      "log_loss": 0.5188192257010642,
+      "verified_start_time_utc": "2026-11-19T23:00:00+00:00",
+      "settled_at_utc": "2026-11-20T01:23:49.713024+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&limit=1000&groups=50",
+      "result_source_event_sha256": "bd9dbcb6892df2784b9b6100f692db9dbcb1749dbb8cea5a9ca9dcb856ebe548"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401902280",
@@ -75621,5 +75632,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-20T01:19:06.250306+00:00"
+  "results_checked_at_utc": "2026-11-20T01:23:49.713024+00:00"
 }
