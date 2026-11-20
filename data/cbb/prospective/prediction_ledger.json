@@ -33851,7 +33851,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.5024737250683828,
     "predicted_winner": "Drake Bulldogs",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -33867,7 +33867,18 @@
       "pace_diff": -0.4385458669354847,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 86,
+    "away_score": 70,
+    "actual_winner": "Drake Bulldogs",
+    "correct": 1,
+    "brier": 0.24753239424733112,
+    "log_loss": 0.688211928837122,
+    "verified_start_time_utc": "2026-11-20T00:30:00+00:00",
+    "settled_at_utc": "2026-11-20T02:29:28.757371+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&limit=1000&groups=50",
+    "result_source_event_sha256": "ab556de31ced1227c3366091b1b4fe922b6acfea37e3b8afe2b1681311d28d94"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401906867",
