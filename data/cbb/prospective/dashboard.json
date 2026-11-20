@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1966,
-    "settled_games": 777,
-    "pending_games": 1189,
-    "wins": 582,
+    "settled_games": 778,
+    "pending_games": 1188,
+    "wins": 583,
     "losses": 195,
-    "accuracy": 0.749034749034749,
-    "brier": 0.16846239220148787,
-    "log_loss": 0.5093748230581836
+    "accuracy": 0.7493573264781491,
+    "brier": 0.16847049739593303,
+    "log_loss": 0.5094159553444355
   },
   "predictions": [
     {
@@ -33750,7 +33750,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.581947092487295,
       "predicted_winner": "Toledo Rockets",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -33766,7 +33766,18 @@
         "pace_diff": 1.9957157258064484,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 83,
+      "away_score": 76,
+      "actual_winner": "Toledo Rockets",
+      "correct": 1,
+      "brier": 0.17476823347982626,
+      "log_loss": 0.5413757417621528,
+      "verified_start_time_utc": "2026-11-20T00:00:00+00:00",
+      "settled_at_utc": "2026-11-20T01:59:18.384880+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&limit=1000&groups=50",
+      "result_source_event_sha256": "59efcbb9b6b06781e992be8cf4c86b5511061c0a7d44c2ed4c40a99752f1a287"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401919005",
@@ -75643,5 +75654,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-20T01:54:09.701376+00:00"
+  "results_checked_at_utc": "2026-11-20T01:59:18.384880+00:00"
 }
