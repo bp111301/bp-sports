@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1966,
-    "settled_games": 778,
-    "pending_games": 1188,
-    "wins": 583,
+    "settled_games": 779,
+    "pending_games": 1187,
+    "wins": 584,
     "losses": 195,
-    "accuracy": 0.7493573264781491,
-    "brier": 0.16847049739593303,
-    "log_loss": 0.5094159553444355
+    "accuracy": 0.7496790757381258,
+    "brier": 0.1683657750518586,
+    "log_loss": 0.5092103342891398
   },
   "predictions": [
     {
@@ -33535,7 +33535,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.705225863817843,
       "predicted_winner": "St. Bonaventure Bonnies",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -33551,7 +33551,18 @@
         "pace_diff": -0.1499621212120985,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 78,
+      "away_score": 69,
+      "actual_winner": "St. Bonaventure Bonnies",
+      "correct": 1,
+      "brier": 0.08689179136193682,
+      "log_loss": 0.3492371532690207,
+      "verified_start_time_utc": "2026-11-20T00:00:00+00:00",
+      "settled_at_utc": "2026-11-20T02:14:17.391757+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&limit=1000&groups=50",
+      "result_source_event_sha256": "eaf658f51c1163bd9c7ec3f051c71ee1cb88211ee56a43d0f3af21fcd161f2b2"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401916318",
@@ -75654,5 +75665,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-20T02:09:19.749769+00:00"
+  "results_checked_at_utc": "2026-11-20T02:14:17.391757+00:00"
 }
