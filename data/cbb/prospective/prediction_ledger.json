@@ -33693,7 +33693,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.894420937263934,
     "predicted_winner": "Quinnipiac Bobcats",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -33709,7 +33709,18 @@
       "pace_diff": 5.436693548387083,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 67,
+    "away_score": 69,
+    "actual_winner": "Maine Black Bears",
+    "correct": 0,
+    "brier": 0.7999888130160941,
+    "log_loss": 2.24829519691281,
+    "verified_start_time_utc": "2026-11-20T00:00:00+00:00",
+    "settled_at_utc": "2026-11-20T02:24:28.041365+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&limit=1000&groups=50",
+    "result_source_event_sha256": "88f7d76de2851c2c122d06d10f5c03db962e2a408799e39e3c8933c5d8a6926e"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401928388",
