@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1966,
-    "settled_games": 796,
-    "pending_games": 1170,
-    "wins": 595,
+    "settled_games": 797,
+    "pending_games": 1169,
+    "wins": 596,
     "losses": 201,
-    "accuracy": 0.7474874371859297,
-    "brier": 0.1695722130625549,
-    "log_loss": 0.5120899993715793
+    "accuracy": 0.7478042659974906,
+    "brier": 0.16936916840581048,
+    "log_loss": 0.5115630676174538
   },
   "predictions": [
     {
@@ -34345,7 +34345,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9119907866341377,
       "predicted_winner": "California Golden Bears",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -34361,7 +34361,18 @@
         "pace_diff": 1.365080645161271,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 86,
+      "away_score": 54,
+      "actual_winner": "California Golden Bears",
+      "correct": 1,
+      "brier": 0.007745621637277878,
+      "log_loss": 0.09212539133368403,
+      "verified_start_time_utc": "2026-11-20T03:00:00+00:00",
+      "settled_at_utc": "2026-11-20T04:59:16.389649+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&limit=1000&groups=50",
+      "result_source_event_sha256": "cddc7ad22dfc3a86582b1e55f5367d5fd4edd384aa88882420f9468923b750ef"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920349",
@@ -75852,5 +75863,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-20T04:54:15.339064+00:00"
+  "results_checked_at_utc": "2026-11-20T04:59:16.389649+00:00"
 }
