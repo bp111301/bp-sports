@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1966,
-    "settled_games": 785,
-    "pending_games": 1181,
-    "wins": 588,
+    "settled_games": 789,
+    "pending_games": 1177,
+    "wins": 592,
     "losses": 197,
-    "accuracy": 0.7490445859872611,
-    "brier": 0.16905660934031666,
-    "log_loss": 0.5110572144593972
+    "accuracy": 0.7503168567807351,
+    "brier": 0.16848414994077193,
+    "log_loss": 0.5095871977521845
   },
   "predictions": [
     {
@@ -33940,7 +33940,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9312494323791564,
       "predicted_winner": "Texas Longhorns",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -33956,7 +33956,18 @@
         "pace_diff": -2.049193548387123,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 92,
+      "away_score": 68,
+      "actual_winner": "Texas Longhorns",
+      "correct": 1,
+      "brier": 0.0047266405481881935,
+      "log_loss": 0.07122811881429168,
+      "verified_start_time_utc": "2026-11-20T01:00:00+00:00",
+      "settled_at_utc": "2026-11-20T03:28:30.495602+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&limit=1000&groups=50",
+      "result_source_event_sha256": "db5a9b982134f8732cf2521a24aafc7c30324aac4df32af6270f2e5a8c472aa6"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401918950",
@@ -33974,7 +33985,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9625563618500443,
       "predicted_winner": "Louisville Cardinals",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -33990,7 +34001,18 @@
         "pace_diff": 2.815041544477026,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 83,
+      "away_score": 69,
+      "actual_winner": "Louisville Cardinals",
+      "correct": 1,
+      "brier": 0.001402026037904815,
+      "log_loss": 0.038162656768357,
+      "verified_start_time_utc": "2026-11-20T01:00:00+00:00",
+      "settled_at_utc": "2026-11-20T03:28:30.495602+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&limit=1000&groups=50",
+      "result_source_event_sha256": "ba6421b085d958df0d195e62e0c1a12deeca02a82c3b9ba247ed66aa573b74fa"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401919050",
@@ -34042,7 +34064,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7929445292456588,
       "predicted_winner": "St. Thomas Tommies",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -34058,7 +34080,18 @@
         "pace_diff": -0.49749999999998806,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 93,
+      "away_score": 61,
+      "actual_winner": "St. Thomas Tommies",
+      "correct": 1,
+      "brier": 0.04287196796930183,
+      "log_loss": 0.23200201030382805,
+      "verified_start_time_utc": "2026-11-20T01:00:00+00:00",
+      "settled_at_utc": "2026-11-20T03:28:30.495602+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&limit=1000&groups=50",
+      "result_source_event_sha256": "c1a0e5fb25f6fbd748922a99f6b2f1e8b41b8a748ca847b7c11a71d5e548fd21"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921028",
@@ -34076,7 +34109,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.4189932416699515,
       "predicted_winner": "Georgia Southern Eagles",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -34092,7 +34125,18 @@
         "pace_diff": -7.102440476190495,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 79,
+      "away_score": 86,
+      "actual_winner": "Georgia Southern Eagles",
+      "correct": 1,
+      "brier": 0.1755553365650944,
+      "log_loss": 0.5429928899602748,
+      "verified_start_time_utc": "2026-11-20T01:00:00+00:00",
+      "settled_at_utc": "2026-11-20T03:28:30.495602+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&limit=1000&groups=50",
+      "result_source_event_sha256": "0578710ba645189afb748eb7b106a2d6e69a585f2c609d517b75f9b2eddd5ded"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920888",
@@ -75731,5 +75775,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-20T02:34:31.122247+00:00"
+  "results_checked_at_utc": "2026-11-20T03:28:30.495602+00:00"
 }
