@@ -33536,7 +33536,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.6692983729378464,
     "predicted_winner": "Ohio State Buckeyes",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -33552,7 +33552,18 @@
       "pace_diff": 0.3335984848485083,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 101,
+    "away_score": 62,
+    "actual_winner": "Ohio State Buckeyes",
+    "correct": 1,
+    "brier": 0.1093635661415557,
+    "log_loss": 0.401525319869312,
+    "verified_start_time_utc": "2026-11-20T00:00:00+00:00",
+    "settled_at_utc": "2026-11-20T01:49:07.836135+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&limit=1000&groups=50",
+    "result_source_event_sha256": "0141db9dcb2c5864b88e8ba1e8a33a9a2f7af07273fb35e4318f8c7f4711e1ec"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401920413",
