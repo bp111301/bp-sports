@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2031,
-    "settled_games": 805,
-    "pending_games": 1226,
+    "settled_games": 806,
+    "pending_games": 1225,
     "wins": 601,
-    "losses": 204,
-    "accuracy": 0.746583850931677,
-    "brier": 0.16931162818675033,
-    "log_loss": 0.5113909866723755
+    "losses": 205,
+    "accuracy": 0.7456575682382134,
+    "brier": 0.16942939229553045,
+    "log_loss": 0.5116518089066533
   },
   "predictions": [
     {
@@ -34622,7 +34622,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.485967413617069,
       "predicted_winner": "George Washington Revolutionaries",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -34638,7 +34638,18 @@
         "pace_diff": 0.9458795362903061,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 81,
+      "away_score": 76,
+      "actual_winner": "UAB Blazers",
+      "correct": 0,
+      "brier": 0.26422949986352534,
+      "log_loss": 0.7216137075002463,
+      "verified_start_time_utc": "2026-11-20T19:00:00+00:00",
+      "settled_at_utc": "2026-11-20T21:52:38.363133+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&limit=1000&groups=50",
+      "result_source_event_sha256": "905b9b4618f3de965503d5009fbfb3fa8c78a0471bb33029ba3ca7eb10858e91"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401916123",
@@ -78155,5 +78166,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-20T20:50:46.458546+00:00"
+  "results_checked_at_utc": "2026-11-20T21:52:38.363133+00:00"
 }
