@@ -34702,7 +34702,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.5870613731018546,
     "predicted_winner": "Virginia Tech Hokies",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -34718,7 +34718,18 @@
       "pace_diff": 4.2766314338235105,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 87,
+    "away_score": 70,
+    "actual_winner": "Virginia Tech Hokies",
+    "correct": 1,
+    "brier": 0.17051830958452574,
+    "log_loss": 0.5326259107832032,
+    "verified_start_time_utc": "2026-11-20T20:00:00+00:00",
+    "settled_at_utc": "2026-11-20T22:02:40.644789+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&limit=1000&groups=50",
+    "result_source_event_sha256": "b15d845480358a0a4abeb1cae5c3fd9f340dae1e096bc4b188a6fd410e3d7fb5"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401922022",
