@@ -74099,7 +74099,7 @@
     "created_at_utc": "2026-11-19T20:43:12.723119+00:00",
     "home_win_prob": 0.4667315837822332,
     "predicted_winner": "Rutgers Scarlet Knights",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "8485b3e7a31ccb2d411a7418dab1d807b80d8a6bee27fdb0876417070e6d1dfa",
     "forecast_stage": "early_research_prior",
@@ -74115,7 +74115,18 @@
       "pace_diff": 3.5773146124708575,
       "rest_diff": 0.0,
       "experience_diff": -0.18232155679395468
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 70,
+    "away_score": 89,
+    "actual_winner": "Rutgers Scarlet Knights",
+    "correct": 1,
+    "brier": 0.21783837129987174,
+    "log_loss": 0.6287303864224921,
+    "verified_start_time_utc": "2026-11-20T01:30:00+00:00",
+    "settled_at_utc": "2026-11-20T03:48:32.401670+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&limit=1000&groups=50",
+    "result_source_event_sha256": "d9619bcb51ebefae493c935f4d11d04b6267e5775648444edbe2d310a7b13cdd"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401920518",
