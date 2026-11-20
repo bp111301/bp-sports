@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 1966,
-    "settled_games": 779,
-    "pending_games": 1187,
-    "wins": 584,
-    "losses": 195,
-    "accuracy": 0.7496790757381258,
-    "brier": 0.1683657750518586,
-    "log_loss": 0.5092103342891398
+    "settled_games": 782,
+    "pending_games": 1184,
+    "wins": 586,
+    "losses": 196,
+    "accuracy": 0.7493606138107417,
+    "brier": 0.16829480699676827,
+    "log_loss": 0.508919566883991
   },
   "predictions": [
     {
@@ -33501,7 +33501,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8490807121022864,
       "predicted_winner": "Butler Bulldogs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -33517,7 +33517,18 @@
         "pace_diff": 1.1430947580644926,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 84,
+      "away_score": 77,
+      "actual_winner": "Butler Bulldogs",
+      "correct": 1,
+      "brier": 0.022776631459552957,
+      "log_loss": 0.16360102993110726,
+      "verified_start_time_utc": "2026-11-20T00:00:00+00:00",
+      "settled_at_utc": "2026-11-20T02:19:25.263336+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&limit=1000&groups=50",
+      "result_source_event_sha256": "e3c5931945aad6e101245a438186e31df01f1cf2a0f7513de11b2ca34fa9ad83"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911021",
@@ -33625,7 +33636,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9088607919233264,
       "predicted_winner": "High Point Panthers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -33641,7 +33652,18 @@
         "pace_diff": 3.558690211345933,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 85,
+      "away_score": 74,
+      "actual_winner": "High Point Panthers",
+      "correct": 1,
+      "brier": 0.008306355248843213,
+      "log_loss": 0.09556334073118929,
+      "verified_start_time_utc": "2026-11-20T00:00:00+00:00",
+      "settled_at_utc": "2026-11-20T02:19:25.263336+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&limit=1000&groups=50",
+      "result_source_event_sha256": "ec323cb46b9ab63ffa342b4f7c3d23e7dbea93a1f91910df417b814e8c0bbf81"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920878",
@@ -33659,7 +33681,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.646929145553468,
       "predicted_winner": "Jacksonville Dolphins",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -33675,7 +33697,18 @@
         "pace_diff": -1.8725000000000023,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 72,
+      "away_score": 78,
+      "actual_winner": "Little Rock Trojans",
+      "correct": 0,
+      "brier": 0.41851731936654024,
+      "log_loss": 1.0410865213788618,
+      "verified_start_time_utc": "2026-11-20T00:00:00+00:00",
+      "settled_at_utc": "2026-11-20T02:19:25.263336+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&limit=1000&groups=50",
+      "result_source_event_sha256": "1029aa7d8fff3ff19c6d6596cc8d6f91c648e60e0527cc0a12df08a903a41523"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401923304",
@@ -75665,5 +75698,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-20T02:14:17.391757+00:00"
+  "results_checked_at_utc": "2026-11-20T02:19:25.263336+00:00"
 }
