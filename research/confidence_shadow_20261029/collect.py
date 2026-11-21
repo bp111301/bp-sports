@@ -11,6 +11,7 @@ sys.path.insert(0,str(HERE))
 import events
 from frozen_history import restore as restore_frozen_history
 from nhl_game_counts import completed_rows as official_count_rows, parity as count_parity
+from nhl_stats import report_rows
 
 def module(name,path):
  s=importlib.util.spec_from_file_location(name,path);m=importlib.util.module_from_spec(s);s.loader.exec_module(m);return m
@@ -161,13 +162,13 @@ def nhl_inputs(existing):
  final=raw[raw.game_state.isin(['OFF','FINAL'])&starts.le(current)].copy()
  if final[['home_score','away_score']].isna().any().any() or final.home_score.eq(final.away_score).any():raise ValueError('Invalid official NHL final')
  def stats(report):
-  url='https://api.nhle.com/stats/rest/en/team/'+report+'?'+urlencode({'isAggregate':'false','isGame':'true','start':0,'limit':-1,'factCayenneExp':'gamesPlayed>=1','cayenneExp':'seasonId=20262027 and gameTypeId=2'})
-  data,r=fetch(url);return report,pd.DataFrame(json.loads(data)['data']),r
+  frame,receipts=report_rows(report,fetch)
+  return report,frame,receipts
  currentdir=RUNTIME/'current_nhl_team_stats';currentdir.mkdir(parents=True,exist_ok=True)
  with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
-  for report,df,r in pool.map(stats,['summary','powerplay','penaltykill']):
+  for report,df,receipts in pool.map(stats,['summary','powerplay','penaltykill']):
    if df.empty:raise ValueError('Empty current NHL stat report')
-   df.to_csv(currentdir/f'{report}_20262027.csv',index=False);sources.append(r)
+   df.to_csv(currentdir/f'{report}_20262027.csv',index=False);sources.extend(receipts)
  ct=e.nhl.adv.load_team_stats(currentdir);ct=ct[ct.gameId.isin(final.game_id)]
  if ct.duplicated(['gameId','teamId']).any():raise ValueError('Duplicate current NHL stat identity')
  expected_teams={int(r.game_id):{int(r.home_id),int(r.away_id)} for r in final.itertuples()}

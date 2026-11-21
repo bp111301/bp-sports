@@ -53,11 +53,18 @@ def test_detailed_nfl_card_does_not_advertise_a_reviewed_probability(monkeypatch
     from pathlib import Path
     import overview_ui
     monkeypatch.setattr(overview_ui,'load_overview',lambda keys=None: {})
-    # The local saved board is read-only; only supply review context for its IDs.
-    pred=pd.read_csv('data/current/website_feed.csv')
-    ledger=pd.read_csv('data/ledger/prediction_ledger.csv')
-    settled=set(ledger.loc[ledger.settlement_status.isin(['final','tie']),'game_id'])
-    game=str(pred.loc[~pred.game_id.isin(settled)].iloc[0].game_id)
+    # This state must remain testable even after the saved real-world slate ends.
+    game='review_fixture'
+    pred=pd.DataFrame([dict(game_id=game,home_team='LV',away_team='SEA',v4_pick='SEA',v3_pick='SEA',
+                           v4_adjusted_confidence=.616,v4_core_confidence=.60,v3_confidence=.58,
+                           prediction_status='EARLY_LOCK',qb_status_flag='')])
+    read_csv=pd.read_csv
+    def fixture_csv(path,*args,**kwargs):
+        if isinstance(path,str) and path=='data/current/website_feed.csv':return pred.copy(deep=True)
+        return read_csv(path,*args,**kwargs)
+    monkeypatch.setattr(pd,'read_csv',fixture_csv)
+    import streamlit as st
+    st.cache_data.clear()
     monkeypatch.setattr(ui,'load_availability',lambda: {'games':{game:{'qb_review_required':True}}})
     app=AppTest.from_file(Path('app.py').resolve(),default_timeout=30).run()
     app.radio(key='bp_sport').set_value('NFL').run()
@@ -67,5 +74,6 @@ def test_detailed_nfl_card_does_not_advertise_a_reviewed_probability(monkeypatch
     assert 'QB INPUT NEEDS REVIEW' in card and '>Review<span>' in card
     assert 'LOCKED SNAPSHOT' not in card and 'ADJUSTED CONFIDENCE' in card
     assert 'class="model-strip"' not in card and 'class="fill"' not in card
+    st.cache_data.clear()
     # Blank optional sections must not terminate the Markdown HTML block.
     assert not any(not line.strip() for line in card.splitlines())
