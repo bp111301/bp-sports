@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2031,
-    "settled_games": 838,
-    "pending_games": 1193,
+    "settled_games": 839,
+    "pending_games": 1192,
     "wins": 626,
-    "losses": 212,
-    "accuracy": 0.747016706443914,
-    "brier": 0.16973365618724126,
-    "log_loss": 0.5121105214514912
+    "losses": 213,
+    "accuracy": 0.7461263408820024,
+    "brier": 0.16991576982760428,
+    "log_loss": 0.5125002968019561
   },
   "predictions": [
     {
@@ -50724,7 +50724,7 @@
       "created_at_utc": "2026-11-02T13:28:03.357810+00:00",
       "home_win_prob": 0.5679146066547605,
       "predicted_winner": "Delaware State Hornets",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "413432ecf26e9b34a2b6fe0ad4f03c5b2fcf56a1f23011d2df2d8a3af0f37957",
       "forecast_stage": "early_research_prior",
@@ -50740,7 +50740,18 @@
         "pace_diff": 3.3114303959131632,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 101,
+      "away_score": 103,
+      "actual_winner": "Niagara Purple Eagles",
+      "correct": 0,
+      "brier": 0.3225270004518313,
+      "log_loss": 0.8391320404914766,
+      "verified_start_time_utc": "2026-11-21T00:00:00+00:00",
+      "settled_at_utc": "2026-11-21T02:50:17.067242+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&limit=1000&groups=50",
+      "result_source_event_sha256": "a4cd76d8440eb883534412b82e770025fb26f568224a9d43878354f0c8a97827"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401925049",
@@ -78518,5 +78529,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-21T02:45:16.921307+00:00"
+  "results_checked_at_utc": "2026-11-21T02:50:17.067242+00:00"
 }
