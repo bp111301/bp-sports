@@ -35592,7 +35592,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.9252036188098834,
     "predicted_winner": "Purdue Boilermakers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -35608,7 +35608,18 @@
       "pace_diff": -5.606705069124416,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 95,
+    "away_score": 49,
+    "actual_winner": "Purdue Boilermakers",
+    "correct": 1,
+    "brier": 0.005594498639137222,
+    "log_loss": 0.07774143725130539,
+    "verified_start_time_utc": "2026-11-21T00:00:00+00:00",
+    "settled_at_utc": "2026-11-21T02:04:50.961259+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&limit=1000&groups=50",
+    "result_source_event_sha256": "83f13ad8b625cf4f59882d24b8eae05c3ff991ce8ab3b88a556e48d34d2eae03"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401926782",
