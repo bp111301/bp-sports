@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2031,
-    "settled_games": 811,
-    "pending_games": 1220,
-    "wins": 606,
+    "settled_games": 813,
+    "pending_games": 1218,
+    "wins": 608,
     "losses": 205,
-    "accuracy": 0.7472256473489519,
-    "brier": 0.16911750292647365,
-    "log_loss": 0.5109763841847751
+    "accuracy": 0.7478474784747847,
+    "brier": 0.16876187103429527,
+    "log_loss": 0.5100862364056689
   },
   "predictions": [
     {
@@ -34892,7 +34892,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9449361385249724,
       "predicted_winner": "Miami Hurricanes",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -34908,7 +34908,18 @@
         "pace_diff": 0.3707844574780097,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 106,
+      "away_score": 54,
+      "actual_winner": "Miami Hurricanes",
+      "correct": 1,
+      "brier": 0.003032028840541031,
+      "log_loss": 0.05663793205236168,
+      "verified_start_time_utc": "2026-11-20T22:00:00+00:00",
+      "settled_at_utc": "2026-11-21T00:34:09.257701+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&limit=1000&groups=50",
+      "result_source_event_sha256": "81518b56c124bc6f1b655f7bc9046b3a947aff812fe6bc5a76258df3c56cd340"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401919827",
@@ -34960,7 +34971,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.2146491292118443,
       "predicted_winner": "Dayton Flyers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -34976,7 +34987,18 @@
         "pace_diff": -0.5370634191176862,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 46,
+      "away_score": 63,
+      "actual_winner": "Dayton Flyers",
+      "correct": 1,
+      "brier": 0.04607424867140302,
+      "log_loss": 0.2416246919038006,
+      "verified_start_time_utc": "2026-11-20T22:30:00+00:00",
+      "settled_at_utc": "2026-11-21T00:34:09.257701+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&limit=1000&groups=50",
+      "result_source_event_sha256": "61aeb3718f8a69f8d258b20366c4091d49fa4afdbb3d668b31d0520b52949d97"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920298",
@@ -78221,5 +78243,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-21T00:29:00.751230+00:00"
+  "results_checked_at_utc": "2026-11-21T00:34:09.257701+00:00"
 }
