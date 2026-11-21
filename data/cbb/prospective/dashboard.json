@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2055,
-    "settled_games": 861,
-    "pending_games": 1194,
+    "settled_games": 862,
+    "pending_games": 1193,
     "wins": 643,
-    "losses": 218,
-    "accuracy": 0.7468060394889663,
-    "brier": 0.16920521233439237,
-    "log_loss": 0.5105565785649369
+    "losses": 219,
+    "accuracy": 0.7459396751740139,
+    "brier": 0.1699676215474603,
+    "log_loss": 0.5127457555351055
   },
   "predictions": [
     {
@@ -37107,7 +37107,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.09093347108204478,
       "predicted_winner": "Navy Midshipmen",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -37123,7 +37123,18 @@
         "pace_diff": -0.24707661290322847,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 69,
+      "away_score": 66,
+      "actual_winner": "Rider Broncs",
+      "correct": 0,
+      "brier": 0.8264019539989396,
+      "log_loss": 2.3976271268502165,
+      "verified_start_time_utc": "2026-11-21T19:00:00+00:00",
+      "settled_at_utc": "2026-11-21T20:55:57.082961+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "aacf8fd149e20f9cd0e5718975112aa79e1323606f520cd3508d64bc167dd687"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401922222",
@@ -79587,5 +79598,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-21T20:50:51.083452+00:00"
+  "results_checked_at_utc": "2026-11-21T20:55:57.082961+00:00"
 }
