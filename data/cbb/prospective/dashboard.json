@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2055,
-    "settled_games": 864,
-    "pending_games": 1191,
-    "wins": 644,
-    "losses": 220,
-    "accuracy": 0.7453703703703703,
-    "brier": 0.17074661607117936,
-    "log_loss": 0.5152422700750412
+    "settled_games": 866,
+    "pending_games": 1189,
+    "wins": 645,
+    "losses": 221,
+    "accuracy": 0.7448036951501155,
+    "brier": 0.17117223482406943,
+    "log_loss": 0.5162074530612385
   },
   "predictions": [
     {
@@ -1212,7 +1212,7 @@
       "created_at_utc": "2026-10-23T01:05:20.469572+00:00",
       "home_win_prob": 0.39531287734777776,
       "predicted_winner": "Fordham Rams",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
       "forecast_stage": "early_research_prior",
@@ -1228,7 +1228,18 @@
         "pace_diff": 5.409590517241384,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 69,
+      "away_score": 87,
+      "actual_winner": "Fordham Rams",
+      "correct": 1,
+      "brier": 0.15627227099697918,
+      "log_loss": 0.503044107361799,
+      "verified_start_time_utc": "2026-11-21T19:00:00+00:00",
+      "settled_at_utc": "2026-11-21T21:16:01.442060+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "c9c7e802f433c2cf7ee69dfa3887aca9587c1c2b804bc3b80c8720305ebc5d07"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911278",
@@ -37208,7 +37219,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7441819677660713,
       "predicted_winner": "Saint Peter's Peacocks",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -37224,7 +37235,18 @@
         "pace_diff": -1.1591071428571382,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 52,
+      "away_score": 67,
+      "actual_winner": "Stony Brook Seawolves",
+      "correct": 0,
+      "brier": 0.5538068011481819,
+      "log_loss": 1.363288898835123,
+      "verified_start_time_utc": "2026-11-21T19:00:00+00:00",
+      "settled_at_utc": "2026-11-21T21:16:01.442060+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "b1a034aa21fff4e1a1cd6bab38fe9195f57c215b227b2e5cbb667cf24777b88d"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401917953",
@@ -79620,5 +79642,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-21T21:11:08.681258+00:00"
+  "results_checked_at_utc": "2026-11-21T21:16:01.442060+00:00"
 }
