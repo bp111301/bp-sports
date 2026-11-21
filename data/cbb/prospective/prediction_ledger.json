@@ -37467,7 +37467,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.3521822692202264,
     "predicted_winner": "Pennsylvania Quakers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -37483,7 +37483,18 @@
       "pace_diff": -2.9746831797234847,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 73,
+    "away_score": 83,
+    "actual_winner": "Pennsylvania Quakers",
+    "correct": 1,
+    "brier": 0.12403235075310802,
+    "log_loss": 0.43414590185724894,
+    "verified_start_time_utc": "2026-11-21T21:00:00+00:00",
+    "settled_at_utc": "2026-11-21T22:57:24.948203+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+    "result_source_event_sha256": "0ca8d00a6c3861876ec263350a21ab6743cd2dfa00f0ec7949cb6878629dcbe0"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401922048",
