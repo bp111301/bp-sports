@@ -8495,8 +8495,15 @@
       "season_type": 2,
       "source_receipt_sha256": "55199c643f209f6c74d3c2de7b2133623cf1eb3f92f1071f9703f51dcc5d437b",
       "start_time_utc": "2026-11-21T01:00:00+00:00",
-      "status": "pending",
-      "actual_home_win": null
+      "home_score": 94.0,
+      "away_score": 98.0,
+      "actual_home_win": 0,
+      "actual_start_time_utc": "2026-11-21T01:00:00+00:00",
+      "settled_at_utc": "2026-11-21T03:26:55.999305+00:00",
+      "source_state": "post_completed",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=20261120&limit=1000",
+      "result_source_event_sha256": "3401020cbc1dc369ac89e992e679d8bdca0d6ea87234a584447bc69cc5b77417",
+      "status": "settled"
     },
     {
       "away_id": "3",
@@ -8528,8 +8535,15 @@
       "season_type": 2,
       "source_receipt_sha256": "55199c643f209f6c74d3c2de7b2133623cf1eb3f92f1071f9703f51dcc5d437b",
       "start_time_utc": "2026-11-21T01:00:00+00:00",
-      "status": "pending",
-      "actual_home_win": null
+      "home_score": 126.0,
+      "away_score": 120.0,
+      "actual_home_win": 1,
+      "actual_start_time_utc": "2026-11-21T01:00:00+00:00",
+      "settled_at_utc": "2026-11-21T03:26:55.999305+00:00",
+      "source_state": "post_completed",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard?dates=20261120&limit=1000",
+      "result_source_event_sha256": "6923b702da136ebdf0f5da0c9ef6678c66c7dce5bc3688127e6136aae9d4c57a",
+      "status": "settled"
     },
     {
       "away_id": "21",
@@ -8830,14 +8844,14 @@
     }
   ],
   "record": {
-    "games": 216,
-    "correct": 151,
-    "accuracy": 0.6990740740740741,
-    "brier": 0.20598397145390837,
-    "log_loss": 0.6001297703542994
+    "games": 218,
+    "correct": 152,
+    "accuracy": 0.6972477064220184,
+    "brier": 0.20600258315784017,
+    "log_loss": 0.5998791399665531
   },
   "prediction_blocked_reason": null,
   "forecast_rule": "First pregame snapshot within 36 hours; earlier-date results only",
   "grading": "Confirmed final checks run separately from forecast builds",
-  "results_checked_at_utc": "2026-11-21T03:21:36.018044+00:00"
+  "results_checked_at_utc": "2026-11-21T03:26:55.999305+00:00"
 }
