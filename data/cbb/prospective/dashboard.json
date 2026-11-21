@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2031,
-    "settled_games": 815,
-    "pending_games": 1216,
+    "settled_games": 816,
+    "pending_games": 1215,
     "wins": 609,
-    "losses": 206,
-    "accuracy": 0.747239263803681,
-    "brier": 0.16915780342247516,
-    "log_loss": 0.5109407494665952
+    "losses": 207,
+    "accuracy": 0.7463235294117647,
+    "brier": 0.16981053393766948,
+    "log_loss": 0.5125431172816214
   },
   "predictions": [
     {
@@ -35027,7 +35027,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8377266283347043,
       "predicted_winner": "Cal State Northridge Matadors",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -35043,7 +35043,18 @@
         "pace_diff": 10.37934895833331,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 92,
+      "away_score": 97,
+      "actual_winner": "Delaware Blue Hens",
+      "correct": 0,
+      "brier": 0.7017859038210319,
+      "log_loss": 1.8184728865280129,
+      "verified_start_time_utc": "2026-11-20T23:00:00+00:00",
+      "settled_at_utc": "2026-11-21T01:29:45.169919+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&limit=1000&groups=50",
+      "result_source_event_sha256": "246c3ea5e867f41427df0e9516f555828990bdd2edce48536aa03fa9a96cbc80"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401916124",
@@ -78265,5 +78276,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-21T01:24:44.614918+00:00"
+  "results_checked_at_utc": "2026-11-21T01:29:45.169919+00:00"
 }
