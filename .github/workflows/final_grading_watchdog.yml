@@ -29,7 +29,7 @@ jobs:
           sparse-checkout: pipeline/nba_pregame_due.py
           sparse-checkout-cone-mode: false
           persist-credentials: false
-      - name: Start overdue scores, grading and NBA pregame checks
+      - name: Start overdue scores, grading and forecast checks
         run: |
           dispatch_if_due() {
             local workflow="$1"
@@ -57,6 +57,10 @@ jobs:
             # even when the live dashboard overlay cannot reach its provider.
             dispatch_if_due game_status.yml 900
             dispatch_if_due check_final_results.yml
+            # Keep the 36-hour NHL window and late CBB tournament pairings covered
+            # when scheduled producer runs are delayed. Active runs are skipped.
+            dispatch_if_due nhl_research_ledger.yml 43200
+            dispatch_if_due cbb_prospective.yml 21600
             if nba_due=$(python3 pipeline/nba_pregame_due.py) && [[ -n "$nba_due" ]]; then
               echo "NBA injury capture window open for $nba_due."
               dispatch_if_due nba_prospective.yml
