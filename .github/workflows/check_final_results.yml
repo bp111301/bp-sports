@@ -95,6 +95,7 @@ jobs:
               git pull --rebase origin "$TARGET_BRANCH"
               git push origin "HEAD:$TARGET_BRANCH" && break
               if [ "$attempt" = '3' ]; then exit 1; fi
+              sleep $((attempt * 5))
             done
           fi
       - name: Report incomplete final checks

@@ -24,6 +24,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Queued schedule events can point behind grades already published.
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"

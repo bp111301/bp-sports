@@ -1,5 +1,5 @@
 """Shared scores, preferences and probability guidance for the web UI."""
-UI_REVISION="forecast-health-render-20261115"
+UI_REVISION="source-repairs-20261121"
 import html,json
 from pathlib import Path
 from urllib.request import Request,urlopen
@@ -89,7 +89,7 @@ def render_information(page):
         return
     if page=='About B.P. Sports':
         st.title('Sports, with a clearer picture.')
-        st.caption('App release · dashboard-health-20261115.1')
+        st.caption('App release · dashboard-source-repairs-20261121')
         st.write('B.P. Sports brings NFL, college football, NHL and NBA matchups, saved predictions and results into one sports desk. Follow your teams, understand each forecast and see how the models perform when the games are played.')
         st.subheader('Built on evidence')
         st.write('We publish probabilities before games and preserve those snapshots. Confirmed results build the live record. A model’s historical testing is shown separately so you can see the difference between development results and real prospective performance.')
