@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2055,
-    "settled_games": 867,
-    "pending_games": 1188,
+    "settled_games": 868,
+    "pending_games": 1187,
     "wins": 646,
-    "losses": 221,
-    "accuracy": 0.7450980392156863,
-    "brier": 0.17100923155558823,
-    "log_loss": 0.5158308225030666
+    "losses": 222,
+    "accuracy": 0.7442396313364056,
+    "brier": 0.17119408153116536,
+    "log_loss": 0.5162243041661889
   },
   "predictions": [
     {
@@ -37196,7 +37196,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.4242752303778099,
       "predicted_winner": "Little Rock Trojans",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -37212,7 +37212,18 @@
         "pace_diff": 4.651666666666642,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 99,
+      "away_score": 87,
+      "actual_winner": "North Florida Ospreys",
+      "correct": 0,
+      "brier": 0.33145901035652386,
+      "log_loss": 0.8573729060932404,
+      "verified_start_time_utc": "2026-11-21T19:00:00+00:00",
+      "settled_at_utc": "2026-11-21T21:36:30.148764+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "e372e9ea3caf2f6eee98969a3c4d84c5baa3646828fbb9803632da133c5354db"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401924882",
@@ -79653,5 +79664,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-21T21:31:16.687453+00:00"
+  "results_checked_at_utc": "2026-11-21T21:36:30.148764+00:00"
 }
