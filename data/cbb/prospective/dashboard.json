@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2031,
-    "settled_games": 817,
-    "pending_games": 1214,
-    "wins": 610,
+    "settled_games": 818,
+    "pending_games": 1213,
+    "wins": 611,
     "losses": 207,
-    "accuracy": 0.7466340269277846,
-    "brier": 0.16975049638941203,
-    "log_loss": 0.5124383547068524
+    "accuracy": 0.7469437652811736,
+    "brier": 0.16965754527853888,
+    "log_loss": 0.512258690214319
   },
   "predictions": [
     {
@@ -35298,7 +35298,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.3061314875918006,
       "predicted_winner": "Harvard Crimson",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -35314,7 +35314,18 @@
         "pace_diff": 1.051324884792649,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 65,
+      "away_score": 77,
+      "actual_winner": "Harvard Crimson",
+      "correct": 1,
+      "brier": 0.09371648769516876,
+      "log_loss": 0.36547279981454944,
+      "verified_start_time_utc": "2026-11-21T00:00:00+00:00",
+      "settled_at_utc": "2026-11-21T01:52:29.392638+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&limit=1000&groups=50",
+      "result_source_event_sha256": "3c1db79d5d3f7c24023e45af0a1b135a044cafa755bf2da331c62a557360e59b"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920427",
@@ -78287,5 +78298,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-21T01:49:47.089850+00:00"
+  "results_checked_at_utc": "2026-11-21T01:52:29.392638+00:00"
 }
