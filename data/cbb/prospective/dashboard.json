@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2031,
-    "settled_games": 845,
-    "pending_games": 1186,
-    "wins": 630,
+    "settled_games": 846,
+    "pending_games": 1185,
+    "wins": 631,
     "losses": 215,
-    "accuracy": 0.7455621301775148,
-    "brier": 0.16999469624909064,
-    "log_loss": 0.5126072318457123
+    "accuracy": 0.7458628841607565,
+    "brier": 0.16982849563313276,
+    "log_loss": 0.5122236021699752
   },
   "predictions": [
     {
@@ -36511,7 +36511,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.1714321298610699,
       "predicted_winner": "Utah Valley Wolverines",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -36527,7 +36527,18 @@
         "pace_diff": -0.2154166666666697,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 79,
+      "away_score": 90,
+      "actual_winner": "Utah Valley Wolverines",
+      "correct": 1,
+      "brier": 0.029388975148702732,
+      "log_loss": 0.18805652617207372,
+      "verified_start_time_utc": "2026-11-21T01:00:00+00:00",
+      "settled_at_utc": "2026-11-21T03:33:31.316406+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&limit=1000&groups=50",
+      "result_source_event_sha256": "e5816acb0f43c924de3a92fb7c8b879e4acfabd5d8afe5682d61adb119d3fcae"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401925664",
@@ -78595,5 +78606,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-21T03:31:54.192921+00:00"
+  "results_checked_at_utc": "2026-11-21T03:33:31.316406+00:00"
 }
