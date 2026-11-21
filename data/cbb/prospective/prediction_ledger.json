@@ -35084,7 +35084,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.6524948100943732,
     "predicted_winner": "App State Mountaineers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -35100,7 +35100,18 @@
       "pace_diff": -3.2631720430107407,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 81,
+    "away_score": 75,
+    "actual_winner": "App State Mountaineers",
+    "correct": 1,
+    "brier": 0.12075985701134577,
+    "log_loss": 0.42695209369527615,
+    "verified_start_time_utc": "2026-11-20T23:30:00+00:00",
+    "settled_at_utc": "2026-11-21T01:44:46.581315+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&limit=1000&groups=50",
+    "result_source_event_sha256": "e082f54f32814752482f9b2a85d7a9c5c45345cad9c690b23e30fd2b9880923c"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401906852",
