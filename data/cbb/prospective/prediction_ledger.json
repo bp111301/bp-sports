@@ -35804,7 +35804,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.3031394511517057,
     "predicted_winner": "Iowa Hawkeyes",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -35820,7 +35820,18 @@
       "pace_diff": 8.10681818181822,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 65,
+    "away_score": 83,
+    "actual_winner": "Iowa Hawkeyes",
+    "correct": 1,
+    "brier": 0.09189352684455737,
+    "log_loss": 0.3611699616273505,
+    "verified_start_time_utc": "2026-11-21T00:30:00+00:00",
+    "settled_at_utc": "2026-11-21T02:30:16.152860+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&limit=1000&groups=50",
+    "result_source_event_sha256": "81bd6ab56075174e0e8f1eaaf18ec2a6962526160edf8cf541ffad8e0b3b40cf"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401925080",
