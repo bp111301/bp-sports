@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2049,
-    "settled_games": 853,
-    "pending_games": 1196,
-    "wins": 636,
+    "settled_games": 854,
+    "pending_games": 1195,
+    "wins": 637,
     "losses": 217,
-    "accuracy": 0.7456037514654161,
-    "brier": 0.16973427626063653,
-    "log_loss": 0.5117802335290748
+    "accuracy": 0.7459016393442623,
+    "brier": 0.16964100742351132,
+    "log_loss": 0.5115988419178352
   },
   "predictions": [
     {
@@ -36690,7 +36690,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6998622160478224,
       "predicted_winner": "UNC Greensboro Spartans",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -36706,7 +36706,18 @@
         "pace_diff": -1.1135910560344797,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 85,
+      "away_score": 66,
+      "actual_winner": "UNC Greensboro Spartans",
+      "correct": 1,
+      "brier": 0.09008268935572404,
+      "log_loss": 0.35687179753052595,
+      "verified_start_time_utc": "2026-11-21T16:00:00+00:00",
+      "settled_at_utc": "2026-11-21T17:52:48.411825+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "456b56d9c0cd04f2e232da19d47856209bb4bc536630a6cdfd8b5ecab932dddb"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401924884",
@@ -79295,5 +79306,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-21T17:47:35.991241+00:00"
+  "results_checked_at_utc": "2026-11-21T17:52:48.411825+00:00"
 }
