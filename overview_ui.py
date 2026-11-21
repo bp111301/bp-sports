@@ -1,5 +1,5 @@
 """Read-only cross-sport prospective dashboard. Parallel experiments stay separate."""
-UI_REVISION="forecast-health-20261115"
+UI_REVISION="mobile-games-20261115"
 from concurrent.futures import ThreadPoolExecutor
 from urllib.request import Request,urlopen
 import io,json,math,html
@@ -486,6 +486,20 @@ def render_yesterday_recap(payload,now):
         r=shown.loc[selected]
         details_button(r.sport,{**r.details,**r.to_dict()},'yesterday_recap_details',LABELS[r.group],settled=bool(r.settled or r.tie),now=now)
 
+def choose_slate_date():
+    st.session_state['desk_view']='Selected date'
+
+def filter_slate(board,feed,now):
+    """Count a selected slate using the same verified display state as cards."""
+    def bucket(r):
+        state=display_state(context(r.sport,r.game_id,r.home,r.away,feed=feed),r.settled,r.start,now)
+        if r.settled or r.details.get('settlement_status')=='tie' or state.startswith('Final'):return 'Final'
+        return {'Live':'Live','Scheduled':'Upcoming'}.get(state,'Other')
+    shown=board.copy()
+    shown['slate_status']=shown.apply(bucket,axis=1) if len(shown) else pd.Series(dtype=str)
+    counts={key:int(shown.slate_status.eq(key).sum()) for key in ('Live','Upcoming','Final')}
+    return shown,{'All':len(shown),**counts}
+
 def render_overview(now=None):
     now=pd.Timestamp.now(tz='UTC') if now is None else ts(now)
     payload=load_overview()
@@ -537,12 +551,48 @@ def render_overview(now=None):
 .desk-match .desk-team-chip{display:inline-flex;align-items:center;padding:7px 11px;border-radius:9px;font-size:.85rem;font-weight:900;letter-spacing:.02em;white-space:nowrap}
 .desk-match .desk-at{color:#94a7bf;font-size:.85rem}
 @media(max-width:640px){.ov-compact-hero{padding:14px 15px;border-radius:14px;margin-bottom:12px}.ov-compact-hero .hero-title{font-size:1.3rem}.ov-compact-hero .hero-copy{font-size:.76rem}.ov-compact-hero .stat{padding:9px 7px}.ov-compact-hero .stat-v{font-size:1.2rem}.ov-compact-hero .stat-l{font-size:.53rem;letter-spacing:.02em}}
+
+.ov-details{grid-template-columns:repeat(3,minmax(0,1fr))}.ov-detail{min-width:0}
+.ov-detail b,.ov-detail span,.ov-update-line span{overflow-wrap:anywhere}
+.ov-score{white-space:nowrap;font-size:clamp(1.6rem,5vw,2rem)}
+.st-key-desk_status [role="radiogroup"]{flex-wrap:wrap;gap:6px}
+.st-key-desk_status label{min-height:44px;border:1px solid #30425c;border-radius:10px;padding:8px 12px;background:#101c2d}
+.st-key-desk_status label:has(input:checked){background:#234673;border-color:#75a9f3}
+[data-testid="stTabs"] [role="tablist"]{flex-wrap:wrap;height:auto;gap:4px}
+[data-testid="stTabs"] [role="tab"]{min-height:44px;white-space:normal;padding:8px}
+[data-testid="stTabs"] [role="tab"][aria-selected="true"]{border-bottom:2px solid #75a9f3}
+[data-testid="stTabs"] [data-baseweb="tab-highlight"]{display:none}
 </style>''' ,unsafe_allow_html=True)
     missing=[name for name,key in [('NFL','nfl'),('CFB','cfb'),('NHL','nhl'),('NBA','nba'),('CBB','cbb')] if not available[key]]
-    st.markdown(f'''<div class="hero ov-compact-hero"><div class="hero-title">Your sports desk.</div><div class="hero-copy">Saved picks and verified results, all in one place.</div><div class="stat-grid"><div class="stat"><div class="stat-v">{len(PRIMARY)-len(missing)} / {len(PRIMARY)}</div><div class="stat-l">Feeds verified</div></div><div class="stat"><div class="stat-v">{saved}</div><div class="stat-l">Saved matchups</div></div><div class="stat"><div class="stat-v">{total_graded}</div><div class="stat-l">Finals graded</div></div></div></div>''',unsafe_allow_html=True)
+
     if missing:st.warning('Live data unavailable for '+', '.join(missing)+'. Those records show — until they can be verified.')
-    tabs=st.tabs(['LIVE RECORDS','DAILY RESULTS','CONFIDENCE','RESEARCH'])
+    tabs=st.tabs(['GAMES','SEASON RECORDS','DAILY RESULTS','CONFIDENCE','RESEARCH'])
     with tabs[0]:
+        st.markdown('<div class="section-title">Game center</div><div class="section-sub">Saved picks, clear results, all five sports · Central time</div>',unsafe_allow_html=True)
+        with st.expander('Date, sport and My teams'):
+            f1,f2=st.columns([2,1])
+            view=f1.selectbox('Show games',['Today','Selected date','Results','Upcoming','Awaiting finals','All tracked'],key='desk_view')
+            sport=f2.selectbox('Filter sport',['All sports',*PRIMARY],key='desk_sport')
+            today=now.tz_convert('America/Chicago').date()
+            if view=='Today':st.session_state['desk_date']=today
+            day=st.date_input('Game date · Central time',value=None,key='desk_date',on_change=choose_slate_date)
+            query=st.text_input('Find a matchup',placeholder='Search Troy, SEA, DET…',key='desk_search')
+            personal=filter_favorites(primary,None,"overview_my_teams",home="home",away="away")
+        shown=select_games(personal,'All tracked' if view=='Selected date' else view,sport,query,now)
+        if view=='Selected date':shown=shown.loc[shown.start.map(lambda t:pd.notna(t) and t.tz_convert('America/Chicago').date()==day)]
+        shown,counts=filter_slate(shown,score_feed,now)
+        status=st.radio('Game status',['All','Live','Upcoming','Final'],format_func=lambda label:f'{label} ({counts[label]})',horizontal=True,key='desk_status')
+        if status!='All':shown=shown.loc[shown.slate_status.eq(status)]
+        slate_label=today.strftime('%a · %b %-d') if view=='Today' else day.strftime('%a · %b %-d') if view=='Selected date' and day else view
+        st.caption(f'{slate_label} · {len(shown)} saved matchups · Central time')
+        if shown.empty:st.info('No saved games match this view. Use Results for completed games or Upcoming for future picks.')
+        else:
+            render_game_cards(shown.head(24),now,'desk_details')
+            if len(shown)>24:
+                with st.expander(f'Show the remaining {len(shown)-24} games'):render_game_cards(shown.iloc[24:],now,'remaining_details')
+        st.caption('Pick won / Pick lost grades the saved pick. The game-state label comes from the score source; Win / Loss comes from the grading ledger. A final score can appear before grading. Final checks are scheduled every 5 minutes and after score refreshes; source and workflow delays can take longer. NBA excludes preseason.')
+    with tabs[1]:
+        st.markdown(f'''<div class="hero ov-compact-hero"><div class="hero-title">Your sports desk.</div><div class="hero-copy">Saved picks and verified results, all in one place.</div><div class="stat-grid"><div class="stat"><div class="stat-v">{len(PRIMARY)-len(missing)} / {len(PRIMARY)}</div><div class="stat-l">Feeds verified</div></div><div class="stat"><div class="stat-v">{saved}</div><div class="stat-l">Saved matchups</div></div><div class="stat"><div class="stat-v">{total_graded}</div><div class="stat-l">Finals graded</div></div></div></div>''',unsafe_allow_html=True)
         cards=[]
         for sport,group in PRIMARY.items():
             key='nhl' if sport=='NHL' else sport.lower();ok=available[key];b=board[board.group==group];m=metrics(b);forecast_checked,state,cls=forecast_health(sport,payload,now)
@@ -569,11 +619,12 @@ def render_overview(now=None):
             cards.append(f'<div class="ov-sport" style="--accent:{COLORS[sport]}"><div class="ov-top"><div class="ov-name">{sport}</div><div class="ov-tag">{tag}</div></div><div class="ov-score">{record}</div><div class="ov-caption">{sub}</div><div class="ov-details"><div class="ov-detail"><b>{m["games"] if ok else "—"}</b><span>Graded</span></div><div class="ov-detail"><b>{upcoming if ok else "—"}</b><span>Upcoming</span></div><div class="ov-detail"><b>{accuracy}</b><span>Accuracy</span></div></div><div class="ov-update"><div class="ov-update-line"><span>{update_label}</span><span>{esc(ct(updates[sport]))}</span></div>{forecast_line}{checked_line}<div class="ov-update-line"><span>Awaiting grading</span><span>{awaiting_grading if ok else "—"}</span></div><span class="ov-status {cls}">{state}</span></div></div>')
         sports=list(PRIMARY)
         for offset in range(0,len(cards),2):
-            columns=st.columns(2,gap='small')
-            for column,sport,card in zip(columns,sports[offset:offset+2],cards[offset:offset+2]):
-                with column:
-                    st.markdown(card,unsafe_allow_html=True)
-                    st.button('Open '+sport+' board',key='open_'+sport,on_click=open_board,args=(sport,),width='stretch')
+            with st.container(key='season_record_row_'+str(offset)):
+                columns=st.columns(2,gap='small')
+                for column,sport,card in zip(columns,sports[offset:offset+2],cards[offset:offset+2]):
+                    with column:
+                        st.markdown(card,unsafe_allow_html=True)
+                        st.button('Open '+sport+' board',key='open_'+sport,on_click=open_board,args=(sport,),width='stretch')
         st.caption('Saved and graded totals count one primary forecast per matchup. NHL uses the research reference control; challengers are tracked separately.')
         reviews=[]
         for sport in PRIMARY:
@@ -588,27 +639,9 @@ def render_overview(now=None):
             with st.expander('Postponements and event reviews'):
                 st.caption('These annotations explain pending results. Saved picks and probabilities remain unchanged.')
                 st.dataframe(pd.DataFrame(reviews),hide_index=True)
-        st.markdown('<div class="section-title">Game center</div><div class="section-sub">Saved picks, clear results, all five sports · Central time</div>',unsafe_allow_html=True)
-        f1,f2=st.columns([2,1])
-        view=f1.selectbox('Show games',['Today','Results','Upcoming','Awaiting finals','All tracked'],key='desk_view')
-        sport=f2.selectbox('Filter sport',['All sports',*PRIMARY],key='desk_sport')
-        query=st.text_input('Find a matchup',placeholder='Search Troy, SEA, DET…',key='desk_search')
-        personal=filter_favorites(primary,None,"overview_my_teams",home="home",away="away")
-        shown=select_games(personal,view,sport,query,now)
-        if shown.empty:st.info('No saved games match this view. Use Results for completed games or Upcoming for future picks.')
-        else:
-            render_game_cards(shown.head(24),now,'desk_details')
-            if len(shown)>24:
-                with st.expander(f'Show the remaining {len(shown)-24} games'):render_game_cards(shown.iloc[24:],now,'remaining_details')
-        if view=='Today' and not query.strip():
-            recent=select_games(personal,'Results',sport,'',now).head(6)
-            if len(recent):
-                st.markdown('<div class="section-title">Latest settled results</div>',unsafe_allow_html=True)
-                render_game_cards(recent,now,'recent_details')
-        st.caption('Win / Loss grades the saved pick. The game-state label comes from the score source; Win / Loss comes from the grading ledger. A final score can appear before grading. Final checks are scheduled every 5 minutes and after score refreshes; source and workflow delays can take longer. NBA excludes preseason.')
-    with tabs[1]:
-        render_daily_results(primary,available,now)
     with tabs[2]:
+        render_daily_results(primary,available,now)
+    with tabs[3]:
         st.markdown('<div class="section-title">Does confidence hold up?</div><div class="ov-note">Compare the confidence saved before each game with actual wins after grading. Empty bands stay unscored until results arrive.</div>',unsafe_allow_html=True)
         sport=st.selectbox('Sport to review',list(PRIMARY),key='overview_confidence_sport');group=PRIMARY[sport];b=board[board.group==group]
         if not available['nhl' if sport=='NHL' else sport.lower()]:st.warning('This sport’s live confidence data is unavailable.')
@@ -620,7 +653,7 @@ def render_overview(now=None):
             st.markdown(table(['CONFIDENCE','PENDING','GRADED','RECORD','AVG SAVED CONFIDENCE','ACTUAL WIN RATE'],rows),unsafe_allow_html=True)
             m=metrics(b);cols=st.columns(2);cols[0].metric('Brier score',f"{m['brier']:.4f}" if m['games'] else '—');cols[1].metric('Log loss',f"{m['log_loss']:.4f}" if m['games'] else '—')
             st.caption('Lower Brier score and log loss mean better probability accuracy. A few games are too small a sample to justify changing weights.')
-    with tabs[3]:
+    with tabs[4]:
         st.markdown('<div class="section-title">Frozen challengers</div><div class="ov-note">These experiments have their own records. Parallel predictions for the same game never inflate the totals above.</div>',unsafe_allow_html=True)
         groups=['shadow','reference_control','decay2_logistic','linear_regulation_blend'];rows=[]
         for group in groups:
