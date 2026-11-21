@@ -37006,7 +37006,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.9334928282371138,
     "predicted_winner": "Bowling Green Falcons",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -37022,7 +37022,18 @@
       "pace_diff": 1.4991071428571416,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 68,
+    "away_score": 86,
+    "actual_winner": "Northern Illinois Huskies",
+    "correct": 0,
+    "brier": 0.8714088603701255,
+    "log_loss": 2.710445491076857,
+    "verified_start_time_utc": "2026-11-21T19:00:00+00:00",
+    "settled_at_utc": "2026-11-21T21:00:55.459778+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+    "result_source_event_sha256": "af856861f55e92cb8ef20a405248f320bdd6f465ca2d9e7a8163a33554689674"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401919031",
@@ -37040,7 +37051,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.6237319423362333,
     "predicted_winner": "Wichita State Shockers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -37056,7 +37067,18 @@
       "pace_diff": -1.66445312499998,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 85,
+    "away_score": 60,
+    "actual_winner": "Wichita State Shockers",
+    "correct": 1,
+    "brier": 0.14157765121806365,
+    "log_loss": 0.4720345824978241,
+    "verified_start_time_utc": "2026-11-21T19:00:00+00:00",
+    "settled_at_utc": "2026-11-21T21:00:55.459778+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+    "result_source_event_sha256": "06c35af9716bc78edc3117167cedc27242f6a3e2b5c900bf348bbe60855b1f2b"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401921222",
