@@ -12,6 +12,8 @@ from matchup_details_ui import details_button
 from cfb_board_ui import dated_board, date_choices, games_on_date, date_label
 import game_center_ui
 if getattr(game_center_ui,"UI_REVISION",None)!="source-repairs-20261121.1":
+    import game_status
+    importlib.reload(game_status)
     importlib.reload(game_center_ui)
     # Rebind score-loader imports retained by an existing Streamlit process.
     for name in ('overview_ui','nfl_availability_ui','cbb_ui','compact_board_ui','nhl_ui','nba_ui'):
