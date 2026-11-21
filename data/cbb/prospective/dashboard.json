@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2049,
-    "settled_games": 854,
-    "pending_games": 1195,
-    "wins": 637,
+    "settled_games": 855,
+    "pending_games": 1194,
+    "wins": 638,
     "losses": 217,
-    "accuracy": 0.7459016393442623,
-    "brier": 0.16964100742351132,
-    "log_loss": 0.5115988419178352
+    "accuracy": 0.7461988304093568,
+    "brier": 0.16949123891987175,
+    "log_loss": 0.5112672324562058
   },
   "predictions": [
     {
@@ -36735,7 +36735,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.20393365786863468,
       "predicted_winner": "Siena Saints",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -36751,7 +36751,18 @@
         "pace_diff": 3.1591131907308636,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 87,
+      "away_score": 93,
+      "actual_winner": "Siena Saints",
+      "correct": 1,
+      "brier": 0.04158893681168135,
+      "log_loss": 0.22807275222456713,
+      "verified_start_time_utc": "2026-11-21T16:00:00+00:00",
+      "settled_at_utc": "2026-11-21T18:22:59.623245+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "0c7da63f985d2a079eb44a1fada8fa30dc3456a2f2209385b71f2877c506a556"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401923402",
@@ -79306,5 +79317,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-21T18:15:31.310795+00:00"
+  "results_checked_at_utc": "2026-11-21T18:22:59.623245+00:00"
 }
