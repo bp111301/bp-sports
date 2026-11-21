@@ -11,22 +11,29 @@
   "weights_frozen": true,
   "metrics": [
     {
-      "candidate": "reference_control",
-      "games": 313,
-      "accuracy": 0.5942492012779552,
-      "brier": 0.23637621430481984
-    },
-    {
       "candidate": "decay2_logistic",
       "games": 313,
+      "correct": 192,
       "accuracy": 0.6134185303514377,
-      "brier": 0.23464774131073868
+      "brier": 0.23464774131073868,
+      "log_loss": 0.6629585416008312
     },
     {
       "candidate": "linear_regulation_blend",
       "games": 313,
+      "correct": 190,
       "accuracy": 0.6070287539936102,
-      "brier": 0.23527712490899985
+      "brier": 0.23527712490899985,
+      "log_loss": 0.6637122763686191
+    },
+    {
+      "candidate": "reference_control",
+      "games": 313,
+      "correct": 186,
+      "accuracy": 0.5942492012779552,
+      "brier": 0.2363762143048199,
+      "log_loss": 0.6675209820224484
     }
-  ]
+  ],
+  "results_checked_at_utc": "2026-11-21T18:02:52.925536+00:00"
 }
