@@ -6,7 +6,7 @@ from pathlib import Path
 import pandas as pd
 import requests
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from game_status import espn_game,nhl_game,matches
+from game_status import espn_game,nhl_game,matches,nfl_saved_start
 from preview_data import game_id,stamp,team
 ROOT=Path(__file__).resolve().parents[1]
 RAW='https://raw.githubusercontent.com/bp111301/bp-sports/'
@@ -17,11 +17,15 @@ def get(url):
 def targets():
     rows=[];errors=[]
     previews=json.loads((ROOT/'data/matchup_previews.json').read_text()).get('games',{})
+    schedule_path=ROOT/'data/current/nfl_availability.json'
+    availability=json.loads(schedule_path.read_text()) if schedule_path.exists() else {}
     for sport,path in [('NFL','data/ledger/prediction_ledger.csv'),('CFB','data/cfb/ledger/prediction_ledger.csv')]:
         for r in pd.read_csv(ROOT/path).drop_duplicates('game_id').to_dict('records'):
             key=sport+':'+game_id(r['game_id']);start=r.get('schedule_kickoff_utc',r.get('kickoff_utc'))
             if pd.isna(start):start=r.get('kickoff_utc')
-            if sport=='NFL':start=previews.get(key,{}).get('start_time_utc')
+            if sport=='NFL':
+                start=previews.get(key,{}).get('start_time_utc')
+                if pd.isna(stamp(start)):start=nfl_saved_start(r['game_id'],r['home_team'],r['away_team'],availability)
             rows.append(dict(sport=sport,game_id=game_id(r['game_id']),home_team=r['home_team'],away_team=r['away_team'],start_time_utc=start))
     for sport,branch,path in [('NHL','nhl-v1-research','data/nhl/v2_research/prediction_ledger.csv'),('NBA','nba-v1-research','data/nba/prospective/dashboard.json'),('CBB','cbb-v1-research','data/cbb/prospective/dashboard.json')]:
         try:

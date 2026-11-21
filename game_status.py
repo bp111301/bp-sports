@@ -56,3 +56,14 @@ def display_state(r,settled=False,start=None,now=None):
     kickoff=stamp(start)
     if pd.notna(kickoff) and kickoff>now:return 'Scheduled'
     return 'Status unavailable'
+
+
+def nfl_saved_start(gid,home,away,availability):
+    """Presentation fallback from the saved, identity-matched NFL schedule check."""
+    games=availability.get('games',{}) if isinstance(availability,dict) else {}
+    entry=games.get(str(gid),{}) if isinstance(games,dict) else {}
+    if not isinstance(entry,dict):return pd.NaT
+    for side,name in [('home',home),('away',away)]:
+        value=entry.get(side,{})
+        if not isinstance(value,dict) or team('NFL',value.get('team'))!=team('NFL',name):return pd.NaT
+    return stamp(entry.get('kickoff_utc'))
