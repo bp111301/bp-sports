@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2031,
-    "settled_games": 849,
-    "pending_games": 1182,
+    "settled_games": 850,
+    "pending_games": 1181,
     "wins": 634,
-    "losses": 215,
-    "accuracy": 0.7467608951707891,
-    "brier": 0.16927036335789306,
-    "log_loss": 0.5107614424093956
+    "losses": 216,
+    "accuracy": 0.7458823529411764,
+    "brier": 0.1695989207256918,
+    "log_loss": 0.5114639089572384
   },
   "predictions": [
     {
@@ -36510,7 +36510,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6697343697219293,
       "predicted_winner": "Boise State Broncos",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -36526,7 +36526,18 @@
         "pace_diff": -2.1866666666666816,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 69,
+      "away_score": 83,
+      "actual_winner": "Sam Houston Bearkats",
+      "correct": 0,
+      "brier": 0.44854412598682997,
+      "log_loss": 1.1078580080756826,
+      "verified_start_time_utc": "2026-11-21T02:00:00+00:00",
+      "settled_at_utc": "2026-11-21T04:27:16.549757+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&limit=1000&groups=50",
+      "result_source_event_sha256": "44472133abd335d1886316958562d4903186b7cfce03434c1f6b497fab1f0033"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401916125",
@@ -78639,5 +78650,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-21T04:22:17.995548+00:00"
+  "results_checked_at_utc": "2026-11-21T04:27:16.549757+00:00"
 }
