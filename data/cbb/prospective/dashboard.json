@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2055,
-    "settled_games": 866,
-    "pending_games": 1189,
-    "wins": 645,
+    "settled_games": 867,
+    "pending_games": 1188,
+    "wins": 646,
     "losses": 221,
-    "accuracy": 0.7448036951501155,
-    "brier": 0.17117223482406943,
-    "log_loss": 0.5162074530612385
+    "accuracy": 0.7450980392156863,
+    "brier": 0.17100923155558823,
+    "log_loss": 0.5158308225030666
   },
   "predictions": [
     {
@@ -37016,7 +37016,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8272331019816463,
       "predicted_winner": "Syracuse Orange",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -37032,7 +37032,18 @@
         "pace_diff": 1.9410156249999915,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 84,
+      "away_score": 81,
+      "actual_winner": "Syracuse Orange",
+      "correct": 1,
+      "brier": 0.02984840105088421,
+      "log_loss": 0.18966875912625014,
+      "verified_start_time_utc": "2026-11-21T19:00:00+00:00",
+      "settled_at_utc": "2026-11-21T21:31:16.687453+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "2228ffa5c9340ed3b0196bdf1d0b92ad1b480daca25fb5d2bb8e80640208b0f3"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911022",
@@ -79642,5 +79653,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-21T21:26:17.710473+00:00"
+  "results_checked_at_utc": "2026-11-21T21:31:16.687453+00:00"
 }
