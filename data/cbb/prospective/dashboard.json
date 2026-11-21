@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2055,
-    "settled_games": 860,
-    "pending_games": 1195,
-    "wins": 642,
+    "settled_games": 861,
+    "pending_games": 1194,
+    "wins": 643,
     "losses": 218,
-    "accuracy": 0.7465116279069768,
-    "brier": 0.16938232122769808,
-    "log_loss": 0.5109883597384441
+    "accuracy": 0.7468060394889663,
+    "brier": 0.16920521233439237,
+    "log_loss": 0.5105565785649369
   },
   "predictions": [
     {
@@ -36960,7 +36960,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.1299675501480917,
       "predicted_winner": "Mercyhurst Lakers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -36976,7 +36976,18 @@
         "pace_diff": 1.9945312500000085,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 65,
+      "away_score": 68,
+      "actual_winner": "Mercyhurst Lakers",
+      "correct": 1,
+      "brier": 0.016891564091496728,
+      "log_loss": 0.13922476934873176,
+      "verified_start_time_utc": "2026-11-21T18:30:00+00:00",
+      "settled_at_utc": "2026-11-21T20:50:51.083452+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "ecfdde15628775c467b337c4626ed22ea7dfdbcd7eb377ea5171891072b441fb"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401909719",
@@ -79576,5 +79587,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-21T20:45:49.942556+00:00"
+  "results_checked_at_utc": "2026-11-21T20:50:51.083452+00:00"
 }
