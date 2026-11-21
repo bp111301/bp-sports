@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2055,
-    "settled_games": 859,
-    "pending_games": 1196,
-    "wins": 641,
+    "settled_games": 860,
+    "pending_games": 1195,
+    "wins": 642,
     "losses": 218,
-    "accuracy": 0.7462165308498254,
-    "brier": 0.16950998636382558,
-    "log_loss": 0.5112570226881471
+    "accuracy": 0.7465116279069768,
+    "brier": 0.16938232122769808,
+    "log_loss": 0.5109883597384441
   },
   "predictions": [
     {
@@ -36915,7 +36915,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.2443726034034066,
       "predicted_winner": "Kent State Golden Flashes",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -36931,7 +36931,18 @@
         "pace_diff": -2.1149059139784754,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 62,
+      "away_score": 69,
+      "actual_winner": "Kent State Golden Flashes",
+      "correct": 1,
+      "brier": 0.05971796929415865,
+      "log_loss": 0.28020688594354437,
+      "verified_start_time_utc": "2026-11-21T18:00:00+00:00",
+      "settled_at_utc": "2026-11-21T20:09:25.114329+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "75cd483b29c45f1acdccf108b22d0790b83cb40ea2c893506929ed0d0b811616"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401919828",
@@ -79565,5 +79576,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-21T20:04:20.579306+00:00"
+  "results_checked_at_utc": "2026-11-21T20:09:25.114329+00:00"
 }
