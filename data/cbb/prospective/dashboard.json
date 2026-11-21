@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2031,
-    "settled_games": 814,
-    "pending_games": 1217,
-    "wins": 608,
+    "settled_games": 815,
+    "pending_games": 1216,
+    "wins": 609,
     "losses": 206,
-    "accuracy": 0.7469287469287469,
-    "brier": 0.1690618797616416,
-    "log_loss": 0.5107236908652995
+    "accuracy": 0.747239263803681,
+    "brier": 0.16915780342247516,
+    "log_loss": 0.5109407494665952
   },
   "predictions": [
     {
@@ -35061,7 +35061,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.4972320015254396,
       "predicted_winner": "UT Martin Skyhawks",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -35077,7 +35077,18 @@
         "pace_diff": 4.377217741935468,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 73,
+      "away_score": 76,
+      "actual_winner": "UT Martin Skyhawks",
+      "correct": 1,
+      "brier": 0.2472396633409948,
+      "log_loss": 0.6876264509213301,
+      "verified_start_time_utc": "2026-11-20T22:30:00+00:00",
+      "settled_at_utc": "2026-11-21T00:54:13.952198+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&limit=1000&groups=50",
+      "result_source_event_sha256": "eaea1ceb8811416a27a31405a880498908dce8e6c84544c59f5c26882d821e8e"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401925828",
@@ -78254,5 +78265,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-21T00:49:22.470339+00:00"
+  "results_checked_at_utc": "2026-11-21T00:54:13.952198+00:00"
 }
