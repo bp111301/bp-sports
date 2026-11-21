@@ -1,18 +1,18 @@
 {
   "status": "shadow_only_not_public",
-  "updated_at_utc": "2026-11-21T07:17:57.783139+00:00",
+  "updated_at_utc": "2026-11-21T16:59:43.110936+00:00",
   "identities": {
     "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
     "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
     "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
   },
   "capture_window_hours": 24,
-  "eligible_future_games": 1187,
+  "eligible_future_games": 1189,
   "within_capture_window": 49,
   "summary": {
-    "saved_pairs": 906,
+    "saved_pairs": 908,
     "settled_pairs": 854,
-    "pending_pairs": 52,
+    "pending_pairs": 54,
     "control": {
       "wins": 658,
       "losses": 196,
@@ -36,13 +36,18 @@
     "roster_unknown_pairs": 220
   },
   "coverage": {
-    "source_games_in_horizon": 1466
+    "source_games_in_horizon": 1469
   },
   "excluded": {
-    "tipoff_time_unconfirmed": 19,
-    "division_or_conference_unknown": 260
+    "division_or_conference_unknown": 261,
+    "tipoff_time_unconfirmed": 19
   },
   "coverage_by_day": {
+    "2026-12-21": {
+      "source_games": 1,
+      "eligible": 0,
+      "unconfirmed_tipoff": 0
+    },
     "Unconfirmed source date/time": {
       "source_games": 19,
       "eligible": 0,
@@ -189,8 +194,8 @@
       "unconfirmed_tipoff": 0
     },
     "2026-11-22": {
-      "source_games": 40,
-      "eligible": 36,
+      "source_games": 42,
+      "eligible": 38,
       "unconfirmed_tipoff": 0
     },
     "2026-11-21": {
@@ -201,9 +206,9 @@
   },
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "7cdbb103cfb6d33278593bb39886e7f826bb15615eb1a3a504dc26189deac171",
-    "bytes": 656167,
-    "archive_sha256": "419192d37df0f4f159b796e72cef0a95a2ffdcb08bb7dd90de49200548d6c72f",
+    "sha256": "e30e8400427d784d3c1e74508683b01750f48960860a6eab7431fd877c62b6dd",
+    "bytes": 668997,
+    "archive_sha256": "b7d941af2f11cc1e35f03f7102e7da1cb5f856ca88cff3e8a81a5a34dc837b6c",
     "live_schedule_sources": [
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&groups=50&limit=1000",
@@ -221,18 +226,13 @@
         "games": 44
       },
       {
-        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261119&groups=50&limit=1000",
-        "sha256": "79b194be85445f8a2e95728ffa105e8a34746c3a447fc3d35a4ae3312f9e1b4f",
-        "games": 36
-      },
-      {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&groups=50&limit=1000",
         "sha256": "65825754fd1cb4e631635b7e6e66d698c7c0687e4d747d3fddfd96146eee720b",
         "games": 59
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&groups=50&limit=1000",
-        "sha256": "3f106e63d484fd0d9527a9068d8c497524728e06e8ef6302d32c10fd2f011513",
+        "sha256": "09ad977bf050f2a05a4696b4f1fe21717a84120f4f5d83becf9ce5d9effc9f93",
         "games": 57
       },
       {
@@ -271,24 +271,7 @@
         "games": 76
       }
     ],
-    "identity_conflicts": [
-      {
-        "game_id": 401920569,
-        "reason": "Live/archive schedule identity mismatch: 401920569 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 282, 'away_id': 2393, 'season': 2027}"
-      },
-      {
-        "game_id": 401920570,
-        "reason": "Live/archive schedule identity mismatch: 401920570 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 151, 'away_id': 79, 'season': 2027}"
-      },
-      {
-        "game_id": 401921205,
-        "reason": "Live/archive schedule identity mismatch: 401921205 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 2617, 'away_id': 218, 'season': 2027}"
-      },
-      {
-        "game_id": 401921206,
-        "reason": "Live/archive schedule identity mismatch: 401921206 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 3084, 'away_id': 2630, 'season': 2027}"
-      }
-    ]
+    "identity_conflicts": []
   },
   "history_sources": [
     {
@@ -534,32 +517,32 @@
     {
       "season": 2027,
       "schedule_rows": 6076,
-      "box_rows": 2136,
+      "box_rows": 2252,
       "sources": [
         {
           "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-          "sha256": "419192d37df0f4f159b796e72cef0a95a2ffdcb08bb7dd90de49200548d6c72f",
-          "bytes": 656167
+          "sha256": "b7d941af2f11cc1e35f03f7102e7da1cb5f856ca88cff3e8a81a5a34dc837b6c",
+          "bytes": 668997
         },
         {
           "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2027.parquet",
-          "sha256": "601b7424c90bf80c1491e9a3d455d15edcd1a23f7c806b1dea3b7e022179f35c",
-          "bytes": 195175
+          "sha256": "c502092396d7eb86975aaa6a52a255b30df6309d9baca97fe359756e3cb9eeba",
+          "bytes": 201551
         }
       ],
       "exclusions": {
-        "not_confirmed_final": 5008,
-        "division_or_conference_unknown": 263
+        "not_confirmed_final": 4949,
+        "division_or_conference_unknown": 271
       },
-      "eligible_games": 805,
-      "neutral_games": 69,
+      "eligible_games": 856,
+      "neutral_games": 84,
       "players": {
         "season": 2027,
         "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2027.parquet",
-        "sha256": "ae67b328918168676d08144387a85dffba35bb8e271dc0ba813d5068e4b53c0c",
-        "bytes": 811089,
-        "eligible_team_games": 1610,
-        "complete_player_team_games": 1610,
+        "sha256": "5a87a0c05c3e79e6ebbee5373db91f177db993b308c115e02bbf59b70c764ee8",
+        "bytes": 838709,
+        "eligible_team_games": 1712,
+        "complete_player_team_games": 1712,
         "exclusions": {}
       }
     }
@@ -94763,6 +94746,180 @@
           "returning_share_diff": 0.441,
           "transfer_share_diff": -0.47300000000000003,
           "prior_minutes_experience_diff": 0.6617937598410109,
+          "rotation_known_diff": 0.0
+        }
+      }
+    },
+    {
+      "game_id": "401920569",
+      "identities": {
+        "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+      },
+      "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+      "roster_context": {
+        "home_known": true,
+        "away_known": true,
+        "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+      },
+      "feature_state_as_of_utc": "2026-11-21T16:59:43.110936+00:00",
+      "control": {
+        "prediction_id": "CBB_V1_CANDIDATE_20261013:401920569",
+        "model_version": "CBB_V1_CANDIDATE_20261013",
+        "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "game_id": "401920569",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "282",
+        "away_team_id": "2393",
+        "home_team": "Indiana State Sycamores",
+        "away_team": "Middle Tennessee Blue Raiders",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-21T20:00:00+00:00",
+        "created_at_utc": "2026-11-21T16:59:43.110936+00:00",
+        "home_win_prob": 0.3681927827889768,
+        "predicted_winner": "Middle Tennessee Blue Raiders",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "e30e8400427d784d3c1e74508683b01750f48960860a6eab7431fd877c62b6dd",
+        "features": {
+          "elo_diff": -106.38354045383903,
+          "home_advantage": 0.0,
+          "off_eff_diff": -3.5892864596500687,
+          "def_eff_diff": -1.8214007583318619,
+          "efg_diff": 0.004246493951652663,
+          "tov_rate_diff": 0.013377258170662237,
+          "orb_rate_diff": -0.03429950773200796,
+          "ft_rate_diff": -0.03652709948292021,
+          "pace_diff": 0.8150097962382432,
+          "rest_diff": 6.0,
+          "experience_diff": -0.2231435513142097
+        }
+      },
+      "challenger": {
+        "prediction_id": "CBB_SHADOW_COMBINED_20261016:401920569",
+        "model_version": "CBB_SHADOW_COMBINED_20261016",
+        "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "game_id": "401920569",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "282",
+        "away_team_id": "2393",
+        "home_team": "Indiana State Sycamores",
+        "away_team": "Middle Tennessee Blue Raiders",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-21T20:00:00+00:00",
+        "created_at_utc": "2026-11-21T16:59:43.110936+00:00",
+        "home_win_prob": 0.386294341634059,
+        "predicted_winner": "Middle Tennessee Blue Raiders",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "e30e8400427d784d3c1e74508683b01750f48960860a6eab7431fd877c62b6dd",
+        "features": {
+          "elo_diff": -106.38354045383903,
+          "home_advantage": 0.0,
+          "off_eff_diff": -3.5892864596500687,
+          "def_eff_diff": -1.8214007583318619,
+          "efg_diff": 0.004246493951652663,
+          "tov_rate_diff": 0.013377258170662237,
+          "orb_rate_diff": -0.03429950773200796,
+          "ft_rate_diff": -0.03652709948292021,
+          "pace_diff": 0.8150097962382432,
+          "rest_diff": 6.0,
+          "experience_diff": -0.2231435513142097,
+          "adjusted_off_diff": -4.158103108446326,
+          "adjusted_def_diff": -0.5897389720967681,
+          "returning_share_diff": -0.44375,
+          "transfer_share_diff": 0.4541666666666666,
+          "prior_minutes_experience_diff": -0.10751723244918177,
+          "rotation_known_diff": 0.0
+        }
+      }
+    },
+    {
+      "game_id": "401920570",
+      "identities": {
+        "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+      },
+      "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+      "roster_context": {
+        "home_known": true,
+        "away_known": true,
+        "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+      },
+      "feature_state_as_of_utc": "2026-11-21T16:59:43.110936+00:00",
+      "control": {
+        "prediction_id": "CBB_V1_CANDIDATE_20261013:401920570",
+        "model_version": "CBB_V1_CANDIDATE_20261013",
+        "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "game_id": "401920570",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "151",
+        "away_team_id": "79",
+        "home_team": "East Carolina Pirates",
+        "away_team": "Southern Illinois Salukis",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-21T22:30:00+00:00",
+        "created_at_utc": "2026-11-21T16:59:43.110936+00:00",
+        "home_win_prob": 0.4882050548751755,
+        "predicted_winner": "Southern Illinois Salukis",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "e30e8400427d784d3c1e74508683b01750f48960860a6eab7431fd877c62b6dd",
+        "features": {
+          "elo_diff": -24.648712022719337,
+          "home_advantage": 0.0,
+          "off_eff_diff": -3.1930392133871095,
+          "def_eff_diff": -0.5637904712984465,
+          "efg_diff": -0.0260322998553289,
+          "tov_rate_diff": 0.002683095071167124,
+          "orb_rate_diff": 0.018264710783853555,
+          "ft_rate_diff": 0.04742507907941118,
+          "pace_diff": -0.2697568426197563,
+          "rest_diff": 3.0,
+          "experience_diff": 0.2231435513142097
+        }
+      },
+      "challenger": {
+        "prediction_id": "CBB_SHADOW_COMBINED_20261016:401920570",
+        "model_version": "CBB_SHADOW_COMBINED_20261016",
+        "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "game_id": "401920570",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "151",
+        "away_team_id": "79",
+        "home_team": "East Carolina Pirates",
+        "away_team": "Southern Illinois Salukis",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-21T22:30:00+00:00",
+        "created_at_utc": "2026-11-21T16:59:43.110936+00:00",
+        "home_win_prob": 0.45077840018281995,
+        "predicted_winner": "Southern Illinois Salukis",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "e30e8400427d784d3c1e74508683b01750f48960860a6eab7431fd877c62b6dd",
+        "features": {
+          "elo_diff": -24.648712022719337,
+          "home_advantage": 0.0,
+          "off_eff_diff": -3.1930392133871095,
+          "def_eff_diff": -0.5637904712984465,
+          "efg_diff": -0.0260322998553289,
+          "tov_rate_diff": 0.002683095071167124,
+          "orb_rate_diff": 0.018264710783853555,
+          "ft_rate_diff": 0.04742507907941118,
+          "pace_diff": -0.2697568426197563,
+          "rest_diff": 3.0,
+          "experience_diff": 0.2231435513142097,
+          "adjusted_off_diff": -4.601128371355131,
+          "adjusted_def_diff": 2.623686923222806,
+          "returning_share_diff": -0.53,
+          "transfer_share_diff": 0.72375,
+          "prior_minutes_experience_diff": 1.4203272959545252,
           "rotation_known_diff": 0.0
         }
       }
