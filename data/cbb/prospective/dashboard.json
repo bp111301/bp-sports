@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2031,
-    "settled_games": 835,
-    "pending_games": 1196,
+    "settled_games": 836,
+    "pending_games": 1195,
     "wins": 624,
-    "losses": 211,
-    "accuracy": 0.7473053892215569,
-    "brier": 0.1694146070878493,
-    "log_loss": 0.5113689881688153
+    "losses": 212,
+    "accuracy": 0.7464114832535885,
+    "brier": 0.1700638816770146,
+    "log_loss": 0.5129790897420091
   },
   "predictions": [
     {
@@ -35927,7 +35927,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8439242641552892,
       "predicted_winner": "Tulsa Golden Hurricane",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -35943,7 +35943,18 @@
         "pace_diff": -2.9114919354838946,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 61,
+      "away_score": 72,
+      "actual_winner": "Mississippi State Bulldogs",
+      "correct": 0,
+      "brier": 0.7122081636300464,
+      "log_loss": 1.8574139033588453,
+      "verified_start_time_utc": "2026-11-21T00:30:00+00:00",
+      "settled_at_utc": "2026-11-21T02:40:16.296155+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&limit=1000&groups=50",
+      "result_source_event_sha256": "296b38dc633f8220ee457986a6cc812f6d493e9f1a4130e0332f7e9205c0408f"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401906784",
@@ -78485,5 +78496,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-21T02:35:13.448411+00:00"
+  "results_checked_at_utc": "2026-11-21T02:40:16.296155+00:00"
 }
