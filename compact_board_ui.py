@@ -7,13 +7,13 @@ from game_center_ui import load_scores, context, filter_favorites
 from game_status import display_state, score
 from matchup_details_ui import details_button, game_tile
 
-UI_REVISION = 'efficient-feeds-20261115'
+UI_REVISION = 'source-repairs-20261121.1'
 def esc(value): return html.escape(str(value), quote=True)
 
 def prepare_compact(sport, payload, score_feed, now, cbb=None):
     # A sport switch must not normalize every other sport and research experiment.
     key={'NFL':'nfl','CFB':'cfb','NHL':'nhl','NBA':'nba'}.get(sport)
-    source_keys = (key, 'nba_injury') if sport == 'NBA' else (key,)
+    source_keys = (key, 'nba_injury') if sport == 'NBA' else (key,'nfl_availability') if sport=='NFL' else (key,)
     selected = {source_key: payload[source_key] for source_key in source_keys if source_key in payload}
     board, available, _ = prepare(selected, now)
     board = board[(board.sport == sport) & (board.group == PRIMARY.get(sport))].copy()

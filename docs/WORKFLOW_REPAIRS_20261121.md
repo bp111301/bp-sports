@@ -34,3 +34,13 @@ A pre-existing NFL UI regression test also assumed the checked-in slate always c
 - Prospective app release marker: `dashboard-source-repairs-20261121`.
 
 The separate mobile UI PR is not included in this repair. Production workflow results and the hosted app's release marker must be checked after merge; a successful repository merge alone does not prove Streamlit has reloaded.
+
+## Follow-up: make refreshed NFL forecasts visible without preview lag
+
+Post-merge checks confirmed successful production NHL collection (19 new paired forecasts, 12 settlements, no source errors), successful CFB/NFL publication, and successful grading for all five sports. They also exposed a presentation dependency: newly saved NFL games had no date until the separate matchup-preview feed and score archive had caught up. Overview consequently counted zero upcoming NFL games while 12 new forecasts were already saved.
+
+The dashboard and presentation-only score builder now fall back to the verified kickoff in the saved NFL availability check, but only when the game key and both teams match. Existing verified score starts retain precedence; missing or mismatched metadata remains unavailable. No forecast, probability or grading decision is changed. This uses an already loaded source and adds no dashboard feed requests.
+
+With the current saved data and no previews/scores, Overview now renders 12 upcoming NFL picks; the NFL board defaults to November 22 and displays that day's 11 games, with the remaining game on November 23. The score archive can resolve the same newly published games directly, without waiting for preview generation.
+
+Four regression tests cover unchanged saved probabilities, date selection without previews, identity rejection, official-score precedence and archive targeting. The follow-up passes 166 main tests (162 general plus the four frozen/saved-snapshot checks). The earlier 31 research safeguards remain applicable to the unchanged collector. Updated release marker: `dashboard-source-repairs-20261121.1`.

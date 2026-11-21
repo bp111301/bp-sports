@@ -1,5 +1,5 @@
 """Read-only cross-sport prospective dashboard. Parallel experiments stay separate."""
-UI_REVISION="forecast-health-20261115"
+UI_REVISION="source-repairs-20261121.1"
 from concurrent.futures import ThreadPoolExecutor
 from urllib.request import Request,urlopen
 import io,json,math,html
@@ -8,7 +8,7 @@ import streamlit as st
 from nhl_ui import audit_note
 from navigation_ui import open_board
 from game_center_ui import filter_favorites,score_html,confidence_html,context,load_scores
-from game_status import display_state
+from game_status import display_state,nfl_saved_start
 from nba_primary import BASE_BRANCH, BASE_HASH, BASE_PATH, INJURY_BRANCH, INJURY_PATH, merge
 from matchup_details_ui import game_tile, details_button
 
@@ -149,6 +149,11 @@ def prepare(payload,now):
                     data=merge(data,payload.get('nba_injury',{}).get('data') or {})
                 records+=normalize(key,data,now)
             except (ValueError,TypeError,KeyError):available[key]=False
+    source=payload.get('nfl_availability',{})
+    schedule=source.get('data') if source.get('ok') else {}
+    for record in records:
+        if record['sport']=='NFL' and pd.isna(record['start']):
+            record['start']=nfl_saved_start(record['game_id'],record['home'],record['away'],schedule)
     for sport,key,field in [('NFL','nfl_update','captured_at_utc'),('CFB','cfb_update','generated_at_utc')]:
         source=payload.get(key,{})
         updates[sport]=ts(source['data'].get(field)) if source.get('ok') else pd.NaT
@@ -500,7 +505,7 @@ def render_overview(now=None):
         if status:
             board.loc[i,'start'] = ts(status['start_time_utc'])
             board.loc[i,'confirmed_final'] = status.get('state') == 'final'
-        elif r.sport == 'NFL':
+        elif r.sport == 'NFL' and pd.isna(r.start):
             board.loc[i,'start'] = ts(r.details.get('kickoff_utc'))
     primary=board[board.apply(lambda r:PRIMARY[r.sport]==r.group,axis=1)] if len(board) else board
     total_graded=int(primary.settled.sum());saved=len(primary)
