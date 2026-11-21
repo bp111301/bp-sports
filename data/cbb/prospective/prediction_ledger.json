@@ -36612,7 +36612,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.6713400539686977,
     "predicted_winner": "Saint Mary's Gaels",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -36628,7 +36628,18 @@
       "pace_diff": -5.536643145161278,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 95,
+    "away_score": 78,
+    "actual_winner": "Saint Mary's Gaels",
+    "correct": 1,
+    "brier": 0.10801736012529856,
+    "log_loss": 0.3984794835449395,
+    "verified_start_time_utc": "2026-11-21T04:00:00+00:00",
+    "settled_at_utc": "2026-11-21T06:13:12.191088+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&limit=1000&groups=50",
+    "result_source_event_sha256": "6a90fe39bf6cbc7cedd6ac7399cf9f3166ac0529a5e4a9fd0e3ccebb93fc4873"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401922284",
