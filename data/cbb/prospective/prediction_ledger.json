@@ -34904,7 +34904,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.35737337816255826,
     "predicted_winner": "Mercyhurst Lakers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -34920,7 +34920,18 @@
       "pace_diff": -1.0150520833333303,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 63,
+    "away_score": 56,
+    "actual_winner": "Canisius Golden Griffins",
+    "correct": 0,
+    "brier": 0.4129689750942023,
+    "log_loss": 1.028974166544969,
+    "verified_start_time_utc": "2026-11-20T22:30:00+00:00",
+    "settled_at_utc": "2026-11-21T00:44:11.713560+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&limit=1000&groups=50",
+    "result_source_event_sha256": "7216326f278dbcaf0c779886e095f00d88e4d29fa1478c65bab07407eef4311c"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401921419",
