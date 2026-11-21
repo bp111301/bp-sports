@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2055,
-    "settled_games": 857,
-    "pending_games": 1198,
-    "wins": 639,
+    "settled_games": 858,
+    "pending_games": 1197,
+    "wins": 640,
     "losses": 218,
-    "accuracy": 0.7456242707117853,
-    "brier": 0.16952873648180988,
-    "log_loss": 0.5112509710436952
+    "accuracy": 0.745920745920746,
+    "brier": 0.169511564584753,
+    "log_loss": 0.5112378021708094
   },
   "predictions": [
     {
@@ -70287,7 +70287,7 @@
       "created_at_utc": "2026-11-16T06:37:29.307473+00:00",
       "home_win_prob": 0.6065597265060542,
       "predicted_winner": "New Haven Chargers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "d509c62f6080a2b306dda6779519390e1c1f88dac516b3667bebbad564699ebc",
       "forecast_stage": "early_research_prior",
@@ -70303,7 +70303,18 @@
         "pace_diff": -5.930194805194802,
         "rest_diff": -3.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 50,
+      "away_score": 47,
+      "actual_winner": "New Haven Chargers",
+      "correct": 1,
+      "brier": 0.1547952488069909,
+      "log_loss": 0.4999520781076884,
+      "verified_start_time_utc": "2026-11-21T18:00:00+00:00",
+      "settled_at_utc": "2026-11-21T19:49:14.000908+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "92345ea5ecd6e7bceaa25d03356f8855dfed22450ca8ee53ce5b775a571d35ca"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921811",
@@ -79543,5 +79554,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-21T19:44:02.419591+00:00"
+  "results_checked_at_utc": "2026-11-21T19:49:14.000908+00:00"
 }
