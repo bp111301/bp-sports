@@ -2,13 +2,13 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-22T01:27:20.599508+00:00",
+  "updated_at_utc": "2026-11-22T06:57:31.714784+00:00",
   "coverage": {
     "source_games_in_horizon": 1474
   },
   "excluded": {
-    "division_or_conference_unknown": 269,
-    "tipoff_time_unconfirmed": 19
+    "tipoff_time_unconfirmed": 20,
+    "division_or_conference_unknown": 269
   },
   "grading_issues": [
     {
@@ -22,9 +22,9 @@
   ],
   "capture_blocked_reason": null,
   "summary": {
-    "saved_games": 2092,
+    "saved_games": 2094,
     "settled_games": 904,
-    "pending_games": 1188,
+    "pending_games": 1190,
     "wins": 673,
     "losses": 231,
     "accuracy": 0.7444690265486725,
@@ -81041,11 +81041,79 @@
         "rest_diff": 0.0,
         "experience_diff": -0.18232155679395468
       }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401909748",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401909748",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "12",
+      "away_team_id": "2459",
+      "home_team": "Arizona Wildcats",
+      "away_team": "Northern Illinois Huskies",
+      "neutral_site": false,
+      "start_time_utc": "2026-12-22T02:00:00+00:00",
+      "created_at_utc": "2026-11-22T06:57:31.714784+00:00",
+      "home_win_prob": 0.9834357011212952,
+      "predicted_winner": "Arizona Wildcats",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "8475ac9cb19a1d75c3bd3b02ac58e6e1ff474b99d1fa30a54045388e2339b19d",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": 331.5862254351075,
+        "home_advantage": 1.0,
+        "off_eff_diff": 17.58554619727883,
+        "def_eff_diff": -17.030650473471326,
+        "efg_diff": 0.06250081896895698,
+        "tov_rate_diff": -0.04601646978976104,
+        "orb_rate_diff": 0.052471807883867905,
+        "ft_rate_diff": 0.05110801431523071,
+        "pace_diff": 3.3877989657401457,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0
+      }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401922517",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401922517",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "2287",
+      "away_team_id": "2057",
+      "home_team": "Illinois State Redbirds",
+      "away_team": "Belmont Bruins",
+      "neutral_site": false,
+      "start_time_utc": "2026-12-22T02:00:00+00:00",
+      "created_at_utc": "2026-11-22T06:57:31.714784+00:00",
+      "home_win_prob": 0.5116924008299653,
+      "predicted_winner": "Illinois State Redbirds",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "8475ac9cb19a1d75c3bd3b02ac58e6e1ff474b99d1fa30a54045388e2339b19d",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": -84.39340998860735,
+        "home_advantage": 1.0,
+        "off_eff_diff": -3.473460573486264,
+        "def_eff_diff": 3.5471765608211285,
+        "efg_diff": -0.0449141693689451,
+        "tov_rate_diff": -0.017977319849424273,
+        "orb_rate_diff": -0.007400013635836922,
+        "ft_rate_diff": -0.016042596379434004,
+        "pace_diff": -3.169916911045945,
+        "rest_diff": 0.0,
+        "experience_diff": 0.2231435513142097
+      }
     }
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "341ca44765d536fc5a3e09a91f6e70f8366149f40f4493ef9e1d4a9cc4330cd1",
+    "sha256": "8475ac9cb19a1d75c3bd3b02ac58e6e1ff474b99d1fa30a54045388e2339b19d",
     "bytes": 668997,
     "archive_sha256": "b7d941af2f11cc1e35f03f7102e7da1cb5f856ca88cff3e8a81a5a34dc837b6c",
     "live_schedule_sources": [
@@ -81065,13 +81133,8 @@
         "games": 44
       },
       {
-        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261120&groups=50&limit=1000",
-        "sha256": "65825754fd1cb4e631635b7e6e66d698c7c0687e4d747d3fddfd96146eee720b",
-        "games": 59
-      },
-      {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&groups=50&limit=1000",
-        "sha256": "d755808858b4b05a43bcf928bddaa8e3ca39c3eb244e5a92dfe25c03f671d597",
+        "sha256": "1599ea04d50aa03c61ae4944e5a0b1e16d883f516c62085e33031e6644fca96a",
         "games": 57
       },
       {
@@ -81081,7 +81144,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261123&groups=50&limit=1000",
-        "sha256": "bc2f0ff5833ed4bd5cc2b48a6765a07a9e2ac65330f934e26dba6fee5eaf34ee",
+        "sha256": "ea95e25b443638674c022a47d3ffe671d16a942826c1a728dc7f1919f7725941",
         "games": 46
       },
       {
@@ -81223,9 +81286,23 @@
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261221&groups=50&limit=1000",
         "sha256": "2c57bc774d912356b523fe3d6a45738adf0d10c7f96a6c5b12ea19cf856e5340",
         "games": 63
+      },
+      {
+        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261222&groups=50&limit=1000",
+        "sha256": "3972d77e144557d4f799eb64e00c763f731c318a5b707af6099faab145e7ec5d",
+        "games": 88
       }
     ],
-    "identity_conflicts": []
+    "identity_conflicts": [
+      {
+        "game_id": 401921207,
+        "reason": "Live/archive schedule identity mismatch: 401921207 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 79, 'away_id': 2393, 'season': 2027}"
+      },
+      {
+        "game_id": 401921209,
+        "reason": "Live/archive schedule identity mismatch: 401921209 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 151, 'away_id': 282, 'season': 2027}"
+      }
+    ]
   },
   "history_sources": [
     [
@@ -81317,6 +81394,5 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ],
-  "results_checked_at_utc": "2026-11-22T06:52:13.183232+00:00"
+  ]
 }
