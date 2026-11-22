@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2092,
-    "settled_games": 898,
-    "pending_games": 1194,
-    "wins": 670,
+    "settled_games": 899,
+    "pending_games": 1193,
+    "wins": 671,
     "losses": 228,
-    "accuracy": 0.7461024498886414,
-    "brier": 0.17124929317816237,
-    "log_loss": 0.5164629081478964
+    "accuracy": 0.746384872080089,
+    "brier": 0.17125031500581528,
+    "log_loss": 0.5164846689439072
   },
   "predictions": [
     {
@@ -38377,7 +38377,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.585068781316577,
       "predicted_winner": "Tennessee Tech Golden Eagles",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -38393,7 +38393,18 @@
         "pace_diff": 1.374345238095259,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 97,
+      "away_score": 69,
+      "actual_winner": "Tennessee Tech Golden Eagles",
+      "correct": 1,
+      "brier": 0.1721679162381106,
+      "log_loss": 0.5360258637615357,
+      "verified_start_time_utc": "2026-11-22T00:30:00+00:00",
+      "settled_at_utc": "2026-11-22T02:44:41.874312+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "891162bd2db57bb34994197f1bca09acd81ac16d20cfd759522de1ccb3f671eb"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401925099",
@@ -81252,5 +81263,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-22T02:39:37.492123+00:00"
+  "results_checked_at_utc": "2026-11-22T02:44:41.874312+00:00"
 }
