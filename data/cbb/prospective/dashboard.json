@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2055,
-    "settled_games": 884,
-    "pending_games": 1171,
-    "wins": 659,
+    "settled_games": 885,
+    "pending_games": 1170,
+    "wins": 660,
     "losses": 225,
-    "accuracy": 0.745475113122172,
-    "brier": 0.17153688244879184,
-    "log_loss": 0.5172916048687708
+    "accuracy": 0.7457627118644068,
+    "brier": 0.17160875082959656,
+    "log_loss": 0.5174567205965275
   },
   "predictions": [
     {
@@ -37837,7 +37837,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.5150872248940194,
       "predicted_winner": "Wofford Terriers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -37853,7 +37853,18 @@
         "pace_diff": -3.28940860215053,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 91,
+      "away_score": 86,
+      "actual_winner": "Wofford Terriers",
+      "correct": 1,
+      "brier": 0.23514039946098336,
+      "log_loss": 0.6634190239334131,
+      "verified_start_time_utc": "2026-11-21T22:00:00+00:00",
+      "settled_at_utc": "2026-11-22T00:13:17.547031+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "f72fe3f89f45667ada1d5fadf94f8b752f7abb1a5bb28d55ab47d8672256ddbe"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401909517",
@@ -79840,5 +79851,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-22T00:08:08.673336+00:00"
+  "results_checked_at_utc": "2026-11-22T00:13:17.547031+00:00"
 }
