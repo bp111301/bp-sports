@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2055,
-    "settled_games": 885,
-    "pending_games": 1170,
-    "wins": 660,
+    "settled_games": 887,
+    "pending_games": 1168,
+    "wins": 662,
     "losses": 225,
-    "accuracy": 0.7457627118644068,
-    "brier": 0.17160875082959656,
-    "log_loss": 0.5174567205965275
+    "accuracy": 0.7463359639233371,
+    "brier": 0.17151076296405834,
+    "log_loss": 0.517207337466033
   },
   "predictions": [
     {
@@ -37916,7 +37916,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8659922042524878,
       "predicted_winner": "Massachusetts Minutemen",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -37932,7 +37932,18 @@
         "pace_diff": 7.820904737903206,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 76,
+      "away_score": 44,
+      "actual_winner": "Massachusetts Minutemen",
+      "correct": 1,
+      "brier": 0.01795808932110695,
+      "log_loss": 0.1438793724781328,
+      "verified_start_time_utc": "2026-11-21T23:00:00+00:00",
+      "settled_at_utc": "2026-11-22T00:53:41.734846+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "6a3113196a950243d74fa8497d2ba3069962b654910e1653f0426ca51f6a10c6"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401925897",
@@ -79285,7 +79296,7 @@
       "created_at_utc": "2026-11-21T16:58:43.513544+00:00",
       "home_win_prob": 0.4882050548751755,
       "predicted_winner": "Southern Illinois Salukis",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "f8affa9d1425be9cffdb6e6e090571ef851b267899847699d54bf94a9eeefa57",
       "forecast_stage": "early_research_prior",
@@ -79301,7 +79312,18 @@
         "pace_diff": -0.2697568426197563,
         "rest_diff": 3.0,
         "experience_diff": 0.2231435513142097
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 69,
+      "away_score": 85,
+      "actual_winner": "Southern Illinois Salukis",
+      "correct": 1,
+      "brier": 0.23834417560567314,
+      "log_loss": 0.6698312319663711,
+      "verified_start_time_utc": "2026-11-21T22:30:00+00:00",
+      "settled_at_utc": "2026-11-22T00:53:41.734846+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "bce0f3d49459d7de2a29be3be6f6d03dd437d48cabb0c5f84cfa4137653a0876"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921205",
@@ -79851,5 +79873,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-22T00:48:40.090457+00:00"
+  "results_checked_at_utc": "2026-11-22T00:53:41.734846+00:00"
 }
