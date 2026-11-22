@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2092,
-    "settled_games": 902,
-    "pending_games": 1190,
-    "wins": 671,
+    "settled_games": 903,
+    "pending_games": 1189,
+    "wins": 672,
     "losses": 231,
-    "accuracy": 0.7439024390243902,
-    "brier": 0.17188365915279452,
-    "log_loss": 0.517828568827903
+    "accuracy": 0.7441860465116279,
+    "brier": 0.1718699621926887,
+    "log_loss": 0.517819695091832
   },
   "predictions": [
     {
@@ -70828,7 +70828,7 @@
       "created_at_utc": "2026-11-16T06:37:29.307473+00:00",
       "home_win_prob": 0.6006063293225238,
       "predicted_winner": "Pacific Tigers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "d509c62f6080a2b306dda6779519390e1c1f88dac516b3667bebbad564699ebc",
       "forecast_stage": "early_research_prior",
@@ -70844,7 +70844,18 @@
         "pace_diff": -2.0342977150537678,
         "rest_diff": 2.0,
         "experience_diff": -0.5108256237659907
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 63,
+      "away_score": 62,
+      "actual_winner": "Pacific Tigers",
+      "correct": 1,
+      "brier": 0.15951530417722834,
+      "log_loss": 0.5098155851558945,
+      "verified_start_time_utc": "2026-11-22T03:00:00+00:00",
+      "settled_at_utc": "2026-11-22T04:56:15.172360+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "9a8cd09c50cf6a2ff474bfc42dd4aa210700477f4d041dd609f6222f93099305"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920968",
@@ -81296,5 +81307,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-22T04:51:01.896797+00:00"
+  "results_checked_at_utc": "2026-11-22T04:56:15.172360+00:00"
 }
