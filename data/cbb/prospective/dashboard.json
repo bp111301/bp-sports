@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2108,
-    "settled_games": 927,
-    "pending_games": 1181,
+    "settled_games": 928,
+    "pending_games": 1180,
     "wins": 686,
-    "losses": 241,
-    "accuracy": 0.7400215749730313,
-    "brier": 0.17322674710925226,
-    "log_loss": 0.5205219026237685
+    "losses": 242,
+    "accuracy": 0.7392241379310345,
+    "brier": 0.1736737476378192,
+    "log_loss": 0.5215299925915073
   },
   "predictions": [
     {
@@ -39539,7 +39539,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7668397731073848,
       "predicted_winner": "Portland State Vikings",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -39555,7 +39555,18 @@
         "pace_diff": -5.812276785714289,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 75,
+      "away_score": 92,
+      "actual_winner": "Cal State Fullerton Titans",
+      "correct": 0,
+      "brier": 0.5880432376193855,
+      "log_loss": 1.4560293926854504,
+      "verified_start_time_utc": "2026-11-22T22:00:00+00:00",
+      "settled_at_utc": "2026-11-22T23:57:58.965715+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261122&limit=1000&groups=50",
+      "result_source_event_sha256": "90d31153f25c8a6cdd68300258c20960cef3e1592011c33c42b470c3cab6b87a"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401922293",
@@ -82107,5 +82118,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-22T23:51:44.236992+00:00"
+  "results_checked_at_utc": "2026-11-22T23:57:58.965715+00:00"
 }
