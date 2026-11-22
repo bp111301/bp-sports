@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2092,
-    "settled_games": 903,
-    "pending_games": 1189,
-    "wins": 672,
+    "settled_games": 904,
+    "pending_games": 1188,
+    "wins": 673,
     "losses": 231,
-    "accuracy": 0.7441860465116279,
-    "brier": 0.1718699621926887,
-    "log_loss": 0.517819695091832
+    "accuracy": 0.7444690265486725,
+    "brier": 0.1716817589895593,
+    "log_loss": 0.5172939393578879
   },
   "predictions": [
     {
@@ -38512,7 +38512,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9583554737843393,
       "predicted_winner": "Duke Blue Devils",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -38528,7 +38528,18 @@
         "pace_diff": -1.8364089184060788,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 78,
+      "away_score": 74,
+      "actual_winner": "Duke Blue Devils",
+      "correct": 1,
+      "brier": 0.0017342665637268535,
+      "log_loss": 0.04253651160635741,
+      "verified_start_time_utc": "2026-11-22T04:00:00+00:00",
+      "settled_at_utc": "2026-11-22T06:32:04.112615+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "1216ec576c5ea5952f40ca8c10273f02e1730374fcde80c9747a748a4dc3288d"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911024",
@@ -81307,5 +81318,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-22T06:27:02.218763+00:00"
+  "results_checked_at_utc": "2026-11-22T06:32:04.112615+00:00"
 }
