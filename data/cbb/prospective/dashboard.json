@@ -23,13 +23,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2092,
-    "settled_games": 891,
-    "pending_games": 1201,
-    "wins": 666,
-    "losses": 225,
-    "accuracy": 0.7474747474747475,
-    "brier": 0.17099776652055138,
-    "log_loss": 0.5159717857044278
+    "settled_games": 894,
+    "pending_games": 1198,
+    "wins": 668,
+    "losses": 226,
+    "accuracy": 0.7472035794183445,
+    "brier": 0.1708241276447979,
+    "log_loss": 0.5155374184069882
   },
   "predictions": [
     {
@@ -38017,7 +38017,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.865291649460396,
       "predicted_winner": "Vermont Catamounts",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -38033,7 +38033,18 @@
         "pace_diff": -2.8206562499999848,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 84,
+      "away_score": 71,
+      "actual_winner": "Vermont Catamounts",
+      "correct": 1,
+      "brier": 0.018146339705100815,
+      "log_loss": 0.14468866187204124,
+      "verified_start_time_utc": "2026-11-22T00:00:00+00:00",
+      "settled_at_utc": "2026-11-22T02:09:31.734509+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "2add0d2667fb7ed1553eb4d24ce1e77f16ecad7c0e46c577a6fc6906244d2adb"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911378",
@@ -38119,7 +38130,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8020693104355086,
       "predicted_winner": "Cal Poly Mustangs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -38135,7 +38146,18 @@
         "pace_diff": 10.886457174638466,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 89,
+      "away_score": 88,
+      "actual_winner": "Cal Poly Mustangs",
+      "correct": 1,
+      "brier": 0.03917655787147508,
+      "log_loss": 0.2205602528603754,
+      "verified_start_time_utc": "2026-11-22T00:00:00+00:00",
+      "settled_at_utc": "2026-11-22T02:09:31.734509+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "9d469881c473dd60c9cd2240fd450222047f54f335092fe30b26138b3dce4852"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920964",
@@ -38198,7 +38220,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.5481215623030109,
       "predicted_winner": "Chattanooga Mocs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -38214,7 +38236,18 @@
         "pace_diff": -5.9887931034482875,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 65,
+      "away_score": 73,
+      "actual_winner": "Radford Highlanders",
+      "correct": 0,
+      "brier": 0.30043724706149344,
+      "log_loss": 0.7943420784698542,
+      "verified_start_time_utc": "2026-11-22T00:00:00+00:00",
+      "settled_at_utc": "2026-11-22T02:09:31.734509+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261121&limit=1000&groups=50",
+      "result_source_event_sha256": "637da1f55702f6e415abae04799c7542f0c44da45f58859f4db85d24be835df6"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921776",
@@ -81175,5 +81208,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-22T02:04:34.231610+00:00"
+  "results_checked_at_utc": "2026-11-22T02:09:31.734509+00:00"
 }
