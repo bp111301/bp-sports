@@ -1269,7 +1269,7 @@
     "created_at_utc": "2026-10-24T01:05:32.448131+00:00",
     "home_win_prob": 0.39222624448268517,
     "predicted_winner": "Fordham Rams",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
     "forecast_stage": "early_research_prior",
@@ -1285,7 +1285,18 @@
       "pace_diff": 4.836707452725264,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 80,
+    "away_score": 58,
+    "actual_winner": "San Diego Toreros",
+    "correct": 0,
+    "brier": 0.3693889378956208,
+    "log_loss": 0.935916451388592,
+    "verified_start_time_utc": "2026-11-22T19:00:00+00:00",
+    "settled_at_utc": "2026-11-22T20:55:45.310050+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261122&limit=1000&groups=50",
+    "result_source_event_sha256": "58d0dd10ccf43e9ec8a634b5da1071fa12b44ac24b5b91333c69ed81e9675446"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401912212",
