@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2108,
-    "settled_games": 918,
-    "pending_games": 1190,
-    "wins": 680,
+    "settled_games": 920,
+    "pending_games": 1188,
+    "wins": 682,
     "losses": 238,
-    "accuracy": 0.7407407407407407,
-    "brier": 0.17285703168777794,
-    "log_loss": 0.5197342970855224
+    "accuracy": 0.741304347826087,
+    "brier": 0.17256365979290098,
+    "log_loss": 0.5190244746497598
   },
   "predictions": [
     {
@@ -39145,7 +39145,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9240150982561862,
       "predicted_winner": "Texas Longhorns",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -39161,7 +39161,18 @@
         "pace_diff": 0.08607430875575517,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 97,
+      "away_score": 61,
+      "actual_winner": "Texas Longhorns",
+      "correct": 1,
+      "brier": 0.005773705293017035,
+      "log_loss": 0.0790268673698533,
+      "verified_start_time_utc": "2026-11-22T20:00:00+00:00",
+      "settled_at_utc": "2026-11-22T22:01:36.867636+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261122&limit=1000&groups=50",
+      "result_source_event_sha256": "52967ce952d6817514823cb3aafb8a20f33d1f0f7f41d7d595af492d7fe28314"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401922252",
@@ -39179,7 +39190,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7353526595717931,
       "predicted_winner": "South Alabama Jaguars",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -39195,7 +39206,18 @@
         "pace_diff": -1.8475000000000108,
         "rest_diff": 7.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 79,
+      "away_score": 66,
+      "actual_winner": "South Alabama Jaguars",
+      "correct": 1,
+      "brier": 0.07003821479572325,
+      "log_loss": 0.3074050858995886,
+      "verified_start_time_utc": "2026-11-22T20:00:00+00:00",
+      "settled_at_utc": "2026-11-22T22:01:36.867636+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261122&limit=1000&groups=50",
+      "result_source_event_sha256": "660f524e26b54b3743429064aea890f9e11d8561d493bd66da51e7334d5851ab"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401925066",
@@ -82008,5 +82030,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-22T21:56:29.942719+00:00"
+  "results_checked_at_utc": "2026-11-22T22:01:36.867636+00:00"
 }
