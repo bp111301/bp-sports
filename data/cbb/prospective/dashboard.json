@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2162,
-    "settled_games": 939,
-    "pending_games": 1223,
-    "wins": 693,
+    "settled_games": 940,
+    "pending_games": 1222,
+    "wins": 694,
     "losses": 246,
-    "accuracy": 0.7380191693290735,
-    "brier": 0.17361534488781002,
-    "log_loss": 0.5212869609814665
+    "accuracy": 0.7382978723404255,
+    "brier": 0.1735710048920193,
+    "log_loss": 0.5212125558549512
   },
   "predictions": [
     {
@@ -79939,7 +79939,7 @@
       "created_at_utc": "2026-11-21T16:58:43.513544+00:00",
       "home_win_prob": 0.6367703910134817,
       "predicted_winner": "Utah Valley Wolverines",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "f8affa9d1425be9cffdb6e6e090571ef851b267899847699d54bf94a9eeefa57",
       "forecast_stage": "early_research_prior",
@@ -79955,7 +79955,18 @@
         "pace_diff": 2.584867424242418,
         "rest_diff": -1.0,
         "experience_diff": -0.2231435513142097
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 78,
+      "away_score": 76,
+      "actual_winner": "Utah Valley Wolverines",
+      "correct": 1,
+      "brier": 0.13193574884449902,
+      "log_loss": 0.4513461420570159,
+      "verified_start_time_utc": "2026-11-23T01:10:00+00:00",
+      "settled_at_utc": "2026-11-23T03:54:20.876436+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261122&limit=1000&groups=50",
+      "result_source_event_sha256": "41acb965f3e591390461772c35d3bd859b7a834df151e3595666587d43b8aadd"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401924996",
@@ -84079,5 +84090,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-23T03:49:10.734015+00:00"
+  "results_checked_at_utc": "2026-11-23T03:54:20.876436+00:00"
 }
