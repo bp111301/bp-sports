@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2108,
-    "settled_games": 931,
-    "pending_games": 1177,
-    "wins": 688,
-    "losses": 243,
-    "accuracy": 0.7389903329752954,
-    "brier": 0.1737079526062803,
-    "log_loss": 0.5216101306826938
+    "settled_games": 933,
+    "pending_games": 1175,
+    "wins": 689,
+    "losses": 244,
+    "accuracy": 0.7384780278670954,
+    "brier": 0.17377568265021612,
+    "log_loss": 0.5217700762955723
   },
   "predictions": [
     {
@@ -39651,7 +39651,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.564790145931527,
       "predicted_winner": "Lamar Cardinals",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -39667,7 +39667,18 @@
         "pace_diff": -1.8163793103448427,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 81,
+      "away_score": 85,
+      "actual_winner": "Rice Owls",
+      "correct": 0,
+      "brier": 0.31898790894135554,
+      "log_loss": 0.8319269410761723,
+      "verified_start_time_utc": "2026-11-22T22:00:00+00:00",
+      "settled_at_utc": "2026-11-23T00:48:27.910992+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261122&limit=1000&groups=50",
+      "result_source_event_sha256": "30f9178e44cd79b30c13b480a8849583f7caec9c197a71d8d3fbaa65e9a24061"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921420",
@@ -39685,7 +39696,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6973118316429762,
       "predicted_winner": "Minnesota Golden Gophers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -39701,7 +39712,18 @@
         "pace_diff": -4.589843750000007,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 77,
+      "away_score": 62,
+      "actual_winner": "Minnesota Golden Gophers",
+      "correct": 1,
+      "brier": 0.09162012726333,
+      "log_loss": 0.36052257710480795,
+      "verified_start_time_utc": "2026-11-22T23:00:00+00:00",
+      "settled_at_utc": "2026-11-23T00:48:27.910992+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261122&limit=1000&groups=50",
+      "result_source_event_sha256": "5449980ffebc0e54833bf2debe050e5a3a39b71fd9e503e5f0cccf4fe724866d"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401928999",
@@ -82151,5 +82173,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-23T00:43:25.677639+00:00"
+  "results_checked_at_utc": "2026-11-23T00:48:27.910992+00:00"
 }
