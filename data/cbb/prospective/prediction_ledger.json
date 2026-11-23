@@ -79810,7 +79810,7 @@
     "created_at_utc": "2026-11-21T16:58:43.513544+00:00",
     "home_win_prob": 0.6820735970230052,
     "predicted_winner": "Stephen F. Austin Lumberjacks",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "f8affa9d1425be9cffdb6e6e090571ef851b267899847699d54bf94a9eeefa57",
     "forecast_stage": "early_research_prior",
@@ -79826,7 +79826,18 @@
       "pace_diff": 0.7725891044439379,
       "rest_diff": 0.0,
       "experience_diff": -0.4054651081081644
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 72,
+    "away_score": 70,
+    "actual_winner": "Stephen F. Austin Lumberjacks",
+    "correct": 1,
+    "brier": 0.1010771977098905,
+    "log_loss": 0.3826177134374524,
+    "verified_start_time_utc": "2026-11-22T22:30:00+00:00",
+    "settled_at_utc": "2026-11-23T00:58:36.624037+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261122&limit=1000&groups=50",
+    "result_source_event_sha256": "4f36303d5449494648052353b6c7a430d21d6dd9755a684ae643ceaac964e64e"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401921206",
