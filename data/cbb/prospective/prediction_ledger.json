@@ -41272,7 +41272,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.8281911870736087,
     "predicted_winner": "Florida International Panthers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -41288,7 +41288,18 @@
       "pace_diff": 1.1879310344827445,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 81,
+    "away_score": 66,
+    "actual_winner": "Florida International Panthers",
+    "correct": 1,
+    "brier": 0.029518268199175714,
+    "log_loss": 0.1885112489878895,
+    "verified_start_time_utc": "2026-11-24T18:00:00+00:00",
+    "settled_at_utc": "2026-11-24T20:02:19.231830+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+    "result_source_event_sha256": "e12dfd48de9451045fc72b1fea7fb0ac2ccbc629a38fd699b6d53f497a0957a0"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401929035",
