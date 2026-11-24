@@ -2,12 +2,12 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-23T23:58:09.994847+00:00",
+  "updated_at_utc": "2026-11-24T06:01:11.829494+00:00",
   "coverage": {
-    "source_games_in_horizon": 1505
+    "source_games_in_horizon": 1481
   },
   "excluded": {
-    "division_or_conference_unknown": 269,
+    "division_or_conference_unknown": 259,
     "tipoff_time_unconfirmed": 16
   },
   "grading_issues": [
@@ -18,9 +18,9 @@
   ],
   "capture_blocked_reason": null,
   "summary": {
-    "saved_games": 2184,
+    "saved_games": 2187,
     "settled_games": 974,
-    "pending_games": 1210,
+    "pending_games": 1213,
     "wins": 714,
     "losses": 260,
     "accuracy": 0.7330595482546202,
@@ -84915,11 +84915,113 @@
         "rest_diff": 0.0,
         "experience_diff": 0.15415067982725827
       }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401911194",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401911194",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "2168",
+      "away_team_id": "2545",
+      "home_team": "Dayton Flyers",
+      "away_team": "SE Louisiana Lions",
+      "neutral_site": false,
+      "start_time_utc": "2026-12-24T00:00:00+00:00",
+      "created_at_utc": "2026-11-24T06:01:11.829494+00:00",
+      "home_win_prob": 0.9282928498746467,
+      "predicted_winner": "Dayton Flyers",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "0896f0a2b7c316b0ef9a7ab38eaabc17dc31e7b12e0d59d71955b382330ee080",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": 136.7829157175761,
+        "home_advantage": 1.0,
+        "off_eff_diff": 10.296338402112568,
+        "def_eff_diff": -10.57240813201038,
+        "efg_diff": 0.05464978432883266,
+        "tov_rate_diff": -0.01729974264493564,
+        "orb_rate_diff": -0.02569875221499668,
+        "ft_rate_diff": 0.08751840034054553,
+        "pace_diff": 1.8960848506069112,
+        "rest_diff": 0.0,
+        "experience_diff": 0.33647223662121295
+      }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401920577",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401920577",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "2550",
+      "away_team_id": "2599",
+      "home_team": "Seton Hall Pirates",
+      "away_team": "St. John's Red Storm",
+      "neutral_site": false,
+      "start_time_utc": "2026-12-24T01:00:00+00:00",
+      "created_at_utc": "2026-11-24T06:01:11.829494+00:00",
+      "home_win_prob": 0.2865772595175454,
+      "predicted_winner": "St. John's Red Storm",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "0896f0a2b7c316b0ef9a7ab38eaabc17dc31e7b12e0d59d71955b382330ee080",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": -133.4188192569511,
+        "home_advantage": 1.0,
+        "off_eff_diff": -12.635410885648298,
+        "def_eff_diff": 3.2364912806195747,
+        "efg_diff": -0.049567827412721754,
+        "tov_rate_diff": 0.035004092335986614,
+        "orb_rate_diff": -0.00396516324598184,
+        "ft_rate_diff": 0.013095376012357052,
+        "pace_diff": -5.442144864938982,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0
+      }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401921738",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401921738",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "9",
+      "away_team_id": "70",
+      "home_team": "Arizona State Sun Devils",
+      "away_team": "Idaho Vandals",
+      "neutral_site": false,
+      "start_time_utc": "2026-12-24T01:00:00+00:00",
+      "created_at_utc": "2026-11-24T06:01:11.829494+00:00",
+      "home_win_prob": 0.8549538021689167,
+      "predicted_winner": "Arizona State Sun Devils",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "0896f0a2b7c316b0ef9a7ab38eaabc17dc31e7b12e0d59d71955b382330ee080",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": 84.3216889723858,
+        "home_advantage": 1.0,
+        "off_eff_diff": 4.9593562892780625,
+        "def_eff_diff": -4.475703396130996,
+        "efg_diff": -0.013797372779101647,
+        "tov_rate_diff": 0.008970254092165786,
+        "orb_rate_diff": 0.07120322150426422,
+        "ft_rate_diff": 0.03696681685157316,
+        "pace_diff": -1.5011363636363626,
+        "rest_diff": 0.0,
+        "experience_diff": 0.4054651081081644
+      }
     }
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "7462a8132b2e1af53f1d3d4a3e0bcfc9d940438d88f3657bbb7ee8c6071c2cb9",
+    "sha256": "0896f0a2b7c316b0ef9a7ab38eaabc17dc31e7b12e0d59d71955b382330ee080",
     "bytes": 687549,
     "archive_sha256": "af2fd321cf79333ed5275bc237cfacf32a88f31eefb90b33636e96de8d01026c",
     "live_schedule_sources": [
@@ -84939,18 +85041,13 @@
         "games": 44
       },
       {
-        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261122&groups=50&limit=1000",
-        "sha256": "141faf0fbcff3b77a448b45f324f3161e7c501deed6b026b06660936baa94a6c",
-        "games": 42
-      },
-      {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261123&groups=50&limit=1000",
-        "sha256": "28055fd733bf107f3754f78ee47f4205c0804e6de3cf27ca8f73286a3a386039",
+        "sha256": "0aeb615c5a7b4fb247433b35534780163f4d6d95ddfbd99bcd75fdcf38d47c7f",
         "games": 46
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&groups=50&limit=1000",
-        "sha256": "2fede184c9112762362a1ba4350582347981a111df0faffdb7eb3bd210828fe3",
+        "sha256": "b4db81f4da80afdfdffb45343d54d3aeae76882ed2083bdff5a55c3dd3f5965d",
         "games": 87
       },
       {
@@ -85102,11 +85199,19 @@
     "identity_conflicts": [
       {
         "game_id": 401921709,
-        "reason": "Live/archive schedule identity mismatch: 401921709 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': -1, 'away_id': 145, 'season': 2027}"
+        "reason": "Live/archive schedule identity mismatch: 401921709 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 252, 'away_id': 145, 'season': 2027}"
+      },
+      {
+        "game_id": 401921710,
+        "reason": "Live/archive schedule identity mismatch: 401921710 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': -1, 'away_id': 2507, 'season': 2027}"
       },
       {
         "game_id": 401921711,
-        "reason": "Live/archive schedule identity mismatch: 401921711 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': -1, 'away_id': 228, 'season': 2027}"
+        "reason": "Live/archive schedule identity mismatch: 401921711 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 264, 'away_id': 228, 'season': 2027}"
+      },
+      {
+        "game_id": 401921712,
+        "reason": "Live/archive schedule identity mismatch: 401921712 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': -1, 'away_id': 2670, 'season': 2027}"
       }
     ]
   },
@@ -85200,6 +85305,5 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ],
-  "results_checked_at_utc": "2026-11-24T05:59:13.199112+00:00"
+  ]
 }
