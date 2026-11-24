@@ -41036,7 +41036,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.7171399969740176,
     "predicted_winner": "UNLV Rebels",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -41052,7 +41052,18 @@
       "pace_diff": 1.9519531250000313,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 82,
+    "away_score": 61,
+    "actual_winner": "UNLV Rebels",
+    "correct": 1,
+    "brier": 0.08000978131185875,
+    "log_loss": 0.332484203642871,
+    "verified_start_time_utc": "2026-11-24T03:00:00+00:00",
+    "settled_at_utc": "2026-11-24T05:08:46.607043+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261123&limit=1000&groups=50",
+    "result_source_event_sha256": "15fcf96c3850b9c0e2e134c430b83704122b86fa8a1e487f619f482fb881185a"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401927398",
