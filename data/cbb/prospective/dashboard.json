@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2184,
-    "settled_games": 966,
-    "pending_games": 1218,
-    "wins": 707,
+    "settled_games": 968,
+    "pending_games": 1216,
+    "wins": 709,
     "losses": 259,
-    "accuracy": 0.7318840579710145,
-    "brier": 0.1760221867644181,
-    "log_loss": 0.5267157945127623
+    "accuracy": 0.7324380165289256,
+    "brier": 0.17569780342586813,
+    "log_loss": 0.5259294721409155
   },
   "predictions": [
     {
@@ -40919,7 +40919,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8391994756643336,
       "predicted_winner": "North Carolina Tar Heels",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -40935,7 +40935,18 @@
         "pace_diff": 0.8681107954545553,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 85,
+      "away_score": 45,
+      "actual_winner": "North Carolina Tar Heels",
+      "correct": 1,
+      "brier": 0.025856808626625236,
+      "log_loss": 0.17530684670442306,
+      "verified_start_time_utc": "2026-11-24T01:00:00+00:00",
+      "settled_at_utc": "2026-11-24T03:07:21.599798+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261123&limit=1000&groups=50",
+      "result_source_event_sha256": "6bd8ee7cc8a1aeec6ae7ba105b0a5e8b4eff2f63a16287b73d4b845b02df8446"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401913530",
@@ -40953,7 +40964,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8896166081974803,
       "predicted_winner": "Illinois Fighting Illini",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -40969,7 +40980,18 @@
         "pace_diff": -4.729460685483858,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 133,
+      "away_score": 83,
+      "actual_winner": "Illinois Fighting Illini",
+      "correct": 1,
+      "brier": 0.012184493185828564,
+      "log_loss": 0.1169646863733521,
+      "verified_start_time_utc": "2026-11-24T01:00:00+00:00",
+      "settled_at_utc": "2026-11-24T03:07:21.599798+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261123&limit=1000&groups=50",
+      "result_source_event_sha256": "064ef0ed98dc4fa9516d9013abf043d8ee359bbff59a117c2a3f8c44ab05d8e6"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401918057",
@@ -85113,5 +85135,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-24T03:02:18.085708+00:00"
+  "results_checked_at_utc": "2026-11-24T03:07:21.599798+00:00"
 }
