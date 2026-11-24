@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2184,
-    "settled_games": 971,
-    "pending_games": 1213,
-    "wins": 711,
+    "settled_games": 972,
+    "pending_games": 1212,
+    "wins": 712,
     "losses": 260,
-    "accuracy": 0.7322348094747683,
-    "brier": 0.17624368855957284,
-    "log_loss": 0.5271967014588974
+    "accuracy": 0.7325102880658436,
+    "brier": 0.17618232574347661,
+    "log_loss": 0.5270840907901455
   },
   "predictions": [
     {
@@ -84593,7 +84593,7 @@
       "created_at_utc": "2026-11-23T14:54:22.050109+00:00",
       "home_win_prob": 0.658533996840074,
       "predicted_winner": "Seattle U Redhawks",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "ce291af3d34b65c19fda3af874ae77791c99c2fe91bf9482b062e2078264587e",
       "forecast_stage": "early_research_prior",
@@ -84609,7 +84609,18 @@
         "pace_diff": 1.2841632829536138,
         "rest_diff": 1.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 76,
+      "away_score": 63,
+      "actual_winner": "Seattle U Redhawks",
+      "correct": 1,
+      "brier": 0.11659903131401461,
+      "log_loss": 0.41773913143203617,
+      "verified_start_time_utc": "2026-11-24T02:30:00+00:00",
+      "settled_at_utc": "2026-11-24T04:43:28.941003+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261123&limit=1000&groups=50",
+      "result_source_event_sha256": "3b09a845cf3fb913792a93a9c296c3cb6ecb65b3894fa0d53aca41163e75e544"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921664",
@@ -85168,5 +85179,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-24T04:38:14.947255+00:00"
+  "results_checked_at_utc": "2026-11-24T04:43:28.941003+00:00"
 }
