@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2187,
-    "settled_games": 974,
-    "pending_games": 1213,
-    "wins": 714,
+    "settled_games": 975,
+    "pending_games": 1212,
+    "wins": 715,
     "losses": 260,
-    "accuracy": 0.7330595482546202,
-    "brier": 0.17591948447592107,
-    "log_loss": 0.5264835961113068
+    "accuracy": 0.7333333333333333,
+    "brier": 0.1757550652083731,
+    "log_loss": 0.5260805011430322
   },
   "predictions": [
     {
@@ -1521,7 +1521,7 @@
       "created_at_utc": "2026-10-25T07:00:11.051663+00:00",
       "home_win_prob": 0.8750572186292028,
       "predicted_winner": "Arizona Wildcats",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
       "forecast_stage": "early_research_prior",
@@ -1537,7 +1537,18 @@
         "pace_diff": 7.2502068014705685,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 96,
+      "away_score": 83,
+      "actual_winner": "Arizona Wildcats",
+      "correct": 1,
+      "brier": 0.015610698616670821,
+      "log_loss": 0.13346600204344433,
+      "verified_start_time_utc": "2026-11-24T04:55:00+00:00",
+      "settled_at_utc": "2026-11-24T06:59:56.695488+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261123&limit=1000&groups=50",
+      "result_source_event_sha256": "d5f5328234f5ec5051829463e665a06d0fd9f09005268a81c2181c701bd5074e"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401906853",
@@ -85306,5 +85317,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-24T06:54:50.466126+00:00"
+  "results_checked_at_utc": "2026-11-24T06:59:56.695488+00:00"
 }
