@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2191,
-    "settled_games": 976,
-    "pending_games": 1215,
+    "settled_games": 977,
+    "pending_games": 1214,
     "wins": 715,
-    "losses": 261,
-    "accuracy": 0.7325819672131147,
-    "brier": 0.17605167993754303,
-    "log_loss": 0.526715661292867
+    "losses": 262,
+    "accuracy": 0.7318321392016377,
+    "brier": 0.17624588709454417,
+    "log_loss": 0.5271267836537877
   },
   "predictions": [
     {
@@ -41121,7 +41121,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.3951925328439987,
       "predicted_winner": "Wright State Raiders",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -41137,7 +41137,18 @@
         "pace_diff": -1.2337121212120934,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 72,
+      "away_score": 70,
+      "actual_winner": "St. Bonaventure Bonnies",
+      "correct": 0,
+      "brier": 0.3657920723276576,
+      "log_loss": 0.9283822079124394,
+      "verified_start_time_utc": "2026-11-24T15:00:00+00:00",
+      "settled_at_utc": "2026-11-24T17:15:27.354876+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "537eb0c67fe32d01c1996ac6be7cd0095710ad10d07377f135c2dec31571d0e4"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401928791",
@@ -85452,5 +85463,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-24T17:10:15.087567+00:00"
+  "results_checked_at_utc": "2026-11-24T17:15:27.354876+00:00"
 }
