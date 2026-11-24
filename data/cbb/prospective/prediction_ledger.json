@@ -84642,7 +84642,7 @@
     "created_at_utc": "2026-11-23T14:54:22.050109+00:00",
     "home_win_prob": 0.6820931321148248,
     "predicted_winner": "UC San Diego Tritons",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "ce291af3d34b65c19fda3af874ae77791c99c2fe91bf9482b062e2078264587e",
     "forecast_stage": "early_research_prior",
@@ -84658,7 +84658,18 @@
       "pace_diff": 3.220957167832154,
       "rest_diff": 2.0,
       "experience_diff": -0.4054651081081644
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 79,
+    "away_score": 88,
+    "actual_winner": "San Jos\u00e9 State Spartans",
+    "correct": 0,
+    "brier": 0.46525104087821184,
+    "log_loss": 1.1459968073818643,
+    "verified_start_time_utc": "2026-11-24T04:59:00+00:00",
+    "settled_at_utc": "2026-11-24T07:10:01.017734+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261123&limit=1000&groups=50",
+    "result_source_event_sha256": "5fe05459312f0320c4f329225477ecbde9c13d913c3376481494144537d83ba5"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401921030",
