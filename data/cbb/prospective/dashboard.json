@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2191,
-    "settled_games": 977,
-    "pending_games": 1214,
+    "settled_games": 978,
+    "pending_games": 1213,
     "wins": 715,
-    "losses": 262,
-    "accuracy": 0.7318321392016377,
-    "brier": 0.17624588709454417,
-    "log_loss": 0.5271267836537877
+    "losses": 263,
+    "accuracy": 0.7310838445807771,
+    "brier": 0.17646247126107995,
+    "log_loss": 0.5275851144272755
   },
   "predictions": [
     {
@@ -41166,7 +41166,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.6229487956217283,
       "predicted_winner": "New Mexico State Aggies",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -41182,7 +41182,18 @@
         "pace_diff": -2.8253879310344985,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 68,
+      "away_score": 69,
+      "actual_winner": "Ohio Bobcats",
+      "correct": 0,
+      "brier": 0.38806520196656186,
+      "log_loss": 0.9753742801248929,
+      "verified_start_time_utc": "2026-11-24T16:00:00+00:00",
+      "settled_at_utc": "2026-11-24T18:05:55.462824+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "ab2c8666af8fe833a7f83509991da48bf2fe48e40c12ab6498cba0ba6ef72ce9"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920819",
@@ -85463,5 +85474,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-24T18:00:45.389860+00:00"
+  "results_checked_at_utc": "2026-11-24T18:05:55.462824+00:00"
 }
