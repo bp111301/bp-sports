@@ -1,22 +1,28 @@
 {
-  "as_of_utc": "2026-11-24T00:20:01.135015+00:00",
+  "as_of_utc": "2026-11-24T10:23:53.363578+00:00",
   "status": "collection_only_no_model_changes",
-  "new_observations": 0,
-  "total_observations": 1642,
-  "upcoming_schedule_games": 7,
-  "captured_sides": 0,
+  "new_observations": 2,
+  "total_observations": 1644,
+  "upcoming_schedule_games": 1,
+  "captured_sides": 2,
   "eligible_confirmed_sides": 0,
-  "coverage": [],
-  "errors": [
+  "coverage": [
     {
-      "source_url": "https://www.dailyfaceoff.com/starting-goalies/2026-11-23",
-      "error": "403 Client Error: Forbidden for url: https://www.dailyfaceoff.com/starting-goalies/2026-11-23"
+      "game_id": 2026020385,
+      "side": "home",
+      "status": "Unknown",
+      "confirmed_eligible": false,
+      "roster_mapping": "unique_exact_normalized_name"
     },
     {
-      "source_url": "https://www.dailyfaceoff.com/starting-goalies/2026-11-24",
-      "error": "403 Client Error: Forbidden for url: https://www.dailyfaceoff.com/starting-goalies/2026-11-24"
+      "game_id": 2026020385,
+      "side": "away",
+      "status": "Unknown",
+      "confirmed_eligible": false,
+      "roster_mapping": "unique_exact_normalized_name"
     }
   ],
+  "errors": [],
   "schedule_delay_caveat": "Polling can miss late confirmations; availability begins at our capture time, not publication time.",
   "warnings": []
 }
