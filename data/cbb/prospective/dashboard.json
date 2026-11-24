@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2184,
-    "settled_games": 970,
-    "pending_games": 1214,
-    "wins": 710,
+    "settled_games": 971,
+    "pending_games": 1213,
+    "wins": 711,
     "losses": 260,
-    "accuracy": 0.7319587628865979,
-    "brier": 0.17620599898297384,
-    "log_loss": 0.5271024647759419
+    "accuracy": 0.7322348094747683,
+    "brier": 0.17624368855957284,
+    "log_loss": 0.5271967014588974
   },
   "predictions": [
     {
@@ -71013,7 +71013,7 @@
       "created_at_utc": "2026-11-14T22:30:36.341971+00:00",
       "home_win_prob": 0.5386947021108257,
       "predicted_winner": "Pepperdine Waves",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "fe1937f773eeb522618ffb46189e6bc1681b267874bfdff800ca1eb7bb0fccf1",
       "forecast_stage": "early_research_prior",
@@ -71029,7 +71029,18 @@
         "pace_diff": 2.0613958333333358,
         "rest_diff": -2.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 89,
+      "away_score": 62,
+      "actual_winner": "Pepperdine Waves",
+      "correct": 1,
+      "brier": 0.21280257786061985,
+      "log_loss": 0.618606283925732,
+      "verified_start_time_utc": "2026-11-24T02:30:00+00:00",
+      "settled_at_utc": "2026-11-24T04:33:18.009676+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261123&limit=1000&groups=50",
+      "result_source_event_sha256": "f8714f4439e5b78ec2c28c88f480eafa705c3aca766dcd3b6c0f2f92752e2713"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920138",
@@ -85157,5 +85168,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-24T04:28:14.491492+00:00"
+  "results_checked_at_utc": "2026-11-24T04:33:18.009676+00:00"
 }
