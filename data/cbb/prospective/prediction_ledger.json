@@ -43463,7 +43463,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.7097816862802205,
     "predicted_winner": "Pennsylvania Quakers",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -43479,7 +43479,18 @@
       "pace_diff": 4.196986607142847,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 89,
+    "away_score": 74,
+    "actual_winner": "Pennsylvania Quakers",
+    "correct": 1,
+    "brier": 0.08422666961835233,
+    "log_loss": 0.34279784034207383,
+    "verified_start_time_utc": "2026-11-25T01:00:00+00:00",
+    "settled_at_utc": "2026-11-25T03:07:47.212281+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+    "result_source_event_sha256": "e2997014b77140b62762b22d46dcc4eeee385c243721baec2a6cb4fb4417d2f1"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401924723",
@@ -43565,7 +43576,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.8566304160584155,
     "predicted_winner": "UT Arlington Mavericks",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -43581,7 +43592,18 @@
       "pace_diff": -2.410833333333329,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 80,
+    "away_score": 84,
+    "actual_winner": "Oral Roberts Golden Eagles",
+    "correct": 0,
+    "brier": 0.7338156697164141,
+    "log_loss": 1.942329479718933,
+    "verified_start_time_utc": "2026-11-25T01:00:00+00:00",
+    "settled_at_utc": "2026-11-25T03:07:47.212281+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+    "result_source_event_sha256": "d4bd17a0751cf645edd45346c2e22b109540d45c57d6122bb9c33718091349da"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401929421",
