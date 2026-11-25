@@ -63,6 +63,17 @@ def test_detailed_nfl_card_does_not_advertise_a_reviewed_probability(monkeypatch
         if isinstance(path,str) and path=='data/current/website_feed.csv':return pred.copy(deep=True)
         return read_csv(path,*args,**kwargs)
     monkeypatch.setattr(pd,'read_csv',fixture_csv)
+    # The NFL board reads live feeds even if its hosted checkout is stale.
+    import io
+    import urllib.request
+    original_open=urllib.request.urlopen
+    def fixture_open(request,*args,**kwargs):
+        url=getattr(request,'full_url',str(request))
+        if url.endswith('/data/current/website_feed.csv'):return io.BytesIO(pred.to_csv(index=False).encode())
+        if url.endswith('/data/current/prediction_metadata.json'):return io.BytesIO(b'{"week":12}')
+        if url.endswith('/data/ledger/summary.json'):return io.BytesIO(b'{}')
+        return original_open(request,*args,**kwargs)
+    monkeypatch.setattr(urllib.request,'urlopen',fixture_open)
     import streamlit as st
     st.cache_data.clear()
     monkeypatch.setattr(ui,'load_availability',lambda: {'games':{game:{'qb_review_required':True}}})

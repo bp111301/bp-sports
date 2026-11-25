@@ -48,3 +48,18 @@ verifier protects existing audit records.
   does not claim to solve unpublished or unavailable official reports.
 
 Local evidence: `/workspace/bp-nfl-safeguards-evidence/`.
+
+## Hosted NFL feed follow-up
+
+The first production run published all 16 forecasts and matching receipts while
+preserving the 2,056 existing snapshots. Browser verification exposed a stale
+hosted checkout: the detailed NFL loader read local files although Overview and
+CFB already support live feeds. An authorized Streamlit reboot restored the
+Week 12 slate, 16 upcoming games and the unchanged 67–30/97 record.
+
+The detailed NFL loader now reads its changing predictions, metadata and record
+from the same GitHub source, with the existing 60-second cache and local fallback.
+Unrelated files, including historical evaluations, keep their local loading path.
+This avoids depending on a hosting rebuild for each data-only commit. The release
+label is `dashboard-nfl-safeguards-20261124`. All 204 tests pass, including regression
+checks that fresh NFL feeds override a stale checkout and outages retain fallback.

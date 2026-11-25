@@ -11,7 +11,7 @@ from matchup_preview_ui import render_preview
 from matchup_details_ui import details_button
 from cfb_board_ui import dated_board, date_choices, games_on_date, date_label
 import game_center_ui
-if getattr(game_center_ui,"UI_REVISION",None)!="source-repairs-20261121.1":
+if getattr(game_center_ui,"UI_REVISION",None)!="nfl-safeguards-20261124":
     import game_status
     importlib.reload(game_status)
     importlib.reload(game_center_ui)
@@ -163,12 +163,16 @@ TEAM_NAMES = {
     "TB":"Buccaneers","TEN":"Titans","WAS":"Commanders",
 }
 
+NFL_LIVE_FILES={"data/current/website_feed.csv","data/current/prediction_metadata.json",
+                "data/ledger/prediction_ledger.csv","data/ledger/summary.json"}
+
+
 def current_feed_text(name):
     # Data-only bot commits can leave Community Cloud's checkout behind.
-    # Read changing CFB feeds from the same source as the live Overview.
+    # Read changing football feeds from the same source as the live Overview.
     with urlopen(Request(
         "https://raw.githubusercontent.com/bp111301/bp-sports/main/" + name,
-        headers={"User-Agent": "BP-Sports-CFB-Board/1.0"},
+        headers={"User-Agent": "BP-Sports-Football-Board/1.0"},
     ), timeout=8) as response:
         raw = response.read(8 * 1024 * 1024 + 1)
     if len(raw) > 8 * 1024 * 1024:
@@ -178,7 +182,7 @@ def current_feed_text(name):
 
 @st.cache_data(ttl=60)
 def load_csv(name):
-    if name.startswith("data/cfb/"):
+    if name.startswith("data/cfb/") or name in NFL_LIVE_FILES:
         try:
             return pd.read_csv(io.StringIO(current_feed_text(name)))
         except Exception:
@@ -190,7 +194,7 @@ def load_csv(name):
 
 @st.cache_data(ttl=60)
 def load_json(name):
-    if name.startswith("data/cfb/"):
+    if name.startswith("data/cfb/") or name in NFL_LIVE_FILES:
         try:
             return json.loads(current_feed_text(name))
         except Exception:
