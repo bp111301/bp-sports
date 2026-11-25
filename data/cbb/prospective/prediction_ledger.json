@@ -1794,7 +1794,7 @@
     "created_at_utc": "2026-10-26T07:08:00.412713+00:00",
     "home_win_prob": 0.6780118935123653,
     "predicted_winner": "Alabama Crimson Tide",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
     "forecast_stage": "early_research_prior",
@@ -1810,7 +1810,18 @@
       "pace_diff": 5.552419354838705,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 63,
+    "away_score": 68,
+    "actual_winner": "Baylor Bears",
+    "correct": 0,
+    "brier": 0.45970012774422303,
+    "log_loss": 1.1332406704936988,
+    "verified_start_time_utc": "2026-11-25T03:05:00+00:00",
+    "settled_at_utc": "2026-11-25T05:24:45.905216+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+    "result_source_event_sha256": "55739159058e9c53698ada22f74f6a39ed3e495a95bbffecdac3e9b07edc9e2c"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401909763",
