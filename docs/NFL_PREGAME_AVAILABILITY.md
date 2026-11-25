@@ -9,6 +9,13 @@ within 100 minutes before any unstarted game, including international games,
 Monday games and Saturday games. This is an approximate pregame window: GitHub
 queues and source publication can delay checks. The UI displays actual check times.
 
+The same lightweight gate also checks the next unstarted regular-season week
+within 72 hours of its first kickoff. Missing coverage or forecasts older than
+24 hours request an early refresh. Early retries have a one-hour cooldown; the
+100-minute kickoff window bypasses it. Existing cron expressions are unchanged.
+The score/grading watchdog can request an overdue NFL refresh through this same
+gate, skipping queued or active producer runs.
+
 Sources are the official NFL injury tables, the linked current-week official
 inactive article, and explicit official NFL starter headlines. NFLverse supplies
 schedule inputs and a unique GSIS player identity when a replacement is resolved.
@@ -20,6 +27,14 @@ matching team/opponent, publication within seven days and before capture, a
 unique QB identity, and an unambiguous will/to-start headline. Expected, likely,
 planning and questionable reports do not qualify. Missing or ambiguous evidence
 stays unconfirmed. The system does not infer a replacement from depth-chart order.
+
+Explicit official announcements are checked even when the schedule QB is not
+listed Out. Current confirmations can be retained for the same game for up to
+seven days without claiming a new verification time. Conflicting confirmations,
+missing identities, future-dated overrides, mismatched/stale context, and unresolved
+confirmed absences block new ledger rows. A provider outage cannot clear an
+existing absence hold. Known schedule QB identities without explicit confirmation
+remain eligible early forecasts, labeled unconfirmed. Missing reports never mean active.
 
 Out and Inactive differ from Questionable and Doubtful. A missing inactive section
 means pending, not an active roster. A player absent from the injury report is not
@@ -38,6 +53,19 @@ details with an Updated pregame label. The original first-snapshot prospective
 record is retained; settled cards use that record snapshot. Data, model identity,
 capture time and kickoff are checked before applying a display-only refresh.
 The original ledger is never changed merely to improve its historical record.
+
+`data/current/nfl_capture_health.json` reports saved coverage, per-game staleness,
+QB holds, availability warnings, last saved forecast time and build time separately.
+A skipped workflow is not a fresh forecast. A post-build gap is reported after
+preserving valid outputs. The health summary is also attached to prediction
+metadata for the dashboard's existing warning handling.
+
+New eligible snapshots have separate append-only evidence in
+`data/nfl/audit/forecast_receipts.jsonl`, keyed by prediction ID: verified runtime
+input hashes/receipt times, bundle/override hashes, feature cutoff, feature values
+and missingness, component probabilities, and saved availability evidence. It does
+not backfill old snapshots or archive full raw PBP. The publishing verifier forbids
+edits or removals of existing audit records.
 
 `data/current/nfl_availability.json` stores source receipts, player statuses, QB
 assumptions, actual check times and latest valid pregame context. Runtime effective

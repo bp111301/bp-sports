@@ -42,9 +42,9 @@ jobs:
         shell: bash
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "${{ github.event_name }}" = "pull_request" ] || [ "${{ github.event_name }}" = "push" ]; then
-            python pipeline/nfl_pregame_gate.py --force >> "$GITHUB_OUTPUT"
+            python pipeline/nfl_pregame_gate.py --force --health-output runtime/nfl_capture_health.json >> "$GITHUB_OUTPUT"
           else
-            python pipeline/nfl_pregame_gate.py >> "$GITHUB_OUTPUT"
+            python pipeline/nfl_pregame_gate.py --health-output runtime/nfl_capture_health.json >> "$GITHUB_OUTPUT"
           fi
       - uses: actions/setup-python@v5
         if: steps.gate.outputs.run == 'true'
@@ -90,6 +90,14 @@ jobs:
           cp runtime/website_feed.csv data/current/website_feed.csv
           cp runtime/website_feed.csv bp_week5_website_feed.csv
           cp runtime/prediction_metadata.json data/current/prediction_metadata.json
+      - name: Check actual NFL forecast coverage and freshness
+        id: capture_health
+        continue-on-error: true
+        if: steps.gate.outputs.run == 'true'
+        run: >-
+          python pipeline/nfl_pregame_gate.py --health-only
+          --schedule runtime/schedules.csv --health-output data/current/nfl_capture_health.json
+          --update-metadata --fail-on-gaps
       - name: Verify frozen rules
         if: steps.gate.outputs.run == 'true'
         run: python -m pytest -q tests/
@@ -102,6 +110,8 @@ jobs:
           git diff --exit-code -- model/
           python pipeline/verify_preservation.py
           git add bp_week5_website_feed.csv data/current/website_feed.csv data/current/prediction_metadata.json data/current/nfl_availability.json data/current/result_check.json data/ledger/prediction_ledger.csv data/ledger/summary.json
+          git add data/current/nfl_capture_health.json
+          if [ -d data/nfl/audit ]; then git add data/nfl/audit; fi
           if git diff --cached --quiet; then echo "No generated changes."; exit 0; fi
           git commit -m "Update frozen V4 predictions"
           # Other score/preview workflows can advance main between pull and push.
@@ -114,5 +124,8 @@ jobs:
           done
       - name: Report incomplete grading after preserving captures
         if: steps.settlement.outcome == 'failure'
+        run: exit 1
+      - name: Report incomplete NFL capture after preserving valid forecasts
+        if: steps.capture_health.outcome == 'failure'
         run: exit 1
 

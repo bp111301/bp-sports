@@ -10,6 +10,7 @@ import subprocess
 FOOTBALL_RESULTS={'status','settled','home_points_final','away_points_final','actual_winner',
                   'correct','brier','settled_at_utc','schedule_kickoff_utc'}
 RULES={
+    'data/nfl/audit/forecast_receipts.jsonl':(('prediction_id',),set()),
     'data/ledger/prediction_ledger.csv':(('prediction_id',),{'actual_home_score','actual_away_score','settlement_status','scored_at_utc'}),
     'data/cfb/ledger/prediction_ledger.csv':(('prediction_id',),FOOTBALL_RESULTS),
     'data/cfb/v2_shadow/verified_prediction_ledger.csv':(('prediction_id',),FOOTBALL_RESULTS),
