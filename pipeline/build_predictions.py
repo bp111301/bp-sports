@@ -3,6 +3,10 @@ from __future__ import annotations
 import argparse,json
 from pathlib import Path
 import joblib,numpy as np,pandas as pd
+try:
+ from pipeline import nfl_forecast_audit as audit
+except ModuleNotFoundError:
+ import nfl_forecast_audit as audit
 ALIASES={'STL':'LA','LAR':'LA','SD':'LAC','OAK':'LV','JAC':'JAX'}
 COLS=['game_id','season','week','game_date','posteam','defteam','epa','success','pass_attempt','rush_attempt','yards_gained','play_type','qb_kneel','qb_spike','qb_dropback','passer_player_id','passer_player_name','cpoe','sack','interception','fumble_lost','down']
 def logit(p): p=np.clip(np.asarray(p,float),.001,.999); return np.log(p/(1-p))
@@ -93,9 +97,28 @@ def eligible_snapshots(frame,now):
  start=pd.to_datetime(frame.kickoff_utc,utc=True,errors='coerce')
  capture=pd.to_datetime(frame.captured_at_utc,utc=True,errors='coerce')
  return frame[(~frame.qb_input_review_required)&start.gt(now)&capture.le(now)&capture.lt(start)].copy()
+
+def qb_review(row,report,now):
+ reasons=[]
+ if report.get('qb_review_required'):reasons.append('confirmed absence or unresolved starter evidence')
+ for side in ['home','away']:
+  pid=row.get(side+'_qb_id_assumed');name=row.get(side+'_qb_name_assumed')
+  if pd.isna(pid) or not str(pid).strip() or pd.isna(name) or not str(name).strip():reasons.append('missing '+side+' QB identity')
+  context=report.get(side,{})
+  if context.get('qb_evidence_state') in ('conflict','missing_identity'):reasons.append(side+' QB evidence '+context['qb_evidence_state'])
+  if context.get('assumed_qb_id') and str(context['assumed_qb_id'])!=str(pid):reasons.append(side+' QB evidence identity mismatch')
+ if report:
+  if (report.get('home_team'),report.get('away_team'))!=(row['home_team'],row['away_team']):reasons.append('availability matchup mismatch')
+  checked=pd.to_datetime(report.get('checked_at_utc'),utc=True,errors='coerce')
+  start=pd.to_datetime(row['kickoff_utc'],utc=True,errors='coerce')
+  saved_start=pd.to_datetime(report.get('kickoff_utc'),utc=True,errors='coerce')
+  limit=pd.Timedelta(minutes=35) if start-now<=pd.Timedelta(minutes=100) else pd.Timedelta(hours=24)
+  if pd.isna(checked) or not checked<=now<start or now-checked>limit or saved_start!=start:reasons.append('availability evidence stale or invalid')
+ return reasons
 def main():
- p=argparse.ArgumentParser();p.add_argument('--season',type=int,required=True);p.add_argument('--week',type=int);p.add_argument('--as-of');p.add_argument('--data-dir',default='data/current');p.add_argument('--bundle',default='model/v4/frozen_bundle.joblib');p.add_argument('--overrides',default='config/qb_overrides.json');p.add_argument('--ledger',default='data/ledger/prediction_ledger.csv');a=p.parse_args();root=Path(a.data_dir);b=joblib.load(a.bundle);over=json.loads(Path(a.overrides).read_text()) if Path(a.overrides).exists() else {};at=pd.Timestamp(a.as_of) if a.as_of else pd.Timestamp.now(tz='UTC');at=at.tz_localize('UTC') if at.tzinfo is None else at.tz_convert('UTC');sched,pbp=load_inputs(root,a.season);done,tg=team_games(pbp,sched,at);cur=sched[sched.game_type.eq('REG')].copy();future=cur[(cur.kickoff_utc>at)&cur.home_score.isna()&cur.away_score.isna()];week=a.week or int(future.week.min());targets=future[future.week.eq(week)].copy().sort_values(['gameday','gametime','game_id'])
+ p=argparse.ArgumentParser();p.add_argument('--season',type=int,required=True);p.add_argument('--week',type=int);p.add_argument('--as-of');p.add_argument('--data-dir',default='data/current');p.add_argument('--bundle',default='model/v4/frozen_bundle.joblib');p.add_argument('--overrides',default='config/qb_overrides.json');p.add_argument('--ledger',default='data/ledger/prediction_ledger.csv');p.add_argument('--audit-log',default='data/nfl/audit/forecast_receipts.jsonl');p.add_argument('--availability',default='data/current/nfl_availability.json');a=p.parse_args();root=Path(a.data_dir);evidence=audit.inputs(root,a.season,a.bundle,a.overrides);b=joblib.load(a.bundle);over=json.loads(Path(a.overrides).read_text()) if Path(a.overrides).exists() else {};at=pd.Timestamp(a.as_of) if a.as_of else pd.Timestamp.now(tz='UTC');at=at.tz_localize('UTC') if at.tzinfo is None else at.tz_convert('UTC');sched,pbp=load_inputs(root,a.season);done,tg=team_games(pbp,sched,at);cur=sched[sched.game_type.eq('REG')].copy();future=cur[(cur.kickoff_utc>at)&cur.home_score.isna()&cur.away_score.isna()];week=a.week or int(future.week.min());targets=future[future.week.eq(week)].copy().sort_values(['gameday','gametime','game_id'])
  if targets.empty:raise ValueError('No unstarted target games')
+ evidence['feature_cutoff_utc']=at.isoformat()
  base=base_features(targets,tg,elo(b,done));q=qb_features(b,qb_games(pbp,done),targets,over);rf=risk(tg,targets);x=targets[['game_id','away_team','home_team','gameday','gametime','away_qb_id','away_qb_name','home_qb_id','home_qb_name']].merge(base,on='game_id').merge(q,on='game_id').merge(rf,on='game_id')
  m=b['v3'];v3=m['win_model'].predict_proba(x[m['features']])[:,1]
  if m.get('calibrator') is not None:v3=m['calibrator'].predict_proba(logit(v3).reshape(-1,1))[:,1]
@@ -114,16 +137,21 @@ def main():
  finished=pd.Timestamp.now(tz='UTC')
  f=f[pd.to_datetime(f.kickoff_utc,utc=True)>finished].copy()
  f['captured_at_utc']=finished.isoformat()
- availability_path=Path('data/current/nfl_availability.json')
+ availability_path=Path(a.availability)
  availability=json.loads(availability_path.read_text()) if availability_path.exists() else {}
  blocked=[]
  for index,r in f.iterrows():
   report=availability.get('games',{}).get(r.game_id,{})
-  review=bool(report.get('qb_review_required'))
+  reasons=qb_review(r,report,finished);review=bool(reasons)
   blocked.append(review)
   if review:
    f.at[index,'prediction_status']='QB_INPUT_REVIEW_REQUIRED'
-   f.at[index,'qb_status_flag']='QB INPUT REVIEW: assumed starter is confirmed out/inactive'
+   f.at[index,'qb_status_flag']='QB INPUT REVIEW: '+'; '.join(reasons)
+  elif not report or any(report.get(side,{}).get('qb_evidence_state')!='confirmed' for side in ['home','away']):
+   f.at[index,'qb_status_flag']='QB starter unconfirmed; '+str(f.at[index,'qb_status_flag'] or '')
+  if review and report:
+   report['qb_review_required']=True
+   report['qb_review_reasons']=reasons
   f.at[index,'availability_checked_at_utc']=report.get('checked_at_utc','')
  f['qb_input_review_required']=pd.Series(blocked,index=f.index,dtype=bool)
  assert np.all((v4>=.5)==(adj>=.5)) and b['market_used_for_pick'] is False
@@ -132,13 +160,21 @@ def main():
   old=pd.read_csv(oldp);started=set(cur[cur.week.eq(week)].game_id)-set(f.game_id);keep=old[old.game_id.isin(started)] if 'game_id' in old else pd.DataFrame()
   if len(keep):display=pd.concat([keep,f],ignore_index=True).drop_duplicates('game_id',keep='last')
  eligible=eligible_snapshots(f,pd.Timestamp.now(tz='UTC'))
+ feature_columns=list(dict.fromkeys(m['features']+b['base_features']+b['qb_change_features']+b['qb_quality_features']+['net_explosive_5','to_recent_edge_5','early_success_matchup_5']))
+ features=x.set_index('game_id')[feature_columns]
+ components={gid:dict(v3=float(v3[i]),qb_change=float(pc[i]),qb_quality=float(pq[i]),v4_core=float(v4[i]),v4_adjusted=float(adj[i])) for i,gid in enumerate(x.game_id)}
+ receipts=audit.records(eligible,features,components,b['bundle_version'],evidence,availability,finished.strftime('%Y%m%dT%H%M%SZ'))
+ # The evidence is prepared before the last kickoff guard; late rows enter neither log.
+ eligible=eligible_snapshots(eligible,pd.Timestamp.now(tz='UTC'))
+ receipts=[record for record in receipts if record['game_id'] in set(eligible.game_id)]
  display.to_csv(root/'website_feed.csv',index=False);append_ledger(Path(a.ledger),eligible,finished)
+ audit.append_receipts(a.audit_log,receipts)
  for record in eligible.to_dict('records'):
   context=availability.get('games',{}).get(record['game_id'])
   if context and pd.Timestamp.now(tz='UTC')<pd.Timestamp(record['kickoff_utc']):
    context['latest_forecast']={**json.loads(pd.DataFrame([record]).to_json(orient='records',date_format='iso',double_precision=15))[0],'bundle_version':b['bundle_version']}
  if availability:
   availability_path.write_text(json.dumps(availability,indent=2,allow_nan=False)+'\n')
- meta={'season':a.season,'week':week,'captured_at_utc':finished.isoformat(),'completed_games_used':len(done),'target_games':len(f),'display_games':len(display),'bundle_version':b['bundle_version'],'market_used_for_pick':False,'pending_earlier_games':pending.game_id.tolist(),'qb_review_games':f.loc[f.qb_input_review_required,'game_id'].tolist()}
+ meta={'season':a.season,'week':week,'captured_at_utc':finished.isoformat(),'completed_games_used':len(done),'target_games':len(f),'display_games':len(display),'eligible_games':len(eligible),'audit_receipts_saved':len(receipts),'audit_log':a.audit_log,'bundle_version':b['bundle_version'],'market_used_for_pick':False,'pending_earlier_games':pending.game_id.tolist(),'qb_review_games':f.loc[f.qb_input_review_required,'game_id'].tolist()}
  (root/'prediction_metadata.json').write_text(json.dumps(meta,indent=2)+'\n');print(display.to_string(index=False))
 if __name__=='__main__':main()
