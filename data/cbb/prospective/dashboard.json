@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2191,
-    "settled_games": 1016,
-    "pending_games": 1175,
-    "wins": 737,
-    "losses": 279,
-    "accuracy": 0.7253937007874016,
-    "brier": 0.17917045074566365,
-    "log_loss": 0.5336059034209407
+    "settled_games": 1023,
+    "pending_games": 1168,
+    "wins": 742,
+    "losses": 281,
+    "accuracy": 0.7253176930596286,
+    "brier": 0.17960732831367,
+    "log_loss": 0.534590725823621
   },
   "predictions": [
     {
@@ -42254,7 +42254,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9722686075102016,
       "predicted_winner": "Bowling Green Falcons",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -42270,7 +42270,18 @@
         "pace_diff": -0.2774999999999892,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 91,
+      "away_score": 65,
+      "actual_winner": "Bowling Green Falcons",
+      "correct": 1,
+      "brier": 0.0007690301294232465,
+      "log_loss": 0.02812316752288828,
+      "verified_start_time_utc": "2026-11-25T00:00:00+00:00",
+      "settled_at_utc": "2026-11-25T02:07:53.990455+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "1122f01958a01c72e53a3babf801ca1ecd4b5b26e0f316a2e754537a2152cfa1"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911279",
@@ -42288,7 +42299,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8493273905215131,
       "predicted_winner": "Lehigh Mountain Hawks",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -42304,7 +42315,18 @@
         "pace_diff": 2.307366071428561,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 83,
+      "away_score": 90,
+      "actual_winner": "Binghamton Bearcats",
+      "correct": 0,
+      "brier": 0.7213570162900828,
+      "log_loss": 1.8926459451546027,
+      "verified_start_time_utc": "2026-11-25T00:00:00+00:00",
+      "settled_at_utc": "2026-11-25T02:07:53.990455+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "d1e428904370033716ed41704996cf425dc0f7a3888b736066751cd007c2dbab"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911379",
@@ -42322,7 +42344,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7179373473278599,
       "predicted_winner": "James Madison Dukes",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -42338,7 +42360,18 @@
         "pace_diff": -7.591258081896541,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 82,
+      "away_score": 58,
+      "actual_winner": "James Madison Dukes",
+      "correct": 1,
+      "brier": 0.07955934003244437,
+      "log_loss": 0.33137297373034036,
+      "verified_start_time_utc": "2026-11-25T00:00:00+00:00",
+      "settled_at_utc": "2026-11-25T02:07:53.990455+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "d922c8c90b6adffad8da9628b2c69c8a4b549ae692d42064d02cfb154be8bf25"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401916291",
@@ -42435,7 +42468,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9608887797506954,
       "predicted_winner": "South Florida Bulls",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -42451,7 +42484,18 @@
         "pace_diff": 6.189591733870984,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 100,
+      "away_score": 67,
+      "actual_winner": "South Florida Bulls",
+      "correct": 1,
+      "brier": 0.0015296875493896126,
+      "log_loss": 0.039896610579769794,
+      "verified_start_time_utc": "2026-11-25T00:00:00+00:00",
+      "settled_at_utc": "2026-11-25T02:07:53.990455+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "ff1d6ebf200638b581282fbb4c6289bd98947ed56d3959d7a97f8c3090bef108"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920309",
@@ -42469,7 +42513,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.4750721081972944,
       "predicted_winner": "Samford Bulldogs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -42485,7 +42529,18 @@
         "pace_diff": 2.5952419354838696,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 81,
+      "away_score": 92,
+      "actual_winner": "Samford Bulldogs",
+      "correct": 1,
+      "brier": 0.22569350798702179,
+      "log_loss": 0.6444943747709712,
+      "verified_start_time_utc": "2026-11-25T00:00:00+00:00",
+      "settled_at_utc": "2026-11-25T02:07:53.990455+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "391cea29d172f084dad8387c96996dc61cad5d36f107f88e10c7d234efd44c76"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920358",
@@ -42942,7 +42997,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7545041542118374,
       "predicted_winner": "Weber State Wildcats",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -42958,7 +43013,18 @@
         "pace_diff": -0.4367857142857474,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 89,
+      "away_score": 87,
+      "actual_winner": "Weber State Wildcats",
+      "correct": 1,
+      "brier": 0.06026821029924533,
+      "log_loss": 0.28169449487575626,
+      "verified_start_time_utc": "2026-11-25T00:00:00+00:00",
+      "settled_at_utc": "2026-11-25T02:07:53.990455+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "a26441427438440455220cdd806f1b9c8a3e2544521b4d6b6028de366b69cf4e"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401926827",
@@ -85120,7 +85186,7 @@
       "created_at_utc": "2026-11-23T14:54:22.050109+00:00",
       "home_win_prob": 0.7822672912774329,
       "predicted_winner": "Georgia Southern Eagles",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "ce291af3d34b65c19fda3af874ae77791c99c2fe91bf9482b062e2078264587e",
       "forecast_stage": "early_research_prior",
@@ -85136,7 +85202,18 @@
         "pace_diff": 7.519608843537412,
         "rest_diff": 1.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 67,
+      "away_score": 82,
+      "actual_winner": "Bellarmine Knights",
+      "correct": 0,
+      "brier": 0.611942115002532,
+      "log_loss": 1.5244870752541608,
+      "verified_start_time_utc": "2026-11-25T00:00:00+00:00",
+      "settled_at_utc": "2026-11-25T02:07:53.990455+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "3b64bfc1f11492503b97ed6b1e95065de7d38761fac8777018d51683402d3187"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920874",
@@ -85897,5 +85974,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-25T02:02:44.639715+00:00"
+  "results_checked_at_utc": "2026-11-25T02:07:53.990455+00:00"
 }
