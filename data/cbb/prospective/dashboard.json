@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2191,
-    "settled_games": 997,
-    "pending_games": 1194,
-    "wins": 724,
+    "settled_games": 998,
+    "pending_games": 1193,
+    "wins": 725,
     "losses": 273,
-    "accuracy": 0.7261785356068204,
-    "brier": 0.17889404108541762,
-    "log_loss": 0.5332527488118018
+    "accuracy": 0.7264529058116233,
+    "brier": 0.17875406156769622,
+    "log_loss": 0.5329394862395801
   },
   "predictions": [
     {
@@ -1654,7 +1654,7 @@
       "created_at_utc": "2026-10-26T01:12:01.206877+00:00",
       "home_win_prob": 0.8020240358036993,
       "predicted_winner": "Iowa State Cyclones",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
       "forecast_stage": "early_research_prior",
@@ -1670,7 +1670,18 @@
         "pace_diff": -2.4306755514705856,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 81,
+      "away_score": 68,
+      "actual_winner": "Iowa State Cyclones",
+      "correct": 1,
+      "brier": 0.03919448239945494,
+      "log_loss": 0.22061670173465994,
+      "verified_start_time_utc": "2026-11-24T22:30:00+00:00",
+      "settled_at_utc": "2026-11-25T01:12:02.386169+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "368858721b06a20044414fa42d0f972be6c1097bb9b347e6218a853a4ac171a2"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911458",
@@ -85688,5 +85699,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-25T01:06:49.917423+00:00"
+  "results_checked_at_utc": "2026-11-25T01:12:02.386169+00:00"
 }
