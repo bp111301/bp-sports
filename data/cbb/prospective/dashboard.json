@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2191,
-    "settled_games": 1026,
-    "pending_games": 1165,
-    "wins": 743,
-    "losses": 283,
-    "accuracy": 0.7241715399610137,
-    "brier": 0.18012325164003704,
-    "log_loss": 0.5357926468668918
+    "settled_games": 1028,
+    "pending_games": 1163,
+    "wins": 744,
+    "losses": 284,
+    "accuracy": 0.7237354085603113,
+    "brier": 0.18041524752720745,
+    "log_loss": 0.5364219765825393
   },
   "predictions": [
     {
@@ -1699,7 +1699,7 @@
       "created_at_utc": "2026-10-26T01:12:01.206877+00:00",
       "home_win_prob": 0.3510442852025641,
       "predicted_winner": "Santa Clara Broncos",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
       "forecast_stage": "early_research_prior",
@@ -1715,7 +1715,18 @@
         "pace_diff": -1.787043226381428,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 85,
+      "away_score": 66,
+      "actual_winner": "Nevada Wolf Pack",
+      "correct": 0,
+      "brier": 0.42114351976825093,
+      "log_loss": 1.0468428948065944,
+      "verified_start_time_utc": "2026-11-25T00:00:00+00:00",
+      "settled_at_utc": "2026-11-25T02:26:54.378936+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "343d952c78edaf0513ed42c00ab3a6ae7fd409c7a67bf8a5c8bfa7441f59df7b"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911535",
@@ -42794,7 +42805,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.4891571889720077,
       "predicted_winner": "Mount St. Mary's Mountaineers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -42810,7 +42821,18 @@
         "pace_diff": 3.1026732377538906,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 74,
+      "away_score": 75,
+      "actual_winner": "Mount St. Mary's Mountaineers",
+      "correct": 1,
+      "brier": 0.23927475552299646,
+      "log_loss": 0.6716933466129863,
+      "verified_start_time_utc": "2026-11-25T00:00:00+00:00",
+      "settled_at_utc": "2026-11-25T02:26:54.378936+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "211aa11e2ed2f2c7f100b612106b504c9aa9350fa05436d63d23d5c3a6d4eabf"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920976",
@@ -86007,5 +86029,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-25T02:21:40.246232+00:00"
+  "results_checked_at_utc": "2026-11-25T02:26:54.378936+00:00"
 }
