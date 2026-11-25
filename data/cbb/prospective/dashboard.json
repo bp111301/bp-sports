@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2209,
-    "settled_games": 1069,
-    "pending_games": 1140,
-    "wins": 771,
+    "settled_games": 1070,
+    "pending_games": 1139,
+    "wins": 772,
     "losses": 298,
-    "accuracy": 0.7212347988774556,
-    "brier": 0.1815570344287301,
-    "log_loss": 0.5388689953652386
+    "accuracy": 0.7214953271028037,
+    "brier": 0.1814790613275548,
+    "log_loss": 0.5387165809243348
   },
   "predictions": [
     {
@@ -86205,7 +86205,7 @@
       "created_at_utc": "2026-11-25T14:48:43.401116+00:00",
       "home_win_prob": 0.686749595098191,
       "predicted_winner": "Arizona Wildcats",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "5df1d3f61e3619d35a19c0b4e6f92f59eac0575af2d6c46a720e1a0ab326a4b0",
       "forecast_stage": "early_research_prior",
@@ -86221,7 +86221,18 @@
         "pace_diff": 1.4305736910148568,
         "rest_diff": 4.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 84,
+      "away_score": 73,
+      "actual_winner": "Arizona Wildcats",
+      "correct": 1,
+      "brier": 0.09812581617114728,
+      "log_loss": 0.37578554359820393,
+      "verified_start_time_utc": "2026-11-25T19:30:00+00:00",
+      "settled_at_utc": "2026-11-25T21:59:10.986239+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261125&limit=1000&groups=50",
+      "result_source_event_sha256": "dcebc6a93f115414801b24e2d1d973d45d45cf92da1de203825637c39552e739"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920548",
@@ -87038,5 +87049,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-25T21:54:09.333485+00:00"
+  "results_checked_at_utc": "2026-11-25T21:59:10.986239+00:00"
 }
