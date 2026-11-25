@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2191,
-    "settled_games": 1035,
-    "pending_games": 1156,
+    "settled_games": 1038,
+    "pending_games": 1153,
     "wins": 750,
-    "losses": 285,
-    "accuracy": 0.7246376811594203,
-    "brier": 0.1802419643383212,
-    "log_loss": 0.5361801540997253
+    "losses": 288,
+    "accuracy": 0.7225433526011561,
+    "brier": 0.18103579684970342,
+    "log_loss": 0.5379976501131755
   },
   "predictions": [
     {
@@ -41736,7 +41736,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.8210141028904067,
       "predicted_winner": "Army Black Knights",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -41752,7 +41752,18 @@
         "pace_diff": 1.2472656249999687,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 79,
+      "away_score": 88,
+      "actual_winner": "Air Force Falcons",
+      "correct": 0,
+      "brier": 0.6740641571449393,
+      "log_loss": 1.7204482633424925,
+      "verified_start_time_utc": "2026-11-25T01:00:00+00:00",
+      "settled_at_utc": "2026-11-25T03:12:49.372272+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "857af6bd615ee1a4c1f5cb1e5b4efffebaed7a25819dd008a4c37a61c4a0d12a"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921666",
@@ -43571,7 +43582,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.4545226856974424,
       "predicted_winner": "Alabama A&M Bulldogs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -43587,7 +43598,18 @@
         "pace_diff": -1.4129464285714164,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 77,
+      "away_score": 74,
+      "actual_winner": "North Alabama Lions",
+      "correct": 0,
+      "brier": 0.2975455004187311,
+      "log_loss": 0.7885074530845162,
+      "verified_start_time_utc": "2026-11-25T01:00:00+00:00",
+      "settled_at_utc": "2026-11-25T03:12:49.372272+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "d66b1bf82c83c551a00b25f3d385f7a09e9844640b759696118e78a3ea939c5c"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401929359",
@@ -85757,7 +85779,7 @@
       "created_at_utc": "2026-11-24T16:02:23.874357+00:00",
       "home_win_prob": 0.3730116569935035,
       "predicted_winner": "Clemson Tigers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "e9b435f8fe79fc02c96204cfbabe94e130f734d40a94716554a503f0755b1bb5",
       "forecast_stage": "early_research_prior",
@@ -85773,7 +85795,18 @@
         "pace_diff": 2.0709524340038996,
         "rest_diff": 0.0,
         "experience_diff": -0.33647223662121295
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 64,
+      "away_score": 63,
+      "actual_winner": "Washington Huskies",
+      "correct": 0,
+      "brier": 0.393114382266032,
+      "log_loss": 0.9861456078333478,
+      "verified_start_time_utc": "2026-11-25T01:00:00+00:00",
+      "settled_at_utc": "2026-11-25T03:12:49.372272+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "d8b55b17889eb4579cae43a07be6cd368dc72fab505a7effc094af79ad65cf60"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921712",
@@ -86106,5 +86139,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-25T03:07:47.212281+00:00"
+  "results_checked_at_utc": "2026-11-25T03:12:49.372272+00:00"
 }
