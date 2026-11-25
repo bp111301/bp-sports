@@ -2,12 +2,12 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-25T04:36:10.882407+00:00",
+  "updated_at_utc": "2026-11-25T08:43:42.318202+00:00",
   "coverage": {
-    "source_games_in_horizon": 1386
+    "source_games_in_horizon": 1380
   },
   "excluded": {
-    "division_or_conference_unknown": 236,
+    "division_or_conference_unknown": 232,
     "tipoff_time_unconfirmed": 16
   },
   "grading_issues": [
@@ -86021,7 +86021,7 @@
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "8d25166bc3ef1aa284af1ae4d17d93f5144c7ec78caa7eb4a6da222c4699770f",
+    "sha256": "bf573f1713aa82f94a9d6f0c3c0d97a0764acc93f90d91324bb18419a59b0ee9",
     "bytes": 697675,
     "archive_sha256": "3d90b3baa350f8acf3b715a7630196d0fa396719ba34fb6ffbd00e07ee6d2342",
     "live_schedule_sources": [
@@ -86042,17 +86042,17 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&groups=50&limit=1000",
-        "sha256": "e8ff1fdd353e76950dcc912ff5b814b524653b06e72467c8b5444b0a91df8471",
+        "sha256": "ca09556f910cd06a8c6a4122e067d30d1f01ddd6b917f3bad4e39e2e07def9f2",
         "games": 87
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261125&groups=50&limit=1000",
-        "sha256": "aeb5637d8a7fcd47488a30bd227e767ced3e3d8cf8169b5c887083c7965a8608",
+        "sha256": "af9a7da607dc52815f68d709b6b28c88920c509dfd5238a3fdc61632c1f467c6",
         "games": 69
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261126&groups=50&limit=1000",
-        "sha256": "819f8337dc624a7ec199ddaf8e2abffee24ca1a1495c914f643202b912238947",
+        "sha256": "b1878649bd51de9cda07ee77acff74845d1893258c77185c6cb32092cd14ecf3",
         "games": 21
       },
       {
@@ -86207,11 +86207,11 @@
       },
       {
         "game_id": 401920530,
-        "reason": "Live/archive schedule identity mismatch: 401920530 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 97, 'away_id': -2, 'season': 2027}"
+        "reason": "Live/archive schedule identity mismatch: 401920530 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 97, 'away_id': 2599, 'season': 2027}"
       },
       {
         "game_id": 401920531,
-        "reason": "Live/archive schedule identity mismatch: 401920531 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': -1, 'away_id': 2641, 'season': 2027}"
+        "reason": "Live/archive schedule identity mismatch: 401920531 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 2483, 'away_id': 2641, 'season': 2027}"
       },
       {
         "game_id": 401920537,
@@ -86220,6 +86220,14 @@
       {
         "game_id": 401920538,
         "reason": "Live/archive schedule identity mismatch: 401920538 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 156, 'away_id': 2628, 'season': 2027}"
+      },
+      {
+        "game_id": 401920539,
+        "reason": "Live/archive schedule identity mismatch: 401920539 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 333, 'away_id': 2306, 'season': 2027}"
+      },
+      {
+        "game_id": 401920540,
+        "reason": "Live/archive schedule identity mismatch: 401920540 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 239, 'away_id': 2250, 'season': 2027}"
       },
       {
         "game_id": 401920547,
@@ -86242,12 +86250,20 @@
         "reason": "Live/archive schedule identity mismatch: 401921223 archive={'home_id': 2426, 'away_id': 131640, 'season': 2027} live={'home_id': 2426, 'away_id': 124686, 'season': 2027}"
       },
       {
+        "game_id": 401921671,
+        "reason": "Live/archive schedule identity mismatch: 401921671 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 38, 'away_id': 2253, 'season': 2027}"
+      },
+      {
+        "game_id": 401921672,
+        "reason": "Live/archive schedule identity mismatch: 401921672 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 139, 'away_id': 24, 'season': 2027}"
+      },
+      {
         "game_id": 401921713,
-        "reason": "Live/archive schedule identity mismatch: 401921713 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': -1, 'away_id': 264, 'season': 2027}"
+        "reason": "Live/archive schedule identity mismatch: 401921713 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 2670, 'away_id': 264, 'season': 2027}"
       },
       {
         "game_id": 401921714,
-        "reason": "Live/archive schedule identity mismatch: 401921714 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': -1, 'away_id': 228, 'season': 2027}"
+        "reason": "Live/archive schedule identity mismatch: 401921714 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 36, 'away_id': 228, 'season': 2027}"
       },
       {
         "game_id": 401921715,
@@ -86349,6 +86365,5 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ],
-  "results_checked_at_utc": "2026-11-25T08:02:02.672138+00:00"
+  ]
 }
