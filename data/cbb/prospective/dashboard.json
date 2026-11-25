@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2209,
-    "settled_games": 1070,
-    "pending_games": 1139,
-    "wins": 772,
-    "losses": 298,
-    "accuracy": 0.7214953271028037,
-    "brier": 0.1814790613275548,
-    "log_loss": 0.5387165809243348
+    "settled_games": 1073,
+    "pending_games": 1136,
+    "wins": 773,
+    "losses": 300,
+    "accuracy": 0.7204100652376515,
+    "brier": 0.18206010074152706,
+    "log_loss": 0.5399757343337237
   },
   "predictions": [
     {
@@ -44518,7 +44518,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9106747689232692,
       "predicted_winner": "Oklahoma State Cowboys",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -44534,7 +44534,18 @@
         "pace_diff": 3.2946969696969575,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 93,
+      "away_score": 58,
+      "actual_winner": "Oklahoma State Cowboys",
+      "correct": 1,
+      "brier": 0.007978996906911362,
+      "log_loss": 0.0935694499384538,
+      "verified_start_time_utc": "2026-11-25T20:00:00+00:00",
+      "settled_at_utc": "2026-11-25T22:48:48.653582+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261125&limit=1000&groups=50",
+      "result_source_event_sha256": "ad41f27fc20544576c19f0a12e445f4ad8bbdc0d483d132d3b48ed4130ad0403"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920868",
@@ -44758,7 +44769,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.21569205072939313,
       "predicted_winner": "Akron Zips",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -44774,7 +44785,18 @@
         "pace_diff": -6.884505208333323,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 76,
+      "away_score": 66,
+      "actual_winner": "App State Mountaineers",
+      "correct": 0,
+      "brier": 0.6151389592890648,
+      "log_loss": 1.5339035796300915,
+      "verified_start_time_utc": "2026-11-25T20:00:00+00:00",
+      "settled_at_utc": "2026-11-25T22:48:48.653582+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261125&limit=1000&groups=50",
+      "result_source_event_sha256": "c3498fb09c941c67f80cb5276b10746205e2288e76d5c36e356fc63ffa73e727"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401928359",
@@ -86250,7 +86272,7 @@
       "created_at_utc": "2026-11-25T14:48:43.401116+00:00",
       "home_win_prob": 0.7380884221954039,
       "predicted_winner": "North Dakota Fighting Hawks",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "5df1d3f61e3619d35a19c0b4e6f92f59eac0575af2d6c46a720e1a0ab326a4b0",
       "forecast_stage": "early_research_prior",
@@ -86266,7 +86288,18 @@
         "pace_diff": 2.4791025641025612,
         "rest_diff": 3.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 72,
+      "away_score": 73,
+      "actual_winner": "SE Louisiana Lions",
+      "correct": 0,
+      "brier": 0.5447745189789008,
+      "log_loss": 1.3397483214788037,
+      "verified_start_time_utc": "2026-11-25T20:00:00+00:00",
+      "settled_at_utc": "2026-11-25T22:48:48.653582+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261125&limit=1000&groups=50",
+      "result_source_event_sha256": "09b74f8111a9618688f01f24b9d8895663392e5401a42afcfe8bd305b449e0e6"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921716",
@@ -87049,5 +87082,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-25T21:59:10.986239+00:00"
+  "results_checked_at_utc": "2026-11-25T22:48:48.653582+00:00"
 }
