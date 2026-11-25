@@ -42135,7 +42135,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.29169795617809363,
     "predicted_winner": "Robert Morris Colonials",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -42151,7 +42151,18 @@
       "pace_diff": -1.3784760845383914,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 87,
+    "away_score": 62,
+    "actual_winner": "Lamar Cardinals",
+    "correct": 0,
+    "brier": 0.5016917852822896,
+    "log_loss": 1.2320364087216478,
+    "verified_start_time_utc": "2026-11-24T23:30:00+00:00",
+    "settled_at_utc": "2026-11-25T01:42:38.399162+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+    "result_source_event_sha256": "ce3d833ab47eee8eae41abeb783deba5009625408052b003e3a732af64d3d887"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401906774",
@@ -42509,7 +42520,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.7222109966748419,
     "predicted_winner": "Iowa Hawkeyes",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -42525,7 +42536,18 @@
       "pace_diff": -3.3273863636363856,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 87,
+    "away_score": 48,
+    "actual_winner": "Iowa Hawkeyes",
+    "correct": 1,
+    "brier": 0.0771667303683847,
+    "log_loss": 0.3254379436210262,
+    "verified_start_time_utc": "2026-11-25T00:00:00+00:00",
+    "settled_at_utc": "2026-11-25T01:42:38.399162+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+    "result_source_event_sha256": "08edda15331858be53ce06572b8f755c2960cd63b2c4c959144fcc5f480aa24e"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401920742",
