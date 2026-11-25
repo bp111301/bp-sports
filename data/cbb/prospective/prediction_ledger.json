@@ -1850,7 +1850,7 @@
     "created_at_utc": "2026-10-26T07:08:00.412713+00:00",
     "home_win_prob": 0.4150247406025323,
     "predicted_winner": "Stanford Cardinal",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
     "forecast_stage": "early_research_prior",
@@ -1866,7 +1866,18 @@
       "pace_diff": 2.6695312500000057,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 70,
+    "away_score": 65,
+    "actual_winner": "Colorado Buffaloes",
+    "correct": 0,
+    "brier": 0.34219605410713466,
+    "log_loss": 0.87941714461868,
+    "verified_start_time_utc": "2026-11-25T06:00:00+00:00",
+    "settled_at_utc": "2026-11-25T08:02:02.672138+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+    "result_source_event_sha256": "a5a5b889d4f34ca985bfc6f3207cc359e94bb9cf5ce10b5d10c7145162a13cc7"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401909800",
