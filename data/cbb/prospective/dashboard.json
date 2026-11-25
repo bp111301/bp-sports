@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2191,
-    "settled_games": 995,
-    "pending_games": 1196,
-    "wins": 723,
-    "losses": 272,
-    "accuracy": 0.7266331658291457,
-    "brier": 0.17827362248527856,
-    "log_loss": 0.5314819406904296
+    "settled_games": 997,
+    "pending_games": 1194,
+    "wins": 724,
+    "losses": 273,
+    "accuracy": 0.7261785356068204,
+    "brier": 0.17889404108541762,
+    "log_loss": 0.5332527488118018
   },
   "predictions": [
     {
@@ -1609,7 +1609,7 @@
       "created_at_utc": "2026-10-26T01:12:01.206877+00:00",
       "home_win_prob": 0.0992950442105019,
       "predicted_winner": "Michigan Wolverines",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
       "forecast_stage": "early_research_prior",
@@ -1625,7 +1625,18 @@
         "pace_diff": -2.8356847426470466,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 99,
+      "away_score": 73,
+      "actual_winner": "Creighton Bluejays",
+      "correct": 0,
+      "brier": 0.8112694173837617,
+      "log_loss": 2.309659616422119,
+      "verified_start_time_utc": "2026-11-24T22:55:00+00:00",
+      "settled_at_utc": "2026-11-25T01:06:49.917423+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "7bdf525b831953758bfc4576caad1becbb93c55dba55a92d2782b2dc5a16796d"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401909775",
@@ -41895,7 +41906,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.5952344234925377,
       "predicted_winner": "Wofford Terriers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -41911,7 +41922,18 @@
         "pace_diff": -2.600454545454525,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 86,
+      "away_score": 77,
+      "actual_winner": "Wofford Terriers",
+      "correct": 1,
+      "brier": 0.16383517192541827,
+      "log_loss": 0.5187999619667296,
+      "verified_start_time_utc": "2026-11-24T23:00:00+00:00",
+      "settled_at_utc": "2026-11-25T01:06:49.917423+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "2738f4ed1fc6627e68da4187381264a2c3767b6b2b60d7845a0a6e651a4cdadf"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401923262",
@@ -85666,5 +85688,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-25T01:01:48.877826+00:00"
+  "results_checked_at_utc": "2026-11-25T01:06:49.917423+00:00"
 }
