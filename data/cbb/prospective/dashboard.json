@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2191,
-    "settled_games": 1032,
-    "pending_games": 1159,
-    "wins": 748,
+    "settled_games": 1033,
+    "pending_games": 1158,
+    "wins": 749,
     "losses": 284,
-    "accuracy": 0.7248062015503876,
-    "brier": 0.17993123957309726,
-    "log_loss": 0.5352983263313073
+    "accuracy": 0.7250726040658277,
+    "brier": 0.17979902299208875,
+    "log_loss": 0.5350061298868874
   },
   "predictions": [
     {
@@ -43334,7 +43334,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7917897423484906,
       "predicted_winner": "Notre Dame Fighting Irish",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -43350,7 +43350,18 @@
         "pace_diff": -0.5628337041156755,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 88,
+      "away_score": 70,
+      "actual_winner": "Notre Dame Fighting Irish",
+      "correct": 1,
+      "brier": 0.04335151139130791,
+      "log_loss": 0.23345939924563738,
+      "verified_start_time_utc": "2026-11-25T01:00:00+00:00",
+      "settled_at_utc": "2026-11-25T03:02:33.212497+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+      "result_source_event_sha256": "242985e586aff9cc2770818607a5088753581e2438ad3bd9e22658a6d180a9fe"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401915942",
@@ -86073,5 +86084,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-25T02:57:32.926150+00:00"
+  "results_checked_at_utc": "2026-11-25T03:02:33.212497+00:00"
 }
