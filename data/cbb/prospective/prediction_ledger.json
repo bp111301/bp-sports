@@ -42405,7 +42405,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.5229381474022918,
     "predicted_winner": "Ohio State Buckeyes",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -42421,7 +42421,18 @@
       "pace_diff": -4.017602495543656,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 66,
+    "away_score": 72,
+    "actual_winner": "Vanderbilt Commodores",
+    "correct": 0,
+    "brier": 0.2734643060085411,
+    "log_loss": 0.740109126484066,
+    "verified_start_time_utc": "2026-11-25T00:00:00+00:00",
+    "settled_at_utc": "2026-11-25T02:16:47.126548+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+    "result_source_event_sha256": "3f8e3da7b86de2c95f294f33348c0c3bfad8a24cce2da282661b9c6417598abf"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401918996",
@@ -43092,7 +43103,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.40871935744689164,
     "predicted_winner": "Houston Christian Huskies",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -43108,7 +43119,18 @@
       "pace_diff": 6.600833333333355,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 58,
+    "away_score": 84,
+    "actual_winner": "Houston Christian Huskies",
+    "correct": 1,
+    "brier": 0.16705151315179997,
+    "log_loss": 0.5254645137906513,
+    "verified_start_time_utc": "2026-11-25T00:30:00+00:00",
+    "settled_at_utc": "2026-11-25T02:16:47.126548+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&limit=1000&groups=50",
+    "result_source_event_sha256": "0da21d995aaaaa0f13829ace19fbe87e2ed532deebfa7ef7d214854bd0d7dd82"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401920414",
