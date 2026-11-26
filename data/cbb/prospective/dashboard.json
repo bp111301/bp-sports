@@ -2,12 +2,12 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-25T21:47:36.329665+00:00",
+  "updated_at_utc": "2026-11-26T04:16:13.020374+00:00",
   "coverage": {
-    "source_games_in_horizon": 1363
+    "source_games_in_horizon": 1332
   },
   "excluded": {
-    "division_or_conference_unknown": 223,
+    "division_or_conference_unknown": 221,
     "tipoff_time_unconfirmed": 16
   },
   "grading_issues": [
@@ -87166,7 +87166,7 @@
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "88022f8d8122104909e6030b7be2773fc4dfd0b404095fe36bb9e85af7d36f54",
+    "sha256": "6ab0945095d23c6075499336c71d12f752362b38dc399547cf07219bffbc368e",
     "bytes": 715667,
     "archive_sha256": "d01639738bb2f5afd896058003124920cdefd361f48574a55bc1c97d472aae44",
     "live_schedule_sources": [
@@ -87186,13 +87186,8 @@
         "games": 44
       },
       {
-        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261124&groups=50&limit=1000",
-        "sha256": "ca09556f910cd06a8c6a4122e067d30d1f01ddd6b917f3bad4e39e2e07def9f2",
-        "games": 87
-      },
-      {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261125&groups=50&limit=1000",
-        "sha256": "08409e439a4098781c143e227ddaa0418339230efcfae870170f68f01fb2ad5a",
+        "sha256": "a272f92a689cd5c9359fefeca9584523e8ef2f96c43814c6f581a92cd6da9131",
         "games": 69
       },
       {
@@ -87433,6 +87428,5 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ],
-  "results_checked_at_utc": "2026-11-26T04:12:49.517924+00:00"
+  ]
 }
