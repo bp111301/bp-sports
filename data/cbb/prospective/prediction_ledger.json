@@ -46135,7 +46135,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.4633520160766556,
     "predicted_winner": "Army Black Knights",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -46151,7 +46151,18 @@
       "pace_diff": 0.9383928571428584,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 61,
+    "away_score": 79,
+    "actual_winner": "Army Black Knights",
+    "correct": 1,
+    "brier": 0.2146950908023013,
+    "log_loss": 0.6224129228429062,
+    "verified_start_time_utc": "2026-11-26T17:00:00+00:00",
+    "settled_at_utc": "2026-11-26T18:59:36.996367+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261126&limit=1000&groups=50",
+    "result_source_event_sha256": "d70aafd3ffc17a423e2a50fb913b741cef52f234ad7b3f76300de5f3f0f6acfc"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401929282",
