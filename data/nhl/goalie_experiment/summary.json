@@ -1,54 +1,16 @@
 {
-  "as_of_utc": "2026-11-25T23:36:41.046397+00:00",
+  "as_of_utc": "2026-11-26T05:28:44.200696+00:00",
   "status": "research_only_not_promoted",
   "weights_frozen": true,
   "paired_games": 184,
   "settled_paired_games": 184,
   "pending_paired_games": 0,
   "invalid_timing": 0,
-  "coverage": [
-    {
-      "game_id": 2026020388,
-      "status": "missing_both_eligible_confirmations"
-    },
-    {
-      "game_id": 2026020394,
-      "status": "missing_both_eligible_confirmations"
-    },
-    {
-      "game_id": 2026020386,
-      "status": "paired_prediction_recorded"
-    },
-    {
-      "game_id": 2026020387,
-      "status": "paired_prediction_recorded"
-    },
-    {
-      "game_id": 2026020389,
-      "status": "paired_prediction_recorded"
-    },
-    {
-      "game_id": 2026020390,
-      "status": "paired_prediction_recorded"
-    },
-    {
-      "game_id": 2026020391,
-      "status": "paired_prediction_recorded"
-    },
-    {
-      "game_id": 2026020392,
-      "status": "paired_prediction_recorded"
-    },
-    {
-      "game_id": 2026020393,
-      "status": "paired_prediction_recorded"
-    }
-  ],
+  "coverage": [],
   "metrics": [
     {
       "candidate": "team_control",
       "games": 184,
-      "correct": 115,
       "accuracy": 0.625,
       "brier": 0.23994842148964884,
       "log_loss": 0.7035932521726073
@@ -56,15 +18,13 @@
     {
       "candidate": "inferred_goalie",
       "games": 184,
-      "correct": 115,
       "accuracy": 0.625,
-      "brier": 0.2390017122239623,
-      "log_loss": 0.6952162971216903
+      "brier": 0.23900171222396227,
+      "log_loss": 0.6952162971216902
     },
     {
       "candidate": "confirmed_goalie",
       "games": 184,
-      "correct": 114,
       "accuracy": 0.6195652173913043,
       "brier": 0.2390959571185953,
       "log_loss": 0.6955643213245519
@@ -80,11 +40,10 @@
     },
     "inferred_goalie": {
       "accuracy": -0.005434782608695676,
-      "brier": 9.42448946329999e-05,
-      "log_loss": 0.0003480242028616187
+      "brier": 9.424489463302765e-05,
+      "log_loss": 0.00034802420286172975
     }
   },
-  "games_in_current_prediction_window": 9,
-  "newly_eligible_games": 7,
-  "results_checked_at_utc": "2026-11-26T05:23:48.553033+00:00"
+  "games_in_current_prediction_window": 0,
+  "newly_eligible_games": 0
 }
