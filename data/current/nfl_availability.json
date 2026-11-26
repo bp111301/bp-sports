@@ -1,7 +1,7 @@
 {
   "season": 2026,
   "week": 12,
-  "updated_at_utc": "2026-11-25T02:20:52.525337+00:00",
+  "updated_at_utc": "2026-11-26T02:44:21.933628+00:00",
   "games": {
     "2026_06_CHI_ATL": {
       "game_id": "2026_06_CHI_ATL",
@@ -13263,63 +13263,136 @@
       "home_team": "DET",
       "away_team": "CHI",
       "kickoff_utc": "2026-11-26T18:00:00+00:00",
-      "checked_at_utc": "2026-11-25T02:20:52.524903+00:00",
+      "checked_at_utc": "2026-11-26T02:44:21.896517+00:00",
       "home": {
         "team": "DET",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Jared Goff",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Chuck Clark",
+            "position": "S",
+            "injury": "Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Skyler Gill-Howard",
+            "position": "DT",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Ennis Rakestraw Jr.",
+            "position": "CB",
+            "injury": "Shoulder",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "DJ Wonnum",
+            "position": "DE",
+            "injury": "Back",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0033106",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.524838+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896206+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Jared Goff",
         "schedule_qb_id": "00-0033106",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "away": {
         "team": "CHI",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Caleb Williams",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Kyler Gordon",
+            "position": "CB",
+            "injury": "Shoulder",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Elijah Hicks",
+            "position": "S",
+            "injury": "Concussion",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "D'Marco Jackson",
+            "position": "LB",
+            "injury": "Elbow",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Roschon Johnson",
+            "position": "RB",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Tyrique Stevenson",
+            "position": "CB",
+            "injury": "Groin",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0039918",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.524880+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896483+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Caleb Williams",
         "schedule_qb_id": "00-0039918",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-25T02:20:52.457254+00:00",
-          "sha256": "4006817af6883aebfd82626357bfaa12afa4291bb657969aece475b3a7f7fbd2",
+          "retrieved_at_utc": "2026-11-26T02:44:21.191394+00:00",
+          "sha256": "9e073f9993da488367e294cd7702091a45c158ae16d6a7e3c64a79582760839e",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-26T02:44:21.443815+00:00",
+          "sha256": "505370a573a75c17528a73e866878083a9ec1c7170afe4016febb7f9d3f9dbdf",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-26T02:44:21.801624+00:00",
+          "sha256": "4c9487905dffdccd33347dc74b310986f4504a7c18a97ad2c1686314f108a2f6",
           "http_status": 200
         }
       ],
@@ -13343,8 +13416,8 @@
         "away_qb_name_assumed": "Caleb Williams",
         "away_qb_id_assumed": "00-0039918",
         "kickoff_utc": "2026-11-26T18:00:00.000Z",
-        "captured_at_utc": "2026-11-25T02:20:55.469729+00:00",
-        "availability_checked_at_utc": "2026-11-25T02:20:52.524903+00:00",
+        "captured_at_utc": "2026-11-26T02:44:24.322818+00:00",
+        "availability_checked_at_utc": "2026-11-26T02:44:21.896517+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -13356,63 +13429,129 @@
       "home_team": "DAL",
       "away_team": "PHI",
       "kickoff_utc": "2026-11-26T21:30:00+00:00",
-      "checked_at_utc": "2026-11-25T02:20:52.524946+00:00",
+      "checked_at_utc": "2026-11-26T02:44:21.896626+00:00",
       "home": {
         "team": "DAL",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Dak Prescott",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Tyler Booker",
+            "position": "G",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jake Ferguson",
+            "position": "TE",
+            "injury": "Knee, Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "P.J. Locke",
+            "position": "S",
+            "injury": "Concussion",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jonathan Mingo",
+            "position": "WR",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Devin Moore",
+            "position": "CB",
+            "injury": "Hip",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jalen Thompson",
+            "position": "S",
+            "injury": "Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0033077",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.524926+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896564+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Dak Prescott",
         "schedule_qb_id": "00-0033077",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "away": {
         "team": "PHI",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Joe Milton III",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Arnold Ebiketie",
+            "position": "LB",
+            "injury": "Oblique",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jonathan Jones",
+            "position": "CB",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0039398",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.524937+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896609+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Joe Milton III",
         "schedule_qb_id": "00-0039398",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-25T02:20:52.457254+00:00",
-          "sha256": "4006817af6883aebfd82626357bfaa12afa4291bb657969aece475b3a7f7fbd2",
+          "retrieved_at_utc": "2026-11-26T02:44:21.191394+00:00",
+          "sha256": "9e073f9993da488367e294cd7702091a45c158ae16d6a7e3c64a79582760839e",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-26T02:44:21.443815+00:00",
+          "sha256": "505370a573a75c17528a73e866878083a9ec1c7170afe4016febb7f9d3f9dbdf",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-26T02:44:21.801624+00:00",
+          "sha256": "4c9487905dffdccd33347dc74b310986f4504a7c18a97ad2c1686314f108a2f6",
           "http_status": 200
         }
       ],
@@ -13436,8 +13575,8 @@
         "away_qb_name_assumed": "Joe Milton III",
         "away_qb_id_assumed": "00-0039398",
         "kickoff_utc": "2026-11-26T21:30:00.000Z",
-        "captured_at_utc": "2026-11-25T02:20:55.469729+00:00",
-        "availability_checked_at_utc": "2026-11-25T02:20:52.524946+00:00",
+        "captured_at_utc": "2026-11-26T02:44:24.322818+00:00",
+        "availability_checked_at_utc": "2026-11-26T02:44:21.896626+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -13449,63 +13588,143 @@
       "home_team": "BUF",
       "away_team": "KC",
       "kickoff_utc": "2026-11-27T01:20:00+00:00",
-      "checked_at_utc": "2026-11-25T02:20:52.524985+00:00",
+      "checked_at_utc": "2026-11-26T02:44:21.896696+00:00",
       "home": {
         "team": "BUF",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Josh Allen",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Christian Benford",
+            "position": "CB",
+            "injury": "Groin",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Dalton Kincaid",
+            "position": "TE",
+            "injury": "Thumb, Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "T.J. Sanders",
+            "position": "DE",
+            "injury": "Shoulder",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "O'Cyrus Torrence",
+            "position": "G",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Dorian Williams",
+            "position": "LB",
+            "injury": "Calf",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0034857",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.524963+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896649+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Josh Allen",
         "schedule_qb_id": "00-0034857",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "away": {
         "team": "KC",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Patrick Mahomes",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Noah Gray",
+            "position": "TE",
+            "injury": "Rib",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jaylon Moore",
+            "position": "T",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Omarr Norman-Lott",
+            "position": "DT",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Kenneth Walker III",
+            "position": "RB",
+            "injury": "Groin",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Peter Woods",
+            "position": "DT",
+            "injury": "Neck",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0033873",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.524972+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896677+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Patrick Mahomes",
         "schedule_qb_id": "00-0033873",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-25T02:20:52.457254+00:00",
-          "sha256": "4006817af6883aebfd82626357bfaa12afa4291bb657969aece475b3a7f7fbd2",
+          "retrieved_at_utc": "2026-11-26T02:44:21.191394+00:00",
+          "sha256": "9e073f9993da488367e294cd7702091a45c158ae16d6a7e3c64a79582760839e",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-26T02:44:21.443815+00:00",
+          "sha256": "505370a573a75c17528a73e866878083a9ec1c7170afe4016febb7f9d3f9dbdf",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-26T02:44:21.801624+00:00",
+          "sha256": "4c9487905dffdccd33347dc74b310986f4504a7c18a97ad2c1686314f108a2f6",
           "http_status": 200
         }
       ],
@@ -13529,8 +13748,8 @@
         "away_qb_name_assumed": "Patrick Mahomes",
         "away_qb_id_assumed": "00-0033873",
         "kickoff_utc": "2026-11-27T01:20:00.000Z",
-        "captured_at_utc": "2026-11-25T02:20:55.469729+00:00",
-        "availability_checked_at_utc": "2026-11-25T02:20:52.524985+00:00",
+        "captured_at_utc": "2026-11-26T02:44:24.322818+00:00",
+        "availability_checked_at_utc": "2026-11-26T02:44:21.896696+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -13542,63 +13761,86 @@
       "home_team": "PIT",
       "away_team": "DEN",
       "kickoff_utc": "2026-11-27T20:00:00+00:00",
-      "checked_at_utc": "2026-11-25T02:20:52.525017+00:00",
+      "checked_at_utc": "2026-11-26T02:44:21.896756+00:00",
       "home": {
         "team": "PIT",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
-        "assumed_qb": "Aaron Rodgers",
-        "qb_status": "Unknown",
+        "assumed_qb": "Mason Rudolph",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
         "players": [],
-        "assumed_qb_id": "00-0023459",
+        "assumed_qb_id": "00-0034771",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.524999+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896718+00:00",
         "starter_verified_at_utc": null,
-        "schedule_qb_name": "Aaron Rodgers",
-        "schedule_qb_id": "00-0023459",
+        "schedule_qb_name": "Mason Rudolph",
+        "schedule_qb_id": "00-0034771",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "away": {
         "team": "DEN",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Bo Nix",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Sai'vion Jones",
+            "position": "DE",
+            "injury": "Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Taylor Rapp",
+            "position": "S",
+            "injury": "Quadricep",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0039732",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525009+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896734+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Bo Nix",
         "schedule_qb_id": "00-0039732",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-25T02:20:52.457254+00:00",
-          "sha256": "4006817af6883aebfd82626357bfaa12afa4291bb657969aece475b3a7f7fbd2",
+          "retrieved_at_utc": "2026-11-26T02:44:21.191394+00:00",
+          "sha256": "9e073f9993da488367e294cd7702091a45c158ae16d6a7e3c64a79582760839e",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-26T02:44:21.443815+00:00",
+          "sha256": "505370a573a75c17528a73e866878083a9ec1c7170afe4016febb7f9d3f9dbdf",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-26T02:44:21.801624+00:00",
+          "sha256": "4c9487905dffdccd33347dc74b310986f4504a7c18a97ad2c1686314f108a2f6",
           "http_status": 200
         }
       ],
@@ -13610,20 +13852,20 @@
         "v3_pick": "DEN",
         "v3_confidence": 0.541392399688867,
         "v4_pick": "DEN",
-        "v4_core_confidence": 0.533256248917707,
-        "v4_adjusted_confidence": 0.519972619148471,
+        "v4_core_confidence": 0.578200549555347,
+        "v4_adjusted_confidence": 0.547167950353463,
         "explosive_extreme": true,
         "turnover_risk_flag": false,
         "early_down_risk_flag": false,
         "prediction_status": "EARLY_LOCK",
         "qb_status_flag": "QB starter unconfirmed; ",
-        "home_qb_name_assumed": "Aaron Rodgers",
-        "home_qb_id_assumed": "00-0023459",
+        "home_qb_name_assumed": "Mason Rudolph",
+        "home_qb_id_assumed": "00-0034771",
         "away_qb_name_assumed": "Bo Nix",
         "away_qb_id_assumed": "00-0039732",
         "kickoff_utc": "2026-11-27T20:00:00.000Z",
-        "captured_at_utc": "2026-11-25T02:20:55.469729+00:00",
-        "availability_checked_at_utc": "2026-11-25T02:20:52.525017+00:00",
+        "captured_at_utc": "2026-11-26T02:44:24.322818+00:00",
+        "availability_checked_at_utc": "2026-11-26T02:44:21.896756+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -13635,7 +13877,7 @@
       "home_team": "CIN",
       "away_team": "NO",
       "kickoff_utc": "2026-11-29T18:00:00+00:00",
-      "checked_at_utc": "2026-11-25T02:20:52.525046+00:00",
+      "checked_at_utc": "2026-11-26T02:44:21.896798+00:00",
       "home": {
         "team": "CIN",
         "injury_report_available": false,
@@ -13649,7 +13891,7 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525030+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896775+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Joe Burrow",
         "schedule_qb_id": "00-0036442",
@@ -13671,7 +13913,7 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525038+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896790+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Tyler Shough",
         "schedule_qb_id": "00-0040743",
@@ -13682,16 +13924,26 @@
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-25T02:20:52.457254+00:00",
-          "sha256": "4006817af6883aebfd82626357bfaa12afa4291bb657969aece475b3a7f7fbd2",
+          "retrieved_at_utc": "2026-11-26T02:44:21.191394+00:00",
+          "sha256": "9e073f9993da488367e294cd7702091a45c158ae16d6a7e3c64a79582760839e",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-26T02:44:21.443815+00:00",
+          "sha256": "505370a573a75c17528a73e866878083a9ec1c7170afe4016febb7f9d3f9dbdf",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-26T02:44:21.801624+00:00",
+          "sha256": "4c9487905dffdccd33347dc74b310986f4504a7c18a97ad2c1686314f108a2f6",
           "http_status": 200
         }
       ],
@@ -13715,8 +13967,8 @@
         "away_qb_name_assumed": "Tyler Shough",
         "away_qb_id_assumed": "00-0040743",
         "kickoff_utc": "2026-11-29T18:00:00.000Z",
-        "captured_at_utc": "2026-11-25T02:20:55.469729+00:00",
-        "availability_checked_at_utc": "2026-11-25T02:20:52.525046+00:00",
+        "captured_at_utc": "2026-11-26T02:44:24.322818+00:00",
+        "availability_checked_at_utc": "2026-11-26T02:44:21.896798+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -13728,13 +13980,13 @@
       "home_team": "HOU",
       "away_team": "BAL",
       "kickoff_utc": "2026-11-29T18:00:00+00:00",
-      "checked_at_utc": "2026-11-25T02:20:52.525075+00:00",
+      "checked_at_utc": "2026-11-26T02:44:21.896839+00:00",
       "home": {
         "team": "HOU",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "C.J. Stroud",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
         "players": [],
@@ -13742,21 +13994,20 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525060+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896817+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "C.J. Stroud",
         "schedule_qb_id": "00-0039163",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "away": {
         "team": "BAL",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Jacoby Brissett",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
         "players": [],
@@ -13764,27 +14015,36 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525068+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896831+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Jacoby Brissett",
         "schedule_qb_id": "00-0033119",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-25T02:20:52.457254+00:00",
-          "sha256": "4006817af6883aebfd82626357bfaa12afa4291bb657969aece475b3a7f7fbd2",
+          "retrieved_at_utc": "2026-11-26T02:44:21.191394+00:00",
+          "sha256": "9e073f9993da488367e294cd7702091a45c158ae16d6a7e3c64a79582760839e",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-26T02:44:21.443815+00:00",
+          "sha256": "505370a573a75c17528a73e866878083a9ec1c7170afe4016febb7f9d3f9dbdf",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-26T02:44:21.801624+00:00",
+          "sha256": "4c9487905dffdccd33347dc74b310986f4504a7c18a97ad2c1686314f108a2f6",
           "http_status": 200
         }
       ],
@@ -13794,10 +14054,10 @@
         "away_team": "BAL",
         "home_team": "HOU",
         "v3_pick": "HOU",
-        "v3_confidence": 0.705192536389956,
+        "v3_confidence": 0.705192442914885,
         "v4_pick": "HOU",
-        "v4_core_confidence": 0.699052439689848,
-        "v4_adjusted_confidence": 0.699052439689848,
+        "v4_core_confidence": 0.699052353991758,
+        "v4_adjusted_confidence": 0.699052353991758,
         "explosive_extreme": false,
         "turnover_risk_flag": false,
         "early_down_risk_flag": false,
@@ -13808,8 +14068,8 @@
         "away_qb_name_assumed": "Jacoby Brissett",
         "away_qb_id_assumed": "00-0033119",
         "kickoff_utc": "2026-11-29T18:00:00.000Z",
-        "captured_at_utc": "2026-11-25T02:20:55.469729+00:00",
-        "availability_checked_at_utc": "2026-11-25T02:20:52.525075+00:00",
+        "captured_at_utc": "2026-11-26T02:44:24.322818+00:00",
+        "availability_checked_at_utc": "2026-11-26T02:44:21.896839+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -13821,13 +14081,13 @@
       "home_team": "IND",
       "away_team": "NYG",
       "kickoff_utc": "2026-11-29T18:00:00+00:00",
-      "checked_at_utc": "2026-11-25T02:20:52.525101+00:00",
+      "checked_at_utc": "2026-11-26T02:44:21.896878+00:00",
       "home": {
         "team": "IND",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Anthony Richardson",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
         "players": [],
@@ -13835,21 +14095,20 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525087+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896857+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Anthony Richardson",
         "schedule_qb_id": "00-0039164",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "away": {
         "team": "NYG",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "J.J. McCarthy",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
         "players": [],
@@ -13857,27 +14116,36 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525095+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896870+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "J.J. McCarthy",
         "schedule_qb_id": "00-0039923",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-25T02:20:52.457254+00:00",
-          "sha256": "4006817af6883aebfd82626357bfaa12afa4291bb657969aece475b3a7f7fbd2",
+          "retrieved_at_utc": "2026-11-26T02:44:21.191394+00:00",
+          "sha256": "9e073f9993da488367e294cd7702091a45c158ae16d6a7e3c64a79582760839e",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-26T02:44:21.443815+00:00",
+          "sha256": "505370a573a75c17528a73e866878083a9ec1c7170afe4016febb7f9d3f9dbdf",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-26T02:44:21.801624+00:00",
+          "sha256": "4c9487905dffdccd33347dc74b310986f4504a7c18a97ad2c1686314f108a2f6",
           "http_status": 200
         }
       ],
@@ -13901,8 +14169,8 @@
         "away_qb_name_assumed": "J.J. McCarthy",
         "away_qb_id_assumed": "00-0039923",
         "kickoff_utc": "2026-11-29T18:00:00.000Z",
-        "captured_at_utc": "2026-11-25T02:20:55.469729+00:00",
-        "availability_checked_at_utc": "2026-11-25T02:20:52.525101+00:00",
+        "captured_at_utc": "2026-11-26T02:44:24.322818+00:00",
+        "availability_checked_at_utc": "2026-11-26T02:44:21.896878+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -13914,13 +14182,13 @@
       "home_team": "JAX",
       "away_team": "TEN",
       "kickoff_utc": "2026-11-29T18:00:00+00:00",
-      "checked_at_utc": "2026-11-25T02:20:52.525128+00:00",
+      "checked_at_utc": "2026-11-26T02:44:21.896916+00:00",
       "home": {
         "team": "JAX",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Trevor Lawrence",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
         "players": [],
@@ -13928,21 +14196,20 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525114+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896896+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Trevor Lawrence",
         "schedule_qb_id": "00-0036971",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "away": {
         "team": "TEN",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Cam Ward",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
         "players": [],
@@ -13950,27 +14217,36 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525121+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896909+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Cam Ward",
         "schedule_qb_id": "00-0040676",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-25T02:20:52.457254+00:00",
-          "sha256": "4006817af6883aebfd82626357bfaa12afa4291bb657969aece475b3a7f7fbd2",
+          "retrieved_at_utc": "2026-11-26T02:44:21.191394+00:00",
+          "sha256": "9e073f9993da488367e294cd7702091a45c158ae16d6a7e3c64a79582760839e",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-26T02:44:21.443815+00:00",
+          "sha256": "505370a573a75c17528a73e866878083a9ec1c7170afe4016febb7f9d3f9dbdf",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-26T02:44:21.801624+00:00",
+          "sha256": "4c9487905dffdccd33347dc74b310986f4504a7c18a97ad2c1686314f108a2f6",
           "http_status": 200
         }
       ],
@@ -13994,8 +14270,8 @@
         "away_qb_name_assumed": "Cam Ward",
         "away_qb_id_assumed": "00-0040676",
         "kickoff_utc": "2026-11-29T18:00:00.000Z",
-        "captured_at_utc": "2026-11-25T02:20:55.469729+00:00",
-        "availability_checked_at_utc": "2026-11-25T02:20:52.525128+00:00",
+        "captured_at_utc": "2026-11-26T02:44:24.322818+00:00",
+        "availability_checked_at_utc": "2026-11-26T02:44:21.896916+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14007,13 +14283,13 @@
       "home_team": "MIA",
       "away_team": "NYJ",
       "kickoff_utc": "2026-11-29T18:00:00+00:00",
-      "checked_at_utc": "2026-11-25T02:20:52.525160+00:00",
+      "checked_at_utc": "2026-11-26T02:44:21.896953+00:00",
       "home": {
         "team": "MIA",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Kyle McCord",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
         "players": [],
@@ -14021,21 +14297,20 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525141+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896934+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Kyle McCord",
         "schedule_qb_id": "00-0040014",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "away": {
         "team": "NYJ",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Geno Smith",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
         "players": [],
@@ -14043,27 +14318,36 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525150+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896947+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Geno Smith",
         "schedule_qb_id": "00-0030565",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-25T02:20:52.457254+00:00",
-          "sha256": "4006817af6883aebfd82626357bfaa12afa4291bb657969aece475b3a7f7fbd2",
+          "retrieved_at_utc": "2026-11-26T02:44:21.191394+00:00",
+          "sha256": "9e073f9993da488367e294cd7702091a45c158ae16d6a7e3c64a79582760839e",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-26T02:44:21.443815+00:00",
+          "sha256": "505370a573a75c17528a73e866878083a9ec1c7170afe4016febb7f9d3f9dbdf",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-26T02:44:21.801624+00:00",
+          "sha256": "4c9487905dffdccd33347dc74b310986f4504a7c18a97ad2c1686314f108a2f6",
           "http_status": 200
         }
       ],
@@ -14073,10 +14357,10 @@
         "away_team": "NYJ",
         "home_team": "MIA",
         "v3_pick": "NYJ",
-        "v3_confidence": 0.548727127901592,
+        "v3_confidence": 0.548727115530651,
         "v4_pick": "NYJ",
-        "v4_core_confidence": 0.564955012978337,
-        "v4_adjusted_confidence": 0.564955012978337,
+        "v4_core_confidence": 0.564955001913219,
+        "v4_adjusted_confidence": 0.564955001913219,
         "explosive_extreme": false,
         "turnover_risk_flag": false,
         "early_down_risk_flag": false,
@@ -14087,8 +14371,8 @@
         "away_qb_name_assumed": "Geno Smith",
         "away_qb_id_assumed": "00-0030565",
         "kickoff_utc": "2026-11-29T18:00:00.000Z",
-        "captured_at_utc": "2026-11-25T02:20:55.469729+00:00",
-        "availability_checked_at_utc": "2026-11-25T02:20:52.525160+00:00",
+        "captured_at_utc": "2026-11-26T02:44:24.322818+00:00",
+        "availability_checked_at_utc": "2026-11-26T02:44:21.896953+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14100,13 +14384,13 @@
       "home_team": "MIN",
       "away_team": "ATL",
       "kickoff_utc": "2026-11-29T18:00:00+00:00",
-      "checked_at_utc": "2026-11-25T02:20:52.525188+00:00",
+      "checked_at_utc": "2026-11-26T02:44:21.896992+00:00",
       "home": {
         "team": "MIN",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Kirk Cousins",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
         "players": [],
@@ -14114,21 +14398,20 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525173+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896970+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Kirk Cousins",
         "schedule_qb_id": "00-0029604",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "away": {
         "team": "ATL",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Michael Penix Jr.",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
         "players": [],
@@ -14136,27 +14419,36 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525181+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.896985+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Michael Penix Jr.",
         "schedule_qb_id": "00-0039917",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-25T02:20:52.457254+00:00",
-          "sha256": "4006817af6883aebfd82626357bfaa12afa4291bb657969aece475b3a7f7fbd2",
+          "retrieved_at_utc": "2026-11-26T02:44:21.191394+00:00",
+          "sha256": "9e073f9993da488367e294cd7702091a45c158ae16d6a7e3c64a79582760839e",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-26T02:44:21.443815+00:00",
+          "sha256": "505370a573a75c17528a73e866878083a9ec1c7170afe4016febb7f9d3f9dbdf",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-26T02:44:21.801624+00:00",
+          "sha256": "4c9487905dffdccd33347dc74b310986f4504a7c18a97ad2c1686314f108a2f6",
           "http_status": 200
         }
       ],
@@ -14180,8 +14472,8 @@
         "away_qb_name_assumed": "Michael Penix Jr.",
         "away_qb_id_assumed": "00-0039917",
         "kickoff_utc": "2026-11-29T18:00:00.000Z",
-        "captured_at_utc": "2026-11-25T02:20:55.469729+00:00",
-        "availability_checked_at_utc": "2026-11-25T02:20:52.525188+00:00",
+        "captured_at_utc": "2026-11-26T02:44:24.322818+00:00",
+        "availability_checked_at_utc": "2026-11-26T02:44:21.896992+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14193,63 +14485,75 @@
       "home_team": "LAC",
       "away_team": "NE",
       "kickoff_utc": "2026-11-29T21:05:00+00:00",
-      "checked_at_utc": "2026-11-25T02:20:52.525215+00:00",
+      "checked_at_utc": "2026-11-26T02:44:21.933419+00:00",
       "home": {
         "team": "LAC",
         "injury_report_available": false,
         "inactives_published": false,
-        "assumed_qb": "Justin Herbert",
+        "assumed_qb": "Tommy DeVito",
         "qb_status": "Unknown",
         "qb_review_required": false,
         "qb_uncertain": false,
         "players": [],
-        "assumed_qb_id": "00-0036355",
-        "qb_evidence_state": "unconfirmed",
-        "assumption_source": "nflverse_schedule",
-        "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525200+00:00",
-        "starter_verified_at_utc": null,
+        "assumed_qb_id": "00-0038476",
+        "qb_evidence_state": "confirmed",
+        "assumption_source": "official_announcement",
+        "assumption_source_url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.914858+00:00",
+        "starter_verified_at_utc": "2026-11-26T02:44:21.914818+00:00",
         "schedule_qb_name": "Justin Herbert",
         "schedule_qb_id": "00-0036355",
         "qb_evidence_issues": [
           "injury_report_unavailable",
-          "starter_unconfirmed"
-        ]
+          "schedule_differs_from_confirmation"
+        ],
+        "starter_source_url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23"
       },
       "away": {
         "team": "NE",
         "injury_report_available": false,
         "inactives_published": false,
-        "assumed_qb": "Drake Maye",
+        "assumed_qb": "Tommy DeVito",
         "qb_status": "Unknown",
         "qb_review_required": false,
         "qb_uncertain": false,
         "players": [],
-        "assumed_qb_id": "00-0039851",
-        "qb_evidence_state": "unconfirmed",
-        "assumption_source": "nflverse_schedule",
-        "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525208+00:00",
-        "starter_verified_at_utc": null,
+        "assumed_qb_id": "00-0038476",
+        "qb_evidence_state": "confirmed",
+        "assumption_source": "official_announcement",
+        "assumption_source_url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.932701+00:00",
+        "starter_verified_at_utc": "2026-11-26T02:44:21.932670+00:00",
         "schedule_qb_name": "Drake Maye",
         "schedule_qb_id": "00-0039851",
         "qb_evidence_issues": [
           "injury_report_unavailable",
-          "starter_unconfirmed"
-        ]
+          "schedule_differs_from_confirmation"
+        ],
+        "starter_source_url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23"
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-25T02:20:52.457254+00:00",
-          "sha256": "4006817af6883aebfd82626357bfaa12afa4291bb657969aece475b3a7f7fbd2",
+          "retrieved_at_utc": "2026-11-26T02:44:21.191394+00:00",
+          "sha256": "9e073f9993da488367e294cd7702091a45c158ae16d6a7e3c64a79582760839e",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-26T02:44:21.443815+00:00",
+          "sha256": "505370a573a75c17528a73e866878083a9ec1c7170afe4016febb7f9d3f9dbdf",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-26T02:44:21.801624+00:00",
+          "sha256": "4c9487905dffdccd33347dc74b310986f4504a7c18a97ad2c1686314f108a2f6",
           "http_status": 200
         }
       ],
@@ -14259,22 +14563,22 @@
         "away_team": "NE",
         "home_team": "LAC",
         "v3_pick": "NE",
-        "v3_confidence": 0.667695066587409,
+        "v3_confidence": 0.667695228028215,
         "v4_pick": "NE",
-        "v4_core_confidence": 0.65035928327591,
-        "v4_adjusted_confidence": 0.65035928327591,
+        "v4_core_confidence": 0.706924736049444,
+        "v4_adjusted_confidence": 0.706924736049444,
         "explosive_extreme": false,
         "turnover_risk_flag": false,
         "early_down_risk_flag": false,
         "prediction_status": "EARLY_LOCK",
-        "qb_status_flag": "QB starter unconfirmed; ",
-        "home_qb_name_assumed": "Justin Herbert",
-        "home_qb_id_assumed": "00-0036355",
-        "away_qb_name_assumed": "Drake Maye",
-        "away_qb_id_assumed": "00-0039851",
+        "qb_status_flag": "Tommy DeVito confirmed to start by NFL report",
+        "home_qb_name_assumed": "Tommy DeVito",
+        "home_qb_id_assumed": "00-0038476",
+        "away_qb_name_assumed": "Tommy DeVito",
+        "away_qb_id_assumed": "00-0038476",
         "kickoff_utc": "2026-11-29T21:05:00.000Z",
-        "captured_at_utc": "2026-11-25T02:20:55.469729+00:00",
-        "availability_checked_at_utc": "2026-11-25T02:20:52.525215+00:00",
+        "captured_at_utc": "2026-11-26T02:44:24.322818+00:00",
+        "availability_checked_at_utc": "2026-11-26T02:44:21.933419+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14286,13 +14590,13 @@
       "home_team": "ARI",
       "away_team": "WAS",
       "kickoff_utc": "2026-11-29T21:25:00+00:00",
-      "checked_at_utc": "2026-11-25T02:20:52.525241+00:00",
+      "checked_at_utc": "2026-11-26T02:44:21.933487+00:00",
       "home": {
         "team": "ARI",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Gardner Minshew",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
         "players": [],
@@ -14300,21 +14604,20 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525227+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.933459+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Gardner Minshew",
         "schedule_qb_id": "00-0035289",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "away": {
         "team": "WAS",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Jayden Daniels",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
         "players": [],
@@ -14322,27 +14625,36 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525234+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.933479+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Jayden Daniels",
         "schedule_qb_id": "00-0039910",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-25T02:20:52.457254+00:00",
-          "sha256": "4006817af6883aebfd82626357bfaa12afa4291bb657969aece475b3a7f7fbd2",
+          "retrieved_at_utc": "2026-11-26T02:44:21.191394+00:00",
+          "sha256": "9e073f9993da488367e294cd7702091a45c158ae16d6a7e3c64a79582760839e",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-26T02:44:21.443815+00:00",
+          "sha256": "505370a573a75c17528a73e866878083a9ec1c7170afe4016febb7f9d3f9dbdf",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-26T02:44:21.801624+00:00",
+          "sha256": "4c9487905dffdccd33347dc74b310986f4504a7c18a97ad2c1686314f108a2f6",
           "http_status": 200
         }
       ],
@@ -14366,8 +14678,8 @@
         "away_qb_name_assumed": "Jayden Daniels",
         "away_qb_id_assumed": "00-0039910",
         "kickoff_utc": "2026-11-29T21:25:00.000Z",
-        "captured_at_utc": "2026-11-25T02:20:55.469729+00:00",
-        "availability_checked_at_utc": "2026-11-25T02:20:52.525241+00:00",
+        "captured_at_utc": "2026-11-26T02:44:24.322818+00:00",
+        "availability_checked_at_utc": "2026-11-26T02:44:21.933487+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14379,7 +14691,7 @@
       "home_team": "SF",
       "away_team": "SEA",
       "kickoff_utc": "2026-11-29T21:25:00+00:00",
-      "checked_at_utc": "2026-11-25T02:20:52.525268+00:00",
+      "checked_at_utc": "2026-11-26T02:44:21.933529+00:00",
       "home": {
         "team": "SF",
         "injury_report_available": false,
@@ -14393,7 +14705,7 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525254+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.933507+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Brock Purdy",
         "schedule_qb_id": "00-0037834",
@@ -14415,7 +14727,7 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525261+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.933521+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Sam Darnold",
         "schedule_qb_id": "00-0034869",
@@ -14426,16 +14738,26 @@
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-25T02:20:52.457254+00:00",
-          "sha256": "4006817af6883aebfd82626357bfaa12afa4291bb657969aece475b3a7f7fbd2",
+          "retrieved_at_utc": "2026-11-26T02:44:21.191394+00:00",
+          "sha256": "9e073f9993da488367e294cd7702091a45c158ae16d6a7e3c64a79582760839e",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-26T02:44:21.443815+00:00",
+          "sha256": "505370a573a75c17528a73e866878083a9ec1c7170afe4016febb7f9d3f9dbdf",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-26T02:44:21.801624+00:00",
+          "sha256": "4c9487905dffdccd33347dc74b310986f4504a7c18a97ad2c1686314f108a2f6",
           "http_status": 200
         }
       ],
@@ -14447,8 +14769,8 @@
         "v3_pick": "SF",
         "v3_confidence": 0.638345425072685,
         "v4_pick": "SF",
-        "v4_core_confidence": 0.65538217068338,
-        "v4_adjusted_confidence": 0.65538217068338,
+        "v4_core_confidence": 0.65538011455678,
+        "v4_adjusted_confidence": 0.65538011455678,
         "explosive_extreme": false,
         "turnover_risk_flag": false,
         "early_down_risk_flag": false,
@@ -14459,8 +14781,8 @@
         "away_qb_name_assumed": "Sam Darnold",
         "away_qb_id_assumed": "00-0034869",
         "kickoff_utc": "2026-11-29T21:25:00.000Z",
-        "captured_at_utc": "2026-11-25T02:20:55.469729+00:00",
-        "availability_checked_at_utc": "2026-11-25T02:20:52.525268+00:00",
+        "captured_at_utc": "2026-11-26T02:44:24.322818+00:00",
+        "availability_checked_at_utc": "2026-11-26T02:44:21.933529+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14472,13 +14794,13 @@
       "home_team": "CLE",
       "away_team": "LV",
       "kickoff_utc": "2026-11-30T01:20:00+00:00",
-      "checked_at_utc": "2026-11-25T02:20:52.525295+00:00",
+      "checked_at_utc": "2026-11-26T02:44:21.933569+00:00",
       "home": {
         "team": "CLE",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Deshaun Watson",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
         "players": [],
@@ -14486,21 +14808,20 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525280+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.933548+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Deshaun Watson",
         "schedule_qb_id": "00-0033537",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "away": {
         "team": "LV",
-        "injury_report_available": false,
+        "injury_report_available": true,
         "inactives_published": false,
         "assumed_qb": "Fernando Mendoza",
-        "qb_status": "Unknown",
+        "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
         "players": [],
@@ -14508,27 +14829,36 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525287+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.933562+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Fernando Mendoza",
         "schedule_qb_id": "00-0041562",
         "qb_evidence_issues": [
-          "injury_report_unavailable",
           "starter_unconfirmed"
         ]
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-25T02:20:52.457254+00:00",
-          "sha256": "4006817af6883aebfd82626357bfaa12afa4291bb657969aece475b3a7f7fbd2",
+          "retrieved_at_utc": "2026-11-26T02:44:21.191394+00:00",
+          "sha256": "9e073f9993da488367e294cd7702091a45c158ae16d6a7e3c64a79582760839e",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-26T02:44:21.443815+00:00",
+          "sha256": "505370a573a75c17528a73e866878083a9ec1c7170afe4016febb7f9d3f9dbdf",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-26T02:44:21.801624+00:00",
+          "sha256": "4c9487905dffdccd33347dc74b310986f4504a7c18a97ad2c1686314f108a2f6",
           "http_status": 200
         }
       ],
@@ -14552,8 +14882,8 @@
         "away_qb_name_assumed": "Fernando Mendoza",
         "away_qb_id_assumed": "00-0041562",
         "kickoff_utc": "2026-11-30T01:20:00.000Z",
-        "captured_at_utc": "2026-11-25T02:20:55.469729+00:00",
-        "availability_checked_at_utc": "2026-11-25T02:20:52.525295+00:00",
+        "captured_at_utc": "2026-11-26T02:44:24.322818+00:00",
+        "availability_checked_at_utc": "2026-11-26T02:44:21.933569+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14565,7 +14895,7 @@
       "home_team": "TB",
       "away_team": "CAR",
       "kickoff_utc": "2026-12-01T01:15:00+00:00",
-      "checked_at_utc": "2026-11-25T02:20:52.525322+00:00",
+      "checked_at_utc": "2026-11-26T02:44:21.933607+00:00",
       "home": {
         "team": "TB",
         "injury_report_available": false,
@@ -14579,7 +14909,7 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525307+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.933587+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Baker Mayfield",
         "schedule_qb_id": "00-0034855",
@@ -14601,7 +14931,7 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-25T02:20:52.525315+00:00",
+        "assumption_checked_at_utc": "2026-11-26T02:44:21.933600+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Bryce Young",
         "schedule_qb_id": "00-0039150",
@@ -14612,16 +14942,26 @@
       },
       "qb_review_required": false,
       "qb_uncertain": false,
-      "source_errors": [
-        "Official injury page has a different season/week"
-      ],
+      "source_errors": [],
       "injuries_url": "https://www.nfl.com/injuries/",
       "inactives_url": null,
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-25T02:20:52.457254+00:00",
-          "sha256": "4006817af6883aebfd82626357bfaa12afa4291bb657969aece475b3a7f7fbd2",
+          "retrieved_at_utc": "2026-11-26T02:44:21.191394+00:00",
+          "sha256": "9e073f9993da488367e294cd7702091a45c158ae16d6a7e3c64a79582760839e",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-26T02:44:21.443815+00:00",
+          "sha256": "505370a573a75c17528a73e866878083a9ec1c7170afe4016febb7f9d3f9dbdf",
+          "http_status": 200
+        },
+        {
+          "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+          "retrieved_at_utc": "2026-11-26T02:44:21.801624+00:00",
+          "sha256": "4c9487905dffdccd33347dc74b310986f4504a7c18a97ad2c1686314f108a2f6",
           "http_status": 200
         }
       ],
@@ -14631,10 +14971,10 @@
         "away_team": "CAR",
         "home_team": "TB",
         "v3_pick": "TB",
-        "v3_confidence": 0.55083334528938,
+        "v3_confidence": 0.550833321887921,
         "v4_pick": "TB",
-        "v4_core_confidence": 0.556409243545637,
-        "v4_adjusted_confidence": 0.556409243545637,
+        "v4_core_confidence": 0.556409222311258,
+        "v4_adjusted_confidence": 0.556409222311258,
         "explosive_extreme": false,
         "turnover_risk_flag": false,
         "early_down_risk_flag": false,
@@ -14645,8 +14985,8 @@
         "away_qb_name_assumed": "Bryce Young",
         "away_qb_id_assumed": "00-0039150",
         "kickoff_utc": "2026-12-01T01:15:00.000Z",
-        "captured_at_utc": "2026-11-25T02:20:55.469729+00:00",
-        "availability_checked_at_utc": "2026-11-25T02:20:52.525322+00:00",
+        "captured_at_utc": "2026-11-26T02:44:24.322818+00:00",
+        "availability_checked_at_utc": "2026-11-26T02:44:21.933607+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14655,13 +14995,23 @@
   "source_receipts": [
     {
       "url": "https://www.nfl.com/injuries/",
-      "retrieved_at_utc": "2026-11-25T02:20:52.457254+00:00",
-      "sha256": "4006817af6883aebfd82626357bfaa12afa4291bb657969aece475b3a7f7fbd2",
+      "retrieved_at_utc": "2026-11-26T02:44:21.191394+00:00",
+      "sha256": "9e073f9993da488367e294cd7702091a45c158ae16d6a7e3c64a79582760839e",
+      "http_status": 200
+    },
+    {
+      "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+      "retrieved_at_utc": "2026-11-26T02:44:21.443815+00:00",
+      "sha256": "505370a573a75c17528a73e866878083a9ec1c7170afe4016febb7f9d3f9dbdf",
+      "http_status": 200
+    },
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
+      "retrieved_at_utc": "2026-11-26T02:44:21.801624+00:00",
+      "sha256": "4c9487905dffdccd33347dc74b310986f4504a7c18a97ad2c1686314f108a2f6",
       "http_status": 200
     }
   ],
-  "source_errors": [
-    "Official injury page has a different season/week"
-  ],
+  "source_errors": [],
   "scope": "Official injury reports/inactives and explicit QB starter announcements; no non-QB probability coefficients"
 }
