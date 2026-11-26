@@ -2,12 +2,12 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-26T14:27:45.260339+00:00",
+  "updated_at_utc": "2026-11-26T21:38:49.369827+00:00",
   "coverage": {
-    "source_games_in_horizon": 1329
+    "source_games_in_horizon": 1316
   },
   "excluded": {
-    "division_or_conference_unknown": 219,
+    "division_or_conference_unknown": 217,
     "tipoff_time_unconfirmed": 16
   },
   "grading_issues": [
@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2211,
-    "settled_games": 1115,
-    "pending_games": 1096,
-    "wins": 801,
-    "losses": 314,
-    "accuracy": 0.7183856502242153,
-    "brier": 0.1833660999802944,
-    "log_loss": 0.5432873518187468
+    "settled_games": 1118,
+    "pending_games": 1093,
+    "wins": 802,
+    "losses": 316,
+    "accuracy": 0.7173524150268337,
+    "brier": 0.18366360130575368,
+    "log_loss": 0.5439480622502513
   },
   "predictions": [
     {
@@ -46220,7 +46220,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7288645073844232,
       "predicted_winner": "UCF Knights",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -46236,7 +46236,16 @@
         "pace_diff": 3.7501260080645125,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 73,
+      "away_score": 75,
+      "actual_winner": "Boston College Eagles",
+      "correct": 0,
+      "brier": 0.5312434701247379,
+      "log_loss": 1.305136610295962,
+      "verified_start_time_utc": "2026-11-26T18:30:00+00:00",
+      "settled_at_utc": "2026-11-26T21:38:49.369827+00:00"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921674",
@@ -46254,7 +46263,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.5306239203214622,
       "predicted_winner": "Arizona State Sun Devils",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -46270,7 +46279,16 @@
         "pace_diff": 1.825071022727272,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 73,
+      "away_score": 80,
+      "actual_winner": "South Carolina Gamecocks",
+      "correct": 0,
+      "brier": 0.2815617448173175,
+      "log_loss": 0.7563509562191658,
+      "verified_start_time_utc": "2026-11-26T19:00:00+00:00",
+      "settled_at_utc": "2026-11-26T21:38:49.369827+00:00"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921673",
@@ -87017,7 +87035,7 @@
       "created_at_utc": "2026-11-25T14:48:43.401116+00:00",
       "home_win_prob": 0.26438526218821196,
       "predicted_winner": "San Diego State Aztecs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "5df1d3f61e3619d35a19c0b4e6f92f59eac0575af2d6c46a720e1a0ab326a4b0",
       "forecast_stage": "early_research_prior",
@@ -87033,7 +87051,16 @@
         "pace_diff": -2.8946360930735864,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 71,
+      "away_score": 75,
+      "actual_winner": "San Diego State Aztecs",
+      "correct": 1,
+      "brier": 0.06989956686232958,
+      "log_loss": 0.3070487513632361,
+      "verified_start_time_utc": "2026-11-26T18:00:00+00:00",
+      "settled_at_utc": "2026-11-26T21:38:49.369827+00:00"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920529",
@@ -87344,7 +87371,7 @@
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "d3ee6e440eb09e4918a28e2dbd5145a63fbf1a9676400928c6ec827b41ccb397",
+    "sha256": "e08ce0b40f16a9dae03f093f2251dcacd8ef045fbd8a48bf5f8460f36f09e53d",
     "bytes": 729240,
     "archive_sha256": "83d157999b452fb9b32b70fcf3d187ca9deb0010767fa1cd14c8069ac2253011",
     "live_schedule_sources": [
@@ -87370,12 +87397,12 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261126&groups=50&limit=1000",
-        "sha256": "4a30ab17adb0b7944debaf6bfa31b4ab21ad440ffa2aef6bcb0463f1cbaf694b",
+        "sha256": "27cc7c5d2af4b5b5434b605e23a2d7296d8196df18e4b01cb38113a93c109d13",
         "games": 21
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&groups=50&limit=1000",
-        "sha256": "2f562ca25bd29c16cc781c354c0974f451df831a67ec9a8d7b4ea42025c41591",
+        "sha256": "a9d956f1c5780b17c5eea6ade52f91ab0fdeaf989eec047be0574cd2b3a4f98d",
         "games": 55
       },
       {
@@ -87514,7 +87541,16 @@
         "games": 0
       }
     ],
-    "identity_conflicts": []
+    "identity_conflicts": [
+      {
+        "game_id": 401920532,
+        "reason": "Live/archive schedule identity mismatch: 401920532 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 120, 'away_id': -2, 'season': 2027}"
+      },
+      {
+        "game_id": 401920535,
+        "reason": "Live/archive schedule identity mismatch: 401920535 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 21, 'away_id': -2, 'season': 2027}"
+      }
+    ]
   },
   "history_sources": [
     [
@@ -87606,6 +87642,5 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ],
-  "results_checked_at_utc": "2026-11-26T19:50:12.365399+00:00"
+  ]
 }
