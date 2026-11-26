@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2209,
-    "settled_games": 1109,
-    "pending_games": 1100,
+    "settled_games": 1110,
+    "pending_games": 1099,
     "wins": 798,
-    "losses": 311,
-    "accuracy": 0.7195671776375113,
-    "brier": 0.1828606818419778,
-    "log_loss": 0.5422441678138359
+    "losses": 312,
+    "accuracy": 0.7189189189189189,
+    "brier": 0.18307582934985878,
+    "log_loss": 0.5426998112768706
   },
   "predictions": [
     {
@@ -86917,7 +86917,7 @@
       "created_at_utc": "2026-11-25T14:48:43.401116+00:00",
       "home_win_prob": 0.3506353754708535,
       "predicted_winner": "Clemson Tigers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "5df1d3f61e3619d35a19c0b4e6f92f59eac0575af2d6c46a720e1a0ab326a4b0",
       "forecast_stage": "early_research_prior",
@@ -86933,7 +86933,18 @@
         "pace_diff": 0.9674238445378336,
         "rest_diff": -1.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 77,
+      "away_score": 75,
+      "actual_winner": "Colorado State Rams",
+      "correct": 0,
+      "brier": 0.42167441558987934,
+      "log_loss": 1.048008411782269,
+      "verified_start_time_utc": "2026-11-26T05:30:00+00:00",
+      "settled_at_utc": "2026-11-26T07:50:40.142615+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261125&limit=1000&groups=50",
+      "result_source_event_sha256": "f40ac59c1794c163b0df9036d5355437c924077385df020a22608aeb881f1bce"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920528",
@@ -87473,5 +87484,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-26T07:45:36.563414+00:00"
+  "results_checked_at_utc": "2026-11-26T07:50:40.142615+00:00"
 }
