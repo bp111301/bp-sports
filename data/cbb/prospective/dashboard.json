@@ -2,9 +2,9 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-26T08:26:33.176711+00:00",
+  "updated_at_utc": "2026-11-26T14:27:45.260339+00:00",
   "coverage": {
-    "source_games_in_horizon": 1327
+    "source_games_in_horizon": 1329
   },
   "excluded": {
     "division_or_conference_unknown": 219,
@@ -18,9 +18,9 @@
   ],
   "capture_blocked_reason": null,
   "summary": {
-    "saved_games": 2209,
+    "saved_games": 2211,
     "settled_games": 1112,
-    "pending_games": 1097,
+    "pending_games": 1099,
     "wins": 800,
     "losses": 312,
     "accuracy": 0.7194244604316546,
@@ -87239,13 +87239,81 @@
         "rest_diff": 0.0,
         "experience_diff": 0.15415067982725827
       }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401929288",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401929288",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "235",
+      "away_team_id": "154",
+      "home_team": "Memphis Tigers",
+      "away_team": "Wake Forest Demon Deacons",
+      "neutral_site": true,
+      "start_time_utc": "2026-11-27T18:30:00+00:00",
+      "created_at_utc": "2026-11-26T14:27:45.260339+00:00",
+      "home_win_prob": 0.33407665285964494,
+      "predicted_winner": "Wake Forest Demon Deacons",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "d3ee6e440eb09e4918a28e2dbd5145a63fbf1a9676400928c6ec827b41ccb397",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": -2.870136810853637,
+        "home_advantage": 0.0,
+        "off_eff_diff": -2.6870377002154413,
+        "def_eff_diff": 6.23804962872866,
+        "efg_diff": -0.0077043059208885545,
+        "tov_rate_diff": 0.017037736026796257,
+        "orb_rate_diff": 0.009779466242560653,
+        "ft_rate_diff": 0.03238294911685019,
+        "pace_diff": 1.97146707459207,
+        "rest_diff": -1.0,
+        "experience_diff": -0.15415067982725827
+      }
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401929289",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401929289",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "344",
+      "away_team_id": "213",
+      "home_team": "Mississippi State Bulldogs",
+      "away_team": "Penn State Nittany Lions",
+      "neutral_site": true,
+      "start_time_utc": "2026-11-28T00:30:00+00:00",
+      "created_at_utc": "2026-11-26T14:27:45.260339+00:00",
+      "home_win_prob": 0.5990435345414712,
+      "predicted_winner": "Mississippi State Bulldogs",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "d3ee6e440eb09e4918a28e2dbd5145a63fbf1a9676400928c6ec827b41ccb397",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": 52.26795543887283,
+        "home_advantage": 0.0,
+        "off_eff_diff": -1.625986468136091,
+        "def_eff_diff": -3.881489165368876,
+        "efg_diff": -0.009877796633078528,
+        "tov_rate_diff": 0.006892339872906106,
+        "orb_rate_diff": 0.04291029164188215,
+        "ft_rate_diff": -0.08479579310617508,
+        "pace_diff": 2.968541666666681,
+        "rest_diff": 0.0,
+        "experience_diff": 0.0
+      }
     }
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "e27cd24a970a8504707c88b064afff06894a002769aa477fbfc1edd701e03ce3",
-    "bytes": 715667,
-    "archive_sha256": "d01639738bb2f5afd896058003124920cdefd361f48574a55bc1c97d472aae44",
+    "sha256": "d3ee6e440eb09e4918a28e2dbd5145a63fbf1a9676400928c6ec827b41ccb397",
+    "bytes": 729240,
+    "archive_sha256": "83d157999b452fb9b32b70fcf3d187ca9deb0010767fa1cd14c8069ac2253011",
     "live_schedule_sources": [
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&groups=50&limit=1000",
@@ -87413,16 +87481,7 @@
         "games": 0
       }
     ],
-    "identity_conflicts": [
-      {
-        "game_id": 401929288,
-        "reason": "Live/archive schedule identity mismatch: 401929288 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 235, 'away_id': 154, 'season': 2027}"
-      },
-      {
-        "game_id": 401929289,
-        "reason": "Live/archive schedule identity mismatch: 401929289 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 344, 'away_id': 213, 'season': 2027}"
-      }
-    ]
+    "identity_conflicts": []
   },
   "history_sources": [
     [
@@ -87514,6 +87573,5 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ],
-  "results_checked_at_utc": "2026-11-26T14:24:12.682494+00:00"
+  ]
 }
