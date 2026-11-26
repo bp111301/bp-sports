@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2211,
-    "settled_games": 1118,
-    "pending_games": 1093,
-    "wins": 802,
+    "settled_games": 1120,
+    "pending_games": 1091,
+    "wins": 804,
     "losses": 316,
-    "accuracy": 0.7173524150268337,
-    "brier": 0.18366360130575368,
-    "log_loss": 0.5439480622502513
+    "accuracy": 0.7178571428571429,
+    "brier": 0.18357963026348967,
+    "log_loss": 0.5437977918429465
   },
   "predictions": [
     {
@@ -1969,7 +1969,7 @@
       "created_at_utc": "2026-10-28T01:17:10.800168+00:00",
       "home_win_prob": 0.6761606289269229,
       "predicted_winner": "Texas Longhorns",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
       "forecast_stage": "early_research_prior",
@@ -1985,7 +1985,18 @@
         "pace_diff": 1.3919829222011373,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 92,
+      "away_score": 83,
+      "actual_winner": "Texas Longhorns",
+      "correct": 1,
+      "brier": 0.10487193825700615,
+      "log_loss": 0.39132461440975996,
+      "verified_start_time_utc": "2026-11-26T19:30:00+00:00",
+      "settled_at_utc": "2026-11-26T23:04:04.344423+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261126&limit=1000&groups=50",
+      "result_source_event_sha256": "226cd8b545286d56781ded3d2a4cd107ac513d0b28ce2de9c2f1d7e8985ff864"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401912213",
@@ -87112,7 +87123,7 @@
       "created_at_utc": "2026-11-25T14:48:43.401116+00:00",
       "home_win_prob": 0.41037506871005186,
       "predicted_winner": "Miami Hurricanes",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "5df1d3f61e3619d35a19c0b4e6f92f59eac0575af2d6c46a720e1a0ab326a4b0",
       "forecast_stage": "early_research_prior",
@@ -87128,7 +87139,18 @@
         "pace_diff": 2.2236529157117246,
         "rest_diff": 0.0,
         "experience_diff": -0.13353139262452252
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 70,
+      "away_score": 97,
+      "actual_winner": "Miami Hurricanes",
+      "correct": 1,
+      "brier": 0.16840769701877978,
+      "log_loss": 0.5282686539094998,
+      "verified_start_time_utc": "2026-11-26T20:30:00+00:00",
+      "settled_at_utc": "2026-11-26T23:04:04.344423+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261126&limit=1000&groups=50",
+      "result_source_event_sha256": "b8049bf4d93738d4a5260cc89214bf1a7b77524b29cd89244df02be1b2864bad"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920538",
@@ -87642,5 +87664,6 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ]
+  ],
+  "results_checked_at_utc": "2026-11-26T23:04:04.344423+00:00"
 }
