@@ -86787,7 +86787,7 @@
     "created_at_utc": "2026-11-25T14:48:43.401116+00:00",
     "home_win_prob": 0.7099497133492445,
     "predicted_winner": "VCU Rams",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "5df1d3f61e3619d35a19c0b4e6f92f59eac0575af2d6c46a720e1a0ab326a4b0",
     "forecast_stage": "early_research_prior",
@@ -86803,7 +86803,18 @@
       "pace_diff": 1.7784657948261042,
       "rest_diff": -1.0,
       "experience_diff": 0.18232155679395468
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 80,
+    "away_score": 78,
+    "actual_winner": "VCU Rams",
+    "correct": 1,
+    "brier": 0.08412916878618543,
+    "log_loss": 0.34256113772374425,
+    "verified_start_time_utc": "2026-11-26T03:00:00+00:00",
+    "settled_at_utc": "2026-11-26T05:08:47.342621+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261125&limit=1000&groups=50",
+    "result_source_event_sha256": "b0cb24b61ec336a385f2315f550c9164e78d29ffe309f212df19a6d504badd94"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401921672",
