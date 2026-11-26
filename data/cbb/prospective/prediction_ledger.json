@@ -86865,7 +86865,7 @@
     "created_at_utc": "2026-11-25T14:48:43.401116+00:00",
     "home_win_prob": 0.6806793159934716,
     "predicted_winner": "Saint Louis Billikens",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "5df1d3f61e3619d35a19c0b4e6f92f59eac0575af2d6c46a720e1a0ab326a4b0",
     "forecast_stage": "early_research_prior",
@@ -86881,7 +86881,18 @@
       "pace_diff": 4.855700549450546,
       "rest_diff": -1.0,
       "experience_diff": -0.15415067982725827
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 66,
+    "away_score": 64,
+    "actual_winner": "Saint Louis Billikens",
+    "correct": 1,
+    "brier": 0.10196569923439713,
+    "log_loss": 0.38466398536647245,
+    "verified_start_time_utc": "2026-11-26T06:08:00+00:00",
+    "settled_at_utc": "2026-11-26T08:05:52.354432+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261125&limit=1000&groups=50",
+    "result_source_event_sha256": "29a6a7e62e9904a25d2f611cd9bbd51dc16a5ede79cac12cff588fcb721245d7"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401921714",
