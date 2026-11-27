@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2211,
-    "settled_games": 1133,
-    "pending_games": 1078,
-    "wins": 812,
-    "losses": 321,
-    "accuracy": 0.7166813768755517,
-    "brier": 0.18389526165169373,
-    "log_loss": 0.544438450262602
+    "settled_games": 1135,
+    "pending_games": 1076,
+    "wins": 813,
+    "losses": 322,
+    "accuracy": 0.7162995594713656,
+    "brier": 0.18389345046771613,
+    "log_loss": 0.5443843652425232
   },
   "predictions": [
     {
@@ -46632,7 +46632,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.1221463927451823,
       "predicted_winner": "Virginia Cavaliers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -46648,7 +46648,18 @@
         "pace_diff": 4.006172014260272,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 71,
+      "away_score": 83,
+      "actual_winner": "Virginia Cavaliers",
+      "correct": 1,
+      "brier": 0.014919741260660322,
+      "log_loss": 0.13027543358265528,
+      "verified_start_time_utc": "2026-11-27T16:00:00+00:00",
+      "settled_at_utc": "2026-11-27T19:31:01.865173+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&limit=1000&groups=50",
+      "result_source_event_sha256": "d5467bc3121080a00664b0bb98b60bd990cff60fcc90560c1405874426ab3d24"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920848",
@@ -46666,7 +46677,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.5922964529930546,
       "predicted_winner": "St. Thomas Tommies",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -46682,7 +46693,18 @@
         "pace_diff": 4.4409339080459915,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 67,
+      "away_score": 76,
+      "actual_winner": "Liberty Flames",
+      "correct": 0,
+      "brier": 0.35081508822815366,
+      "log_loss": 0.897214969153211,
+      "verified_start_time_utc": "2026-11-27T17:00:00+00:00",
+      "settled_at_utc": "2026-11-27T19:31:01.865173+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&limit=1000&groups=50",
+      "result_source_event_sha256": "ea561c76492d9fac84279825e072c6ce15d564025c0b5e9fb70f9c148f32972b"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401921416",
@@ -87835,5 +87857,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-27T18:11:37.473415+00:00"
+  "results_checked_at_utc": "2026-11-27T19:31:01.865173+00:00"
 }
