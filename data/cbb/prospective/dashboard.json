@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2219,
-    "settled_games": 1142,
-    "pending_games": 1077,
-    "wins": 814,
+    "settled_games": 1143,
+    "pending_games": 1076,
+    "wins": 815,
     "losses": 328,
-    "accuracy": 0.712784588441331,
-    "brier": 0.18467878545627922,
-    "log_loss": 0.5459932097466976
+    "accuracy": 0.7130358705161854,
+    "brier": 0.1845413506612209,
+    "log_loss": 0.5456744471664536
   },
   "predictions": [
     {
@@ -46992,7 +46992,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.833895169532613,
       "predicted_winner": "Butler Bulldogs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -47008,7 +47008,18 @@
         "pace_diff": 4.356145833333329,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 92,
+      "away_score": 56,
+      "actual_winner": "Butler Bulldogs",
+      "correct": 1,
+      "brier": 0.027590814704599377,
+      "log_loss": 0.1816475805278562,
+      "verified_start_time_utc": "2026-11-27T20:00:00+00:00",
+      "settled_at_utc": "2026-11-27T21:53:04.350472+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&limit=1000&groups=50",
+      "result_source_event_sha256": "4fb37e3ece0d24ea0cc165dd1a5c876a03214d36a7187803c92a8e0f4fba5faa"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401924738",
@@ -88165,5 +88176,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-27T21:48:01.499065+00:00"
+  "results_checked_at_utc": "2026-11-27T21:53:04.350472+00:00"
 }
