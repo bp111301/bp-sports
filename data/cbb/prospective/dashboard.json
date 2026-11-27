@@ -2,12 +2,12 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-26T21:38:49.369827+00:00",
+  "updated_at_utc": "2026-11-27T03:40:19.792321+00:00",
   "coverage": {
-    "source_games_in_horizon": 1316
+    "source_games_in_horizon": 1303
   },
   "excluded": {
-    "division_or_conference_unknown": 217,
+    "division_or_conference_unknown": 212,
     "tipoff_time_unconfirmed": 16
   },
   "grading_issues": [
@@ -87481,7 +87481,7 @@
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "e08ce0b40f16a9dae03f093f2251dcacd8ef045fbd8a48bf5f8460f36f09e53d",
+    "sha256": "1c6410727c35a84a3becda409a808ad93d56878154412492b2594a6f1ff12a4d",
     "bytes": 729240,
     "archive_sha256": "83d157999b452fb9b32b70fcf3d187ca9deb0010767fa1cd14c8069ac2253011",
     "live_schedule_sources": [
@@ -87501,18 +87501,13 @@
         "games": 44
       },
       {
-        "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261125&groups=50&limit=1000",
-        "sha256": "6d84a0b133ef808079b45c736edd78c9ff93548999c31b1f885fb2dc71e16919",
-        "games": 69
-      },
-      {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261126&groups=50&limit=1000",
-        "sha256": "27cc7c5d2af4b5b5434b605e23a2d7296d8196df18e4b01cb38113a93c109d13",
+        "sha256": "024a46bc2beaa67df8a39461a12b025b5bc55a7c414485a218f9da61d1021938",
         "games": 21
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&groups=50&limit=1000",
-        "sha256": "a9d956f1c5780b17c5eea6ade52f91ab0fdeaf989eec047be0574cd2b3a4f98d",
+        "sha256": "98aa7f781e40adf196db3cecf88f3cb03d823a3bd22b066c8a5ceca2ac9d8b2a",
         "games": 55
       },
       {
@@ -87532,7 +87527,7 @@
       },
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261201&groups=50&limit=1000",
-        "sha256": "7d8451c878930fac13aa9dece470c25674d5207b9a4d523b6be761ee4d6a23c6",
+        "sha256": "37635e6b8d6e0a1542b585a5214c31296fe6d28390fcc239bd6fff3c13fc5229",
         "games": 66
       },
       {
@@ -87659,6 +87654,26 @@
       {
         "game_id": 401920535,
         "reason": "Live/archive schedule identity mismatch: 401920535 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 21, 'away_id': -2, 'season': 2027}"
+      },
+      {
+        "game_id": 401920541,
+        "reason": "Live/archive schedule identity mismatch: 401920541 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': -1, 'away_id': 130, 'season': 2027}"
+      },
+      {
+        "game_id": 401920542,
+        "reason": "Live/archive schedule identity mismatch: 401920542 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': -1, 'away_id': 2628, 'season': 2027}"
+      },
+      {
+        "game_id": 401920544,
+        "reason": "Live/archive schedule identity mismatch: 401920544 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': -1, 'away_id': 156, 'season': 2027}"
+      },
+      {
+        "game_id": 401921717,
+        "reason": "Live/archive schedule identity mismatch: 401921717 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 26, 'away_id': 46, 'season': 2027}"
+      },
+      {
+        "game_id": 401921718,
+        "reason": "Live/archive schedule identity mismatch: 401921718 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 2608, 'away_id': 251, 'season': 2027}"
       }
     ]
   },
@@ -87752,6 +87767,5 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ],
-  "results_checked_at_utc": "2026-11-27T03:37:54.499383+00:00"
+  ]
 }
