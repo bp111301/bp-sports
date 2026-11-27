@@ -3,8 +3,8 @@
   "status": "research_only_not_promoted",
   "weights_frozen": true,
   "paired_games": 185,
-  "settled_paired_games": 184,
-  "pending_paired_games": 1,
+  "settled_paired_games": 185,
+  "pending_paired_games": 0,
   "invalid_timing": 0,
   "coverage": [
     {
@@ -15,44 +15,44 @@
   "metrics": [
     {
       "candidate": "team_control",
-      "games": 184,
-      "correct": 115,
-      "accuracy": 0.625,
-      "brier": 0.23994842148964884,
-      "log_loss": 0.7035932521726073
+      "games": 185,
+      "correct": 116,
+      "accuracy": 0.6270270270270271,
+      "brier": 0.2399654304613283,
+      "log_loss": 0.7034621343545859
     },
     {
       "candidate": "inferred_goalie",
-      "games": 184,
-      "correct": 115,
-      "accuracy": 0.625,
-      "brier": 0.2390017122239623,
-      "log_loss": 0.6952162971216903
+      "games": 185,
+      "correct": 116,
+      "accuracy": 0.6270270270270271,
+      "brier": 0.23892865941504104,
+      "log_loss": 0.6949398858155156
     },
     {
       "candidate": "confirmed_goalie",
-      "games": 184,
-      "correct": 114,
-      "accuracy": 0.6195652173913043,
-      "brier": 0.2390959571185953,
-      "log_loss": 0.6955643213245519
+      "games": 185,
+      "correct": 115,
+      "accuracy": 0.6216216216216216,
+      "brier": 0.23898839128041724,
+      "log_loss": 0.6952177993318924
     }
   ],
   "first_formal_review_paired_games": 500,
   "automatic_promotion": false,
   "confirmed_minus_control": {
     "team_control": {
-      "accuracy": -0.005434782608695676,
-      "brier": -0.0008524643710535462,
-      "log_loss": -0.008028930848055338
+      "accuracy": -0.005405405405405461,
+      "brier": -0.000977039180911049,
+      "log_loss": -0.008244335022693505
     },
     "inferred_goalie": {
-      "accuracy": -0.005434782608695676,
-      "brier": 9.42448946329999e-05,
-      "log_loss": 0.0003480242028616187
+      "accuracy": -0.005405405405405461,
+      "brier": 5.973186537619468e-05,
+      "log_loss": 0.0002779135163768487
     }
   },
   "games_in_current_prediction_window": 1,
   "newly_eligible_games": 1,
-  "results_checked_at_utc": "2026-11-27T21:32:46.355980+00:00"
+  "results_checked_at_utc": "2026-11-27T21:37:45.504330+00:00"
 }
