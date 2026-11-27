@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2219,
-    "settled_games": 1149,
-    "pending_games": 1070,
-    "wins": 817,
+    "settled_games": 1150,
+    "pending_games": 1069,
+    "wins": 818,
     "losses": 332,
-    "accuracy": 0.7110530896431679,
-    "brier": 0.185227689116187,
-    "log_loss": 0.5472857419455238
+    "accuracy": 0.711304347826087,
+    "brier": 0.18507362628881074,
+    "log_loss": 0.5468916137245655
   },
   "predictions": [
     {
@@ -47251,7 +47251,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9102479101441545,
       "predicted_winner": "Missouri Tigers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -47267,7 +47267,18 @@
         "pace_diff": -2.623307291666663,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 97,
+      "away_score": 61,
+      "actual_winner": "Missouri Tigers",
+      "correct": 1,
+      "brier": 0.008055437633491761,
+      "log_loss": 0.09403828784336934,
+      "verified_start_time_utc": "2026-11-27T21:00:00+00:00",
+      "settled_at_utc": "2026-11-27T23:09:02.456032+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&limit=1000&groups=50",
+      "result_source_event_sha256": "b945fa74edee91614e5e6fc630c39a4f0235c43aad17fe3df349e04d29d70841"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401924845",
@@ -88242,5 +88253,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-27T23:03:56.216892+00:00"
+  "results_checked_at_utc": "2026-11-27T23:09:02.456032+00:00"
 }
