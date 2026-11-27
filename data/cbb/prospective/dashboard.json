@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2219,
-    "settled_games": 1139,
-    "pending_games": 1080,
-    "wins": 813,
-    "losses": 326,
-    "accuracy": 0.713784021071115,
-    "brier": 0.1843526332970477,
-    "log_loss": 0.5453719798544582
+    "settled_games": 1141,
+    "pending_games": 1078,
+    "wins": 814,
+    "losses": 327,
+    "accuracy": 0.7134092900964066,
+    "brier": 0.18442293652723737,
+    "log_loss": 0.5454442486915004
   },
   "predictions": [
     {
@@ -46891,7 +46891,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.9260584827456142,
       "predicted_winner": "Vanderbilt Commodores",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -46907,7 +46907,18 @@
         "pace_diff": -1.0058823529411711,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 111,
+      "away_score": 56,
+      "actual_winner": "Vanderbilt Commodores",
+      "correct": 1,
+      "brier": 0.005467347973880633,
+      "log_loss": 0.07681789001747531,
+      "verified_start_time_utc": "2026-11-27T19:00:00+00:00",
+      "settled_at_utc": "2026-11-27T21:12:26.992894+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&limit=1000&groups=50",
+      "result_source_event_sha256": "5c946bfc8a344af87cf81a0a76e0bd05cc17bbe864e8da708ed84ad7e0c7f381"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401929181",
@@ -87547,7 +87558,7 @@
       "created_at_utc": "2026-11-26T14:27:45.260339+00:00",
       "home_win_prob": 0.33407665285964494,
       "predicted_winner": "Wake Forest Demon Deacons",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "d3ee6e440eb09e4918a28e2dbd5145a63fbf1a9676400928c6ec827b41ccb397",
       "forecast_stage": "early_research_prior",
@@ -87563,7 +87574,18 @@
         "pace_diff": 1.97146707459207,
         "rest_diff": -1.0,
         "experience_diff": -0.15415067982725827
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 88,
+      "away_score": 85,
+      "actual_winner": "Memphis Tigers",
+      "correct": 0,
+      "brier": 0.44345390426661385,
+      "log_loss": 1.0963848127566613,
+      "verified_start_time_utc": "2026-11-27T18:30:00+00:00",
+      "settled_at_utc": "2026-11-27T21:12:26.992894+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&limit=1000&groups=50",
+      "result_source_event_sha256": "5e7d92afb973e386f10dcfa3fdf82d21b0c5af3b7883aa956b56bfbf2a364a3c"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401929289",
@@ -88132,5 +88154,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-27T21:07:27.506154+00:00"
+  "results_checked_at_utc": "2026-11-27T21:12:26.992894+00:00"
 }
