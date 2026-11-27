@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2219,
-    "settled_games": 1151,
-    "pending_games": 1068,
-    "wins": 819,
+    "settled_games": 1153,
+    "pending_games": 1066,
+    "wins": 821,
     "losses": 332,
-    "accuracy": 0.7115551694178974,
-    "brier": 0.18508470929060666,
-    "log_loss": 0.5469276702685412
+    "accuracy": 0.7120555073720729,
+    "brier": 0.18492659169774275,
+    "log_loss": 0.5466089184467451
   },
   "predictions": [
     {
@@ -2014,7 +2014,7 @@
       "created_at_utc": "2026-10-29T01:15:36.365616+00:00",
       "home_win_prob": 0.6510132769490219,
       "predicted_winner": "American University Eagles",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "a3f51c1a83ec9ad4d037baa53bbdd79d25b78ef3882f465e779320b314b0ae21",
       "forecast_stage": "early_research_prior",
@@ -2030,7 +2030,18 @@
         "pace_diff": -6.8944683908046045,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 64,
+      "away_score": 62,
+      "actual_winner": "American University Eagles",
+      "correct": 1,
+      "brier": 0.12179173286586009,
+      "log_loss": 0.4292252422825785,
+      "verified_start_time_utc": "2026-11-27T21:00:00+00:00",
+      "settled_at_utc": "2026-11-27T23:34:17.405032+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&limit=1000&groups=50",
+      "result_source_event_sha256": "0df33ed65848d0417d9317247b932a667c182a2edc8a6e30628bd2e7dd83a2c0"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401912232",
@@ -47341,7 +47352,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.2570371590709814,
       "predicted_winner": "Cincinnati Bearcats",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -47357,7 +47368,18 @@
         "pace_diff": -1.9695625610948042,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 59,
+      "away_score": 70,
+      "actual_winner": "Cincinnati Bearcats",
+      "correct": 1,
+      "brier": 0.066068101143281,
+      "log_loss": 0.29710924772361885,
+      "verified_start_time_utc": "2026-11-27T21:30:00+00:00",
+      "settled_at_utc": "2026-11-27T23:34:17.405032+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&limit=1000&groups=50",
+      "result_source_event_sha256": "808599417f814e379d94e53c4a97dc1ef8bc99240606bc079f04c8f15a80bdde"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401909789",
@@ -88264,5 +88286,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-27T23:29:21.201999+00:00"
+  "results_checked_at_utc": "2026-11-27T23:34:17.405032+00:00"
 }
