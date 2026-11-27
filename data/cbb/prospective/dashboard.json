@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2219,
-    "settled_games": 1145,
-    "pending_games": 1074,
+    "settled_games": 1146,
+    "pending_games": 1073,
     "wins": 816,
-    "losses": 329,
-    "accuracy": 0.7126637554585152,
-    "brier": 0.18463077817733273,
-    "log_loss": 0.5457927485496216
+    "losses": 330,
+    "accuracy": 0.7120418848167539,
+    "brier": 0.18471284787692005,
+    "log_loss": 0.5459714398386297
   },
   "predictions": [
     {
@@ -87681,7 +87681,7 @@
       "created_at_utc": "2026-11-27T19:33:20.035021+00:00",
       "home_win_prob": 0.5279040195948544,
       "predicted_winner": "Baylor Bears",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "4a1d36b9ffc70c0528263214adc8cdf38ef09a01b6b6dddf9c9a239a56a5667b",
       "forecast_stage": "early_research_prior",
@@ -87697,7 +87697,18 @@
         "pace_diff": -2.71637166596841,
         "rest_diff": -1.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 69,
+      "away_score": 88,
+      "actual_winner": "TCU Horned Frogs",
+      "correct": 0,
+      "brier": 0.27868265390440444,
+      "log_loss": 0.7505729657530618,
+      "verified_start_time_utc": "2026-11-27T20:00:00+00:00",
+      "settled_at_utc": "2026-11-27T22:18:20.902406+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&limit=1000&groups=50",
+      "result_source_event_sha256": "0f3050ab4901e537ca9a880f162f459acd993f186df69871c73273928fabbbfb"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920532",
@@ -88198,5 +88209,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-27T22:13:19.154405+00:00"
+  "results_checked_at_utc": "2026-11-27T22:18:20.902406+00:00"
 }
