@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2211,
-    "settled_games": 1125,
-    "pending_games": 1086,
+    "settled_games": 1126,
+    "pending_games": 1085,
     "wins": 807,
-    "losses": 318,
-    "accuracy": 0.7173333333333334,
-    "brier": 0.18374907542942942,
-    "log_loss": 0.5441579555959786
+    "losses": 319,
+    "accuracy": 0.716696269982238,
+    "brier": 0.1838555576672282,
+    "log_loss": 0.5443859037102793
   },
   "predictions": [
     {
@@ -46452,7 +46452,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.5510427163032273,
       "predicted_winner": "DePaul Blue Demons",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -46468,7 +46468,18 @@
         "pace_diff": 2.7001775568181756,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 64,
+      "away_score": 71,
+      "actual_winner": "Pittsburgh Panthers",
+      "correct": 0,
+      "brier": 0.3036480751908391,
+      "log_loss": 0.80082753229845,
+      "verified_start_time_utc": "2026-11-27T00:00:00+00:00",
+      "settled_at_utc": "2026-11-27T02:37:16.485650+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261126&limit=1000&groups=50",
+      "result_source_event_sha256": "871d66ee81b3c573491825735fd66be44222a1c3e52800a68a6d48eca3fdd474"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401918972",
@@ -87720,5 +87731,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-27T02:32:04.645704+00:00"
+  "results_checked_at_utc": "2026-11-27T02:37:16.485650+00:00"
 }
