@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2211,
-    "settled_games": 1127,
-    "pending_games": 1084,
+    "settled_games": 1128,
+    "pending_games": 1083,
     "wins": 808,
-    "losses": 319,
-    "accuracy": 0.7169476486246673,
-    "brier": 0.18389622190446056,
-    "log_loss": 0.544481827835012
+    "losses": 320,
+    "accuracy": 0.7163120567375887,
+    "brier": 0.18406927698018347,
+    "log_loss": 0.5448469727487474
   },
   "predictions": [
     {
@@ -46497,7 +46497,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.384287122661952,
       "predicted_winner": "SMU Mustangs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -46513,7 +46513,18 @@
         "pace_diff": -0.7401515151514957,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 95,
+      "away_score": 86,
+      "actual_winner": "LSU Tigers",
+      "correct": 0,
+      "brier": 0.37910234731989817,
+      "log_loss": 0.9563652905287038,
+      "verified_start_time_utc": "2026-11-27T00:00:00+00:00",
+      "settled_at_utc": "2026-11-27T03:07:36.672428+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261126&limit=1000&groups=50",
+      "result_source_event_sha256": "bd4868e9e94e4c9b0d2098ad5e34dea19b6aeb7ea4d1f34d416aea89d5444ab2"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911523",
@@ -87742,5 +87753,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-27T03:02:22.311386+00:00"
+  "results_checked_at_utc": "2026-11-27T03:07:36.672428+00:00"
 }
