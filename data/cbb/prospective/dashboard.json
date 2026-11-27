@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2211,
-    "settled_games": 1124,
-    "pending_games": 1087,
+    "settled_games": 1125,
+    "pending_games": 1086,
     "wins": 807,
-    "losses": 317,
-    "accuracy": 0.7179715302491103,
-    "brier": 0.1835142214284008,
-    "log_loss": 0.5436580897366475
+    "losses": 318,
+    "accuracy": 0.7173333333333334,
+    "brier": 0.18374907542942942,
+    "log_loss": 0.5441579555959786
   },
   "predictions": [
     {
@@ -87212,7 +87212,7 @@
       "created_at_utc": "2026-11-25T14:48:43.401116+00:00",
       "home_win_prob": 0.33087746071023544,
       "predicted_winner": "TCU Horned Frogs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "5df1d3f61e3619d35a19c0b4e6f92f59eac0575af2d6c46a720e1a0ab326a4b0",
       "forecast_stage": "early_research_prior",
@@ -87228,7 +87228,18 @@
         "pace_diff": -3.25181953463202,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 95,
+      "away_score": 87,
+      "actual_winner": "Creighton Bluejays",
+      "correct": 0,
+      "brier": 0.4477249725855826,
+      "log_loss": 1.1060071814841037,
+      "verified_start_time_utc": "2026-11-26T23:00:00+00:00",
+      "settled_at_utc": "2026-11-27T01:31:14.011410+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261126&limit=1000&groups=50",
+      "result_source_event_sha256": "438edba0a436225caa1a269e2cc819e242d068218865d1293438ff2ebb6239cc"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920530",
@@ -87709,5 +87720,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-27T01:25:58.487649+00:00"
+  "results_checked_at_utc": "2026-11-27T01:31:14.011410+00:00"
 }
