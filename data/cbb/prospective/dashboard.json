@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2211,
-    "settled_games": 1130,
-    "pending_games": 1081,
-    "wins": 809,
+    "settled_games": 1133,
+    "pending_games": 1078,
+    "wins": 812,
     "losses": 321,
-    "accuracy": 0.715929203539823,
-    "brier": 0.18415727997491146,
-    "log_loss": 0.5449990885741332
+    "accuracy": 0.7166813768755517,
+    "brier": 0.18389526165169373,
+    "log_loss": 0.544438450262602
   },
   "predictions": [
     {
@@ -46587,7 +46587,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.37615441468925215,
       "predicted_winner": "Pacific Tigers",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -46603,7 +46603,18 @@
         "pace_diff": 2.843172969966645,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 62,
+      "away_score": 71,
+      "actual_winner": "Pacific Tigers",
+      "correct": 1,
+      "brier": 0.14149214369021387,
+      "log_loss": 0.4718524006737523,
+      "verified_start_time_utc": "2026-11-27T03:30:00+00:00",
+      "settled_at_utc": "2026-11-27T08:10:22.684482+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261126&limit=1000&groups=50",
+      "result_source_event_sha256": "e88bfb236e41cbbe696bb2049a7dc209b8ec799390e71c2804ff2da4767072fe"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920429",
@@ -87380,7 +87391,7 @@
       "created_at_utc": "2026-11-25T14:48:43.401116+00:00",
       "home_win_prob": 0.16109407530822833,
       "predicted_winner": "Texas Tech Red Raiders",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "5df1d3f61e3619d35a19c0b4e6f92f59eac0575af2d6c46a720e1a0ab326a4b0",
       "forecast_stage": "early_research_prior",
@@ -87396,7 +87407,18 @@
         "pace_diff": -0.6861778846153754,
         "rest_diff": 0.0,
         "experience_diff": -0.15415067982725827
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 59,
+      "away_score": 62,
+      "actual_winner": "Texas Tech Red Raiders",
+      "correct": 1,
+      "brier": 0.02595130109941314,
+      "log_loss": 0.17565670670188685,
+      "verified_start_time_utc": "2026-11-27T04:57:00+00:00",
+      "settled_at_utc": "2026-11-27T08:10:22.684482+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261126&limit=1000&groups=50",
+      "result_source_event_sha256": "8807921363f8e3ecd46116ccf79a11f47e054aa6952a28168bbb5a54af365a04"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920540",
@@ -87414,7 +87436,7 @@
       "created_at_utc": "2026-11-25T14:48:43.401116+00:00",
       "home_win_prob": 0.296920250116754,
       "predicted_winner": "Gonzaga Bulldogs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "5df1d3f61e3619d35a19c0b4e6f92f59eac0575af2d6c46a720e1a0ab326a4b0",
       "forecast_stage": "early_research_prior",
@@ -87430,7 +87452,18 @@
         "pace_diff": 0.15805598970922574,
         "rest_diff": 0.0,
         "experience_diff": 0.15415067982725827
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 64,
+      "away_score": 72,
+      "actual_winner": "Gonzaga Bulldogs",
+      "correct": 1,
+      "brier": 0.08816163492939574,
+      "log_loss": 0.35228495138187615,
+      "verified_start_time_utc": "2026-11-27T04:53:00+00:00",
+      "settled_at_utc": "2026-11-27T08:10:22.684482+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261126&limit=1000&groups=50",
+      "result_source_event_sha256": "1b8505cfe836e2b13ca842a9c84f007c975cbafc25c05d03c54e4776f71d72f2"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401929288",
@@ -87790,5 +87823,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-27T05:06:07.443602+00:00"
+  "results_checked_at_utc": "2026-11-27T08:10:22.684482+00:00"
 }
