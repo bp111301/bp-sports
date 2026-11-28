@@ -1,22 +1,22 @@
 {
-  "checked_at_utc": "2026-11-27T20:02:29.526072+00:00",
+  "checked_at_utc": "2026-11-28T02:47:26.168646+00:00",
   "sports": {
     "cfb": {
-      "supported_future_games": 64,
-      "new_targets": 2,
+      "supported_future_games": 57,
+      "new_targets": 0,
       "unsupported_fbs_fcs_future_games": 0,
       "dropped_crossed_publish_margin": 0,
-      "new_paired_forecasts": 2,
-      "new_settlements": 1
+      "new_paired_forecasts": 0,
+      "new_settlements": 8
     },
     "nhl": {
-      "supported_future_games": 20,
-      "new_targets": 11,
-      "completed_current_games": 399,
+      "supported_future_games": 13,
+      "new_targets": 0,
+      "completed_current_games": 411,
       "official_count_fallback_game_ids": [],
       "dropped_crossed_publish_margin": 0,
-      "new_paired_forecasts": 11,
-      "new_settlements": 0
+      "new_paired_forecasts": 0,
+      "new_settlements": 12
     }
   },
   "errors": [],
@@ -125,6 +125,13 @@
       "reason": "Scheduled start changed; requires explicit review",
       "saved_start_time_utc": "2026-11-22T03:15:00+00:00",
       "official_start_time_utc": "2026-11-22T03:30:00+00:00"
+    },
+    {
+      "sport": "cfb",
+      "forecast_key": "confidence_shadow_20261029:cfb:401858536",
+      "reason": "Scheduled start changed; requires explicit review",
+      "saved_start_time_utc": "2026-11-27T17:00:00+00:00",
+      "official_start_time_utc": "2026-11-27T17:08:00+00:00"
     }
   ],
   "frozen_sources": {
