@@ -1,7 +1,7 @@
 {
   "season": 2026,
   "week": 12,
-  "updated_at_utc": "2026-11-27T19:47:01.030961+00:00",
+  "updated_at_utc": "2026-11-28T15:05:36.250302+00:00",
   "games": {
     "2026_06_CHI_ATL": {
       "game_id": "2026_06_CHI_ATL",
@@ -13920,7 +13920,7 @@
       "home_team": "CIN",
       "away_team": "NO",
       "kickoff_utc": "2026-11-29T18:00:00+00:00",
-      "checked_at_utc": "2026-11-27T19:47:00.993484+00:00",
+      "checked_at_utc": "2026-11-28T15:05:36.117786+00:00",
       "home": {
         "team": "CIN",
         "injury_report_available": true,
@@ -13929,12 +13929,41 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Jalen Davis",
+            "position": "CB",
+            "injury": "Hamstring",
+            "status": "Doubtful",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Tee Higgins",
+            "position": "WR",
+            "injury": "Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Andrei Iosivas",
+            "position": "WR",
+            "injury": "Thumb",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Dalton Risner",
+            "position": "G",
+            "injury": "Knee, Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0036442",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:00.993438+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.117509+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Joe Burrow",
         "schedule_qb_id": "00-0036442",
@@ -13950,12 +13979,41 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Noah Fant",
+            "position": "TE",
+            "injury": "Calf",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Taliese Fuaga",
+            "position": "T",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Juwan Johnson",
+            "position": "TE",
+            "injury": "Hamstring, Wrist",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Asim Richards",
+            "position": "T",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0040743",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:00.993471+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.117716+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Tyler Shough",
         "schedule_qb_id": "00-0040743",
@@ -13971,20 +14029,26 @@
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-27T19:47:00.218943+00:00",
-          "sha256": "cdb787d0d4b760f4056796bcf539b5e36dfbd70199f6d0422b13c8a3552676d5",
+          "retrieved_at_utc": "2026-11-28T15:05:35.124364+00:00",
+          "sha256": "8a0f345c1fbb4c861708f14c6eb4cec81f5ffdcb7572ebc46c66643ced8509ad",
           "http_status": 200
         },
         {
-          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
-          "retrieved_at_utc": "2026-11-27T19:47:00.684314+00:00",
-          "sha256": "582e5449f614427a8a5e662c818d317fd91e8ea3ffad4b6b7527c212564202bb",
+          "url": "https://www.nfl.com/news/brock-purdy-ankle-out-49ers-seahawks-mac-jones-start",
+          "retrieved_at_utc": "2026-11-28T15:05:35.465269+00:00",
+          "sha256": "9b67e8e364fb7b1d1bac81a2f638df1e393a38db85e096f40c1565267f0e5faf",
           "http_status": 200
         },
         {
           "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
-          "retrieved_at_utc": "2026-11-27T19:47:00.885367+00:00",
-          "sha256": "935735482ff9f70d2f9ed1519cb78f426dc9b1530bdcfcf7bffa1608de21986e",
+          "retrieved_at_utc": "2026-11-28T15:05:35.791239+00:00",
+          "sha256": "4ebcf03bfa09325d8ad14744c661ebcb258854ccf8e1957c0661662a5803f6c8",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-28T15:05:36.022183+00:00",
+          "sha256": "0b2d4f5f6d567531c6dc6f016f2ffe6d59900068883f5c35e7f5058efe660f99",
           "http_status": 200
         }
       ],
@@ -14008,8 +14072,8 @@
         "away_qb_name_assumed": "Tyler Shough",
         "away_qb_id_assumed": "00-0040743",
         "kickoff_utc": "2026-11-29T18:00:00.000Z",
-        "captured_at_utc": "2026-11-27T19:47:03.566305+00:00",
-        "availability_checked_at_utc": "2026-11-27T19:47:00.993484+00:00",
+        "captured_at_utc": "2026-11-28T15:05:39.346026+00:00",
+        "availability_checked_at_utc": "2026-11-28T15:05:36.117786+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14021,7 +14085,7 @@
       "home_team": "HOU",
       "away_team": "BAL",
       "kickoff_utc": "2026-11-29T18:00:00+00:00",
-      "checked_at_utc": "2026-11-27T19:47:00.993540+00:00",
+      "checked_at_utc": "2026-11-28T15:05:36.117995+00:00",
       "home": {
         "team": "HOU",
         "injury_report_available": true,
@@ -14030,12 +14094,48 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Kayshon Boutte",
+            "position": "WR",
+            "injury": "Hip",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jacob Hummel",
+            "position": "LB",
+            "injury": "Abdomen, Groin",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Danielle Hunter",
+            "position": "DE",
+            "injury": "Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Brevin Jordan",
+            "position": "TE",
+            "injury": "Finger, Foot",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Keylan Rutledge",
+            "position": "G",
+            "injury": "Neck, Shoulder",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0039163",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:00.993512+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.117868+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "C.J. Stroud",
         "schedule_qb_id": "00-0039163",
@@ -14051,12 +14151,34 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Jaylinn Hawkins",
+            "position": "S",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Olaivavega Ioane",
+            "position": "G",
+            "injury": "Hand",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Nnamdi Madubuike",
+            "position": "DT",
+            "injury": "Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0033119",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:00.993531+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.117957+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Jacoby Brissett",
         "schedule_qb_id": "00-0033119",
@@ -14072,20 +14194,26 @@
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-27T19:47:00.218943+00:00",
-          "sha256": "cdb787d0d4b760f4056796bcf539b5e36dfbd70199f6d0422b13c8a3552676d5",
+          "retrieved_at_utc": "2026-11-28T15:05:35.124364+00:00",
+          "sha256": "8a0f345c1fbb4c861708f14c6eb4cec81f5ffdcb7572ebc46c66643ced8509ad",
           "http_status": 200
         },
         {
-          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
-          "retrieved_at_utc": "2026-11-27T19:47:00.684314+00:00",
-          "sha256": "582e5449f614427a8a5e662c818d317fd91e8ea3ffad4b6b7527c212564202bb",
+          "url": "https://www.nfl.com/news/brock-purdy-ankle-out-49ers-seahawks-mac-jones-start",
+          "retrieved_at_utc": "2026-11-28T15:05:35.465269+00:00",
+          "sha256": "9b67e8e364fb7b1d1bac81a2f638df1e393a38db85e096f40c1565267f0e5faf",
           "http_status": 200
         },
         {
           "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
-          "retrieved_at_utc": "2026-11-27T19:47:00.885367+00:00",
-          "sha256": "935735482ff9f70d2f9ed1519cb78f426dc9b1530bdcfcf7bffa1608de21986e",
+          "retrieved_at_utc": "2026-11-28T15:05:35.791239+00:00",
+          "sha256": "4ebcf03bfa09325d8ad14744c661ebcb258854ccf8e1957c0661662a5803f6c8",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-28T15:05:36.022183+00:00",
+          "sha256": "0b2d4f5f6d567531c6dc6f016f2ffe6d59900068883f5c35e7f5058efe660f99",
           "http_status": 200
         }
       ],
@@ -14109,8 +14237,8 @@
         "away_qb_name_assumed": "Jacoby Brissett",
         "away_qb_id_assumed": "00-0033119",
         "kickoff_utc": "2026-11-29T18:00:00.000Z",
-        "captured_at_utc": "2026-11-27T19:47:03.566305+00:00",
-        "availability_checked_at_utc": "2026-11-27T19:47:00.993540+00:00",
+        "captured_at_utc": "2026-11-28T15:05:39.346026+00:00",
+        "availability_checked_at_utc": "2026-11-28T15:05:36.117995+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14122,7 +14250,7 @@
       "home_team": "IND",
       "away_team": "NYG",
       "kickoff_utc": "2026-11-29T18:00:00+00:00",
-      "checked_at_utc": "2026-11-27T19:47:00.993596+00:00",
+      "checked_at_utc": "2026-11-28T15:05:36.118170+00:00",
       "home": {
         "team": "IND",
         "injury_report_available": true,
@@ -14131,12 +14259,62 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Will Mallory",
+            "position": "TE",
+            "injury": "Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Seth McGowan",
+            "position": "RB",
+            "injury": "Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Andrew Ogletree",
+            "position": "TE",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Cam Taylor-Britt",
+            "position": "CB",
+            "injury": "Groin",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jerry Tillery",
+            "position": "DT",
+            "injury": "Calf",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jalen Travis",
+            "position": "T",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Charvarius Ward",
+            "position": "CB",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0039164",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:00.993564+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.118056+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Anthony Richardson",
         "schedule_qb_id": "00-0039164",
@@ -14152,12 +14330,20 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Shelby Harris",
+            "position": "DT",
+            "injury": "Illness",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0039923",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:00.993582+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.118141+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "J.J. McCarthy",
         "schedule_qb_id": "00-0039923",
@@ -14173,20 +14359,26 @@
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-27T19:47:00.218943+00:00",
-          "sha256": "cdb787d0d4b760f4056796bcf539b5e36dfbd70199f6d0422b13c8a3552676d5",
+          "retrieved_at_utc": "2026-11-28T15:05:35.124364+00:00",
+          "sha256": "8a0f345c1fbb4c861708f14c6eb4cec81f5ffdcb7572ebc46c66643ced8509ad",
           "http_status": 200
         },
         {
-          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
-          "retrieved_at_utc": "2026-11-27T19:47:00.684314+00:00",
-          "sha256": "582e5449f614427a8a5e662c818d317fd91e8ea3ffad4b6b7527c212564202bb",
+          "url": "https://www.nfl.com/news/brock-purdy-ankle-out-49ers-seahawks-mac-jones-start",
+          "retrieved_at_utc": "2026-11-28T15:05:35.465269+00:00",
+          "sha256": "9b67e8e364fb7b1d1bac81a2f638df1e393a38db85e096f40c1565267f0e5faf",
           "http_status": 200
         },
         {
           "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
-          "retrieved_at_utc": "2026-11-27T19:47:00.885367+00:00",
-          "sha256": "935735482ff9f70d2f9ed1519cb78f426dc9b1530bdcfcf7bffa1608de21986e",
+          "retrieved_at_utc": "2026-11-28T15:05:35.791239+00:00",
+          "sha256": "4ebcf03bfa09325d8ad14744c661ebcb258854ccf8e1957c0661662a5803f6c8",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-28T15:05:36.022183+00:00",
+          "sha256": "0b2d4f5f6d567531c6dc6f016f2ffe6d59900068883f5c35e7f5058efe660f99",
           "http_status": 200
         }
       ],
@@ -14210,8 +14402,8 @@
         "away_qb_name_assumed": "J.J. McCarthy",
         "away_qb_id_assumed": "00-0039923",
         "kickoff_utc": "2026-11-29T18:00:00.000Z",
-        "captured_at_utc": "2026-11-27T19:47:03.566305+00:00",
-        "availability_checked_at_utc": "2026-11-27T19:47:00.993596+00:00",
+        "captured_at_utc": "2026-11-28T15:05:39.346026+00:00",
+        "availability_checked_at_utc": "2026-11-28T15:05:36.118170+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14223,7 +14415,7 @@
       "home_team": "JAX",
       "away_team": "TEN",
       "kickoff_utc": "2026-11-29T18:00:00+00:00",
-      "checked_at_utc": "2026-11-27T19:47:00.993643+00:00",
+      "checked_at_utc": "2026-11-28T15:05:36.118352+00:00",
       "home": {
         "team": "JAX",
         "injury_report_available": true,
@@ -14232,12 +14424,48 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "BJ Green II",
+            "position": "DE",
+            "injury": "Forearm",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Robert Hainsey",
+            "position": "C",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Patrick Mekari",
+            "position": "G",
+            "injury": "Back",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Bhayshul Tuten",
+            "position": "RB",
+            "injury": "Ankle, Foot",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Parker Washington",
+            "position": "WR",
+            "injury": "Shoulder",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0036971",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:00.993618+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.118227+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Trevor Lawrence",
         "schedule_qb_id": "00-0036971",
@@ -14253,12 +14481,41 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Terrell Burgess",
+            "position": "S",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Fernando Carmona",
+            "position": "G",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Cordale Flott",
+            "position": "CB",
+            "injury": "Neck",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Dan Moore Jr.",
+            "position": "T",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0040676",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:00.993635+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.118304+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Cam Ward",
         "schedule_qb_id": "00-0040676",
@@ -14274,20 +14531,26 @@
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-27T19:47:00.218943+00:00",
-          "sha256": "cdb787d0d4b760f4056796bcf539b5e36dfbd70199f6d0422b13c8a3552676d5",
+          "retrieved_at_utc": "2026-11-28T15:05:35.124364+00:00",
+          "sha256": "8a0f345c1fbb4c861708f14c6eb4cec81f5ffdcb7572ebc46c66643ced8509ad",
           "http_status": 200
         },
         {
-          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
-          "retrieved_at_utc": "2026-11-27T19:47:00.684314+00:00",
-          "sha256": "582e5449f614427a8a5e662c818d317fd91e8ea3ffad4b6b7527c212564202bb",
+          "url": "https://www.nfl.com/news/brock-purdy-ankle-out-49ers-seahawks-mac-jones-start",
+          "retrieved_at_utc": "2026-11-28T15:05:35.465269+00:00",
+          "sha256": "9b67e8e364fb7b1d1bac81a2f638df1e393a38db85e096f40c1565267f0e5faf",
           "http_status": 200
         },
         {
           "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
-          "retrieved_at_utc": "2026-11-27T19:47:00.885367+00:00",
-          "sha256": "935735482ff9f70d2f9ed1519cb78f426dc9b1530bdcfcf7bffa1608de21986e",
+          "retrieved_at_utc": "2026-11-28T15:05:35.791239+00:00",
+          "sha256": "4ebcf03bfa09325d8ad14744c661ebcb258854ccf8e1957c0661662a5803f6c8",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-28T15:05:36.022183+00:00",
+          "sha256": "0b2d4f5f6d567531c6dc6f016f2ffe6d59900068883f5c35e7f5058efe660f99",
           "http_status": 200
         }
       ],
@@ -14311,8 +14574,8 @@
         "away_qb_name_assumed": "Cam Ward",
         "away_qb_id_assumed": "00-0040676",
         "kickoff_utc": "2026-11-29T18:00:00.000Z",
-        "captured_at_utc": "2026-11-27T19:47:03.566305+00:00",
-        "availability_checked_at_utc": "2026-11-27T19:47:00.993643+00:00",
+        "captured_at_utc": "2026-11-28T15:05:39.346026+00:00",
+        "availability_checked_at_utc": "2026-11-28T15:05:36.118352+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14324,7 +14587,7 @@
       "home_team": "MIA",
       "away_team": "NYJ",
       "kickoff_utc": "2026-11-29T18:00:00+00:00",
-      "checked_at_utc": "2026-11-27T19:47:00.993689+00:00",
+      "checked_at_utc": "2026-11-28T15:05:36.118513+00:00",
       "home": {
         "team": "MIA",
         "injury_report_available": true,
@@ -14333,12 +14596,41 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Julius Brents",
+            "position": "CB",
+            "injury": "Neck, Shoulder",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Ronnie Harrison",
+            "position": "LB",
+            "injury": "Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Bradley Pinion",
+            "position": "P",
+            "injury": "Groin",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jared Wayne",
+            "position": "WR",
+            "injury": "Quadricep",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0040014",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:00.993663+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.118410+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Kyle McCord",
         "schedule_qb_id": "00-0040014",
@@ -14354,12 +14646,41 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Omar Cooper Jr.",
+            "position": "WR",
+            "injury": "Ankle, Groin",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "David Onyemata",
+            "position": "DT",
+            "injury": "Abdomen",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Harrison Phillips",
+            "position": "DT",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "T'Vondre Sweat",
+            "position": "DT",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0030565",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:00.993678+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.118475+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Geno Smith",
         "schedule_qb_id": "00-0030565",
@@ -14375,20 +14696,26 @@
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-27T19:47:00.218943+00:00",
-          "sha256": "cdb787d0d4b760f4056796bcf539b5e36dfbd70199f6d0422b13c8a3552676d5",
+          "retrieved_at_utc": "2026-11-28T15:05:35.124364+00:00",
+          "sha256": "8a0f345c1fbb4c861708f14c6eb4cec81f5ffdcb7572ebc46c66643ced8509ad",
           "http_status": 200
         },
         {
-          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
-          "retrieved_at_utc": "2026-11-27T19:47:00.684314+00:00",
-          "sha256": "582e5449f614427a8a5e662c818d317fd91e8ea3ffad4b6b7527c212564202bb",
+          "url": "https://www.nfl.com/news/brock-purdy-ankle-out-49ers-seahawks-mac-jones-start",
+          "retrieved_at_utc": "2026-11-28T15:05:35.465269+00:00",
+          "sha256": "9b67e8e364fb7b1d1bac81a2f638df1e393a38db85e096f40c1565267f0e5faf",
           "http_status": 200
         },
         {
           "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
-          "retrieved_at_utc": "2026-11-27T19:47:00.885367+00:00",
-          "sha256": "935735482ff9f70d2f9ed1519cb78f426dc9b1530bdcfcf7bffa1608de21986e",
+          "retrieved_at_utc": "2026-11-28T15:05:35.791239+00:00",
+          "sha256": "4ebcf03bfa09325d8ad14744c661ebcb258854ccf8e1957c0661662a5803f6c8",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-28T15:05:36.022183+00:00",
+          "sha256": "0b2d4f5f6d567531c6dc6f016f2ffe6d59900068883f5c35e7f5058efe660f99",
           "http_status": 200
         }
       ],
@@ -14412,8 +14739,8 @@
         "away_qb_name_assumed": "Geno Smith",
         "away_qb_id_assumed": "00-0030565",
         "kickoff_utc": "2026-11-29T18:00:00.000Z",
-        "captured_at_utc": "2026-11-27T19:47:03.566305+00:00",
-        "availability_checked_at_utc": "2026-11-27T19:47:00.993689+00:00",
+        "captured_at_utc": "2026-11-28T15:05:39.346026+00:00",
+        "availability_checked_at_utc": "2026-11-28T15:05:36.118513+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14425,7 +14752,7 @@
       "home_team": "MIN",
       "away_team": "ATL",
       "kickoff_utc": "2026-11-29T18:00:00+00:00",
-      "checked_at_utc": "2026-11-27T19:47:00.993731+00:00",
+      "checked_at_utc": "2026-11-28T15:05:36.118675+00:00",
       "home": {
         "team": "MIN",
         "injury_report_available": true,
@@ -14434,12 +14761,41 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Jordan Addison",
+            "position": "WR",
+            "injury": "Thumb",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Christian Darrisaw",
+            "position": "T",
+            "injury": "Shoulder",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Isaiah Rodgers",
+            "position": "CB",
+            "injury": "Thigh",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Harrison Smith",
+            "position": "S",
+            "injury": "Thigh",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0029604",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:00.993708+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.118567+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Kirk Cousins",
         "schedule_qb_id": "00-0029604",
@@ -14455,12 +14811,48 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Matthew Bergeron",
+            "position": "G",
+            "injury": "Back",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Billy Bowman Jr.",
+            "position": "CB",
+            "injury": "Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Zachariah Branch",
+            "position": "WR",
+            "injury": "Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jahan Dotson",
+            "position": "WR",
+            "injury": "Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "DeMarcco Hellams",
+            "position": "S",
+            "injury": "Foot",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0039917",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:00.993723+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.118630+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Michael Penix Jr.",
         "schedule_qb_id": "00-0039917",
@@ -14476,20 +14868,26 @@
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-27T19:47:00.218943+00:00",
-          "sha256": "cdb787d0d4b760f4056796bcf539b5e36dfbd70199f6d0422b13c8a3552676d5",
+          "retrieved_at_utc": "2026-11-28T15:05:35.124364+00:00",
+          "sha256": "8a0f345c1fbb4c861708f14c6eb4cec81f5ffdcb7572ebc46c66643ced8509ad",
           "http_status": 200
         },
         {
-          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
-          "retrieved_at_utc": "2026-11-27T19:47:00.684314+00:00",
-          "sha256": "582e5449f614427a8a5e662c818d317fd91e8ea3ffad4b6b7527c212564202bb",
+          "url": "https://www.nfl.com/news/brock-purdy-ankle-out-49ers-seahawks-mac-jones-start",
+          "retrieved_at_utc": "2026-11-28T15:05:35.465269+00:00",
+          "sha256": "9b67e8e364fb7b1d1bac81a2f638df1e393a38db85e096f40c1565267f0e5faf",
           "http_status": 200
         },
         {
           "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
-          "retrieved_at_utc": "2026-11-27T19:47:00.885367+00:00",
-          "sha256": "935735482ff9f70d2f9ed1519cb78f426dc9b1530bdcfcf7bffa1608de21986e",
+          "retrieved_at_utc": "2026-11-28T15:05:35.791239+00:00",
+          "sha256": "4ebcf03bfa09325d8ad14744c661ebcb258854ccf8e1957c0661662a5803f6c8",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-28T15:05:36.022183+00:00",
+          "sha256": "0b2d4f5f6d567531c6dc6f016f2ffe6d59900068883f5c35e7f5058efe660f99",
           "http_status": 200
         }
       ],
@@ -14513,8 +14911,8 @@
         "away_qb_name_assumed": "Michael Penix Jr.",
         "away_qb_id_assumed": "00-0039917",
         "kickoff_utc": "2026-11-29T18:00:00.000Z",
-        "captured_at_utc": "2026-11-27T19:47:03.566305+00:00",
-        "availability_checked_at_utc": "2026-11-27T19:47:00.993731+00:00",
+        "captured_at_utc": "2026-11-28T15:05:39.346026+00:00",
+        "availability_checked_at_utc": "2026-11-28T15:05:36.118675+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14526,7 +14924,7 @@
       "home_team": "LAC",
       "away_team": "NE",
       "kickoff_utc": "2026-11-29T21:05:00+00:00",
-      "checked_at_utc": "2026-11-27T19:47:01.030710+00:00",
+      "checked_at_utc": "2026-11-28T15:05:36.185593+00:00",
       "home": {
         "team": "LAC",
         "injury_report_available": true,
@@ -14535,15 +14933,86 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Daiyan Henley",
+            "position": "LB",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Justin Herbert",
+            "position": "QB",
+            "injury": "Concussion",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Akheem Mesidor",
+            "position": "DE",
+            "injury": "Ankle",
+            "status": "Doubtful",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Keaton Mitchell",
+            "position": "RB",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "David Njoku",
+            "position": "TE",
+            "injury": "Shoulder",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Tarheeb Still",
+            "position": "CB",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Brenen Thompson",
+            "position": "WR",
+            "injury": "Hamstring",
+            "status": "Doubtful",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Dalvin Tomlinson",
+            "position": "DT",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Tuli Tuipulotu",
+            "position": "DE",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Kendall Williamson",
+            "position": "S",
+            "injury": "Calf",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0038476",
         "qb_evidence_state": "confirmed",
         "assumption_source": "official_announcement",
         "assumption_source_url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
-        "assumption_checked_at_utc": "2026-11-27T19:47:01.011666+00:00",
-        "starter_verified_at_utc": "2026-11-27T19:47:01.011641+00:00",
-        "schedule_qb_name": "Justin Herbert",
-        "schedule_qb_id": "00-0036355",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.150856+00:00",
+        "starter_verified_at_utc": "2026-11-28T15:05:36.150822+00:00",
+        "schedule_qb_name": "DJ Uiagalelei",
+        "schedule_qb_id": "00-0040464",
         "qb_evidence_issues": [
           "schedule_differs_from_confirmation"
         ],
@@ -14557,13 +15026,70 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Christian Barmore",
+            "position": "DT",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "A.J. Brown",
+            "position": "WR",
+            "injury": "Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Carlton Davis III",
+            "position": "CB",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Romeo Doubs",
+            "position": "WR",
+            "injury": "Shoulder",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Reggie Gilliam",
+            "position": "FB",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Drake Maye",
+            "position": "QB",
+            "injury": "Fibula",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Walter Rouse",
+            "position": "T",
+            "injury": "Concussion",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Alijah Vera-Tucker",
+            "position": "G",
+            "injury": "Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0038476",
         "qb_evidence_state": "confirmed",
         "assumption_source": "official_announcement",
         "assumption_source_url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
-        "assumption_checked_at_utc": "2026-11-27T19:47:01.029715+00:00",
-        "starter_verified_at_utc": "2026-11-27T19:47:01.029690+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.184039+00:00",
+        "starter_verified_at_utc": "2026-11-28T15:05:36.184006+00:00",
         "schedule_qb_name": "Drake Maye",
         "schedule_qb_id": "00-0039851",
         "qb_evidence_issues": [
@@ -14579,20 +15105,26 @@
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-27T19:47:00.218943+00:00",
-          "sha256": "cdb787d0d4b760f4056796bcf539b5e36dfbd70199f6d0422b13c8a3552676d5",
+          "retrieved_at_utc": "2026-11-28T15:05:35.124364+00:00",
+          "sha256": "8a0f345c1fbb4c861708f14c6eb4cec81f5ffdcb7572ebc46c66643ced8509ad",
           "http_status": 200
         },
         {
-          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
-          "retrieved_at_utc": "2026-11-27T19:47:00.684314+00:00",
-          "sha256": "582e5449f614427a8a5e662c818d317fd91e8ea3ffad4b6b7527c212564202bb",
+          "url": "https://www.nfl.com/news/brock-purdy-ankle-out-49ers-seahawks-mac-jones-start",
+          "retrieved_at_utc": "2026-11-28T15:05:35.465269+00:00",
+          "sha256": "9b67e8e364fb7b1d1bac81a2f638df1e393a38db85e096f40c1565267f0e5faf",
           "http_status": 200
         },
         {
           "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
-          "retrieved_at_utc": "2026-11-27T19:47:00.885367+00:00",
-          "sha256": "935735482ff9f70d2f9ed1519cb78f426dc9b1530bdcfcf7bffa1608de21986e",
+          "retrieved_at_utc": "2026-11-28T15:05:35.791239+00:00",
+          "sha256": "4ebcf03bfa09325d8ad14744c661ebcb258854ccf8e1957c0661662a5803f6c8",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-28T15:05:36.022183+00:00",
+          "sha256": "0b2d4f5f6d567531c6dc6f016f2ffe6d59900068883f5c35e7f5058efe660f99",
           "http_status": 200
         }
       ],
@@ -14616,8 +15148,8 @@
         "away_qb_name_assumed": "Tommy DeVito",
         "away_qb_id_assumed": "00-0038476",
         "kickoff_utc": "2026-11-29T21:05:00.000Z",
-        "captured_at_utc": "2026-11-27T19:47:03.566305+00:00",
-        "availability_checked_at_utc": "2026-11-27T19:47:01.030710+00:00",
+        "captured_at_utc": "2026-11-28T15:05:39.346026+00:00",
+        "availability_checked_at_utc": "2026-11-28T15:05:36.185593+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14629,7 +15161,7 @@
       "home_team": "ARI",
       "away_team": "WAS",
       "kickoff_utc": "2026-11-29T21:25:00+00:00",
-      "checked_at_utc": "2026-11-27T19:47:01.030779+00:00",
+      "checked_at_utc": "2026-11-28T15:05:36.185799+00:00",
       "home": {
         "team": "ARI",
         "injury_report_available": true,
@@ -14638,12 +15170,55 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Carson Beck",
+            "position": "QB",
+            "injury": "Back",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Zachary Carter",
+            "position": "DT",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jon Gaines II",
+            "position": "G",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Hunter Long",
+            "position": "TE",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Karson Sharar",
+            "position": "LB",
+            "injury": "Groin",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Cody Simon",
+            "position": "LB",
+            "injury": "Calf",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0026300",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:01.030747+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.185668+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Josh Johnson",
         "schedule_qb_id": "00-0026300",
@@ -14659,12 +15234,20 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Amik Robertson",
+            "position": "CB",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0039910",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:01.030769+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.185768+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Jayden Daniels",
         "schedule_qb_id": "00-0039910",
@@ -14680,20 +15263,26 @@
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-27T19:47:00.218943+00:00",
-          "sha256": "cdb787d0d4b760f4056796bcf539b5e36dfbd70199f6d0422b13c8a3552676d5",
+          "retrieved_at_utc": "2026-11-28T15:05:35.124364+00:00",
+          "sha256": "8a0f345c1fbb4c861708f14c6eb4cec81f5ffdcb7572ebc46c66643ced8509ad",
           "http_status": 200
         },
         {
-          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
-          "retrieved_at_utc": "2026-11-27T19:47:00.684314+00:00",
-          "sha256": "582e5449f614427a8a5e662c818d317fd91e8ea3ffad4b6b7527c212564202bb",
+          "url": "https://www.nfl.com/news/brock-purdy-ankle-out-49ers-seahawks-mac-jones-start",
+          "retrieved_at_utc": "2026-11-28T15:05:35.465269+00:00",
+          "sha256": "9b67e8e364fb7b1d1bac81a2f638df1e393a38db85e096f40c1565267f0e5faf",
           "http_status": 200
         },
         {
           "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
-          "retrieved_at_utc": "2026-11-27T19:47:00.885367+00:00",
-          "sha256": "935735482ff9f70d2f9ed1519cb78f426dc9b1530bdcfcf7bffa1608de21986e",
+          "retrieved_at_utc": "2026-11-28T15:05:35.791239+00:00",
+          "sha256": "4ebcf03bfa09325d8ad14744c661ebcb258854ccf8e1957c0661662a5803f6c8",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-28T15:05:36.022183+00:00",
+          "sha256": "0b2d4f5f6d567531c6dc6f016f2ffe6d59900068883f5c35e7f5058efe660f99",
           "http_status": 200
         }
       ],
@@ -14717,8 +15306,8 @@
         "away_qb_name_assumed": "Jayden Daniels",
         "away_qb_id_assumed": "00-0039910",
         "kickoff_utc": "2026-11-29T21:25:00.000Z",
-        "captured_at_utc": "2026-11-27T19:47:03.566305+00:00",
-        "availability_checked_at_utc": "2026-11-27T19:47:01.030779+00:00",
+        "captured_at_utc": "2026-11-28T15:05:39.346026+00:00",
+        "availability_checked_at_utc": "2026-11-28T15:05:36.185799+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14730,48 +15319,120 @@
       "home_team": "SF",
       "away_team": "SEA",
       "kickoff_utc": "2026-11-29T21:25:00+00:00",
-      "checked_at_utc": "2026-11-27T19:47:01.030825+00:00",
+      "checked_at_utc": "2026-11-28T15:05:36.249937+00:00",
       "home": {
         "team": "SF",
         "injury_report_available": true,
         "inactives_published": false,
-        "assumed_qb": "Brock Purdy",
+        "assumed_qb": "Mac Jones",
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
-        "assumed_qb_id": "00-0037834",
-        "qb_evidence_state": "unconfirmed",
-        "assumption_source": "nflverse_schedule",
-        "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:01.030801+00:00",
-        "starter_verified_at_utc": null,
-        "schedule_qb_name": "Brock Purdy",
-        "schedule_qb_id": "00-0037834",
-        "qb_evidence_issues": [
-          "starter_unconfirmed"
-        ]
+        "players": [
+          {
+            "name": "Mike Evans",
+            "position": "WR",
+            "injury": "Achilles",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Dre Greenlaw",
+            "position": "LB",
+            "injury": "Neck",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Siran Neal",
+            "position": "S",
+            "injury": "Knee, Foot",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Austen Pleasants",
+            "position": "T",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Brock Purdy",
+            "position": "QB",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Upton Stout",
+            "position": "CB",
+            "injury": "Shoulder, Neck",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jordan Watkins",
+            "position": "WR",
+            "injury": "Groin",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
+        "assumed_qb_id": "00-0036972",
+        "qb_evidence_state": "confirmed",
+        "assumption_source": "official_announcement",
+        "assumption_source_url": "https://www.nfl.com/news/brock-purdy-ankle-out-49ers-seahawks-mac-jones-start",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.217330+00:00",
+        "starter_verified_at_utc": "2026-11-28T15:05:36.217265+00:00",
+        "schedule_qb_name": "Mac Jones",
+        "schedule_qb_id": "00-0036972",
+        "qb_evidence_issues": [],
+        "starter_source_url": "https://www.nfl.com/news/brock-purdy-ankle-out-49ers-seahawks-mac-jones-start"
       },
       "away": {
         "team": "SEA",
         "injury_report_available": true,
         "inactives_published": false,
-        "assumed_qb": "Sam Darnold",
+        "assumed_qb": "Mac Jones",
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
-        "assumed_qb_id": "00-0034869",
-        "qb_evidence_state": "unconfirmed",
-        "assumption_source": "nflverse_schedule",
-        "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:01.030817+00:00",
-        "starter_verified_at_utc": null,
+        "players": [
+          {
+            "name": "Abraham Lucas",
+            "position": "T",
+            "injury": "Ankle",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Quenton Nelson",
+            "position": "G",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jarran Reed",
+            "position": "DT",
+            "injury": "Toe",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
+        "assumed_qb_id": "00-0036972",
+        "qb_evidence_state": "confirmed",
+        "assumption_source": "official_announcement",
+        "assumption_source_url": "https://www.nfl.com/news/brock-purdy-ankle-out-49ers-seahawks-mac-jones-start",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.248941+00:00",
+        "starter_verified_at_utc": "2026-11-28T15:05:36.248884+00:00",
         "schedule_qb_name": "Sam Darnold",
         "schedule_qb_id": "00-0034869",
         "qb_evidence_issues": [
-          "starter_unconfirmed"
-        ]
+          "schedule_differs_from_confirmation"
+        ],
+        "starter_source_url": "https://www.nfl.com/news/brock-purdy-ankle-out-49ers-seahawks-mac-jones-start"
       },
       "qb_review_required": false,
       "qb_uncertain": false,
@@ -14781,20 +15442,26 @@
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-27T19:47:00.218943+00:00",
-          "sha256": "cdb787d0d4b760f4056796bcf539b5e36dfbd70199f6d0422b13c8a3552676d5",
+          "retrieved_at_utc": "2026-11-28T15:05:35.124364+00:00",
+          "sha256": "8a0f345c1fbb4c861708f14c6eb4cec81f5ffdcb7572ebc46c66643ced8509ad",
           "http_status": 200
         },
         {
-          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
-          "retrieved_at_utc": "2026-11-27T19:47:00.684314+00:00",
-          "sha256": "582e5449f614427a8a5e662c818d317fd91e8ea3ffad4b6b7527c212564202bb",
+          "url": "https://www.nfl.com/news/brock-purdy-ankle-out-49ers-seahawks-mac-jones-start",
+          "retrieved_at_utc": "2026-11-28T15:05:35.465269+00:00",
+          "sha256": "9b67e8e364fb7b1d1bac81a2f638df1e393a38db85e096f40c1565267f0e5faf",
           "http_status": 200
         },
         {
           "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
-          "retrieved_at_utc": "2026-11-27T19:47:00.885367+00:00",
-          "sha256": "935735482ff9f70d2f9ed1519cb78f426dc9b1530bdcfcf7bffa1608de21986e",
+          "retrieved_at_utc": "2026-11-28T15:05:35.791239+00:00",
+          "sha256": "4ebcf03bfa09325d8ad14744c661ebcb258854ccf8e1957c0661662a5803f6c8",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-28T15:05:36.022183+00:00",
+          "sha256": "0b2d4f5f6d567531c6dc6f016f2ffe6d59900068883f5c35e7f5058efe660f99",
           "http_status": 200
         }
       ],
@@ -14806,20 +15473,20 @@
         "v3_pick": "SF",
         "v3_confidence": 0.638345425072685,
         "v4_pick": "SF",
-        "v4_core_confidence": 0.65538011455678,
-        "v4_adjusted_confidence": 0.65538011455678,
+        "v4_core_confidence": 0.606651743172863,
+        "v4_adjusted_confidence": 0.606651743172863,
         "explosive_extreme": false,
         "turnover_risk_flag": false,
         "early_down_risk_flag": false,
         "prediction_status": "EARLY_LOCK",
-        "qb_status_flag": "QB starter unconfirmed; ",
-        "home_qb_name_assumed": "Brock Purdy",
-        "home_qb_id_assumed": "00-0037834",
-        "away_qb_name_assumed": "Sam Darnold",
-        "away_qb_id_assumed": "00-0034869",
+        "qb_status_flag": "Mac Jones confirmed to start by NFL report",
+        "home_qb_name_assumed": "Mac Jones",
+        "home_qb_id_assumed": "00-0036972",
+        "away_qb_name_assumed": "Mac Jones",
+        "away_qb_id_assumed": "00-0036972",
         "kickoff_utc": "2026-11-29T21:25:00.000Z",
-        "captured_at_utc": "2026-11-27T19:47:03.566305+00:00",
-        "availability_checked_at_utc": "2026-11-27T19:47:01.030825+00:00",
+        "captured_at_utc": "2026-11-28T15:05:39.346026+00:00",
+        "availability_checked_at_utc": "2026-11-28T15:05:36.249937+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14831,7 +15498,7 @@
       "home_team": "CLE",
       "away_team": "LV",
       "kickoff_utc": "2026-11-30T01:20:00+00:00",
-      "checked_at_utc": "2026-11-27T19:47:01.030891+00:00",
+      "checked_at_utc": "2026-11-28T15:05:36.250135+00:00",
       "home": {
         "team": "CLE",
         "injury_report_available": true,
@@ -14840,12 +15507,41 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Austin Barber",
+            "position": "G",
+            "injury": "Knee",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Derek Barnett",
+            "position": "DE",
+            "injury": "Hamstring",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Denzel Boston",
+            "position": "WR",
+            "injury": "Quadricep",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Raheim Sanders",
+            "position": "RB",
+            "injury": "Hip",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0033537",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:01.030846+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.250009+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Deshaun Watson",
         "schedule_qb_id": "00-0033537",
@@ -14861,12 +15557,69 @@
         "qb_status": "No game designation found",
         "qb_review_required": false,
         "qb_uncertain": false,
-        "players": [],
+        "players": [
+          {
+            "name": "Brock Bowers",
+            "position": "TE",
+            "injury": "Ankle",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Adam Butler",
+            "position": "DT",
+            "injury": "Concussion",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Tonka Hemingway",
+            "position": "DT",
+            "injury": "Stinger",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Patrick Johnson",
+            "position": "DE",
+            "injury": "Stinger",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Tim Keenan III",
+            "position": "DT",
+            "injury": "Knee",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Darrell Luter Jr.",
+            "position": "CB",
+            "injury": "Knee, Hamstring",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "JJ Pegues",
+            "position": "DT",
+            "injury": "Elbow",
+            "status": "Questionable",
+            "source_url": "https://www.nfl.com/injuries/"
+          },
+          {
+            "name": "Jackson Powers-Johnson",
+            "position": "G",
+            "injury": "Achilles",
+            "status": "Out",
+            "source_url": "https://www.nfl.com/injuries/"
+          }
+        ],
         "assumed_qb_id": "00-0041562",
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:01.030861+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.250081+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Fernando Mendoza",
         "schedule_qb_id": "00-0041562",
@@ -14882,20 +15635,26 @@
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-27T19:47:00.218943+00:00",
-          "sha256": "cdb787d0d4b760f4056796bcf539b5e36dfbd70199f6d0422b13c8a3552676d5",
+          "retrieved_at_utc": "2026-11-28T15:05:35.124364+00:00",
+          "sha256": "8a0f345c1fbb4c861708f14c6eb4cec81f5ffdcb7572ebc46c66643ced8509ad",
           "http_status": 200
         },
         {
-          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
-          "retrieved_at_utc": "2026-11-27T19:47:00.684314+00:00",
-          "sha256": "582e5449f614427a8a5e662c818d317fd91e8ea3ffad4b6b7527c212564202bb",
+          "url": "https://www.nfl.com/news/brock-purdy-ankle-out-49ers-seahawks-mac-jones-start",
+          "retrieved_at_utc": "2026-11-28T15:05:35.465269+00:00",
+          "sha256": "9b67e8e364fb7b1d1bac81a2f638df1e393a38db85e096f40c1565267f0e5faf",
           "http_status": 200
         },
         {
           "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
-          "retrieved_at_utc": "2026-11-27T19:47:00.885367+00:00",
-          "sha256": "935735482ff9f70d2f9ed1519cb78f426dc9b1530bdcfcf7bffa1608de21986e",
+          "retrieved_at_utc": "2026-11-28T15:05:35.791239+00:00",
+          "sha256": "4ebcf03bfa09325d8ad14744c661ebcb258854ccf8e1957c0661662a5803f6c8",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-28T15:05:36.022183+00:00",
+          "sha256": "0b2d4f5f6d567531c6dc6f016f2ffe6d59900068883f5c35e7f5058efe660f99",
           "http_status": 200
         }
       ],
@@ -14919,8 +15678,8 @@
         "away_qb_name_assumed": "Fernando Mendoza",
         "away_qb_id_assumed": "00-0041562",
         "kickoff_utc": "2026-11-30T01:20:00.000Z",
-        "captured_at_utc": "2026-11-27T19:47:03.566305+00:00",
-        "availability_checked_at_utc": "2026-11-27T19:47:01.030891+00:00",
+        "captured_at_utc": "2026-11-28T15:05:39.346026+00:00",
+        "availability_checked_at_utc": "2026-11-28T15:05:36.250135+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -14932,7 +15691,7 @@
       "home_team": "TB",
       "away_team": "CAR",
       "kickoff_utc": "2026-12-01T01:15:00+00:00",
-      "checked_at_utc": "2026-11-27T19:47:01.030944+00:00",
+      "checked_at_utc": "2026-11-28T15:05:36.250265+00:00",
       "home": {
         "team": "TB",
         "injury_report_available": true,
@@ -14946,7 +15705,7 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:01.030920+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.250192+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Baker Mayfield",
         "schedule_qb_id": "00-0034855",
@@ -14967,7 +15726,7 @@
         "qb_evidence_state": "unconfirmed",
         "assumption_source": "nflverse_schedule",
         "assumption_source_url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/games.csv",
-        "assumption_checked_at_utc": "2026-11-27T19:47:01.030936+00:00",
+        "assumption_checked_at_utc": "2026-11-28T15:05:36.250239+00:00",
         "starter_verified_at_utc": null,
         "schedule_qb_name": "Bryce Young",
         "schedule_qb_id": "00-0039150",
@@ -14983,20 +15742,26 @@
       "source_receipts": [
         {
           "url": "https://www.nfl.com/injuries/",
-          "retrieved_at_utc": "2026-11-27T19:47:00.218943+00:00",
-          "sha256": "cdb787d0d4b760f4056796bcf539b5e36dfbd70199f6d0422b13c8a3552676d5",
+          "retrieved_at_utc": "2026-11-28T15:05:35.124364+00:00",
+          "sha256": "8a0f345c1fbb4c861708f14c6eb4cec81f5ffdcb7572ebc46c66643ced8509ad",
           "http_status": 200
         },
         {
-          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
-          "retrieved_at_utc": "2026-11-27T19:47:00.684314+00:00",
-          "sha256": "582e5449f614427a8a5e662c818d317fd91e8ea3ffad4b6b7527c212564202bb",
+          "url": "https://www.nfl.com/news/brock-purdy-ankle-out-49ers-seahawks-mac-jones-start",
+          "retrieved_at_utc": "2026-11-28T15:05:35.465269+00:00",
+          "sha256": "9b67e8e364fb7b1d1bac81a2f638df1e393a38db85e096f40c1565267f0e5faf",
           "http_status": 200
         },
         {
           "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
-          "retrieved_at_utc": "2026-11-27T19:47:00.885367+00:00",
-          "sha256": "935735482ff9f70d2f9ed1519cb78f426dc9b1530bdcfcf7bffa1608de21986e",
+          "retrieved_at_utc": "2026-11-28T15:05:35.791239+00:00",
+          "sha256": "4ebcf03bfa09325d8ad14744c661ebcb258854ccf8e1957c0661662a5803f6c8",
+          "http_status": 200
+        },
+        {
+          "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+          "retrieved_at_utc": "2026-11-28T15:05:36.022183+00:00",
+          "sha256": "0b2d4f5f6d567531c6dc6f016f2ffe6d59900068883f5c35e7f5058efe660f99",
           "http_status": 200
         }
       ],
@@ -15020,8 +15785,8 @@
         "away_qb_name_assumed": "Bryce Young",
         "away_qb_id_assumed": "00-0039150",
         "kickoff_utc": "2026-12-01T01:15:00.000Z",
-        "captured_at_utc": "2026-11-27T19:47:03.566305+00:00",
-        "availability_checked_at_utc": "2026-11-27T19:47:01.030944+00:00",
+        "captured_at_utc": "2026-11-28T15:05:39.346026+00:00",
+        "availability_checked_at_utc": "2026-11-28T15:05:36.250265+00:00",
         "qb_input_review_required": false,
         "bundle_version": "BP_V4_2026_FROZEN_20261005"
       }
@@ -15030,20 +15795,26 @@
   "source_receipts": [
     {
       "url": "https://www.nfl.com/injuries/",
-      "retrieved_at_utc": "2026-11-27T19:47:00.218943+00:00",
-      "sha256": "cdb787d0d4b760f4056796bcf539b5e36dfbd70199f6d0422b13c8a3552676d5",
+      "retrieved_at_utc": "2026-11-28T15:05:35.124364+00:00",
+      "sha256": "8a0f345c1fbb4c861708f14c6eb4cec81f5ffdcb7572ebc46c66643ced8509ad",
       "http_status": 200
     },
     {
-      "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
-      "retrieved_at_utc": "2026-11-27T19:47:00.684314+00:00",
-      "sha256": "582e5449f614427a8a5e662c818d317fd91e8ea3ffad4b6b7527c212564202bb",
+      "url": "https://www.nfl.com/news/brock-purdy-ankle-out-49ers-seahawks-mac-jones-start",
+      "retrieved_at_utc": "2026-11-28T15:05:35.465269+00:00",
+      "sha256": "9b67e8e364fb7b1d1bac81a2f638df1e393a38db85e096f40c1565267f0e5faf",
       "http_status": 200
     },
     {
       "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.csv",
-      "retrieved_at_utc": "2026-11-27T19:47:00.885367+00:00",
-      "sha256": "935735482ff9f70d2f9ed1519cb78f426dc9b1530bdcfcf7bffa1608de21986e",
+      "retrieved_at_utc": "2026-11-28T15:05:35.791239+00:00",
+      "sha256": "4ebcf03bfa09325d8ad14744c661ebcb258854ccf8e1957c0661662a5803f6c8",
+      "http_status": 200
+    },
+    {
+      "url": "https://www.nfl.com/news/nfl-news-roundup-latest-league-updates-from-monday-nov-23",
+      "retrieved_at_utc": "2026-11-28T15:05:36.022183+00:00",
+      "sha256": "0b2d4f5f6d567531c6dc6f016f2ffe6d59900068883f5c35e7f5058efe660f99",
       "http_status": 200
     }
   ],
