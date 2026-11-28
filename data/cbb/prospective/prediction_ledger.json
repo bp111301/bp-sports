@@ -88264,7 +88264,7 @@
     "created_at_utc": "2026-11-27T19:33:20.035021+00:00",
     "home_win_prob": 0.37230969980629414,
     "predicted_winner": "Texas Tech Red Raiders",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "4a1d36b9ffc70c0528263214adc8cdf38ef09a01b6b6dddf9c9a239a56a5667b",
     "forecast_stage": "early_research_prior",
@@ -88280,6 +88280,17 @@
       "pace_diff": 2.1161458333333485,
       "rest_diff": -1.0,
       "experience_diff": 0.13353139262452252
-    }
+    },
+    "actual_home_win": 0,
+    "home_score": 75,
+    "away_score": 78,
+    "actual_winner": "Texas Tech Red Raiders",
+    "correct": 1,
+    "brier": 0.13861451256985285,
+    "log_loss": 0.46570838671144715,
+    "verified_start_time_utc": "2026-11-28T04:30:00+00:00",
+    "settled_at_utc": "2026-11-28T07:00:00.691420+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&limit=1000&groups=50",
+    "result_source_event_sha256": "c2a857a3c2bdca6d88ad7a09ad6014dde5d9f7461f3b800fc13ec260405cfea3"
   }
 ]
