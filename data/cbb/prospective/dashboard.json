@@ -2,9 +2,9 @@
   "feed_status": "research_preview",
   "model_version": "CBB_V1_CANDIDATE_20261013",
   "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
-  "updated_at_utc": "2026-11-28T07:56:03.276755+00:00",
+  "updated_at_utc": "2026-11-28T14:01:28.878792+00:00",
   "coverage": {
-    "source_games_in_horizon": 1257
+    "source_games_in_horizon": 1258
   },
   "excluded": {
     "tipoff_time_unconfirmed": 17,
@@ -18,9 +18,9 @@
   ],
   "capture_blocked_reason": null,
   "summary": {
-    "saved_games": 2219,
+    "saved_games": 2220,
     "settled_games": 1180,
-    "pending_games": 1039,
+    "pending_games": 1040,
     "wins": 835,
     "losses": 345,
     "accuracy": 0.7076271186440678,
@@ -88321,13 +88321,47 @@
       "settled_at_utc": "2026-11-28T07:00:00.691420+00:00",
       "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&limit=1000&groups=50",
       "result_source_event_sha256": "c2a857a3c2bdca6d88ad7a09ad6014dde5d9f7461f3b800fc13ec260405cfea3"
+    },
+    {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401920536",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401920536",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "97",
+      "away_team_id": "156",
+      "home_team": "Louisville Cardinals",
+      "away_team": "Creighton Bluejays",
+      "neutral_site": true,
+      "start_time_utc": "2026-11-29T03:30:00+00:00",
+      "created_at_utc": "2026-11-28T14:01:28.878792+00:00",
+      "home_win_prob": 0.7004942918828175,
+      "predicted_winner": "Louisville Cardinals",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "8d28df690d897f061ddc07d2774cc62258563b0bb50306fabb80d8c78ba92ed5",
+      "forecast_stage": "early_research_prior",
+      "features": {
+        "elo_diff": 62.8234504702225,
+        "home_advantage": 0.0,
+        "off_eff_diff": 8.05918616647071,
+        "def_eff_diff": -0.31199631134245465,
+        "efg_diff": 0.013380440887179157,
+        "tov_rate_diff": -0.0007420464737201427,
+        "orb_rate_diff": 0.07488772544421829,
+        "ft_rate_diff": 0.051950701093021745,
+        "pace_diff": 0.10228084415584249,
+        "rest_diff": -1.0,
+        "experience_diff": -0.13353139262452252
+      }
     }
   ],
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "39599193e83395eb27c4a524fa63815a5a40de7e0e01b5f9f0ef510511299564",
-    "bytes": 733063,
-    "archive_sha256": "3edab33a7131ed98d85d549129cb38141c699c0563142231c92a0815a39eb635",
+    "sha256": "8d28df690d897f061ddc07d2774cc62258563b0bb50306fabb80d8c78ba92ed5",
+    "bytes": 742738,
+    "archive_sha256": "1121d67ee2f8e0c0542554395795f63a503bd9125c6364e40909e8c776b6a4ae",
     "live_schedule_sources": [
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&groups=50&limit=1000",
@@ -88485,12 +88519,7 @@
         "games": 0
       }
     ],
-    "identity_conflicts": [
-      {
-        "game_id": 401920536,
-        "reason": "Live/archive schedule identity mismatch: 401920536 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 97, 'away_id': 156, 'season': 2027}"
-      }
-    ]
+    "identity_conflicts": []
   },
   "history_sources": [
     [
@@ -88582,6 +88611,5 @@
     "Early forecasts use prior-season state; no roster/transfer/injury inputs",
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
-  ],
-  "results_checked_at_utc": "2026-11-28T13:58:18.764527+00:00"
+  ]
 }

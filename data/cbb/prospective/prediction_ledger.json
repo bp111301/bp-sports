@@ -88292,5 +88292,39 @@
     "settled_at_utc": "2026-11-28T07:00:00.691420+00:00",
     "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&limit=1000&groups=50",
     "result_source_event_sha256": "c2a857a3c2bdca6d88ad7a09ad6014dde5d9f7461f3b800fc13ec260405cfea3"
+  },
+  {
+    "prediction_id": "CBB_V1_CANDIDATE_20261013:401920536",
+    "model_version": "CBB_V1_CANDIDATE_20261013",
+    "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+    "game_id": "401920536",
+    "season": 2027,
+    "season_type": 2,
+    "home_team_id": "97",
+    "away_team_id": "156",
+    "home_team": "Louisville Cardinals",
+    "away_team": "Creighton Bluejays",
+    "neutral_site": true,
+    "start_time_utc": "2026-11-29T03:30:00+00:00",
+    "created_at_utc": "2026-11-28T14:01:28.878792+00:00",
+    "home_win_prob": 0.7004942918828175,
+    "predicted_winner": "Louisville Cardinals",
+    "status": "pending",
+    "market_used_for_pick": false,
+    "source_schedule_sha256": "8d28df690d897f061ddc07d2774cc62258563b0bb50306fabb80d8c78ba92ed5",
+    "forecast_stage": "early_research_prior",
+    "features": {
+      "elo_diff": 62.8234504702225,
+      "home_advantage": 0.0,
+      "off_eff_diff": 8.05918616647071,
+      "def_eff_diff": -0.31199631134245465,
+      "efg_diff": 0.013380440887179157,
+      "tov_rate_diff": -0.0007420464737201427,
+      "orb_rate_diff": 0.07488772544421829,
+      "ft_rate_diff": 0.051950701093021745,
+      "pace_diff": 0.10228084415584249,
+      "rest_diff": -1.0,
+      "experience_diff": -0.13353139262452252
+    }
   }
 ]
