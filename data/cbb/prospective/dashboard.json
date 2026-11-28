@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2219,
-    "settled_games": 1178,
-    "pending_games": 1041,
+    "settled_games": 1179,
+    "pending_games": 1040,
     "wins": 834,
-    "losses": 344,
-    "accuracy": 0.7079796264855688,
-    "brier": 0.1858596938908848,
-    "log_loss": 0.5485554326035769
+    "losses": 345,
+    "accuracy": 0.7073791348600509,
+    "brier": 0.18630527333725522,
+    "log_loss": 0.5496623276829593
   },
   "predictions": [
     {
@@ -88248,7 +88248,7 @@
       "created_at_utc": "2026-11-27T19:33:20.035021+00:00",
       "home_win_prob": 0.8433254775954623,
       "predicted_winner": "Gonzaga Bulldogs",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "4a1d36b9ffc70c0528263214adc8cdf38ef09a01b6b6dddf9c9a239a56a5667b",
       "forecast_stage": "early_research_prior",
@@ -88264,7 +88264,18 @@
         "pace_diff": 0.07428175990676777,
         "rest_diff": 1.0,
         "experience_diff": -0.2876820724517808
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 89,
+      "away_score": 97,
+      "actual_winner": "Creighton Bluejays",
+      "correct": 0,
+      "brier": 0.7111978611616145,
+      "log_loss": 1.8535847311955735,
+      "verified_start_time_utc": "2026-11-28T04:15:00+00:00",
+      "settled_at_utc": "2026-11-28T06:44:53.967801+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&limit=1000&groups=50",
+      "result_source_event_sha256": "888db2d05f7367e38445878a10ea363964c7e0c922c3eeda31c1c167b60c7321"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920535",
@@ -88556,5 +88567,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-28T06:39:42.494103+00:00"
+  "results_checked_at_utc": "2026-11-28T06:44:53.967801+00:00"
 }
