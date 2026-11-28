@@ -1,18 +1,18 @@
 {
   "status": "shadow_only_not_public",
-  "updated_at_utc": "2026-11-28T07:57:07.337927+00:00",
+  "updated_at_utc": "2026-11-28T14:02:56.281387+00:00",
   "identities": {
     "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
     "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
     "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
   },
   "capture_window_hours": 24,
-  "eligible_future_games": 1034,
-  "within_capture_window": 62,
+  "eligible_future_games": 1035,
+  "within_capture_window": 63,
   "summary": {
-    "saved_pairs": 1246,
+    "saved_pairs": 1247,
     "settled_pairs": 1181,
-    "pending_pairs": 65,
+    "pending_pairs": 66,
     "control": {
       "wins": 871,
       "losses": 310,
@@ -36,7 +36,7 @@
     "roster_unknown_pairs": 220
   },
   "coverage": {
-    "source_games_in_horizon": 1257
+    "source_games_in_horizon": 1258
   },
   "excluded": {
     "tipoff_time_unconfirmed": 17,
@@ -179,16 +179,16 @@
       "unconfirmed_tipoff": 0
     },
     "2026-11-28": {
-      "source_games": 75,
-      "eligible": 62,
+      "source_games": 76,
+      "eligible": 63,
       "unconfirmed_tipoff": 0
     }
   },
   "source": {
     "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-    "sha256": "4c8a8f6bf251bce5327aeb1fb1177d4df94c494faffd60aac248622388cf2135",
-    "bytes": 733063,
-    "archive_sha256": "3edab33a7131ed98d85d549129cb38141c699c0563142231c92a0815a39eb635",
+    "sha256": "98ac1f1d079d4b425d595a036b8e994bfc23ccdae213d9affe85fe80ad7d8f07",
+    "bytes": 742738,
+    "archive_sha256": "1121d67ee2f8e0c0542554395795f63a503bd9125c6364e40909e8c776b6a4ae",
     "live_schedule_sources": [
       {
         "url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261113&groups=50&limit=1000",
@@ -251,12 +251,7 @@
         "games": 122
       }
     ],
-    "identity_conflicts": [
-      {
-        "game_id": 401920536,
-        "reason": "Live/archive schedule identity mismatch: 401920536 archive={'home_id': -1, 'away_id': -2, 'season': 2027} live={'home_id': 97, 'away_id': 156, 'season': 2027}"
-      }
-    ]
+    "identity_conflicts": []
   },
   "history_sources": [
     {
@@ -502,32 +497,33 @@
     {
       "season": 2027,
       "schedule_rows": 6076,
-      "box_rows": 2898,
+      "box_rows": 3004,
       "sources": [
         {
           "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_schedules/mbb_schedule_2027.parquet",
-          "sha256": "3edab33a7131ed98d85d549129cb38141c699c0563142231c92a0815a39eb635",
-          "bytes": 733063
+          "sha256": "1121d67ee2f8e0c0542554395795f63a503bd9125c6364e40909e8c776b6a4ae",
+          "bytes": 742738
         },
         {
           "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_team_boxscores/team_box_2027.parquet",
-          "sha256": "ffa12bfe5ee667b132e458d2cee79f3d7851dca2de6816aa42390a79e244a71b",
-          "bytes": 237426
+          "sha256": "99c15c4e5b94eed5b467b761e28b1ccef19c884c0ed784898fac1c6acf25bfb2",
+          "bytes": 243287
         }
       ],
       "exclusions": {
-        "not_confirmed_final": 4627,
-        "division_or_conference_unknown": 313
+        "not_confirmed_final": 4572,
+        "division_or_conference_unknown": 319,
+        "missing_or_unpaired_box": 2
       },
-      "eligible_games": 1136,
-      "neutral_games": 222,
+      "eligible_games": 1183,
+      "neutral_games": 249,
       "players": {
         "season": 2027,
         "source_url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_mens_college_basketball_player_boxscores/player_box_2027.parquet",
-        "sha256": "8e726b8ab9243e31b900feae968067dd8ee80e77f5b77ac82c0dce1cded15f41",
-        "bytes": 1001800,
-        "eligible_team_games": 2272,
-        "complete_player_team_games": 2272,
+        "sha256": "a7b3d554fa5e876e65c48c50a79a472aec844275d3608fcd02ef47a1fc38f61d",
+        "bytes": 1027379,
+        "eligible_team_games": 2366,
+        "complete_player_team_games": 2366,
         "exclusions": {}
       }
     }
@@ -130197,6 +130193,93 @@
           "returning_share_diff": 0.33410526315789474,
           "transfer_share_diff": -0.44012280701754386,
           "prior_minutes_experience_diff": -0.05153527020143933,
+          "rotation_known_diff": 0.0
+        }
+      }
+    },
+    {
+      "game_id": "401920536",
+      "identities": {
+        "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+      },
+      "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+      "roster_context": {
+        "home_known": true,
+        "away_known": true,
+        "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+      },
+      "feature_state_as_of_utc": "2026-11-28T14:02:56.281387+00:00",
+      "control": {
+        "prediction_id": "CBB_V1_CANDIDATE_20261013:401920536",
+        "model_version": "CBB_V1_CANDIDATE_20261013",
+        "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+        "game_id": "401920536",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "97",
+        "away_team_id": "156",
+        "home_team": "Louisville Cardinals",
+        "away_team": "Creighton Bluejays",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-29T03:30:00+00:00",
+        "created_at_utc": "2026-11-28T14:02:56.281387+00:00",
+        "home_win_prob": 0.7004942918828175,
+        "predicted_winner": "Louisville Cardinals",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "98ac1f1d079d4b425d595a036b8e994bfc23ccdae213d9affe85fe80ad7d8f07",
+        "features": {
+          "elo_diff": 62.8234504702225,
+          "home_advantage": 0.0,
+          "off_eff_diff": 8.05918616647071,
+          "def_eff_diff": -0.31199631134245465,
+          "efg_diff": 0.013380440887179157,
+          "tov_rate_diff": -0.0007420464737201427,
+          "orb_rate_diff": 0.07488772544421829,
+          "ft_rate_diff": 0.051950701093021745,
+          "pace_diff": 0.10228084415584249,
+          "rest_diff": -1.0,
+          "experience_diff": -0.13353139262452252
+        }
+      },
+      "challenger": {
+        "prediction_id": "CBB_SHADOW_COMBINED_20261016:401920536",
+        "model_version": "CBB_SHADOW_COMBINED_20261016",
+        "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+        "game_id": "401920536",
+        "season": 2027,
+        "season_type": 2,
+        "home_team_id": "97",
+        "away_team_id": "156",
+        "home_team": "Louisville Cardinals",
+        "away_team": "Creighton Bluejays",
+        "neutral_site": true,
+        "start_time_utc": "2026-11-29T03:30:00+00:00",
+        "created_at_utc": "2026-11-28T14:02:56.281387+00:00",
+        "home_win_prob": 0.7091235151073585,
+        "predicted_winner": "Louisville Cardinals",
+        "status": "pending",
+        "market_used_for_pick": false,
+        "source_schedule_sha256": "98ac1f1d079d4b425d595a036b8e994bfc23ccdae213d9affe85fe80ad7d8f07",
+        "features": {
+          "elo_diff": 62.8234504702225,
+          "home_advantage": 0.0,
+          "off_eff_diff": 8.05918616647071,
+          "def_eff_diff": -0.31199631134245465,
+          "efg_diff": 0.013380440887179157,
+          "tov_rate_diff": -0.0007420464737201427,
+          "orb_rate_diff": 0.07488772544421829,
+          "ft_rate_diff": 0.051950701093021745,
+          "pace_diff": 0.10228084415584249,
+          "rest_diff": -1.0,
+          "experience_diff": -0.13353139262452252,
+          "adjusted_off_diff": 7.032814771672122,
+          "adjusted_def_diff": -1.0991204773836216,
+          "returning_share_diff": -0.26976190476190476,
+          "transfer_share_diff": 0.2994047619047619,
+          "prior_minutes_experience_diff": 0.35554569706301375,
           "rotation_known_diff": 0.0
         }
       }

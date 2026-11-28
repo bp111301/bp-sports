@@ -129658,5 +129658,92 @@
         "rotation_known_diff": 0.0
       }
     }
+  },
+  {
+    "game_id": "401920536",
+    "identities": {
+      "control": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "challenger": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+      "protocol": "e82692281751cdbe2009a7d190f546287ee0556cae36271f3b8662787a76c2a3"
+    },
+    "control_scope": "paired replay of frozen V1; separate from public V1 snapshots",
+    "roster_context": {
+      "home_known": true,
+      "away_known": true,
+      "fallback": "Unknown until earlier eligible player appearances clear the UTC-day embargo"
+    },
+    "feature_state_as_of_utc": "2026-11-28T14:02:56.281387+00:00",
+    "control": {
+      "prediction_id": "CBB_V1_CANDIDATE_20261013:401920536",
+      "model_version": "CBB_V1_CANDIDATE_20261013",
+      "bundle_sha256": "fd48f7435e1eee549c9890c2d0167ef9b9dc1f68608ccd170ac72e0a7fd6c163",
+      "game_id": "401920536",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "97",
+      "away_team_id": "156",
+      "home_team": "Louisville Cardinals",
+      "away_team": "Creighton Bluejays",
+      "neutral_site": true,
+      "start_time_utc": "2026-11-29T03:30:00+00:00",
+      "created_at_utc": "2026-11-28T14:02:56.281387+00:00",
+      "home_win_prob": 0.7004942918828175,
+      "predicted_winner": "Louisville Cardinals",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "98ac1f1d079d4b425d595a036b8e994bfc23ccdae213d9affe85fe80ad7d8f07",
+      "features": {
+        "elo_diff": 62.8234504702225,
+        "home_advantage": 0.0,
+        "off_eff_diff": 8.05918616647071,
+        "def_eff_diff": -0.31199631134245465,
+        "efg_diff": 0.013380440887179157,
+        "tov_rate_diff": -0.0007420464737201427,
+        "orb_rate_diff": 0.07488772544421829,
+        "ft_rate_diff": 0.051950701093021745,
+        "pace_diff": 0.10228084415584249,
+        "rest_diff": -1.0,
+        "experience_diff": -0.13353139262452252
+      }
+    },
+    "challenger": {
+      "prediction_id": "CBB_SHADOW_COMBINED_20261016:401920536",
+      "model_version": "CBB_SHADOW_COMBINED_20261016",
+      "bundle_sha256": "0bb1235da3d2129f9ecc4c2ccd1e77e19f4e43ac14664d409f1d7dda3c02f4da",
+      "game_id": "401920536",
+      "season": 2027,
+      "season_type": 2,
+      "home_team_id": "97",
+      "away_team_id": "156",
+      "home_team": "Louisville Cardinals",
+      "away_team": "Creighton Bluejays",
+      "neutral_site": true,
+      "start_time_utc": "2026-11-29T03:30:00+00:00",
+      "created_at_utc": "2026-11-28T14:02:56.281387+00:00",
+      "home_win_prob": 0.7091235151073585,
+      "predicted_winner": "Louisville Cardinals",
+      "status": "pending",
+      "market_used_for_pick": false,
+      "source_schedule_sha256": "98ac1f1d079d4b425d595a036b8e994bfc23ccdae213d9affe85fe80ad7d8f07",
+      "features": {
+        "elo_diff": 62.8234504702225,
+        "home_advantage": 0.0,
+        "off_eff_diff": 8.05918616647071,
+        "def_eff_diff": -0.31199631134245465,
+        "efg_diff": 0.013380440887179157,
+        "tov_rate_diff": -0.0007420464737201427,
+        "orb_rate_diff": 0.07488772544421829,
+        "ft_rate_diff": 0.051950701093021745,
+        "pace_diff": 0.10228084415584249,
+        "rest_diff": -1.0,
+        "experience_diff": -0.13353139262452252,
+        "adjusted_off_diff": 7.032814771672122,
+        "adjusted_def_diff": -1.0991204773836216,
+        "returning_share_diff": -0.26976190476190476,
+        "transfer_share_diff": 0.2994047619047619,
+        "prior_minutes_experience_diff": 0.35554569706301375,
+        "rotation_known_diff": 0.0
+      }
+    }
   }
 ]
