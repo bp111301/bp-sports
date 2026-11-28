@@ -1,5 +1,5 @@
 """Shared scores, preferences and probability guidance for the web UI."""
-UI_REVISION="nfl-safeguards-20261124"
+UI_REVISION="game-stories-20261128"
 import html,json
 from pathlib import Path
 from urllib.request import Request,urlopen
@@ -89,12 +89,12 @@ def render_information(page):
         return
     if page=='About B.P. Sports':
         st.title('Sports, with a clearer picture.')
-        st.caption('App release · dashboard-nfl-safeguards-20261124')
-        st.write('B.P. Sports brings NFL, college football, NHL and NBA matchups, saved predictions and results into one sports desk. Follow your teams, understand each forecast and see how the models perform when the games are played.')
+        st.caption('App release · dashboard-game-stories-20261128')
+        st.write('B.P. Sports brings NFL, college football, NHL, NBA and college basketball into one sports desk. Follow your teams, read the game story, and track each saved pick against the result.')
         st.subheader('Built on evidence')
         st.write('We publish probabilities before games and preserve those snapshots. Confirmed results build the live record. A model’s historical testing is shown separately so you can see the difference between development results and real prospective performance.')
-        st.subheader('Still growing')
-        st.write('B.P. Sports is an independent project in active development. The models are gathering prospective evidence, the NHL board remains research, and a mobile app is our longer-term goal.')
+        st.subheader('Independent by design')
+        st.write('Every sport keeps its own record. Research models are clearly labeled and tracked separately, so experimental picks stay distinct from established model records.')
         st.info('A probability is an estimate, never a guarantee. Even a strong favorite can lose.')
         return
     st.title('Our models & data')
@@ -197,7 +197,8 @@ def render_score_refresh():
 
 
 def render_header():
-    st.markdown('''<div class="bp-nav"><div class="bp-logo"><div class="bp-mark">BP</div><div><div class="bp-wordmark">B.P. <span>SPORTS</span></div><div class="bp-kicker">YOUR SPORTS DESK</div></div></div><div class="live-pill"><span class="live-dot"></span> FROZEN</div></div>''',unsafe_allow_html=True)
+    day=pd.Timestamp.now(tz='UTC').tz_convert('America/Chicago').strftime('%a, %b %-d')
+    st.markdown(f'<div class="bp-nav"><div class="bp-logo"><div class="bp-mark">BP</div><div><div class="bp-wordmark">B.P. <span>SPORTS</span></div><div class="bp-kicker">PICKS. SCORES. STORIES.</div></div></div><div class="bp-edition">{esc(day)}<span>Central time</span></div></div>',unsafe_allow_html=True)
 
 
 def render_host_chrome():

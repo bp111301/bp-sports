@@ -10,6 +10,7 @@ on:
       - 'pipeline/build_game_recaps.py'
       - 'recap_data.py'
       - 'tests/test_recaps.py'
+      - 'tests/test_game_stories.py'
   workflow_dispatch:
   schedule:
     - cron: '17,47 * * * *'
@@ -26,9 +27,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install -r requirements.txt requests
+      - run: pip install -r requirements.txt requests 'pyarrow>=23.0.1'
       - name: Verify pregame context and synopsis safeguards
-        run: python -m pytest -q tests/test_matchup_previews.py tests/test_recaps.py
+        run: python -m pytest -q tests/test_matchup_previews.py tests/test_game_stories.py tests/test_recaps.py
       - name: Build presentation-only previews
         run: python pipeline/build_matchup_previews.py
       - name: Build verified final-game recaps

@@ -44,6 +44,7 @@ def test_cbb_overview_tile_filters_details_and_board_navigation():
         at.selectbox(key='desk_view').select('Upcoming').run()
         assert not at.exception
         at.button(key='desk_details_CBB_401911707').click().run()
-        assert not at.exception and any('CBB V1 CANDIDATE PICK' in m.value for m in at.markdown)
+        assert not at.exception and any('Matchup synopsis' in m.value for m in at.markdown)
+        assert any(m.label=='Saved confidence' for m in at.metric)
         at.button(key='open_CBB').click().run()
         assert not at.exception and at.radio(key='bp_sport').value=='CBB'

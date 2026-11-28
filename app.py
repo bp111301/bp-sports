@@ -11,10 +11,16 @@ from matchup_preview_ui import render_preview
 from matchup_details_ui import details_button
 from cfb_board_ui import dated_board, date_choices, games_on_date, date_label
 import game_center_ui
-if getattr(game_center_ui,"UI_REVISION",None)!="nfl-safeguards-20261124":
+if getattr(game_center_ui,"UI_REVISION",None)!="game-stories-20261128":
+    import preview_data,matchup_preview_ui,matchup_details_ui
+    importlib.reload(preview_data)
     import game_status
     importlib.reload(game_status)
     importlib.reload(game_center_ui)
+    importlib.reload(matchup_preview_ui)
+    importlib.reload(matchup_details_ui)
+    from matchup_preview_ui import render_preview
+    from matchup_details_ui import details_button
     # Rebind score-loader imports retained by an existing Streamlit process.
     for name in ('overview_ui','nfl_availability_ui','cbb_ui','compact_board_ui','nhl_ui','nba_ui'):
         if name in sys.modules:importlib.reload(sys.modules[name])
@@ -231,13 +237,12 @@ def team_block(team, home=False):
 render_top_anchor()
 render_host_chrome()
 render_header()
-st.markdown('<div style="font-size:.64rem;color:#8d98a8;font-weight:900;letter-spacing:.11em;margin-bottom:4px">SPORT</div>', unsafe_allow_html=True)
 sport = st.radio("Sport", ["Overview", "NFL", "CFB", "NHL", "NBA", "CBB"], horizontal=True, label_visibility="collapsed", key="bp_sport", on_change=board_route)
 
 def current_ui(module):
     # Streamlit can retain imported modules during a deployment rerun. Reload once per UI revision.
-    expected={'overview_ui':'source-repairs-20261121.1','compact_board_ui':'source-repairs-20261121.1',
-              'cbb_ui':'efficient-feeds-20261115','nfl_availability_ui':'efficient-feeds-20261115',
+    expected={'overview_ui':'game-stories-20261128','compact_board_ui':'game-stories-20261128',
+              'cbb_ui':'game-stories-20261128','nfl_availability_ui':'efficient-feeds-20261115',
               'nhl_ui':'optional-goalies-20261115'}.get(module.__name__,'mobile-layout-20261007')
     if getattr(module,"UI_REVISION",None)!=expected:module=importlib.reload(module)
     return module
@@ -251,9 +256,11 @@ import overview_ui,compact_board_ui,cbb_ui,nfl_availability_ui
 for module in (overview_ui,cbb_ui,nfl_availability_ui,compact_board_ui):current_ui(module)
 from compact_board_ui import render_compact, render_compact_styles
 render_compact_styles()
+from product_ui import render_product_styles
+render_product_styles()
 board_view = "Detailed"
 if st.session_state.get("bp_page", "Board") == "Board" and sport != "Overview":
-    board_view = st.radio("Board view", ["Compact", "Detailed"], horizontal=True, key="bp_board_view")
+    board_view = st.radio("View", ["Compact", "Detailed"], horizontal=True, key="bp_board_view")
 
 if st.session_state.get("bp_page", "Board") != "Board":
     render_information(st.session_state["bp_page"])

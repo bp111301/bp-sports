@@ -6,7 +6,7 @@ import pandas as pd
 import streamlit as st
 
 FEED_URL = 'https://raw.githubusercontent.com/bp111301/bp-sports/cbb-v1-research/data/cbb/prospective/dashboard.json'
-UI_REVISION = 'efficient-feeds-20261115'
+UI_REVISION = 'game-stories-20261128'
 
 def team_block(name, home=False):
     from college_team_ui import college_abbreviation
@@ -132,4 +132,6 @@ def render_board(feed):
             st.subheader(start.strftime('%A, %B %-d'))
             last_date = row['date']
         st.markdown(card_html(row), unsafe_allow_html=True)
+        from matchup_details_ui import details_button
+        details_button('CBB',row.to_dict(),'cbb_story_'+str(row['game_id']))
     st.download_button('Download filtered picks', filtered.drop(columns=['features'], errors='ignore').to_csv(index=False), 'cbb-research-picks.csv', 'text/csv')
