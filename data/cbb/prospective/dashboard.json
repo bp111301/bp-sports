@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2219,
-    "settled_games": 1157,
-    "pending_games": 1062,
-    "wins": 825,
+    "settled_games": 1159,
+    "pending_games": 1060,
+    "wins": 827,
     "losses": 332,
-    "accuracy": 0.7130509939498704,
-    "brier": 0.184548953230321,
-    "log_loss": 0.5458041960362919
+    "accuracy": 0.7135461604831751,
+    "brier": 0.18430909679143123,
+    "log_loss": 0.5452623597009931
   },
   "predictions": [
     {
@@ -47543,7 +47543,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7345818488416898,
       "predicted_winner": "Boise State Broncos",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -47559,7 +47559,18 @@
         "pace_diff": -0.10283854166667084,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 88,
+      "away_score": 71,
+      "actual_winner": "Boise State Broncos",
+      "correct": 1,
+      "brier": 0.07044679496429562,
+      "log_loss": 0.30845385480234405,
+      "verified_start_time_utc": "2026-11-27T22:30:00+00:00",
+      "settled_at_utc": "2026-11-28T00:40:26.935063+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&limit=1000&groups=50",
+      "result_source_event_sha256": "56ccfdb33c3be4773bc3e61816c7f2c01ac9d9e4a879a0ba4e7ed8cc7f566442"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401911030",
@@ -87915,7 +87926,7 @@
       "created_at_utc": "2026-11-27T19:33:20.035021+00:00",
       "home_win_prob": 0.14372716800621438,
       "predicted_winner": "Michigan Wolverines",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "4a1d36b9ffc70c0528263214adc8cdf38ef09a01b6b6dddf9c9a239a56a5667b",
       "forecast_stage": "early_research_prior",
@@ -87931,7 +87942,18 @@
         "pace_diff": -0.27351628151258467,
         "rest_diff": -1.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 0,
+      "home_score": 69,
+      "away_score": 98,
+      "actual_winner": "Michigan Wolverines",
+      "correct": 1,
+      "brier": 0.020657498823086574,
+      "log_loss": 0.1551662246589782,
+      "verified_start_time_utc": "2026-11-27T22:41:00+00:00",
+      "settled_at_utc": "2026-11-28T00:40:26.935063+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&limit=1000&groups=50",
+      "result_source_event_sha256": "1325e10784093aa0e20520d46a53782eed9c5f2ffb6067d5f3db6de31bb3105d"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401920543",
@@ -88330,5 +88352,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-28T00:35:20.546161+00:00"
+  "results_checked_at_utc": "2026-11-28T00:40:26.935063+00:00"
 }
