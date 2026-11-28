@@ -48133,7 +48133,7 @@
     "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
     "home_win_prob": 0.3141259500914434,
     "predicted_winner": "North Dakota State Bison",
-    "status": "pending",
+    "status": "settled",
     "market_used_for_pick": false,
     "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
     "forecast_stage": "early_research_prior",
@@ -48149,7 +48149,18 @@
       "pace_diff": -1.4407258064516242,
       "rest_diff": 0.0,
       "experience_diff": 0.0
-    }
+    },
+    "actual_home_win": 1,
+    "home_score": 75,
+    "away_score": 73,
+    "actual_winner": "North Texas Mean Green",
+    "correct": 0,
+    "brier": 0.4704232123379652,
+    "log_loss": 1.1579612585580734,
+    "verified_start_time_utc": "2026-11-28T01:00:00+00:00",
+    "settled_at_utc": "2026-11-28T03:42:40.878089+00:00",
+    "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&limit=1000&groups=50",
+    "result_source_event_sha256": "b31b1dea7a60808d8c9976caeaed151ab5b967287390a79d51cfaf78741c8548"
   },
   {
     "prediction_id": "CBB_V1_CANDIDATE_20261013:401926783",
