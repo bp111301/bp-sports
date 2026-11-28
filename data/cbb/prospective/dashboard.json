@@ -19,13 +19,13 @@
   "capture_blocked_reason": null,
   "summary": {
     "saved_games": 2219,
-    "settled_games": 1155,
-    "pending_games": 1064,
-    "wins": 823,
+    "settled_games": 1156,
+    "pending_games": 1063,
+    "wins": 824,
     "losses": 332,
-    "accuracy": 0.7125541125541126,
-    "brier": 0.1846936257710485,
-    "log_loss": 0.5460941589289177
+    "accuracy": 0.71280276816609,
+    "brier": 0.18459034070318422,
+    "log_loss": 0.54587702216013
   },
   "predictions": [
     {
@@ -47487,7 +47487,7 @@
       "created_at_utc": "2026-10-30T01:39:42.780087+00:00",
       "home_win_prob": 0.7444690090812289,
       "predicted_winner": "Texas A&M Aggies",
-      "status": "pending",
+      "status": "settled",
       "market_used_for_pick": false,
       "source_schedule_sha256": "80b5befef9e1dc6901fcb27cf49f7a6ab60222a11759f681698639e89b10391f",
       "forecast_stage": "early_research_prior",
@@ -47503,7 +47503,18 @@
         "pace_diff": 3.335937499999986,
         "rest_diff": 0.0,
         "experience_diff": 0.0
-      }
+      },
+      "actual_home_win": 1,
+      "home_score": 78,
+      "away_score": 76,
+      "actual_winner": "Texas A&M Aggies",
+      "correct": 1,
+      "brier": 0.06529608731992906,
+      "log_loss": 0.29508405421040446,
+      "verified_start_time_utc": "2026-11-27T22:00:00+00:00",
+      "settled_at_utc": "2026-11-28T00:15:01.294062+00:00",
+      "result_source_url": "https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball/scoreboard?dates=20261127&limit=1000&groups=50",
+      "result_source_event_sha256": "e29a726e6e2abeae59f783603eefd070c27a649f69731a2c1f67f200f6dfe6cf"
     },
     {
       "prediction_id": "CBB_V1_CANDIDATE_20261013:401927366",
@@ -88308,5 +88319,5 @@
     "Source schedule is incomplete; unconfirmed times and unknown eligibility are excluded",
     "Historical accuracy is separate from this prospective record"
   ],
-  "results_checked_at_utc": "2026-11-28T00:09:56.757429+00:00"
+  "results_checked_at_utc": "2026-11-28T00:15:01.294062+00:00"
 }
