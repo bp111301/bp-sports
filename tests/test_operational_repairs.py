@@ -59,6 +59,31 @@ def test_cbb_capture_health_reports_block_after_valid_outputs_are_saved():
     assert module.failure_reason('cbb',{'feed_status':'research_preview','capture_blocked_reason':'waiting_for_stats'})=='waiting_for_stats'
 
 
+@pytest.mark.parametrize('missing,features,expected',[
+    ([],[],None),(['42'],[],'42'),([],['43'],'43'),(['42'],['42','43'],'42, 43'),
+])
+def test_cfb_capture_health_reports_supported_gaps_and_ignores_out_of_scope_games(missing,features,expected):
+    module=load_module('pipeline/capture_health.py','cfb_capture_health_test')
+    coverage={'groups':{'fbs_vs_fbs':{'scheduled_games':53,'missing_current_forecast_game_ids':missing,'missing_feature_game_ids':features},
+                        'fbs_vs_fcs':{'scheduled_games':1,'missing_current_forecast_game_ids':['unsupported'],'missing_feature_game_ids':['unsupported']}}}
+    reason=module.failure_reason('cfb',coverage)
+    assert reason is None if expected is None else reason=='Missing supported CFB forecasts or inputs: '+expected
+
+
+@pytest.mark.parametrize('coverage',[{}, {'groups':{}}, {'groups':{'fbs_vs_fbs':{'scheduled_games':53}}}])
+def test_cfb_missing_coverage_is_not_reported_as_healthy(coverage):
+    module=load_module('pipeline/capture_health.py','cfb_invalid_health_test')
+    assert module.failure_reason('cfb',coverage)
+
+
+def test_cfb_reports_coverage_failure_after_publishing_valid_forecasts():
+    workflow=Path('.github/workflows/update_cfb_predictions.yml').read_text()
+    assert workflow.index('Commit CFB feeds')<workflow.index('Report supported CFB forecast gaps')
+    assert 'python pipeline/capture_health.py cfb data/cfb/input_receipts/coverage.json' in workflow
+    watchdog=Path('.github/workflows/final_grading_watchdog.yml').read_text()
+    assert 'dispatch_if_due update_cfb_predictions.yml 43200' in watchdog
+
+
 def test_publishing_gate_rejects_changed_probabilities_missing_or_duplicate_forecasts():
     module=load_module('pipeline/verify_preservation.py','preservation_test')
     old=[{'prediction_id':'1','home_win_prob':'0.7000000000000000123','status':'pending'}]

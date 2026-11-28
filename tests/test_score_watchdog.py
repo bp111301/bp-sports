@@ -33,7 +33,7 @@ def test_score_watchdog_restarts_overdue_runs_without_duplicate_dispatches(statu
     assert ('DISPATCHED' in result.stdout)==dispatch
 
 
-@pytest.mark.parametrize('workflow,max_age',[('nhl_research_ledger.yml',43200),('cbb_prospective.yml',21600)])
+@pytest.mark.parametrize('workflow,max_age',[('nhl_research_ledger.yml',43200),('cbb_prospective.yml',21600),('update_cfb_predictions.yml',43200)])
 @pytest.mark.parametrize('state,fresh,expected',[('completed',True,False),('completed',False,True),('in_progress',False,False),('queued',False,False)])
 def test_producer_refreshes_are_overdue_only_and_do_not_cancel_active_work(workflow,max_age,state,fresh,expected):
     result=dispatch_result(state,3600 if fresh else max_age+3600,workflow,max_age)

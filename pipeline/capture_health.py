@@ -5,6 +5,16 @@ from pathlib import Path
 
 
 def failure_reason(sport, dashboard):
+    if sport=='cfb':
+        supported=dashboard.get('groups',{}).get('fbs_vs_fbs')
+        if not isinstance(supported,dict) or not isinstance(supported.get('scheduled_games'),int):
+            return 'Supported CFB coverage unavailable'
+        missing=supported.get('missing_current_forecast_game_ids')
+        features=supported.get('missing_feature_game_ids')
+        if not isinstance(missing,list) or not isinstance(features,list):
+            return 'Supported CFB coverage incomplete'
+        gaps=sorted(set(map(str,missing+features)))
+        return 'Missing supported CFB forecasts or inputs: '+', '.join(gaps) if gaps else None
     expected={'cbb':'research_preview','nba':'enabled'}
     if sport in expected and dashboard.get('feed_status')!=expected[sport]:
         return 'Forecast feed unavailable'
@@ -16,7 +26,7 @@ def failure_reason(sport, dashboard):
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('sport',choices=['nba','cbb'])
+    parser=argparse.ArgumentParser();parser.add_argument('sport',choices=['nba','cbb','cfb'])
     parser.add_argument('dashboard',type=Path);args=parser.parse_args()
     reason=failure_reason(args.sport,json.loads(args.dashboard.read_text()))
     if reason:raise SystemExit('::error::Forecast capture blocked: '+reason)

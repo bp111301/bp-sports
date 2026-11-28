@@ -74,4 +74,6 @@ jobs:
               git pull --rebase origin main
             done
           fi
+      - name: Report supported CFB forecast gaps after preserving valid outputs
+        run: python pipeline/capture_health.py cfb data/cfb/input_receipts/coverage.json
 
