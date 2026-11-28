@@ -7,7 +7,7 @@ from game_center_ui import load_scores, context, filter_favorites
 from game_status import display_state, score
 from matchup_details_ui import details_button, game_tile
 
-UI_REVISION = 'source-repairs-20261121.1'
+UI_REVISION = 'game-stories-20261128'
 def esc(value): return html.escape(str(value), quote=True)
 
 def prepare_compact(sport, payload, score_feed, now, cbb=None):
@@ -103,9 +103,12 @@ def compact_html(r, feed, now):
         elif not status or status.get('state') != 'final': h=a=None
         state = 'Final' if h is not None and a is not None else 'Final · score unavailable'
     pick = r.home if r.p >= .5 else r.away
-    grade = ('WIN' if (r.p>=.5)==r.y else 'LOSS') if r.settled else 'PENDING'
+    grade_class = ('win' if (r.p>=.5)==r.y else 'loss') if r.settled else 'pending'
+    grade = ('Pick won' if grade_class=='win' else 'Pick lost') if r.settled else 'Final · Awaiting grading' if state.startswith('Final') else 'Saved pregame pick'
+    if state.startswith('Final · awaiting'):state='Final · Awaiting grading'
     if d.get('settlement_status') == 'tie':
-        grade = 'TIE'
+        grade = 'Tie · excluded from record'
+        grade_class = 'tie'
         state = 'Final · tie'
         h,a = score(d.get('actual_home_score')),score(d.get('actual_away_score'))
     time = r.start.tz_convert('America/Chicago').strftime('%-I:%M %p CT') if pd.notna(r.start) else 'Time TBD'
@@ -114,8 +117,10 @@ def compact_html(r, feed, now):
     home_color=team_color(r.sport,r.home,d.get('home_team_id'))
     pick_color=home_color if r.p>=.5 else away_color
     availability_note=''
-    probability_text=f'{r.confidence:.1%}'
-    bar_style=''
+    probability_available=pd.notna(r.confidence) and 0<=r.confidence<=1
+    probability_text=f'{r.confidence:.1%}' if probability_available else 'Unavailable'
+    bar_style='' if probability_available else 'display:none'
+    bar_width=r.confidence*100 if probability_available else 0
     if r.sport=='NFL':
         from nfl_availability_ui import card_note,context_for
         availability_note=card_note(r.game_id,now)
@@ -126,18 +131,18 @@ def compact_html(r, feed, now):
       <div class="bp-mini-top"><span>{esc(r.sport)} · {esc(state)}</span><span>{esc(detail)}</span></div>
       <div class="bp-mini-team"><span class="bp-mini-badge" style="background:{away_color};color:{text_color(away_color)}">{esc(short_name(r.away,r.sport,d.get('away_team_id')))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.away))}</span><strong>{a if a is not None else '—'}</strong></div>
       <div class="bp-mini-team"><span class="bp-mini-badge" style="background:{home_color};color:{text_color(home_color)}">{esc(short_name(r.home,r.sport,d.get('home_team_id')))}</span><span class="bp-mini-name">{esc(team_label(r.sport,r.home))}</span><strong>{h if h is not None else '—'}</strong></div>
-      <div class="bp-mini-pick"><span class="bp-mini-selected">BP PICK <b>{esc(pick)}</b><small class="{grade.lower()}">{grade}</small></span><span class="bp-mini-confidence"><b>{probability_text}</b><small>WIN CONFIDENCE</small></span></div>
-      <div class="bp-mini-bar" style="{bar_style}"><div style="width:{r.confidence*100:.1f}%"></div></div>
+      <div class="bp-mini-pick"><span class="bp-mini-selected">SAVED PICK <b>{esc(pick)}</b><small class="{grade_class}">{grade}</small></span><span class="bp-mini-confidence"><b>{probability_text}</b><small>WIN PROBABILITY</small></span></div>
+      <div class="bp-mini-bar" style="{bar_style}"><div style="width:{bar_width:.1f}%"></div></div>
       {availability_note}
+      <div class="bp-mini-link"><span>Matchup story & stats</span><span aria-hidden="true">↗</span></div>
     </div>'''
     # Blank lines end Markdown HTML blocks; indented closing tags become code.
     return ''.join(line.strip() for line in card.splitlines())
 
 @st.dialog('Game details',width='large')
 def open_cbb_details(r):
-    from cbb_ui import card_html
-    st.markdown(card_html({**r.details,'prob':r.p,'confidence':r.confidence,'start':r.start}),unsafe_allow_html=True)
-    st.caption('Prior-season team history · no current roster, transfer or injury inputs.')
+    from matchup_details_ui import detail_payload,render_details
+    render_details(detail_payload('CBB',r.to_dict()))
 
 def render_compact(sport):
     now = pd.Timestamp.now(tz='UTC')
@@ -155,9 +160,8 @@ def render_compact(sport):
     if (sport == 'CBB' and cbb is None) or (key and not available.get(key)):
         st.warning(sport+' saved forecast feed is unavailable. Try Refresh shortly.')
         return
-    st.caption('Saved picks · verified scores · Central time')
-    if sport=='NFL':st.caption('Pregame cards show the latest valid refresh. The model record retains the first saved snapshot; settled cards show that record snapshot.')
-    if sport in ('NHL','CBB'): st.caption(sport+' is collecting prospective evidence as a candidate. Saved probabilities are experimental.')
+    st.markdown(f'<div class="board-intro"><div class="board-eyebrow">YOUR GAMEDAY</div><h1>{esc(sport)} games</h1><p>Find your matchup. See the pick. Read the story.</p></div>',unsafe_allow_html=True)
+    if sport in ('NHL','CBB'):st.caption(sport+' picks are experimental. Their results are tracked separately.')
     dates, default = date_options(board,now,sport)
     if not dates:
         st.info('No saved game dates are available yet. Open the detailed board for model information.')
@@ -170,17 +174,17 @@ def render_compact(sport):
         query = st.text_input('Search teams',key='compact_search_'+sport)
         if query: shown = shown[shown.apply(lambda r:query.casefold() in (str(r.home)+' '+str(r.away)+' '+str(team_label(sport,r.home))+' '+str(team_label(sport,r.away))).casefold(),axis=1)]
         shown = filter_favorites(shown,sport,'compact_favorites_'+sport,home='home',away='away')
-    st.subheader('Games')
-    st.caption(str(len(shown))+' saved matchups · '+date_label(date))
+    st.caption(str(len(shown))+' matchups · '+date_label(date)+' · Tap a card for the game story')
     if shown.empty:
         st.info('No saved forecasts for this date. Choose another date or open the detailed board.')
     for offset in range(0,len(shown),2):
-        columns = st.columns(2,gap='small')
-        for column, (_,r) in zip(columns,shown.iloc[offset:offset+2].iterrows()):
-            with column:
-                game_tile(sport,r.to_dict(),'compact_detail_'+sport+'_'+r.game_id,
-                          compact_html(r,feed,now),now=now,
-                          on_open=(lambda r=r:open_cbb_details(r)) if sport=='CBB' else None)
+        with st.container(key='compact_row_'+sport+'_'+str(offset)):
+            columns = st.columns(2,gap='small')
+            for column, (_,r) in zip(columns,shown.iloc[offset:offset+2].iterrows()):
+                with column:
+                    game_tile(sport,r.to_dict(),'compact_detail_'+sport+'_'+r.game_id,
+                              compact_html(r,feed,now),now=now,
+                              on_open=(lambda r=r:open_cbb_details(r)) if sport=='CBB' else None)
     if sport == 'CBB':
         with st.expander('Schedule coverage'):
             excluded = (cbb or {}).get('excluded',{})
@@ -202,7 +206,7 @@ html,body,.stApp,[data-testid="stAppViewContainer"],[data-testid="stMain"]{max-w
 [class*="st-key-compact_date_"] label:has(input:checked){background:#1e3d64;border-color:#6ea8fe}
 [class*="st-key-compact_date_"] [data-testid="stRadioOption"]>div>div:first-child:not([data-testid="stMarkdownContainer"]){display:none}
 .bp-mini{container-type:inline-size;background:linear-gradient(135deg,#131e2e,#0e1723);border:1px solid #2a3c54;border-radius:15px;padding:13px 15px;margin-top:6px;min-width:0}
-.bp-mini-top{display:flex;justify-content:space-between;gap:8px;font-size:.67rem;color:#a0b3ce;margin-bottom:10px}
+.bp-mini-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 8px;overflow-wrap:anywhere;font-size:.67rem;color:#a0b3ce;margin-bottom:10px}
 .bp-mini-team{display:flex;gap:9px;align-items:center;margin:7px 0}.bp-mini-badge{width:31px;height:31px;flex:0 0 31px;display:flex;align-items:center;justify-content:center;background:#254970;border-radius:9px;font-size:.6rem;font-weight:850;color:#d8e9ff}
 .bp-mini-name{flex:1;min-width:0;font-size:.9rem;font-weight:750;overflow-wrap:normal;word-break:normal}.bp-mini-team strong{font-size:1.2rem}
 .bp-mini-pick{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;border-top:1px solid #29394e;padding-top:10px;margin-top:11px;font-size:.7rem;color:#91a9c8}.bp-mini-pick b{color:#deebff}.bp-mini-pick small{font-size:.55rem;margin-left:5px}.bp-mini-pick .win{color:#82e9ad}.bp-mini-pick .loss{color:#ff9aa6}
@@ -220,6 +224,23 @@ html,body,.stApp,[data-testid="stAppViewContainer"],[data-testid="stMain"]{max-w
 .bp-mini-confidence b{white-space:nowrap}
 }
 @media(max-width:640px){.bp-mini{padding:11px 12px}.bp-mini-name{font-size:.86rem}.st-key-bp_sport label{padding:10px 9px!important}}
+
+/* Use full-width cards on phones; retain paired cards at tablet widths. */
+@media(max-width:640px){
+[data-testid="stHorizontalBlock"]:has(.st-key-desk_sport),
+[class*="st-key-season_record_row_"] [data-testid="stHorizontalBlock"],
+[class*="st-key-desk_details_row_"] [data-testid="stHorizontalBlock"],
+[class*="st-key-remaining_details_row_"] [data-testid="stHorizontalBlock"],
+[class*="st-key-daily_details_row_"] [data-testid="stHorizontalBlock"],
+[class*="st-key-compact_row_"] [data-testid="stHorizontalBlock"]{flex-direction:column;align-items:stretch}
+[data-testid="stColumn"]:has(.st-key-desk_sport),
+[data-testid="stColumn"]:has(.st-key-desk_view),
+[class*="st-key-season_record_row_"] [data-testid="stColumn"],
+[class*="st-key-desk_details_row_"] [data-testid="stColumn"],
+[class*="st-key-remaining_details_row_"] [data-testid="stColumn"],
+[class*="st-key-daily_details_row_"] [data-testid="stColumn"],
+[class*="st-key-compact_row_"] [data-testid="stColumn"]{width:100%!important;flex:1 1 100%!important}
+}
 
 /* A native, keyboard-accessible button covers the full card. */
 [class*="st-key-bp_game_tile_"] [data-testid="stMarkdownContainer"]{margin-bottom:0!important}

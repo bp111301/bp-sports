@@ -13,7 +13,7 @@ def game_id(v):
 def game(sport,gid,home,away,start,h,a,completed,regular=True):
     try:h,a=float(h),float(a)
     except (ValueError,TypeError):return None
-    if not completed or not regular or not all(math.isfinite(x) and x>=0 for x in (h,a)) or pd.isna(stamp(start)):return None
+    if not completed or not regular or not all(math.isfinite(x) and x>=0 and x.is_integer() for x in (h,a)) or pd.isna(stamp(start)):return None
     return dict(game_id=game_id(gid),home=team(sport,home),away=team(sport,away),start=stamp(start).isoformat(),home_score=h,away_score=a)
 
 def football_games(frame,sport):
@@ -60,4 +60,39 @@ def profile(games,sport,name,cutoff,start):
         home=g['home']==name;points=g['home_score'] if home else g['away_score'];allowed=g['away_score'] if home else g['home_score']
         eligible[g['game_id']]={**g,'for':points,'against':allowed,'opponent':g['away'] if home else g['home'],'outcome':'W' if points>allowed else 'L' if points<allowed else 'T'}
     rows=sorted(eligible.values(),key=lambda r:r['start']);n=len(rows)
-    return dict(games=n,wins=sum(r['outcome']=='W' for r in rows),losses=sum(r['outcome']=='L' for r in rows),ties=sum(r['outcome']=='T' for r in rows),recent=[r['outcome'] for r in rows[-3:]],last=rows[-1] if rows else None,scored_per_game=sum(r['for'] for r in rows)/n if n else None,allowed_per_game=sum(r['against'] for r in rows)/n if n else None)
+    recent=rows[-5:]
+    return dict(games=n,wins=sum(r['outcome']=='W' for r in rows),losses=sum(r['outcome']=='L' for r in rows),ties=sum(r['outcome']=='T' for r in rows),recent=[r['outcome'] for r in rows[-3:]],last=rows[-1] if rows else None,scored_per_game=sum(r['for'] for r in rows)/n if n else None,allowed_per_game=sum(r['against'] for r in rows)/n if n else None,
+                recent_games=list(reversed(recent)),recent_sample=len(recent),recent_wins=sum(r['outcome']=='W' for r in recent),
+                recent_losses=sum(r['outcome']=='L' for r in recent),recent_ties=sum(r['outcome']=='T' for r in recent),
+                recent_scored_per_game=sum(r['for'] for r in recent)/len(recent) if recent else None,
+                recent_allowed_per_game=sum(r['against'] for r in recent)/len(recent) if recent else None)
+
+
+def previous_meetings(games,sport,home,away,cutoff,start):
+    """Earlier-date finals only, with the same conservative cutoff as team form."""
+    cutoff,start=stamp(cutoff),stamp(start)
+    if pd.isna(cutoff) or pd.isna(start) or cutoff>=start:raise ValueError('Invalid meeting cutoff')
+    pair={team(sport,home),team(sport,away)};day=cutoff.tz_convert('America/New_York').date();seen={}
+    for g in games:
+        if {g['home'],g['away']}!=pair:continue
+        at=stamp(g['start'])
+        if at>=cutoff or at>=start or at.tz_convert('America/New_York').date()>=day:continue
+        seen[g['game_id']]=dict(g)
+    return sorted(seen.values(),key=lambda g:g['start'],reverse=True)[:3]
+
+
+def basketball_schedule_games(frame,sport,season):
+    """Read verified finals from the same archive used by the basketball feeds."""
+    rows=[]
+    for r in frame.to_dict('records'):
+        if str(r.get('season')) not in (str(season),str(season)+'.0') or str(r.get('season_type')) not in ('2','2.0'):continue
+        if not flag(r.get('status_type_completed')) or r.get('status_type_state')!='post':continue
+        if sport=='CBB' and flag(r.get('away_non_div1_team')):continue
+        note=str(r.get('notes_headline','')).lower()
+        if sport=='NBA' and ('cup' in note or 'tournament' in note) and ('championship' in note or ('final' in note and 'semifinal' not in note and 'quarterfinal' not in note)):continue
+        key='abbreviation' if sport=='NBA' else 'display_name'
+        home,away=r.get('home_'+key),r.get('away_'+key)
+        if not isinstance(home,str) or not isinstance(away,str):continue
+        item=game(sport,r['game_id'],home,away,r.get('date'),r.get('home_score'),r.get('away_score'),True)
+        if item:rows.append(item)
+    return rows

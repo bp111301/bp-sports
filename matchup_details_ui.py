@@ -6,7 +6,7 @@ from game_center_ui import score_html,confidence_html,context,esc
 from matchup_preview_ui import render_preview
 from preview_data import stamp,game_id
 
-LABELS={'NFL':'NFL V4','CFB':'CFB V1','NHL':'NHL reference','NBA':'NBA V1'}
+LABELS={'NFL':'NFL V4','CFB':'CFB V1','NHL':'NHL reference','NBA':'NBA V1','CBB':'CBB V1 candidate'}
 
 def detail_payload(sport,row,model_label=None,settled=None):
     r=dict(row)
@@ -48,19 +48,20 @@ def render_details(payload,extras=None,now=None):
     away_color=team_color(sport,d['away'],d['preview'].get('away_team_id'))
     home_color=team_color(sport,d['home'],d['preview'].get('home_team_id'))
     accent=accent_color(home_color if d['pick']==d['home'] else away_color)
+    separator='vs' if d['preview'].get('neutral_site') else '@'
     st.markdown(f'''<div style="background:linear-gradient(120deg,{away_color}2b,{home_color}2b);border:1px solid #314158;border-left:3px solid {accent};border-radius:12px;padding:13px 15px;margin:0 0 10px">
 <h3 style="display:flex;align-items:center;flex-wrap:wrap;gap:9px;font-size:1.15rem;line-height:1.4;margin:0;padding:0">
-<span style="background:{away_color};color:{text_color(away_color)};padding:5px 10px;border-radius:8px;overflow-wrap:anywhere">{esc(d['away'])}</span><span style="color:#a5b7d0;font-size:.9rem">@</span><span style="background:{home_color};color:{text_color(home_color)};padding:5px 10px;border-radius:8px;overflow-wrap:anywhere">{esc(d['home'])}</span></h3></div>''',unsafe_allow_html=True)
-    st.caption(sport+' · '+d['label']+(' · experimental' if sport=='NHL' else ' · frozen model'))
+<span style="background:{away_color};color:{text_color(away_color)};padding:5px 10px;border-radius:8px;overflow-wrap:anywhere">{esc(d['away'])}</span><span style="color:#a5b7d0;font-size:.9rem">{separator}</span><span style="background:{home_color};color:{text_color(home_color)};padding:5px 10px;border-radius:8px;overflow-wrap:anywhere">{esc(d['home'])}</span></h3></div>''',unsafe_allow_html=True)
+    st.caption(d['label']+(' · experimental' if sport in ('NHL','CBB') else ' · saved pregame forecast'))
     if sport=='NFL':
         from nfl_availability_ui import render_availability
         render_availability(d['game_id'])
         if d['preview'].get('display_uses_latest_pregame'):st.caption('Latest refreshed pregame forecast. The model record continues to use the original first saved snapshot.')
     st.markdown(score_html(sport,d['game_id'],d['home'],d['away'],d['settled'],d['start'],now),unsafe_allow_html=True)
-    a,b=st.columns([2,1]);a.metric('Saved pick',d['pick']);b.metric('Saved confidence',f'{d["prob"]*100:.1f}%')
+    a,b=st.columns([1,1]);a.metric('Saved pick',d['pick']);b.metric('Saved confidence',f'{d["prob"]*100:.1f}%')
     if d['result']=='Win':st.success('Saved pick result: Win')
     elif d['result']=='Loss':st.error('Saved pick result: Loss')
-    else:st.info('Saved pick result: '+d['result'])
+    else:st.caption('Saved pick result: '+d['result'])
     if sport=='NBA' and d['preview'].get('nba_pick_source')=='injury':
         baseline=float(d['preview']['nba_baseline_probability'])
         team=d['home'] if baseline>=.5 else d['away']
@@ -71,7 +72,9 @@ def render_details(payload,extras=None,now=None):
     if sport=='NHL':
         from nhl_ui import audit_note
         audit=audit_note(d['game_id'],d['preview'].get('bundle_sha256'))
-    st.markdown(confidence_html(d['prob'],sport,bool(audit)),unsafe_allow_html=True)
+    if sport=='CFB':st.caption('Raw model estimate · CFB confidence is not validated.')
+    with st.expander('About this pick & probability'):
+        st.markdown(confidence_html(d['prob'],sport,bool(audit)),unsafe_allow_html=True)
     if audit:
         st.warning(audit['message']);st.link_button('View input audit',audit['report_url'])
     from game_recap_ui import render_recap
